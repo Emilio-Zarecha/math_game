@@ -1,438 +1,1806 @@
 [
   {
-    "id": "calc-e-001", "topic": "calculus", "difficulty": "easy",
-    "question": { "latex": "\\frac{d}{dx}\\bigl[x^2\\bigr] = ?", "plain": "Differentiate x²" },
-    "symbols": { "\\frac{d}{dx}": "Derivative with respect to x — instantaneous rate of change" },
+    "id": "calc-e-001",
+    "topic": "calculus",
+    "difficulty": "easy",
+    "question": {
+      "latex": "\\frac{d}{dx}\\bigl[x^2\\bigr] = ?",
+      "plain": "Differentiate x²"
+    },
+    "symbols": {
+      "\\frac{d}{dx}": "Derivative with respect to x — instantaneous rate of change"
+    },
     "palette": [
-      { "id": "p1", "latex": "2", "description": "Power rule: bring down the exponent as coefficient" },
-      { "id": "p2", "latex": "2x", "description": "d/dx[x²] = 2x" }
+      {
+        "id": "p1",
+        "latex": "2",
+        "description": "Power rule: bring down the exponent as coefficient"
+      },
+      {
+        "id": "p2",
+        "latex": "2x",
+        "description": "d/dx[x²] = 2x"
+      }
     ],
     "steps": [
-      { "id": "s1", "fromLatex": "\\frac{d}{dx}\\bigl[x^2\\bigr]", "toLatex": "2 \\cdot x^{2-1}", "paletteRef": "p1", "dropTargets": ["x^2"], "description": "Power rule: bring down exponent 2, reduce power by 1" },
-      { "id": "s1a", "fromLatex": "2 - 1 = 1", "toLatex": "2 - 1 = 1 \\quad (\\text{new exponent})", "paletteRef": null, "dropTargets": [], "description": "Compute: 2 − 1 = 1 (reduce the exponent by 1)" },
-      { "id": "s2", "fromLatex": "2 \\cdot x^{2-1}", "toLatex": "2x", "paletteRef": "p2", "dropTargets": ["2 \\cdot x^{2-1}"], "description": "Simplify: 2x¹ = 2x" }
-    ]
+      {
+        "id": "s1",
+        "fromLatex": "\\frac{d}{dx}\\bigl[x^2\\bigr]",
+        "toLatex": "2 \\cdot x^{2-1}",
+        "paletteRef": "p1",
+        "dropTargets": [
+          "x^2"
+        ],
+        "description": "Power rule: bring down exponent 2, reduce power by 1"
+      },
+      {
+        "id": "s1a",
+        "fromLatex": "2 - 1 = 1",
+        "toLatex": "2 - 1 = 1 \\quad (\\text{new exponent})",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "Compute: 2 − 1 = 1 (reduce the exponent by 1)"
+      },
+      {
+        "id": "s2",
+        "fromLatex": "2 \\cdot x^{2-1}",
+        "toLatex": "2x",
+        "paletteRef": "p2",
+        "dropTargets": [
+          "2 \\cdot x^{2-1}"
+        ],
+        "description": "Simplify: 2x¹ = 2x"
+      }
+    ],
+    "image": "calc-e-001.svg"
   },
   {
-    "id": "calc-e-002", "topic": "calculus", "difficulty": "easy",
-    "question": { "latex": "\\frac{d}{dx}\\bigl[x^3\\bigr] = ?", "plain": "Differentiate x³" },
-    "symbols": { "\\frac{d}{dx}": "Derivative — instantaneous rate of change" },
+    "id": "calc-e-002",
+    "topic": "calculus",
+    "difficulty": "easy",
+    "question": {
+      "latex": "\\frac{d}{dx}\\bigl[x^3\\bigr] = ?",
+      "plain": "Differentiate x³"
+    },
+    "symbols": {
+      "\\frac{d}{dx}": "Derivative — instantaneous rate of change"
+    },
     "palette": [
-      { "id": "p1", "latex": "3", "description": "Power rule: bring down exponent 3" },
-      { "id": "p2", "latex": "3x^2", "description": "d/dx[x³] = 3x²" }
+      {
+        "id": "p1",
+        "latex": "3",
+        "description": "Power rule: bring down exponent 3"
+      },
+      {
+        "id": "p2",
+        "latex": "3x^2",
+        "description": "d/dx[x³] = 3x²"
+      }
     ],
     "steps": [
-      { "id": "s1", "fromLatex": "\\frac{d}{dx}\\bigl[x^3\\bigr]", "toLatex": "3 \\cdot x^{3-1}", "paletteRef": "p1", "dropTargets": ["x^3"], "description": "Power rule: multiply by 3, reduce exponent by 1" },
-      { "id": "s1a", "fromLatex": "3 - 1 = 2", "toLatex": "3 - 1 = 2 \\quad (\\text{new exponent})", "paletteRef": null, "dropTargets": [], "description": "Compute: 3 − 1 = 2" },
-      { "id": "s2", "fromLatex": "3 \\cdot x^{3-1}", "toLatex": "3x^2", "paletteRef": "p2", "dropTargets": ["3 \\cdot x^{3-1}"], "description": "Simplify: 3x²" }
-    ]
+      {
+        "id": "s1",
+        "fromLatex": "\\frac{d}{dx}\\bigl[x^3\\bigr]",
+        "toLatex": "3 \\cdot x^{3-1}",
+        "paletteRef": "p1",
+        "dropTargets": [
+          "x^3"
+        ],
+        "description": "Power rule: multiply by 3, reduce exponent by 1"
+      },
+      {
+        "id": "s1a",
+        "fromLatex": "3 - 1 = 2",
+        "toLatex": "3 - 1 = 2 \\quad (\\text{new exponent})",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "Compute: 3 − 1 = 2"
+      },
+      {
+        "id": "s2",
+        "fromLatex": "3 \\cdot x^{3-1}",
+        "toLatex": "3x^2",
+        "paletteRef": "p2",
+        "dropTargets": [
+          "3 \\cdot x^{3-1}"
+        ],
+        "description": "Simplify: 3x²"
+      }
+    ],
+    "image": "calc-e-002.svg"
   },
   {
-    "id": "calc-e-003", "topic": "calculus", "difficulty": "easy",
-    "question": { "latex": "\\frac{d}{dx}\\bigl[5x\\bigr] = ?", "plain": "Differentiate 5x" },
-    "symbols": { "\\frac{d}{dx}": "Derivative" },
+    "id": "calc-e-003",
+    "topic": "calculus",
+    "difficulty": "easy",
+    "question": {
+      "latex": "\\frac{d}{dx}\\bigl[5x\\bigr] = ?",
+      "plain": "Differentiate 5x"
+    },
+    "symbols": {
+      "\\frac{d}{dx}": "Derivative"
+    },
     "palette": [
-      { "id": "p1", "latex": "5", "description": "The derivative of cx is c — constants pass straight through" }
+      {
+        "id": "p1",
+        "latex": "5",
+        "description": "The derivative of cx is c — constants pass straight through"
+      }
     ],
     "steps": [
-      { "id": "s1", "fromLatex": "\\frac{d}{dx}\\bigl[5x\\bigr]", "toLatex": "5 \\cdot \\frac{d}{dx}\\bigl[x\\bigr]", "paletteRef": null, "dropTargets": [], "description": "Factor out the constant 5" },
-      { "id": "s2", "fromLatex": "5 \\cdot \\frac{d}{dx}\\bigl[x\\bigr]", "toLatex": "5 \\cdot 1", "paletteRef": null, "dropTargets": [], "description": "d/dx[x] = 1 (power rule with exponent 1)" },
-      { "id": "s2a", "fromLatex": "5 \\times 1 = 5", "toLatex": "5 \\times 1 = 5", "paletteRef": null, "dropTargets": [], "description": "Compute: 5 × 1 = 5" },
-      { "id": "s3", "fromLatex": "5 \\cdot 1", "toLatex": "5", "paletteRef": "p1", "dropTargets": ["5 \\cdot 1"], "description": "5 × 1 = 5" }
-    ]
+      {
+        "id": "s1",
+        "fromLatex": "\\frac{d}{dx}\\bigl[5x\\bigr]",
+        "toLatex": "5 \\cdot \\frac{d}{dx}\\bigl[x\\bigr]",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "Factor out the constant 5"
+      },
+      {
+        "id": "s2",
+        "fromLatex": "5 \\cdot \\frac{d}{dx}\\bigl[x\\bigr]",
+        "toLatex": "5 \\cdot 1",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "d/dx[x] = 1 (power rule with exponent 1)"
+      },
+      {
+        "id": "s2a",
+        "fromLatex": "5 \\times 1 = 5",
+        "toLatex": "5 \\times 1 = 5",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "Compute: 5 × 1 = 5"
+      },
+      {
+        "id": "s3",
+        "fromLatex": "5 \\cdot 1",
+        "toLatex": "5",
+        "paletteRef": "p1",
+        "dropTargets": [
+          "5 \\cdot 1"
+        ],
+        "description": "5 × 1 = 5"
+      }
+    ],
+    "image": "calc-e-003.svg"
   },
   {
-    "id": "calc-e-004", "topic": "calculus", "difficulty": "easy",
-    "question": { "latex": "\\frac{d}{dx}\\bigl[7\\bigr] = ?", "plain": "Differentiate a constant: 7" },
-    "symbols": { "\\frac{d}{dx}": "Derivative" },
+    "id": "calc-e-004",
+    "topic": "calculus",
+    "difficulty": "easy",
+    "question": {
+      "latex": "\\frac{d}{dx}\\bigl[7\\bigr] = ?",
+      "plain": "Differentiate a constant: 7"
+    },
+    "symbols": {
+      "\\frac{d}{dx}": "Derivative"
+    },
     "palette": [
-      { "id": "p1", "latex": "0", "description": "Derivative of any constant is 0 — constants don't change" }
+      {
+        "id": "p1",
+        "latex": "0",
+        "description": "Derivative of any constant is 0 — constants don't change"
+      }
     ],
     "steps": [
-      { "id": "s1", "fromLatex": "\\frac{d}{dx}\\bigl[7\\bigr]", "toLatex": "\\frac{d}{dx}\\bigl[7\\bigr] = 0", "paletteRef": "p1", "dropTargets": ["\\frac{d}{dx}\\bigl[7\\bigr]"], "description": "A constant has zero rate of change" }
-    ]
+      {
+        "id": "s1",
+        "fromLatex": "\\frac{d}{dx}\\bigl[7\\bigr]",
+        "toLatex": "\\frac{d}{dx}\\bigl[7\\bigr] = 0",
+        "paletteRef": "p1",
+        "dropTargets": [
+          "\\frac{d}{dx}\\bigl[7\\bigr]"
+        ],
+        "description": "A constant has zero rate of change"
+      }
+    ],
+    "image": "calc-e-004.svg"
   },
   {
-    "id": "calc-e-005", "topic": "calculus", "difficulty": "easy",
-    "question": { "latex": "\\int 2x\\, dx = ?", "plain": "Integrate 2x dx" },
-    "symbols": { "\\int": "Integral — area under the curve (antiderivative)", "dx": "Differential — integrating with respect to x" },
+    "id": "calc-e-005",
+    "topic": "calculus",
+    "difficulty": "easy",
+    "question": {
+      "latex": "\\int 2x\\, dx = ?",
+      "plain": "Integrate 2x dx"
+    },
+    "symbols": {
+      "\\int": "Integral — area under the curve (antiderivative)",
+      "dx": "Differential — integrating with respect to x"
+    },
     "palette": [
-      { "id": "p1", "latex": "x^2", "description": "Reverse power rule: ∫xⁿ dx = xⁿ⁺¹/(n+1)" },
-      { "id": "p2", "latex": "+ C", "description": "Constant of integration — any constant disappears when differentiated" }
+      {
+        "id": "p1",
+        "latex": "x^2",
+        "description": "Reverse power rule: ∫xⁿ dx = xⁿ⁺¹/(n+1)"
+      },
+      {
+        "id": "p2",
+        "latex": "+ C",
+        "description": "Constant of integration — any constant disappears when differentiated"
+      }
     ],
     "steps": [
-      { "id": "s1", "fromLatex": "\\int 2x\\, dx", "toLatex": "2 \\cdot \\frac{x^{1+1}}{1+1}", "paletteRef": null, "dropTargets": [], "description": "Apply reverse power rule: multiply by 1/(n+1), increase power by 1" },
-      { "id": "s1a", "fromLatex": "1 + 1 = 2", "toLatex": "1 + 1 = 2 \\quad (\\text{new exponent and new denominator})", "paletteRef": null, "dropTargets": [], "description": "Compute: 1 + 1 = 2 (both the new exponent and the denominator)" },
-      { "id": "s2", "fromLatex": "2 \\cdot \\frac{x^{1+1}}{1+1}", "toLatex": "2 \\cdot \\frac{x^2}{2}", "paletteRef": null, "dropTargets": [], "description": "Simplify exponent: 1+1=2" },
-      { "id": "s2a", "fromLatex": "\\frac{2}{2} = 1", "toLatex": "\\frac{2}{2} = 1 \\quad (\\text{the 2s cancel})", "paletteRef": null, "dropTargets": [], "description": "Compute: 2/2 = 1, so the constant factor cancels" },
-      { "id": "s3", "fromLatex": "2 \\cdot \\frac{x^2}{2}", "toLatex": "x^2", "paletteRef": "p1", "dropTargets": ["2 \\cdot \\frac{x^2}{2}"], "description": "Cancel the 2s" },
-      { "id": "s4", "fromLatex": "x^2", "toLatex": "x^2 + C", "paletteRef": "p2", "dropTargets": ["x^2"], "description": "Add constant of integration C" }
-    ]
+      {
+        "id": "s1",
+        "fromLatex": "\\int 2x\\, dx",
+        "toLatex": "2 \\cdot \\frac{x^{1+1}}{1+1}",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "Apply reverse power rule: multiply by 1/(n+1), increase power by 1"
+      },
+      {
+        "id": "s1a",
+        "fromLatex": "1 + 1 = 2",
+        "toLatex": "1 + 1 = 2 \\quad (\\text{new exponent and new denominator})",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "Compute: 1 + 1 = 2 (both the new exponent and the denominator)"
+      },
+      {
+        "id": "s2",
+        "fromLatex": "2 \\cdot \\frac{x^{1+1}}{1+1}",
+        "toLatex": "2 \\cdot \\frac{x^2}{2}",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "Simplify exponent: 1+1=2"
+      },
+      {
+        "id": "s2a",
+        "fromLatex": "\\frac{2}{2} = 1",
+        "toLatex": "\\frac{2}{2} = 1 \\quad (\\text{the 2s cancel})",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "Compute: 2/2 = 1, so the constant factor cancels"
+      },
+      {
+        "id": "s3",
+        "fromLatex": "2 \\cdot \\frac{x^2}{2}",
+        "toLatex": "x^2",
+        "paletteRef": "p1",
+        "dropTargets": [
+          "2 \\cdot \\frac{x^2}{2}"
+        ],
+        "description": "Cancel the 2s"
+      },
+      {
+        "id": "s4",
+        "fromLatex": "x^2",
+        "toLatex": "x^2 + C",
+        "paletteRef": "p2",
+        "dropTargets": [
+          "x^2"
+        ],
+        "description": "Add constant of integration C"
+      }
+    ],
+    "image": "calc-e-005.svg"
   },
   {
-    "id": "calc-e-006", "topic": "calculus", "difficulty": "easy",
-    "question": { "latex": "\\frac{d}{dx}\\bigl[x^4\\bigr] = ?", "plain": "Differentiate x⁴" },
-    "symbols": { "\\frac{d}{dx}": "Derivative" },
+    "id": "calc-e-006",
+    "topic": "calculus",
+    "difficulty": "easy",
+    "question": {
+      "latex": "\\frac{d}{dx}\\bigl[x^4\\bigr] = ?",
+      "plain": "Differentiate x⁴"
+    },
+    "symbols": {
+      "\\frac{d}{dx}": "Derivative"
+    },
     "palette": [
-      { "id": "p1", "latex": "4", "description": "Bring down the exponent 4" },
-      { "id": "p2", "latex": "4x^3", "description": "d/dx[x⁴] = 4x³" }
+      {
+        "id": "p1",
+        "latex": "4",
+        "description": "Bring down the exponent 4"
+      },
+      {
+        "id": "p2",
+        "latex": "4x^3",
+        "description": "d/dx[x⁴] = 4x³"
+      }
     ],
     "steps": [
-      { "id": "s1", "fromLatex": "\\frac{d}{dx}\\bigl[x^4\\bigr]", "toLatex": "4 \\cdot x^{4-1}", "paletteRef": "p1", "dropTargets": ["x^4"], "description": "Multiply by exponent 4, reduce power by 1" },
-      { "id": "s1a", "fromLatex": "4 - 1 = 3", "toLatex": "4 - 1 = 3 \\quad (\\text{new exponent})", "paletteRef": null, "dropTargets": [], "description": "Compute: 4 − 1 = 3" },
-      { "id": "s2", "fromLatex": "4 \\cdot x^{4-1}", "toLatex": "4x^3", "paletteRef": "p2", "dropTargets": ["4 \\cdot x^{4-1}"], "description": "Simplify: 4x³" }
-    ]
+      {
+        "id": "s1",
+        "fromLatex": "\\frac{d}{dx}\\bigl[x^4\\bigr]",
+        "toLatex": "4 \\cdot x^{4-1}",
+        "paletteRef": "p1",
+        "dropTargets": [
+          "x^4"
+        ],
+        "description": "Multiply by exponent 4, reduce power by 1"
+      },
+      {
+        "id": "s1a",
+        "fromLatex": "4 - 1 = 3",
+        "toLatex": "4 - 1 = 3 \\quad (\\text{new exponent})",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "Compute: 4 − 1 = 3"
+      },
+      {
+        "id": "s2",
+        "fromLatex": "4 \\cdot x^{4-1}",
+        "toLatex": "4x^3",
+        "paletteRef": "p2",
+        "dropTargets": [
+          "4 \\cdot x^{4-1}"
+        ],
+        "description": "Simplify: 4x³"
+      }
+    ],
+    "image": "calc-e-006.svg"
   },
   {
-    "id": "calc-e-007", "topic": "calculus", "difficulty": "easy",
-    "question": { "latex": "\\int 3\\, dx = ?", "plain": "Integrate the constant 3 dx" },
-    "symbols": { "\\int": "Integral", "dx": "Integrating with respect to x" },
+    "id": "calc-e-007",
+    "topic": "calculus",
+    "difficulty": "easy",
+    "question": {
+      "latex": "\\int 3\\, dx = ?",
+      "plain": "Integrate the constant 3 dx"
+    },
+    "symbols": {
+      "\\int": "Integral",
+      "dx": "Integrating with respect to x"
+    },
     "palette": [
-      { "id": "p1", "latex": "3x + C", "description": "∫k dx = kx + C — a constant integrates to k times x" }
+      {
+        "id": "p1",
+        "latex": "3x + C",
+        "description": "∫k dx = kx + C — a constant integrates to k times x"
+      }
     ],
     "steps": [
-      { "id": "s1", "fromLatex": "\\int 3\\, dx", "toLatex": "3 \\int 1\\, dx", "paletteRef": null, "dropTargets": [], "description": "Factor out the constant 3" },
-      { "id": "s2", "fromLatex": "3 \\int 1\\, dx", "toLatex": "3x", "paletteRef": null, "dropTargets": [], "description": "∫1 dx = x" },
-      { "id": "s3", "fromLatex": "3x", "toLatex": "3x + C", "paletteRef": "p1", "dropTargets": ["3x"], "description": "Add constant of integration" }
-    ]
+      {
+        "id": "s1",
+        "fromLatex": "\\int 3\\, dx",
+        "toLatex": "3 \\int 1\\, dx",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "Factor out the constant 3"
+      },
+      {
+        "id": "s2",
+        "fromLatex": "3 \\int 1\\, dx",
+        "toLatex": "3x",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "∫1 dx = x"
+      },
+      {
+        "id": "s3",
+        "fromLatex": "3x",
+        "toLatex": "3x + C",
+        "paletteRef": "p1",
+        "dropTargets": [
+          "3x"
+        ],
+        "description": "Add constant of integration"
+      }
+    ],
+    "image": "calc-e-007.svg"
   },
   {
-    "id": "calc-e-008", "topic": "calculus", "difficulty": "easy",
-    "question": { "latex": "\\lim_{x \\to 2} x^2 = ?", "plain": "Evaluate the limit as x approaches 2 of x²" },
-    "symbols": { "\\lim": "Limit — value a function approaches", "\\to": "Approaches" },
+    "id": "calc-e-008",
+    "topic": "calculus",
+    "difficulty": "easy",
+    "question": {
+      "latex": "\\lim_{x \\to 2} x^2 = ?",
+      "plain": "Evaluate the limit as x approaches 2 of x²"
+    },
+    "symbols": {
+      "\\lim": "Limit — value a function approaches",
+      "\\to": "Approaches"
+    },
     "palette": [
-      { "id": "p1", "latex": "4", "description": "For polynomials, substitute directly: 2² = 4" }
+      {
+        "id": "p1",
+        "latex": "4",
+        "description": "For polynomials, substitute directly: 2² = 4"
+      }
     ],
     "steps": [
-      { "id": "s1", "fromLatex": "\\lim_{x \\to 2} x^2", "toLatex": "2^2", "paletteRef": null, "dropTargets": [], "description": "Polynomial — substitute x = 2 directly" },
-      { "id": "s1a", "fromLatex": "2^2 = 2 \\times 2 = 4", "toLatex": "2^2 = 2 \\times 2 = 4", "paletteRef": null, "dropTargets": [], "description": "Compute: 2² = 2 × 2 = 4" },
-      { "id": "s2", "fromLatex": "2^2", "toLatex": "4", "paletteRef": "p1", "dropTargets": ["2^2"], "description": "2² = 4" }
-    ]
+      {
+        "id": "s1",
+        "fromLatex": "\\lim_{x \\to 2} x^2",
+        "toLatex": "2^2",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "Polynomial — substitute x = 2 directly"
+      },
+      {
+        "id": "s1a",
+        "fromLatex": "2^2 = 2 \\times 2 = 4",
+        "toLatex": "2^2 = 2 \\times 2 = 4",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "Compute: 2² = 2 × 2 = 4"
+      },
+      {
+        "id": "s2",
+        "fromLatex": "2^2",
+        "toLatex": "4",
+        "paletteRef": "p1",
+        "dropTargets": [
+          "2^2"
+        ],
+        "description": "2² = 4"
+      }
+    ],
+    "image": "calc-e-008.svg"
   },
   {
-    "id": "calc-e-009", "topic": "calculus", "difficulty": "easy",
-    "question": { "latex": "\\frac{d}{dx}\\bigl[x^2 + 3x\\bigr] = ?", "plain": "Differentiate x² + 3x" },
-    "symbols": { "\\frac{d}{dx}": "Derivative" },
+    "id": "calc-e-009",
+    "topic": "calculus",
+    "difficulty": "easy",
+    "question": {
+      "latex": "\\frac{d}{dx}\\bigl[x^2 + 3x\\bigr] = ?",
+      "plain": "Differentiate x² + 3x"
+    },
+    "symbols": {
+      "\\frac{d}{dx}": "Derivative"
+    },
     "palette": [
-      { "id": "p1", "latex": "2x + 3", "description": "Sum rule: differentiate term by term. d/dx[x²]=2x, d/dx[3x]=3" }
+      {
+        "id": "p1",
+        "latex": "2x + 3",
+        "description": "Sum rule: differentiate term by term. d/dx[x²]=2x, d/dx[3x]=3"
+      }
     ],
     "steps": [
-      { "id": "s1", "fromLatex": "\\frac{d}{dx}\\bigl[x^2 + 3x\\bigr]", "toLatex": "\\frac{d}{dx}\\bigl[x^2\\bigr] + \\frac{d}{dx}\\bigl[3x\\bigr]", "paletteRef": null, "dropTargets": [], "description": "Apply the sum rule: differentiate term by term" },
-      { "id": "s1a", "fromLatex": "\\frac{d}{dx}[x^2] = 2x \\quad (\\text{power rule: }2-1=1)", "toLatex": "\\frac{d}{dx}[x^2] = 2 \\cdot x^{2-1} = 2x", "paletteRef": null, "dropTargets": [], "description": "Power rule on x²: multiply by 2, reduce exponent → 2x" },
-      { "id": "s1b", "fromLatex": "\\frac{d}{dx}[3x] = 3 \\cdot 1 = 3", "toLatex": "\\frac{d}{dx}[3x] = 3 \\cdot \\frac{d}{dx}[x] = 3 \\cdot 1 = 3", "paletteRef": null, "dropTargets": [], "description": "Constant rule on 3x: 3 × 1 = 3" },
-      { "id": "s2", "fromLatex": "\\frac{d}{dx}\\bigl[x^2\\bigr] + \\frac{d}{dx}\\bigl[3x\\bigr]", "toLatex": "2x + 3", "paletteRef": "p1", "dropTargets": ["\\frac{d}{dx}\\bigl[x^2\\bigr] + \\frac{d}{dx}\\bigl[3x\\bigr]"], "description": "d/dx[x²]=2x and d/dx[3x]=3" }
-    ]
+      {
+        "id": "s1",
+        "fromLatex": "\\frac{d}{dx}\\bigl[x^2 + 3x\\bigr]",
+        "toLatex": "\\frac{d}{dx}\\bigl[x^2\\bigr] + \\frac{d}{dx}\\bigl[3x\\bigr]",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "Apply the sum rule: differentiate term by term"
+      },
+      {
+        "id": "s1a",
+        "fromLatex": "\\frac{d}{dx}[x^2] = 2x \\quad (\\text{power rule: }2-1=1)",
+        "toLatex": "\\frac{d}{dx}[x^2] = 2 \\cdot x^{2-1} = 2x",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "Power rule on x²: multiply by 2, reduce exponent → 2x"
+      },
+      {
+        "id": "s1b",
+        "fromLatex": "\\frac{d}{dx}[3x] = 3 \\cdot 1 = 3",
+        "toLatex": "\\frac{d}{dx}[3x] = 3 \\cdot \\frac{d}{dx}[x] = 3 \\cdot 1 = 3",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "Constant rule on 3x: 3 × 1 = 3"
+      },
+      {
+        "id": "s2",
+        "fromLatex": "\\frac{d}{dx}\\bigl[x^2\\bigr] + \\frac{d}{dx}\\bigl[3x\\bigr]",
+        "toLatex": "2x + 3",
+        "paletteRef": "p1",
+        "dropTargets": [
+          "\\frac{d}{dx}\\bigl[x^2\\bigr] + \\frac{d}{dx}\\bigl[3x\\bigr]"
+        ],
+        "description": "d/dx[x²]=2x and d/dx[3x]=3"
+      }
+    ],
+    "image": "calc-e-009.svg"
   },
   {
-    "id": "calc-e-010", "topic": "calculus", "difficulty": "easy",
-    "question": { "latex": "\\int x^2\\, dx = ?", "plain": "Integrate x² dx" },
-    "symbols": { "\\int": "Integral", "dx": "Differentiating with respect to x" },
+    "id": "calc-e-010",
+    "topic": "calculus",
+    "difficulty": "easy",
+    "question": {
+      "latex": "\\int x^2\\, dx = ?",
+      "plain": "Integrate x² dx"
+    },
+    "symbols": {
+      "\\int": "Integral",
+      "dx": "Differentiating with respect to x"
+    },
     "palette": [
-      { "id": "p1", "latex": "\\frac{x^3}{3}", "description": "Reverse power rule: ∫x² dx = x³/3" },
-      { "id": "p2", "latex": "+ C", "description": "Add constant of integration" }
+      {
+        "id": "p1",
+        "latex": "\\frac{x^3}{3}",
+        "description": "Reverse power rule: ∫x² dx = x³/3"
+      },
+      {
+        "id": "p2",
+        "latex": "+ C",
+        "description": "Add constant of integration"
+      }
     ],
     "steps": [
-      { "id": "s1", "fromLatex": "\\int x^2\\, dx", "toLatex": "\\frac{x^{2+1}}{2+1}", "paletteRef": null, "dropTargets": [], "description": "Reverse power rule: increase exponent by 1, divide by new exponent" },
-      { "id": "s1a", "fromLatex": "2 + 1 = 3", "toLatex": "2 + 1 = 3 \\quad (\\text{new exponent and denominator})", "paletteRef": null, "dropTargets": [], "description": "Compute: 2 + 1 = 3" },
-      { "id": "s2", "fromLatex": "\\frac{x^{2+1}}{2+1}", "toLatex": "\\frac{x^3}{3}", "paletteRef": "p1", "dropTargets": ["\\frac{x^{2+1}}{2+1}"], "description": "Simplify: 2+1=3" },
-      { "id": "s3", "fromLatex": "\\frac{x^3}{3}", "toLatex": "\\frac{x^3}{3} + C", "paletteRef": "p2", "dropTargets": ["\\frac{x^3}{3}"], "description": "Add constant of integration C" }
-    ]
-  },
-
-  {
-    "id": "calc-m-001", "topic": "calculus", "difficulty": "medium",
-    "question": { "latex": "\\frac{d}{dx}\\bigl[x^2 \\cdot \\sin(x)\\bigr] = ?", "plain": "Differentiate x² sin(x) using the product rule" },
-    "symbols": { "\\frac{d}{dx}": "Derivative", "\\sin": "Sine function" },
-    "palette": [
-      { "id": "p1", "latex": "u'v + uv'", "description": "Product rule: (uv)' = u'v + uv'" },
-      { "id": "p2", "latex": "2x\\sin(x) + x^2\\cos(x)", "description": "u=x², u'=2x; v=sin(x), v'=cos(x)" }
+      {
+        "id": "s1",
+        "fromLatex": "\\int x^2\\, dx",
+        "toLatex": "\\frac{x^{2+1}}{2+1}",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "Reverse power rule: increase exponent by 1, divide by new exponent"
+      },
+      {
+        "id": "s1a",
+        "fromLatex": "2 + 1 = 3",
+        "toLatex": "2 + 1 = 3 \\quad (\\text{new exponent and denominator})",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "Compute: 2 + 1 = 3"
+      },
+      {
+        "id": "s2",
+        "fromLatex": "\\frac{x^{2+1}}{2+1}",
+        "toLatex": "\\frac{x^3}{3}",
+        "paletteRef": "p1",
+        "dropTargets": [
+          "\\frac{x^{2+1}}{2+1}"
+        ],
+        "description": "Simplify: 2+1=3"
+      },
+      {
+        "id": "s3",
+        "fromLatex": "\\frac{x^3}{3}",
+        "toLatex": "\\frac{x^3}{3} + C",
+        "paletteRef": "p2",
+        "dropTargets": [
+          "\\frac{x^3}{3}"
+        ],
+        "description": "Add constant of integration C"
+      }
     ],
-    "steps": [
-      { "id": "s1", "fromLatex": "\\frac{d}{dx}\\bigl[x^2 \\cdot \\sin(x)\\bigr]", "toLatex": "u'v + uv'", "paletteRef": "p1", "dropTargets": ["\\frac{d}{dx}\\bigl[x^2 \\cdot \\sin(x)\\bigr]"], "description": "Identify and apply the product rule" },
-      { "id": "s1a", "fromLatex": "u = x^2,\\quad u' = 2x", "toLatex": "u = x^2,\\quad u' = 2x", "paletteRef": null, "dropTargets": [], "description": "Power rule on u=x²: bring down 2, reduce power → u'=2x" },
-      { "id": "s1b", "fromLatex": "v = \\sin(x),\\quad v' = \\cos(x)", "toLatex": "v = \\sin(x),\\quad v' = \\cos(x)", "paletteRef": null, "dropTargets": [], "description": "Trig rule on v=sin(x): d/dx[sin]=cos → v'=cos(x)" },
-      { "id": "s2", "fromLatex": "u'v + uv'", "toLatex": "2x\\sin(x) + x^2\\cos(x)", "paletteRef": "p2", "dropTargets": ["u'v + uv'"], "description": "Substitute: u=x², u'=2x; v=sinx, v'=cosx" }
-    ]
-  },
-  {
-    "id": "calc-m-002", "topic": "calculus", "difficulty": "medium",
-    "question": { "latex": "\\frac{d}{dx}\\left[\\frac{x^2}{\\sin(x)}\\right] = ?", "plain": "Differentiate x²/sin(x) using the quotient rule" },
-    "symbols": { "\\frac{d}{dx}": "Derivative", "\\sin": "Sine", "\\cos": "Cosine" },
-    "palette": [
-      { "id": "p1", "latex": "\\frac{u'v - uv'}{v^2}", "description": "Quotient rule: (u/v)' = (u'v − uv')/v²" },
-      { "id": "p2", "latex": "\\frac{2x\\sin(x) - x^2\\cos(x)}{\\sin^2(x)}", "description": "u=x², u'=2x; v=sinx, v'=cosx" }
-    ],
-    "steps": [
-      { "id": "s1", "fromLatex": "\\frac{d}{dx}\\left[\\frac{x^2}{\\sin(x)}\\right]", "toLatex": "\\frac{u'v - uv'}{v^2}", "paletteRef": "p1", "dropTargets": ["\\frac{d}{dx}\\left[\\frac{x^2}{\\sin(x)}\\right]"], "description": "Identify and apply the quotient rule" },
-      { "id": "s1a", "fromLatex": "u = x^2,\\quad u' = 2x", "toLatex": "u = x^2,\\quad u' = 2x", "paletteRef": null, "dropTargets": [], "description": "Power rule on u=x²: u'=2x" },
-      { "id": "s1b", "fromLatex": "v = \\sin(x),\\quad v' = \\cos(x)", "toLatex": "v = \\sin(x),\\quad v' = \\cos(x)", "paletteRef": null, "dropTargets": [], "description": "Trig rule on v=sin(x): v'=cos(x)" },
-      { "id": "s1c", "fromLatex": "v^2 = \\sin^2(x)", "toLatex": "v^2 = \\sin^2(x) \\quad (\\text{denominator squared})", "paletteRef": null, "dropTargets": [], "description": "Denominator v² means sin²(x)" },
-      { "id": "s2", "fromLatex": "\\frac{u'v - uv'}{v^2}", "toLatex": "\\frac{2x\\sin(x) - x^2\\cos(x)}{\\sin^2(x)}", "paletteRef": "p2", "dropTargets": ["\\frac{u'v - uv'}{v^2}"], "description": "Substitute: u=x², u'=2x; v=sinx, v'=cosx" }
-    ]
-  },
-  {
-    "id": "calc-m-003", "topic": "calculus", "difficulty": "medium",
-    "question": { "latex": "\\frac{d}{dx}\\bigl[(x^2 + 1)^3\\bigr] = ?", "plain": "Differentiate (x²+1)³ using the chain rule" },
-    "symbols": { "\\frac{d}{dx}": "Derivative" },
-    "palette": [
-      { "id": "p1", "latex": "3(x^2+1)^2", "description": "Outer derivative: 3(x²+1)²" },
-      { "id": "p2", "latex": "6x(x^2+1)^2", "description": "Multiply by inner derivative d/dx[x²+1] = 2x" }
-    ],
-    "steps": [
-      { "id": "s1", "fromLatex": "\\frac{d}{dx}\\bigl[(x^2 + 1)^3\\bigr]", "toLatex": "3(x^2+1)^2 \\cdot \\frac{d}{dx}[x^2+1]", "paletteRef": "p1", "dropTargets": ["(x^2 + 1)^3"], "description": "Chain rule: differentiate outer function, keep inner intact" },
-      { "id": "s1a", "fromLatex": "\\text{Outer: } f(u) = u^3 \\Rightarrow f'(u) = 3u^2", "toLatex": "\\text{Outer: } f(u) = u^3 \\Rightarrow f'(u) = 3u^2", "paletteRef": null, "dropTargets": [], "description": "Power rule on the outer function: d/du[u³] = 3u²" },
-      { "id": "s1b", "fromLatex": "\\text{Inner: } g(x) = x^2+1 \\Rightarrow g'(x) = 2x", "toLatex": "\\text{Inner: } g(x) = x^2+1 \\Rightarrow g'(x) = 2x", "paletteRef": null, "dropTargets": [], "description": "Power rule + constant rule on the inner function: d/dx[x²+1] = 2x" },
-      { "id": "s2", "fromLatex": "3(x^2+1)^2 \\cdot \\frac{d}{dx}[x^2+1]", "toLatex": "3(x^2+1)^2 \\cdot 2x", "paletteRef": null, "dropTargets": [], "description": "Inner derivative: d/dx[x²+1] = 2x" },
-      { "id": "s2a", "fromLatex": "3 \\times 2 = 6", "toLatex": "3 \\times 2 = 6 \\quad (\\text{multiply the numeric coefficients})", "paletteRef": null, "dropTargets": [], "description": "Compute: 3 × 2 = 6" },
-      { "id": "s3", "fromLatex": "3(x^2+1)^2 \\cdot 2x", "toLatex": "6x(x^2+1)^2", "paletteRef": "p2", "dropTargets": ["3(x^2+1)^2 \\cdot 2x"], "description": "Multiply constants: 3 × 2 = 6" }
-    ]
-  },
-  {
-    "id": "calc-m-004", "topic": "calculus", "difficulty": "medium",
-    "question": { "latex": "\\int_0^1 x^2\\, dx = ?", "plain": "Evaluate the definite integral of x² from 0 to 1" },
-    "symbols": { "\\int": "Definite integral — net area from a to b" },
-    "palette": [
-      { "id": "p1", "latex": "\\frac{x^3}{3}", "description": "Antiderivative of x² is x³/3" },
-      { "id": "p2", "latex": "\\frac{1}{3}", "description": "F(1) − F(0) = 1/3 − 0 = 1/3" }
-    ],
-    "steps": [
-      { "id": "s1", "fromLatex": "\\int_0^1 x^2\\, dx", "toLatex": "\\left[\\frac{x^3}{3}\\right]_0^1", "paletteRef": "p1", "dropTargets": ["\\int_0^1 x^2\\, dx"], "description": "Find antiderivative: x³/3" },
-      { "id": "s2", "fromLatex": "\\left[\\frac{x^3}{3}\\right]_0^1", "toLatex": "\\frac{1^3}{3} - \\frac{0^3}{3}", "paletteRef": null, "dropTargets": [], "description": "Evaluate at upper and lower bounds: F(1) − F(0)" },
-      { "id": "s2a", "fromLatex": "1^3 = 1", "toLatex": "1^3 = 1 \\times 1 \\times 1 = 1", "paletteRef": null, "dropTargets": [], "description": "Compute: 1³ = 1 × 1 × 1 = 1" },
-      { "id": "s2b", "fromLatex": "0^3 = 0", "toLatex": "0^3 = 0 \\times 0 \\times 0 = 0", "paletteRef": null, "dropTargets": [], "description": "Compute: 0³ = 0 × 0 × 0 = 0" },
-      { "id": "s2c", "fromLatex": "\\frac{1}{3} - \\frac{0}{3} = \\frac{1}{3} - 0 = \\frac{1}{3}", "toLatex": "\\frac{1}{3} - \\frac{0}{3} = \\frac{1}{3} - 0 = \\frac{1}{3}", "paletteRef": null, "dropTargets": [], "description": "Compute: 1/3 − 0/3 = 1/3 − 0 = 1/3" },
-      { "id": "s3", "fromLatex": "\\frac{1^3}{3} - \\frac{0^3}{3}", "toLatex": "\\frac{1}{3}", "paletteRef": "p2", "dropTargets": ["\\frac{1^3}{3} - \\frac{0^3}{3}"], "description": "1/3 − 0 = 1/3" }
-    ]
+    "image": "calc-e-010.svg"
   },
   {
-    "id": "calc-m-005", "topic": "calculus", "difficulty": "medium",
-    "question": { "latex": "\\frac{d}{dx}\\bigl[e^x\\bigr] = ?", "plain": "Differentiate eˣ" },
-    "symbols": { "\\frac{d}{dx}": "Derivative", "e": "Euler's number ≈ 2.71828 — base of natural logarithm" },
+    "id": "calc-m-001",
+    "topic": "calculus",
+    "difficulty": "medium",
+    "question": {
+      "latex": "\\frac{d}{dx}\\bigl[x^2 \\cdot \\sin(x)\\bigr] = ?",
+      "plain": "Differentiate x² sin(x) using the product rule"
+    },
+    "symbols": {
+      "\\frac{d}{dx}": "Derivative",
+      "\\sin": "Sine function"
+    },
     "palette": [
-      { "id": "p1", "latex": "e^x", "description": "eˣ is its own derivative — a unique and elegant property" }
+      {
+        "id": "p1",
+        "latex": "u'v + uv'",
+        "description": "Product rule: (uv)' = u'v + uv'"
+      },
+      {
+        "id": "p2",
+        "latex": "2x\\sin(x) + x^2\\cos(x)",
+        "description": "u=x², u'=2x; v=sin(x), v'=cos(x)"
+      }
     ],
     "steps": [
-      { "id": "s1", "fromLatex": "\\frac{d}{dx}\\bigl[e^x\\bigr]", "toLatex": "\\frac{d}{dx}\\bigl[e^x\\bigr] = e^x", "paletteRef": "p1", "dropTargets": ["\\frac{d}{dx}\\bigl[e^x\\bigr]"], "description": "eˣ is its own derivative" }
-    ]
+      {
+        "id": "s1",
+        "fromLatex": "\\frac{d}{dx}\\bigl[x^2 \\cdot \\sin(x)\\bigr]",
+        "toLatex": "u'v + uv'",
+        "paletteRef": "p1",
+        "dropTargets": [
+          "\\frac{d}{dx}\\bigl[x^2 \\cdot \\sin(x)\\bigr]"
+        ],
+        "description": "Identify and apply the product rule"
+      },
+      {
+        "id": "s1a",
+        "fromLatex": "u = x^2,\\quad u' = 2x",
+        "toLatex": "u = x^2,\\quad u' = 2x",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "Power rule on u=x²: bring down 2, reduce power → u'=2x"
+      },
+      {
+        "id": "s1b",
+        "fromLatex": "v = \\sin(x),\\quad v' = \\cos(x)",
+        "toLatex": "v = \\sin(x),\\quad v' = \\cos(x)",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "Trig rule on v=sin(x): d/dx[sin]=cos → v'=cos(x)"
+      },
+      {
+        "id": "s2",
+        "fromLatex": "u'v + uv'",
+        "toLatex": "2x\\sin(x) + x^2\\cos(x)",
+        "paletteRef": "p2",
+        "dropTargets": [
+          "u'v + uv'"
+        ],
+        "description": "Substitute: u=x², u'=2x; v=sinx, v'=cosx"
+      }
+    ],
+    "image": "calc-m-001.svg"
   },
   {
-    "id": "calc-m-006", "topic": "calculus", "difficulty": "medium",
-    "question": { "latex": "\\frac{d}{dx}\\bigl[\\ln(x)\\bigr] = ?", "plain": "Differentiate ln(x)" },
-    "symbols": { "\\frac{d}{dx}": "Derivative", "\\ln": "Natural logarithm — log base e" },
+    "id": "calc-m-002",
+    "topic": "calculus",
+    "difficulty": "medium",
+    "question": {
+      "latex": "\\frac{d}{dx}\\left[\\frac{x^2}{\\sin(x)}\\right] = ?",
+      "plain": "Differentiate x²/sin(x) using the quotient rule"
+    },
+    "symbols": {
+      "\\frac{d}{dx}": "Derivative",
+      "\\sin": "Sine",
+      "\\cos": "Cosine"
+    },
     "palette": [
-      { "id": "p1", "latex": "\\frac{1}{x}", "description": "d/dx[ln(x)] = 1/x — a fundamental result" }
+      {
+        "id": "p1",
+        "latex": "\\frac{u'v - uv'}{v^2}",
+        "description": "Quotient rule: (u/v)' = (u'v − uv')/v²"
+      },
+      {
+        "id": "p2",
+        "latex": "\\frac{2x\\sin(x) - x^2\\cos(x)}{\\sin^2(x)}",
+        "description": "u=x², u'=2x; v=sinx, v'=cosx"
+      }
     ],
     "steps": [
-      { "id": "s1", "fromLatex": "\\frac{d}{dx}\\bigl[\\ln(x)\\bigr]", "toLatex": "\\frac{d}{dx}\\bigl[\\ln(x)\\bigr] = \\frac{1}{x}", "paletteRef": "p1", "dropTargets": ["\\frac{d}{dx}\\bigl[\\ln(x)\\bigr]"], "description": "The derivative of ln(x) is 1/x for x > 0" }
-    ]
+      {
+        "id": "s1",
+        "fromLatex": "\\frac{d}{dx}\\left[\\frac{x^2}{\\sin(x)}\\right]",
+        "toLatex": "\\frac{u'v - uv'}{v^2}",
+        "paletteRef": "p1",
+        "dropTargets": [
+          "\\frac{d}{dx}\\left[\\frac{x^2}{\\sin(x)}\\right]"
+        ],
+        "description": "Identify and apply the quotient rule"
+      },
+      {
+        "id": "s1a",
+        "fromLatex": "u = x^2,\\quad u' = 2x",
+        "toLatex": "u = x^2,\\quad u' = 2x",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "Power rule on u=x²: u'=2x"
+      },
+      {
+        "id": "s1b",
+        "fromLatex": "v = \\sin(x),\\quad v' = \\cos(x)",
+        "toLatex": "v = \\sin(x),\\quad v' = \\cos(x)",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "Trig rule on v=sin(x): v'=cos(x)"
+      },
+      {
+        "id": "s1c",
+        "fromLatex": "v^2 = \\sin^2(x)",
+        "toLatex": "v^2 = \\sin^2(x) \\quad (\\text{denominator squared})",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "Denominator v² means sin²(x)"
+      },
+      {
+        "id": "s2",
+        "fromLatex": "\\frac{u'v - uv'}{v^2}",
+        "toLatex": "\\frac{2x\\sin(x) - x^2\\cos(x)}{\\sin^2(x)}",
+        "paletteRef": "p2",
+        "dropTargets": [
+          "\\frac{u'v - uv'}{v^2}"
+        ],
+        "description": "Substitute: u=x², u'=2x; v=sinx, v'=cosx"
+      }
+    ],
+    "image": "calc-m-002.svg"
   },
   {
-    "id": "calc-m-007", "topic": "calculus", "difficulty": "medium",
-    "question": { "latex": "\\int e^x\\, dx = ?", "plain": "Integrate eˣ dx" },
-    "symbols": { "\\int": "Integral", "e": "Euler's number" },
+    "id": "calc-m-003",
+    "topic": "calculus",
+    "difficulty": "medium",
+    "question": {
+      "latex": "\\frac{d}{dx}\\bigl[(x^2 + 1)^3\\bigr] = ?",
+      "plain": "Differentiate (x²+1)³ using the chain rule"
+    },
+    "symbols": {
+      "\\frac{d}{dx}": "Derivative"
+    },
     "palette": [
-      { "id": "p1", "latex": "e^x + C", "description": "eˣ is its own antiderivative — adding C for the constant of integration" }
+      {
+        "id": "p1",
+        "latex": "3(x^2+1)^2",
+        "description": "Outer derivative: 3(x²+1)²"
+      },
+      {
+        "id": "p2",
+        "latex": "6x(x^2+1)^2",
+        "description": "Multiply by inner derivative d/dx[x²+1] = 2x"
+      }
     ],
     "steps": [
-      { "id": "s1", "fromLatex": "\\int e^x\\, dx", "toLatex": "e^x + C", "paletteRef": "p1", "dropTargets": ["\\int e^x\\, dx"], "description": "eˣ is its own antiderivative" }
-    ]
+      {
+        "id": "s1",
+        "fromLatex": "\\frac{d}{dx}\\bigl[(x^2 + 1)^3\\bigr]",
+        "toLatex": "3(x^2+1)^2 \\cdot \\frac{d}{dx}[x^2+1]",
+        "paletteRef": "p1",
+        "dropTargets": [
+          "(x^2 + 1)^3"
+        ],
+        "description": "Chain rule: differentiate outer function, keep inner intact"
+      },
+      {
+        "id": "s1a",
+        "fromLatex": "\\text{Outer: } f(u) = u^3 \\Rightarrow f'(u) = 3u^2",
+        "toLatex": "\\text{Outer: } f(u) = u^3 \\Rightarrow f'(u) = 3u^2",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "Power rule on the outer function: d/du[u³] = 3u²"
+      },
+      {
+        "id": "s1b",
+        "fromLatex": "\\text{Inner: } g(x) = x^2+1 \\Rightarrow g'(x) = 2x",
+        "toLatex": "\\text{Inner: } g(x) = x^2+1 \\Rightarrow g'(x) = 2x",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "Power rule + constant rule on the inner function: d/dx[x²+1] = 2x"
+      },
+      {
+        "id": "s2",
+        "fromLatex": "3(x^2+1)^2 \\cdot \\frac{d}{dx}[x^2+1]",
+        "toLatex": "3(x^2+1)^2 \\cdot 2x",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "Inner derivative: d/dx[x²+1] = 2x"
+      },
+      {
+        "id": "s2a",
+        "fromLatex": "3 \\times 2 = 6",
+        "toLatex": "3 \\times 2 = 6 \\quad (\\text{multiply the numeric coefficients})",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "Compute: 3 × 2 = 6"
+      },
+      {
+        "id": "s3",
+        "fromLatex": "3(x^2+1)^2 \\cdot 2x",
+        "toLatex": "6x(x^2+1)^2",
+        "paletteRef": "p2",
+        "dropTargets": [
+          "3(x^2+1)^2 \\cdot 2x"
+        ],
+        "description": "Multiply constants: 3 × 2 = 6"
+      }
+    ],
+    "image": "calc-m-003.svg"
   },
   {
-    "id": "calc-m-008", "topic": "calculus", "difficulty": "medium",
-    "question": { "latex": "\\lim_{x \\to 0} \\frac{\\sin(x)}{x} = ?", "plain": "Evaluate the fundamental trigonometric limit as x→0" },
-    "symbols": { "\\lim": "Limit", "\\sin": "Sine", "\\to": "Approaches" },
+    "id": "calc-m-004",
+    "topic": "calculus",
+    "difficulty": "medium",
+    "question": {
+      "latex": "\\int_0^1 x^2\\, dx = ?",
+      "plain": "Evaluate the definite integral of x² from 0 to 1"
+    },
+    "symbols": {
+      "\\int": "Definite integral — net area from a to b"
+    },
     "palette": [
-      { "id": "p1", "latex": "1", "description": "This is a standard limit: lim(sinx/x) as x→0 equals 1" }
+      {
+        "id": "p1",
+        "latex": "\\frac{x^3}{3}",
+        "description": "Antiderivative of x² is x³/3"
+      },
+      {
+        "id": "p2",
+        "latex": "\\frac{1}{3}",
+        "description": "F(1) − F(0) = 1/3 − 0 = 1/3"
+      }
     ],
     "steps": [
-      { "id": "s1", "fromLatex": "\\lim_{x \\to 0} \\frac{\\sin(x)}{x}", "toLatex": "\\text{(direct sub gives 0/0 — indeterminate)}", "paletteRef": null, "dropTargets": [], "description": "Substituting x=0 gives 0/0, a standard indeterminate form" },
-      { "id": "s2", "fromLatex": "\\text{(direct sub gives 0/0 — indeterminate)}", "toLatex": "\\lim_{x \\to 0} \\frac{\\sin(x)}{x} = 1", "paletteRef": "p1", "dropTargets": ["\\text{(direct sub gives 0/0 — indeterminate)}"], "description": "Standard result: squeeze theorem confirms the limit equals 1" }
-    ]
+      {
+        "id": "s1",
+        "fromLatex": "\\int_0^1 x^2\\, dx",
+        "toLatex": "\\left[\\frac{x^3}{3}\\right]_0^1",
+        "paletteRef": "p1",
+        "dropTargets": [
+          "\\int_0^1 x^2\\, dx"
+        ],
+        "description": "Find antiderivative: x³/3"
+      },
+      {
+        "id": "s2",
+        "fromLatex": "\\left[\\frac{x^3}{3}\\right]_0^1",
+        "toLatex": "\\frac{1^3}{3} - \\frac{0^3}{3}",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "Evaluate at upper and lower bounds: F(1) − F(0)"
+      },
+      {
+        "id": "s2a",
+        "fromLatex": "1^3 = 1",
+        "toLatex": "1^3 = 1 \\times 1 \\times 1 = 1",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "Compute: 1³ = 1 × 1 × 1 = 1"
+      },
+      {
+        "id": "s2b",
+        "fromLatex": "0^3 = 0",
+        "toLatex": "0^3 = 0 \\times 0 \\times 0 = 0",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "Compute: 0³ = 0 × 0 × 0 = 0"
+      },
+      {
+        "id": "s2c",
+        "fromLatex": "\\frac{1}{3} - \\frac{0}{3} = \\frac{1}{3} - 0 = \\frac{1}{3}",
+        "toLatex": "\\frac{1}{3} - \\frac{0}{3} = \\frac{1}{3} - 0 = \\frac{1}{3}",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "Compute: 1/3 − 0/3 = 1/3 − 0 = 1/3"
+      },
+      {
+        "id": "s3",
+        "fromLatex": "\\frac{1^3}{3} - \\frac{0^3}{3}",
+        "toLatex": "\\frac{1}{3}",
+        "paletteRef": "p2",
+        "dropTargets": [
+          "\\frac{1^3}{3} - \\frac{0^3}{3}"
+        ],
+        "description": "1/3 − 0 = 1/3"
+      }
+    ],
+    "image": "calc-m-004.svg"
   },
   {
-    "id": "calc-m-009", "topic": "calculus", "difficulty": "medium",
-    "question": { "latex": "\\frac{d}{dx}\\bigl[\\sin(x)\\bigr] = ?", "plain": "Differentiate sin(x)" },
-    "symbols": { "\\frac{d}{dx}": "Derivative", "\\sin": "Sine", "\\cos": "Cosine" },
+    "id": "calc-m-005",
+    "topic": "calculus",
+    "difficulty": "medium",
+    "question": {
+      "latex": "\\frac{d}{dx}\\bigl[e^x\\bigr] = ?",
+      "plain": "Differentiate eˣ"
+    },
+    "symbols": {
+      "\\frac{d}{dx}": "Derivative",
+      "e": "Euler's number ≈ 2.71828 — base of natural logarithm"
+    },
     "palette": [
-      { "id": "p1", "latex": "\\cos(x)", "description": "d/dx[sin(x)] = cos(x) — the fundamental trig derivative" }
+      {
+        "id": "p1",
+        "latex": "e^x",
+        "description": "eˣ is its own derivative — a unique and elegant property"
+      }
     ],
     "steps": [
-      { "id": "s1", "fromLatex": "\\frac{d}{dx}\\bigl[\\sin(x)\\bigr]", "toLatex": "\\frac{d}{dx}\\bigl[\\sin(x)\\bigr] = \\cos(x)", "paletteRef": "p1", "dropTargets": ["\\frac{d}{dx}\\bigl[\\sin(x)\\bigr]"], "description": "Derivative of sin(x) is cos(x)" }
-    ]
+      {
+        "id": "s1",
+        "fromLatex": "\\frac{d}{dx}\\bigl[e^x\\bigr]",
+        "toLatex": "\\frac{d}{dx}\\bigl[e^x\\bigr] = e^x",
+        "paletteRef": "p1",
+        "dropTargets": [
+          "\\frac{d}{dx}\\bigl[e^x\\bigr]"
+        ],
+        "description": "eˣ is its own derivative"
+      }
+    ],
+    "image": "calc-m-005.svg"
   },
   {
-    "id": "calc-m-010", "topic": "calculus", "difficulty": "medium",
-    "question": { "latex": "\\int_0^2 (2x + 1)\\, dx = ?", "plain": "Evaluate the definite integral of (2x+1) from 0 to 2" },
-    "symbols": { "\\int": "Definite integral" },
+    "id": "calc-m-006",
+    "topic": "calculus",
+    "difficulty": "medium",
+    "question": {
+      "latex": "\\frac{d}{dx}\\bigl[\\ln(x)\\bigr] = ?",
+      "plain": "Differentiate ln(x)"
+    },
+    "symbols": {
+      "\\frac{d}{dx}": "Derivative",
+      "\\ln": "Natural logarithm — log base e"
+    },
     "palette": [
-      { "id": "p1", "latex": "x^2 + x", "description": "Antiderivative: ∫(2x+1)dx = x² + x" },
-      { "id": "p2", "latex": "6", "description": "F(2) − F(0) = (4+2) − (0+0) = 6" }
+      {
+        "id": "p1",
+        "latex": "\\frac{1}{x}",
+        "description": "d/dx[ln(x)] = 1/x — a fundamental result"
+      }
     ],
     "steps": [
-      { "id": "s1", "fromLatex": "\\int_0^2 (2x + 1)\\, dx", "toLatex": "\\left[x^2 + x\\right]_0^2", "paletteRef": "p1", "dropTargets": ["\\int_0^2 (2x + 1)\\, dx"], "description": "Find antiderivative term by term" },
-      { "id": "s2", "fromLatex": "\\left[x^2 + x\\right]_0^2", "toLatex": "(2^2 + 2) - (0^2 + 0)", "paletteRef": null, "dropTargets": [], "description": "Evaluate at x=2 and x=0" },
-      { "id": "s2a", "fromLatex": "2^2 = 2 \\times 2 = 4", "toLatex": "2^2 = 4", "paletteRef": null, "dropTargets": [], "description": "Compute: 2² = 4" },
-      { "id": "s2b", "fromLatex": "4 + 2 = 6", "toLatex": "4 + 2 = 6", "paletteRef": null, "dropTargets": [], "description": "Compute: 4 + 2 = 6" },
-      { "id": "s3", "fromLatex": "(2^2 + 2) - (0^2 + 0)", "toLatex": "6 - 0", "paletteRef": null, "dropTargets": [], "description": "4 + 2 = 6, and 0 + 0 = 0" },
-      { "id": "s4", "fromLatex": "6 - 0", "toLatex": "6", "paletteRef": "p2", "dropTargets": ["6 - 0"], "description": "6 − 0 = 6" }
-    ]
-  },
-
-  {
-    "id": "calc-h-001", "topic": "calculus", "difficulty": "hard",
-    "question": { "latex": "\\frac{d}{dx}\\bigl[\\ln(\\sin(x))\\bigr] = ?", "plain": "Differentiate ln(sin(x)) using the chain rule" },
-    "symbols": { "\\frac{d}{dx}": "Derivative", "\\ln": "Natural logarithm", "\\sin": "Sine", "\\cos": "Cosine" },
-    "palette": [
-      { "id": "p1", "latex": "\\frac{1}{\\sin(x)}", "description": "Outer derivative of ln(u) is 1/u" },
-      { "id": "p2", "latex": "\\frac{\\cos(x)}{\\sin(x)}", "description": "Multiply by inner derivative d/dx[sinx] = cosx" }
+      {
+        "id": "s1",
+        "fromLatex": "\\frac{d}{dx}\\bigl[\\ln(x)\\bigr]",
+        "toLatex": "\\frac{d}{dx}\\bigl[\\ln(x)\\bigr] = \\frac{1}{x}",
+        "paletteRef": "p1",
+        "dropTargets": [
+          "\\frac{d}{dx}\\bigl[\\ln(x)\\bigr]"
+        ],
+        "description": "The derivative of ln(x) is 1/x for x > 0"
+      }
     ],
-    "steps": [
-      { "id": "s1", "fromLatex": "\\frac{d}{dx}\\bigl[\\ln(\\sin(x))\\bigr]", "toLatex": "\\frac{1}{\\sin(x)} \\cdot \\frac{d}{dx}[\\sin(x)]", "paletteRef": "p1", "dropTargets": ["\\ln(\\sin(x))"], "description": "Chain rule: outer derivative 1/u times inner derivative" },
-      { "id": "s1a", "fromLatex": "\\text{Outer: } f(u) = \\ln(u) \\Rightarrow f'(u) = \\tfrac{1}{u}", "toLatex": "\\text{Outer: } f(u) = \\ln(u) \\Rightarrow f'(u) = \\tfrac{1}{u}", "paletteRef": null, "dropTargets": [], "description": "Log rule: d/du[ln(u)] = 1/u" },
-      { "id": "s1b", "fromLatex": "\\text{Inner: } g(x) = \\sin(x) \\Rightarrow g'(x) = \\cos(x)", "toLatex": "\\text{Inner: } g(x) = \\sin(x) \\Rightarrow g'(x) = \\cos(x)", "paletteRef": null, "dropTargets": [], "description": "Trig rule: d/dx[sin(x)] = cos(x)" },
-      { "id": "s2", "fromLatex": "\\frac{1}{\\sin(x)} \\cdot \\frac{d}{dx}[\\sin(x)]", "toLatex": "\\frac{1}{\\sin(x)} \\cdot \\cos(x)", "paletteRef": null, "dropTargets": [], "description": "d/dx[sinx] = cosx" },
-      { "id": "s3", "fromLatex": "\\frac{1}{\\sin(x)} \\cdot \\cos(x)", "toLatex": "\\frac{\\cos(x)}{\\sin(x)}", "paletteRef": "p2", "dropTargets": ["\\frac{1}{\\sin(x)} \\cdot \\cos(x)"], "description": "Simplify to cot(x)" }
-    ]
-  },
-  {
-    "id": "calc-h-002", "topic": "calculus", "difficulty": "hard",
-    "question": { "latex": "\\int x e^x\\, dx = ?", "plain": "Integrate x·eˣ using integration by parts" },
-    "symbols": { "\\int": "Integral", "e": "Euler's number" },
-    "palette": [
-      { "id": "p1", "latex": "uv - \\int v\\, du", "description": "Integration by parts: ∫u dv = uv − ∫v du" },
-      { "id": "p2", "latex": "xe^x - e^x + C", "description": "Result: xe^x − e^x + C = e^x(x−1) + C" }
-    ],
-    "steps": [
-      { "id": "s1", "fromLatex": "\\int x e^x\\, dx", "toLatex": "\\text{Let }u = x,\\quad dv = e^x\\, dx", "paletteRef": null, "dropTargets": [], "description": "Choose u = x (differentiates away), dv = eˣdx" },
-      { "id": "s2", "fromLatex": "\\text{Let }u = x,\\quad dv = e^x\\, dx", "toLatex": "du = dx,\\quad v = e^x", "paletteRef": null, "dropTargets": [], "description": "Compute du and v from our choices" },
-      { "id": "s3", "fromLatex": "du = dx,\\quad v = e^x", "toLatex": "uv - \\int v\\, du", "paletteRef": "p1", "dropTargets": ["du = dx,\\quad v = e^x"], "description": "Apply the integration by parts formula" },
-      { "id": "s4", "fromLatex": "uv - \\int v\\, du", "toLatex": "xe^x - \\int e^x\\, dx", "paletteRef": null, "dropTargets": [], "description": "Substitute u=x, v=eˣ, du=dx" },
-      { "id": "s5", "fromLatex": "xe^x - \\int e^x\\, dx", "toLatex": "xe^x - e^x + C", "paletteRef": "p2", "dropTargets": ["\\int e^x\\, dx"], "description": "∫eˣ dx = eˣ; add constant C" },
-      { "id": "s5a", "fromLatex": "\\frac{d}{dx}[xe^x - e^x] = e^x + xe^x - e^x = xe^x", "toLatex": "\\frac{d}{dx}[xe^x - e^x] = (e^x + xe^x) - e^x = xe^x\\ \\checkmark", "paletteRef": null, "dropTargets": [], "description": "Verify: product rule on xeˣ gives eˣ + xeˣ; the −eˣ cancels the first eˣ, leaving xeˣ ✓" }
-    ]
+    "image": "calc-m-006.svg"
   },
   {
-    "id": "calc-h-003", "topic": "calculus", "difficulty": "hard",
-    "question": { "latex": "\\lim_{x \\to 0} \\frac{e^x - 1}{x} = ?", "plain": "Evaluate the limit using L'Hôpital's Rule or expansion" },
-    "symbols": { "\\lim": "Limit", "e": "Euler's number", "\\to": "Approaches" },
+    "id": "calc-m-007",
+    "topic": "calculus",
+    "difficulty": "medium",
+    "question": {
+      "latex": "\\int e^x\\, dx = ?",
+      "plain": "Integrate eˣ dx"
+    },
+    "symbols": {
+      "\\int": "Integral",
+      "e": "Euler's number"
+    },
     "palette": [
-      { "id": "p1", "latex": "\\frac{e^x}{1}", "description": "L'Hôpital: differentiate numerator and denominator separately" },
-      { "id": "p2", "latex": "1", "description": "lim(eˣ/1) as x→0 = e⁰/1 = 1" }
+      {
+        "id": "p1",
+        "latex": "e^x + C",
+        "description": "eˣ is its own antiderivative — adding C for the constant of integration"
+      }
     ],
     "steps": [
-      { "id": "s1", "fromLatex": "\\lim_{x \\to 0} \\frac{e^x - 1}{x}", "toLatex": "\\text{Direct sub: } \\frac{0}{0} \\text{ — indeterminate}", "paletteRef": null, "dropTargets": [], "description": "x=0 gives 0/0 — apply L'Hôpital's Rule" },
-      { "id": "s2", "fromLatex": "\\text{Direct sub: } \\frac{0}{0} \\text{ — indeterminate}", "toLatex": "\\lim_{x \\to 0} \\frac{e^x}{1}", "paletteRef": "p1", "dropTargets": ["\\text{Direct sub: } \\frac{0}{0} \\text{ — indeterminate}"], "description": "Differentiate top (eˣ) and bottom (1) separately" },
-      { "id": "s2a", "fromLatex": "e^0 = 1 \\quad (\\text{any nonzero base to power 0})", "toLatex": "e^0 = 1 \\quad (\\text{any nonzero base raised to 0 equals 1})", "paletteRef": null, "dropTargets": [], "description": "Compute: e⁰ = 1 (any nonzero base to power 0 = 1)" },
-      { "id": "s3", "fromLatex": "\\lim_{x \\to 0} \\frac{e^x}{1}", "toLatex": "\\frac{e^0}{1} = 1", "paletteRef": "p2", "dropTargets": ["\\lim_{x \\to 0} \\frac{e^x}{1}"], "description": "Substitute x=0: e⁰=1" }
-    ]
+      {
+        "id": "s1",
+        "fromLatex": "\\int e^x\\, dx",
+        "toLatex": "e^x + C",
+        "paletteRef": "p1",
+        "dropTargets": [
+          "\\int e^x\\, dx"
+        ],
+        "description": "eˣ is its own antiderivative"
+      }
+    ],
+    "image": "calc-m-007.svg"
   },
   {
-    "id": "calc-h-004", "topic": "calculus", "difficulty": "hard",
-    "question": { "latex": "\\int \\frac{1}{x}\\, dx = ?", "plain": "Integrate 1/x dx" },
-    "symbols": { "\\int": "Integral", "\\ln": "Natural logarithm" },
+    "id": "calc-m-008",
+    "topic": "calculus",
+    "difficulty": "medium",
+    "question": {
+      "latex": "\\lim_{x \\to 0} \\frac{\\sin(x)}{x} = ?",
+      "plain": "Evaluate the fundamental trigonometric limit as x→0"
+    },
+    "symbols": {
+      "\\lim": "Limit",
+      "\\sin": "Sine",
+      "\\to": "Approaches"
+    },
     "palette": [
-      { "id": "p1", "latex": "\\ln|x| + C", "description": "∫(1/x)dx = ln|x| + C — the absolute value handles negative x" }
+      {
+        "id": "p1",
+        "latex": "1",
+        "description": "This is a standard limit: lim(sinx/x) as x→0 equals 1"
+      }
     ],
     "steps": [
-      { "id": "s1", "fromLatex": "\\int \\frac{1}{x}\\, dx", "toLatex": "\\int x^{-1}\\, dx", "paletteRef": null, "dropTargets": [], "description": "Rewrite as x⁻¹" },
-      { "id": "s2", "fromLatex": "\\int x^{-1}\\, dx", "toLatex": "\\ln|x| + C", "paletteRef": "p1", "dropTargets": ["\\int x^{-1}\\, dx"], "description": "Special case: power rule fails at n=−1; result is ln|x|" }
-    ]
+      {
+        "id": "s1",
+        "fromLatex": "\\lim_{x \\to 0} \\frac{\\sin(x)}{x}",
+        "toLatex": "\\text{(direct sub gives 0/0 — indeterminate)}",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "Substituting x=0 gives 0/0, a standard indeterminate form"
+      },
+      {
+        "id": "s2",
+        "fromLatex": "\\text{(direct sub gives 0/0 — indeterminate)}",
+        "toLatex": "\\lim_{x \\to 0} \\frac{\\sin(x)}{x} = 1",
+        "paletteRef": "p1",
+        "dropTargets": [
+          "\\text{(direct sub gives 0/0 — indeterminate)}"
+        ],
+        "description": "Standard result: squeeze theorem confirms the limit equals 1"
+      }
+    ],
+    "image": "calc-m-008.svg"
   },
   {
-    "id": "calc-h-005", "topic": "calculus", "difficulty": "hard",
-    "question": { "latex": "\\frac{d^2y}{dx^2}\\text{ of }y = x^4 - 3x^2 + 2", "plain": "Find the second derivative of y = x⁴ − 3x² + 2" },
-    "symbols": { "\\frac{d^2y}{dx^2}": "Second derivative — rate of change of the rate of change" },
+    "id": "calc-m-009",
+    "topic": "calculus",
+    "difficulty": "medium",
+    "question": {
+      "latex": "\\frac{d}{dx}\\bigl[\\sin(x)\\bigr] = ?",
+      "plain": "Differentiate sin(x)"
+    },
+    "symbols": {
+      "\\frac{d}{dx}": "Derivative",
+      "\\sin": "Sine",
+      "\\cos": "Cosine"
+    },
     "palette": [
-      { "id": "p1", "latex": "4x^3 - 6x", "description": "First derivative: d/dx[x⁴−3x²+2] = 4x³−6x" },
-      { "id": "p2", "latex": "12x^2 - 6", "description": "Second derivative: d/dx[4x³−6x] = 12x²−6" }
+      {
+        "id": "p1",
+        "latex": "\\cos(x)",
+        "description": "d/dx[sin(x)] = cos(x) — the fundamental trig derivative"
+      }
     ],
     "steps": [
-      { "id": "s1", "fromLatex": "y = x^4 - 3x^2 + 2", "toLatex": "\\frac{dy}{dx} = 4x^3 - 6x", "paletteRef": "p1", "dropTargets": ["x^4 - 3x^2 + 2"], "description": "First derivative: differentiate each term" },
-      { "id": "s1a", "fromLatex": "\\frac{d}{dx}[x^4] = 4x^3 \\quad (4-1=3)", "toLatex": "\\frac{d}{dx}[x^4] = 4x^3 \\quad (\\text{power rule: }4-1=3)", "paletteRef": null, "dropTargets": [], "description": "Power rule on x⁴: multiply by 4, reduce exponent: 4−1=3 → 4x³" },
-      { "id": "s1b", "fromLatex": "\\frac{d}{dx}[3x^2] = 3 \\cdot 2x = 6x \\quad (2-1=1)", "toLatex": "\\frac{d}{dx}[3x^2] = 3 \\cdot 2x^{2-1} = 6x", "paletteRef": null, "dropTargets": [], "description": "Power rule on 3x²: multiply by 2, reduce exponent: 3×2=6, 2−1=1 → 6x" },
-      { "id": "s1c", "fromLatex": "\\frac{d}{dx}[2] = 0", "toLatex": "\\frac{d}{dx}[2] = 0 \\quad (\\text{constant rule})", "paletteRef": null, "dropTargets": [], "description": "Constant 2 has zero derivative" },
-      { "id": "s2", "fromLatex": "\\frac{dy}{dx} = 4x^3 - 6x", "toLatex": "\\frac{d^2y}{dx^2} = 12x^2 - 6", "paletteRef": "p2", "dropTargets": ["4x^3 - 6x"], "description": "Second derivative: differentiate again" },
-      { "id": "s2a", "fromLatex": "\\frac{d}{dx}[4x^3] = 4 \\cdot 3x^2 = 12x^2 \\quad (4 \\times 3 = 12,\\ 3-1=2)", "toLatex": "\\frac{d}{dx}[4x^3] = 4 \\cdot 3x^2 = 12x^2 \\quad (4 \\times 3 = 12)", "paletteRef": null, "dropTargets": [], "description": "Power rule on 4x³: multiply by 3, reduce exponent: 4×3=12, 3−1=2 → 12x²" },
-      { "id": "s2b", "fromLatex": "\\frac{d}{dx}[6x] = 6 \\cdot 1 = 6 \\quad (\\text{constant coefficient})", "toLatex": "\\frac{d}{dx}[6x] = 6", "paletteRef": null, "dropTargets": [], "description": "d/dx[6x] = 6 × 1 = 6" }
-    ]
+      {
+        "id": "s1",
+        "fromLatex": "\\frac{d}{dx}\\bigl[\\sin(x)\\bigr]",
+        "toLatex": "\\frac{d}{dx}\\bigl[\\sin(x)\\bigr] = \\cos(x)",
+        "paletteRef": "p1",
+        "dropTargets": [
+          "\\frac{d}{dx}\\bigl[\\sin(x)\\bigr]"
+        ],
+        "description": "Derivative of sin(x) is cos(x)"
+      }
+    ],
+    "image": "calc-m-009.svg"
   },
   {
-    "id": "calc-h-006", "topic": "calculus", "difficulty": "hard",
-    "question": { "latex": "\\int \\sin(x)\\, dx = ?", "plain": "Integrate sin(x) dx" },
-    "symbols": { "\\int": "Integral", "\\sin": "Sine", "\\cos": "Cosine" },
+    "id": "calc-m-010",
+    "topic": "calculus",
+    "difficulty": "medium",
+    "question": {
+      "latex": "\\int_0^2 (2x + 1)\\, dx = ?",
+      "plain": "Evaluate the definite integral of (2x+1) from 0 to 2"
+    },
+    "symbols": {
+      "\\int": "Definite integral"
+    },
     "palette": [
-      { "id": "p1", "latex": "-\\cos(x) + C", "description": "∫sin(x)dx = −cos(x) + C" }
+      {
+        "id": "p1",
+        "latex": "x^2 + x",
+        "description": "Antiderivative: ∫(2x+1)dx = x² + x"
+      },
+      {
+        "id": "p2",
+        "latex": "6",
+        "description": "F(2) − F(0) = (4+2) − (0+0) = 6"
+      }
     ],
     "steps": [
-      { "id": "s1", "fromLatex": "\\int \\sin(x)\\, dx", "toLatex": "-\\cos(x)", "paletteRef": null, "dropTargets": [], "description": "Antiderivative of sin(x) is −cos(x): verify by differentiating" },
-      { "id": "s1a", "fromLatex": "\\frac{d}{dx}[-\\cos(x)] = -(-\\sin(x)) = \\sin(x) \\checkmark", "toLatex": "\\frac{d}{dx}[-\\cos(x)] = +\\sin(x) \\checkmark \\quad (\\text{derivative of }-\\cos x = \\sin x)", "paletteRef": null, "dropTargets": [], "description": "Verify: d/dx[−cos(x)] = −(−sin(x)) = +sin(x) ✓" },
-      { "id": "s2", "fromLatex": "-\\cos(x)", "toLatex": "-\\cos(x) + C", "paletteRef": "p1", "dropTargets": ["-\\cos(x)"], "description": "Add constant of integration" }
-    ]
+      {
+        "id": "s1",
+        "fromLatex": "\\int_0^2 (2x + 1)\\, dx",
+        "toLatex": "\\left[x^2 + x\\right]_0^2",
+        "paletteRef": "p1",
+        "dropTargets": [
+          "\\int_0^2 (2x + 1)\\, dx"
+        ],
+        "description": "Find antiderivative term by term"
+      },
+      {
+        "id": "s2",
+        "fromLatex": "\\left[x^2 + x\\right]_0^2",
+        "toLatex": "(2^2 + 2) - (0^2 + 0)",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "Evaluate at x=2 and x=0"
+      },
+      {
+        "id": "s2a",
+        "fromLatex": "2^2 = 2 \\times 2 = 4",
+        "toLatex": "2^2 = 4",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "Compute: 2² = 4"
+      },
+      {
+        "id": "s2b",
+        "fromLatex": "4 + 2 = 6",
+        "toLatex": "4 + 2 = 6",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "Compute: 4 + 2 = 6"
+      },
+      {
+        "id": "s3",
+        "fromLatex": "(2^2 + 2) - (0^2 + 0)",
+        "toLatex": "6 - 0",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "4 + 2 = 6, and 0 + 0 = 0"
+      },
+      {
+        "id": "s4",
+        "fromLatex": "6 - 0",
+        "toLatex": "6",
+        "paletteRef": "p2",
+        "dropTargets": [
+          "6 - 0"
+        ],
+        "description": "6 − 0 = 6"
+      }
+    ],
+    "image": "calc-m-010.svg"
   },
   {
-    "id": "calc-h-007", "topic": "calculus", "difficulty": "hard",
-    "question": { "latex": "\\frac{d}{dx}\\bigl[e^{x^2}\\bigr] = ?", "plain": "Differentiate e^(x²) using the chain rule" },
-    "symbols": { "\\frac{d}{dx}": "Derivative", "e": "Euler's number" },
+    "id": "calc-h-001",
+    "topic": "calculus",
+    "difficulty": "hard",
+    "question": {
+      "latex": "\\frac{d}{dx}\\bigl[\\ln(\\sin(x))\\bigr] = ?",
+      "plain": "Differentiate ln(sin(x)) using the chain rule"
+    },
+    "symbols": {
+      "\\frac{d}{dx}": "Derivative",
+      "\\ln": "Natural logarithm",
+      "\\sin": "Sine",
+      "\\cos": "Cosine"
+    },
     "palette": [
-      { "id": "p1", "latex": "e^{x^2}", "description": "Outer derivative of eᵘ is eᵘ — keep the inner function intact" },
-      { "id": "p2", "latex": "2xe^{x^2}", "description": "Multiply by inner derivative d/dx[x²] = 2x" }
+      {
+        "id": "p1",
+        "latex": "\\frac{1}{\\sin(x)}",
+        "description": "Outer derivative of ln(u) is 1/u"
+      },
+      {
+        "id": "p2",
+        "latex": "\\frac{\\cos(x)}{\\sin(x)}",
+        "description": "Multiply by inner derivative d/dx[sinx] = cosx"
+      }
     ],
     "steps": [
-      { "id": "s1", "fromLatex": "\\frac{d}{dx}\\bigl[e^{x^2}\\bigr]", "toLatex": "e^{x^2} \\cdot \\frac{d}{dx}[x^2]", "paletteRef": "p1", "dropTargets": ["e^{x^2}"], "description": "Chain rule: outer derivative eᵘ, times inner derivative" },
-      { "id": "s1a", "fromLatex": "\\frac{d}{dx}[x^2] = 2x \\quad (2-1=1)", "toLatex": "\\frac{d}{dx}[x^2] = 2x \\quad (\\text{power rule: multiply by 2, reduce exponent }2-1=1)", "paletteRef": null, "dropTargets": [], "description": "Inner derivative: power rule on x² → 2x" },
-      { "id": "s2", "fromLatex": "e^{x^2} \\cdot \\frac{d}{dx}[x^2]", "toLatex": "e^{x^2} \\cdot 2x", "paletteRef": null, "dropTargets": [], "description": "Inner derivative: d/dx[x²] = 2x" },
-      { "id": "s3", "fromLatex": "e^{x^2} \\cdot 2x", "toLatex": "2xe^{x^2}", "paletteRef": "p2", "dropTargets": ["e^{x^2} \\cdot 2x"], "description": "Write in standard form" }
-    ]
+      {
+        "id": "s1",
+        "fromLatex": "\\frac{d}{dx}\\bigl[\\ln(\\sin(x))\\bigr]",
+        "toLatex": "\\frac{1}{\\sin(x)} \\cdot \\frac{d}{dx}[\\sin(x)]",
+        "paletteRef": "p1",
+        "dropTargets": [
+          "\\ln(\\sin(x))"
+        ],
+        "description": "Chain rule: outer derivative 1/u times inner derivative"
+      },
+      {
+        "id": "s1a",
+        "fromLatex": "\\text{Outer: } f(u) = \\ln(u) \\Rightarrow f'(u) = \\tfrac{1}{u}",
+        "toLatex": "\\text{Outer: } f(u) = \\ln(u) \\Rightarrow f'(u) = \\tfrac{1}{u}",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "Log rule: d/du[ln(u)] = 1/u"
+      },
+      {
+        "id": "s1b",
+        "fromLatex": "\\text{Inner: } g(x) = \\sin(x) \\Rightarrow g'(x) = \\cos(x)",
+        "toLatex": "\\text{Inner: } g(x) = \\sin(x) \\Rightarrow g'(x) = \\cos(x)",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "Trig rule: d/dx[sin(x)] = cos(x)"
+      },
+      {
+        "id": "s2",
+        "fromLatex": "\\frac{1}{\\sin(x)} \\cdot \\frac{d}{dx}[\\sin(x)]",
+        "toLatex": "\\frac{1}{\\sin(x)} \\cdot \\cos(x)",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "d/dx[sinx] = cosx"
+      },
+      {
+        "id": "s3",
+        "fromLatex": "\\frac{1}{\\sin(x)} \\cdot \\cos(x)",
+        "toLatex": "\\frac{\\cos(x)}{\\sin(x)}",
+        "paletteRef": "p2",
+        "dropTargets": [
+          "\\frac{1}{\\sin(x)} \\cdot \\cos(x)"
+        ],
+        "description": "Simplify to cot(x)"
+      }
+    ],
+    "image": "calc-h-001.svg"
   },
   {
-    "id": "calc-h-008", "topic": "calculus", "difficulty": "hard",
-    "question": { "latex": "\\int_1^e \\frac{1}{x}\\, dx = ?", "plain": "Evaluate the definite integral of 1/x from 1 to e" },
-    "symbols": { "\\int": "Definite integral", "\\ln": "Natural logarithm", "e": "Euler's number — base of natural log" },
+    "id": "calc-h-002",
+    "topic": "calculus",
+    "difficulty": "hard",
+    "question": {
+      "latex": "\\int x e^x\\, dx = ?",
+      "plain": "Integrate x·eˣ using integration by parts"
+    },
+    "symbols": {
+      "\\int": "Integral",
+      "e": "Euler's number"
+    },
     "palette": [
-      { "id": "p1", "latex": "\\ln|x|", "description": "Antiderivative of 1/x is ln|x|" },
-      { "id": "p2", "latex": "1", "description": "ln(e) − ln(1) = 1 − 0 = 1" }
+      {
+        "id": "p1",
+        "latex": "uv - \\int v\\, du",
+        "description": "Integration by parts: ∫u dv = uv − ∫v du"
+      },
+      {
+        "id": "p2",
+        "latex": "xe^x - e^x + C",
+        "description": "Result: xe^x − e^x + C = e^x(x−1) + C"
+      }
     ],
     "steps": [
-      { "id": "s1", "fromLatex": "\\int_1^e \\frac{1}{x}\\, dx", "toLatex": "\\left[\\ln|x|\\right]_1^e", "paletteRef": "p1", "dropTargets": ["\\int_1^e \\frac{1}{x}\\, dx"], "description": "Antiderivative is ln|x|" },
-      { "id": "s2", "fromLatex": "\\left[\\ln|x|\\right]_1^e", "toLatex": "\\ln(e) - \\ln(1)", "paletteRef": null, "dropTargets": [], "description": "Evaluate at bounds: ln(e) − ln(1)" },
-      { "id": "s2a", "fromLatex": "\\ln(e) = 1 \\quad (e^1 = e)", "toLatex": "\\ln(e) = 1 \\quad (\\text{because }e^1 = e)", "paletteRef": null, "dropTargets": [], "description": "Compute: ln(e) = 1 (because e¹ = e)" },
-      { "id": "s2b", "fromLatex": "\\ln(1) = 0 \\quad (e^0 = 1)", "toLatex": "\\ln(1) = 0 \\quad (\\text{because }e^0 = 1)", "paletteRef": null, "dropTargets": [], "description": "Compute: ln(1) = 0 (because e⁰ = 1)" },
-      { "id": "s3", "fromLatex": "\\ln(e) - \\ln(1)", "toLatex": "1 - 0", "paletteRef": null, "dropTargets": [], "description": "ln(e)=1 and ln(1)=0 by definition" },
-      { "id": "s4", "fromLatex": "1 - 0", "toLatex": "1", "paletteRef": "p2", "dropTargets": ["1 - 0"], "description": "1 − 0 = 1" }
-    ]
+      {
+        "id": "s1",
+        "fromLatex": "\\int x e^x\\, dx",
+        "toLatex": "\\text{Let }u = x,\\quad dv = e^x\\, dx",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "Choose u = x (differentiates away), dv = eˣdx"
+      },
+      {
+        "id": "s2",
+        "fromLatex": "\\text{Let }u = x,\\quad dv = e^x\\, dx",
+        "toLatex": "du = dx,\\quad v = e^x",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "Compute du and v from our choices"
+      },
+      {
+        "id": "s3",
+        "fromLatex": "du = dx,\\quad v = e^x",
+        "toLatex": "uv - \\int v\\, du",
+        "paletteRef": "p1",
+        "dropTargets": [
+          "du = dx,\\quad v = e^x"
+        ],
+        "description": "Apply the integration by parts formula"
+      },
+      {
+        "id": "s4",
+        "fromLatex": "uv - \\int v\\, du",
+        "toLatex": "xe^x - \\int e^x\\, dx",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "Substitute u=x, v=eˣ, du=dx"
+      },
+      {
+        "id": "s5",
+        "fromLatex": "xe^x - \\int e^x\\, dx",
+        "toLatex": "xe^x - e^x + C",
+        "paletteRef": "p2",
+        "dropTargets": [
+          "\\int e^x\\, dx"
+        ],
+        "description": "∫eˣ dx = eˣ; add constant C"
+      },
+      {
+        "id": "s5a",
+        "fromLatex": "\\frac{d}{dx}[xe^x - e^x] = e^x + xe^x - e^x = xe^x",
+        "toLatex": "\\frac{d}{dx}[xe^x - e^x] = (e^x + xe^x) - e^x = xe^x\\ \\checkmark",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "Verify: product rule on xeˣ gives eˣ + xeˣ; the −eˣ cancels the first eˣ, leaving xeˣ ✓"
+      }
+    ],
+    "image": "calc-h-002.svg"
   },
   {
-    "id": "calc-h-009", "topic": "calculus", "difficulty": "hard",
-    "question": { "latex": "\\frac{d}{dx}\\bigl[x^x\\bigr] = ?", "plain": "Differentiate xˣ using logarithmic differentiation" },
-    "symbols": { "\\frac{d}{dx}": "Derivative", "\\ln": "Natural logarithm", "e": "Euler's number" },
+    "id": "calc-h-003",
+    "topic": "calculus",
+    "difficulty": "hard",
+    "question": {
+      "latex": "\\lim_{x \\to 0} \\frac{e^x - 1}{x} = ?",
+      "plain": "Evaluate the limit using L'Hôpital's Rule or expansion"
+    },
+    "symbols": {
+      "\\lim": "Limit",
+      "e": "Euler's number",
+      "\\to": "Approaches"
+    },
     "palette": [
-      { "id": "p1", "latex": "\\ln(y) = x\\ln(x)", "description": "Take ln of both sides: ln(y) = x ln(x)" },
-      { "id": "p2", "latex": "x^x(\\ln x + 1)", "description": "Result: xˣ(ln x + 1)" }
+      {
+        "id": "p1",
+        "latex": "\\frac{e^x}{1}",
+        "description": "L'Hôpital: differentiate numerator and denominator separately"
+      },
+      {
+        "id": "p2",
+        "latex": "1",
+        "description": "lim(eˣ/1) as x→0 = e⁰/1 = 1"
+      }
     ],
     "steps": [
-      { "id": "s1", "fromLatex": "y = x^x", "toLatex": "\\ln(y) = \\ln(x^x)", "paletteRef": "p1", "dropTargets": ["y = x^x"], "description": "Take natural log of both sides" },
-      { "id": "s2", "fromLatex": "\\ln(y) = \\ln(x^x)", "toLatex": "\\ln(y) = x\\ln(x)", "paletteRef": null, "dropTargets": [], "description": "Log power rule: ln(xˣ) = x·ln(x)" },
-      { "id": "s3", "fromLatex": "\\ln(y) = x\\ln(x)", "toLatex": "\\frac{1}{y}\\frac{dy}{dx} = \\ln(x) + 1", "paletteRef": null, "dropTargets": [], "description": "Differentiate both sides: left gets 1/y·dy/dx; right uses product rule" },
-      { "id": "s3a", "fromLatex": "\\frac{d}{dx}[x \\cdot \\ln(x)] = 1 \\cdot \\ln(x) + x \\cdot \\frac{1}{x} = \\ln(x) + 1", "toLatex": "\\frac{d}{dx}[x \\ln x] = 1 \\cdot \\ln x + x \\cdot \\frac{1}{x} = \\ln x + \\frac{x}{x} = \\ln x + 1", "paletteRef": null, "dropTargets": [], "description": "Product rule on x·ln(x): (1)·ln(x) + x·(1/x) = ln(x) + x/x = ln(x)+1" },
-      { "id": "s3b", "fromLatex": "\\frac{x}{x} = 1", "toLatex": "\\frac{x}{x} = 1 \\quad (\\text{any nonzero number divided by itself})", "paletteRef": null, "dropTargets": [], "description": "Compute: x/x = 1" },
-      { "id": "s4", "fromLatex": "\\frac{1}{y}\\frac{dy}{dx} = \\ln(x) + 1", "toLatex": "\\frac{dy}{dx} = y(\\ln x + 1)", "paletteRef": null, "dropTargets": [], "description": "Multiply both sides by y" },
-      { "id": "s5", "fromLatex": "\\frac{dy}{dx} = y(\\ln x + 1)", "toLatex": "\\frac{d}{dx}[x^x] = x^x(\\ln x + 1)", "paletteRef": "p2", "dropTargets": ["y(\\ln x + 1)"], "description": "Substitute back y = xˣ" }
-    ]
+      {
+        "id": "s1",
+        "fromLatex": "\\lim_{x \\to 0} \\frac{e^x - 1}{x}",
+        "toLatex": "\\text{Direct sub: } \\frac{0}{0} \\text{ — indeterminate}",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "x=0 gives 0/0 — apply L'Hôpital's Rule"
+      },
+      {
+        "id": "s2",
+        "fromLatex": "\\text{Direct sub: } \\frac{0}{0} \\text{ — indeterminate}",
+        "toLatex": "\\lim_{x \\to 0} \\frac{e^x}{1}",
+        "paletteRef": "p1",
+        "dropTargets": [
+          "\\text{Direct sub: } \\frac{0}{0} \\text{ — indeterminate}"
+        ],
+        "description": "Differentiate top (eˣ) and bottom (1) separately"
+      },
+      {
+        "id": "s2a",
+        "fromLatex": "e^0 = 1 \\quad (\\text{any nonzero base to power 0})",
+        "toLatex": "e^0 = 1 \\quad (\\text{any nonzero base raised to 0 equals 1})",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "Compute: e⁰ = 1 (any nonzero base to power 0 = 1)"
+      },
+      {
+        "id": "s3",
+        "fromLatex": "\\lim_{x \\to 0} \\frac{e^x}{1}",
+        "toLatex": "\\frac{e^0}{1} = 1",
+        "paletteRef": "p2",
+        "dropTargets": [
+          "\\lim_{x \\to 0} \\frac{e^x}{1}"
+        ],
+        "description": "Substitute x=0: e⁰=1"
+      }
+    ],
+    "image": "calc-h-003.svg"
   },
   {
-    "id": "calc-h-010", "topic": "calculus", "difficulty": "hard",
-    "question": { "latex": "\\int \\cos(x)\\sin(x)\\, dx = ?", "plain": "Integrate cos(x)sin(x) dx using substitution" },
-    "symbols": { "\\int": "Integral", "\\sin": "Sine", "\\cos": "Cosine" },
+    "id": "calc-h-004",
+    "topic": "calculus",
+    "difficulty": "hard",
+    "question": {
+      "latex": "\\int \\frac{1}{x}\\, dx = ?",
+      "plain": "Integrate 1/x dx"
+    },
+    "symbols": {
+      "\\int": "Integral",
+      "\\ln": "Natural logarithm"
+    },
     "palette": [
-      { "id": "p1", "latex": "u = \\sin(x)", "description": "Substitution: let u = sin(x), then du = cos(x)dx" },
-      { "id": "p2", "latex": "\\frac{\\sin^2(x)}{2} + C", "description": "∫u du = u²/2 = sin²(x)/2 + C" }
+      {
+        "id": "p1",
+        "latex": "\\ln|x| + C",
+        "description": "∫(1/x)dx = ln|x| + C — the absolute value handles negative x"
+      }
     ],
     "steps": [
-      { "id": "s1", "fromLatex": "\\int \\cos(x)\\sin(x)\\, dx", "toLatex": "\\int u\\, du", "paletteRef": "p1", "dropTargets": ["\\cos(x)\\sin(x)\\, dx"], "description": "Let u=sin(x), du=cos(x)dx — substitution simplifies the integrand" },
-      { "id": "s1a", "fromLatex": "u = \\sin(x) \\Rightarrow du = \\cos(x)\\,dx", "toLatex": "u = \\sin(x) \\Rightarrow du = \\cos(x)\\,dx \\quad (\\text{derivative of sin is cos})", "paletteRef": null, "dropTargets": [], "description": "Verify substitution: d/dx[sin(x)] = cos(x), so du = cos(x)dx ✓" },
-      { "id": "s2", "fromLatex": "\\int u\\, du", "toLatex": "\\frac{u^2}{2} + C", "paletteRef": null, "dropTargets": [], "description": "Integrate: ∫u du = u²/2" },
-      { "id": "s2a", "fromLatex": "\\text{Power rule: } \\int u\\,du = \\frac{u^{1+1}}{1+1} = \\frac{u^2}{2}", "toLatex": "\\int u\\,du = \\frac{u^{1+1}}{1+1} = \\frac{u^2}{2} \\quad (1+1=2)", "paletteRef": null, "dropTargets": [], "description": "Compute: reverse power rule, 1+1=2 for both exponent and denominator" },
-      { "id": "s3", "fromLatex": "\\frac{u^2}{2} + C", "toLatex": "\\frac{\\sin^2(x)}{2} + C", "paletteRef": "p2", "dropTargets": ["\\frac{u^2}{2} + C"], "description": "Substitute back u = sin(x)" }
-    ]
+      {
+        "id": "s1",
+        "fromLatex": "\\int \\frac{1}{x}\\, dx",
+        "toLatex": "\\int x^{-1}\\, dx",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "Rewrite as x⁻¹"
+      },
+      {
+        "id": "s2",
+        "fromLatex": "\\int x^{-1}\\, dx",
+        "toLatex": "\\ln|x| + C",
+        "paletteRef": "p1",
+        "dropTargets": [
+          "\\int x^{-1}\\, dx"
+        ],
+        "description": "Special case: power rule fails at n=−1; result is ln|x|"
+      }
+    ],
+    "image": "calc-h-004.svg"
+  },
+  {
+    "id": "calc-h-005",
+    "topic": "calculus",
+    "difficulty": "hard",
+    "question": {
+      "latex": "\\frac{d^2y}{dx^2}\\text{ of }y = x^4 - 3x^2 + 2",
+      "plain": "Find the second derivative of y = x⁴ − 3x² + 2"
+    },
+    "symbols": {
+      "\\frac{d^2y}{dx^2}": "Second derivative — rate of change of the rate of change"
+    },
+    "palette": [
+      {
+        "id": "p1",
+        "latex": "4x^3 - 6x",
+        "description": "First derivative: d/dx[x⁴−3x²+2] = 4x³−6x"
+      },
+      {
+        "id": "p2",
+        "latex": "12x^2 - 6",
+        "description": "Second derivative: d/dx[4x³−6x] = 12x²−6"
+      }
+    ],
+    "steps": [
+      {
+        "id": "s1",
+        "fromLatex": "y = x^4 - 3x^2 + 2",
+        "toLatex": "\\frac{dy}{dx} = 4x^3 - 6x",
+        "paletteRef": "p1",
+        "dropTargets": [
+          "x^4 - 3x^2 + 2"
+        ],
+        "description": "First derivative: differentiate each term"
+      },
+      {
+        "id": "s1a",
+        "fromLatex": "\\frac{d}{dx}[x^4] = 4x^3 \\quad (4-1=3)",
+        "toLatex": "\\frac{d}{dx}[x^4] = 4x^3 \\quad (\\text{power rule: }4-1=3)",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "Power rule on x⁴: multiply by 4, reduce exponent: 4−1=3 → 4x³"
+      },
+      {
+        "id": "s1b",
+        "fromLatex": "\\frac{d}{dx}[3x^2] = 3 \\cdot 2x = 6x \\quad (2-1=1)",
+        "toLatex": "\\frac{d}{dx}[3x^2] = 3 \\cdot 2x^{2-1} = 6x",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "Power rule on 3x²: multiply by 2, reduce exponent: 3×2=6, 2−1=1 → 6x"
+      },
+      {
+        "id": "s1c",
+        "fromLatex": "\\frac{d}{dx}[2] = 0",
+        "toLatex": "\\frac{d}{dx}[2] = 0 \\quad (\\text{constant rule})",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "Constant 2 has zero derivative"
+      },
+      {
+        "id": "s2",
+        "fromLatex": "\\frac{dy}{dx} = 4x^3 - 6x",
+        "toLatex": "\\frac{d^2y}{dx^2} = 12x^2 - 6",
+        "paletteRef": "p2",
+        "dropTargets": [
+          "4x^3 - 6x"
+        ],
+        "description": "Second derivative: differentiate again"
+      },
+      {
+        "id": "s2a",
+        "fromLatex": "\\frac{d}{dx}[4x^3] = 4 \\cdot 3x^2 = 12x^2 \\quad (4 \\times 3 = 12,\\ 3-1=2)",
+        "toLatex": "\\frac{d}{dx}[4x^3] = 4 \\cdot 3x^2 = 12x^2 \\quad (4 \\times 3 = 12)",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "Power rule on 4x³: multiply by 3, reduce exponent: 4×3=12, 3−1=2 → 12x²"
+      },
+      {
+        "id": "s2b",
+        "fromLatex": "\\frac{d}{dx}[6x] = 6 \\cdot 1 = 6 \\quad (\\text{constant coefficient})",
+        "toLatex": "\\frac{d}{dx}[6x] = 6",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "d/dx[6x] = 6 × 1 = 6"
+      }
+    ],
+    "image": "calc-h-005.svg"
+  },
+  {
+    "id": "calc-h-006",
+    "topic": "calculus",
+    "difficulty": "hard",
+    "question": {
+      "latex": "\\int \\sin(x)\\, dx = ?",
+      "plain": "Integrate sin(x) dx"
+    },
+    "symbols": {
+      "\\int": "Integral",
+      "\\sin": "Sine",
+      "\\cos": "Cosine"
+    },
+    "palette": [
+      {
+        "id": "p1",
+        "latex": "-\\cos(x) + C",
+        "description": "∫sin(x)dx = −cos(x) + C"
+      }
+    ],
+    "steps": [
+      {
+        "id": "s1",
+        "fromLatex": "\\int \\sin(x)\\, dx",
+        "toLatex": "-\\cos(x)",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "Antiderivative of sin(x) is −cos(x): verify by differentiating"
+      },
+      {
+        "id": "s1a",
+        "fromLatex": "\\frac{d}{dx}[-\\cos(x)] = -(-\\sin(x)) = \\sin(x) \\checkmark",
+        "toLatex": "\\frac{d}{dx}[-\\cos(x)] = +\\sin(x) \\checkmark \\quad (\\text{derivative of }-\\cos x = \\sin x)",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "Verify: d/dx[−cos(x)] = −(−sin(x)) = +sin(x) ✓"
+      },
+      {
+        "id": "s2",
+        "fromLatex": "-\\cos(x)",
+        "toLatex": "-\\cos(x) + C",
+        "paletteRef": "p1",
+        "dropTargets": [
+          "-\\cos(x)"
+        ],
+        "description": "Add constant of integration"
+      }
+    ],
+    "image": "calc-h-006.svg"
+  },
+  {
+    "id": "calc-h-007",
+    "topic": "calculus",
+    "difficulty": "hard",
+    "question": {
+      "latex": "\\frac{d}{dx}\\bigl[e^{x^2}\\bigr] = ?",
+      "plain": "Differentiate e^(x²) using the chain rule"
+    },
+    "symbols": {
+      "\\frac{d}{dx}": "Derivative",
+      "e": "Euler's number"
+    },
+    "palette": [
+      {
+        "id": "p1",
+        "latex": "e^{x^2}",
+        "description": "Outer derivative of eᵘ is eᵘ — keep the inner function intact"
+      },
+      {
+        "id": "p2",
+        "latex": "2xe^{x^2}",
+        "description": "Multiply by inner derivative d/dx[x²] = 2x"
+      }
+    ],
+    "steps": [
+      {
+        "id": "s1",
+        "fromLatex": "\\frac{d}{dx}\\bigl[e^{x^2}\\bigr]",
+        "toLatex": "e^{x^2} \\cdot \\frac{d}{dx}[x^2]",
+        "paletteRef": "p1",
+        "dropTargets": [
+          "e^{x^2}"
+        ],
+        "description": "Chain rule: outer derivative eᵘ, times inner derivative"
+      },
+      {
+        "id": "s1a",
+        "fromLatex": "\\frac{d}{dx}[x^2] = 2x \\quad (2-1=1)",
+        "toLatex": "\\frac{d}{dx}[x^2] = 2x \\quad (\\text{power rule: multiply by 2, reduce exponent }2-1=1)",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "Inner derivative: power rule on x² → 2x"
+      },
+      {
+        "id": "s2",
+        "fromLatex": "e^{x^2} \\cdot \\frac{d}{dx}[x^2]",
+        "toLatex": "e^{x^2} \\cdot 2x",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "Inner derivative: d/dx[x²] = 2x"
+      },
+      {
+        "id": "s3",
+        "fromLatex": "e^{x^2} \\cdot 2x",
+        "toLatex": "2xe^{x^2}",
+        "paletteRef": "p2",
+        "dropTargets": [
+          "e^{x^2} \\cdot 2x"
+        ],
+        "description": "Write in standard form"
+      }
+    ],
+    "image": "calc-h-007.svg"
+  },
+  {
+    "id": "calc-h-008",
+    "topic": "calculus",
+    "difficulty": "hard",
+    "question": {
+      "latex": "\\int_1^e \\frac{1}{x}\\, dx = ?",
+      "plain": "Evaluate the definite integral of 1/x from 1 to e"
+    },
+    "symbols": {
+      "\\int": "Definite integral",
+      "\\ln": "Natural logarithm",
+      "e": "Euler's number — base of natural log"
+    },
+    "palette": [
+      {
+        "id": "p1",
+        "latex": "\\ln|x|",
+        "description": "Antiderivative of 1/x is ln|x|"
+      },
+      {
+        "id": "p2",
+        "latex": "1",
+        "description": "ln(e) − ln(1) = 1 − 0 = 1"
+      }
+    ],
+    "steps": [
+      {
+        "id": "s1",
+        "fromLatex": "\\int_1^e \\frac{1}{x}\\, dx",
+        "toLatex": "\\left[\\ln|x|\\right]_1^e",
+        "paletteRef": "p1",
+        "dropTargets": [
+          "\\int_1^e \\frac{1}{x}\\, dx"
+        ],
+        "description": "Antiderivative is ln|x|"
+      },
+      {
+        "id": "s2",
+        "fromLatex": "\\left[\\ln|x|\\right]_1^e",
+        "toLatex": "\\ln(e) - \\ln(1)",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "Evaluate at bounds: ln(e) − ln(1)"
+      },
+      {
+        "id": "s2a",
+        "fromLatex": "\\ln(e) = 1 \\quad (e^1 = e)",
+        "toLatex": "\\ln(e) = 1 \\quad (\\text{because }e^1 = e)",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "Compute: ln(e) = 1 (because e¹ = e)"
+      },
+      {
+        "id": "s2b",
+        "fromLatex": "\\ln(1) = 0 \\quad (e^0 = 1)",
+        "toLatex": "\\ln(1) = 0 \\quad (\\text{because }e^0 = 1)",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "Compute: ln(1) = 0 (because e⁰ = 1)"
+      },
+      {
+        "id": "s3",
+        "fromLatex": "\\ln(e) - \\ln(1)",
+        "toLatex": "1 - 0",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "ln(e)=1 and ln(1)=0 by definition"
+      },
+      {
+        "id": "s4",
+        "fromLatex": "1 - 0",
+        "toLatex": "1",
+        "paletteRef": "p2",
+        "dropTargets": [
+          "1 - 0"
+        ],
+        "description": "1 − 0 = 1"
+      }
+    ],
+    "image": "calc-h-008.svg"
+  },
+  {
+    "id": "calc-h-009",
+    "topic": "calculus",
+    "difficulty": "hard",
+    "question": {
+      "latex": "\\frac{d}{dx}\\bigl[x^x\\bigr] = ?",
+      "plain": "Differentiate xˣ using logarithmic differentiation"
+    },
+    "symbols": {
+      "\\frac{d}{dx}": "Derivative",
+      "\\ln": "Natural logarithm",
+      "e": "Euler's number"
+    },
+    "palette": [
+      {
+        "id": "p1",
+        "latex": "\\ln(y) = x\\ln(x)",
+        "description": "Take ln of both sides: ln(y) = x ln(x)"
+      },
+      {
+        "id": "p2",
+        "latex": "x^x(\\ln x + 1)",
+        "description": "Result: xˣ(ln x + 1)"
+      }
+    ],
+    "steps": [
+      {
+        "id": "s1",
+        "fromLatex": "y = x^x",
+        "toLatex": "\\ln(y) = \\ln(x^x)",
+        "paletteRef": "p1",
+        "dropTargets": [
+          "y = x^x"
+        ],
+        "description": "Take natural log of both sides"
+      },
+      {
+        "id": "s2",
+        "fromLatex": "\\ln(y) = \\ln(x^x)",
+        "toLatex": "\\ln(y) = x\\ln(x)",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "Log power rule: ln(xˣ) = x·ln(x)"
+      },
+      {
+        "id": "s3",
+        "fromLatex": "\\ln(y) = x\\ln(x)",
+        "toLatex": "\\frac{1}{y}\\frac{dy}{dx} = \\ln(x) + 1",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "Differentiate both sides: left gets 1/y·dy/dx; right uses product rule"
+      },
+      {
+        "id": "s3a",
+        "fromLatex": "\\frac{d}{dx}[x \\cdot \\ln(x)] = 1 \\cdot \\ln(x) + x \\cdot \\frac{1}{x} = \\ln(x) + 1",
+        "toLatex": "\\frac{d}{dx}[x \\ln x] = 1 \\cdot \\ln x + x \\cdot \\frac{1}{x} = \\ln x + \\frac{x}{x} = \\ln x + 1",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "Product rule on x·ln(x): (1)·ln(x) + x·(1/x) = ln(x) + x/x = ln(x)+1"
+      },
+      {
+        "id": "s3b",
+        "fromLatex": "\\frac{x}{x} = 1",
+        "toLatex": "\\frac{x}{x} = 1 \\quad (\\text{any nonzero number divided by itself})",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "Compute: x/x = 1"
+      },
+      {
+        "id": "s4",
+        "fromLatex": "\\frac{1}{y}\\frac{dy}{dx} = \\ln(x) + 1",
+        "toLatex": "\\frac{dy}{dx} = y(\\ln x + 1)",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "Multiply both sides by y"
+      },
+      {
+        "id": "s5",
+        "fromLatex": "\\frac{dy}{dx} = y(\\ln x + 1)",
+        "toLatex": "\\frac{d}{dx}[x^x] = x^x(\\ln x + 1)",
+        "paletteRef": "p2",
+        "dropTargets": [
+          "y(\\ln x + 1)"
+        ],
+        "description": "Substitute back y = xˣ"
+      }
+    ],
+    "image": "calc-h-009.svg"
+  },
+  {
+    "id": "calc-h-010",
+    "topic": "calculus",
+    "difficulty": "hard",
+    "question": {
+      "latex": "\\int \\cos(x)\\sin(x)\\, dx = ?",
+      "plain": "Integrate cos(x)sin(x) dx using substitution"
+    },
+    "symbols": {
+      "\\int": "Integral",
+      "\\sin": "Sine",
+      "\\cos": "Cosine"
+    },
+    "palette": [
+      {
+        "id": "p1",
+        "latex": "u = \\sin(x)",
+        "description": "Substitution: let u = sin(x), then du = cos(x)dx"
+      },
+      {
+        "id": "p2",
+        "latex": "\\frac{\\sin^2(x)}{2} + C",
+        "description": "∫u du = u²/2 = sin²(x)/2 + C"
+      }
+    ],
+    "steps": [
+      {
+        "id": "s1",
+        "fromLatex": "\\int \\cos(x)\\sin(x)\\, dx",
+        "toLatex": "\\int u\\, du",
+        "paletteRef": "p1",
+        "dropTargets": [
+          "\\cos(x)\\sin(x)\\, dx"
+        ],
+        "description": "Let u=sin(x), du=cos(x)dx — substitution simplifies the integrand"
+      },
+      {
+        "id": "s1a",
+        "fromLatex": "u = \\sin(x) \\Rightarrow du = \\cos(x)\\,dx",
+        "toLatex": "u = \\sin(x) \\Rightarrow du = \\cos(x)\\,dx \\quad (\\text{derivative of sin is cos})",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "Verify substitution: d/dx[sin(x)] = cos(x), so du = cos(x)dx ✓"
+      },
+      {
+        "id": "s2",
+        "fromLatex": "\\int u\\, du",
+        "toLatex": "\\frac{u^2}{2} + C",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "Integrate: ∫u du = u²/2"
+      },
+      {
+        "id": "s2a",
+        "fromLatex": "\\text{Power rule: } \\int u\\,du = \\frac{u^{1+1}}{1+1} = \\frac{u^2}{2}",
+        "toLatex": "\\int u\\,du = \\frac{u^{1+1}}{1+1} = \\frac{u^2}{2} \\quad (1+1=2)",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "Compute: reverse power rule, 1+1=2 for both exponent and denominator"
+      },
+      {
+        "id": "s3",
+        "fromLatex": "\\frac{u^2}{2} + C",
+        "toLatex": "\\frac{\\sin^2(x)}{2} + C",
+        "paletteRef": "p2",
+        "dropTargets": [
+          "\\frac{u^2}{2} + C"
+        ],
+        "description": "Substitute back u = sin(x)"
+      }
+    ],
+    "image": "calc-h-010.svg"
   }
 ]

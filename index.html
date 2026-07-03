@@ -312,6 +312,21 @@
       font-weight: 600;
     }
 
+    /* Puzzle diagram */
+    #puzzle-img {
+      margin-top: 12px;
+      display: flex;
+      justify-content: center;
+    }
+    #puzzle-img:empty { display: none; }
+    #puzzle-img img {
+      max-width: 240px;
+      max-height: 160px;
+      width: auto;
+      height: auto;
+      border-radius: 6px;
+    }
+
     /* Step fade transition */
     #step-equation {
       transition: opacity 0.4s ease;
@@ -436,6 +451,7 @@
       <div id="puzzle-num-badge">—</div>
       <div id="question-render">—</div>
       <div id="question-plain"></div>
+      <div id="puzzle-img"></div>
     </div>
 
     <div id="step-box" class="auto-step">
@@ -566,6 +582,12 @@ function renderAll() {
 function renderQuestion() {
   renderLatex(G.puzzle.question.latex, qRender);
   qPlain.textContent = G.puzzle.question.plain;
+  const imgDiv = $('puzzle-img');
+  if (G.puzzle.image) {
+    imgDiv.innerHTML = `<img src="puzzles/images/${G.puzzle.image}" alt="diagram" />`;
+  } else {
+    imgDiv.innerHTML = '';
+  }
 }
 
 // ── Palette ────────────────────────────────────────────────────

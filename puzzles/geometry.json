@@ -1,491 +1,2240 @@
 [
   {
-    "id": "geo-e-001", "topic": "geometry", "difficulty": "easy",
-    "question": { "latex": "a^2 + b^2 = c^2,\\quad a=3,\\ b=4", "plain": "Find the hypotenuse using the Pythagorean theorem with a=3, b=4" },
-    "symbols": { "a": "One leg of the right triangle", "b": "The other leg", "c": "Hypotenuse — the longest side, opposite the right angle" },
+    "id": "geo-e-001",
+    "topic": "geometry",
+    "difficulty": "easy",
+    "question": {
+      "latex": "a^2 + b^2 = c^2,\\quad a=3,\\ b=4",
+      "plain": "Find the hypotenuse using the Pythagorean theorem with a=3, b=4"
+    },
+    "symbols": {
+      "a": "One leg of the right triangle",
+      "b": "The other leg",
+      "c": "Hypotenuse — the longest side, opposite the right angle"
+    },
     "palette": [
-      { "id": "p1", "latex": "3^2 + 4^2", "description": "Substitute a=3 and b=4 into a² + b²" },
-      { "id": "p2", "latex": "\\sqrt{25}", "description": "Take the square root to solve for c" }
+      {
+        "id": "p1",
+        "latex": "3^2 + 4^2",
+        "description": "Substitute a=3 and b=4 into a² + b²"
+      },
+      {
+        "id": "p2",
+        "latex": "\\sqrt{25}",
+        "description": "Take the square root to solve for c"
+      }
     ],
     "steps": [
-      { "id": "s1", "fromLatex": "a^2 + b^2 = c^2", "toLatex": "3^2 + 4^2 = c^2", "paletteRef": "p1", "dropTargets": ["a^2 + b^2"], "description": "Substitute a=3 and b=4" },
-      { "id": "s1a", "fromLatex": "3^2 = 9", "toLatex": "3^2 = 3 \\times 3 = 9", "paletteRef": null, "dropTargets": [], "description": "Compute: 3² = 3 × 3 = 9" },
-      { "id": "s1b", "fromLatex": "4^2 = 16", "toLatex": "4^2 = 4 \\times 4 = 16", "paletteRef": null, "dropTargets": [], "description": "Compute: 4² = 4 × 4 = 16" },
-      { "id": "s2", "fromLatex": "3^2 + 4^2 = c^2", "toLatex": "9 + 16 = c^2", "paletteRef": null, "dropTargets": [], "description": "Evaluate 3²=9 and 4²=16" },
-      { "id": "s2a", "fromLatex": "9 + 16 = 25", "toLatex": "9 + 16 = 25", "paletteRef": null, "dropTargets": [], "description": "Compute: 9 + 16 = 25" },
-      { "id": "s3", "fromLatex": "9 + 16 = c^2", "toLatex": "25 = c^2", "paletteRef": null, "dropTargets": [], "description": "9 + 16 = 25" },
-      { "id": "s3a", "fromLatex": "\\sqrt{25} = 5", "toLatex": "\\sqrt{25} = 5 \\quad (5^2 = 25)", "paletteRef": null, "dropTargets": [], "description": "Compute: √25 = 5 (because 5² = 25)" },
-      { "id": "s4", "fromLatex": "25 = c^2", "toLatex": "c = 5", "paletteRef": "p2", "dropTargets": ["c^2"], "description": "√25 = 5, so c = 5" }
-    ]
+      {
+        "id": "s1",
+        "fromLatex": "a^2 + b^2 = c^2",
+        "toLatex": "3^2 + 4^2 = c^2",
+        "paletteRef": "p1",
+        "dropTargets": [
+          "a^2 + b^2"
+        ],
+        "description": "Substitute a=3 and b=4"
+      },
+      {
+        "id": "s1a",
+        "fromLatex": "3^2 = 9",
+        "toLatex": "3^2 = 3 \\times 3 = 9",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "Compute: 3² = 3 × 3 = 9"
+      },
+      {
+        "id": "s1b",
+        "fromLatex": "4^2 = 16",
+        "toLatex": "4^2 = 4 \\times 4 = 16",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "Compute: 4² = 4 × 4 = 16"
+      },
+      {
+        "id": "s2",
+        "fromLatex": "3^2 + 4^2 = c^2",
+        "toLatex": "9 + 16 = c^2",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "Evaluate 3²=9 and 4²=16"
+      },
+      {
+        "id": "s2a",
+        "fromLatex": "9 + 16 = 25",
+        "toLatex": "9 + 16 = 25",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "Compute: 9 + 16 = 25"
+      },
+      {
+        "id": "s3",
+        "fromLatex": "9 + 16 = c^2",
+        "toLatex": "25 = c^2",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "9 + 16 = 25"
+      },
+      {
+        "id": "s3a",
+        "fromLatex": "\\sqrt{25} = 5",
+        "toLatex": "\\sqrt{25} = 5 \\quad (5^2 = 25)",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "Compute: √25 = 5 (because 5² = 25)"
+      },
+      {
+        "id": "s4",
+        "fromLatex": "25 = c^2",
+        "toLatex": "c = 5",
+        "paletteRef": "p2",
+        "dropTargets": [
+          "c^2"
+        ],
+        "description": "√25 = 5, so c = 5"
+      }
+    ],
+    "image": "geo-e-001.svg"
   },
   {
-    "id": "geo-e-002", "topic": "geometry", "difficulty": "easy",
-    "question": { "latex": "P = 4s,\\quad s = 7", "plain": "Find the perimeter of a square with side length 7" },
-    "symbols": { "P": "Perimeter — total length around the outside", "s": "Side length of the square" },
+    "id": "geo-e-002",
+    "topic": "geometry",
+    "difficulty": "easy",
+    "question": {
+      "latex": "P = 4s,\\quad s = 7",
+      "plain": "Find the perimeter of a square with side length 7"
+    },
+    "symbols": {
+      "P": "Perimeter — total length around the outside",
+      "s": "Side length of the square"
+    },
     "palette": [
-      { "id": "p1", "latex": "7", "description": "Substitute s = 7 into the formula" },
-      { "id": "p2", "latex": "28", "description": "4 × 7 = 28" }
+      {
+        "id": "p1",
+        "latex": "7",
+        "description": "Substitute s = 7 into the formula"
+      },
+      {
+        "id": "p2",
+        "latex": "28",
+        "description": "4 × 7 = 28"
+      }
     ],
     "steps": [
-      { "id": "s1", "fromLatex": "P = 4s", "toLatex": "P = 4 \\times 7", "paletteRef": "p1", "dropTargets": ["s"], "description": "Substitute s = 7" },
-      { "id": "s1a", "fromLatex": "4 \\times 7 = 28", "toLatex": "4 \\times 7 = 28", "paletteRef": null, "dropTargets": [], "description": "Compute: 4 × 7 = 28" },
-      { "id": "s2", "fromLatex": "P = 4 \\times 7", "toLatex": "P = 28", "paletteRef": "p2", "dropTargets": ["4 \\times 7"], "description": "Multiply: 4 × 7 = 28" }
-    ]
+      {
+        "id": "s1",
+        "fromLatex": "P = 4s",
+        "toLatex": "P = 4 \\times 7",
+        "paletteRef": "p1",
+        "dropTargets": [
+          "s"
+        ],
+        "description": "Substitute s = 7"
+      },
+      {
+        "id": "s1a",
+        "fromLatex": "4 \\times 7 = 28",
+        "toLatex": "4 \\times 7 = 28",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "Compute: 4 × 7 = 28"
+      },
+      {
+        "id": "s2",
+        "fromLatex": "P = 4 \\times 7",
+        "toLatex": "P = 28",
+        "paletteRef": "p2",
+        "dropTargets": [
+          "4 \\times 7"
+        ],
+        "description": "Multiply: 4 × 7 = 28"
+      }
+    ],
+    "image": "geo-e-002.svg"
   },
   {
-    "id": "geo-e-003", "topic": "geometry", "difficulty": "easy",
-    "question": { "latex": "A = \\frac{1}{2}bh,\\quad b=10,\\ h=6", "plain": "Find the area of a triangle with base 10 and height 6" },
-    "symbols": { "A": "Area of the triangle", "b": "Base length", "h": "Height — perpendicular distance from base to apex" },
+    "id": "geo-e-003",
+    "topic": "geometry",
+    "difficulty": "easy",
+    "question": {
+      "latex": "A = \\frac{1}{2}bh,\\quad b=10,\\ h=6",
+      "plain": "Find the area of a triangle with base 10 and height 6"
+    },
+    "symbols": {
+      "A": "Area of the triangle",
+      "b": "Base length",
+      "h": "Height — perpendicular distance from base to apex"
+    },
     "palette": [
-      { "id": "p1", "latex": "\\frac{1}{2} \\times 10 \\times 6", "description": "Substitute b=10 and h=6 into the formula" },
-      { "id": "p2", "latex": "30", "description": "½ × 10 × 6 = 5 × 6 = 30" }
+      {
+        "id": "p1",
+        "latex": "\\frac{1}{2} \\times 10 \\times 6",
+        "description": "Substitute b=10 and h=6 into the formula"
+      },
+      {
+        "id": "p2",
+        "latex": "30",
+        "description": "½ × 10 × 6 = 5 × 6 = 30"
+      }
     ],
     "steps": [
-      { "id": "s1", "fromLatex": "A = \\frac{1}{2}bh", "toLatex": "A = \\frac{1}{2} \\times 10 \\times 6", "paletteRef": "p1", "dropTargets": ["bh"], "description": "Substitute b=10, h=6" },
-      { "id": "s1a", "fromLatex": "10 \\div 2 = 5", "toLatex": "\\tfrac{1}{2} \\times 10 = 10 \\div 2 = 5", "paletteRef": null, "dropTargets": [], "description": "Compute: ½ × 10 = 10 ÷ 2 = 5" },
-      { "id": "s2", "fromLatex": "A = \\frac{1}{2} \\times 10 \\times 6", "toLatex": "A = 5 \\times 6", "paletteRef": null, "dropTargets": [], "description": "½ × 10 = 5" },
-      { "id": "s2a", "fromLatex": "5 \\times 6 = 30", "toLatex": "5 \\times 6 = 30", "paletteRef": null, "dropTargets": [], "description": "Compute: 5 × 6 = 30" },
-      { "id": "s3", "fromLatex": "A = 5 \\times 6", "toLatex": "A = 30", "paletteRef": "p2", "dropTargets": ["5 \\times 6"], "description": "5 × 6 = 30" }
-    ]
+      {
+        "id": "s1",
+        "fromLatex": "A = \\frac{1}{2}bh",
+        "toLatex": "A = \\frac{1}{2} \\times 10 \\times 6",
+        "paletteRef": "p1",
+        "dropTargets": [
+          "bh"
+        ],
+        "description": "Substitute b=10, h=6"
+      },
+      {
+        "id": "s1a",
+        "fromLatex": "10 \\div 2 = 5",
+        "toLatex": "\\tfrac{1}{2} \\times 10 = 10 \\div 2 = 5",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "Compute: ½ × 10 = 10 ÷ 2 = 5"
+      },
+      {
+        "id": "s2",
+        "fromLatex": "A = \\frac{1}{2} \\times 10 \\times 6",
+        "toLatex": "A = 5 \\times 6",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "½ × 10 = 5"
+      },
+      {
+        "id": "s2a",
+        "fromLatex": "5 \\times 6 = 30",
+        "toLatex": "5 \\times 6 = 30",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "Compute: 5 × 6 = 30"
+      },
+      {
+        "id": "s3",
+        "fromLatex": "A = 5 \\times 6",
+        "toLatex": "A = 30",
+        "paletteRef": "p2",
+        "dropTargets": [
+          "5 \\times 6"
+        ],
+        "description": "5 × 6 = 30"
+      }
+    ],
+    "image": "geo-e-003.svg"
   },
   {
-    "id": "geo-e-004", "topic": "geometry", "difficulty": "easy",
-    "question": { "latex": "P = 2(l + w),\\quad l=8,\\ w=5", "plain": "Perimeter of a rectangle with length 8 and width 5" },
-    "symbols": { "P": "Perimeter", "l": "Length", "w": "Width" },
+    "id": "geo-e-004",
+    "topic": "geometry",
+    "difficulty": "easy",
+    "question": {
+      "latex": "P = 2(l + w),\\quad l=8,\\ w=5",
+      "plain": "Perimeter of a rectangle with length 8 and width 5"
+    },
+    "symbols": {
+      "P": "Perimeter",
+      "l": "Length",
+      "w": "Width"
+    },
     "palette": [
-      { "id": "p1", "latex": "8 + 5", "description": "Sum length and width: 8 + 5 = 13" },
-      { "id": "p2", "latex": "26", "description": "2 × 13 = 26" }
+      {
+        "id": "p1",
+        "latex": "8 + 5",
+        "description": "Sum length and width: 8 + 5 = 13"
+      },
+      {
+        "id": "p2",
+        "latex": "26",
+        "description": "2 × 13 = 26"
+      }
     ],
     "steps": [
-      { "id": "s1", "fromLatex": "P = 2(l + w)", "toLatex": "P = 2(8 + 5)", "paletteRef": "p1", "dropTargets": ["l + w"], "description": "Substitute l=8, w=5" },
-      { "id": "s1a", "fromLatex": "8 + 5 = 13", "toLatex": "8 + 5 = 13", "paletteRef": null, "dropTargets": [], "description": "Compute: 8 + 5 = 13" },
-      { "id": "s2", "fromLatex": "P = 2(8 + 5)", "toLatex": "P = 2 \\times 13", "paletteRef": null, "dropTargets": [], "description": "Add inside parentheses: 8+5=13" },
-      { "id": "s2a", "fromLatex": "2 \\times 13 = 26", "toLatex": "2 \\times 13 = 26", "paletteRef": null, "dropTargets": [], "description": "Compute: 2 × 13 = 26" },
-      { "id": "s3", "fromLatex": "P = 2 \\times 13", "toLatex": "P = 26", "paletteRef": "p2", "dropTargets": ["2 \\times 13"], "description": "2 × 13 = 26" }
-    ]
+      {
+        "id": "s1",
+        "fromLatex": "P = 2(l + w)",
+        "toLatex": "P = 2(8 + 5)",
+        "paletteRef": "p1",
+        "dropTargets": [
+          "l + w"
+        ],
+        "description": "Substitute l=8, w=5"
+      },
+      {
+        "id": "s1a",
+        "fromLatex": "8 + 5 = 13",
+        "toLatex": "8 + 5 = 13",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "Compute: 8 + 5 = 13"
+      },
+      {
+        "id": "s2",
+        "fromLatex": "P = 2(8 + 5)",
+        "toLatex": "P = 2 \\times 13",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "Add inside parentheses: 8+5=13"
+      },
+      {
+        "id": "s2a",
+        "fromLatex": "2 \\times 13 = 26",
+        "toLatex": "2 \\times 13 = 26",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "Compute: 2 × 13 = 26"
+      },
+      {
+        "id": "s3",
+        "fromLatex": "P = 2 \\times 13",
+        "toLatex": "P = 26",
+        "paletteRef": "p2",
+        "dropTargets": [
+          "2 \\times 13"
+        ],
+        "description": "2 × 13 = 26"
+      }
+    ],
+    "image": "geo-e-004.svg"
   },
   {
-    "id": "geo-e-005", "topic": "geometry", "difficulty": "easy",
-    "question": { "latex": "A = l \\times w,\\quad l=9,\\ w=4", "plain": "Area of a rectangle with length 9 and width 4" },
-    "symbols": { "A": "Area — space enclosed inside the rectangle", "l": "Length", "w": "Width" },
+    "id": "geo-e-005",
+    "topic": "geometry",
+    "difficulty": "easy",
+    "question": {
+      "latex": "A = l \\times w,\\quad l=9,\\ w=4",
+      "plain": "Area of a rectangle with length 9 and width 4"
+    },
+    "symbols": {
+      "A": "Area — space enclosed inside the rectangle",
+      "l": "Length",
+      "w": "Width"
+    },
     "palette": [
-      { "id": "p1", "latex": "9 \\times 4", "description": "Substitute l=9, w=4 into l × w" },
-      { "id": "p2", "latex": "36", "description": "9 × 4 = 36" }
+      {
+        "id": "p1",
+        "latex": "9 \\times 4",
+        "description": "Substitute l=9, w=4 into l × w"
+      },
+      {
+        "id": "p2",
+        "latex": "36",
+        "description": "9 × 4 = 36"
+      }
     ],
     "steps": [
-      { "id": "s1", "fromLatex": "A = l \\times w", "toLatex": "A = 9 \\times 4", "paletteRef": "p1", "dropTargets": ["l \\times w"], "description": "Substitute l=9, w=4" },
-      { "id": "s1a", "fromLatex": "9 \\times 4 = 36", "toLatex": "9 \\times 4 = 36", "paletteRef": null, "dropTargets": [], "description": "Compute: 9 × 4 = 36" },
-      { "id": "s2", "fromLatex": "A = 9 \\times 4", "toLatex": "A = 36", "paletteRef": "p2", "dropTargets": ["9 \\times 4"], "description": "9 × 4 = 36" }
-    ]
+      {
+        "id": "s1",
+        "fromLatex": "A = l \\times w",
+        "toLatex": "A = 9 \\times 4",
+        "paletteRef": "p1",
+        "dropTargets": [
+          "l \\times w"
+        ],
+        "description": "Substitute l=9, w=4"
+      },
+      {
+        "id": "s1a",
+        "fromLatex": "9 \\times 4 = 36",
+        "toLatex": "9 \\times 4 = 36",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "Compute: 9 × 4 = 36"
+      },
+      {
+        "id": "s2",
+        "fromLatex": "A = 9 \\times 4",
+        "toLatex": "A = 36",
+        "paletteRef": "p2",
+        "dropTargets": [
+          "9 \\times 4"
+        ],
+        "description": "9 × 4 = 36"
+      }
+    ],
+    "image": "geo-e-005.svg"
   },
   {
-    "id": "geo-e-006", "topic": "geometry", "difficulty": "easy",
-    "question": { "latex": "C = 2\\pi r,\\quad r = 3", "plain": "Circumference of a circle with radius 3" },
-    "symbols": { "C": "Circumference — distance around the circle", "r": "Radius", "\\pi": "Pi ≈ 3.14159" },
+    "id": "geo-e-006",
+    "topic": "geometry",
+    "difficulty": "easy",
+    "question": {
+      "latex": "C = 2\\pi r,\\quad r = 3",
+      "plain": "Circumference of a circle with radius 3"
+    },
+    "symbols": {
+      "C": "Circumference — distance around the circle",
+      "r": "Radius",
+      "\\pi": "Pi ≈ 3.14159"
+    },
     "palette": [
-      { "id": "p1", "latex": "3", "description": "Substitute r = 3 into the formula" },
-      { "id": "p2", "latex": "6\\pi", "description": "2π × 3 = 6π ≈ 18.85" }
+      {
+        "id": "p1",
+        "latex": "3",
+        "description": "Substitute r = 3 into the formula"
+      },
+      {
+        "id": "p2",
+        "latex": "6\\pi",
+        "description": "2π × 3 = 6π ≈ 18.85"
+      }
     ],
     "steps": [
-      { "id": "s1", "fromLatex": "C = 2\\pi r", "toLatex": "C = 2\\pi \\times 3", "paletteRef": "p1", "dropTargets": ["r"], "description": "Substitute r = 3" },
-      { "id": "s1a", "fromLatex": "2 \\times 3 = 6", "toLatex": "2 \\times 3 = 6", "paletteRef": null, "dropTargets": [], "description": "Compute: 2 × 3 = 6 (the numeric coefficient)" },
-      { "id": "s2", "fromLatex": "C = 2\\pi \\times 3", "toLatex": "C = 6\\pi", "paletteRef": "p2", "dropTargets": ["2\\pi \\times 3"], "description": "Multiply 2 × 3 = 6 and keep π" }
-    ]
+      {
+        "id": "s1",
+        "fromLatex": "C = 2\\pi r",
+        "toLatex": "C = 2\\pi \\times 3",
+        "paletteRef": "p1",
+        "dropTargets": [
+          "r"
+        ],
+        "description": "Substitute r = 3"
+      },
+      {
+        "id": "s1a",
+        "fromLatex": "2 \\times 3 = 6",
+        "toLatex": "2 \\times 3 = 6",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "Compute: 2 × 3 = 6 (the numeric coefficient)"
+      },
+      {
+        "id": "s2",
+        "fromLatex": "C = 2\\pi \\times 3",
+        "toLatex": "C = 6\\pi",
+        "paletteRef": "p2",
+        "dropTargets": [
+          "2\\pi \\times 3"
+        ],
+        "description": "Multiply 2 × 3 = 6 and keep π"
+      }
+    ],
+    "image": "geo-e-006.svg"
   },
   {
-    "id": "geo-e-007", "topic": "geometry", "difficulty": "easy",
-    "question": { "latex": "V = s^3,\\quad s = 4", "plain": "Volume of a cube with side length 4" },
-    "symbols": { "V": "Volume — space inside the 3D shape", "s": "Side length of the cube" },
+    "id": "geo-e-007",
+    "topic": "geometry",
+    "difficulty": "easy",
+    "question": {
+      "latex": "V = s^3,\\quad s = 4",
+      "plain": "Volume of a cube with side length 4"
+    },
+    "symbols": {
+      "V": "Volume — space inside the 3D shape",
+      "s": "Side length of the cube"
+    },
     "palette": [
-      { "id": "p1", "latex": "4^3", "description": "Substitute s=4: volume = 4³" },
-      { "id": "p2", "latex": "64", "description": "4³ = 4 × 4 × 4 = 64" }
+      {
+        "id": "p1",
+        "latex": "4^3",
+        "description": "Substitute s=4: volume = 4³"
+      },
+      {
+        "id": "p2",
+        "latex": "64",
+        "description": "4³ = 4 × 4 × 4 = 64"
+      }
     ],
     "steps": [
-      { "id": "s1", "fromLatex": "V = s^3", "toLatex": "V = 4^3", "paletteRef": "p1", "dropTargets": ["s^3"], "description": "Substitute s = 4" },
-      { "id": "s1a", "fromLatex": "4^3 = 4 \\times 4 \\times 4 = 64", "toLatex": "4^3 = 4 \\times 4 \\times 4 = 64", "paletteRef": null, "dropTargets": [], "description": "Compute: 4³ = 4×4×4 = 64" },
-      { "id": "s2", "fromLatex": "V = 4^3", "toLatex": "V = 64", "paletteRef": "p2", "dropTargets": ["4^3"], "description": "4³ = 64" }
-    ]
+      {
+        "id": "s1",
+        "fromLatex": "V = s^3",
+        "toLatex": "V = 4^3",
+        "paletteRef": "p1",
+        "dropTargets": [
+          "s^3"
+        ],
+        "description": "Substitute s = 4"
+      },
+      {
+        "id": "s1a",
+        "fromLatex": "4^3 = 4 \\times 4 \\times 4 = 64",
+        "toLatex": "4^3 = 4 \\times 4 \\times 4 = 64",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "Compute: 4³ = 4×4×4 = 64"
+      },
+      {
+        "id": "s2",
+        "fromLatex": "V = 4^3",
+        "toLatex": "V = 64",
+        "paletteRef": "p2",
+        "dropTargets": [
+          "4^3"
+        ],
+        "description": "4³ = 64"
+      }
+    ],
+    "image": "geo-e-007.svg"
   },
   {
-    "id": "geo-e-008", "topic": "geometry", "difficulty": "easy",
-    "question": { "latex": "\\text{Sum of angles in a triangle} = ?", "plain": "What is the sum of interior angles in a triangle?" },
+    "id": "geo-e-008",
+    "topic": "geometry",
+    "difficulty": "easy",
+    "question": {
+      "latex": "\\text{Sum of angles in a triangle} = ?",
+      "plain": "What is the sum of interior angles in a triangle?"
+    },
     "symbols": {},
     "palette": [
-      { "id": "p1", "latex": "180^\\circ", "description": "All triangles have interior angles summing to 180°" }
+      {
+        "id": "p1",
+        "latex": "180^\\circ",
+        "description": "All triangles have interior angles summing to 180°"
+      }
     ],
     "steps": [
-      { "id": "s1", "fromLatex": "\\angle A + \\angle B + \\angle C", "toLatex": "\\angle A + \\angle B + \\angle C = 180^\\circ", "paletteRef": "p1", "dropTargets": ["\\angle A + \\angle B + \\angle C"], "description": "Triangle angle sum is always 180°" }
-    ]
+      {
+        "id": "s1",
+        "fromLatex": "\\angle A + \\angle B + \\angle C",
+        "toLatex": "\\angle A + \\angle B + \\angle C = 180^\\circ",
+        "paletteRef": "p1",
+        "dropTargets": [
+          "\\angle A + \\angle B + \\angle C"
+        ],
+        "description": "Triangle angle sum is always 180°"
+      }
+    ],
+    "image": "geo-e-008.svg"
   },
   {
-    "id": "geo-e-009", "topic": "geometry", "difficulty": "easy",
-    "question": { "latex": "A = \\pi r^2,\\quad r = 2", "plain": "Area of a circle with radius 2" },
-    "symbols": { "A": "Area", "r": "Radius", "\\pi": "Pi ≈ 3.14159" },
+    "id": "geo-e-009",
+    "topic": "geometry",
+    "difficulty": "easy",
+    "question": {
+      "latex": "A = \\pi r^2,\\quad r = 2",
+      "plain": "Area of a circle with radius 2"
+    },
+    "symbols": {
+      "A": "Area",
+      "r": "Radius",
+      "\\pi": "Pi ≈ 3.14159"
+    },
     "palette": [
-      { "id": "p1", "latex": "2^2", "description": "Substitute r=2: r² = 2² = 4" },
-      { "id": "p2", "latex": "4\\pi", "description": "π × 4 = 4π ≈ 12.57" }
+      {
+        "id": "p1",
+        "latex": "2^2",
+        "description": "Substitute r=2: r² = 2² = 4"
+      },
+      {
+        "id": "p2",
+        "latex": "4\\pi",
+        "description": "π × 4 = 4π ≈ 12.57"
+      }
     ],
     "steps": [
-      { "id": "s1", "fromLatex": "A = \\pi r^2", "toLatex": "A = \\pi \\times 2^2", "paletteRef": "p1", "dropTargets": ["r^2"], "description": "Substitute r = 2" },
-      { "id": "s1a", "fromLatex": "2^2 = 2 \\times 2 = 4", "toLatex": "2^2 = 2 \\times 2 = 4", "paletteRef": null, "dropTargets": [], "description": "Compute: 2² = 2 × 2 = 4" },
-      { "id": "s2", "fromLatex": "A = \\pi \\times 2^2", "toLatex": "A = \\pi \\times 4", "paletteRef": null, "dropTargets": [], "description": "Evaluate 2² = 4" },
-      { "id": "s3", "fromLatex": "A = \\pi \\times 4", "toLatex": "A = 4\\pi", "paletteRef": "p2", "dropTargets": ["\\pi \\times 4"], "description": "Write as 4π" }
-    ]
+      {
+        "id": "s1",
+        "fromLatex": "A = \\pi r^2",
+        "toLatex": "A = \\pi \\times 2^2",
+        "paletteRef": "p1",
+        "dropTargets": [
+          "r^2"
+        ],
+        "description": "Substitute r = 2"
+      },
+      {
+        "id": "s1a",
+        "fromLatex": "2^2 = 2 \\times 2 = 4",
+        "toLatex": "2^2 = 2 \\times 2 = 4",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "Compute: 2² = 2 × 2 = 4"
+      },
+      {
+        "id": "s2",
+        "fromLatex": "A = \\pi \\times 2^2",
+        "toLatex": "A = \\pi \\times 4",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "Evaluate 2² = 4"
+      },
+      {
+        "id": "s3",
+        "fromLatex": "A = \\pi \\times 4",
+        "toLatex": "A = 4\\pi",
+        "paletteRef": "p2",
+        "dropTargets": [
+          "\\pi \\times 4"
+        ],
+        "description": "Write as 4π"
+      }
+    ],
+    "image": "geo-e-009.svg"
   },
   {
-    "id": "geo-e-010", "topic": "geometry", "difficulty": "easy",
-    "question": { "latex": "a^2 + b^2 = c^2,\\quad a=5,\\ b=12", "plain": "Find the hypotenuse with a=5, b=12" },
-    "symbols": { "a": "Leg 1", "b": "Leg 2", "c": "Hypotenuse" },
+    "id": "geo-e-010",
+    "topic": "geometry",
+    "difficulty": "easy",
+    "question": {
+      "latex": "a^2 + b^2 = c^2,\\quad a=5,\\ b=12",
+      "plain": "Find the hypotenuse with a=5, b=12"
+    },
+    "symbols": {
+      "a": "Leg 1",
+      "b": "Leg 2",
+      "c": "Hypotenuse"
+    },
     "palette": [
-      { "id": "p1", "latex": "5^2 + 12^2", "description": "Substitute a=5, b=12" },
-      { "id": "p2", "latex": "13", "description": "√169 = 13 (a 5-12-13 right triangle)" }
+      {
+        "id": "p1",
+        "latex": "5^2 + 12^2",
+        "description": "Substitute a=5, b=12"
+      },
+      {
+        "id": "p2",
+        "latex": "13",
+        "description": "√169 = 13 (a 5-12-13 right triangle)"
+      }
     ],
     "steps": [
-      { "id": "s1", "fromLatex": "a^2 + b^2 = c^2", "toLatex": "5^2 + 12^2 = c^2", "paletteRef": "p1", "dropTargets": ["a^2 + b^2"], "description": "Substitute a=5, b=12" },
-      { "id": "s1a", "fromLatex": "5^2 = 25", "toLatex": "5^2 = 5 \\times 5 = 25", "paletteRef": null, "dropTargets": [], "description": "Compute: 5² = 5 × 5 = 25" },
-      { "id": "s1b", "fromLatex": "12^2 = 144", "toLatex": "12^2 = 12 \\times 12 = 144", "paletteRef": null, "dropTargets": [], "description": "Compute: 12² = 12 × 12 = 144" },
-      { "id": "s2", "fromLatex": "5^2 + 12^2 = c^2", "toLatex": "25 + 144 = c^2", "paletteRef": null, "dropTargets": [], "description": "5²=25, 12²=144" },
-      { "id": "s2a", "fromLatex": "25 + 144 = 169", "toLatex": "25 + 144 = 169", "paletteRef": null, "dropTargets": [], "description": "Compute: 25 + 144 = 169" },
-      { "id": "s3", "fromLatex": "25 + 144 = c^2", "toLatex": "169 = c^2", "paletteRef": null, "dropTargets": [], "description": "25+144=169" },
-      { "id": "s3a", "fromLatex": "\\sqrt{169} = 13", "toLatex": "\\sqrt{169} = 13 \\quad (13^2 = 169)", "paletteRef": null, "dropTargets": [], "description": "Compute: √169 = 13 (because 13² = 169)" },
-      { "id": "s4", "fromLatex": "169 = c^2", "toLatex": "c = 13", "paletteRef": "p2", "dropTargets": ["c^2"], "description": "√169 = 13" }
-    ]
+      {
+        "id": "s1",
+        "fromLatex": "a^2 + b^2 = c^2",
+        "toLatex": "5^2 + 12^2 = c^2",
+        "paletteRef": "p1",
+        "dropTargets": [
+          "a^2 + b^2"
+        ],
+        "description": "Substitute a=5, b=12"
+      },
+      {
+        "id": "s1a",
+        "fromLatex": "5^2 = 25",
+        "toLatex": "5^2 = 5 \\times 5 = 25",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "Compute: 5² = 5 × 5 = 25"
+      },
+      {
+        "id": "s1b",
+        "fromLatex": "12^2 = 144",
+        "toLatex": "12^2 = 12 \\times 12 = 144",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "Compute: 12² = 12 × 12 = 144"
+      },
+      {
+        "id": "s2",
+        "fromLatex": "5^2 + 12^2 = c^2",
+        "toLatex": "25 + 144 = c^2",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "5²=25, 12²=144"
+      },
+      {
+        "id": "s2a",
+        "fromLatex": "25 + 144 = 169",
+        "toLatex": "25 + 144 = 169",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "Compute: 25 + 144 = 169"
+      },
+      {
+        "id": "s3",
+        "fromLatex": "25 + 144 = c^2",
+        "toLatex": "169 = c^2",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "25+144=169"
+      },
+      {
+        "id": "s3a",
+        "fromLatex": "\\sqrt{169} = 13",
+        "toLatex": "\\sqrt{169} = 13 \\quad (13^2 = 169)",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "Compute: √169 = 13 (because 13² = 169)"
+      },
+      {
+        "id": "s4",
+        "fromLatex": "169 = c^2",
+        "toLatex": "c = 13",
+        "paletteRef": "p2",
+        "dropTargets": [
+          "c^2"
+        ],
+        "description": "√169 = 13"
+      }
+    ],
+    "image": "geo-e-010.svg"
   },
-
   {
-    "id": "geo-m-001", "topic": "geometry", "difficulty": "medium",
-    "question": { "latex": "A = \\pi r^2,\\quad r = 5", "plain": "Area of a circle with radius 5" },
-    "symbols": { "A": "Area", "r": "Radius", "\\pi": "Pi ≈ 3.14159" },
+    "id": "geo-m-001",
+    "topic": "geometry",
+    "difficulty": "medium",
+    "question": {
+      "latex": "A = \\pi r^2,\\quad r = 5",
+      "plain": "Area of a circle with radius 5"
+    },
+    "symbols": {
+      "A": "Area",
+      "r": "Radius",
+      "\\pi": "Pi ≈ 3.14159"
+    },
     "palette": [
-      { "id": "p1", "latex": "5^2", "description": "Substitute r=5: r² = 25" },
-      { "id": "p2", "latex": "\\approx 78.54", "description": "π × 25 ≈ 78.54" }
+      {
+        "id": "p1",
+        "latex": "5^2",
+        "description": "Substitute r=5: r² = 25"
+      },
+      {
+        "id": "p2",
+        "latex": "\\approx 78.54",
+        "description": "π × 25 ≈ 78.54"
+      }
     ],
     "steps": [
-      { "id": "s1", "fromLatex": "A = \\pi r^2", "toLatex": "A = \\pi \\times 5^2", "paletteRef": "p1", "dropTargets": ["r^2"], "description": "Substitute r = 5" },
-      { "id": "s1a", "fromLatex": "5^2 = 5 \\times 5 = 25", "toLatex": "5^2 = 5 \\times 5 = 25", "paletteRef": null, "dropTargets": [], "description": "Compute: 5² = 5 × 5 = 25" },
-      { "id": "s2", "fromLatex": "A = \\pi \\times 5^2", "toLatex": "A = \\pi \\times 25", "paletteRef": null, "dropTargets": [], "description": "5² = 25" },
-      { "id": "s2a", "fromLatex": "3.14159 \\times 25 \\approx 78.54", "toLatex": "\\pi \\times 25 \\approx 3.14159 \\times 25 \\approx 78.54", "paletteRef": null, "dropTargets": [], "description": "Compute: π × 25 ≈ 3.14159 × 25 ≈ 78.54" },
-      { "id": "s3", "fromLatex": "A = \\pi \\times 25", "toLatex": "A \\approx 78.54", "paletteRef": "p2", "dropTargets": ["\\pi \\times 25"], "description": "π × 25 ≈ 78.54" }
-    ]
+      {
+        "id": "s1",
+        "fromLatex": "A = \\pi r^2",
+        "toLatex": "A = \\pi \\times 5^2",
+        "paletteRef": "p1",
+        "dropTargets": [
+          "r^2"
+        ],
+        "description": "Substitute r = 5"
+      },
+      {
+        "id": "s1a",
+        "fromLatex": "5^2 = 5 \\times 5 = 25",
+        "toLatex": "5^2 = 5 \\times 5 = 25",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "Compute: 5² = 5 × 5 = 25"
+      },
+      {
+        "id": "s2",
+        "fromLatex": "A = \\pi \\times 5^2",
+        "toLatex": "A = \\pi \\times 25",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "5² = 25"
+      },
+      {
+        "id": "s2a",
+        "fromLatex": "3.14159 \\times 25 \\approx 78.54",
+        "toLatex": "\\pi \\times 25 \\approx 3.14159 \\times 25 \\approx 78.54",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "Compute: π × 25 ≈ 3.14159 × 25 ≈ 78.54"
+      },
+      {
+        "id": "s3",
+        "fromLatex": "A = \\pi \\times 25",
+        "toLatex": "A \\approx 78.54",
+        "paletteRef": "p2",
+        "dropTargets": [
+          "\\pi \\times 25"
+        ],
+        "description": "π × 25 ≈ 78.54"
+      }
+    ],
+    "image": "geo-m-001.svg"
   },
   {
-    "id": "geo-m-002", "topic": "geometry", "difficulty": "medium",
-    "question": { "latex": "V = \\frac{1}{3}\\pi r^2 h,\\quad r=3,\\ h=7", "plain": "Volume of a cone with radius 3 and height 7" },
-    "symbols": { "V": "Volume", "r": "Radius of the circular base", "h": "Height of the cone", "\\pi": "Pi ≈ 3.14159" },
+    "id": "geo-m-002",
+    "topic": "geometry",
+    "difficulty": "medium",
+    "question": {
+      "latex": "V = \\frac{1}{3}\\pi r^2 h,\\quad r=3,\\ h=7",
+      "plain": "Volume of a cone with radius 3 and height 7"
+    },
+    "symbols": {
+      "V": "Volume",
+      "r": "Radius of the circular base",
+      "h": "Height of the cone",
+      "\\pi": "Pi ≈ 3.14159"
+    },
     "palette": [
-      { "id": "p1", "latex": "\\frac{1}{3}\\pi \\times 9 \\times 7", "description": "Substitute r²=9, h=7 into the formula" },
-      { "id": "p2", "latex": "21\\pi", "description": "(1/3) × 9 × 7 = 21, so V = 21π" }
+      {
+        "id": "p1",
+        "latex": "\\frac{1}{3}\\pi \\times 9 \\times 7",
+        "description": "Substitute r²=9, h=7 into the formula"
+      },
+      {
+        "id": "p2",
+        "latex": "21\\pi",
+        "description": "(1/3) × 9 × 7 = 21, so V = 21π"
+      }
     ],
     "steps": [
-      { "id": "s1", "fromLatex": "V = \\frac{1}{3}\\pi r^2 h", "toLatex": "V = \\frac{1}{3}\\pi \\times 3^2 \\times 7", "paletteRef": null, "dropTargets": [], "description": "Substitute r=3, h=7" },
-      { "id": "s1a", "fromLatex": "3^2 = 3 \\times 3 = 9", "toLatex": "3^2 = 3 \\times 3 = 9", "paletteRef": null, "dropTargets": [], "description": "Compute: 3² = 3 × 3 = 9" },
-      { "id": "s2", "fromLatex": "V = \\frac{1}{3}\\pi \\times 3^2 \\times 7", "toLatex": "V = \\frac{1}{3}\\pi \\times 9 \\times 7", "paletteRef": "p1", "dropTargets": ["3^2"], "description": "Evaluate 3² = 9" },
-      { "id": "s2a", "fromLatex": "9 \\div 3 = 3", "toLatex": "9 \\div 3 = 3 \\quad (\\tfrac{1}{3} \\times 9 = 3)", "paletteRef": null, "dropTargets": [], "description": "Compute: 9 ÷ 3 = 3" },
-      { "id": "s2b", "fromLatex": "3 \\times 7 = 21", "toLatex": "3 \\times 7 = 21", "paletteRef": null, "dropTargets": [], "description": "Compute: 3 × 7 = 21" },
-      { "id": "s3", "fromLatex": "V = \\frac{1}{3}\\pi \\times 9 \\times 7", "toLatex": "V = 21\\pi", "paletteRef": "p2", "dropTargets": ["\\frac{1}{3}\\pi \\times 9 \\times 7"], "description": "(1/3)×9×7 = 3×7 = 21" }
-    ]
+      {
+        "id": "s1",
+        "fromLatex": "V = \\frac{1}{3}\\pi r^2 h",
+        "toLatex": "V = \\frac{1}{3}\\pi \\times 3^2 \\times 7",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "Substitute r=3, h=7"
+      },
+      {
+        "id": "s1a",
+        "fromLatex": "3^2 = 3 \\times 3 = 9",
+        "toLatex": "3^2 = 3 \\times 3 = 9",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "Compute: 3² = 3 × 3 = 9"
+      },
+      {
+        "id": "s2",
+        "fromLatex": "V = \\frac{1}{3}\\pi \\times 3^2 \\times 7",
+        "toLatex": "V = \\frac{1}{3}\\pi \\times 9 \\times 7",
+        "paletteRef": "p1",
+        "dropTargets": [
+          "3^2"
+        ],
+        "description": "Evaluate 3² = 9"
+      },
+      {
+        "id": "s2a",
+        "fromLatex": "9 \\div 3 = 3",
+        "toLatex": "9 \\div 3 = 3 \\quad (\\tfrac{1}{3} \\times 9 = 3)",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "Compute: 9 ÷ 3 = 3"
+      },
+      {
+        "id": "s2b",
+        "fromLatex": "3 \\times 7 = 21",
+        "toLatex": "3 \\times 7 = 21",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "Compute: 3 × 7 = 21"
+      },
+      {
+        "id": "s3",
+        "fromLatex": "V = \\frac{1}{3}\\pi \\times 9 \\times 7",
+        "toLatex": "V = 21\\pi",
+        "paletteRef": "p2",
+        "dropTargets": [
+          "\\frac{1}{3}\\pi \\times 9 \\times 7"
+        ],
+        "description": "(1/3)×9×7 = 3×7 = 21"
+      }
+    ],
+    "image": "geo-m-002.svg"
   },
   {
-    "id": "geo-m-003", "topic": "geometry", "difficulty": "medium",
-    "question": { "latex": "V = \\frac{4}{3}\\pi r^3,\\quad r=3", "plain": "Volume of a sphere with radius 3" },
-    "symbols": { "V": "Volume", "r": "Radius", "\\pi": "Pi ≈ 3.14159" },
+    "id": "geo-m-003",
+    "topic": "geometry",
+    "difficulty": "medium",
+    "question": {
+      "latex": "V = \\frac{4}{3}\\pi r^3,\\quad r=3",
+      "plain": "Volume of a sphere with radius 3"
+    },
+    "symbols": {
+      "V": "Volume",
+      "r": "Radius",
+      "\\pi": "Pi ≈ 3.14159"
+    },
     "palette": [
-      { "id": "p1", "latex": "3^3", "description": "Substitute r=3: r³ = 27" },
-      { "id": "p2", "latex": "36\\pi", "description": "(4/3)×π×27 = 4π×9 = 36π" }
+      {
+        "id": "p1",
+        "latex": "3^3",
+        "description": "Substitute r=3: r³ = 27"
+      },
+      {
+        "id": "p2",
+        "latex": "36\\pi",
+        "description": "(4/3)×π×27 = 4π×9 = 36π"
+      }
     ],
     "steps": [
-      { "id": "s1", "fromLatex": "V = \\frac{4}{3}\\pi r^3", "toLatex": "V = \\frac{4}{3}\\pi \\times 3^3", "paletteRef": "p1", "dropTargets": ["r^3"], "description": "Substitute r = 3" },
-      { "id": "s1a", "fromLatex": "3^3 = 3 \\times 3 \\times 3 = 27", "toLatex": "3^3 = 3 \\times 3 \\times 3 = 27", "paletteRef": null, "dropTargets": [], "description": "Compute: 3³ = 3×3×3 = 27" },
-      { "id": "s2", "fromLatex": "V = \\frac{4}{3}\\pi \\times 3^3", "toLatex": "V = \\frac{4}{3}\\pi \\times 27", "paletteRef": null, "dropTargets": [], "description": "3³ = 27" },
-      { "id": "s2a", "fromLatex": "4 \\times 27 = 108", "toLatex": "4 \\times 27 = 108", "paletteRef": null, "dropTargets": [], "description": "Compute: 4 × 27 = 108" },
-      { "id": "s2b", "fromLatex": "108 \\div 3 = 36", "toLatex": "108 \\div 3 = 36", "paletteRef": null, "dropTargets": [], "description": "Compute: 108 ÷ 3 = 36 (so ⁴⁄₃ × 27 = 36)" },
-      { "id": "s3", "fromLatex": "V = \\frac{4}{3}\\pi \\times 27", "toLatex": "V = 36\\pi", "paletteRef": "p2", "dropTargets": ["\\frac{4}{3}\\pi \\times 27"], "description": "(4/3)×27 = 36" }
-    ]
+      {
+        "id": "s1",
+        "fromLatex": "V = \\frac{4}{3}\\pi r^3",
+        "toLatex": "V = \\frac{4}{3}\\pi \\times 3^3",
+        "paletteRef": "p1",
+        "dropTargets": [
+          "r^3"
+        ],
+        "description": "Substitute r = 3"
+      },
+      {
+        "id": "s1a",
+        "fromLatex": "3^3 = 3 \\times 3 \\times 3 = 27",
+        "toLatex": "3^3 = 3 \\times 3 \\times 3 = 27",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "Compute: 3³ = 3×3×3 = 27"
+      },
+      {
+        "id": "s2",
+        "fromLatex": "V = \\frac{4}{3}\\pi \\times 3^3",
+        "toLatex": "V = \\frac{4}{3}\\pi \\times 27",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "3³ = 27"
+      },
+      {
+        "id": "s2a",
+        "fromLatex": "4 \\times 27 = 108",
+        "toLatex": "4 \\times 27 = 108",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "Compute: 4 × 27 = 108"
+      },
+      {
+        "id": "s2b",
+        "fromLatex": "108 \\div 3 = 36",
+        "toLatex": "108 \\div 3 = 36",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "Compute: 108 ÷ 3 = 36 (so ⁴⁄₃ × 27 = 36)"
+      },
+      {
+        "id": "s3",
+        "fromLatex": "V = \\frac{4}{3}\\pi \\times 27",
+        "toLatex": "V = 36\\pi",
+        "paletteRef": "p2",
+        "dropTargets": [
+          "\\frac{4}{3}\\pi \\times 27"
+        ],
+        "description": "(4/3)×27 = 36"
+      }
+    ],
+    "image": "geo-m-003.svg"
   },
   {
-    "id": "geo-m-004", "topic": "geometry", "difficulty": "medium",
-    "question": { "latex": "\\text{Find the missing angle: } \\angle A + 65^\\circ + 75^\\circ = 180^\\circ", "plain": "Find angle A in a triangle where two angles are 65° and 75°" },
-    "symbols": { "\\angle": "Angle" },
+    "id": "geo-m-004",
+    "topic": "geometry",
+    "difficulty": "medium",
+    "question": {
+      "latex": "\\text{Find the missing angle: } \\angle A + 65^\\circ + 75^\\circ = 180^\\circ",
+      "plain": "Find angle A in a triangle where two angles are 65° and 75°"
+    },
+    "symbols": {
+      "\\angle": "Angle"
+    },
     "palette": [
-      { "id": "p1", "latex": "180^\\circ - 140^\\circ", "description": "Subtract 65°+75°=140° from 180°" },
-      { "id": "p2", "latex": "40^\\circ", "description": "180° − 140° = 40°" }
+      {
+        "id": "p1",
+        "latex": "180^\\circ - 140^\\circ",
+        "description": "Subtract 65°+75°=140° from 180°"
+      },
+      {
+        "id": "p2",
+        "latex": "40^\\circ",
+        "description": "180° − 140° = 40°"
+      }
     ],
     "steps": [
-      { "id": "s0a", "fromLatex": "65 + 75 = 140", "toLatex": "65 + 75 = 140", "paletteRef": null, "dropTargets": [], "description": "Compute: 65 + 75 = 140 (sum of known angles)" },
-      { "id": "s1", "fromLatex": "\\angle A + 65^\\circ + 75^\\circ = 180^\\circ", "toLatex": "\\angle A + 140^\\circ = 180^\\circ", "paletteRef": null, "dropTargets": [], "description": "Add the two known angles: 65+75=140" },
-      { "id": "s2", "fromLatex": "\\angle A + 140^\\circ = 180^\\circ", "toLatex": "\\angle A = 180^\\circ - 140^\\circ", "paletteRef": "p1", "dropTargets": ["140^\\circ"], "description": "Subtract 140° from both sides" },
-      { "id": "s2a", "fromLatex": "180 - 140 = 40", "toLatex": "180 - 140 = 40", "paletteRef": null, "dropTargets": [], "description": "Compute: 180 − 140 = 40" },
-      { "id": "s3", "fromLatex": "\\angle A = 180^\\circ - 140^\\circ", "toLatex": "\\angle A = 40^\\circ", "paletteRef": "p2", "dropTargets": ["180^\\circ - 140^\\circ"], "description": "180 − 140 = 40°" }
-    ]
+      {
+        "id": "s0a",
+        "fromLatex": "65 + 75 = 140",
+        "toLatex": "65 + 75 = 140",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "Compute: 65 + 75 = 140 (sum of known angles)"
+      },
+      {
+        "id": "s1",
+        "fromLatex": "\\angle A + 65^\\circ + 75^\\circ = 180^\\circ",
+        "toLatex": "\\angle A + 140^\\circ = 180^\\circ",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "Add the two known angles: 65+75=140"
+      },
+      {
+        "id": "s2",
+        "fromLatex": "\\angle A + 140^\\circ = 180^\\circ",
+        "toLatex": "\\angle A = 180^\\circ - 140^\\circ",
+        "paletteRef": "p1",
+        "dropTargets": [
+          "140^\\circ"
+        ],
+        "description": "Subtract 140° from both sides"
+      },
+      {
+        "id": "s2a",
+        "fromLatex": "180 - 140 = 40",
+        "toLatex": "180 - 140 = 40",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "Compute: 180 − 140 = 40"
+      },
+      {
+        "id": "s3",
+        "fromLatex": "\\angle A = 180^\\circ - 140^\\circ",
+        "toLatex": "\\angle A = 40^\\circ",
+        "paletteRef": "p2",
+        "dropTargets": [
+          "180^\\circ - 140^\\circ"
+        ],
+        "description": "180 − 140 = 40°"
+      }
+    ],
+    "image": "geo-m-004.svg"
   },
   {
-    "id": "geo-m-005", "topic": "geometry", "difficulty": "medium",
-    "question": { "latex": "A = \\frac{1}{2}d_1 d_2,\\quad d_1=8,\\ d_2=6", "plain": "Area of a rhombus with diagonals 8 and 6" },
-    "symbols": { "A": "Area of rhombus", "d_1": "First diagonal", "d_2": "Second diagonal" },
+    "id": "geo-m-005",
+    "topic": "geometry",
+    "difficulty": "medium",
+    "question": {
+      "latex": "A = \\frac{1}{2}d_1 d_2,\\quad d_1=8,\\ d_2=6",
+      "plain": "Area of a rhombus with diagonals 8 and 6"
+    },
+    "symbols": {
+      "A": "Area of rhombus",
+      "d_1": "First diagonal",
+      "d_2": "Second diagonal"
+    },
     "palette": [
-      { "id": "p1", "latex": "\\frac{1}{2} \\times 8 \\times 6", "description": "Substitute d₁=8, d₂=6" },
-      { "id": "p2", "latex": "24", "description": "½ × 48 = 24" }
+      {
+        "id": "p1",
+        "latex": "\\frac{1}{2} \\times 8 \\times 6",
+        "description": "Substitute d₁=8, d₂=6"
+      },
+      {
+        "id": "p2",
+        "latex": "24",
+        "description": "½ × 48 = 24"
+      }
     ],
     "steps": [
-      { "id": "s1", "fromLatex": "A = \\frac{1}{2}d_1 d_2", "toLatex": "A = \\frac{1}{2} \\times 8 \\times 6", "paletteRef": "p1", "dropTargets": ["d_1 d_2"], "description": "Substitute d₁=8, d₂=6" },
-      { "id": "s1a", "fromLatex": "8 \\times 6 = 48", "toLatex": "8 \\times 6 = 48", "paletteRef": null, "dropTargets": [], "description": "Compute: 8 × 6 = 48" },
-      { "id": "s2", "fromLatex": "A = \\frac{1}{2} \\times 8 \\times 6", "toLatex": "A = \\frac{1}{2} \\times 48", "paletteRef": null, "dropTargets": [], "description": "8 × 6 = 48" },
-      { "id": "s2a", "fromLatex": "48 \\div 2 = 24", "toLatex": "48 \\div 2 = 24", "paletteRef": null, "dropTargets": [], "description": "Compute: 48 ÷ 2 = 24" },
-      { "id": "s3", "fromLatex": "A = \\frac{1}{2} \\times 48", "toLatex": "A = 24", "paletteRef": "p2", "dropTargets": ["\\frac{1}{2} \\times 48"], "description": "48 ÷ 2 = 24" }
-    ]
+      {
+        "id": "s1",
+        "fromLatex": "A = \\frac{1}{2}d_1 d_2",
+        "toLatex": "A = \\frac{1}{2} \\times 8 \\times 6",
+        "paletteRef": "p1",
+        "dropTargets": [
+          "d_1 d_2"
+        ],
+        "description": "Substitute d₁=8, d₂=6"
+      },
+      {
+        "id": "s1a",
+        "fromLatex": "8 \\times 6 = 48",
+        "toLatex": "8 \\times 6 = 48",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "Compute: 8 × 6 = 48"
+      },
+      {
+        "id": "s2",
+        "fromLatex": "A = \\frac{1}{2} \\times 8 \\times 6",
+        "toLatex": "A = \\frac{1}{2} \\times 48",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "8 × 6 = 48"
+      },
+      {
+        "id": "s2a",
+        "fromLatex": "48 \\div 2 = 24",
+        "toLatex": "48 \\div 2 = 24",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "Compute: 48 ÷ 2 = 24"
+      },
+      {
+        "id": "s3",
+        "fromLatex": "A = \\frac{1}{2} \\times 48",
+        "toLatex": "A = 24",
+        "paletteRef": "p2",
+        "dropTargets": [
+          "\\frac{1}{2} \\times 48"
+        ],
+        "description": "48 ÷ 2 = 24"
+      }
+    ],
+    "image": "geo-m-005.svg"
   },
   {
-    "id": "geo-m-006", "topic": "geometry", "difficulty": "medium",
-    "question": { "latex": "V = l \\times w \\times h,\\quad l=5,\\ w=4,\\ h=3", "plain": "Volume of a rectangular box with dimensions 5×4×3" },
-    "symbols": { "V": "Volume", "l": "Length", "w": "Width", "h": "Height" },
+    "id": "geo-m-006",
+    "topic": "geometry",
+    "difficulty": "medium",
+    "question": {
+      "latex": "V = l \\times w \\times h,\\quad l=5,\\ w=4,\\ h=3",
+      "plain": "Volume of a rectangular box with dimensions 5×4×3"
+    },
+    "symbols": {
+      "V": "Volume",
+      "l": "Length",
+      "w": "Width",
+      "h": "Height"
+    },
     "palette": [
-      { "id": "p1", "latex": "5 \\times 4 \\times 3", "description": "Substitute l=5, w=4, h=3" },
-      { "id": "p2", "latex": "60", "description": "5×4=20, 20×3=60" }
+      {
+        "id": "p1",
+        "latex": "5 \\times 4 \\times 3",
+        "description": "Substitute l=5, w=4, h=3"
+      },
+      {
+        "id": "p2",
+        "latex": "60",
+        "description": "5×4=20, 20×3=60"
+      }
     ],
     "steps": [
-      { "id": "s1", "fromLatex": "V = l \\times w \\times h", "toLatex": "V = 5 \\times 4 \\times 3", "paletteRef": "p1", "dropTargets": ["l \\times w \\times h"], "description": "Substitute the dimensions" },
-      { "id": "s1a", "fromLatex": "5 \\times 4 = 20", "toLatex": "5 \\times 4 = 20", "paletteRef": null, "dropTargets": [], "description": "Compute: 5 × 4 = 20" },
-      { "id": "s2", "fromLatex": "V = 5 \\times 4 \\times 3", "toLatex": "V = 20 \\times 3", "paletteRef": null, "dropTargets": [], "description": "5 × 4 = 20" },
-      { "id": "s2a", "fromLatex": "20 \\times 3 = 60", "toLatex": "20 \\times 3 = 60", "paletteRef": null, "dropTargets": [], "description": "Compute: 20 × 3 = 60" },
-      { "id": "s3", "fromLatex": "V = 20 \\times 3", "toLatex": "V = 60", "paletteRef": "p2", "dropTargets": ["20 \\times 3"], "description": "20 × 3 = 60" }
-    ]
+      {
+        "id": "s1",
+        "fromLatex": "V = l \\times w \\times h",
+        "toLatex": "V = 5 \\times 4 \\times 3",
+        "paletteRef": "p1",
+        "dropTargets": [
+          "l \\times w \\times h"
+        ],
+        "description": "Substitute the dimensions"
+      },
+      {
+        "id": "s1a",
+        "fromLatex": "5 \\times 4 = 20",
+        "toLatex": "5 \\times 4 = 20",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "Compute: 5 × 4 = 20"
+      },
+      {
+        "id": "s2",
+        "fromLatex": "V = 5 \\times 4 \\times 3",
+        "toLatex": "V = 20 \\times 3",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "5 × 4 = 20"
+      },
+      {
+        "id": "s2a",
+        "fromLatex": "20 \\times 3 = 60",
+        "toLatex": "20 \\times 3 = 60",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "Compute: 20 × 3 = 60"
+      },
+      {
+        "id": "s3",
+        "fromLatex": "V = 20 \\times 3",
+        "toLatex": "V = 60",
+        "paletteRef": "p2",
+        "dropTargets": [
+          "20 \\times 3"
+        ],
+        "description": "20 × 3 = 60"
+      }
+    ],
+    "image": "geo-m-006.svg"
   },
   {
-    "id": "geo-m-007", "topic": "geometry", "difficulty": "medium",
-    "question": { "latex": "A = \\frac{1}{2}(b_1 + b_2)h,\\quad b_1=5,\\ b_2=9,\\ h=4", "plain": "Area of a trapezoid with parallel sides 5 and 9 and height 4" },
-    "symbols": { "A": "Area", "b_1": "First parallel side (base)", "b_2": "Second parallel side", "h": "Height between the bases" },
+    "id": "geo-m-007",
+    "topic": "geometry",
+    "difficulty": "medium",
+    "question": {
+      "latex": "A = \\frac{1}{2}(b_1 + b_2)h,\\quad b_1=5,\\ b_2=9,\\ h=4",
+      "plain": "Area of a trapezoid with parallel sides 5 and 9 and height 4"
+    },
+    "symbols": {
+      "A": "Area",
+      "b_1": "First parallel side (base)",
+      "b_2": "Second parallel side",
+      "h": "Height between the bases"
+    },
     "palette": [
-      { "id": "p1", "latex": "5 + 9", "description": "Sum the parallel sides: 5 + 9 = 14" },
-      { "id": "p2", "latex": "28", "description": "½ × 14 × 4 = 7 × 4 = 28" }
+      {
+        "id": "p1",
+        "latex": "5 + 9",
+        "description": "Sum the parallel sides: 5 + 9 = 14"
+      },
+      {
+        "id": "p2",
+        "latex": "28",
+        "description": "½ × 14 × 4 = 7 × 4 = 28"
+      }
     ],
     "steps": [
-      { "id": "s1", "fromLatex": "A = \\frac{1}{2}(b_1 + b_2)h", "toLatex": "A = \\frac{1}{2}(5 + 9) \\times 4", "paletteRef": null, "dropTargets": [], "description": "Substitute b₁=5, b₂=9, h=4" },
-      { "id": "s1a", "fromLatex": "5 + 9 = 14", "toLatex": "5 + 9 = 14", "paletteRef": null, "dropTargets": [], "description": "Compute: 5 + 9 = 14" },
-      { "id": "s2", "fromLatex": "A = \\frac{1}{2}(5 + 9) \\times 4", "toLatex": "A = \\frac{1}{2} \\times 14 \\times 4", "paletteRef": "p1", "dropTargets": ["5 + 9"], "description": "Add the bases: 5+9=14" },
-      { "id": "s2a", "fromLatex": "14 \\div 2 = 7", "toLatex": "14 \\div 2 = 7 \\quad (\\tfrac{1}{2} \\times 14 = 7)", "paletteRef": null, "dropTargets": [], "description": "Compute: 14 ÷ 2 = 7" },
-      { "id": "s3", "fromLatex": "A = \\frac{1}{2} \\times 14 \\times 4", "toLatex": "A = 7 \\times 4", "paletteRef": null, "dropTargets": [], "description": "½ × 14 = 7" },
-      { "id": "s3a", "fromLatex": "7 \\times 4 = 28", "toLatex": "7 \\times 4 = 28", "paletteRef": null, "dropTargets": [], "description": "Compute: 7 × 4 = 28" },
-      { "id": "s4", "fromLatex": "A = 7 \\times 4", "toLatex": "A = 28", "paletteRef": "p2", "dropTargets": ["7 \\times 4"], "description": "7 × 4 = 28" }
-    ]
+      {
+        "id": "s1",
+        "fromLatex": "A = \\frac{1}{2}(b_1 + b_2)h",
+        "toLatex": "A = \\frac{1}{2}(5 + 9) \\times 4",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "Substitute b₁=5, b₂=9, h=4"
+      },
+      {
+        "id": "s1a",
+        "fromLatex": "5 + 9 = 14",
+        "toLatex": "5 + 9 = 14",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "Compute: 5 + 9 = 14"
+      },
+      {
+        "id": "s2",
+        "fromLatex": "A = \\frac{1}{2}(5 + 9) \\times 4",
+        "toLatex": "A = \\frac{1}{2} \\times 14 \\times 4",
+        "paletteRef": "p1",
+        "dropTargets": [
+          "5 + 9"
+        ],
+        "description": "Add the bases: 5+9=14"
+      },
+      {
+        "id": "s2a",
+        "fromLatex": "14 \\div 2 = 7",
+        "toLatex": "14 \\div 2 = 7 \\quad (\\tfrac{1}{2} \\times 14 = 7)",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "Compute: 14 ÷ 2 = 7"
+      },
+      {
+        "id": "s3",
+        "fromLatex": "A = \\frac{1}{2} \\times 14 \\times 4",
+        "toLatex": "A = 7 \\times 4",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "½ × 14 = 7"
+      },
+      {
+        "id": "s3a",
+        "fromLatex": "7 \\times 4 = 28",
+        "toLatex": "7 \\times 4 = 28",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "Compute: 7 × 4 = 28"
+      },
+      {
+        "id": "s4",
+        "fromLatex": "A = 7 \\times 4",
+        "toLatex": "A = 28",
+        "paletteRef": "p2",
+        "dropTargets": [
+          "7 \\times 4"
+        ],
+        "description": "7 × 4 = 28"
+      }
+    ],
+    "image": "geo-m-007.svg"
   },
   {
-    "id": "geo-m-008", "topic": "geometry", "difficulty": "medium",
-    "question": { "latex": "c^2 = a^2 + b^2 - 2ab\\cos C,\\quad a=7,b=8,C=60^\\circ", "plain": "Law of Cosines with a=7, b=8, C=60°" },
-    "symbols": { "a": "Side a", "b": "Side b", "c": "Side opposite angle C", "C": "Angle between sides a and b", "\\cos": "Cosine — ratio in a right triangle" },
+    "id": "geo-m-008",
+    "topic": "geometry",
+    "difficulty": "medium",
+    "question": {
+      "latex": "c^2 = a^2 + b^2 - 2ab\\cos C,\\quad a=7,b=8,C=60^\\circ",
+      "plain": "Law of Cosines with a=7, b=8, C=60°"
+    },
+    "symbols": {
+      "a": "Side a",
+      "b": "Side b",
+      "c": "Side opposite angle C",
+      "C": "Angle between sides a and b",
+      "\\cos": "Cosine — ratio in a right triangle"
+    },
     "palette": [
-      { "id": "p1", "latex": "\\frac{1}{2}", "description": "cos(60°) = 1/2" },
-      { "id": "p2", "latex": "57", "description": "49 + 64 − 56 = 57" }
+      {
+        "id": "p1",
+        "latex": "\\frac{1}{2}",
+        "description": "cos(60°) = 1/2"
+      },
+      {
+        "id": "p2",
+        "latex": "57",
+        "description": "49 + 64 − 56 = 57"
+      }
     ],
     "steps": [
-      { "id": "s1", "fromLatex": "c^2 = a^2 + b^2 - 2ab\\cos C", "toLatex": "c^2 = 7^2 + 8^2 - 2(7)(8)\\cos(60^\\circ)", "paletteRef": null, "dropTargets": [], "description": "Substitute a=7, b=8, C=60°" },
-      { "id": "s1a", "fromLatex": "7^2 = 49", "toLatex": "7^2 = 7 \\times 7 = 49", "paletteRef": null, "dropTargets": [], "description": "Compute: 7² = 7 × 7 = 49" },
-      { "id": "s1b", "fromLatex": "8^2 = 64", "toLatex": "8^2 = 8 \\times 8 = 64", "paletteRef": null, "dropTargets": [], "description": "Compute: 8² = 8 × 8 = 64" },
-      { "id": "s1c", "fromLatex": "2 \\times 7 \\times 8 = 112", "toLatex": "2 \\times 7 \\times 8 = 112", "paletteRef": null, "dropTargets": [], "description": "Compute: 2 × 7 × 8 = 112" },
-      { "id": "s2", "fromLatex": "c^2 = 7^2 + 8^2 - 2(7)(8)\\cos(60^\\circ)", "toLatex": "c^2 = 49 + 64 - 112 \\times \\frac{1}{2}", "paletteRef": "p1", "dropTargets": ["\\cos(60^\\circ)"], "description": "Use cos(60°) = 1/2" },
-      { "id": "s2a", "fromLatex": "112 \\div 2 = 56", "toLatex": "112 \\times \\tfrac{1}{2} = 112 \\div 2 = 56", "paletteRef": null, "dropTargets": [], "description": "Compute: 112 × ½ = 112 ÷ 2 = 56" },
-      { "id": "s3", "fromLatex": "c^2 = 49 + 64 - 112 \\times \\frac{1}{2}", "toLatex": "c^2 = 49 + 64 - 56", "paletteRef": null, "dropTargets": [], "description": "112 × 1/2 = 56" },
-      { "id": "s3a", "fromLatex": "49 + 64 = 113", "toLatex": "49 + 64 = 113", "paletteRef": null, "dropTargets": [], "description": "Compute: 49 + 64 = 113" },
-      { "id": "s3b", "fromLatex": "113 - 56 = 57", "toLatex": "113 - 56 = 57", "paletteRef": null, "dropTargets": [], "description": "Compute: 113 − 56 = 57" },
-      { "id": "s4", "fromLatex": "c^2 = 49 + 64 - 56", "toLatex": "c^2 = 57", "paletteRef": "p2", "dropTargets": ["49 + 64 - 56"], "description": "49 + 64 − 56 = 57" }
-    ]
+      {
+        "id": "s1",
+        "fromLatex": "c^2 = a^2 + b^2 - 2ab\\cos C",
+        "toLatex": "c^2 = 7^2 + 8^2 - 2(7)(8)\\cos(60^\\circ)",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "Substitute a=7, b=8, C=60°"
+      },
+      {
+        "id": "s1a",
+        "fromLatex": "7^2 = 49",
+        "toLatex": "7^2 = 7 \\times 7 = 49",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "Compute: 7² = 7 × 7 = 49"
+      },
+      {
+        "id": "s1b",
+        "fromLatex": "8^2 = 64",
+        "toLatex": "8^2 = 8 \\times 8 = 64",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "Compute: 8² = 8 × 8 = 64"
+      },
+      {
+        "id": "s1c",
+        "fromLatex": "2 \\times 7 \\times 8 = 112",
+        "toLatex": "2 \\times 7 \\times 8 = 112",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "Compute: 2 × 7 × 8 = 112"
+      },
+      {
+        "id": "s2",
+        "fromLatex": "c^2 = 7^2 + 8^2 - 2(7)(8)\\cos(60^\\circ)",
+        "toLatex": "c^2 = 49 + 64 - 112 \\times \\frac{1}{2}",
+        "paletteRef": "p1",
+        "dropTargets": [
+          "\\cos(60^\\circ)"
+        ],
+        "description": "Use cos(60°) = 1/2"
+      },
+      {
+        "id": "s2a",
+        "fromLatex": "112 \\div 2 = 56",
+        "toLatex": "112 \\times \\tfrac{1}{2} = 112 \\div 2 = 56",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "Compute: 112 × ½ = 112 ÷ 2 = 56"
+      },
+      {
+        "id": "s3",
+        "fromLatex": "c^2 = 49 + 64 - 112 \\times \\frac{1}{2}",
+        "toLatex": "c^2 = 49 + 64 - 56",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "112 × 1/2 = 56"
+      },
+      {
+        "id": "s3a",
+        "fromLatex": "49 + 64 = 113",
+        "toLatex": "49 + 64 = 113",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "Compute: 49 + 64 = 113"
+      },
+      {
+        "id": "s3b",
+        "fromLatex": "113 - 56 = 57",
+        "toLatex": "113 - 56 = 57",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "Compute: 113 − 56 = 57"
+      },
+      {
+        "id": "s4",
+        "fromLatex": "c^2 = 49 + 64 - 56",
+        "toLatex": "c^2 = 57",
+        "paletteRef": "p2",
+        "dropTargets": [
+          "49 + 64 - 56"
+        ],
+        "description": "49 + 64 − 56 = 57"
+      }
+    ],
+    "image": "geo-m-008.svg"
   },
   {
-    "id": "geo-m-009", "topic": "geometry", "difficulty": "medium",
-    "question": { "latex": "A = \\frac{\\sqrt{3}}{4}s^2,\\quad s = 6", "plain": "Area of an equilateral triangle with side 6" },
-    "symbols": { "A": "Area", "s": "Side length of the equilateral triangle", "\\sqrt": "Square root" },
+    "id": "geo-m-009",
+    "topic": "geometry",
+    "difficulty": "medium",
+    "question": {
+      "latex": "A = \\frac{\\sqrt{3}}{4}s^2,\\quad s = 6",
+      "plain": "Area of an equilateral triangle with side 6"
+    },
+    "symbols": {
+      "A": "Area",
+      "s": "Side length of the equilateral triangle",
+      "\\sqrt": "Square root"
+    },
     "palette": [
-      { "id": "p1", "latex": "6^2", "description": "Substitute s=6: s² = 36" },
-      { "id": "p2", "latex": "9\\sqrt{3}", "description": "(√3/4) × 36 = 9√3 ≈ 15.59" }
+      {
+        "id": "p1",
+        "latex": "6^2",
+        "description": "Substitute s=6: s² = 36"
+      },
+      {
+        "id": "p2",
+        "latex": "9\\sqrt{3}",
+        "description": "(√3/4) × 36 = 9√3 ≈ 15.59"
+      }
     ],
     "steps": [
-      { "id": "s1", "fromLatex": "A = \\frac{\\sqrt{3}}{4}s^2", "toLatex": "A = \\frac{\\sqrt{3}}{4} \\times 6^2", "paletteRef": "p1", "dropTargets": ["s^2"], "description": "Substitute s = 6" },
-      { "id": "s1a", "fromLatex": "6^2 = 6 \\times 6 = 36", "toLatex": "6^2 = 6 \\times 6 = 36", "paletteRef": null, "dropTargets": [], "description": "Compute: 6² = 6 × 6 = 36" },
-      { "id": "s2", "fromLatex": "A = \\frac{\\sqrt{3}}{4} \\times 6^2", "toLatex": "A = \\frac{\\sqrt{3}}{4} \\times 36", "paletteRef": null, "dropTargets": [], "description": "6² = 36" },
-      { "id": "s2a", "fromLatex": "36 \\div 4 = 9", "toLatex": "36 \\div 4 = 9 \\quad (\\tfrac{\\sqrt{3}}{4} \\times 36 = 9\\sqrt{3})", "paletteRef": null, "dropTargets": [], "description": "Compute: 36 ÷ 4 = 9" },
-      { "id": "s3", "fromLatex": "A = \\frac{\\sqrt{3}}{4} \\times 36", "toLatex": "A = 9\\sqrt{3}", "paletteRef": "p2", "dropTargets": ["\\frac{\\sqrt{3}}{4} \\times 36"], "description": "36/4 = 9, so A = 9√3" }
-    ]
+      {
+        "id": "s1",
+        "fromLatex": "A = \\frac{\\sqrt{3}}{4}s^2",
+        "toLatex": "A = \\frac{\\sqrt{3}}{4} \\times 6^2",
+        "paletteRef": "p1",
+        "dropTargets": [
+          "s^2"
+        ],
+        "description": "Substitute s = 6"
+      },
+      {
+        "id": "s1a",
+        "fromLatex": "6^2 = 6 \\times 6 = 36",
+        "toLatex": "6^2 = 6 \\times 6 = 36",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "Compute: 6² = 6 × 6 = 36"
+      },
+      {
+        "id": "s2",
+        "fromLatex": "A = \\frac{\\sqrt{3}}{4} \\times 6^2",
+        "toLatex": "A = \\frac{\\sqrt{3}}{4} \\times 36",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "6² = 36"
+      },
+      {
+        "id": "s2a",
+        "fromLatex": "36 \\div 4 = 9",
+        "toLatex": "36 \\div 4 = 9 \\quad (\\tfrac{\\sqrt{3}}{4} \\times 36 = 9\\sqrt{3})",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "Compute: 36 ÷ 4 = 9"
+      },
+      {
+        "id": "s3",
+        "fromLatex": "A = \\frac{\\sqrt{3}}{4} \\times 36",
+        "toLatex": "A = 9\\sqrt{3}",
+        "paletteRef": "p2",
+        "dropTargets": [
+          "\\frac{\\sqrt{3}}{4} \\times 36"
+        ],
+        "description": "36/4 = 9, so A = 9√3"
+      }
+    ],
+    "image": "geo-m-009.svg"
   },
   {
-    "id": "geo-m-010", "topic": "geometry", "difficulty": "medium",
-    "question": { "latex": "SA = 6s^2,\\quad s = 5", "plain": "Surface area of a cube with side 5" },
-    "symbols": { "SA": "Surface area — total area of all 6 faces", "s": "Side length" },
+    "id": "geo-m-010",
+    "topic": "geometry",
+    "difficulty": "medium",
+    "question": {
+      "latex": "SA = 6s^2,\\quad s = 5",
+      "plain": "Surface area of a cube with side 5"
+    },
+    "symbols": {
+      "SA": "Surface area — total area of all 6 faces",
+      "s": "Side length"
+    },
     "palette": [
-      { "id": "p1", "latex": "6 \\times 25", "description": "6 × 5² = 6 × 25 = 150" },
-      { "id": "p2", "latex": "150", "description": "6 × 25 = 150" }
+      {
+        "id": "p1",
+        "latex": "6 \\times 25",
+        "description": "6 × 5² = 6 × 25 = 150"
+      },
+      {
+        "id": "p2",
+        "latex": "150",
+        "description": "6 × 25 = 150"
+      }
     ],
     "steps": [
-      { "id": "s1", "fromLatex": "SA = 6s^2", "toLatex": "SA = 6 \\times 5^2", "paletteRef": null, "dropTargets": [], "description": "Substitute s = 5" },
-      { "id": "s1a", "fromLatex": "5^2 = 5 \\times 5 = 25", "toLatex": "5^2 = 5 \\times 5 = 25", "paletteRef": null, "dropTargets": [], "description": "Compute: 5² = 5 × 5 = 25" },
-      { "id": "s2", "fromLatex": "SA = 6 \\times 5^2", "toLatex": "SA = 6 \\times 25", "paletteRef": "p1", "dropTargets": ["5^2"], "description": "5² = 25" },
-      { "id": "s2a", "fromLatex": "6 \\times 25 = 150", "toLatex": "6 \\times 25 = 150", "paletteRef": null, "dropTargets": [], "description": "Compute: 6 × 25 = 150" },
-      { "id": "s3", "fromLatex": "SA = 6 \\times 25", "toLatex": "SA = 150", "paletteRef": "p2", "dropTargets": ["6 \\times 25"], "description": "6 × 25 = 150" }
-    ]
+      {
+        "id": "s1",
+        "fromLatex": "SA = 6s^2",
+        "toLatex": "SA = 6 \\times 5^2",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "Substitute s = 5"
+      },
+      {
+        "id": "s1a",
+        "fromLatex": "5^2 = 5 \\times 5 = 25",
+        "toLatex": "5^2 = 5 \\times 5 = 25",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "Compute: 5² = 5 × 5 = 25"
+      },
+      {
+        "id": "s2",
+        "fromLatex": "SA = 6 \\times 5^2",
+        "toLatex": "SA = 6 \\times 25",
+        "paletteRef": "p1",
+        "dropTargets": [
+          "5^2"
+        ],
+        "description": "5² = 25"
+      },
+      {
+        "id": "s2a",
+        "fromLatex": "6 \\times 25 = 150",
+        "toLatex": "6 \\times 25 = 150",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "Compute: 6 × 25 = 150"
+      },
+      {
+        "id": "s3",
+        "fromLatex": "SA = 6 \\times 25",
+        "toLatex": "SA = 150",
+        "paletteRef": "p2",
+        "dropTargets": [
+          "6 \\times 25"
+        ],
+        "description": "6 × 25 = 150"
+      }
+    ],
+    "image": "geo-m-010.svg"
   },
-
   {
-    "id": "geo-h-001", "topic": "geometry", "difficulty": "hard",
-    "question": { "latex": "a^2 + b^2 = c^2,\\quad a=8,\\ c=17", "plain": "Find leg b given a=8, c=17 (Pythagorean theorem)" },
-    "symbols": { "a": "One leg", "b": "Other leg (unknown)", "c": "Hypotenuse" },
+    "id": "geo-h-001",
+    "topic": "geometry",
+    "difficulty": "hard",
+    "question": {
+      "latex": "a^2 + b^2 = c^2,\\quad a=8,\\ c=17",
+      "plain": "Find leg b given a=8, c=17 (Pythagorean theorem)"
+    },
+    "symbols": {
+      "a": "One leg",
+      "b": "Other leg (unknown)",
+      "c": "Hypotenuse"
+    },
     "palette": [
-      { "id": "p1", "latex": "c^2 - a^2", "description": "Isolate b²: b² = c² − a²" },
-      { "id": "p2", "latex": "15", "description": "√225 = 15 (an 8-15-17 triple)" }
+      {
+        "id": "p1",
+        "latex": "c^2 - a^2",
+        "description": "Isolate b²: b² = c² − a²"
+      },
+      {
+        "id": "p2",
+        "latex": "15",
+        "description": "√225 = 15 (an 8-15-17 triple)"
+      }
     ],
     "steps": [
-      { "id": "s1", "fromLatex": "a^2 + b^2 = c^2", "toLatex": "8^2 + b^2 = 17^2", "paletteRef": null, "dropTargets": [], "description": "Substitute a=8, c=17" },
-      { "id": "s1a", "fromLatex": "8^2 = 64", "toLatex": "8^2 = 8 \\times 8 = 64", "paletteRef": null, "dropTargets": [], "description": "Compute: 8² = 8 × 8 = 64" },
-      { "id": "s1b", "fromLatex": "17^2 = 289", "toLatex": "17^2 = 17 \\times 17 = 289", "paletteRef": null, "dropTargets": [], "description": "Compute: 17² = 17 × 17 = 289" },
-      { "id": "s2", "fromLatex": "8^2 + b^2 = 17^2", "toLatex": "64 + b^2 = 289", "paletteRef": null, "dropTargets": [], "description": "Evaluate squares: 8²=64, 17²=289" },
-      { "id": "s3", "fromLatex": "64 + b^2 = 289", "toLatex": "b^2 = 289 - 64", "paletteRef": "p1", "dropTargets": ["64"], "description": "Subtract 64 from both sides" },
-      { "id": "s3a", "fromLatex": "289 - 64 = 225", "toLatex": "289 - 64 = 225", "paletteRef": null, "dropTargets": [], "description": "Compute: 289 − 64 = 225" },
-      { "id": "s4", "fromLatex": "b^2 = 289 - 64", "toLatex": "b^2 = 225", "paletteRef": null, "dropTargets": [], "description": "289 − 64 = 225" },
-      { "id": "s4a", "fromLatex": "\\sqrt{225} = 15", "toLatex": "\\sqrt{225} = 15 \\quad (15^2 = 225)", "paletteRef": null, "dropTargets": [], "description": "Compute: √225 = 15 (because 15² = 225)" },
-      { "id": "s5", "fromLatex": "b^2 = 225", "toLatex": "b = 15", "paletteRef": "p2", "dropTargets": ["b^2"], "description": "√225 = 15" }
-    ]
+      {
+        "id": "s1",
+        "fromLatex": "a^2 + b^2 = c^2",
+        "toLatex": "8^2 + b^2 = 17^2",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "Substitute a=8, c=17"
+      },
+      {
+        "id": "s1a",
+        "fromLatex": "8^2 = 64",
+        "toLatex": "8^2 = 8 \\times 8 = 64",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "Compute: 8² = 8 × 8 = 64"
+      },
+      {
+        "id": "s1b",
+        "fromLatex": "17^2 = 289",
+        "toLatex": "17^2 = 17 \\times 17 = 289",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "Compute: 17² = 17 × 17 = 289"
+      },
+      {
+        "id": "s2",
+        "fromLatex": "8^2 + b^2 = 17^2",
+        "toLatex": "64 + b^2 = 289",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "Evaluate squares: 8²=64, 17²=289"
+      },
+      {
+        "id": "s3",
+        "fromLatex": "64 + b^2 = 289",
+        "toLatex": "b^2 = 289 - 64",
+        "paletteRef": "p1",
+        "dropTargets": [
+          "64"
+        ],
+        "description": "Subtract 64 from both sides"
+      },
+      {
+        "id": "s3a",
+        "fromLatex": "289 - 64 = 225",
+        "toLatex": "289 - 64 = 225",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "Compute: 289 − 64 = 225"
+      },
+      {
+        "id": "s4",
+        "fromLatex": "b^2 = 289 - 64",
+        "toLatex": "b^2 = 225",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "289 − 64 = 225"
+      },
+      {
+        "id": "s4a",
+        "fromLatex": "\\sqrt{225} = 15",
+        "toLatex": "\\sqrt{225} = 15 \\quad (15^2 = 225)",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "Compute: √225 = 15 (because 15² = 225)"
+      },
+      {
+        "id": "s5",
+        "fromLatex": "b^2 = 225",
+        "toLatex": "b = 15",
+        "paletteRef": "p2",
+        "dropTargets": [
+          "b^2"
+        ],
+        "description": "√225 = 15"
+      }
+    ],
+    "image": "geo-h-001.svg"
   },
   {
-    "id": "geo-h-002", "topic": "geometry", "difficulty": "hard",
-    "question": { "latex": "A = \\pi r^2,\\quad A = 50\\pi", "plain": "Find the radius of a circle with area 50π" },
-    "symbols": { "A": "Area", "r": "Radius", "\\pi": "Pi" },
+    "id": "geo-h-002",
+    "topic": "geometry",
+    "difficulty": "hard",
+    "question": {
+      "latex": "A = \\pi r^2,\\quad A = 50\\pi",
+      "plain": "Find the radius of a circle with area 50π"
+    },
+    "symbols": {
+      "A": "Area",
+      "r": "Radius",
+      "\\pi": "Pi"
+    },
     "palette": [
-      { "id": "p1", "latex": "50\\pi", "description": "Set πr² = 50π, then cancel π" },
-      { "id": "p2", "latex": "\\sqrt{50}", "description": "r = √50 = 5√2" }
+      {
+        "id": "p1",
+        "latex": "50\\pi",
+        "description": "Set πr² = 50π, then cancel π"
+      },
+      {
+        "id": "p2",
+        "latex": "\\sqrt{50}",
+        "description": "r = √50 = 5√2"
+      }
     ],
     "steps": [
-      { "id": "s1", "fromLatex": "\\pi r^2 = 50\\pi", "toLatex": "r^2 = 50", "paletteRef": "p1", "dropTargets": ["\\pi r^2 = 50\\pi"], "description": "Divide both sides by π" },
-      { "id": "s2", "fromLatex": "r^2 = 50", "toLatex": "r = \\sqrt{50}", "paletteRef": "p2", "dropTargets": ["r^2"], "description": "Take the square root of both sides" },
-      { "id": "s2a", "fromLatex": "50 = 25 \\times 2", "toLatex": "50 = 25 \\times 2", "paletteRef": null, "dropTargets": [], "description": "Factor: 50 = 25 × 2" },
-      { "id": "s2b", "fromLatex": "\\sqrt{25 \\times 2} = \\sqrt{25} \\times \\sqrt{2} = 5\\sqrt{2}", "toLatex": "\\sqrt{50} = \\sqrt{25 \\times 2} = 5\\sqrt{2}", "paletteRef": null, "dropTargets": [], "description": "Compute: √50 = √(25×2) = 5√2 (since √25 = 5)" },
-      { "id": "s3", "fromLatex": "r = \\sqrt{50}", "toLatex": "r = 5\\sqrt{2}", "paletteRef": null, "dropTargets": [], "description": "Simplify: √50 = √(25×2) = 5√2" }
-    ]
+      {
+        "id": "s1",
+        "fromLatex": "\\pi r^2 = 50\\pi",
+        "toLatex": "r^2 = 50",
+        "paletteRef": "p1",
+        "dropTargets": [
+          "\\pi r^2 = 50\\pi"
+        ],
+        "description": "Divide both sides by π"
+      },
+      {
+        "id": "s2",
+        "fromLatex": "r^2 = 50",
+        "toLatex": "r = \\sqrt{50}",
+        "paletteRef": "p2",
+        "dropTargets": [
+          "r^2"
+        ],
+        "description": "Take the square root of both sides"
+      },
+      {
+        "id": "s2a",
+        "fromLatex": "50 = 25 \\times 2",
+        "toLatex": "50 = 25 \\times 2",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "Factor: 50 = 25 × 2"
+      },
+      {
+        "id": "s2b",
+        "fromLatex": "\\sqrt{25 \\times 2} = \\sqrt{25} \\times \\sqrt{2} = 5\\sqrt{2}",
+        "toLatex": "\\sqrt{50} = \\sqrt{25 \\times 2} = 5\\sqrt{2}",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "Compute: √50 = √(25×2) = 5√2 (since √25 = 5)"
+      },
+      {
+        "id": "s3",
+        "fromLatex": "r = \\sqrt{50}",
+        "toLatex": "r = 5\\sqrt{2}",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "Simplify: √50 = √(25×2) = 5√2"
+      }
+    ],
+    "image": "geo-h-002.svg"
   },
   {
-    "id": "geo-h-003", "topic": "geometry", "difficulty": "hard",
-    "question": { "latex": "\\text{Find the diagonal of a } 5 \\times 12 \\text{ rectangle}", "plain": "Find the diagonal of a rectangle with sides 5 and 12" },
+    "id": "geo-h-003",
+    "topic": "geometry",
+    "difficulty": "hard",
+    "question": {
+      "latex": "\\text{Find the diagonal of a } 5 \\times 12 \\text{ rectangle}",
+      "plain": "Find the diagonal of a rectangle with sides 5 and 12"
+    },
     "symbols": {},
     "palette": [
-      { "id": "p1", "latex": "5^2 + 12^2", "description": "Diagonal d: d² = 5² + 12²" },
-      { "id": "p2", "latex": "13", "description": "√169 = 13 (5-12-13 right triangle)" }
+      {
+        "id": "p1",
+        "latex": "5^2 + 12^2",
+        "description": "Diagonal d: d² = 5² + 12²"
+      },
+      {
+        "id": "p2",
+        "latex": "13",
+        "description": "√169 = 13 (5-12-13 right triangle)"
+      }
     ],
     "steps": [
-      { "id": "s0a", "fromLatex": "5^2 = 25 \\text{ and } 12^2 = 144", "toLatex": "5^2 = 25 \\text{ and } 12^2 = 144", "paletteRef": null, "dropTargets": [], "description": "Compute: 5² = 25 and 12² = 144" },
-      { "id": "s1", "fromLatex": "d^2 = 5^2 + 12^2", "toLatex": "d^2 = 25 + 144", "paletteRef": "p1", "dropTargets": ["5^2 + 12^2"], "description": "Apply the Pythagorean theorem" },
-      { "id": "s1a", "fromLatex": "25 + 144 = 169", "toLatex": "25 + 144 = 169", "paletteRef": null, "dropTargets": [], "description": "Compute: 25 + 144 = 169" },
-      { "id": "s2", "fromLatex": "d^2 = 25 + 144", "toLatex": "d^2 = 169", "paletteRef": null, "dropTargets": [], "description": "25 + 144 = 169" },
-      { "id": "s2a", "fromLatex": "\\sqrt{169} = 13", "toLatex": "\\sqrt{169} = 13 \\quad (13^2 = 169)", "paletteRef": null, "dropTargets": [], "description": "Compute: √169 = 13 (because 13² = 169)" },
-      { "id": "s3", "fromLatex": "d^2 = 169", "toLatex": "d = 13", "paletteRef": "p2", "dropTargets": ["d^2"], "description": "√169 = 13" }
-    ]
+      {
+        "id": "s0a",
+        "fromLatex": "5^2 = 25 \\text{ and } 12^2 = 144",
+        "toLatex": "5^2 = 25 \\text{ and } 12^2 = 144",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "Compute: 5² = 25 and 12² = 144"
+      },
+      {
+        "id": "s1",
+        "fromLatex": "d^2 = 5^2 + 12^2",
+        "toLatex": "d^2 = 25 + 144",
+        "paletteRef": "p1",
+        "dropTargets": [
+          "5^2 + 12^2"
+        ],
+        "description": "Apply the Pythagorean theorem"
+      },
+      {
+        "id": "s1a",
+        "fromLatex": "25 + 144 = 169",
+        "toLatex": "25 + 144 = 169",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "Compute: 25 + 144 = 169"
+      },
+      {
+        "id": "s2",
+        "fromLatex": "d^2 = 25 + 144",
+        "toLatex": "d^2 = 169",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "25 + 144 = 169"
+      },
+      {
+        "id": "s2a",
+        "fromLatex": "\\sqrt{169} = 13",
+        "toLatex": "\\sqrt{169} = 13 \\quad (13^2 = 169)",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "Compute: √169 = 13 (because 13² = 169)"
+      },
+      {
+        "id": "s3",
+        "fromLatex": "d^2 = 169",
+        "toLatex": "d = 13",
+        "paletteRef": "p2",
+        "dropTargets": [
+          "d^2"
+        ],
+        "description": "√169 = 13"
+      }
+    ],
+    "image": "geo-h-003.svg"
   },
   {
-    "id": "geo-h-004", "topic": "geometry", "difficulty": "hard",
-    "question": { "latex": "V = \\pi r^2 h,\\quad r=4,\\ h=10", "plain": "Volume of a cylinder with radius 4 and height 10" },
-    "symbols": { "V": "Volume", "r": "Radius of circular base", "h": "Height", "\\pi": "Pi" },
+    "id": "geo-h-004",
+    "topic": "geometry",
+    "difficulty": "hard",
+    "question": {
+      "latex": "V = \\pi r^2 h,\\quad r=4,\\ h=10",
+      "plain": "Volume of a cylinder with radius 4 and height 10"
+    },
+    "symbols": {
+      "V": "Volume",
+      "r": "Radius of circular base",
+      "h": "Height",
+      "\\pi": "Pi"
+    },
     "palette": [
-      { "id": "p1", "latex": "4^2", "description": "r² = 4² = 16" },
-      { "id": "p2", "latex": "160\\pi", "description": "π × 16 × 10 = 160π ≈ 502.7" }
+      {
+        "id": "p1",
+        "latex": "4^2",
+        "description": "r² = 4² = 16"
+      },
+      {
+        "id": "p2",
+        "latex": "160\\pi",
+        "description": "π × 16 × 10 = 160π ≈ 502.7"
+      }
     ],
     "steps": [
-      { "id": "s1", "fromLatex": "V = \\pi r^2 h", "toLatex": "V = \\pi \\times 4^2 \\times 10", "paletteRef": "p1", "dropTargets": ["r^2 h"], "description": "Substitute r=4, h=10" },
-      { "id": "s1a", "fromLatex": "4^2 = 4 \\times 4 = 16", "toLatex": "4^2 = 4 \\times 4 = 16", "paletteRef": null, "dropTargets": [], "description": "Compute: 4² = 4 × 4 = 16" },
-      { "id": "s2", "fromLatex": "V = \\pi \\times 4^2 \\times 10", "toLatex": "V = \\pi \\times 16 \\times 10", "paletteRef": null, "dropTargets": [], "description": "4² = 16" },
-      { "id": "s2a", "fromLatex": "16 \\times 10 = 160", "toLatex": "16 \\times 10 = 160", "paletteRef": null, "dropTargets": [], "description": "Compute: 16 × 10 = 160" },
-      { "id": "s3", "fromLatex": "V = \\pi \\times 16 \\times 10", "toLatex": "V = 160\\pi", "paletteRef": "p2", "dropTargets": ["\\pi \\times 16 \\times 10"], "description": "16 × 10 = 160" }
-    ]
+      {
+        "id": "s1",
+        "fromLatex": "V = \\pi r^2 h",
+        "toLatex": "V = \\pi \\times 4^2 \\times 10",
+        "paletteRef": "p1",
+        "dropTargets": [
+          "r^2 h"
+        ],
+        "description": "Substitute r=4, h=10"
+      },
+      {
+        "id": "s1a",
+        "fromLatex": "4^2 = 4 \\times 4 = 16",
+        "toLatex": "4^2 = 4 \\times 4 = 16",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "Compute: 4² = 4 × 4 = 16"
+      },
+      {
+        "id": "s2",
+        "fromLatex": "V = \\pi \\times 4^2 \\times 10",
+        "toLatex": "V = \\pi \\times 16 \\times 10",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "4² = 16"
+      },
+      {
+        "id": "s2a",
+        "fromLatex": "16 \\times 10 = 160",
+        "toLatex": "16 \\times 10 = 160",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "Compute: 16 × 10 = 160"
+      },
+      {
+        "id": "s3",
+        "fromLatex": "V = \\pi \\times 16 \\times 10",
+        "toLatex": "V = 160\\pi",
+        "paletteRef": "p2",
+        "dropTargets": [
+          "\\pi \\times 16 \\times 10"
+        ],
+        "description": "16 × 10 = 160"
+      }
+    ],
+    "image": "geo-h-004.svg"
   },
   {
-    "id": "geo-h-005", "topic": "geometry", "difficulty": "hard",
-    "question": { "latex": "SA = 2\\pi r(r + h),\\quad r=3,\\ h=8", "plain": "Surface area of a cylinder with radius 3 and height 8" },
-    "symbols": { "SA": "Surface area", "r": "Radius", "h": "Height", "\\pi": "Pi" },
+    "id": "geo-h-005",
+    "topic": "geometry",
+    "difficulty": "hard",
+    "question": {
+      "latex": "SA = 2\\pi r(r + h),\\quad r=3,\\ h=8",
+      "plain": "Surface area of a cylinder with radius 3 and height 8"
+    },
+    "symbols": {
+      "SA": "Surface area",
+      "r": "Radius",
+      "h": "Height",
+      "\\pi": "Pi"
+    },
     "palette": [
-      { "id": "p1", "latex": "r + h", "description": "First compute r+h = 3+8 = 11" },
-      { "id": "p2", "latex": "66\\pi", "description": "2π × 3 × 11 = 6π × 11 = 66π" }
+      {
+        "id": "p1",
+        "latex": "r + h",
+        "description": "First compute r+h = 3+8 = 11"
+      },
+      {
+        "id": "p2",
+        "latex": "66\\pi",
+        "description": "2π × 3 × 11 = 6π × 11 = 66π"
+      }
     ],
     "steps": [
-      { "id": "s1", "fromLatex": "SA = 2\\pi r(r + h)", "toLatex": "SA = 2\\pi \\times 3 \\times (3 + 8)", "paletteRef": null, "dropTargets": [], "description": "Substitute r=3, h=8" },
-      { "id": "s1a", "fromLatex": "3 + 8 = 11", "toLatex": "3 + 8 = 11", "paletteRef": null, "dropTargets": [], "description": "Compute: 3 + 8 = 11" },
-      { "id": "s2", "fromLatex": "SA = 2\\pi \\times 3 \\times (3 + 8)", "toLatex": "SA = 2\\pi \\times 3 \\times 11", "paletteRef": "p1", "dropTargets": ["3 + 8"], "description": "Evaluate parentheses: 3+8=11" },
-      { "id": "s2a", "fromLatex": "2 \\times 3 = 6", "toLatex": "2 \\times 3 = 6", "paletteRef": null, "dropTargets": [], "description": "Compute: 2 × 3 = 6" },
-      { "id": "s2b", "fromLatex": "6 \\times 11 = 66", "toLatex": "6 \\times 11 = 66", "paletteRef": null, "dropTargets": [], "description": "Compute: 6 × 11 = 66" },
-      { "id": "s3", "fromLatex": "SA = 2\\pi \\times 3 \\times 11", "toLatex": "SA = 66\\pi", "paletteRef": "p2", "dropTargets": ["2\\pi \\times 3 \\times 11"], "description": "2 × 3 × 11 = 66" }
-    ]
+      {
+        "id": "s1",
+        "fromLatex": "SA = 2\\pi r(r + h)",
+        "toLatex": "SA = 2\\pi \\times 3 \\times (3 + 8)",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "Substitute r=3, h=8"
+      },
+      {
+        "id": "s1a",
+        "fromLatex": "3 + 8 = 11",
+        "toLatex": "3 + 8 = 11",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "Compute: 3 + 8 = 11"
+      },
+      {
+        "id": "s2",
+        "fromLatex": "SA = 2\\pi \\times 3 \\times (3 + 8)",
+        "toLatex": "SA = 2\\pi \\times 3 \\times 11",
+        "paletteRef": "p1",
+        "dropTargets": [
+          "3 + 8"
+        ],
+        "description": "Evaluate parentheses: 3+8=11"
+      },
+      {
+        "id": "s2a",
+        "fromLatex": "2 \\times 3 = 6",
+        "toLatex": "2 \\times 3 = 6",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "Compute: 2 × 3 = 6"
+      },
+      {
+        "id": "s2b",
+        "fromLatex": "6 \\times 11 = 66",
+        "toLatex": "6 \\times 11 = 66",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "Compute: 6 × 11 = 66"
+      },
+      {
+        "id": "s3",
+        "fromLatex": "SA = 2\\pi \\times 3 \\times 11",
+        "toLatex": "SA = 66\\pi",
+        "paletteRef": "p2",
+        "dropTargets": [
+          "2\\pi \\times 3 \\times 11"
+        ],
+        "description": "2 × 3 × 11 = 66"
+      }
+    ],
+    "image": "geo-h-005.svg"
   },
   {
-    "id": "geo-h-006", "topic": "geometry", "difficulty": "hard",
-    "question": { "latex": "\\text{Interior angle sum of a regular hexagon}", "plain": "What is the sum of interior angles of a regular hexagon?" },
+    "id": "geo-h-006",
+    "topic": "geometry",
+    "difficulty": "hard",
+    "question": {
+      "latex": "\\text{Interior angle sum of a regular hexagon}",
+      "plain": "What is the sum of interior angles of a regular hexagon?"
+    },
     "symbols": {},
     "palette": [
-      { "id": "p1", "latex": "(6-2)", "description": "Formula: (n−2)×180°, with n=6 sides" },
-      { "id": "p2", "latex": "720^\\circ", "description": "4 × 180° = 720°" }
+      {
+        "id": "p1",
+        "latex": "(6-2)",
+        "description": "Formula: (n−2)×180°, with n=6 sides"
+      },
+      {
+        "id": "p2",
+        "latex": "720^\\circ",
+        "description": "4 × 180° = 720°"
+      }
     ],
     "steps": [
-      { "id": "s1", "fromLatex": "(n-2) \\times 180^\\circ", "toLatex": "(6-2) \\times 180^\\circ", "paletteRef": "p1", "dropTargets": ["n"], "description": "Substitute n=6 for hexagon" },
-      { "id": "s1a", "fromLatex": "6 - 2 = 4", "toLatex": "6 - 2 = 4", "paletteRef": null, "dropTargets": [], "description": "Compute: 6 − 2 = 4" },
-      { "id": "s2", "fromLatex": "(6-2) \\times 180^\\circ", "toLatex": "4 \\times 180^\\circ", "paletteRef": null, "dropTargets": [], "description": "6 − 2 = 4" },
-      { "id": "s2a", "fromLatex": "4 \\times 180 = 720", "toLatex": "4 \\times 180 = 720", "paletteRef": null, "dropTargets": [], "description": "Compute: 4 × 180 = 720" },
-      { "id": "s3", "fromLatex": "4 \\times 180^\\circ", "toLatex": "720^\\circ", "paletteRef": "p2", "dropTargets": ["4 \\times 180^\\circ"], "description": "4 × 180 = 720°" }
-    ]
+      {
+        "id": "s1",
+        "fromLatex": "(n-2) \\times 180^\\circ",
+        "toLatex": "(6-2) \\times 180^\\circ",
+        "paletteRef": "p1",
+        "dropTargets": [
+          "n"
+        ],
+        "description": "Substitute n=6 for hexagon"
+      },
+      {
+        "id": "s1a",
+        "fromLatex": "6 - 2 = 4",
+        "toLatex": "6 - 2 = 4",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "Compute: 6 − 2 = 4"
+      },
+      {
+        "id": "s2",
+        "fromLatex": "(6-2) \\times 180^\\circ",
+        "toLatex": "4 \\times 180^\\circ",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "6 − 2 = 4"
+      },
+      {
+        "id": "s2a",
+        "fromLatex": "4 \\times 180 = 720",
+        "toLatex": "4 \\times 180 = 720",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "Compute: 4 × 180 = 720"
+      },
+      {
+        "id": "s3",
+        "fromLatex": "4 \\times 180^\\circ",
+        "toLatex": "720^\\circ",
+        "paletteRef": "p2",
+        "dropTargets": [
+          "4 \\times 180^\\circ"
+        ],
+        "description": "4 × 180 = 720°"
+      }
+    ],
+    "image": "geo-h-006.svg"
   },
   {
-    "id": "geo-h-007", "topic": "geometry", "difficulty": "hard",
-    "question": { "latex": "V = \\frac{1}{3}s^2 h,\\quad s=6,\\ h=8", "plain": "Volume of a square pyramid with base 6 and height 8" },
-    "symbols": { "V": "Volume", "s": "Side length of square base", "h": "Height of pyramid" },
+    "id": "geo-h-007",
+    "topic": "geometry",
+    "difficulty": "hard",
+    "question": {
+      "latex": "V = \\frac{1}{3}s^2 h,\\quad s=6,\\ h=8",
+      "plain": "Volume of a square pyramid with base 6 and height 8"
+    },
+    "symbols": {
+      "V": "Volume",
+      "s": "Side length of square base",
+      "h": "Height of pyramid"
+    },
     "palette": [
-      { "id": "p1", "latex": "6^2", "description": "Base area: 6² = 36" },
-      { "id": "p2", "latex": "96", "description": "(1/3) × 36 × 8 = 12 × 8 = 96" }
+      {
+        "id": "p1",
+        "latex": "6^2",
+        "description": "Base area: 6² = 36"
+      },
+      {
+        "id": "p2",
+        "latex": "96",
+        "description": "(1/3) × 36 × 8 = 12 × 8 = 96"
+      }
     ],
     "steps": [
-      { "id": "s1", "fromLatex": "V = \\frac{1}{3}s^2 h", "toLatex": "V = \\frac{1}{3} \\times 6^2 \\times 8", "paletteRef": "p1", "dropTargets": ["s^2 h"], "description": "Substitute s=6, h=8" },
-      { "id": "s1a", "fromLatex": "6^2 = 6 \\times 6 = 36", "toLatex": "6^2 = 6 \\times 6 = 36", "paletteRef": null, "dropTargets": [], "description": "Compute: 6² = 6 × 6 = 36" },
-      { "id": "s2", "fromLatex": "V = \\frac{1}{3} \\times 6^2 \\times 8", "toLatex": "V = \\frac{1}{3} \\times 36 \\times 8", "paletteRef": null, "dropTargets": [], "description": "6² = 36" },
-      { "id": "s2a", "fromLatex": "36 \\div 3 = 12", "toLatex": "36 \\div 3 = 12 \\quad (\\tfrac{1}{3} \\times 36 = 12)", "paletteRef": null, "dropTargets": [], "description": "Compute: 36 ÷ 3 = 12" },
-      { "id": "s3", "fromLatex": "V = \\frac{1}{3} \\times 36 \\times 8", "toLatex": "V = 12 \\times 8", "paletteRef": null, "dropTargets": [], "description": "36/3 = 12" },
-      { "id": "s3a", "fromLatex": "12 \\times 8 = 96", "toLatex": "12 \\times 8 = 96", "paletteRef": null, "dropTargets": [], "description": "Compute: 12 × 8 = 96" },
-      { "id": "s4", "fromLatex": "V = 12 \\times 8", "toLatex": "V = 96", "paletteRef": "p2", "dropTargets": ["12 \\times 8"], "description": "12 × 8 = 96" }
-    ]
+      {
+        "id": "s1",
+        "fromLatex": "V = \\frac{1}{3}s^2 h",
+        "toLatex": "V = \\frac{1}{3} \\times 6^2 \\times 8",
+        "paletteRef": "p1",
+        "dropTargets": [
+          "s^2 h"
+        ],
+        "description": "Substitute s=6, h=8"
+      },
+      {
+        "id": "s1a",
+        "fromLatex": "6^2 = 6 \\times 6 = 36",
+        "toLatex": "6^2 = 6 \\times 6 = 36",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "Compute: 6² = 6 × 6 = 36"
+      },
+      {
+        "id": "s2",
+        "fromLatex": "V = \\frac{1}{3} \\times 6^2 \\times 8",
+        "toLatex": "V = \\frac{1}{3} \\times 36 \\times 8",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "6² = 36"
+      },
+      {
+        "id": "s2a",
+        "fromLatex": "36 \\div 3 = 12",
+        "toLatex": "36 \\div 3 = 12 \\quad (\\tfrac{1}{3} \\times 36 = 12)",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "Compute: 36 ÷ 3 = 12"
+      },
+      {
+        "id": "s3",
+        "fromLatex": "V = \\frac{1}{3} \\times 36 \\times 8",
+        "toLatex": "V = 12 \\times 8",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "36/3 = 12"
+      },
+      {
+        "id": "s3a",
+        "fromLatex": "12 \\times 8 = 96",
+        "toLatex": "12 \\times 8 = 96",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "Compute: 12 × 8 = 96"
+      },
+      {
+        "id": "s4",
+        "fromLatex": "V = 12 \\times 8",
+        "toLatex": "V = 96",
+        "paletteRef": "p2",
+        "dropTargets": [
+          "12 \\times 8"
+        ],
+        "description": "12 × 8 = 96"
+      }
+    ],
+    "image": "geo-h-007.svg"
   },
   {
-    "id": "geo-h-008", "topic": "geometry", "difficulty": "hard",
-    "question": { "latex": "\\text{Arc length: } s = r\\theta,\\quad r=10,\\ \\theta=\\frac{\\pi}{3}", "plain": "Find the arc length with r=10 and θ=π/3" },
-    "symbols": { "s": "Arc length", "r": "Radius of the circle", "\\theta": "Central angle in radians", "\\pi": "Pi" },
+    "id": "geo-h-008",
+    "topic": "geometry",
+    "difficulty": "hard",
+    "question": {
+      "latex": "\\text{Arc length: } s = r\\theta,\\quad r=10,\\ \\theta=\\frac{\\pi}{3}",
+      "plain": "Find the arc length with r=10 and θ=π/3"
+    },
+    "symbols": {
+      "s": "Arc length",
+      "r": "Radius of the circle",
+      "\\theta": "Central angle in radians",
+      "\\pi": "Pi"
+    },
     "palette": [
-      { "id": "p1", "latex": "\\frac{\\pi}{3}", "description": "The angle in radians: π/3" },
-      { "id": "p2", "latex": "\\frac{10\\pi}{3}", "description": "s = 10 × π/3 = 10π/3 ≈ 10.47" }
+      {
+        "id": "p1",
+        "latex": "\\frac{\\pi}{3}",
+        "description": "The angle in radians: π/3"
+      },
+      {
+        "id": "p2",
+        "latex": "\\frac{10\\pi}{3}",
+        "description": "s = 10 × π/3 = 10π/3 ≈ 10.47"
+      }
     ],
     "steps": [
-      { "id": "s1", "fromLatex": "s = r\\theta", "toLatex": "s = 10 \\times \\frac{\\pi}{3}", "paletteRef": "p1", "dropTargets": ["r\\theta"], "description": "Substitute r=10, θ=π/3" },
-      { "id": "s1a", "fromLatex": "10 \\times \\frac{1}{3} = \\frac{10}{3}", "toLatex": "10 \\times \\frac{\\pi}{3} = \\frac{10\\pi}{3}", "paletteRef": null, "dropTargets": [], "description": "Compute: 10 × π/3 = 10π/3 (multiply numerator)" },
-      { "id": "s2", "fromLatex": "s = 10 \\times \\frac{\\pi}{3}", "toLatex": "s = \\frac{10\\pi}{3}", "paletteRef": "p2", "dropTargets": ["10 \\times \\frac{\\pi}{3}"], "description": "Multiply to simplify" }
-    ]
+      {
+        "id": "s1",
+        "fromLatex": "s = r\\theta",
+        "toLatex": "s = 10 \\times \\frac{\\pi}{3}",
+        "paletteRef": "p1",
+        "dropTargets": [
+          "r\\theta"
+        ],
+        "description": "Substitute r=10, θ=π/3"
+      },
+      {
+        "id": "s1a",
+        "fromLatex": "10 \\times \\frac{1}{3} = \\frac{10}{3}",
+        "toLatex": "10 \\times \\frac{\\pi}{3} = \\frac{10\\pi}{3}",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "Compute: 10 × π/3 = 10π/3 (multiply numerator)"
+      },
+      {
+        "id": "s2",
+        "fromLatex": "s = 10 \\times \\frac{\\pi}{3}",
+        "toLatex": "s = \\frac{10\\pi}{3}",
+        "paletteRef": "p2",
+        "dropTargets": [
+          "10 \\times \\frac{\\pi}{3}"
+        ],
+        "description": "Multiply to simplify"
+      }
+    ],
+    "image": "geo-h-008.svg"
   },
   {
-    "id": "geo-h-009", "topic": "geometry", "difficulty": "hard",
-    "question": { "latex": "\\text{SA of sphere} = 4\\pi r^2,\\quad r = 6", "plain": "Surface area of a sphere with radius 6" },
-    "symbols": { "SA": "Surface area", "r": "Radius", "\\pi": "Pi" },
+    "id": "geo-h-009",
+    "topic": "geometry",
+    "difficulty": "hard",
+    "question": {
+      "latex": "\\text{SA of sphere} = 4\\pi r^2,\\quad r = 6",
+      "plain": "Surface area of a sphere with radius 6"
+    },
+    "symbols": {
+      "SA": "Surface area",
+      "r": "Radius",
+      "\\pi": "Pi"
+    },
     "palette": [
-      { "id": "p1", "latex": "6^2", "description": "r² = 6² = 36" },
-      { "id": "p2", "latex": "144\\pi", "description": "4π × 36 = 144π ≈ 452.4" }
+      {
+        "id": "p1",
+        "latex": "6^2",
+        "description": "r² = 6² = 36"
+      },
+      {
+        "id": "p2",
+        "latex": "144\\pi",
+        "description": "4π × 36 = 144π ≈ 452.4"
+      }
     ],
     "steps": [
-      { "id": "s1", "fromLatex": "SA = 4\\pi r^2", "toLatex": "SA = 4\\pi \\times 6^2", "paletteRef": "p1", "dropTargets": ["r^2"], "description": "Substitute r = 6" },
-      { "id": "s1a", "fromLatex": "6^2 = 6 \\times 6 = 36", "toLatex": "6^2 = 6 \\times 6 = 36", "paletteRef": null, "dropTargets": [], "description": "Compute: 6² = 6 × 6 = 36" },
-      { "id": "s2", "fromLatex": "SA = 4\\pi \\times 6^2", "toLatex": "SA = 4\\pi \\times 36", "paletteRef": null, "dropTargets": [], "description": "6² = 36" },
-      { "id": "s2a", "fromLatex": "4 \\times 36 = 144", "toLatex": "4 \\times 36 = 144", "paletteRef": null, "dropTargets": [], "description": "Compute: 4 × 36 = 144" },
-      { "id": "s3", "fromLatex": "SA = 4\\pi \\times 36", "toLatex": "SA = 144\\pi", "paletteRef": "p2", "dropTargets": ["4\\pi \\times 36"], "description": "4 × 36 = 144" }
-    ]
+      {
+        "id": "s1",
+        "fromLatex": "SA = 4\\pi r^2",
+        "toLatex": "SA = 4\\pi \\times 6^2",
+        "paletteRef": "p1",
+        "dropTargets": [
+          "r^2"
+        ],
+        "description": "Substitute r = 6"
+      },
+      {
+        "id": "s1a",
+        "fromLatex": "6^2 = 6 \\times 6 = 36",
+        "toLatex": "6^2 = 6 \\times 6 = 36",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "Compute: 6² = 6 × 6 = 36"
+      },
+      {
+        "id": "s2",
+        "fromLatex": "SA = 4\\pi \\times 6^2",
+        "toLatex": "SA = 4\\pi \\times 36",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "6² = 36"
+      },
+      {
+        "id": "s2a",
+        "fromLatex": "4 \\times 36 = 144",
+        "toLatex": "4 \\times 36 = 144",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "Compute: 4 × 36 = 144"
+      },
+      {
+        "id": "s3",
+        "fromLatex": "SA = 4\\pi \\times 36",
+        "toLatex": "SA = 144\\pi",
+        "paletteRef": "p2",
+        "dropTargets": [
+          "4\\pi \\times 36"
+        ],
+        "description": "4 × 36 = 144"
+      }
+    ],
+    "image": "geo-h-009.svg"
   },
   {
-    "id": "geo-h-010", "topic": "geometry", "difficulty": "hard",
-    "question": { "latex": "\\text{Sector area} = \\frac{\\theta}{2\\pi}\\pi r^2,\\quad r=9,\\ \\theta=\\frac{2\\pi}{3}", "plain": "Area of a sector with r=9 and central angle 2π/3" },
-    "symbols": { "\\theta": "Central angle in radians", "r": "Radius", "\\pi": "Pi" },
+    "id": "geo-h-010",
+    "topic": "geometry",
+    "difficulty": "hard",
+    "question": {
+      "latex": "\\text{Sector area} = \\frac{\\theta}{2\\pi}\\pi r^2,\\quad r=9,\\ \\theta=\\frac{2\\pi}{3}",
+      "plain": "Area of a sector with r=9 and central angle 2π/3"
+    },
+    "symbols": {
+      "\\theta": "Central angle in radians",
+      "r": "Radius",
+      "\\pi": "Pi"
+    },
     "palette": [
-      { "id": "p1", "latex": "\\frac{1}{2}r^2\\theta", "description": "Simplified formula: A = ½r²θ" },
-      { "id": "p2", "latex": "27\\pi", "description": "½ × 81 × (2π/3) = 27π" }
+      {
+        "id": "p1",
+        "latex": "\\frac{1}{2}r^2\\theta",
+        "description": "Simplified formula: A = ½r²θ"
+      },
+      {
+        "id": "p2",
+        "latex": "27\\pi",
+        "description": "½ × 81 × (2π/3) = 27π"
+      }
     ],
     "steps": [
-      { "id": "s1", "fromLatex": "A = \\frac{\\theta}{2\\pi}\\pi r^2", "toLatex": "A = \\frac{1}{2}r^2\\theta", "paletteRef": "p1", "dropTargets": ["\\frac{\\theta}{2\\pi}\\pi r^2"], "description": "Simplify to A = ½r²θ" },
-      { "id": "s2", "fromLatex": "A = \\frac{1}{2}r^2\\theta", "toLatex": "A = \\frac{1}{2} \\times 81 \\times \\frac{2\\pi}{3}", "paletteRef": null, "dropTargets": [], "description": "Substitute r=9 (r²=81), θ=2π/3" },
-      { "id": "s2a", "fromLatex": "9^2 = 9 \\times 9 = 81", "toLatex": "9^2 = 9 \\times 9 = 81", "paletteRef": null, "dropTargets": [], "description": "Compute: 9² = 9 × 9 = 81" },
-      { "id": "s2b", "fromLatex": "81 \\times 2 = 162 \\text{ then } 162 \\div 3 = 54 \\text{ then } 54 \\div 2 = 27", "toLatex": "\\tfrac{1}{2} \\times 81 \\times \\tfrac{2}{3} = \\tfrac{81 \\times 2}{2 \\times 3} = \\tfrac{162}{6} = 27", "paletteRef": null, "dropTargets": [], "description": "Compute: ½ × 81 × 2/3 = 162 ÷ 6 = 27" },
-      { "id": "s3", "fromLatex": "A = \\frac{1}{2} \\times 81 \\times \\frac{2\\pi}{3}", "toLatex": "A = 27\\pi", "paletteRef": "p2", "dropTargets": ["\\frac{1}{2} \\times 81 \\times \\frac{2\\pi}{3}"], "description": "½ × 81 × 2/3 = 27, so A = 27π" }
-    ]
+      {
+        "id": "s1",
+        "fromLatex": "A = \\frac{\\theta}{2\\pi}\\pi r^2",
+        "toLatex": "A = \\frac{1}{2}r^2\\theta",
+        "paletteRef": "p1",
+        "dropTargets": [
+          "\\frac{\\theta}{2\\pi}\\pi r^2"
+        ],
+        "description": "Simplify to A = ½r²θ"
+      },
+      {
+        "id": "s2",
+        "fromLatex": "A = \\frac{1}{2}r^2\\theta",
+        "toLatex": "A = \\frac{1}{2} \\times 81 \\times \\frac{2\\pi}{3}",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "Substitute r=9 (r²=81), θ=2π/3"
+      },
+      {
+        "id": "s2a",
+        "fromLatex": "9^2 = 9 \\times 9 = 81",
+        "toLatex": "9^2 = 9 \\times 9 = 81",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "Compute: 9² = 9 × 9 = 81"
+      },
+      {
+        "id": "s2b",
+        "fromLatex": "81 \\times 2 = 162 \\text{ then } 162 \\div 3 = 54 \\text{ then } 54 \\div 2 = 27",
+        "toLatex": "\\tfrac{1}{2} \\times 81 \\times \\tfrac{2}{3} = \\tfrac{81 \\times 2}{2 \\times 3} = \\tfrac{162}{6} = 27",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "Compute: ½ × 81 × 2/3 = 162 ÷ 6 = 27"
+      },
+      {
+        "id": "s3",
+        "fromLatex": "A = \\frac{1}{2} \\times 81 \\times \\frac{2\\pi}{3}",
+        "toLatex": "A = 27\\pi",
+        "paletteRef": "p2",
+        "dropTargets": [
+          "\\frac{1}{2} \\times 81 \\times \\frac{2\\pi}{3}"
+        ],
+        "description": "½ × 81 × 2/3 = 27, so A = 27π"
+      }
+    ],
+    "image": "geo-h-010.svg"
   }
 ]
