@@ -332,6 +332,69 @@
       white-space: nowrap;
       box-shadow: 0 4px 16px rgba(0,0,0,0.5);
     }
+
+    /* ── Touch / Mobile ────────────────────────────────────────── */
+    button, select, .palette-item, .ctrl-btn {
+      touch-action: manipulation;
+    }
+
+    .palette-item.touch-selected {
+      border-color: var(--accent);
+      box-shadow: 0 0 0 3px rgba(92,138,255,0.4);
+    }
+
+    @media (max-width: 640px) {
+      body { padding: 10px 10px 24px; gap: 8px; }
+
+      h1 { font-size: 1.05rem; }
+
+      #score-bar {
+        flex-wrap: wrap;
+        gap: 4px 10px;
+        justify-content: center;
+        font-size: 0.76rem;
+      }
+
+      #picker { gap: 7px; }
+      #picker select { font-size: 0.82rem; padding: 6px 8px; max-width: calc(50vw - 16px); }
+      #picker button  { padding: 6px 12px; font-size: 0.85rem; }
+
+      #layout { flex-direction: column; }
+
+      /* Palette becomes a horizontal strip */
+      #palette {
+        width: 100%;
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 8px;
+        justify-content: center;
+        padding: 10px;
+        order: 2;
+      }
+      #palette-heading { width: 100%; }
+      .palette-item {
+        flex: 1 1 80px;
+        max-width: 160px;
+        padding: 10px 6px;
+      }
+      /* Tooltips need hover; hide on touch screens */
+      .pal-tip { display: none !important; }
+
+      #game-area { order: 1; gap: 10px; }
+
+      #question-box { padding: 12px 14px; }
+      #question-render { font-size: 1.2rem; }
+      #question-plain  { font-size: 0.78rem; }
+      #puzzle-num-badge { font-size: 0.9rem; top: 8px; right: 10px; }
+
+      #step-box { font-size: 1.35rem; padding: 20px 10px; min-height: 100px; }
+
+      #step-meta { font-size: 0.78rem; }
+
+      .ctrl-btn     { padding: 11px 12px; font-size: 0.85rem; }
+      .ctrl-btn.nav { padding: 11px 16px; font-size: 0.9rem; }
+      #controls { gap: 7px; justify-content: center; }
+    }
   </style>
 </head>
 <body>
@@ -533,6 +596,36 @@ function renderPalette() {
     });
     div.addEventListener('dragend', e => {
       e.currentTarget.classList.remove('dragging');
+      G.draggingId = null;
+    });
+
+    // ── Touch drag: swipe palette item onto a drop zone ──────────
+    div.addEventListener('touchstart', () => {
+      G.draggingId = item.id;
+      div.classList.add('dragging');
+    }, { passive: true });
+
+    div.addEventListener('touchmove', e => {
+      e.preventDefault(); // prevent page scroll while dragging
+      const t = e.touches[0];
+      stepEq.querySelectorAll('.drop-zone').forEach(el => el.classList.remove('drag-over'));
+      const under = document.elementFromPoint(t.clientX, t.clientY);
+      const dz = under?.closest('.drop-zone:not(.done)');
+      if (dz) dz.classList.add('drag-over');
+    }, { passive: false });
+
+    div.addEventListener('touchend', e => {
+      div.classList.remove('dragging');
+      stepEq.querySelectorAll('.drop-zone.drag-over').forEach(el => el.classList.remove('drag-over'));
+      const t = e.changedTouches[0];
+      const under = document.elementFromPoint(t.clientX, t.clientY);
+      const dz = under?.closest('.drop-zone');
+      if (dz) {
+        const idx = parseInt(dz.dataset.dzIdx);
+        if (!isNaN(idx) && !G.completedDrops.has(idx)) {
+          handleDrop(dz, idx, G.draggingId);
+        }
+      }
       G.draggingId = null;
     });
 
