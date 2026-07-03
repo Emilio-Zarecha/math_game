@@ -1,0 +1,860 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Math Game</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css" />
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:       #0d0d1a;
+      --surface:  #151528;
+      --panel:    #1c1c35;
+      --border:   #2e2e55;
+      --accent:   #5c8aff;
+      --correct:  #3ecf8e;
+      --wrong:    #ff4d6d;
+      --hint:     #ffb830;
+      --text:     #e0e0f0;
+      --muted:    #7070a0;
+      --radius:   10px;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: system-ui, sans-serif;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 20px 16px 40px;
+      gap: 14px;
+    }
+
+    h1 {
+      font-size: 1.3rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--accent);
+    }
+
+    /* ── Score bar ─────────────────────────────────────────── */
+    #score-bar {
+      font-size: 0.82rem;
+      color: var(--muted);
+      display: flex;
+      gap: 18px;
+    }
+    #score-bar b { color: var(--text); }
+
+    /* ── Picker ────────────────────────────────────────────── */
+    #picker {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    #picker select, #picker button {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      color: var(--text);
+      border-radius: var(--radius);
+      padding: 7px 14px;
+      font-size: 0.9rem;
+      cursor: pointer;
+    }
+    #picker button {
+      background: var(--accent);
+      border-color: var(--accent);
+      font-weight: 600;
+    }
+    #picker button:hover { filter: brightness(1.15); }
+
+    /* ── Main layout ───────────────────────────────────────── */
+    #layout {
+      display: flex;
+      gap: 16px;
+      width: 100%;
+      max-width: 920px;
+      align-items: flex-start;
+    }
+
+    /* ── Palette ───────────────────────────────────────────── */
+    #palette {
+      width: 160px;
+      flex-shrink: 0;
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 12px 10px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    #palette-heading {
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--muted);
+    }
+    #palette-empty {
+      font-size: 0.78rem;
+      color: var(--muted);
+      line-height: 1.4;
+    }
+
+    .palette-item {
+      background: var(--surface);
+      border: 2px solid var(--border);
+      border-radius: 8px;
+      padding: 12px 8px;
+      cursor: grab;
+      text-align: center;
+      position: relative;
+      user-select: none;
+      transition: border-color 0.2s, box-shadow 0.2s, opacity 0.2s;
+    }
+    .palette-item:hover { border-color: var(--accent); }
+    .palette-item.dragging { opacity: 0.35; cursor: grabbing; }
+    .palette-item.used { opacity: 0.3; pointer-events: none; }
+    .palette-item.hint-highlight {
+      border-color: var(--hint);
+      box-shadow: 0 0 16px var(--hint);
+      animation: pulse 1s ease-in-out infinite alternate;
+    }
+    @keyframes pulse { to { box-shadow: 0 0 26px var(--hint); } }
+
+    .pal-tip {
+      display: none;
+      position: absolute;
+      left: calc(100% + 10px);
+      top: 50%;
+      transform: translateY(-50%);
+      background: #22223f;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 8px 10px;
+      font-size: 0.76rem;
+      color: var(--text);
+      width: 200px;
+      z-index: 100;
+      pointer-events: none;
+      line-height: 1.45;
+    }
+    .palette-item:hover .pal-tip { display: block; }
+
+    /* ── Game area ─────────────────────────────────────────── */
+    #game-area {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    /* Question box */
+    #question-box {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 20px 24px;
+      text-align: center;
+      position: relative;
+    }
+    #puzzle-num-badge {
+      position: absolute;
+      top: 10px;
+      right: 14px;
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--hint);
+      letter-spacing: 0.04em;
+    }
+    #question-label {
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--muted);
+      margin-bottom: 10px;
+    }
+    #question-render { font-size: 1.5rem; }
+    #question-plain  { font-size: 0.82rem; color: var(--muted); margin-top: 6px; }
+
+    /* Current step box */
+    #step-box {
+      background: var(--panel);
+      border: 2px solid var(--accent);
+      border-radius: var(--radius);
+      padding: 36px 24px;
+      min-height: 140px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2rem;
+      position: relative;
+    }
+    #step-box.auto-step { border-color: var(--border); }
+
+    /* Inline drop zones */
+    .drop-zone {
+      display: inline-block;
+      border: 2px dashed var(--muted);
+      border-radius: 8px;
+      padding: 8px 20px;
+      min-width: 2.8em;
+      cursor: pointer;
+      position: relative;
+      transition: border-color 0.2s, background 0.2s, box-shadow 0.2s;
+      vertical-align: middle;
+    }
+    .drop-zone.drag-over {
+      border-color: var(--accent);
+      background: rgba(92,138,255,0.15);
+    }
+    .drop-zone.correct-drop {
+      border-color: var(--correct);
+      background: rgba(62,207,142,0.15);
+      animation: flash-ok 0.4s ease-out;
+    }
+    .drop-zone.wrong-drop {
+      animation: shake 0.35s ease-out;
+    }
+    .drop-zone.hint-target {
+      border-color: var(--hint);
+      box-shadow: 0 0 12px var(--hint);
+      background: rgba(255,184,48,0.12);
+      animation: pulse 1s ease-in-out infinite alternate;
+    }
+    .drop-zone.done {
+      border: 2px solid var(--correct);
+      background: rgba(62,207,142,0.10);
+      cursor: default;
+    }
+
+    @keyframes flash-ok {
+      0%   { background: rgba(62,207,142,0.45); }
+      100% { background: rgba(62,207,142,0.15); }
+    }
+    @keyframes shake {
+      0%,100% { transform: translateX(0); }
+      25%     { transform: translateX(-7px); }
+      75%     { transform: translateX(7px); }
+    }
+
+    /* Step meta row */
+    #step-meta {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 0.83rem;
+    }
+    #step-desc { color: var(--muted); font-style: italic; }
+    #step-progress { color: var(--text); font-weight: 600; }
+
+    /* Both-sides message */
+    #side-message {
+      text-align: center;
+      font-size: 0.88rem;
+      font-weight: 600;
+      color: var(--hint);
+      min-height: 1.4em;
+      transition: opacity 0.3s;
+    }
+    #side-message.hidden-msg { opacity: 0; }
+
+    /* Auto-step label */
+    #auto-label {
+      position: absolute;
+      top: 10px;
+      right: 14px;
+      font-size: 0.68rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--muted);
+    }
+
+    /* Controls */
+    #controls {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+    .ctrl-btn {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      color: var(--text);
+      border-radius: 8px;
+      padding: 8px 16px;
+      font-size: 0.88rem;
+      cursor: pointer;
+      transition: background 0.15s, border-color 0.15s;
+    }
+    .ctrl-btn:hover { background: var(--surface); border-color: var(--accent); }
+    .ctrl-btn:disabled { opacity: 0.35; cursor: default; pointer-events: none; }
+    .ctrl-btn.primary { background: var(--accent); border-color: var(--accent); font-weight: 600; }
+    .ctrl-btn.primary:hover { filter: brightness(1.15); }
+    .ctrl-btn.nav { font-size: 1rem; padding: 8px 18px; }
+
+    /* Completion banner */
+    #completion {
+      display: none;
+      background: var(--panel);
+      border: 2px solid var(--correct);
+      border-radius: var(--radius);
+      padding: 20px;
+      text-align: center;
+      font-size: 1.1rem;
+      color: var(--correct);
+      font-weight: 600;
+    }
+
+    /* Step fade transition */
+    #step-equation {
+      transition: opacity 0.4s ease;
+    }
+    #step-equation.fading { opacity: 0; }
+
+    /* Symbol tooltip (floating) */
+    #sym-tip {
+      position: fixed;
+      background: #22223f;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 6px 10px;
+      font-size: 0.78rem;
+      color: var(--text);
+      z-index: 300;
+      pointer-events: none;
+      white-space: nowrap;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.5);
+    }
+  </style>
+</head>
+<body>
+
+<h1>Math Game</h1>
+
+<div id="score-bar">
+  Solved: <b id="sc-solved">0</b>
+  &nbsp;|&nbsp; Hints: <b id="sc-hints">0</b>
+  &nbsp;|&nbsp; Problem: <b id="sc-num" style="color:var(--hint)">—</b>
+  &nbsp;|&nbsp; ID: <b id="sc-puzzle">—</b>
+</div>
+
+<div id="picker">
+  <select id="topic-select">
+    <option value="algebra.json">Algebra</option>
+    <option value="arithmetic.json">Arithmetic</option>
+    <option value="geometry.json">Geometry</option>
+    <option value="trigonometry.json">Trigonometry</option>
+    <option value="calculus.json">Calculus</option>
+  </select>
+  <select id="puzzle-select"><option>Loading…</option></select>
+  <button id="load-btn">Load Puzzle</button>
+</div>
+
+<div id="layout">
+
+  <!-- Palette -->
+  <div id="palette">
+    <div id="palette-heading">Palette</div>
+    <div id="palette-empty">Load a puzzle to begin.</div>
+  </div>
+
+  <!-- Game area -->
+  <div id="game-area">
+
+    <div id="question-box">
+      <div id="question-label">Question</div>
+      <div id="puzzle-num-badge">—</div>
+      <div id="question-render">—</div>
+      <div id="question-plain"></div>
+    </div>
+
+    <div id="step-box" class="auto-step">
+      <div id="auto-label"></div>
+      <div id="step-equation"></div>
+    </div>
+
+    <div id="side-message" class="hidden-msg">—</div>
+
+    <div id="step-meta">
+      <div id="step-desc"></div>
+      <div id="step-progress">—</div>
+    </div>
+
+    <div id="completion">Puzzle complete! Well done.</div>
+
+    <div id="controls">
+      <button class="ctrl-btn nav" id="prev-btn" disabled>← Prev</button>
+      <button class="ctrl-btn nav" id="next-btn" disabled>Next →</button>
+      <button class="ctrl-btn" id="hint-btn" disabled>Give Up This Step</button>
+      <button class="ctrl-btn" id="reset-btn">Reset</button>
+      <button class="ctrl-btn primary" id="final-btn">Final Answer</button>
+    </div>
+
+  </div>
+</div>
+
+<div id="sym-tip" style="display:none"></div>
+
+<script>
+// ── State ──────────────────────────────────────────────────────
+const G = {
+  puzzle:          null,
+  globalSyms:      {},
+  mergedSyms:      {},
+  currentStep:     0,     // index into visibleSteps()
+  completedDrops:  null,
+  draggingId:      null,
+  autoTimer:       null,
+  score:           { solved: 0, hints: 0 },
+};
+
+function visibleSteps() {
+  return G.puzzle ? G.puzzle.steps : [];
+}
+
+// ── DOM ────────────────────────────────────────────────────────
+const $ = id => document.getElementById(id);
+const topicSel   = $('topic-select');
+const puzzleSel  = $('puzzle-select');
+const qRender    = $('question-render');
+const qPlain     = $('question-plain');
+const stepBox    = $('step-box');
+const stepEq     = $('step-equation');
+const autoLabel  = $('auto-label');
+const stepDesc   = $('step-desc');
+const stepProg   = $('step-progress');
+const sideMsg    = $('side-message');
+const completion = $('completion');
+const symTip     = $('sym-tip');
+const prevBtn    = $('prev-btn');
+const nextBtn    = $('next-btn');
+const hintBtn    = $('hint-btn');
+
+// ── KaTeX ──────────────────────────────────────────────────────
+function renderLatex(latex, el, displayMode = false) {
+  try {
+    katex.render(latex, el, { throwOnError: false, displayMode });
+  } catch(e) { el.textContent = latex; }
+}
+
+// ── Load global symbols ────────────────────────────────────────
+async function loadGlobalSymbols() {
+  try {
+    const r = await fetch('puzzles/symbols.json');
+    G.globalSyms = await r.json();
+  } catch(e) { G.globalSyms = {}; }
+}
+
+// ── Load topic list ────────────────────────────────────────────
+async function loadTopicIndex() {
+  const topic = topicSel.value;
+  try {
+    const r = await fetch(`puzzles/${topic}`);
+    const puzzles = await r.json();
+    puzzleSel.innerHTML = puzzles.map((p, i) =>
+      `<option value="${i}">${p.id} — ${p.question.plain} (${p.difficulty})</option>`
+    ).join('');
+    puzzleSel._data = puzzles;
+  } catch(e) {
+    puzzleSel.innerHTML = '<option>Error loading</option>';
+  }
+}
+
+topicSel.addEventListener('change', loadTopicIndex);
+
+// ── Load puzzle ────────────────────────────────────────────────
+function loadPuzzle() {
+  const puzzles = puzzleSel._data;
+  if (!puzzles) return;
+  const puzzleIndex    = parseInt(puzzleSel.value, 10);
+  G.puzzle         = puzzles[puzzleIndex];
+  G.currentStep    = 0;
+  G.completedDrops = new Set();
+  G.mergedSyms     = { ...G.globalSyms, ...(G.puzzle.symbols || {}) };
+  cancelAutoTimer();
+  completion.style.display = 'none';
+
+  const topicIndex = topicSel.selectedIndex;            // 0–4
+  const globalNum  = topicIndex * 30 + puzzleIndex + 1; // 1–150
+  $('sc-num').textContent    = `#${globalNum}`;
+  $('sc-puzzle').textContent = G.puzzle.id;
+  $('puzzle-num-badge').textContent = `#${globalNum}`;
+
+  renderAll();
+}
+
+$('load-btn').addEventListener('click', loadPuzzle);
+
+// ── Master render ──────────────────────────────────────────────
+function renderAll() {
+  renderQuestion();
+  renderPalette();
+  renderCurrentStep();
+}
+
+// ── Question ───────────────────────────────────────────────────
+function renderQuestion() {
+  renderLatex(G.puzzle.question.latex, qRender);
+  qPlain.textContent = G.puzzle.question.plain;
+}
+
+// ── Palette ────────────────────────────────────────────────────
+function renderPalette() {
+  const pal = $('palette');
+  pal.querySelectorAll('.palette-item').forEach(el => el.remove());
+  $('palette-empty').style.display = 'none';
+
+  G.puzzle.palette.forEach(item => {
+    const div = document.createElement('div');
+    div.className = 'palette-item';
+    div.dataset.id = item.id;
+    div.draggable = true;
+
+    const math = document.createElement('span');
+    renderLatex(item.latex, math);
+    div.appendChild(math);
+
+    const tip = document.createElement('div');
+    tip.className = 'pal-tip';
+    tip.textContent = item.description;
+    div.appendChild(tip);
+
+    div.addEventListener('dragstart', e => {
+      G.draggingId = e.currentTarget.dataset.id;
+      e.currentTarget.classList.add('dragging');
+      e.dataTransfer.effectAllowed = 'move';
+    });
+    div.addEventListener('dragend', e => {
+      e.currentTarget.classList.remove('dragging');
+      G.draggingId = null;
+    });
+
+    pal.appendChild(div);
+  });
+
+  syncPaletteUsed();
+}
+
+function syncPaletteUsed() {
+  if (!G.puzzle) return;
+  const pal = $('palette');
+  pal.querySelectorAll('.palette-item').forEach(el => {
+    const id = el.dataset.id;
+    const usedAt = visibleSteps().findIndex(s => s.paletteRef === id);
+    el.classList.toggle('used', usedAt !== -1 && usedAt < G.currentStep);
+  });
+}
+
+// ── Current step ───────────────────────────────────────────────
+function renderCurrentStep() {
+  if (!G.puzzle) return;
+  const p   = G.puzzle;
+  const vs  = visibleSteps();
+  const done = G.currentStep >= vs.length;
+
+  completion.style.display = done ? 'block' : 'none';
+  if (done) {
+    const lastStep = p.steps[p.steps.length - 1];
+    stepEq.innerHTML = '';
+    renderLatex(lastStep.toLatex, stepEq, true);
+    stepDesc.textContent = lastStep.description;
+    stepProg.textContent = `Step ${vs.length} of ${vs.length}`;
+    stepBox.classList.add('auto-step');
+    autoLabel.textContent = '';
+    hideSideMsg();
+    syncPaletteUsed();
+    updateNavButtons();
+    return;
+  }
+
+  const step    = vs[G.currentStep];
+  const isAuto  = !step.paletteRef;
+  const targets = step.dropTargets || [];
+
+  stepBox.classList.toggle('auto-step', isAuto);
+  autoLabel.textContent = '';
+
+  stepEq.innerHTML = '';
+  if (targets.length === 0) {
+    renderLatex(step.toLatex, stepEq, true);
+    G.autoTimer = setTimeout(() => advanceStep(), 1000);
+  } else {
+    buildDropZoneEquation(step.fromLatex, targets, stepEq);
+  }
+
+  stepDesc.textContent = step.description;
+  stepProg.textContent = `Step ${G.currentStep + 1} of ${vs.length}`;
+  hideSideMsg();
+  updateNavButtons();
+  syncPaletteUsed();
+  attachSymbolHovers();
+}
+
+// ── Build equation with inline drop zones ──────────────────────
+// Renders the FULL equation in one KaTeX call (preserving = spacing),
+// using \htmlClass{dz-N}{token} to mark targets, then wraps those
+// rendered elements in interactive drop zone spans.
+function buildDropZoneEquation(fullLatex, targets, container) {
+  const positions = [];
+  for (let i = 0; i < targets.length; i++) {
+    const pos = fullLatex.indexOf(targets[i]);
+    if (pos !== -1) positions.push({ pos, end: pos + targets[i].length, idx: i, target: targets[i] });
+  }
+  positions.sort((a, b) => a.pos - b.pos);
+
+  // Inject \htmlClass markers into the latex string
+  let processed = '';
+  let cur = 0;
+  for (const seg of positions) {
+    processed += fullLatex.slice(cur, seg.pos);
+    processed += `\\htmlClass{dz-${seg.idx}}{${seg.target}}`;
+    cur = seg.end;
+  }
+  processed += fullLatex.slice(cur);
+
+  // Render entire equation as one KaTeX expression
+  try {
+    katex.render(processed, container, { throwOnError: false, displayMode: true, trust: true });
+  } catch(e) { container.textContent = fullLatex; return; }
+
+  // Post-process: find each .dz-N group and wrap it in a drop zone span
+  targets.forEach((_, i) => {
+    const inner = container.querySelector(`.dz-${i}`);
+    if (!inner) return;
+    const dz = document.createElement('span');
+    dz.className = 'drop-zone' + (G.completedDrops.has(i) ? ' done' : '');
+    dz.dataset.dzIdx = i;
+    inner.parentNode.insertBefore(dz, inner);
+    dz.appendChild(inner);
+    setupDropZone(dz, i);
+  });
+}
+
+function setupDropZone(dz, dzIdx) {
+  dz.addEventListener('dragover', e => {
+    if (!G.completedDrops.has(dzIdx)) {
+      e.preventDefault();
+      dz.classList.add('drag-over');
+    }
+  });
+  dz.addEventListener('dragleave', () => dz.classList.remove('drag-over'));
+  dz.addEventListener('drop', e => {
+    e.preventDefault();
+    dz.classList.remove('drag-over');
+    if (G.completedDrops.has(dzIdx)) return;
+    handleDrop(dz, dzIdx, G.draggingId);
+  });
+}
+
+function handleDrop(dz, dzIdx, paletteId) {
+  const step = visibleSteps()[G.currentStep];
+  clearHint();
+
+  if (step.paletteRef === paletteId) {
+    // Correct
+    dz.classList.add('correct-drop');
+    G.completedDrops.add(dzIdx);
+    dz.classList.add('done');
+
+    const remaining = (step.dropTargets || []).length - G.completedDrops.size;
+    if (remaining > 0) {
+      // More drops needed — show the other-side message
+      const labels = step.dropSideLabels || [];
+      const nextLabel = labels.find((_, i) => !G.completedDrops.has(i)) || 'the other side';
+      showSideMsg(`✓ Good — now apply to ${nextLabel} too!`);
+      // Highlight remaining drop zones
+      stepEq.querySelectorAll('.drop-zone:not(.done)').forEach(el => {
+        el.classList.add('hint-target');
+      });
+    } else {
+      // All drops done — advance after brief pause
+      hideSideMsg();
+      setTimeout(advanceStep, 450);
+    }
+  } else {
+    // Wrong palette item
+    dz.classList.add('wrong-drop');
+    setTimeout(() => dz.classList.remove('wrong-drop'), 380);
+  }
+}
+
+function advanceStep() {
+  cancelAutoTimer();
+  stepEq.classList.add('fading');
+  setTimeout(() => {
+    G.currentStep++;
+    G.completedDrops = new Set();
+    clearHint();
+    if (G.currentStep >= visibleSteps().length) {
+      G.score.solved++;
+      $('sc-solved').textContent = G.score.solved;
+    }
+    renderCurrentStep();
+    requestAnimationFrame(() => requestAnimationFrame(() => {
+      stepEq.classList.remove('fading');
+    }));
+  }, 400);
+}
+
+function cancelAutoTimer() {
+  if (G.autoTimer) { clearTimeout(G.autoTimer); G.autoTimer = null; }
+}
+
+// ── Hint / Give Up ─────────────────────────────────────────────
+function activateHint() {
+  if (!G.puzzle) return;
+  const step = visibleSteps()[G.currentStep];
+  if (!step || !step.paletteRef) return;
+
+  G.score.hints++;
+  $('sc-hints').textContent = G.score.hints;
+
+  // Highlight palette item
+  const palItem = $('palette').querySelector(`[data-id="${step.paletteRef}"]`);
+  if (palItem) palItem.classList.add('hint-highlight');
+
+  // Highlight all remaining drop zones and show message
+  const targets = step.dropTargets || [];
+  const labels  = step.dropSideLabels || [];
+  const remaining = targets.filter((_, i) => !G.completedDrops.has(i));
+
+  stepEq.querySelectorAll('.drop-zone:not(.done)').forEach(el => {
+    el.classList.add('hint-target');
+  });
+
+  if (remaining.length > 1) {
+    showSideMsg(`Drop onto both sides of the equation`);
+  } else if (remaining.length === 1 && G.completedDrops.size > 0) {
+    const idx = targets.findIndex((_, i) => !G.completedDrops.has(i));
+    const label = labels[idx] || 'the other side';
+    showSideMsg(`Now apply to ${label} too!`);
+  }
+}
+
+function clearHint() {
+  $('palette').querySelectorAll('.hint-highlight').forEach(el => el.classList.remove('hint-highlight'));
+  stepEq.querySelectorAll('.hint-target').forEach(el => el.classList.remove('hint-target'));
+}
+
+$('hint-btn').addEventListener('click', activateHint);
+
+// ── Side message ───────────────────────────────────────────────
+function showSideMsg(text) {
+  sideMsg.textContent = text;
+  sideMsg.classList.remove('hidden-msg');
+}
+function hideSideMsg() {
+  sideMsg.classList.add('hidden-msg');
+  sideMsg.textContent = '';
+}
+
+// ── Navigation ─────────────────────────────────────────────────
+function goNext() {
+  if (!G.puzzle) return;
+  const step = visibleSteps()[G.currentStep];
+  if (!step) return;
+  // Auto-advance only if no drops required
+  if (!step.paletteRef) advanceStep();
+}
+
+function goPrev() {
+  if (!G.puzzle || G.currentStep <= 0) return;
+  cancelAutoTimer();
+  G.currentStep--;
+  G.completedDrops = new Set();
+  clearHint();
+  renderCurrentStep();
+}
+
+function updateNavButtons() {
+  prevBtn.disabled = !G.puzzle || G.currentStep <= 0;
+  const step = visibleSteps()[G.currentStep];
+  nextBtn.disabled = !step || !!step.paletteRef;
+  hintBtn.disabled = !step || !step.paletteRef;
+}
+
+prevBtn.addEventListener('click', goPrev);
+nextBtn.addEventListener('click', goNext);
+
+$('reset-btn').addEventListener('click', () => {
+  if (!G.puzzle) return;
+  cancelAutoTimer();
+  G.currentStep    = 0;
+  G.completedDrops = new Set();
+  clearHint();
+  completion.style.display = 'none';
+  renderAll();
+});
+
+$('final-btn').addEventListener('click', () => {
+  if (!G.puzzle) return;
+  const last = G.puzzle.steps[G.puzzle.steps.length - 1];
+  // Show final answer in step box
+  stepEq.innerHTML = '';
+  renderLatex(last.toLatex, stepEq, true);
+  stepDesc.textContent = 'Final answer';
+  const _vs = visibleSteps();
+  stepProg.textContent = `Step ${_vs.length} of ${_vs.length}`;
+  stepBox.classList.add('auto-step');
+  autoLabel.textContent = '';
+  hideSideMsg();
+  completion.style.display = 'block';
+  G.currentStep    = visibleSteps().length;
+  G.completedDrops = new Set();
+  syncPaletteUsed();
+  updateNavButtons();
+});
+
+// ── Keyboard ───────────────────────────────────────────────────
+document.addEventListener('keydown', e => {
+  if (e.key === 'ArrowRight') goNext();
+  if (e.key === 'ArrowLeft')  goPrev();
+});
+
+// ── Symbol hover tooltips ──────────────────────────────────────
+function attachSymbolHovers() {
+  const syms = G.mergedSyms;
+  if (!Object.keys(syms).length) return;
+
+  const areas = [stepEq, qRender];
+  for (const area of areas) {
+    area.querySelectorAll('.katex-html .mord, .katex-html .mbin, .katex-html .mrel').forEach(el => {
+      const t = el.textContent.trim();
+      if (syms[t] && !el.dataset.tipBound) {
+        el.dataset.tipBound = '1';
+        el.style.cursor = 'help';
+        el.addEventListener('mouseenter', ev => {
+          symTip.textContent = syms[t];
+          symTip.style.display = 'block';
+          moveTip(ev);
+          el.addEventListener('mousemove', moveTip);
+        });
+        el.addEventListener('mouseleave', () => {
+          symTip.style.display = 'none';
+          el.removeEventListener('mousemove', moveTip);
+        });
+      }
+    });
+  }
+}
+
+function moveTip(e) {
+  symTip.style.left = (e.clientX + 14) + 'px';
+  symTip.style.top  = (e.clientY - 10) + 'px';
+}
+
+// ── Init ───────────────────────────────────────────────────────
+(async () => {
+  await loadGlobalSymbols();
+  await loadTopicIndex();
+})();
+</script>
+</body>
+</html>

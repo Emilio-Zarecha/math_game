@@ -1,0 +1,479 @@
+[
+  {
+    "id": "alg-e-001", "topic": "algebra", "difficulty": "easy",
+    "question": { "latex": "3x + 5 = 20", "plain": "Solve for x" },
+    "symbols": { "x": "The unknown variable we are solving for" },
+    "palette": [
+      { "id": "p1", "latex": "-5", "description": "Subtract 5 from both sides to isolate the x term" },
+      { "id": "p2", "latex": "\\div 3", "description": "Divide both sides by the coefficient of x" }
+    ],
+    "steps": [
+      { "id": "s1", "fromLatex": "3x + 5 = 20", "toLatex": "3x + 5 - 5 = 20 - 5", "paletteRef": "p1", "dropTargets": ["5", "20"], "dropSideLabels": ["left side", "right side"], "description": "Subtract 5 from both sides" },
+      { "id": "s1a", "fromLatex": "20 - 5 = 15", "toLatex": "20 - 5 = 15", "paletteRef": null, "dropTargets": [], "description": "Compute: 20 − 5 = 15" },
+      { "id": "s2", "fromLatex": "3x + 5 - 5 = 20 - 5", "toLatex": "3x = 15", "paletteRef": null, "dropTargets": [], "description": "Simplify both sides" },
+      { "id": "s3", "fromLatex": "3x = 15", "toLatex": "\\frac{3x}{3} = \\frac{15}{3}", "paletteRef": "p2", "dropTargets": ["3x", "15"], "dropSideLabels": ["left side", "right side"], "description": "Divide both sides by 3" },
+      { "id": "s3a", "fromLatex": "15 \\div 3 = 5", "toLatex": "15 \\div 3 = 5", "paletteRef": null, "dropTargets": [], "description": "Compute: 15 ÷ 3 = 5" },
+      { "id": "s4", "fromLatex": "\\frac{3x}{3} = \\frac{15}{3}", "toLatex": "x = 5", "paletteRef": null, "dropTargets": [], "description": "Simplify — solution reached" }
+    ]
+  },
+  {
+    "id": "alg-e-002", "topic": "algebra", "difficulty": "easy",
+    "question": { "latex": "2x - 7 = 11", "plain": "Solve for x" },
+    "symbols": { "x": "The unknown variable we are solving for" },
+    "palette": [
+      { "id": "p1", "latex": "+7", "description": "Add 7 to both sides to cancel the −7" },
+      { "id": "p2", "latex": "\\div 2", "description": "Divide both sides by the coefficient of x" }
+    ],
+    "steps": [
+      { "id": "s1", "fromLatex": "2x - 7 = 11", "toLatex": "2x - 7 + 7 = 11 + 7", "paletteRef": "p1", "dropTargets": ["7", "11"], "dropSideLabels": ["left side", "right side"], "description": "Add 7 to both sides" },
+      { "id": "s1a", "fromLatex": "11 + 7 = 18", "toLatex": "11 + 7 = 18", "paletteRef": null, "dropTargets": [], "description": "Compute: 11 + 7 = 18" },
+      { "id": "s2", "fromLatex": "2x - 7 + 7 = 11 + 7", "toLatex": "2x = 18", "paletteRef": null, "dropTargets": [], "description": "Simplify both sides" },
+      { "id": "s3", "fromLatex": "2x = 18", "toLatex": "\\frac{2x}{2} = \\frac{18}{2}", "paletteRef": "p2", "dropTargets": ["2x", "18"], "dropSideLabels": ["left side", "right side"], "description": "Divide both sides by 2" },
+      { "id": "s3a", "fromLatex": "18 \\div 2 = 9", "toLatex": "18 \\div 2 = 9", "paletteRef": null, "dropTargets": [], "description": "Compute: 18 ÷ 2 = 9" },
+      { "id": "s4", "fromLatex": "\\frac{2x}{2} = \\frac{18}{2}", "toLatex": "x = 9", "paletteRef": null, "dropTargets": [], "description": "Simplify — solution reached" }
+    ]
+  },
+  {
+    "id": "alg-e-003", "topic": "algebra", "difficulty": "easy",
+    "question": { "latex": "5x = 35", "plain": "Solve for x" },
+    "symbols": { "x": "The unknown variable we are solving for" },
+    "palette": [
+      { "id": "p1", "latex": "\\div 5", "description": "Divide both sides by 5 to isolate x" }
+    ],
+    "steps": [
+      { "id": "s1", "fromLatex": "5x = 35", "toLatex": "\\frac{5x}{5} = \\frac{35}{5}", "paletteRef": "p1", "dropTargets": ["5x", "35"], "dropSideLabels": ["left side", "right side"], "description": "Divide both sides by 5" },
+      { "id": "s1a", "fromLatex": "35 \\div 5 = 7", "toLatex": "35 \\div 5 = 7", "paletteRef": null, "dropTargets": [], "description": "Compute: 35 ÷ 5 = 7" },
+      { "id": "s2", "fromLatex": "\\frac{5x}{5} = \\frac{35}{5}", "toLatex": "x = 7", "paletteRef": null, "dropTargets": [], "description": "Simplify — solution reached" }
+    ]
+  },
+  {
+    "id": "alg-e-004", "topic": "algebra", "difficulty": "easy",
+    "question": { "latex": "x + 12 = 20", "plain": "Solve for x" },
+    "symbols": { "x": "The unknown variable we are solving for" },
+    "palette": [
+      { "id": "p1", "latex": "-12", "description": "Subtract 12 from both sides to isolate x" }
+    ],
+    "steps": [
+      { "id": "s1", "fromLatex": "x + 12 = 20", "toLatex": "x + 12 - 12 = 20 - 12", "paletteRef": "p1", "dropTargets": ["12", "20"], "dropSideLabels": ["left side", "right side"], "description": "Subtract 12 from both sides" },
+      { "id": "s1a", "fromLatex": "20 - 12 = 8", "toLatex": "20 - 12 = 8", "paletteRef": null, "dropTargets": [], "description": "Compute: 20 − 12 = 8" },
+      { "id": "s2", "fromLatex": "x + 12 - 12 = 20 - 12", "toLatex": "x = 8", "paletteRef": null, "dropTargets": [], "description": "Simplify — solution reached" }
+    ]
+  },
+  {
+    "id": "alg-e-005", "topic": "algebra", "difficulty": "easy",
+    "question": { "latex": "\\frac{x}{4} = 6", "plain": "Solve for x" },
+    "symbols": { "x": "The unknown variable we are solving for" },
+    "palette": [
+      { "id": "p1", "latex": "\\times 4", "description": "Multiply both sides by 4 to cancel the denominator" }
+    ],
+    "steps": [
+      { "id": "s1", "fromLatex": "\\frac{x}{4} = 6", "toLatex": "\\frac{x}{4} \\times 4 = 6 \\times 4", "paletteRef": "p1", "dropTargets": ["\\frac{x}{4}", "6"], "dropSideLabels": ["left side", "right side"], "description": "Multiply both sides by 4" },
+      { "id": "s1a", "fromLatex": "6 \\times 4 = 24", "toLatex": "6 \\times 4 = 24", "paletteRef": null, "dropTargets": [], "description": "Compute: 6 × 4 = 24" },
+      { "id": "s2", "fromLatex": "\\frac{x}{4} \\times 4 = 6 \\times 4", "toLatex": "x = 24", "paletteRef": null, "dropTargets": [], "description": "Simplify — solution reached" }
+    ]
+  },
+  {
+    "id": "alg-e-006", "topic": "algebra", "difficulty": "easy",
+    "question": { "latex": "4x + 2 = 18", "plain": "Solve for x" },
+    "symbols": { "x": "The unknown variable we are solving for" },
+    "palette": [
+      { "id": "p1", "latex": "-2", "description": "Subtract 2 from both sides" },
+      { "id": "p2", "latex": "\\div 4", "description": "Divide both sides by the coefficient 4" }
+    ],
+    "steps": [
+      { "id": "s1", "fromLatex": "4x + 2 = 18", "toLatex": "4x + 2 - 2 = 18 - 2", "paletteRef": "p1", "dropTargets": ["2", "18"], "dropSideLabels": ["left side", "right side"], "description": "Subtract 2 from both sides" },
+      { "id": "s1a", "fromLatex": "18 - 2 = 16", "toLatex": "18 - 2 = 16", "paletteRef": null, "dropTargets": [], "description": "Compute: 18 − 2 = 16" },
+      { "id": "s2", "fromLatex": "4x + 2 - 2 = 18 - 2", "toLatex": "4x = 16", "paletteRef": null, "dropTargets": [], "description": "Simplify both sides" },
+      { "id": "s3", "fromLatex": "4x = 16", "toLatex": "\\frac{4x}{4} = \\frac{16}{4}", "paletteRef": "p2", "dropTargets": ["4x", "16"], "dropSideLabels": ["left side", "right side"], "description": "Divide both sides by 4" },
+      { "id": "s3a", "fromLatex": "16 \\div 4 = 4", "toLatex": "16 \\div 4 = 4", "paletteRef": null, "dropTargets": [], "description": "Compute: 16 ÷ 4 = 4" },
+      { "id": "s4", "fromLatex": "\\frac{4x}{4} = \\frac{16}{4}", "toLatex": "x = 4", "paletteRef": null, "dropTargets": [], "description": "Simplify — solution reached" }
+    ]
+  },
+  {
+    "id": "alg-e-007", "topic": "algebra", "difficulty": "easy",
+    "question": { "latex": "x - 9 = 5", "plain": "Solve for x" },
+    "symbols": { "x": "The unknown variable we are solving for" },
+    "palette": [
+      { "id": "p1", "latex": "+9", "description": "Add 9 to both sides to cancel the −9" }
+    ],
+    "steps": [
+      { "id": "s1", "fromLatex": "x - 9 = 5", "toLatex": "x - 9 + 9 = 5 + 9", "paletteRef": "p1", "dropTargets": ["9", "5"], "dropSideLabels": ["left side", "right side"], "description": "Add 9 to both sides" },
+      { "id": "s1a", "fromLatex": "5 + 9 = 14", "toLatex": "5 + 9 = 14", "paletteRef": null, "dropTargets": [], "description": "Compute: 5 + 9 = 14" },
+      { "id": "s2", "fromLatex": "x - 9 + 9 = 5 + 9", "toLatex": "x = 14", "paletteRef": null, "dropTargets": [], "description": "Simplify — solution reached" }
+    ]
+  },
+  {
+    "id": "alg-e-008", "topic": "algebra", "difficulty": "easy",
+    "question": { "latex": "2x + 3 = 11", "plain": "Solve for x" },
+    "symbols": { "x": "The unknown variable we are solving for" },
+    "palette": [
+      { "id": "p1", "latex": "-3", "description": "Subtract 3 from both sides" },
+      { "id": "p2", "latex": "\\div 2", "description": "Divide both sides by the coefficient 2" }
+    ],
+    "steps": [
+      { "id": "s1", "fromLatex": "2x + 3 = 11", "toLatex": "2x + 3 - 3 = 11 - 3", "paletteRef": "p1", "dropTargets": ["3", "11"], "dropSideLabels": ["left side", "right side"], "description": "Subtract 3 from both sides" },
+      { "id": "s1a", "fromLatex": "11 - 3 = 8", "toLatex": "11 - 3 = 8", "paletteRef": null, "dropTargets": [], "description": "Compute: 11 − 3 = 8" },
+      { "id": "s2", "fromLatex": "2x + 3 - 3 = 11 - 3", "toLatex": "2x = 8", "paletteRef": null, "dropTargets": [], "description": "Simplify both sides" },
+      { "id": "s3", "fromLatex": "2x = 8", "toLatex": "\\frac{2x}{2} = \\frac{8}{2}", "paletteRef": "p2", "dropTargets": ["2x", "8"], "dropSideLabels": ["left side", "right side"], "description": "Divide both sides by 2" },
+      { "id": "s3a", "fromLatex": "8 \\div 2 = 4", "toLatex": "8 \\div 2 = 4", "paletteRef": null, "dropTargets": [], "description": "Compute: 8 ÷ 2 = 4" },
+      { "id": "s4", "fromLatex": "\\frac{2x}{2} = \\frac{8}{2}", "toLatex": "x = 4", "paletteRef": null, "dropTargets": [], "description": "Simplify — solution reached" }
+    ]
+  },
+  {
+    "id": "alg-e-009", "topic": "algebra", "difficulty": "easy",
+    "question": { "latex": "\\frac{x}{3} = 7", "plain": "Solve for x" },
+    "symbols": { "x": "The unknown variable we are solving for" },
+    "palette": [
+      { "id": "p1", "latex": "\\times 3", "description": "Multiply both sides by 3 to cancel the denominator" }
+    ],
+    "steps": [
+      { "id": "s1", "fromLatex": "\\frac{x}{3} = 7", "toLatex": "\\frac{x}{3} \\times 3 = 7 \\times 3", "paletteRef": "p1", "dropTargets": ["\\frac{x}{3}", "7"], "dropSideLabels": ["left side", "right side"], "description": "Multiply both sides by 3" },
+      { "id": "s1a", "fromLatex": "7 \\times 3 = 21", "toLatex": "7 \\times 3 = 21", "paletteRef": null, "dropTargets": [], "description": "Compute: 7 × 3 = 21" },
+      { "id": "s2", "fromLatex": "\\frac{x}{3} \\times 3 = 7 \\times 3", "toLatex": "x = 21", "paletteRef": null, "dropTargets": [], "description": "Simplify — solution reached" }
+    ]
+  },
+  {
+    "id": "alg-e-010", "topic": "algebra", "difficulty": "easy",
+    "question": { "latex": "6x - 4 = 14", "plain": "Solve for x" },
+    "symbols": { "x": "The unknown variable we are solving for" },
+    "palette": [
+      { "id": "p1", "latex": "+4", "description": "Add 4 to both sides to cancel the −4" },
+      { "id": "p2", "latex": "\\div 6", "description": "Divide both sides by the coefficient 6" }
+    ],
+    "steps": [
+      { "id": "s1", "fromLatex": "6x - 4 = 14", "toLatex": "6x - 4 + 4 = 14 + 4", "paletteRef": "p1", "dropTargets": ["4", "14"], "dropSideLabels": ["left side", "right side"], "description": "Add 4 to both sides" },
+      { "id": "s1a", "fromLatex": "14 + 4 = 18", "toLatex": "14 + 4 = 18", "paletteRef": null, "dropTargets": [], "description": "Compute: 14 + 4 = 18" },
+      { "id": "s2", "fromLatex": "6x - 4 + 4 = 14 + 4", "toLatex": "6x = 18", "paletteRef": null, "dropTargets": [], "description": "Simplify both sides" },
+      { "id": "s3", "fromLatex": "6x = 18", "toLatex": "\\frac{6x}{6} = \\frac{18}{6}", "paletteRef": "p2", "dropTargets": ["6x", "18"], "dropSideLabels": ["left side", "right side"], "description": "Divide both sides by 6" },
+      { "id": "s3a", "fromLatex": "18 \\div 6 = 3", "toLatex": "18 \\div 6 = 3", "paletteRef": null, "dropTargets": [], "description": "Compute: 18 ÷ 6 = 3" },
+      { "id": "s4", "fromLatex": "\\frac{6x}{6} = \\frac{18}{6}", "toLatex": "x = 3", "paletteRef": null, "dropTargets": [], "description": "Simplify — solution reached" }
+    ]
+  },
+
+  {
+    "id": "alg-m-001", "topic": "algebra", "difficulty": "medium",
+    "question": { "latex": "x^2 - 9 = 0", "plain": "Solve for x" },
+    "symbols": { "x": "The unknown variable", "^2": "Squared — x multiplied by itself" },
+    "palette": [
+      { "id": "p1", "latex": "+9", "description": "Add 9 to both sides to isolate x²" },
+      { "id": "p2", "latex": "\\sqrt{\\phantom{x}}", "description": "Take the square root of both sides" },
+      { "id": "p3", "latex": "\\pm", "description": "Plus or minus — a square root yields two solutions" }
+    ],
+    "steps": [
+      { "id": "s1", "fromLatex": "x^2 - 9 = 0", "toLatex": "x^2 - 9 + 9 = 0 + 9", "paletteRef": "p1", "dropTargets": ["9", "0"], "dropSideLabels": ["left side", "right side"], "description": "Add 9 to both sides" },
+      { "id": "s1a", "fromLatex": "0 + 9 = 9", "toLatex": "0 + 9 = 9", "paletteRef": null, "dropTargets": [], "description": "Compute: 0 + 9 = 9" },
+      { "id": "s2", "fromLatex": "x^2 - 9 + 9 = 0 + 9", "toLatex": "x^2 = 9", "paletteRef": null, "dropTargets": [], "description": "Simplify both sides" },
+      { "id": "s3", "fromLatex": "x^2 = 9", "toLatex": "\\sqrt{x^2} = \\sqrt{9}", "paletteRef": "p2", "dropTargets": ["x^2", "9"], "dropSideLabels": ["left side", "right side"], "description": "Take the square root of both sides" },
+      { "id": "s3a", "fromLatex": "\\sqrt{9} = 3", "toLatex": "\\sqrt{9} = 3 \\quad (3^2 = 9)", "paletteRef": null, "dropTargets": [], "description": "Compute: √9 = 3 (because 3² = 9)" },
+      { "id": "s4", "fromLatex": "\\sqrt{x^2} = \\sqrt{9}", "toLatex": "x = \\pm 3", "paletteRef": "p3", "dropTargets": ["\\sqrt{9}"], "description": "Apply ± — two solutions" }
+    ]
+  },
+  {
+    "id": "alg-m-002", "topic": "algebra", "difficulty": "medium",
+    "question": { "latex": "2x^2 = 50", "plain": "Solve for x" },
+    "symbols": { "x": "The unknown variable" },
+    "palette": [
+      { "id": "p1", "latex": "\\div 2", "description": "Divide both sides by 2 to isolate x²" },
+      { "id": "p2", "latex": "\\sqrt{\\phantom{x}}", "description": "Take the square root of both sides" }
+    ],
+    "steps": [
+      { "id": "s1", "fromLatex": "2x^2 = 50", "toLatex": "\\frac{2x^2}{2} = \\frac{50}{2}", "paletteRef": "p1", "dropTargets": ["2x^2", "50"], "dropSideLabels": ["left side", "right side"], "description": "Divide both sides by 2" },
+      { "id": "s1a", "fromLatex": "50 \\div 2 = 25", "toLatex": "50 \\div 2 = 25", "paletteRef": null, "dropTargets": [], "description": "Compute: 50 ÷ 2 = 25" },
+      { "id": "s2", "fromLatex": "\\frac{2x^2}{2} = \\frac{50}{2}", "toLatex": "x^2 = 25", "paletteRef": null, "dropTargets": [], "description": "Simplify both sides" },
+      { "id": "s3", "fromLatex": "x^2 = 25", "toLatex": "\\sqrt{x^2} = \\sqrt{25}", "paletteRef": "p2", "dropTargets": ["x^2", "25"], "dropSideLabels": ["left side", "right side"], "description": "Take the square root of both sides" },
+      { "id": "s3a", "fromLatex": "\\sqrt{25} = 5", "toLatex": "\\sqrt{25} = 5 \\quad (5^2 = 25)", "paletteRef": null, "dropTargets": [], "description": "Compute: √25 = 5 (because 5² = 25)" },
+      { "id": "s4", "fromLatex": "\\sqrt{x^2} = \\sqrt{25}", "toLatex": "x = \\pm 5", "paletteRef": null, "dropTargets": [], "description": "Simplify — two solutions" }
+    ]
+  },
+  {
+    "id": "alg-m-003", "topic": "algebra", "difficulty": "medium",
+    "question": { "latex": "4x - 3 = 2x + 9", "plain": "Solve for x" },
+    "symbols": { "x": "The unknown variable" },
+    "palette": [
+      { "id": "p1", "latex": "-2x", "description": "Subtract 2x from both sides to group x terms on the left" },
+      { "id": "p2", "latex": "+3", "description": "Add 3 to both sides to isolate the x term" },
+      { "id": "p3", "latex": "\\div 2", "description": "Divide both sides by the coefficient 2" }
+    ],
+    "steps": [
+      { "id": "s1", "fromLatex": "4x - 3 = 2x + 9", "toLatex": "4x - 2x - 3 = 2x - 2x + 9", "paletteRef": "p1", "dropTargets": ["4x", "2x"], "dropSideLabels": ["left side", "right side"], "description": "Subtract 2x from both sides" },
+      { "id": "s1a", "fromLatex": "4x - 2x = 2x", "toLatex": "4x - 2x = 2x", "paletteRef": null, "dropTargets": [], "description": "Compute: 4x − 2x = 2x" },
+      { "id": "s2", "fromLatex": "4x - 2x - 3 = 2x - 2x + 9", "toLatex": "2x - 3 = 9", "paletteRef": null, "dropTargets": [], "description": "Simplify both sides" },
+      { "id": "s3", "fromLatex": "2x - 3 = 9", "toLatex": "2x - 3 + 3 = 9 + 3", "paletteRef": "p2", "dropTargets": ["3", "9"], "dropSideLabels": ["left side", "right side"], "description": "Add 3 to both sides" },
+      { "id": "s3a", "fromLatex": "9 + 3 = 12", "toLatex": "9 + 3 = 12", "paletteRef": null, "dropTargets": [], "description": "Compute: 9 + 3 = 12" },
+      { "id": "s4", "fromLatex": "2x - 3 + 3 = 9 + 3", "toLatex": "2x = 12", "paletteRef": null, "dropTargets": [], "description": "Simplify both sides" },
+      { "id": "s5", "fromLatex": "2x = 12", "toLatex": "\\frac{2x}{2} = \\frac{12}{2}", "paletteRef": "p3", "dropTargets": ["2x", "12"], "dropSideLabels": ["left side", "right side"], "description": "Divide both sides by 2" },
+      { "id": "s5a", "fromLatex": "12 \\div 2 = 6", "toLatex": "12 \\div 2 = 6", "paletteRef": null, "dropTargets": [], "description": "Compute: 12 ÷ 2 = 6" },
+      { "id": "s6", "fromLatex": "\\frac{2x}{2} = \\frac{12}{2}", "toLatex": "x = 6", "paletteRef": null, "dropTargets": [], "description": "Simplify — solution reached" }
+    ]
+  },
+  {
+    "id": "alg-m-004", "topic": "algebra", "difficulty": "medium",
+    "question": { "latex": "x^2 - 4x = 0", "plain": "Solve for x" },
+    "symbols": { "x": "The unknown variable" },
+    "palette": [
+      { "id": "p1", "latex": "x(x-4)", "description": "Factor out x — x is a common factor in both terms" }
+    ],
+    "steps": [
+      { "id": "s1", "fromLatex": "x^2 - 4x = 0", "toLatex": "x(x - 4) = 0", "paletteRef": "p1", "dropTargets": ["x^2 - 4x"], "description": "Factor out the common factor x" },
+      { "id": "s1a", "fromLatex": "x = 0 \\text{ or } x - 4 = 0", "toLatex": "x = 0 \\text{ or } x - 4 = 0", "paletteRef": null, "dropTargets": [], "description": "Zero product property: set each factor equal to 0" },
+      { "id": "s1b", "fromLatex": "0 + 4 = 4", "toLatex": "0 + 4 = 4 \\quad (\\text{from } x - 4 = 0 \\Rightarrow x = 4)", "paletteRef": null, "dropTargets": [], "description": "Compute: x − 4 = 0 → x = 0 + 4 = 4" },
+      { "id": "s2", "fromLatex": "x(x - 4) = 0", "toLatex": "x = 0 \\text{ or } x = 4", "paletteRef": null, "dropTargets": [], "description": "Both solutions" }
+    ]
+  },
+  {
+    "id": "alg-m-005", "topic": "algebra", "difficulty": "medium",
+    "question": { "latex": "\\frac{x}{2} + \\frac{x}{3} = 5", "plain": "Solve for x" },
+    "symbols": { "x": "The unknown variable" },
+    "palette": [
+      { "id": "p1", "latex": "\\times 6", "description": "Multiply by LCD = 6 to eliminate fractions" },
+      { "id": "p2", "latex": "\\div 5", "description": "Divide both sides by 5 to isolate x" }
+    ],
+    "steps": [
+      { "id": "s1", "fromLatex": "\\frac{x}{2} + \\frac{x}{3} = 5", "toLatex": "\\left(\\frac{x}{2} + \\frac{x}{3}\\right) \\times 6 = 5 \\times 6", "paletteRef": "p1", "dropTargets": ["\\frac{x}{2} + \\frac{x}{3}", "5"], "dropSideLabels": ["left side", "right side"], "description": "Multiply both sides by the LCD 6" },
+      { "id": "s1a", "fromLatex": "6 \\div 2 = 3 \\text{ and } 6 \\div 3 = 2", "toLatex": "6 \\div 2 = 3 \\text{ and } 6 \\div 3 = 2", "paletteRef": null, "dropTargets": [], "description": "Compute: 6 ÷ 2 = 3 and 6 ÷ 3 = 2 (distribute 6 into fractions)" },
+      { "id": "s1b", "fromLatex": "5 \\times 6 = 30", "toLatex": "5 \\times 6 = 30", "paletteRef": null, "dropTargets": [], "description": "Compute: 5 × 6 = 30 (right side)" },
+      { "id": "s2", "fromLatex": "\\left(\\frac{x}{2} + \\frac{x}{3}\\right) \\times 6 = 5 \\times 6", "toLatex": "3x + 2x = 30", "paletteRef": null, "dropTargets": [], "description": "Distribute 6 and simplify" },
+      { "id": "s2a", "fromLatex": "3 + 2 = 5", "toLatex": "3 + 2 = 5", "paletteRef": null, "dropTargets": [], "description": "Compute: 3 + 2 = 5 (coefficients combine)" },
+      { "id": "s3", "fromLatex": "3x + 2x = 30", "toLatex": "5x = 30", "paletteRef": null, "dropTargets": [], "description": "Combine like terms: 3x + 2x = 5x" },
+      { "id": "s4", "fromLatex": "5x = 30", "toLatex": "\\frac{5x}{5} = \\frac{30}{5}", "paletteRef": "p2", "dropTargets": ["5x", "30"], "dropSideLabels": ["left side", "right side"], "description": "Divide both sides by 5" },
+      { "id": "s4a", "fromLatex": "30 \\div 5 = 6", "toLatex": "30 \\div 5 = 6", "paletteRef": null, "dropTargets": [], "description": "Compute: 30 ÷ 5 = 6" },
+      { "id": "s5", "fromLatex": "\\frac{5x}{5} = \\frac{30}{5}", "toLatex": "x = 6", "paletteRef": null, "dropTargets": [], "description": "Simplify — solution reached" }
+    ]
+  },
+  {
+    "id": "alg-m-006", "topic": "algebra", "difficulty": "medium",
+    "question": { "latex": "\\sqrt{x} = 8", "plain": "Solve for x" },
+    "symbols": { "x": "The unknown variable", "\\sqrt": "Square root" },
+    "palette": [
+      { "id": "p1", "latex": "(\\cdot)^2", "description": "Square both sides to eliminate the square root" }
+    ],
+    "steps": [
+      { "id": "s1", "fromLatex": "\\sqrt{x} = 8", "toLatex": "(\\sqrt{x})^2 = 8^2", "paletteRef": "p1", "dropTargets": ["\\sqrt{x}", "8"], "dropSideLabels": ["left side", "right side"], "description": "Square both sides" },
+      { "id": "s1a", "fromLatex": "8^2 = 8 \\times 8 = 64", "toLatex": "8^2 = 8 \\times 8 = 64", "paletteRef": null, "dropTargets": [], "description": "Compute: 8² = 8 × 8 = 64" },
+      { "id": "s2", "fromLatex": "(\\sqrt{x})^2 = 8^2", "toLatex": "x = 64", "paletteRef": null, "dropTargets": [], "description": "Simplify — solution reached" }
+    ]
+  },
+  {
+    "id": "alg-m-007", "topic": "algebra", "difficulty": "medium",
+    "question": { "latex": "5x - 2 = 3x + 10", "plain": "Solve for x" },
+    "symbols": { "x": "The unknown variable" },
+    "palette": [
+      { "id": "p1", "latex": "-3x", "description": "Subtract 3x from both sides to collect x terms on the left" },
+      { "id": "p2", "latex": "+2", "description": "Add 2 to both sides" },
+      { "id": "p3", "latex": "\\div 2", "description": "Divide both sides by 2" }
+    ],
+    "steps": [
+      { "id": "s1", "fromLatex": "5x - 2 = 3x + 10", "toLatex": "5x - 3x - 2 = 3x - 3x + 10", "paletteRef": "p1", "dropTargets": ["5x", "3x"], "dropSideLabels": ["left side", "right side"], "description": "Subtract 3x from both sides" },
+      { "id": "s1a", "fromLatex": "5x - 3x = 2x", "toLatex": "5x - 3x = 2x", "paletteRef": null, "dropTargets": [], "description": "Compute: 5x − 3x = 2x" },
+      { "id": "s2", "fromLatex": "5x - 3x - 2 = 3x - 3x + 10", "toLatex": "2x - 2 = 10", "paletteRef": null, "dropTargets": [], "description": "Simplify both sides" },
+      { "id": "s3", "fromLatex": "2x - 2 = 10", "toLatex": "2x - 2 + 2 = 10 + 2", "paletteRef": "p2", "dropTargets": ["2", "10"], "dropSideLabels": ["left side", "right side"], "description": "Add 2 to both sides" },
+      { "id": "s3a", "fromLatex": "10 + 2 = 12", "toLatex": "10 + 2 = 12", "paletteRef": null, "dropTargets": [], "description": "Compute: 10 + 2 = 12" },
+      { "id": "s4", "fromLatex": "2x - 2 + 2 = 10 + 2", "toLatex": "2x = 12", "paletteRef": null, "dropTargets": [], "description": "Simplify both sides" },
+      { "id": "s5", "fromLatex": "2x = 12", "toLatex": "\\frac{2x}{2} = \\frac{12}{2}", "paletteRef": "p3", "dropTargets": ["2x", "12"], "dropSideLabels": ["left side", "right side"], "description": "Divide both sides by 2" },
+      { "id": "s5a", "fromLatex": "12 \\div 2 = 6", "toLatex": "12 \\div 2 = 6", "paletteRef": null, "dropTargets": [], "description": "Compute: 12 ÷ 2 = 6" },
+      { "id": "s6", "fromLatex": "\\frac{2x}{2} = \\frac{12}{2}", "toLatex": "x = 6", "paletteRef": null, "dropTargets": [], "description": "Simplify — solution reached" }
+    ]
+  },
+  {
+    "id": "alg-m-008", "topic": "algebra", "difficulty": "medium",
+    "question": { "latex": "x^2 + 2x - 8 = 0", "plain": "Solve for x by factoring" },
+    "symbols": { "x": "The unknown variable" },
+    "palette": [
+      { "id": "p1", "latex": "(x+4)(x-2)", "description": "The factored form: find two numbers that multiply to −8 and add to +2" }
+    ],
+    "steps": [
+      { "id": "s1", "fromLatex": "x^2 + 2x - 8 = 0", "toLatex": "(x + 4)(x - 2) = 0", "paletteRef": "p1", "dropTargets": ["x^2 + 2x - 8"], "description": "Factor the quadratic" },
+      { "id": "s1a", "fromLatex": "4 \\times (-2) = -8 \\text{ and } 4 + (-2) = 2", "toLatex": "4 \\times (-2) = -8 \\text{ and } 4 + (-2) = 2", "paletteRef": null, "dropTargets": [], "description": "Verify factors: 4×(−2) = −8 ✓ and 4+(−2) = 2 ✓" },
+      { "id": "s2", "fromLatex": "(x + 4)(x - 2) = 0", "toLatex": "x + 4 = 0 \\text{ or } x - 2 = 0", "paletteRef": null, "dropTargets": [], "description": "Zero product property" },
+      { "id": "s2a", "fromLatex": "0 - 4 = -4 \\text{ and } 0 + 2 = 2", "toLatex": "0 - 4 = -4 \\text{ and } 0 + 2 = 2", "paletteRef": null, "dropTargets": [], "description": "Compute: 0 − 4 = −4 (left eq.) and 0 + 2 = 2 (right eq.)" },
+      { "id": "s3", "fromLatex": "x + 4 = 0 \\text{ or } x - 2 = 0", "toLatex": "x = -4 \\text{ or } x = 2", "paletteRef": null, "dropTargets": [], "description": "Solve each equation" }
+    ]
+  },
+  {
+    "id": "alg-m-009", "topic": "algebra", "difficulty": "medium",
+    "question": { "latex": "\\log_2(x) = 5", "plain": "Solve for x" },
+    "symbols": { "\\log": "Logarithm — the exponent needed to reach a value from a given base" },
+    "palette": [
+      { "id": "p1", "latex": "2^5", "description": "Convert: log₂(x) = 5 means 2⁵ = x" }
+    ],
+    "steps": [
+      { "id": "s1", "fromLatex": "\\log_2(x) = 5", "toLatex": "2^5 = x", "paletteRef": "p1", "dropTargets": ["\\log_2(x)"], "description": "Rewrite in exponential form" },
+      { "id": "s1a", "fromLatex": "2^5 = 2 \\times 2 \\times 2 \\times 2 \\times 2 = 32", "toLatex": "2^5 = 2 \\times 2 \\times 2 \\times 2 \\times 2 = 32", "paletteRef": null, "dropTargets": [], "description": "Compute: 2⁵ = 2×2×2×2×2 = 32" },
+      { "id": "s2", "fromLatex": "2^5 = x", "toLatex": "x = 32", "paletteRef": null, "dropTargets": [], "description": "Solution reached" }
+    ]
+  },
+  {
+    "id": "alg-m-010", "topic": "algebra", "difficulty": "medium",
+    "question": { "latex": "(x + 3)^2 = 25", "plain": "Solve for x" },
+    "symbols": { "x": "The unknown variable" },
+    "palette": [
+      { "id": "p1", "latex": "\\sqrt{\\phantom{x}}", "description": "Take the square root of both sides" },
+      { "id": "p2", "latex": "-3", "description": "Subtract 3 from both sides to isolate x" }
+    ],
+    "steps": [
+      { "id": "s1", "fromLatex": "(x + 3)^2 = 25", "toLatex": "\\sqrt{(x+3)^2} = \\sqrt{25}", "paletteRef": "p1", "dropTargets": ["(x + 3)^2", "25"], "dropSideLabels": ["left side", "right side"], "description": "Take the square root of both sides" },
+      { "id": "s1a", "fromLatex": "\\sqrt{25} = 5", "toLatex": "\\sqrt{25} = 5 \\quad (5^2 = 25)", "paletteRef": null, "dropTargets": [], "description": "Compute: √25 = 5 (because 5² = 25)" },
+      { "id": "s2", "fromLatex": "\\sqrt{(x+3)^2} = \\sqrt{25}", "toLatex": "x + 3 = \\pm 5", "paletteRef": null, "dropTargets": [], "description": "Simplify — remember ±" },
+      { "id": "s3", "fromLatex": "x + 3 = \\pm 5", "toLatex": "x + 3 - 3 = \\pm 5 - 3", "paletteRef": "p2", "dropTargets": ["x + 3", "\\pm 5"], "dropSideLabels": ["left side", "right side"], "description": "Subtract 3 from both sides" },
+      { "id": "s3a", "fromLatex": "5 - 3 = 2 \\text{ and } -5 - 3 = -8", "toLatex": "5 - 3 = 2 \\text{ and } {-5} - 3 = -8", "paletteRef": null, "dropTargets": [], "description": "Compute: 5−3 = 2 and −5−3 = −8 (both cases)" },
+      { "id": "s4", "fromLatex": "x + 3 - 3 = \\pm 5 - 3", "toLatex": "x = 2 \\text{ or } x = -8", "paletteRef": null, "dropTargets": [], "description": "Simplify — two solutions" }
+    ]
+  },
+
+  {
+    "id": "alg-h-001", "topic": "algebra", "difficulty": "hard",
+    "question": { "latex": "x^2 - 5x + 6 = 0", "plain": "Solve for x by factoring" },
+    "symbols": { "x": "The unknown variable" },
+    "palette": [
+      { "id": "p1", "latex": "(x-2)(x-3)", "description": "Factor: find two numbers that multiply to +6 and add to −5" }
+    ],
+    "steps": [
+      { "id": "s1", "fromLatex": "x^2 - 5x + 6 = 0", "toLatex": "(x - 2)(x - 3) = 0", "paletteRef": "p1", "dropTargets": ["x^2 - 5x + 6"], "description": "Factor the quadratic" },
+      { "id": "s1a", "fromLatex": "(-2) \\times (-3) = 6 \\text{ and } (-2)+(-3) = -5", "toLatex": "(-2) \\times (-3) = 6 \\text{ and } (-2)+(-3) = -5", "paletteRef": null, "dropTargets": [], "description": "Verify: (−2)(−3) = 6 ✓ and (−2)+(−3) = −5 ✓" },
+      { "id": "s2", "fromLatex": "(x - 2)(x - 3) = 0", "toLatex": "x - 2 = 0 \\text{ or } x - 3 = 0", "paletteRef": null, "dropTargets": [], "description": "Zero product property" },
+      { "id": "s2a", "fromLatex": "0 + 2 = 2 \\text{ and } 0 + 3 = 3", "toLatex": "0 + 2 = 2 \\text{ and } 0 + 3 = 3", "paletteRef": null, "dropTargets": [], "description": "Compute: 0+2 = 2 and 0+3 = 3" },
+      { "id": "s3", "fromLatex": "x - 2 = 0 \\text{ or } x - 3 = 0", "toLatex": "x = 2 \\text{ or } x = 3", "paletteRef": null, "dropTargets": [], "description": "Solve each factor" }
+    ]
+  },
+  {
+    "id": "alg-h-002", "topic": "algebra", "difficulty": "hard",
+    "question": { "latex": "2x^2 - 7x + 3 = 0", "plain": "Solve for x by factoring" },
+    "symbols": { "x": "The unknown variable" },
+    "palette": [
+      { "id": "p1", "latex": "(2x-1)(x-3)", "description": "Factor: check (2x−1)(x−3) = 2x²−7x+3" }
+    ],
+    "steps": [
+      { "id": "s1", "fromLatex": "2x^2 - 7x + 3 = 0", "toLatex": "(2x - 1)(x - 3) = 0", "paletteRef": "p1", "dropTargets": ["2x^2 - 7x + 3"], "description": "Factor the quadratic" },
+      { "id": "s1a", "fromLatex": "(-6x) + (-x) = -7x", "toLatex": "\\text{FOIL check: } 2x^2 - 6x - x + 3 = 2x^2 - 7x + 3 \\checkmark", "paletteRef": null, "dropTargets": [], "description": "Verify FOIL: outer −6x + inner −x = −7x ✓" },
+      { "id": "s2", "fromLatex": "(2x - 1)(x - 3) = 0", "toLatex": "2x - 1 = 0 \\text{ or } x - 3 = 0", "paletteRef": null, "dropTargets": [], "description": "Zero product property" },
+      { "id": "s2a", "fromLatex": "1 \\div 2 = 0.5 = \\tfrac{1}{2}", "toLatex": "1 \\div 2 = \\tfrac{1}{2} \\quad (\\text{from } 2x = 1)", "paletteRef": null, "dropTargets": [], "description": "Compute: 1 ÷ 2 = ½ (solving left equation)" },
+      { "id": "s3", "fromLatex": "2x - 1 = 0 \\text{ or } x - 3 = 0", "toLatex": "x = \\tfrac{1}{2} \\text{ or } x = 3", "paletteRef": null, "dropTargets": [], "description": "Solve each factor" }
+    ]
+  },
+  {
+    "id": "alg-h-003", "topic": "algebra", "difficulty": "hard",
+    "question": { "latex": "3^x = 27", "plain": "Solve for x" },
+    "symbols": { "x": "The unknown variable (exponent)" },
+    "palette": [
+      { "id": "p1", "latex": "3^3", "description": "Express 27 as a power of 3: 27 = 3³" }
+    ],
+    "steps": [
+      { "id": "s1", "fromLatex": "3^x = 27", "toLatex": "3^x = 3^3", "paletteRef": "p1", "dropTargets": ["27"], "description": "Rewrite 27 as 3³" },
+      { "id": "s1a", "fromLatex": "3^3 = 3 \\times 3 \\times 3 = 27", "toLatex": "3^3 = 3 \\times 3 \\times 3 = 27", "paletteRef": null, "dropTargets": [], "description": "Compute: 3³ = 3×3×3 = 27 ✓" },
+      { "id": "s2", "fromLatex": "3^x = 3^3", "toLatex": "x = 3", "paletteRef": null, "dropTargets": [], "description": "Equal bases — equate exponents" }
+    ]
+  },
+  {
+    "id": "alg-h-004", "topic": "algebra", "difficulty": "hard",
+    "question": { "latex": "\\log_3(x + 1) = 2", "plain": "Solve for x" },
+    "symbols": { "\\log": "Logarithm — inverse of exponentiation", "x": "The unknown variable" },
+    "palette": [
+      { "id": "p1", "latex": "3^2", "description": "Convert to exponential form: log₃(x+1)=2 means 3²=x+1" },
+      { "id": "p2", "latex": "-1", "description": "Subtract 1 from both sides to isolate x" }
+    ],
+    "steps": [
+      { "id": "s1", "fromLatex": "\\log_3(x + 1) = 2", "toLatex": "3^2 = x + 1", "paletteRef": "p1", "dropTargets": ["\\log_3(x + 1)"], "description": "Rewrite in exponential form" },
+      { "id": "s1a", "fromLatex": "3^2 = 3 \\times 3 = 9", "toLatex": "3^2 = 3 \\times 3 = 9", "paletteRef": null, "dropTargets": [], "description": "Compute: 3² = 3 × 3 = 9" },
+      { "id": "s2", "fromLatex": "3^2 = x + 1", "toLatex": "9 = x + 1", "paletteRef": null, "dropTargets": [], "description": "Substitute 3² = 9" },
+      { "id": "s3", "fromLatex": "9 = x + 1", "toLatex": "9 - 1 = x + 1 - 1", "paletteRef": "p2", "dropTargets": ["9", "1"], "dropSideLabels": ["left side", "right side"], "description": "Subtract 1 from both sides" },
+      { "id": "s3a", "fromLatex": "9 - 1 = 8", "toLatex": "9 - 1 = 8", "paletteRef": null, "dropTargets": [], "description": "Compute: 9 − 1 = 8" },
+      { "id": "s4", "fromLatex": "9 - 1 = x + 1 - 1", "toLatex": "x = 8", "paletteRef": null, "dropTargets": [], "description": "Simplify — solution reached" }
+    ]
+  },
+  {
+    "id": "alg-h-005", "topic": "algebra", "difficulty": "hard",
+    "question": { "latex": "2^{x+1} = 16", "plain": "Solve for x" },
+    "symbols": { "x": "The unknown variable (exponent)" },
+    "palette": [
+      { "id": "p1", "latex": "2^4", "description": "Express 16 as a power of 2: 16 = 2⁴" },
+      { "id": "p2", "latex": "-1", "description": "Subtract 1 from both sides to isolate x" }
+    ],
+    "steps": [
+      { "id": "s1", "fromLatex": "2^{x+1} = 16", "toLatex": "2^{x+1} = 2^4", "paletteRef": "p1", "dropTargets": ["16"], "description": "Rewrite 16 as 2⁴" },
+      { "id": "s1a", "fromLatex": "2^4 = 2 \\times 2 \\times 2 \\times 2 = 16", "toLatex": "2^4 = 2 \\times 2 \\times 2 \\times 2 = 16", "paletteRef": null, "dropTargets": [], "description": "Compute: 2⁴ = 2×2×2×2 = 16 ✓" },
+      { "id": "s2", "fromLatex": "2^{x+1} = 2^4", "toLatex": "x + 1 = 4", "paletteRef": null, "dropTargets": [], "description": "Equal bases — equate exponents" },
+      { "id": "s3", "fromLatex": "x + 1 = 4", "toLatex": "x + 1 - 1 = 4 - 1", "paletteRef": "p2", "dropTargets": ["x + 1", "4"], "dropSideLabels": ["left side", "right side"], "description": "Subtract 1 from both sides" },
+      { "id": "s3a", "fromLatex": "4 - 1 = 3", "toLatex": "4 - 1 = 3", "paletteRef": null, "dropTargets": [], "description": "Compute: 4 − 1 = 3" },
+      { "id": "s4", "fromLatex": "x + 1 - 1 = 4 - 1", "toLatex": "x = 3", "paletteRef": null, "dropTargets": [], "description": "Simplify — solution reached" }
+    ]
+  },
+  {
+    "id": "alg-h-006", "topic": "algebra", "difficulty": "hard",
+    "question": { "latex": "x^3 = 8", "plain": "Solve for x" },
+    "symbols": { "x": "The unknown variable" },
+    "palette": [
+      { "id": "p1", "latex": "\\sqrt[3]{\\phantom{x}}", "description": "Take the cube root of both sides to isolate x" }
+    ],
+    "steps": [
+      { "id": "s1", "fromLatex": "x^3 = 8", "toLatex": "\\sqrt[3]{x^3} = \\sqrt[3]{8}", "paletteRef": "p1", "dropTargets": ["x^3", "8"], "dropSideLabels": ["left side", "right side"], "description": "Take the cube root of both sides" },
+      { "id": "s1a", "fromLatex": "\\sqrt[3]{8} = 2", "toLatex": "\\sqrt[3]{8} = 2 \\quad (2^3 = 2 \\times 2 \\times 2 = 8)", "paletteRef": null, "dropTargets": [], "description": "Compute: ∛8 = 2 (because 2³ = 2×2×2 = 8)" },
+      { "id": "s2", "fromLatex": "\\sqrt[3]{x^3} = \\sqrt[3]{8}", "toLatex": "x = 2", "paletteRef": null, "dropTargets": [], "description": "Simplify — solution reached" }
+    ]
+  },
+  {
+    "id": "alg-h-007", "topic": "algebra", "difficulty": "hard",
+    "question": { "latex": "x^4 = 81", "plain": "Solve for x" },
+    "symbols": { "x": "The unknown variable" },
+    "palette": [
+      { "id": "p1", "latex": "\\sqrt{\\phantom{x}}", "description": "Take the square root of both sides (first pass)" },
+      { "id": "p2", "latex": "\\pm", "description": "Each square root step introduces ±" }
+    ],
+    "steps": [
+      { "id": "s1", "fromLatex": "x^4 = 81", "toLatex": "\\sqrt{x^4} = \\sqrt{81}", "paletteRef": "p1", "dropTargets": ["x^4", "81"], "dropSideLabels": ["left side", "right side"], "description": "Take the square root of both sides" },
+      { "id": "s1a", "fromLatex": "\\sqrt{81} = 9", "toLatex": "\\sqrt{81} = 9 \\quad (9^2 = 81)", "paletteRef": null, "dropTargets": [], "description": "Compute: √81 = 9 (because 9² = 81)" },
+      { "id": "s2", "fromLatex": "\\sqrt{x^4} = \\sqrt{81}", "toLatex": "x^2 = 9", "paletteRef": null, "dropTargets": [], "description": "Simplify: √(x⁴) = x², √81 = 9" },
+      { "id": "s3", "fromLatex": "x^2 = 9", "toLatex": "\\sqrt{x^2} = \\sqrt{9}", "paletteRef": "p1", "dropTargets": ["x^2", "9"], "dropSideLabels": ["left side", "right side"], "description": "Take the square root again" },
+      { "id": "s3a", "fromLatex": "\\sqrt{9} = 3", "toLatex": "\\sqrt{9} = 3 \\quad (3^2 = 9)", "paletteRef": null, "dropTargets": [], "description": "Compute: √9 = 3 (because 3² = 9)" },
+      { "id": "s4", "fromLatex": "\\sqrt{x^2} = \\sqrt{9}", "toLatex": "x = \\pm 3", "paletteRef": "p2", "dropTargets": ["\\sqrt{9}"], "description": "Apply ± — two solutions" }
+    ]
+  },
+  {
+    "id": "alg-h-008", "topic": "algebra", "difficulty": "hard",
+    "question": { "latex": "|2x - 3| = 7", "plain": "Solve for x" },
+    "symbols": { "x": "The unknown variable", "|": "Absolute value — distance from zero" },
+    "palette": [
+      { "id": "p1", "latex": "\\pm 7", "description": "Absolute value splits into two equations: 2x−3=7 and 2x−3=−7" }
+    ],
+    "steps": [
+      { "id": "s1", "fromLatex": "|2x - 3| = 7", "toLatex": "2x - 3 = 7 \\text{ or } 2x - 3 = -7", "paletteRef": "p1", "dropTargets": ["|2x - 3|"], "description": "Remove absolute value — two cases" },
+      { "id": "s1a", "fromLatex": "7 + 3 = 10 \\text{ and } -7 + 3 = -4", "toLatex": "7 + 3 = 10 \\text{ and } {-7} + 3 = -4", "paletteRef": null, "dropTargets": [], "description": "Compute: 7+3 = 10 and −7+3 = −4 (add 3 to each case)" },
+      { "id": "s2", "fromLatex": "2x - 3 = 7 \\text{ or } 2x - 3 = -7", "toLatex": "2x = 10 \\text{ or } 2x = -4", "paletteRef": null, "dropTargets": [], "description": "Add 3 to both sides of each equation" },
+      { "id": "s2a", "fromLatex": "10 \\div 2 = 5 \\text{ and } -4 \\div 2 = -2", "toLatex": "10 \\div 2 = 5 \\text{ and } {-4} \\div 2 = -2", "paletteRef": null, "dropTargets": [], "description": "Compute: 10÷2 = 5 and −4÷2 = −2" },
+      { "id": "s3", "fromLatex": "2x = 10 \\text{ or } 2x = -4", "toLatex": "x = 5 \\text{ or } x = -2", "paletteRef": null, "dropTargets": [], "description": "Divide by 2 — two solutions" }
+    ]
+  },
+  {
+    "id": "alg-h-009", "topic": "algebra", "difficulty": "hard",
+    "question": { "latex": "\\frac{x + 2}{x - 2} = 3", "plain": "Solve for x" },
+    "symbols": { "x": "The unknown variable" },
+    "palette": [
+      { "id": "p1", "latex": "\\times(x-2)", "description": "Multiply both sides by (x−2) to clear the denominator" },
+      { "id": "p2", "latex": "-x", "description": "Subtract x from both sides to collect x terms on the right" },
+      { "id": "p3", "latex": "+6", "description": "Add 6 to both sides to isolate the x term" }
+    ],
+    "steps": [
+      { "id": "s1", "fromLatex": "\\frac{x + 2}{x - 2} = 3", "toLatex": "x + 2 = 3(x - 2)", "paletteRef": "p1", "dropTargets": ["\\frac{x + 2}{x - 2}"], "description": "Multiply both sides by (x−2)" },
+      { "id": "s1a", "fromLatex": "3 \\times x = 3x \\text{ and } 3 \\times (-2) = -6", "toLatex": "3 \\times x = 3x \\text{ and } 3 \\times (-2) = -6", "paletteRef": null, "dropTargets": [], "description": "Compute: distribute 3 → 3×x = 3x and 3×(−2) = −6" },
+      { "id": "s2", "fromLatex": "x + 2 = 3(x - 2)", "toLatex": "x + 2 = 3x - 6", "paletteRef": null, "dropTargets": [], "description": "Expand the right side" },
+      { "id": "s3", "fromLatex": "x + 2 = 3x - 6", "toLatex": "2 = 2x - 6", "paletteRef": "p2", "dropTargets": ["x + 2", "3x"], "dropSideLabels": ["left side", "right side"], "description": "Subtract x from both sides" },
+      { "id": "s4", "fromLatex": "2 = 2x - 6", "toLatex": "8 = 2x", "paletteRef": "p3", "dropTargets": ["2", "2x - 6"], "dropSideLabels": ["left side", "right side"], "description": "Add 6 to both sides" },
+      { "id": "s4a", "fromLatex": "2 + 6 = 8", "toLatex": "2 + 6 = 8", "paletteRef": null, "dropTargets": [], "description": "Compute: 2 + 6 = 8" },
+      { "id": "s4b", "fromLatex": "8 \\div 2 = 4", "toLatex": "8 \\div 2 = 4", "paletteRef": null, "dropTargets": [], "description": "Compute: 8 ÷ 2 = 4" },
+      { "id": "s5", "fromLatex": "8 = 2x", "toLatex": "x = 4", "paletteRef": null, "dropTargets": [], "description": "Divide by 2 — solution reached" }
+    ]
+  },
+  {
+    "id": "alg-h-010", "topic": "algebra", "difficulty": "hard",
+    "question": { "latex": "e^{2x} = e^6", "plain": "Solve for x" },
+    "symbols": { "e": "Euler's number ≈ 2.718 — base of the natural logarithm", "x": "The unknown variable" },
+    "palette": [
+      { "id": "p1", "latex": "\\div 2", "description": "Divide the exponent equation by 2 to isolate x" }
+    ],
+    "steps": [
+      { "id": "s1", "fromLatex": "e^{2x} = e^6", "toLatex": "2x = 6", "paletteRef": null, "dropTargets": [], "description": "Equal bases — equate the exponents" },
+      { "id": "s2", "fromLatex": "2x = 6", "toLatex": "\\frac{2x}{2} = \\frac{6}{2}", "paletteRef": "p1", "dropTargets": ["2x", "6"], "dropSideLabels": ["left side", "right side"], "description": "Divide both sides by 2" },
+      { "id": "s2a", "fromLatex": "6 \\div 2 = 3", "toLatex": "6 \\div 2 = 3", "paletteRef": null, "dropTargets": [], "description": "Compute: 6 ÷ 2 = 3" },
+      { "id": "s3", "fromLatex": "\\frac{2x}{2} = \\frac{6}{2}", "toLatex": "x = 3", "paletteRef": null, "dropTargets": [], "description": "Simplify — solution reached" }
+    ]
+  }
+]
