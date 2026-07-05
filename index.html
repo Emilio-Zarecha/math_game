@@ -457,6 +457,46 @@
     }
     #notes-clear:hover { border-color: var(--wrong); color: var(--wrong); }
 
+    #notes-mode-toggle {
+      display: flex;
+      gap: 0;
+      flex-shrink: 0;
+    }
+    .notes-tab {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      color: var(--muted);
+      font-size: 0.78rem;
+      padding: 4px 12px;
+      cursor: pointer;
+    }
+    .notes-tab:first-child { border-radius: 6px 0 0 6px; }
+    .notes-tab:last-child  { border-radius: 0 6px 6px 0; border-left: none; }
+    .notes-tab.active { background: var(--accent); border-color: var(--accent); color: #fff; }
+    .notes-tab:hover:not(.active) { color: var(--text); }
+
+    #notes-preview {
+      display: none;
+      flex: 1;
+      min-height: 220px;
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      color: var(--text);
+      font-size: 0.92rem;
+      line-height: 1.7;
+      padding: 12px 14px;
+      overflow-y: auto;
+      white-space: pre-wrap;
+      word-break: break-word;
+    }
+    #notes-preview a {
+      color: var(--accent);
+      text-decoration: underline;
+    }
+    #notes-preview a:hover { opacity: 0.8; }
+    #notes-preview.visible { display: block; }
+
     /* Completion banner */
     #completion {
       display: none;
@@ -686,7 +726,12 @@
       <button id="notes-close" aria-label="Close notes">✕</button>
     </header>
     <div id="notes-body">
-      <textarea id="notes-textarea" placeholder="Jot down your thoughts, formulas, or reminders about this puzzle…" spellcheck="true"></textarea>
+      <div id="notes-mode-toggle">
+        <button class="notes-tab active" id="notes-tab-edit">Edit</button>
+        <button class="notes-tab" id="notes-tab-preview">Preview</button>
+      </div>
+      <textarea id="notes-textarea" placeholder="Jot down your thoughts, formulas, or reminders about this puzzle… Paste any URL and it will become a clickable link in Preview." spellcheck="true"></textarea>
+      <div id="notes-preview"></div>
       <div id="notes-footer">
         <span id="notes-status"></span>
         <button id="notes-clear">Clear notes</button>
@@ -1410,6 +1455,7 @@ function loadNotes() {
   updateNotesBadge();
   notesStatus.textContent = '';
   if (G.puzzle) notesPuzzleTitle.textContent = G.puzzle.id;
+  setNotesMode('edit');
 }
 
 function saveNotes() {
@@ -1432,6 +1478,48 @@ function updateNotesBadge() {
   notesBtn.classList.toggle('has-notes', hasNote);
 }
 
+const notesPreview = $('notes-preview');
+const URL_RE = /https?:\/\/[^\s<>"']+/g;
+
+function renderNotesPreview() {
+  const raw = notesTextarea.value;
+  if (!raw.trim()) {
+    notesPreview.innerHTML = '<span style="color:var(--muted)">Nothing to preview yet.</span>';
+    return;
+  }
+  // Escape HTML, then linkify URLs
+  const escaped = raw
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;');
+  notesPreview.innerHTML = escaped.replace(URL_RE,
+    url => `<a href="${url}" target="_blank" rel="noopener noreferrer">${url}</a>`
+  );
+}
+
+// Edit / Preview tab toggle
+const notesTabEdit    = $('notes-tab-edit');
+const notesTabPreview = $('notes-tab-preview');
+
+function setNotesMode(mode) {
+  if (mode === 'preview') {
+    notesTabPreview.classList.add('active');
+    notesTabEdit.classList.remove('active');
+    notesTextarea.style.display = 'none';
+    notesPreview.classList.add('visible');
+    renderNotesPreview();
+  } else {
+    notesTabEdit.classList.add('active');
+    notesTabPreview.classList.remove('active');
+    notesPreview.classList.remove('visible');
+    notesTextarea.style.display = '';
+    notesTextarea.focus();
+  }
+}
+
+notesTabEdit.addEventListener('click',    () => setNotesMode('edit'));
+notesTabPreview.addEventListener('click', () => setNotesMode('preview'));
+
 notesTextarea.addEventListener('input', () => {
   notesStatus.textContent = '…';
   clearTimeout(_notesSaveTimer);
@@ -1440,7 +1528,7 @@ notesTextarea.addEventListener('input', () => {
 
 notesBtn.addEventListener('click', () => {
   notesModal.classList.add('open');
-  notesTextarea.focus();
+  setNotesMode('edit');
 });
 
 $('notes-close').addEventListener('click', () => notesModal.classList.remove('open'));
