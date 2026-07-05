@@ -1770,6 +1770,7 @@ function latexBodyToJs(latex) {
     .replace(/\\frac\{([^{}]+)\}\{([^{}]+)\}/g, '(($1)/($2))')
     .replace(/\^{([^}]+)}/g, '**($1)')
     .replace(/\^(-?\d+)/g, '**$1')
+    .replace(/\^([a-z])/g, '**$1')
     .replace(/[{}\\]/g, '')
     .replace(/\s+/g, '');
   // 2k → 2*k, 3( → 3*(

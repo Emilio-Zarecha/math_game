@@ -136,6 +136,77 @@
   },
 
   {
+    "id": "alg2-e-011", "topic": "algebra2", "difficulty": "easy",
+    "question": { "latex": "S_5 = \\sum_{k=1}^{5} k", "plain": "Find the sum of the first 5 positive integers" },
+    "symbols": { "S_n": "Sum of first n integers", "k": "Index variable" },
+    "palette": [
+      { "id": "p1", "latex": "\\frac{5 \\cdot 6}{2}", "description": "Formula n(n+1)/2 with n=5" },
+      { "id": "p2", "latex": "15", "description": "5·6/2 = 15" }
+    ],
+    "steps": [
+      { "id": "s1", "fromLatex": "S_5 = \\sum_{k=1}^{5} k", "toLatex": "S_5 = \\frac{5 \\cdot 6}{2}", "paletteRef": "p1", "dropTargets": ["\\sum_{k=1}^{5} k"], "description": "Apply Sₙ = n(n+1)/2 with n=5" },
+      { "id": "s1a", "fromLatex": "5 \\cdot 6 = 30", "toLatex": "5 \\cdot 6 = 30", "paletteRef": null, "dropTargets": [], "description": "Compute numerator: 5 × 6 = 30" },
+      { "id": "s2", "fromLatex": "S_5 = \\frac{30}{2}", "toLatex": "S_5 = 15", "paletteRef": "p2", "dropTargets": ["\\frac{30}{2}"], "description": "Divide: 30 ÷ 2 = 15" }
+    ]
+  },
+
+  {
+    "id": "alg2-e-012", "topic": "algebra2", "difficulty": "easy",
+    "question": { "latex": "S = \\sum_{k=1}^{4} 3", "plain": "Add the constant 3 four times" },
+    "symbols": { "k": "Index variable; the term is the constant 3" },
+    "palette": [
+      { "id": "p1", "latex": "4 \\times 3", "description": "Constant c summed n times = n·c; here n=4, c=3" }
+    ],
+    "steps": [
+      { "id": "s1", "fromLatex": "S = \\sum_{k=1}^{4} 3", "toLatex": "S = 4 \\times 3", "paletteRef": "p1", "dropTargets": ["\\sum_{k=1}^{4} 3"], "description": "A constant summed n times equals n times that constant" },
+      { "id": "s2", "fromLatex": "4 \\times 3 = 12", "toLatex": "S = 12", "paletteRef": null, "dropTargets": [], "description": "Compute: 4 × 3 = 12" }
+    ]
+  },
+
+  {
+    "id": "alg2-e-013", "topic": "algebra2", "difficulty": "easy",
+    "question": { "latex": "S = \\sum_{k=1}^{3} k^2", "plain": "Sum the first 3 perfect squares" },
+    "symbols": { "k^2": "The square of k" },
+    "palette": [
+      { "id": "p1", "latex": "1^2 + 2^2 + 3^2", "description": "Expand: write out all three terms" },
+      { "id": "p2", "latex": "14", "description": "1 + 4 + 9 = 14" }
+    ],
+    "steps": [
+      { "id": "s1", "fromLatex": "S = \\sum_{k=1}^{3} k^2", "toLatex": "S = 1^2 + 2^2 + 3^2", "paletteRef": "p1", "dropTargets": ["\\sum_{k=1}^{3} k^2"], "description": "Expand the sigma: write out each term" },
+      { "id": "s1a", "fromLatex": "1 + 4 + 9 = 14", "toLatex": "1 + 4 + 9 = 14", "paletteRef": null, "dropTargets": [], "description": "Evaluate: 1² = 1, 2² = 4, 3² = 9" },
+      { "id": "s2", "fromLatex": "S = 1^2 + 2^2 + 3^2", "toLatex": "S = 14", "paletteRef": "p2", "dropTargets": ["1^2 + 2^2 + 3^2"], "description": "Sum: 1 + 4 + 9 = 14" }
+    ]
+  },
+
+  {
+    "id": "alg2-e-014", "topic": "algebra2", "difficulty": "easy",
+    "question": { "latex": "S = \\sum_{k=2}^{5} k", "plain": "Add the integers from 2 to 5" },
+    "symbols": { "k": "Index runs from 2 to 5" },
+    "palette": [
+      { "id": "p1", "latex": "2 + 3 + 4 + 5", "description": "Expand: list all four terms" },
+      { "id": "p2", "latex": "14", "description": "2 + 3 + 4 + 5 = 14" }
+    ],
+    "steps": [
+      { "id": "s1", "fromLatex": "S = \\sum_{k=2}^{5} k", "toLatex": "S = 2 + 3 + 4 + 5", "paletteRef": "p1", "dropTargets": ["\\sum_{k=2}^{5} k"], "description": "Expand the sigma by writing out each term" },
+      { "id": "s2", "fromLatex": "S = 2 + 3 + 4 + 5", "toLatex": "S = 14", "paletteRef": "p2", "dropTargets": ["2 + 3 + 4 + 5"], "description": "Add: 2 + 3 + 4 + 5 = 14" }
+    ]
+  },
+
+  {
+    "id": "alg2-e-015", "topic": "algebra2", "difficulty": "easy",
+    "question": { "latex": "S = \\sum_{k=1}^{3} 2k", "plain": "Sum the first 3 even positive integers" },
+    "symbols": { "2k": "Even integers: 2, 4, 6" },
+    "palette": [
+      { "id": "p1", "latex": "2 + 4 + 6", "description": "Substitute k = 1, 2, 3 to get 2, 4, 6" },
+      { "id": "p2", "latex": "12", "description": "2 + 4 + 6 = 12" }
+    ],
+    "steps": [
+      { "id": "s1", "fromLatex": "S = \\sum_{k=1}^{3} 2k", "toLatex": "S = 2 + 4 + 6", "paletteRef": "p1", "dropTargets": ["\\sum_{k=1}^{3} 2k"], "description": "Substitute k = 1, 2, 3: get 2(1)=2, 2(2)=4, 2(3)=6" },
+      { "id": "s2", "fromLatex": "S = 2 + 4 + 6", "toLatex": "S = 12", "paletteRef": "p2", "dropTargets": ["2 + 4 + 6"], "description": "Add: 2 + 4 + 6 = 12" }
+    ]
+  },
+
+  {
     "id": "alg2-m-001", "topic": "algebra2", "difficulty": "medium",
     "question": { "latex": "x^2 - 5x + 4 = 0", "plain": "Solve using the quadratic formula" },
     "symbols": { "x": "The unknown variable" },
@@ -279,6 +350,80 @@
       { "id": "s1", "fromLatex": "(x+1)^3", "toLatex": "\\binom{3}{0}x^3 + \\binom{3}{1}x^2 + \\binom{3}{2}x + \\binom{3}{3}", "paletteRef": null, "dropTargets": [], "description": "Apply binomial theorem: (x+1)³ = Σ C(3,k)·x³⁻ᵏ" },
       { "id": "s1a", "fromLatex": "\\binom{3}{0}=1,\\; \\binom{3}{1}=3,\\; \\binom{3}{2}=3,\\; \\binom{3}{3}=1", "toLatex": "\\binom{3}{0}=1,\\; \\binom{3}{1}=3,\\; \\binom{3}{2}=3,\\; \\binom{3}{3}=1", "paletteRef": null, "dropTargets": [], "description": "Pascal's triangle row 3: 1  3  3  1" },
       { "id": "s2", "fromLatex": "1 \\cdot x^3 + 3 \\cdot x^2 + 3 \\cdot x + 1", "toLatex": "x^3 + 3x^2 + 3x + 1", "paletteRef": "p1", "dropTargets": ["1 \\cdot x^3 + 3 \\cdot x^2 + 3 \\cdot x + 1"], "description": "Simplify — expanded form" }
+    ]
+  },
+
+  {
+    "id": "alg2-m-011", "topic": "algebra2", "difficulty": "medium",
+    "question": { "latex": "S_5 = \\sum_{k=1}^{5} k^2", "plain": "Find the sum of the first 5 perfect squares" },
+    "symbols": { "S_n": "Sum of k² from k=1 to n", "\\frac{n(n+1)(2n+1)}{6}": "Sum-of-squares formula" },
+    "palette": [
+      { "id": "p1", "latex": "\\frac{5 \\cdot 6 \\cdot 11}{6}", "description": "Apply n(n+1)(2n+1)/6 with n=5; 2(5)+1=11" },
+      { "id": "p2", "latex": "55", "description": "5·6·11/6 = 330/6 = 55" }
+    ],
+    "steps": [
+      { "id": "s1", "fromLatex": "S_5 = \\sum_{k=1}^{5} k^2", "toLatex": "S_5 = \\frac{5 \\cdot 6 \\cdot 11}{6}", "paletteRef": "p1", "dropTargets": ["\\sum_{k=1}^{5} k^2"], "description": "Apply ∑k² = n(n+1)(2n+1)/6 with n=5; 2n+1=11" },
+      { "id": "s1a", "fromLatex": "5 \\cdot 6 \\cdot 11 = 330", "toLatex": "5 \\cdot 6 \\cdot 11 = 330", "paletteRef": null, "dropTargets": [], "description": "Compute numerator: 5 × 6 × 11 = 330" },
+      { "id": "s2", "fromLatex": "S_5 = \\frac{330}{6}", "toLatex": "S_5 = 55", "paletteRef": "p2", "dropTargets": ["\\frac{330}{6}"], "description": "Divide: 330 ÷ 6 = 55" }
+    ]
+  },
+
+  {
+    "id": "alg2-m-012", "topic": "algebra2", "difficulty": "medium",
+    "question": { "latex": "S = \\sum_{k=1}^{6} (2k-1)", "plain": "Find the sum of the first 6 odd numbers" },
+    "symbols": { "2k-1": "The k-th odd number (1, 3, 5, 7, 9, 11)" },
+    "palette": [
+      { "id": "p1", "latex": "6^2", "description": "Sum of first n odd numbers = n²; here n=6" },
+      { "id": "p2", "latex": "36", "description": "6² = 36" }
+    ],
+    "steps": [
+      { "id": "s1", "fromLatex": "S = \\sum_{k=1}^{6} (2k-1)", "toLatex": "S = 6^2", "paletteRef": "p1", "dropTargets": ["\\sum_{k=1}^{6} (2k-1)"], "description": "Sum of first n odd numbers = n²; n=6" },
+      { "id": "s2", "fromLatex": "S = 6^2", "toLatex": "S = 36", "paletteRef": "p2", "dropTargets": ["6^2"], "description": "Compute: 6² = 36" }
+    ]
+  },
+
+  {
+    "id": "alg2-m-013", "topic": "algebra2", "difficulty": "medium",
+    "question": { "latex": "S = \\sum_{k=0}^{4} 2^k", "plain": "Sum the geometric series 1 + 2 + 4 + 8 + 16" },
+    "symbols": { "2^k": "Powers of 2: 1, 2, 4, 8, 16", "r": "Common ratio = 2" },
+    "palette": [
+      { "id": "p1", "latex": "\\frac{2^5 - 1}{2 - 1}", "description": "Geometric sum: (rⁿ⁺¹ − 1)/(r−1); r=2, n=4" },
+      { "id": "p2", "latex": "31", "description": "(32 − 1)/1 = 31" }
+    ],
+    "steps": [
+      { "id": "s1", "fromLatex": "S = \\sum_{k=0}^{4} 2^k", "toLatex": "S = \\frac{2^5 - 1}{2 - 1}", "paletteRef": "p1", "dropTargets": ["\\sum_{k=0}^{4} 2^k"], "description": "Geometric series: S = (rⁿ⁺¹ − 1)/(r−1); r=2, upper index=4" },
+      { "id": "s1a", "fromLatex": "2^5 - 1 = 32 - 1 = 31", "toLatex": "2^5 - 1 = 32 - 1 = 31", "paletteRef": null, "dropTargets": [], "description": "Compute: 2⁵ = 32, so numerator = 31" },
+      { "id": "s2", "fromLatex": "2^5 - 1 = 31", "toLatex": "S = 31", "paletteRef": "p2", "dropTargets": [], "description": "Denominator is 2−1=1, so S = 31" }
+    ]
+  },
+
+  {
+    "id": "alg2-m-014", "topic": "algebra2", "difficulty": "medium",
+    "question": { "latex": "S_8 = \\sum_{k=1}^{8} k", "plain": "Find the sum of integers from 1 to 8" },
+    "symbols": { "S_n": "Sum of first n integers" },
+    "palette": [
+      { "id": "p1", "latex": "\\frac{8 \\cdot 9}{2}", "description": "Formula n(n+1)/2 with n=8" },
+      { "id": "p2", "latex": "36", "description": "8·9/2 = 36" }
+    ],
+    "steps": [
+      { "id": "s1", "fromLatex": "S_8 = \\sum_{k=1}^{8} k", "toLatex": "S_8 = \\frac{8 \\cdot 9}{2}", "paletteRef": "p1", "dropTargets": ["\\sum_{k=1}^{8} k"], "description": "Apply Sₙ = n(n+1)/2 with n=8" },
+      { "id": "s1a", "fromLatex": "8 \\times 9 = 72", "toLatex": "8 \\times 9 = 72", "paletteRef": null, "dropTargets": [], "description": "Compute numerator: 8 × 9 = 72" },
+      { "id": "s2", "fromLatex": "S_8 = \\frac{72}{2}", "toLatex": "S_8 = 36", "paletteRef": "p2", "dropTargets": ["\\frac{72}{2}"], "description": "Divide: 72 ÷ 2 = 36" }
+    ]
+  },
+
+  {
+    "id": "alg2-m-015", "topic": "algebra2", "difficulty": "medium",
+    "question": { "latex": "S = \\sum_{k=3}^{7} k", "plain": "Sum the integers from 3 to 7" },
+    "symbols": { "k": "Index from 3 to 7; that's 5 terms" },
+    "palette": [
+      { "id": "p1", "latex": "5 \\cdot \\frac{3+7}{2}", "description": "Arithmetic series: n·(first+last)/2; n=5, first=3, last=7" },
+      { "id": "p2", "latex": "25", "description": "5 × 5 = 25" }
+    ],
+    "steps": [
+      { "id": "s1", "fromLatex": "S = \\sum_{k=3}^{7} k", "toLatex": "S = 5 \\cdot \\frac{3+7}{2}", "paletteRef": "p1", "dropTargets": ["\\sum_{k=3}^{7} k"], "description": "Arithmetic series: n=5 terms, first=3, last=7; S = n(a₁+aₙ)/2" },
+      { "id": "s1a", "fromLatex": "\\frac{3+7}{2} = 5", "toLatex": "\\frac{3+7}{2} = 5", "paletteRef": null, "dropTargets": [], "description": "Compute mean of first and last: (3+7)/2 = 5" },
+      { "id": "s2", "fromLatex": "S = 5 \\cdot \\frac{3+7}{2}", "toLatex": "S = 25", "paletteRef": "p2", "dropTargets": ["5 \\cdot \\frac{3+7}{2}"], "description": "Multiply: 5 × 5 = 25" }
     ]
   },
 
@@ -447,6 +592,82 @@
       { "id": "s2", "fromLatex": "x = \\frac{0 \\pm \\sqrt{8}}{2}", "toLatex": "x = \\pm\\frac{\\sqrt{8}}{2}", "paletteRef": "p1", "dropTargets": ["\\frac{0 \\pm \\sqrt{8}}{2}"], "description": "Apply formula; b=0 simplifies to ±√8/2" },
       { "id": "s2a", "fromLatex": "\\frac{\\sqrt{8}}{2} = \\frac{2\\sqrt{2}}{2} = \\sqrt{2}", "toLatex": "\\frac{\\sqrt{8}}{2}=\\sqrt{2}", "paletteRef": null, "dropTargets": [], "description": "Simplify: √8=2√2, so √8/2=√2" },
       { "id": "s3", "fromLatex": "x = \\pm\\sqrt{2}", "toLatex": "x = \\sqrt{2} \\text{ or } x = -\\sqrt{2}", "paletteRef": null, "dropTargets": [], "description": "Conjugate surd roots: √2 and −√2" }
+    ]
+  },
+
+  {
+    "id": "alg2-h-011", "topic": "algebra2", "difficulty": "hard",
+    "question": { "latex": "S_{10} = \\sum_{k=1}^{10} k^2", "plain": "Find the sum of the first 10 perfect squares" },
+    "symbols": { "\\frac{n(n+1)(2n+1)}{6}": "Sum-of-squares formula" },
+    "palette": [
+      { "id": "p1", "latex": "\\frac{10 \\cdot 11 \\cdot 21}{6}", "description": "Apply n(n+1)(2n+1)/6 with n=10; 2(10)+1=21" },
+      { "id": "p2", "latex": "385", "description": "10·11·21/6 = 2310/6 = 385" }
+    ],
+    "steps": [
+      { "id": "s1", "fromLatex": "S_{10} = \\sum_{k=1}^{10} k^2", "toLatex": "S_{10} = \\frac{10 \\cdot 11 \\cdot 21}{6}", "paletteRef": "p1", "dropTargets": ["\\sum_{k=1}^{10} k^2"], "description": "Apply ∑k² = n(n+1)(2n+1)/6 with n=10; 2n+1=21" },
+      { "id": "s1a", "fromLatex": "10 \\times 11 \\times 21 = 2310", "toLatex": "10 \\times 11 \\times 21 = 2310", "paletteRef": null, "dropTargets": [], "description": "Compute numerator: 10×11=110, then 110×21=2310" },
+      { "id": "s2", "fromLatex": "S_{10} = \\frac{2310}{6}", "toLatex": "S_{10} = 385", "paletteRef": "p2", "dropTargets": ["\\frac{2310}{6}"], "description": "Divide: 2310 ÷ 6 = 385" }
+    ]
+  },
+
+  {
+    "id": "alg2-h-012", "topic": "algebra2", "difficulty": "hard",
+    "question": { "latex": "S = \\sum_{k=1}^{5} k^3", "plain": "Find the sum of the first 5 perfect cubes" },
+    "symbols": { "\\left(\\frac{n(n+1)}{2}\\right)^2": "Sum-of-cubes identity: equals the square of the n-th triangular number" },
+    "palette": [
+      { "id": "p1", "latex": "\\left(\\frac{5 \\cdot 6}{2}\\right)^2", "description": "Apply ∑k³ = [n(n+1)/2]² with n=5" },
+      { "id": "p2", "latex": "15^2", "description": "5·6/2 = 15" },
+      { "id": "p3", "latex": "225", "description": "15² = 225" }
+    ],
+    "steps": [
+      { "id": "s1", "fromLatex": "S = \\sum_{k=1}^{5} k^3", "toLatex": "S = \\left(\\frac{5 \\cdot 6}{2}\\right)^2", "paletteRef": "p1", "dropTargets": ["\\sum_{k=1}^{5} k^3"], "description": "Apply ∑k³ = [n(n+1)/2]² with n=5" },
+      { "id": "s1a", "fromLatex": "\\frac{5 \\cdot 6}{2} = 15", "toLatex": "\\frac{5 \\cdot 6}{2} = 15", "paletteRef": null, "dropTargets": [], "description": "Compute inner value: 5·6/2 = 15" },
+      { "id": "s2", "fromLatex": "S = 15^2", "toLatex": "S = 225", "paletteRef": "p3", "dropTargets": ["15^2"], "description": "Square: 15² = 225" }
+    ]
+  },
+
+  {
+    "id": "alg2-h-013", "topic": "algebra2", "difficulty": "hard",
+    "question": { "latex": "S = \\sum_{k=0}^{5} 3^k", "plain": "Sum the geometric series with ratio 3" },
+    "symbols": { "3^k": "Powers of 3: 1, 3, 9, 27, 81, 243", "r": "Common ratio = 3" },
+    "palette": [
+      { "id": "p1", "latex": "\\frac{3^6 - 1}{3 - 1}", "description": "Geometric sum: (rⁿ⁺¹ − 1)/(r−1); r=3, n=5" },
+      { "id": "p2", "latex": "364", "description": "(729 − 1)/2 = 728/2 = 364" }
+    ],
+    "steps": [
+      { "id": "s1", "fromLatex": "S = \\sum_{k=0}^{5} 3^k", "toLatex": "S = \\frac{3^6 - 1}{3 - 1}", "paletteRef": "p1", "dropTargets": ["\\sum_{k=0}^{5} 3^k"], "description": "Geometric series: S = (rⁿ⁺¹ − 1)/(r−1); r=3, upper index=5" },
+      { "id": "s1a", "fromLatex": "3^6 = 729, \\quad 729 - 1 = 728", "toLatex": "3^6 = 729, \\quad 729 - 1 = 728", "paletteRef": null, "dropTargets": [], "description": "Compute: 3⁶ = 729, numerator = 728" },
+      { "id": "s2", "fromLatex": "S = \\frac{728}{2}", "toLatex": "S = 364", "paletteRef": "p2", "dropTargets": ["\\frac{728}{2}"], "description": "Divide: 728 ÷ 2 = 364" }
+    ]
+  },
+
+  {
+    "id": "alg2-h-014", "topic": "algebra2", "difficulty": "hard",
+    "question": { "latex": "S = \\sum_{k=1}^{10} (3k-1)", "plain": "Sum the arithmetic sequence 2, 5, 8, …, 29" },
+    "symbols": { "3k-1": "Arithmetic sequence: first term=2, last term=29", "a_1": "First term = 3(1)−1 = 2", "a_{10}": "Last term = 3(10)−1 = 29" },
+    "palette": [
+      { "id": "p1", "latex": "10 \\cdot \\frac{2 + 29}{2}", "description": "Arithmetic series: n(a₁+aₙ)/2; n=10, a₁=2, a₁₀=29" },
+      { "id": "p2", "latex": "155", "description": "10 × 31/2 = 155" }
+    ],
+    "steps": [
+      { "id": "s1", "fromLatex": "S = \\sum_{k=1}^{10} (3k-1)", "toLatex": "S = 10 \\cdot \\frac{2 + 29}{2}", "paletteRef": "p1", "dropTargets": ["\\sum_{k=1}^{10} (3k-1)"], "description": "Arithmetic series: a₁=3(1)−1=2, a₁₀=29, n=10; S = n(a₁+aₙ)/2" },
+      { "id": "s1a", "fromLatex": "2 + 29 = 31, \\quad 10 \\cdot \\frac{31}{2} = 155", "toLatex": "2 + 29 = 31, \\quad 10 \\cdot \\frac{31}{2} = 155", "paletteRef": null, "dropTargets": [], "description": "Compute: (2+29)=31; 10×31/2=155" },
+      { "id": "s2", "fromLatex": "S = 10 \\cdot \\frac{2 + 29}{2}", "toLatex": "S = 155", "paletteRef": "p2", "dropTargets": ["10 \\cdot \\frac{2 + 29}{2}"], "description": "Result: 155" }
+    ]
+  },
+
+  {
+    "id": "alg2-h-015", "topic": "algebra2", "difficulty": "hard",
+    "question": { "latex": "S = \\sum_{k=1}^{10} k(k+1)", "plain": "Sum the products of consecutive integers for k = 1 to 10" },
+    "symbols": { "k(k+1)": "Product of two consecutive integers", "\\frac{n(n+1)(n+2)}{3}": "Closed-form identity for this sum" },
+    "palette": [
+      { "id": "p1", "latex": "\\frac{10 \\cdot 11 \\cdot 12}{3}", "description": "Apply ∑k(k+1) = n(n+1)(n+2)/3 with n=10" },
+      { "id": "p2", "latex": "440", "description": "10·11·12/3 = 1320/3 = 440" }
+    ],
+    "steps": [
+      { "id": "s1", "fromLatex": "S = \\sum_{k=1}^{10} k(k+1)", "toLatex": "S = \\frac{10 \\cdot 11 \\cdot 12}{3}", "paletteRef": "p1", "dropTargets": ["\\sum_{k=1}^{10} k(k+1)"], "description": "Apply ∑k(k+1) = n(n+1)(n+2)/3 with n=10" },
+      { "id": "s1a", "fromLatex": "10 \\times 11 \\times 12 = 1320", "toLatex": "10 \\times 11 \\times 12 = 1320", "paletteRef": null, "dropTargets": [], "description": "Compute numerator: 10×11=110, then 110×12=1320" },
+      { "id": "s2", "fromLatex": "S = \\frac{1320}{3}", "toLatex": "S = 440", "paletteRef": "p2", "dropTargets": ["\\frac{1320}{3}"], "description": "Divide: 1320 ÷ 3 = 440" }
     ]
   }
 ]
