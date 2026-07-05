@@ -1711,5 +1711,636 @@
       }
     ],
     "image": "trig-h-010.svg"
+  },
+  {
+    "id": "trig-e-011",
+    "topic": "trigonometry",
+    "difficulty": "easy",
+    "question": {
+      "latex": "\\tan(30^\\circ) = ?",
+      "plain": "What is tan(30°)?"
+    },
+    "symbols": {
+      "\\tan": "Tangent — opposite over adjacent"
+    },
+    "palette": [
+      {
+        "id": "p1",
+        "latex": "\\frac{\\sqrt{3}}{3}",
+        "description": "tan(30°) = \\u221a3/3 from the unit circle"
+      }
+    ],
+    "steps": [
+      {
+        "id": "s1",
+        "fromLatex": "\\tan(30^\\circ)",
+        "toLatex": "\\tan(30^\\circ) = \\frac{\\sqrt{3}}{3}",
+        "paletteRef": "p1",
+        "dropTargets": [
+          "\\tan(30^\\circ)"
+        ],
+        "description": "tan(30°) = 1/\\u221a3 = \\u221a3/3"
+      }
+    ]
+  },
+  {
+    "id": "trig-e-012",
+    "topic": "trigonometry",
+    "difficulty": "easy",
+    "question": {
+      "latex": "\\tan(60^\\circ) = ?",
+      "plain": "What is tan(60°)?"
+    },
+    "symbols": {
+      "\\tan": "Tangent — opposite over adjacent"
+    },
+    "palette": [
+      {
+        "id": "p1",
+        "latex": "\\sqrt{3}",
+        "description": "tan(60°) = \\u221a3 from the unit circle"
+      }
+    ],
+    "steps": [
+      {
+        "id": "s1",
+        "fromLatex": "\\tan(60^\\circ)",
+        "toLatex": "\\tan(60^\\circ) = \\sqrt{3}",
+        "paletteRef": "p1",
+        "dropTargets": [
+          "\\tan(60^\\circ)"
+        ],
+        "description": "tan(60°) = \\u221a3"
+      }
+    ]
+  },
+  {
+    "id": "trig-e-013",
+    "topic": "trigonometry",
+    "difficulty": "easy",
+    "question": {
+      "latex": "\\sin\\!\\left(\\frac{\\pi}{6}\\right) = ?",
+      "plain": "What is sin(π/6)?"
+    },
+    "symbols": {
+      "\\sin": "Sine function",
+      "\\pi": "pi ≈ 3.14159"
+    },
+    "palette": [
+      {
+        "id": "p1",
+        "latex": "\\frac{1}{2}",
+        "description": "sin(π/6) = sin(30°) = 1/2"
+      }
+    ],
+    "steps": [
+      {
+        "id": "s1",
+        "fromLatex": "\\sin\\!\\left(\\frac{\\pi}{6}\\right)",
+        "toLatex": "\\frac{\\pi}{6} = 30^\\circ",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "Convert radians to degrees: π/6 = 30°"
+      },
+      {
+        "id": "s2",
+        "fromLatex": "\\sin\\!\\left(\\frac{\\pi}{6}\\right)",
+        "toLatex": "\\frac{1}{2}",
+        "paletteRef": "p1",
+        "dropTargets": [
+          "\\sin\\!\\left(\\frac{\\pi}{6}\\right)"
+        ],
+        "description": "sin(30°) = 1/2"
+      }
+    ]
+  },
+  {
+    "id": "trig-e-014",
+    "topic": "trigonometry",
+    "difficulty": "easy",
+    "question": {
+      "latex": "\\sec(60^\\circ) = \\frac{1}{\\cos(60^\\circ)}",
+      "plain": "Evaluate sec(60°)"
+    },
+    "symbols": {
+      "\\sec": "Secant — reciprocal of cosine"
+    },
+    "palette": [
+      {
+        "id": "p1",
+        "latex": "\\frac{1}{2}",
+        "description": "cos(60°) = 1/2"
+      },
+      {
+        "id": "p2",
+        "latex": "2",
+        "description": "1 ÷ (1/2) = 2"
+      }
+    ],
+    "steps": [
+      {
+        "id": "s1",
+        "fromLatex": "\\sec(60^\\circ) = \\frac{1}{\\cos(60^\\circ)}",
+        "toLatex": "\\sec(60^\\circ) = \\frac{1}{\\frac{1}{2}}",
+        "paletteRef": "p1",
+        "dropTargets": [
+          "\\cos(60^\\circ)"
+        ],
+        "description": "cos(60°) = 1/2"
+      },
+      {
+        "id": "s2",
+        "fromLatex": "\\sec(60^\\circ) = \\frac{1}{\\frac{1}{2}}",
+        "toLatex": "\\sec(60^\\circ) = 2",
+        "paletteRef": "p2",
+        "dropTargets": [
+          "\\frac{1}{\\frac{1}{2}}"
+        ],
+        "description": "1 ÷ (1/2) = 2"
+      }
+    ]
+  },
+  {
+    "id": "trig-e-015",
+    "topic": "trigonometry",
+    "difficulty": "easy",
+    "question": {
+      "latex": "\\sin(\\pi) = ?",
+      "plain": "What is sin(π)?"
+    },
+    "symbols": {
+      "\\sin": "Sine function",
+      "\\pi": "pi ≈ 3.14159"
+    },
+    "palette": [
+      {
+        "id": "p1",
+        "latex": "0",
+        "description": "sin(π) = 0 from the unit circle"
+      }
+    ],
+    "steps": [
+      {
+        "id": "s1",
+        "fromLatex": "\\sin(\\pi)",
+        "toLatex": "\\sin(\\pi) = 0",
+        "paletteRef": "p1",
+        "dropTargets": [
+          "\\sin(\\pi)"
+        ],
+        "description": "At angle π (180°) the y-coordinate is 0"
+      }
+    ]
+  },
+  {
+    "id": "trig-m-011",
+    "topic": "trigonometry",
+    "difficulty": "medium",
+    "question": {
+      "latex": "300^\\circ \\text{ in radians}",
+      "plain": "Convert 300° to radians"
+    },
+    "symbols": {
+      "\\pi": "pi ≈ 3.14159"
+    },
+    "palette": [
+      {
+        "id": "p1",
+        "latex": "\\frac{5\\pi}{3}",
+        "description": "300π/180 simplifies to 5π/3"
+      }
+    ],
+    "steps": [
+      {
+        "id": "s1",
+        "fromLatex": "300^\\circ \\times \\frac{\\pi}{180^\\circ}",
+        "toLatex": "\\frac{300\\pi}{180}",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "Multiply by π/180°"
+      },
+      {
+        "id": "s2",
+        "fromLatex": "\\frac{300\\pi}{180}",
+        "toLatex": "\\frac{5\\pi}{3}",
+        "paletteRef": "p1",
+        "dropTargets": [
+          "\\frac{300\\pi}{180}"
+        ],
+        "description": "Simplify by dividing by 60: 300/180 = 5/3"
+      }
+    ]
+  },
+  {
+    "id": "trig-m-012",
+    "topic": "trigonometry",
+    "difficulty": "medium",
+    "question": {
+      "latex": "\\cot(45^\\circ) = ?",
+      "plain": "Evaluate cot(45°)"
+    },
+    "symbols": {
+      "\\cot": "Cotangent — cos/sin"
+    },
+    "palette": [
+      {
+        "id": "p1",
+        "latex": "\\frac{\\cos(45^\\circ)}{\\sin(45^\\circ)}",
+        "description": "cot = cos/sin"
+      },
+      {
+        "id": "p2",
+        "latex": "1",
+        "description": "\\u221a2/2 ÷ \\u221a2/2 = 1"
+      }
+    ],
+    "steps": [
+      {
+        "id": "s1",
+        "fromLatex": "\\cot(45^\\circ)",
+        "toLatex": "\\frac{\\cos(45^\\circ)}{\\sin(45^\\circ)}",
+        "paletteRef": "p1",
+        "dropTargets": [
+          "\\cot(45^\\circ)"
+        ],
+        "description": "Definition: cot = cos/sin"
+      },
+      {
+        "id": "s2",
+        "fromLatex": "\\cos(45^\\circ) = \\sin(45^\\circ) = \\frac{\\sqrt{2}}{2}",
+        "toLatex": "\\frac{\\frac{\\sqrt{2}}{2}}{\\frac{\\sqrt{2}}{2}} = 1",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "Both equal \\u221a2/2, so ratio = 1"
+      },
+      {
+        "id": "s3",
+        "fromLatex": "\\frac{\\cos(45^\\circ)}{\\sin(45^\\circ)}",
+        "toLatex": "1",
+        "paletteRef": "p2",
+        "dropTargets": [
+          "\\frac{\\cos(45^\\circ)}{\\sin(45^\\circ)}"
+        ],
+        "description": "Equal numerator and denominator ⇒ 1"
+      }
+    ]
+  },
+  {
+    "id": "trig-m-013",
+    "topic": "trigonometry",
+    "difficulty": "medium",
+    "question": {
+      "latex": "\\cos(\\theta) = -\\frac{4}{5},\\ \\theta \\in \\text{Q2}",
+      "plain": "Find sin(θ) given cos(θ) = −4/5 in Quadrant II"
+    },
+    "symbols": {
+      "\\theta": "Angle in the second quadrant"
+    },
+    "palette": [
+      {
+        "id": "p1",
+        "latex": "\\frac{3}{5}",
+        "description": "Positive in Q2: sinθ = 3/5"
+      }
+    ],
+    "steps": [
+      {
+        "id": "s1",
+        "fromLatex": "\\sin^2\\theta + \\cos^2\\theta = 1",
+        "toLatex": "\\sin^2\\theta + \\frac{16}{25} = 1",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "Substitute cosθ = −4/5, so cos²θ = 16/25"
+      },
+      {
+        "id": "s2",
+        "fromLatex": "\\sin^2\\theta + \\frac{16}{25} = 1",
+        "toLatex": "\\sin^2\\theta = \\frac{9}{25}",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "Subtract: 1 − 16/25 = 9/25"
+      },
+      {
+        "id": "s3",
+        "fromLatex": "\\sin^2\\theta = \\frac{9}{25}",
+        "toLatex": "\\sin\\theta = \\frac{3}{5}",
+        "paletteRef": "p1",
+        "dropTargets": [
+          "\\frac{9}{25}"
+        ],
+        "description": "Take positive root (Q2 has sin > 0): \\u221a(9/25) = 3/5"
+      }
+    ]
+  },
+  {
+    "id": "trig-m-014",
+    "topic": "trigonometry",
+    "difficulty": "medium",
+    "question": {
+      "latex": "2\\sin(30^\\circ)\\cos(30^\\circ) = ?",
+      "plain": "Evaluate 2sin(30°)cos(30°) using the double-angle identity"
+    },
+    "symbols": {
+      "\\sin": "Sine",
+      "\\cos": "Cosine"
+    },
+    "palette": [
+      {
+        "id": "p1",
+        "latex": "\\sin(60^\\circ)",
+        "description": "Double-angle: 2sinθcosθ = sin(2θ)"
+      },
+      {
+        "id": "p2",
+        "latex": "\\frac{\\sqrt{3}}{2}",
+        "description": "sin(60°) = \\u221a3/2"
+      }
+    ],
+    "steps": [
+      {
+        "id": "s1",
+        "fromLatex": "2\\sin\\theta\\cos\\theta = \\sin(2\\theta)",
+        "toLatex": "2\\sin(30^\\circ)\\cos(30^\\circ) = \\sin(60^\\circ)",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "Double-angle identity with θ = 30°"
+      },
+      {
+        "id": "s2",
+        "fromLatex": "2\\sin(30^\\circ)\\cos(30^\\circ)",
+        "toLatex": "\\sin(60^\\circ)",
+        "paletteRef": "p1",
+        "dropTargets": [
+          "2\\sin(30^\\circ)\\cos(30^\\circ)"
+        ],
+        "description": "Apply the double-angle identity"
+      },
+      {
+        "id": "s3",
+        "fromLatex": "\\sin(60^\\circ)",
+        "toLatex": "\\frac{\\sqrt{3}}{2}",
+        "paletteRef": "p2",
+        "dropTargets": [
+          "\\sin(60^\\circ)"
+        ],
+        "description": "sin(60°) = \\u221a3/2"
+      }
+    ]
+  },
+  {
+    "id": "trig-m-015",
+    "topic": "trigonometry",
+    "difficulty": "medium",
+    "question": {
+      "latex": "\\tan(\\theta) = \\frac{1}{\\sqrt{3}},\\ 0^\\circ \\le \\theta < 360^\\circ",
+      "plain": "Solve tan(θ) = 1/\\u221a3 on [0°, 360°)"
+    },
+    "symbols": {
+      "\\theta": "Angle in degrees"
+    },
+    "palette": [],
+    "steps": [
+      {
+        "id": "s1",
+        "fromLatex": "\\tan(\\theta) = \\frac{1}{\\sqrt{3}}",
+        "toLatex": "\\text{Reference angle} = 30^\\circ",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "arctan(1/\\u221a3) = 30°"
+      },
+      {
+        "id": "s2",
+        "fromLatex": "\\text{Reference angle} = 30^\\circ",
+        "toLatex": "\\tan > 0 \\text{ in Q1 and Q3}",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "Tangent is positive in Quadrants I and III"
+      },
+      {
+        "id": "s3",
+        "fromLatex": "\\tan > 0 \\text{ in Q1 and Q3}",
+        "toLatex": "\\theta = 30^\\circ \\text{ or } \\theta = 210^\\circ",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "Q1: 30°, Q3: 30° + 180° = 210°"
+      }
+    ]
+  },
+  {
+    "id": "trig-h-011",
+    "topic": "trigonometry",
+    "difficulty": "hard",
+    "question": {
+      "latex": "\\sin(\\pi - x) = ?",
+      "plain": "Simplify sin(π − x) using the angle subtraction formula"
+    },
+    "symbols": {
+      "x": "An angle in radians"
+    },
+    "palette": [
+      {
+        "id": "p1",
+        "latex": "\\sin x",
+        "description": "The simplified result"
+      }
+    ],
+    "steps": [
+      {
+        "id": "s1",
+        "fromLatex": "\\sin(\\pi - x)",
+        "toLatex": "\\sin\\pi\\cos x - \\cos\\pi\\sin x",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "Apply sin(A−B) = sinA·cosB − cosA·sinB"
+      },
+      {
+        "id": "s2",
+        "fromLatex": "\\sin\\pi\\cos x - \\cos\\pi\\sin x",
+        "toLatex": "0 \\cdot \\cos x - (-1)\\sin x",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "sinπ = 0 and cosπ = −1"
+      },
+      {
+        "id": "s3",
+        "fromLatex": "0 \\cdot \\cos x - (-1)\\sin x",
+        "toLatex": "\\sin x",
+        "paletteRef": "p1",
+        "dropTargets": [
+          "0 \\cdot \\cos x - (-1)\\sin x"
+        ],
+        "description": "0·cosx + sinx = sinx"
+      }
+    ]
+  },
+  {
+    "id": "trig-h-012",
+    "topic": "trigonometry",
+    "difficulty": "hard",
+    "question": {
+      "latex": "2\\cos^2 x - 1 = 0,\\ 0^\\circ \\le x < 360^\\circ",
+      "plain": "Solve 2cos²x − 1 = 0 on [0°, 360°)"
+    },
+    "symbols": {
+      "x": "Angle in degrees"
+    },
+    "palette": [],
+    "steps": [
+      {
+        "id": "s1",
+        "fromLatex": "2\\cos^2 x - 1 = 0",
+        "toLatex": "\\cos^2 x = \\frac{1}{2}",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "Rearrange: cos²x = 1/2"
+      },
+      {
+        "id": "s2",
+        "fromLatex": "\\cos^2 x = \\frac{1}{2}",
+        "toLatex": "\\cos x = \\pm\\frac{\\sqrt{2}}{2}",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "Take square root: ±\\u221a(1/2) = ±\\u221a2/2"
+      },
+      {
+        "id": "s3",
+        "fromLatex": "\\cos x = \\pm\\frac{\\sqrt{2}}{2}",
+        "toLatex": "x = 45^\\circ,\\ 135^\\circ,\\ 225^\\circ,\\ 315^\\circ",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "Four solutions in [0°, 360°)"
+      }
+    ]
+  },
+  {
+    "id": "trig-h-013",
+    "topic": "trigonometry",
+    "difficulty": "hard",
+    "question": {
+      "latex": "\\cos\\!\\left(\\frac{\\pi}{3} + \\frac{\\pi}{6}\\right) = ?",
+      "plain": "Evaluate cos(π/3 + π/6) using the addition formula"
+    },
+    "symbols": {
+      "\\pi": "pi ≈ 3.14159"
+    },
+    "palette": [
+      {
+        "id": "p1",
+        "latex": "0",
+        "description": "The expressions cancel to 0"
+      }
+    ],
+    "steps": [
+      {
+        "id": "s1",
+        "fromLatex": "\\cos\\!\\left(\\frac{\\pi}{3} + \\frac{\\pi}{6}\\right)",
+        "toLatex": "\\cos\\frac{\\pi}{3}\\cos\\frac{\\pi}{6} - \\sin\\frac{\\pi}{3}\\sin\\frac{\\pi}{6}",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "cos(A+B) = cosA·cosB − sinA·sinB"
+      },
+      {
+        "id": "s2",
+        "fromLatex": "\\cos\\frac{\\pi}{3}\\cos\\frac{\\pi}{6} - \\sin\\frac{\\pi}{3}\\sin\\frac{\\pi}{6}",
+        "toLatex": "\\frac{1}{2} \\cdot \\frac{\\sqrt{3}}{2} - \\frac{\\sqrt{3}}{2} \\cdot \\frac{1}{2}",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "Substitute values: cos(π/3)=1/2, cos(π/6)=\\u221a3/2, sin(π/3)=\\u221a3/2, sin(π/6)=1/2"
+      },
+      {
+        "id": "s3",
+        "fromLatex": "\\frac{1}{2} \\cdot \\frac{\\sqrt{3}}{2} - \\frac{\\sqrt{3}}{2} \\cdot \\frac{1}{2}",
+        "toLatex": "0",
+        "paletteRef": "p1",
+        "dropTargets": [
+          "\\frac{1}{2} \\cdot \\frac{\\sqrt{3}}{2} - \\frac{\\sqrt{3}}{2} \\cdot \\frac{1}{2}"
+        ],
+        "description": "Equal terms subtract to 0"
+      }
+    ]
+  },
+  {
+    "id": "trig-h-014",
+    "topic": "trigonometry",
+    "difficulty": "hard",
+    "question": {
+      "latex": "\\text{Verify } \\sin(2 \\times 30^\\circ) = 2\\sin(30^\\circ)\\cos(30^\\circ)",
+      "plain": "Verify the double-angle identity at 30°"
+    },
+    "symbols": {},
+    "palette": [
+      {
+        "id": "p1",
+        "latex": "\\frac{\\sqrt{3}}{2}",
+        "description": "sin(60°) = \\u221a3/2"
+      }
+    ],
+    "steps": [
+      {
+        "id": "s1",
+        "fromLatex": "\\sin(2 \\times 30^\\circ)",
+        "toLatex": "\\sin(60^\\circ) = \\frac{\\sqrt{3}}{2}",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "Left side: sin(60°) = \\u221a3/2"
+      },
+      {
+        "id": "s2",
+        "fromLatex": "2\\sin(30^\\circ)\\cos(30^\\circ)",
+        "toLatex": "2 \\cdot \\frac{1}{2} \\cdot \\frac{\\sqrt{3}}{2} = \\frac{\\sqrt{3}}{2}",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "Right side: 2 × (1/2) × (\\u221a3/2) = \\u221a3/2"
+      },
+      {
+        "id": "s3",
+        "fromLatex": "\\sin(60^\\circ)",
+        "toLatex": "\\frac{\\sqrt{3}}{2}",
+        "paletteRef": "p1",
+        "dropTargets": [
+          "\\sin(60^\\circ)"
+        ],
+        "description": "Both sides equal \\u221a3/2 — identity verified"
+      }
+    ]
+  },
+  {
+    "id": "trig-h-015",
+    "topic": "trigonometry",
+    "difficulty": "hard",
+    "question": {
+      "latex": "y = 2\\cos(3x)",
+      "plain": "Find the period of y = 2cos(3x)"
+    },
+    "symbols": {
+      "B": "Angular frequency coefficient"
+    },
+    "palette": [
+      {
+        "id": "p1",
+        "latex": "3",
+        "description": "The value of B in y = 2cos(Bx)"
+      }
+    ],
+    "steps": [
+      {
+        "id": "s1",
+        "fromLatex": "y = 2\\cos(3x)",
+        "toLatex": "T = \\frac{2\\pi}{|B|}, \\quad B = 3",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "Period formula: T = 2π/|B| where B = 3"
+      },
+      {
+        "id": "s2",
+        "fromLatex": "T = \\frac{2\\pi}{|B|}",
+        "toLatex": "T = \\frac{2\\pi}{3}",
+        "paletteRef": "p1",
+        "dropTargets": [
+          "\\frac{2\\pi}{|B|}"
+        ],
+        "description": "Substitute B = 3: T = 2π/3"
+      }
+    ]
   }
 ]

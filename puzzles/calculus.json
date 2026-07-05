@@ -1802,5 +1802,689 @@
       }
     ],
     "image": "calc-h-010.svg"
+  },
+  {
+    "id": "calc-e-011",
+    "topic": "calculus",
+    "difficulty": "easy",
+    "question": {
+      "latex": "\\frac{d}{dx}[x^5] = ?",
+      "plain": "Differentiate x⁵"
+    },
+    "symbols": {
+      "\\frac{d}{dx}": "Derivative with respect to x"
+    },
+    "palette": [
+      {
+        "id": "p1",
+        "latex": "5x^4",
+        "description": "Power rule: 5x^{5-1} = 5x⁴"
+      }
+    ],
+    "steps": [
+      {
+        "id": "s1",
+        "fromLatex": "\\frac{d}{dx}[x^n] = nx^{n-1}",
+        "toLatex": "\\frac{d}{dx}[x^5] = 5x^{5-1}",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "Power rule with n = 5"
+      },
+      {
+        "id": "s2",
+        "fromLatex": "\\frac{d}{dx}[x^5] = 5x^{5-1}",
+        "toLatex": "\\frac{d}{dx}[x^5] = 5x^4",
+        "paletteRef": "p1",
+        "dropTargets": [
+          "5x^{5-1}"
+        ],
+        "description": "Simplify: 5x^{5-1} = 5x⁴"
+      }
+    ]
+  },
+  {
+    "id": "calc-e-012",
+    "topic": "calculus",
+    "difficulty": "easy",
+    "question": {
+      "latex": "\\frac{d}{dx}[4x^3] = ?",
+      "plain": "Differentiate 4x³"
+    },
+    "symbols": {
+      "\\frac{d}{dx}": "Derivative with respect to x"
+    },
+    "palette": [
+      {
+        "id": "p1",
+        "latex": "12x^2",
+        "description": "Power rule: 4 × 3x^{3-1} = 12x²"
+      }
+    ],
+    "steps": [
+      {
+        "id": "s1",
+        "fromLatex": "\\frac{d}{dx}[4x^3]",
+        "toLatex": "12x^2",
+        "paletteRef": "p1",
+        "dropTargets": [
+          "\\frac{d}{dx}[4x^3]"
+        ],
+        "description": "Power rule: bring down exponent ⇒ 4×3x² = 12x²"
+      }
+    ]
+  },
+  {
+    "id": "calc-e-013",
+    "topic": "calculus",
+    "difficulty": "easy",
+    "question": {
+      "latex": "\\int 4x \\, dx = ?",
+      "plain": "Integrate 4x with respect to x"
+    },
+    "symbols": {
+      "\\int": "Integral",
+      "C": "Constant of integration"
+    },
+    "palette": [
+      {
+        "id": "p1",
+        "latex": "2x^2 + C",
+        "description": "Power rule: 4x¹⁺¹/(1+1) = 2x² + C"
+      }
+    ],
+    "steps": [
+      {
+        "id": "s1",
+        "fromLatex": "\\int 4x \\, dx",
+        "toLatex": "2x^2 + C",
+        "paletteRef": "p1",
+        "dropTargets": [
+          "\\int 4x \\, dx"
+        ],
+        "description": "Power rule: \\u222b4x dx = 4·x²/2 + C = 2x² + C"
+      }
+    ]
+  },
+  {
+    "id": "calc-e-014",
+    "topic": "calculus",
+    "difficulty": "easy",
+    "question": {
+      "latex": "\\frac{d}{dx}[x^2 - 3x] = ?",
+      "plain": "Differentiate x² − 3x"
+    },
+    "symbols": {
+      "\\frac{d}{dx}": "Derivative with respect to x"
+    },
+    "palette": [
+      {
+        "id": "p1",
+        "latex": "2x - 3",
+        "description": "Differentiate each term"
+      }
+    ],
+    "steps": [
+      {
+        "id": "s1",
+        "fromLatex": "\\frac{d}{dx}[x^2 - 3x]",
+        "toLatex": "2x - 3",
+        "paletteRef": "p1",
+        "dropTargets": [
+          "\\frac{d}{dx}[x^2 - 3x]"
+        ],
+        "description": "d/dx[x²] = 2x, d/dx[3x] = 3"
+      }
+    ]
+  },
+  {
+    "id": "calc-e-015",
+    "topic": "calculus",
+    "difficulty": "easy",
+    "question": {
+      "latex": "\\lim_{x \\to 5}(x + 2) = ?",
+      "plain": "Evaluate the limit as x approaches 5"
+    },
+    "symbols": {
+      "\\lim": "Limit"
+    },
+    "palette": [
+      {
+        "id": "p1",
+        "latex": "7",
+        "description": "5 + 2 = 7"
+      }
+    ],
+    "steps": [
+      {
+        "id": "s1",
+        "fromLatex": "\\lim_{x \\to 5}(x + 2)",
+        "toLatex": "5 + 2",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "Direct substitution: replace x with 5"
+      },
+      {
+        "id": "s2",
+        "fromLatex": "5 + 2",
+        "toLatex": "7",
+        "paletteRef": "p1",
+        "dropTargets": [
+          "5 + 2"
+        ],
+        "description": "Compute 5 + 2 = 7"
+      }
+    ]
+  },
+  {
+    "id": "calc-m-011",
+    "topic": "calculus",
+    "difficulty": "medium",
+    "question": {
+      "latex": "\\frac{d}{dx}[\\sin(2x)] = ?",
+      "plain": "Differentiate sin(2x) using the chain rule"
+    },
+    "symbols": {
+      "\\frac{d}{dx}": "Derivative"
+    },
+    "palette": [
+      {
+        "id": "p1",
+        "latex": "2\\cos(2x)",
+        "description": "cos(2x) × 2 = 2cos(2x)"
+      }
+    ],
+    "steps": [
+      {
+        "id": "s1",
+        "fromLatex": "\\frac{d}{dx}[\\sin(2x)]",
+        "toLatex": "\\cos(2x) \\cdot \\frac{d}{dx}[2x]",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "Chain rule: d/dx[sin(u)] = cos(u) · du/dx"
+      },
+      {
+        "id": "s2",
+        "fromLatex": "\\cos(2x) \\cdot \\frac{d}{dx}[2x]",
+        "toLatex": "\\cos(2x) \\cdot 2",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "d/dx[2x] = 2"
+      },
+      {
+        "id": "s3",
+        "fromLatex": "\\cos(2x) \\cdot 2",
+        "toLatex": "2\\cos(2x)",
+        "paletteRef": "p1",
+        "dropTargets": [
+          "\\cos(2x) \\cdot 2"
+        ],
+        "description": "Write in standard form: 2cos(2x)"
+      }
+    ]
+  },
+  {
+    "id": "calc-m-012",
+    "topic": "calculus",
+    "difficulty": "medium",
+    "question": {
+      "latex": "\\int \\cos(x)\\,dx = ?",
+      "plain": "Integrate cos(x)"
+    },
+    "symbols": {
+      "\\int": "Integral",
+      "C": "Constant of integration"
+    },
+    "palette": [
+      {
+        "id": "p1",
+        "latex": "\\sin(x) + C",
+        "description": "\\u222bcos(x) dx = sin(x) + C"
+      }
+    ],
+    "steps": [
+      {
+        "id": "s1",
+        "fromLatex": "\\int \\cos(x)\\,dx",
+        "toLatex": "\\sin(x) + C",
+        "paletteRef": "p1",
+        "dropTargets": [
+          "\\int \\cos(x)\\,dx"
+        ],
+        "description": "Standard integral: \\u222bcos(x) dx = sin(x) + C"
+      }
+    ]
+  },
+  {
+    "id": "calc-m-013",
+    "topic": "calculus",
+    "difficulty": "medium",
+    "question": {
+      "latex": "\\int_1^3 2x\\,dx = ?",
+      "plain": "Evaluate the definite integral of 2x from 1 to 3"
+    },
+    "symbols": {
+      "\\int_1^3": "Definite integral from 1 to 3"
+    },
+    "palette": [
+      {
+        "id": "p1",
+        "latex": "\\left[x^2\\right]_1^3",
+        "description": "Antiderivative of 2x is x²"
+      },
+      {
+        "id": "p2",
+        "latex": "3^2 - 1^2",
+        "description": "Evaluate at bounds: 3² − 1²"
+      },
+      {
+        "id": "p3",
+        "latex": "8",
+        "description": "9 − 1 = 8"
+      }
+    ],
+    "steps": [
+      {
+        "id": "s1",
+        "fromLatex": "\\int_1^3 2x\\,dx",
+        "toLatex": "\\left[x^2\\right]_1^3",
+        "paletteRef": "p1",
+        "dropTargets": [
+          "\\int_1^3 2x\\,dx"
+        ],
+        "description": "Antiderivative: \\u222b2x dx = x²"
+      },
+      {
+        "id": "s2",
+        "fromLatex": "\\left[x^2\\right]_1^3",
+        "toLatex": "3^2 - 1^2",
+        "paletteRef": "p2",
+        "dropTargets": [
+          "\\left[x^2\\right]_1^3"
+        ],
+        "description": "Apply bounds: evaluate at 3 minus at 1"
+      },
+      {
+        "id": "s3",
+        "fromLatex": "3^2 - 1^2",
+        "toLatex": "8",
+        "paletteRef": "p3",
+        "dropTargets": [
+          "3^2 - 1^2"
+        ],
+        "description": "Compute: 9 − 1 = 8"
+      }
+    ]
+  },
+  {
+    "id": "calc-m-014",
+    "topic": "calculus",
+    "difficulty": "medium",
+    "question": {
+      "latex": "\\frac{d}{dx}[x \\cdot \\ln x] = ?",
+      "plain": "Differentiate x·ln(x) using the product rule"
+    },
+    "symbols": {
+      "\\ln": "Natural logarithm"
+    },
+    "palette": [
+      {
+        "id": "p1",
+        "latex": "1",
+        "description": "x × (1/x) = 1"
+      },
+      {
+        "id": "p2",
+        "latex": "\\ln x",
+        "description": "1 × ln x = ln x"
+      }
+    ],
+    "steps": [
+      {
+        "id": "s1",
+        "fromLatex": "\\frac{d}{dx}[x \\cdot \\ln x]",
+        "toLatex": "1 \\cdot \\ln x + x \\cdot \\frac{1}{x}",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "Product rule: (u’v + uv’) = 1·ln x + x·(1/x)"
+      },
+      {
+        "id": "s2",
+        "fromLatex": "1 \\cdot \\ln x + x \\cdot \\frac{1}{x}",
+        "toLatex": "1 \\cdot \\ln x + 1",
+        "paletteRef": "p1",
+        "dropTargets": [
+          "x \\cdot \\frac{1}{x}"
+        ],
+        "description": "Simplify x × (1/x) = 1"
+      },
+      {
+        "id": "s3",
+        "fromLatex": "1 \\cdot \\ln x + 1",
+        "toLatex": "\\ln x + 1",
+        "paletteRef": "p2",
+        "dropTargets": [
+          "1 \\cdot \\ln x"
+        ],
+        "description": "Simplify 1 × ln x = ln x"
+      }
+    ]
+  },
+  {
+    "id": "calc-m-015",
+    "topic": "calculus",
+    "difficulty": "medium",
+    "question": {
+      "latex": "f(x) = x^2 - 4x + 3",
+      "plain": "Find the critical point of f(x) = x² − 4x + 3"
+    },
+    "symbols": {
+      "f'": "First derivative"
+    },
+    "palette": [
+      {
+        "id": "p1",
+        "latex": "2x - 4",
+        "description": "Derivative of x² − 4x + 3"
+      },
+      {
+        "id": "p2",
+        "latex": "2",
+        "description": "4 ÷ 2 = 2"
+      }
+    ],
+    "steps": [
+      {
+        "id": "s1",
+        "fromLatex": "\\frac{d}{dx}[x^2 - 4x + 3]",
+        "toLatex": "2x - 4",
+        "paletteRef": "p1",
+        "dropTargets": [
+          "\\frac{d}{dx}[x^2 - 4x + 3]"
+        ],
+        "description": "Differentiate: 2x − 4"
+      },
+      {
+        "id": "s2",
+        "fromLatex": "2x - 4 = 0",
+        "toLatex": "2x = 4",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "Set derivative to zero and rearrange"
+      },
+      {
+        "id": "s3",
+        "fromLatex": "x = \\frac{4}{2}",
+        "toLatex": "x = 2",
+        "paletteRef": "p2",
+        "dropTargets": [
+          "\\frac{4}{2}"
+        ],
+        "description": "Divide: 4 ÷ 2 = 2"
+      }
+    ]
+  },
+  {
+    "id": "calc-h-011",
+    "topic": "calculus",
+    "difficulty": "hard",
+    "question": {
+      "latex": "\\frac{d}{dx}[\\arctan(x)] = ?",
+      "plain": "Differentiate arctan(x) using implicit differentiation"
+    },
+    "symbols": {
+      "\\arctan": "Inverse tangent"
+    },
+    "palette": [
+      {
+        "id": "p1",
+        "latex": "1 + \\tan^2(y)",
+        "description": "Pythagorean identity: sec²y = 1 + tan²y"
+      },
+      {
+        "id": "p2",
+        "latex": "x^2",
+        "description": "tan(y) = x so tan²(y) = x²"
+      }
+    ],
+    "steps": [
+      {
+        "id": "s1",
+        "fromLatex": "y = \\arctan(x)",
+        "toLatex": "\\tan(y) = x",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "Rewrite: if y = arctan(x) then tan(y) = x"
+      },
+      {
+        "id": "s2",
+        "fromLatex": "\\tan(y) = x",
+        "toLatex": "\\sec^2(y) \\cdot y' = 1",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "Differentiate implicitly: sec²(y)·y’ = 1"
+      },
+      {
+        "id": "s3",
+        "fromLatex": "y' = \\frac{1}{\\sec^2(y)}",
+        "toLatex": "y' = \\frac{1}{1 + \\tan^2(y)}",
+        "paletteRef": "p1",
+        "dropTargets": [
+          "\\sec^2(y)"
+        ],
+        "description": "Identity: sec²y = 1 + tan²y"
+      },
+      {
+        "id": "s4",
+        "fromLatex": "y' = \\frac{1}{1 + \\tan^2(y)}",
+        "toLatex": "y' = \\frac{1}{1 + x^2}",
+        "paletteRef": "p2",
+        "dropTargets": [
+          "\\tan^2(y)"
+        ],
+        "description": "Substitute tan(y) = x"
+      }
+    ]
+  },
+  {
+    "id": "calc-h-012",
+    "topic": "calculus",
+    "difficulty": "hard",
+    "question": {
+      "latex": "\\int x\\cos(x)\\,dx = ?",
+      "plain": "Integrate x·cos(x) by parts"
+    },
+    "symbols": {
+      "\\int": "Integral"
+    },
+    "palette": [
+      {
+        "id": "p1",
+        "latex": "\\int \\sin(x)\\,dx",
+        "description": "v du = sin(x) dx"
+      },
+      {
+        "id": "p2",
+        "latex": "-\\cos(x)",
+        "description": "\\u222bsin(x) dx = −cos(x)"
+      }
+    ],
+    "steps": [
+      {
+        "id": "s1",
+        "fromLatex": "\\int x\\cos(x)\\,dx",
+        "toLatex": "u = x, \\quad dv = \\cos(x)\\,dx",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "Choose u = x and dv = cos(x) dx"
+      },
+      {
+        "id": "s2",
+        "fromLatex": "u = x, \\quad dv = \\cos(x)\\,dx",
+        "toLatex": "du = dx, \\quad v = \\sin(x)",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "Compute: du = dx, v = \\u222bcos(x) dx = sin(x)"
+      },
+      {
+        "id": "s3",
+        "fromLatex": "uv - \\int v\\,du",
+        "toLatex": "x\\sin(x) - \\int \\sin(x)\\,dx",
+        "paletteRef": "p1",
+        "dropTargets": [
+          "\\int v\\,du"
+        ],
+        "description": "Apply integration by parts: uv − \\u222bv du"
+      },
+      {
+        "id": "s4",
+        "fromLatex": "x\\sin(x) - \\int \\sin(x)\\,dx",
+        "toLatex": "x\\sin(x) - (-\\cos(x))",
+        "paletteRef": "p2",
+        "dropTargets": [
+          "\\int \\sin(x)\\,dx"
+        ],
+        "description": "\\u222bsin(x) dx = −cos(x)"
+      },
+      {
+        "id": "s5",
+        "fromLatex": "x\\sin(x) - (-\\cos(x))",
+        "toLatex": "x\\sin(x) + \\cos(x) + C",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "Simplify: −(−cos(x)) = +cos(x)"
+      }
+    ]
+  },
+  {
+    "id": "calc-h-013",
+    "topic": "calculus",
+    "difficulty": "hard",
+    "question": {
+      "latex": "\\int_0^{\\pi} \\sin(x)\\,dx = ?",
+      "plain": "Evaluate the definite integral of sin(x) from 0 to π"
+    },
+    "symbols": {
+      "\\int_0^{\\pi}": "Definite integral from 0 to π"
+    },
+    "palette": [
+      {
+        "id": "p1",
+        "latex": "\\left[-\\cos(x)\\right]_0^{\\pi}",
+        "description": "Antiderivative of sin(x) is −cos(x)"
+      }
+    ],
+    "steps": [
+      {
+        "id": "s1",
+        "fromLatex": "\\int_0^{\\pi} \\sin(x)\\,dx",
+        "toLatex": "\\left[-\\cos(x)\\right]_0^{\\pi}",
+        "paletteRef": "p1",
+        "dropTargets": [
+          "\\int_0^{\\pi} \\sin(x)\\,dx"
+        ],
+        "description": "Antiderivative: \\u222bsin(x) dx = −cos(x)"
+      },
+      {
+        "id": "s2",
+        "fromLatex": "\\left[-\\cos(x)\\right]_0^{\\pi}",
+        "toLatex": "-\\cos(\\pi) + \\cos(0) = 1 + 1 = 2",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "Evaluate: −cos(π) + cos(0) = −(−1) + 1 = 2"
+      }
+    ]
+  },
+  {
+    "id": "calc-h-014",
+    "topic": "calculus",
+    "difficulty": "hard",
+    "question": {
+      "latex": "\\frac{d}{dx}[\\ln(\\cos x)] = ?",
+      "plain": "Differentiate ln(cos x) using the chain rule"
+    },
+    "symbols": {
+      "\\ln": "Natural logarithm"
+    },
+    "palette": [
+      {
+        "id": "p1",
+        "latex": "-\\tan x",
+        "description": "−sin x / cos x = −tan x"
+      }
+    ],
+    "steps": [
+      {
+        "id": "s1",
+        "fromLatex": "\\frac{d}{dx}[\\ln(\\cos x)]",
+        "toLatex": "\\frac{-\\sin x}{\\cos x}",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "Chain rule: (1/cos x) × (−sin x) = −sin x / cos x"
+      },
+      {
+        "id": "s2",
+        "fromLatex": "\\frac{-\\sin x}{\\cos x}",
+        "toLatex": "-\\tan x",
+        "paletteRef": "p1",
+        "dropTargets": [
+          "\\frac{-\\sin x}{\\cos x}"
+        ],
+        "description": "−sin x / cos x = −tan x"
+      }
+    ]
+  },
+  {
+    "id": "calc-h-015",
+    "topic": "calculus",
+    "difficulty": "hard",
+    "question": {
+      "latex": "f(x) = xe^x,\\ f''(x) = ?",
+      "plain": "Find the second derivative of f(x) = x·eˣ"
+    },
+    "symbols": {
+      "e": "Euler’s number ≈ 2.718"
+    },
+    "palette": [
+      {
+        "id": "p1",
+        "latex": "e^x(1 + x) + e^x",
+        "description": "Product rule on eˣ(1+x)"
+      },
+      {
+        "id": "p2",
+        "latex": "e^x(2 + x)",
+        "description": "Factor out eˣ"
+      }
+    ],
+    "steps": [
+      {
+        "id": "s1",
+        "fromLatex": "f(x) = xe^x",
+        "toLatex": "f'(x) = e^x(1 + x)",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "Product rule: d/dx[x·eˣ] = eˣ + x·eˣ = eˣ(1+x)"
+      },
+      {
+        "id": "s2",
+        "fromLatex": "f''(x) = \\frac{d}{dx}\\left[e^x(1 + x)\\right]",
+        "toLatex": "f''(x) = e^x(1 + x) + e^x",
+        "paletteRef": "p1",
+        "dropTargets": [
+          "\\frac{d}{dx}\\left[e^x(1 + x)\\right]"
+        ],
+        "description": "Product rule again: eˣ(1+x) + eˣ·1"
+      },
+      {
+        "id": "s3",
+        "fromLatex": "f''(x) = e^x(1 + x) + e^x",
+        "toLatex": "f''(x) = e^x(2 + x)",
+        "paletteRef": "p2",
+        "dropTargets": [
+          "e^x(1 + x) + e^x"
+        ],
+        "description": "Factor eˣ: eˣ(1+x+1) = eˣ(2+x)"
+      }
+    ]
   }
 ]
