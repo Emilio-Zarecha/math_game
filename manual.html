@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Math Game — Player Manual</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:      #0d0d1a;
+      --surface: #151528;
+      --panel:   #1c1c35;
+      --border:  #2e2e55;
+      --accent:  #5c8aff;
+      --correct: #3ecf8e;
+      --hint:    #ffb830;
+      --text:    #e0e0f0;
+      --muted:   #7070a0;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: system-ui, sans-serif;
+      min-height: 100vh;
+      padding: 48px 24px 80px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .page {
+      width: 100%;
+      max-width: 740px;
+    }
+
+    header {
+      display: flex;
+      align-items: baseline;
+      gap: 16px;
+      margin-bottom: 40px;
+    }
+
+    header h1 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--accent);
+    }
+
+    header a {
+      font-size: 0.85rem;
+      color: var(--muted);
+      text-decoration: none;
+    }
+    header a:hover { color: var(--accent); }
+
+    h2 {
+      font-size: 0.7rem;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: var(--hint);
+      margin-bottom: 28px;
+    }
+
+    section {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 32px 36px;
+      margin-bottom: 24px;
+    }
+
+    section h3 {
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--accent);
+      margin-bottom: 12px;
+    }
+
+    p {
+      line-height: 1.75;
+      color: var(--text);
+      font-size: 0.95rem;
+    }
+
+    .key {
+      display: inline-block;
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: 5px;
+      padding: 1px 7px;
+      font-size: 0.82rem;
+      font-family: monospace;
+      color: var(--hint);
+      vertical-align: baseline;
+    }
+
+    .badge {
+      display: inline-block;
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: 5px;
+      padding: 1px 8px;
+      font-size: 0.82rem;
+      color: var(--correct);
+    }
+
+    .back {
+      display: inline-block;
+      margin-top: 36px;
+      padding: 10px 24px;
+      background: var(--accent);
+      color: #fff;
+      border-radius: 8px;
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: 600;
+    }
+    .back:hover { opacity: 0.85; }
+  </style>
+</head>
+<body>
+<div class="page">
+
+  <header>
+    <h1>Math Game</h1>
+    <a href="index.html">← Back to game</a>
+  </header>
+
+  <h2>Player Manual — Chapter 1: Solving a Puzzle</h2>
+
+  <section>
+    <h3>Choosing a Puzzle</h3>
+    <p>
+      Use the two dropdowns at the top of the screen to pick a topic — Algebra, Arithmetic,
+      Geometry, Trigonometry, or Calculus — and then select a specific problem from the list.
+      Problems are labeled easy, medium, or hard. When you find one you want, press
+      <strong>Load Puzzle</strong>. The question appears in the upper panel, and a
+      diagram (for geometry, trigonometry, and calculus puzzles) is shown beneath it to give
+      you a visual reference.
+    </p>
+  </section>
+
+  <section>
+    <h3>Reading the Step</h3>
+    <p>
+      Every puzzle is broken into a series of steps that walk you through the solution one
+      move at a time. The current step is displayed in the large equation panel.
+      Informational steps show a completed transformation — press <span class="key">→</span>
+      or <strong>Next →</strong> to continue when you are ready.
+      Interactive steps contain one or more dashed-border <strong>drop zones</strong>
+      inside the equation, waiting for you to fill them in.
+      The step description below the equation tells you what the move is trying to accomplish.
+    </p>
+  </section>
+
+  <section>
+    <h3>Making a Move</h3>
+    <p>
+      The <strong>Palette</strong> on the left holds the pieces available for this step.
+      Drag the correct piece from the palette and drop it onto the matching drop zone in the
+      equation. If your choice is right the zone turns green; if it is wrong it flashes red
+      and you can try again. Some steps require you to drop the same piece into more than one
+      zone — the game will prompt you when another zone still needs to be filled.
+      Once all drop zones in a step are satisfied the puzzle advances to the next step on its own.
+    </p>
+  </section>
+
+  <section>
+    <h3>Keyboard Navigation and the Animated Demo</h3>
+    <p>
+      You can move through the puzzle entirely with the keyboard. Every step — informational
+      or interactive — waits for you before advancing. Press <span class="key">→</span> to
+      move forward: on an informational step it simply reveals the next transformation; on
+      an interactive step it triggers the animated demo — the correct palette piece is
+      highlighted, the target drop zone glows, and the piece flies into place over two
+      seconds. Press <span class="key">←</span> at any time to retreat one step, cancelling
+      any animation in progress. The <strong>Next →</strong> and <strong>← Prev</strong>
+      buttons behave identically to the arrow keys. Use <strong>Give Up This Step</strong>
+      if you are stuck and want the answer revealed — this increments your hint count.
+    </p>
+  </section>
+
+  <section>
+    <h3>Finishing and Scoring</h3>
+    <p>
+      After the last step the completion screen appears. Press <strong>Final Answer</strong>
+      at any point to jump straight there if you are confident you understand the solution.
+      Your score bar at the top tracks puzzles solved and hints used across the session.
+      Use <strong>Reset</strong> to restart the current puzzle from the beginning whenever
+      you want more practice. To try a different problem, just pick a new one from the
+      dropdowns and load it — your session totals carry over.
+    </p>
+  </section>
+
+  <a class="back" href="index.html">Play Now →</a>
+
+</div>
+</body>
+</html>
