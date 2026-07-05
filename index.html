@@ -86,6 +86,41 @@
     }
     #picker button:hover { filter: brightness(1.15); }
 
+    #browse-toggle {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      gap: 0;
+      margin-bottom: 2px;
+    }
+    .browse-tab {
+      background: var(--panel) !important;
+      border: 1px solid var(--border) !important;
+      color: var(--muted) !important;
+      font-weight: 400 !important;
+      font-size: 0.82rem !important;
+      padding: 5px 18px !important;
+      cursor: pointer;
+      transition: background 0.15s, color 0.15s;
+    }
+    .browse-tab:first-child { border-radius: var(--radius) 0 0 var(--radius) !important; }
+    .browse-tab:last-child  { border-radius: 0 var(--radius) var(--radius) 0 !important; border-left: none !important; }
+    .browse-tab.active {
+      background: var(--accent) !important;
+      border-color: var(--accent) !important;
+      color: #fff !important;
+      font-weight: 600 !important;
+    }
+    .browse-tab:hover:not(.active) { background: var(--surface) !important; color: var(--text) !important; }
+
+    #concept-count {
+      font-size: 0.78rem;
+      color: var(--muted);
+      min-width: 80px;
+      align-self: center;
+    }
+    #concept-select { min-width: 220px; }
+
     /* ── Main layout ───────────────────────────────────────── */
     #layout {
       display: flex;
@@ -578,6 +613,10 @@
 </div>
 
 <div id="picker">
+  <div id="browse-toggle">
+    <button class="browse-tab active" id="tab-topic">By Topic</button>
+    <button class="browse-tab" id="tab-concept">By Concept</button>
+  </div>
   <select id="topic-select">
     <option value="algebra.json">Algebra</option>
     <option value="arithmetic.json">Arithmetic</option>
@@ -585,6 +624,8 @@
     <option value="trigonometry.json">Trigonometry</option>
     <option value="calculus.json">Calculus</option>
   </select>
+  <select id="concept-select" style="display:none"><option value="">— Select a concept —</option></select>
+  <span id="concept-count" style="display:none"></span>
   <select id="puzzle-select"><option>Loading…</option></select>
   <button id="load-btn">Load Puzzle</button>
 </div>
@@ -724,19 +765,116 @@ async function loadTopicIndex() {
 
 topicSel.addEventListener('change', loadTopicIndex);
 
+// ── Browse mode toggle ─────────────────────────────────────────
+const conceptSel  = $('concept-select');
+const conceptCount = $('concept-count');
+const tabTopic    = $('tab-topic');
+const tabConcept  = $('tab-concept');
+
+function setMode(mode) {
+  if (mode === 'topic') {
+    tabTopic.classList.add('active');
+    tabConcept.classList.remove('active');
+    topicSel.style.display   = '';
+    conceptSel.style.display = 'none';
+    conceptCount.style.display = 'none';
+    puzzleSel._dataMeta = null;
+    loadTopicIndex();
+  } else {
+    tabConcept.classList.add('active');
+    tabTopic.classList.remove('active');
+    topicSel.style.display   = 'none';
+    conceptSel.style.display = '';
+    conceptCount.style.display = '';
+    conceptSel.value = '';
+    puzzleSel.innerHTML = '<option>— Select a concept above —</option>';
+    puzzleSel._data     = null;
+    puzzleSel._dataMeta = null;
+    conceptCount.textContent = '';
+  }
+}
+
+tabTopic.addEventListener('click',   () => setMode('topic'));
+tabConcept.addEventListener('click', () => setMode('concept'));
+
+// ── Concept filter ─────────────────────────────────────────────
+const G_topicCache = {};
+
+async function preloadTopicCache() {
+  for (const file of ['trigonometry.json', 'calculus.json']) {
+    try {
+      const r = await fetch(`puzzles/${file}`);
+      G_topicCache[file] = await r.json();
+    } catch(e) { G_topicCache[file] = []; }
+  }
+}
+
+async function loadConcepts() {
+  try {
+    const r = await fetch('puzzles/concepts.json');
+    const concepts = await r.json();
+    conceptSel.innerHTML =
+      '<option value="">— Select a concept —</option>' +
+      concepts.map((c, i) =>
+        `<option value="${i}">${c.label} (${c.puzzles.length})</option>`
+      ).join('');
+    conceptSel._data = concepts;
+  } catch(e) {}
+}
+
+const TOPIC_META = {
+  'trig': { file: 'trigonometry.json', topicIndex: 3 },
+  'calc': { file: 'calculus.json',     topicIndex: 4 },
+};
+
+conceptSel.addEventListener('change', () => {
+  const val = conceptSel.value;
+  if (val === '') {
+    puzzleSel.innerHTML = '<option>— Select a concept above —</option>';
+    puzzleSel._data     = null;
+    puzzleSel._dataMeta = null;
+    conceptCount.textContent = '';
+    return;
+  }
+  const concept = conceptSel._data[parseInt(val, 10)];
+  if (!concept) return;
+
+  const filtered = [];
+  const meta     = [];
+  for (const pid of concept.puzzles) {
+    const prefix = pid.split('-')[0];
+    const tm = TOPIC_META[prefix];
+    if (!tm) continue;
+    const arr = G_topicCache[tm.file] || [];
+    const idx = arr.findIndex(p => p.id === pid);
+    if (idx === -1) continue;
+    filtered.push(arr[idx]);
+    meta.push({ topicIndex: tm.topicIndex, puzzleIdxInTopic: idx });
+  }
+
+  puzzleSel.innerHTML = filtered.map((p, i) =>
+    `<option value="${i}">[${p.id.split('-')[0].toUpperCase()}] ${p.id} — ${p.question.plain} (${p.difficulty})</option>`
+  ).join('');
+  puzzleSel._data     = filtered;
+  puzzleSel._dataMeta = meta;
+  conceptCount.textContent = `${filtered.length} puzzle${filtered.length !== 1 ? 's' : ''}`;
+});
+
 // ── Load puzzle ────────────────────────────────────────────────
 function loadPuzzle() {
   const puzzles = puzzleSel._data;
   if (!puzzles) return;
-  const puzzleIndex    = parseInt(puzzleSel.value, 10);
+  const puzzleIndex = parseInt(puzzleSel.value, 10);
   G.puzzle         = puzzles[puzzleIndex];
   G.currentStep    = 0;
   G.completedDrops = new Set();
   G.mergedSyms     = { ...G.globalSyms, ...(G.puzzle.symbols || {}) };
   completion.style.display = 'none';
 
-  const topicIndex = topicSel.selectedIndex;            // 0–4
-  const globalNum  = topicIndex * 30 + puzzleIndex + 1; // 1–150
+  const meta = puzzleSel._dataMeta;
+  const topicIndex      = meta ? meta[puzzleIndex].topicIndex        : topicSel.selectedIndex;
+  const idxInTopic      = meta ? meta[puzzleIndex].puzzleIdxInTopic  : puzzleIndex;
+  const globalNum       = topicIndex * 30 + idxInTopic + 1;
   $('sc-num').textContent    = `#${globalNum}`;
   $('sc-puzzle').textContent = G.puzzle.id;
   $('puzzle-num-badge').textContent = `#${globalNum}`;
@@ -1328,6 +1466,7 @@ $('notes-clear').addEventListener('click', () => {
 (async () => {
   await loadGlobalSymbols();
   await loadTopicIndex();
+  await Promise.all([preloadTopicCache(), loadConcepts()]);
 })();
 </script>
 </body>

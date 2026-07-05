@@ -1,0 +1,141 @@
+[
+  {
+    "label": "Sine",
+    "puzzles": [
+      "trig-e-001","trig-e-004","trig-e-006","trig-e-008","trig-e-010",
+      "trig-m-001","trig-m-002","trig-m-003","trig-m-004","trig-m-008",
+      "trig-h-001","trig-h-002","trig-h-003","trig-h-005","trig-h-007","trig-h-009","trig-h-010",
+      "calc-m-001","calc-m-002","calc-m-008","calc-m-009",
+      "calc-h-001","calc-h-006","calc-h-010"
+    ]
+  },
+  {
+    "label": "Cosine",
+    "puzzles": [
+      "trig-e-002","trig-e-005","trig-e-007","trig-e-009",
+      "trig-m-001","trig-m-002","trig-m-004","trig-m-005","trig-m-008","trig-m-009",
+      "trig-h-001","trig-h-004","trig-h-009","trig-h-010",
+      "calc-m-001","calc-m-002","calc-m-009",
+      "calc-h-001","calc-h-006","calc-h-010"
+    ]
+  },
+  {
+    "label": "Tangent",
+    "puzzles": [
+      "trig-e-003",
+      "trig-m-002","trig-m-010",
+      "trig-h-008",
+      "calc-h-001"
+    ]
+  },
+  {
+    "label": "Unit Circle",
+    "puzzles": [
+      "trig-e-001","trig-e-002","trig-e-003","trig-e-004","trig-e-005",
+      "trig-e-006","trig-e-007","trig-e-008","trig-e-009","trig-e-010"
+    ]
+  },
+  {
+    "label": "Pythagorean Identity",
+    "puzzles": [
+      "trig-m-001","trig-m-004",
+      "trig-h-001","trig-h-004","trig-h-009"
+    ]
+  },
+  {
+    "label": "Double-Angle Formula",
+    "puzzles": [
+      "trig-m-003","trig-m-005",
+      "trig-h-004"
+    ]
+  },
+  {
+    "label": "Angle Addition",
+    "puzzles": [
+      "trig-m-008",
+      "trig-h-002"
+    ]
+  },
+  {
+    "label": "Half-Angle Formula",
+    "puzzles": [
+      "trig-h-010"
+    ]
+  },
+  {
+    "label": "Radians",
+    "puzzles": [
+      "trig-m-006","trig-m-007",
+      "trig-h-002","trig-h-007","trig-h-010"
+    ]
+  },
+  {
+    "label": "Law of Sines",
+    "puzzles": [
+      "trig-h-006"
+    ]
+  },
+  {
+    "label": "Derivative",
+    "puzzles": [
+      "calc-e-001","calc-e-002","calc-e-003","calc-e-004","calc-e-006","calc-e-009",
+      "calc-m-001","calc-m-002","calc-m-003","calc-m-005","calc-m-006","calc-m-009",
+      "calc-h-001","calc-h-005","calc-h-007","calc-h-009"
+    ]
+  },
+  {
+    "label": "Integral",
+    "puzzles": [
+      "calc-e-005","calc-e-007","calc-e-010",
+      "calc-m-004","calc-m-007","calc-m-010",
+      "calc-h-002","calc-h-004","calc-h-006","calc-h-008","calc-h-010"
+    ]
+  },
+  {
+    "label": "Limit",
+    "puzzles": [
+      "calc-e-008",
+      "calc-m-008",
+      "calc-h-003"
+    ]
+  },
+  {
+    "label": "Chain Rule",
+    "puzzles": [
+      "calc-m-003",
+      "calc-h-001","calc-h-007"
+    ]
+  },
+  {
+    "label": "Product Rule",
+    "puzzles": [
+      "calc-m-001"
+    ]
+  },
+  {
+    "label": "Quotient Rule",
+    "puzzles": [
+      "calc-m-002"
+    ]
+  },
+  {
+    "label": "Exponential (eˣ)",
+    "puzzles": [
+      "calc-m-005","calc-m-007",
+      "calc-h-002","calc-h-007","calc-h-009"
+    ]
+  },
+  {
+    "label": "Logarithm (ln)",
+    "puzzles": [
+      "calc-m-006",
+      "calc-h-001","calc-h-004","calc-h-008","calc-h-009"
+    ]
+  },
+  {
+    "label": "Integration by Parts",
+    "puzzles": [
+      "calc-h-002"
+    ]
+  }
+]
