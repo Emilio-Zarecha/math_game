@@ -1,0 +1,650 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Algebra — Math Game Textbook</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css" />
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
+          onload="renderMathInElement(document.body, {
+            delimiters: [
+              {left:'$$',right:'$$',display:true},
+              {left:'$',right:'$',display:false}
+            ]
+          })"></script>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:      #0d0d1a;
+      --surface: #151528;
+      --panel:   #1c1c35;
+      --border:  #2e2e55;
+      --accent:  #5c8aff;
+      --correct: #3ecf8e;
+      --hint:    #ffb830;
+      --text:    #e0e0f0;
+      --muted:   #7070a0;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: system-ui, sans-serif;
+      min-height: 100vh;
+      padding: 48px 24px 80px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .page { width: 100%; max-width: 820px; }
+
+    header {
+      display: flex;
+      align-items: baseline;
+      gap: 16px;
+      margin-bottom: 12px;
+    }
+
+    header h1 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--accent);
+    }
+
+    header a {
+      font-size: 0.85rem;
+      color: var(--muted);
+      text-decoration: none;
+    }
+    header a:hover { color: var(--accent); }
+
+    .subtitle {
+      font-size: 0.75rem;
+      color: var(--muted);
+      margin-bottom: 36px;
+    }
+    .subtitle a { color: var(--muted); }
+    .subtitle a:hover { color: var(--accent); }
+
+    /* Table of contents */
+    nav {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 24px 32px;
+      margin-bottom: 32px;
+    }
+
+    nav h2 {
+      font-size: 0.7rem;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: var(--hint);
+      margin-bottom: 16px;
+    }
+
+    nav ol {
+      padding-left: 20px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 6px 32px;
+    }
+
+    nav li { font-size: 0.9rem; }
+    nav a { color: var(--accent); text-decoration: none; }
+    nav a:hover { text-decoration: underline; }
+
+    /* Sections */
+    section {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 32px 36px;
+      margin-bottom: 24px;
+      scroll-margin-top: 24px;
+    }
+
+    section h3 {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--accent);
+      margin-bottom: 6px;
+    }
+
+    .chapter-num {
+      font-size: 0.7rem;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 14px;
+    }
+
+    p {
+      line-height: 1.8;
+      color: var(--text);
+      font-size: 0.95rem;
+      margin-bottom: 14px;
+    }
+
+    p:last-child { margin-bottom: 0; }
+
+    /* Formula box */
+    .formula {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--accent);
+      border-radius: 8px;
+      padding: 14px 20px;
+      margin: 16px 0;
+      font-size: 0.95rem;
+    }
+
+    .formula .label {
+      font-size: 0.7rem;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: var(--hint);
+      margin-bottom: 8px;
+    }
+
+    /* Worked example */
+    .example {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--correct);
+      border-radius: 8px;
+      padding: 14px 20px;
+      margin: 16px 0;
+    }
+
+    .example .label {
+      font-size: 0.7rem;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: var(--correct);
+      margin-bottom: 10px;
+    }
+
+    .example-step {
+      display: flex;
+      align-items: baseline;
+      gap: 12px;
+      padding: 4px 0;
+      font-size: 0.92rem;
+      line-height: 1.7;
+    }
+
+    .example-step .why {
+      color: var(--muted);
+      font-size: 0.82rem;
+      min-width: 160px;
+    }
+
+    /* Key terms */
+    .key { color: var(--hint); font-weight: 600; }
+
+    .back {
+      display: inline-block;
+      margin-top: 36px;
+      padding: 10px 24px;
+      background: var(--accent);
+      color: #fff;
+      border-radius: 8px;
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: 600;
+    }
+    .back:hover { opacity: 0.85; }
+
+    @media (max-width: 600px) {
+      nav ol { grid-template-columns: 1fr; }
+      section { padding: 24px 20px; }
+    }
+  </style>
+</head>
+<body>
+<div class="page">
+
+  <header>
+    <h1>Algebra</h1>
+    <a href="index.html">← Back to game</a>
+  </header>
+  <p class="subtitle">
+    Simplified from <a href="https://openstax.org/details/books/elementary-algebra-2e" target="_blank">OpenStax Elementary Algebra 2e</a>
+    and <a href="https://openstax.org/details/books/intermediate-algebra-2e" target="_blank">Intermediate Algebra 2e</a>
+    (CC BY 4.0). Adapted for this game.
+  </p>
+
+  <nav>
+    <h2>Contents</h2>
+    <ol>
+      <li><a href="#expressions">Variables &amp; Expressions</a></li>
+      <li><a href="#linear">Linear Equations</a></li>
+      <li><a href="#lines">Lines &amp; Slope</a></li>
+      <li><a href="#systems">Systems of Equations</a></li>
+      <li><a href="#factoring">Factoring</a></li>
+      <li><a href="#quadratics">Quadratic Equations</a></li>
+      <li><a href="#rational">Rational Expressions</a></li>
+      <li><a href="#radicals">Radicals</a></li>
+      <li><a href="#absolute">Absolute Value Equations</a></li>
+      <li><a href="#explog">Exponentials &amp; Logarithms</a></li>
+      <li><a href="#functions">Functions &amp; Inverses</a></li>
+    </ol>
+  </nav>
+
+  <!-- ── 1. Variables & Expressions ─────────────────────────────────── -->
+  <section id="expressions">
+    <div class="chapter-num">Chapter 1</div>
+    <h3>Variables &amp; Expressions</h3>
+
+    <p>
+      A <span class="key">variable</span> is a letter that stands for an unknown number.
+      An <span class="key">algebraic expression</span> combines variables and numbers using
+      arithmetic operations. To <span class="key">evaluate</span> an expression, substitute
+      a number for each variable and simplify.
+    </p>
+
+    <p>
+      <span class="key">Like terms</span> share the same variable raised to the same power.
+      Combine like terms by adding or subtracting their coefficients:
+      $5x + 3x - 2x = (5 + 3 - 2)x = 6x$.
+    </p>
+
+    <p>
+      The <span class="key">distributive property</span> lets you multiply a factor through
+      a sum: $a(b + c) = ab + ac$.
+    </p>
+
+    <div class="formula">
+      <div class="label">Key rules</div>
+      $$a(b + c) = ab + ac \qquad \text{(distributive)}$$
+      $$ax + bx = (a+b)x \qquad \text{(combine like terms)}$$
+    </div>
+
+    <div class="example">
+      <div class="label">Worked example — evaluate $f(x) = 2x + 3$ at $x = 4$</div>
+      <div class="example-step"><span>$f(4) = 2(4) + 3$</span><span class="why">substitute $x = 4$</span></div>
+      <div class="example-step"><span>$= 8 + 3$</span><span class="why">multiply first</span></div>
+      <div class="example-step"><span>$= 11$</span><span class="why">add</span></div>
+    </div>
+
+    <div class="example">
+      <div class="label">Worked example — expand $3(x + 4)$</div>
+      <div class="example-step"><span>$3 \cdot x + 3 \cdot 4$</span><span class="why">distribute the 3</span></div>
+      <div class="example-step"><span>$= 3x + 12$</span><span class="why">simplify</span></div>
+    </div>
+  </section>
+
+  <!-- ── 2. Linear Equations ────────────────────────────────────────── -->
+  <section id="linear">
+    <div class="chapter-num">Chapter 2</div>
+    <h3>Linear Equations</h3>
+
+    <p>
+      A <span class="key">linear equation</span> in one variable has the form $ax + b = c$
+      with $a \ne 0$. The goal is to isolate the variable by performing the same operation
+      on both sides.
+    </p>
+
+    <p>
+      <strong>One-step equations</strong> need a single operation: add, subtract, multiply,
+      or divide both sides. <strong>Multi-step equations</strong> require clearing constants
+      first, then dividing by the coefficient. When the variable appears on both sides, move
+      all variable terms to one side by adding or subtracting.
+    </p>
+
+    <div class="formula">
+      <div class="label">Solving strategy</div>
+      <p style="margin:0; font-size:0.9rem; line-height:1.9">
+        1. Distribute and combine like terms on each side.<br>
+        2. Move variable terms to one side; constants to the other.<br>
+        3. Divide both sides by the coefficient of the variable.
+      </p>
+    </div>
+
+    <div class="example">
+      <div class="label">Worked example — solve $3x + 5 = 20$</div>
+      <div class="example-step"><span>$3x = 15$</span><span class="why">subtract 5 from both sides</span></div>
+      <div class="example-step"><span>$x = 5$</span><span class="why">divide both sides by 3</span></div>
+    </div>
+
+    <div class="example">
+      <div class="label">Worked example — solve $5x - 2 = 3x + 10$</div>
+      <div class="example-step"><span>$2x - 2 = 10$</span><span class="why">subtract $3x$ from both sides</span></div>
+      <div class="example-step"><span>$2x = 12$</span><span class="why">add 2 to both sides</span></div>
+      <div class="example-step"><span>$x = 6$</span><span class="why">divide by 2</span></div>
+    </div>
+
+    <div class="example">
+      <div class="label">Worked example — solve $\dfrac{x}{2} + \dfrac{x}{3} = 5$</div>
+      <div class="example-step"><span>$\dfrac{3x}{6} + \dfrac{2x}{6} = 5$</span><span class="why">LCD = 6</span></div>
+      <div class="example-step"><span>$\dfrac{5x}{6} = 5$</span><span class="why">add fractions</span></div>
+      <div class="example-step"><span>$x = 6$</span><span class="why">multiply both sides by $\frac{6}{5}$</span></div>
+    </div>
+  </section>
+
+  <!-- ── 3. Lines & Slope ───────────────────────────────────────────── -->
+  <section id="lines">
+    <div class="chapter-num">Chapter 3</div>
+    <h3>Lines &amp; Slope</h3>
+
+    <p>
+      The <span class="key">slope</span> of a line through points $(x_1, y_1)$ and
+      $(x_2, y_2)$ measures its steepness: rise over run.
+      <span class="key">Slope-intercept form</span> $y = mx + b$ directly gives the
+      slope $m$ and the $y$-intercept $b$ (where the line crosses the $y$-axis).
+    </p>
+
+    <div class="formula">
+      <div class="label">Key formulas</div>
+      $$m = \frac{y_2 - y_1}{x_2 - x_1} \qquad \text{slope}$$
+      $$y = mx + b \qquad \text{slope-intercept form}$$
+    </div>
+
+    <div class="example">
+      <div class="label">Worked example — slope through $(1, 2)$ and $(3, 8)$</div>
+      <div class="example-step"><span>$m = \dfrac{8 - 2}{3 - 1}$</span><span class="why">slope formula</span></div>
+      <div class="example-step"><span>$= \dfrac{6}{2} = 3$</span><span class="why">simplify</span></div>
+    </div>
+
+    <div class="example">
+      <div class="label">Worked example — write the equation with $m = 3$, $b = 2$</div>
+      <div class="example-step"><span>$y = 3x + 2$</span><span class="why">substitute $m$ and $b$ into $y = mx + b$</span></div>
+    </div>
+  </section>
+
+  <!-- ── 4. Systems of Equations ────────────────────────────────────── -->
+  <section id="systems">
+    <div class="chapter-num">Chapter 4</div>
+    <h3>Systems of Equations</h3>
+
+    <p>
+      A <span class="key">system of equations</span> is two or more equations with the same
+      variables. The solution is the point $(x, y)$ that satisfies all equations
+      simultaneously. Two main algebraic methods:
+    </p>
+
+    <p>
+      <strong>Elimination:</strong> Add (or subtract) the equations to cancel one variable.
+      Multiply one or both equations by a constant first if needed.
+      <strong>Substitution:</strong> Solve one equation for one variable, then substitute
+      that expression into the other equation.
+    </p>
+
+    <div class="example">
+      <div class="label">Worked example (elimination) — $x + y = 8$ and $x - y = 2$</div>
+      <div class="example-step"><span>$2x = 10$</span><span class="why">add both equations; $y$ cancels</span></div>
+      <div class="example-step"><span>$x = 5$</span><span class="why">divide by 2</span></div>
+      <div class="example-step"><span>$5 + y = 8 \Rightarrow y = 3$</span><span class="why">back-substitute</span></div>
+    </div>
+
+    <div class="example">
+      <div class="label">Worked example (substitution) — $x + 2y = 7$ and $3x - y = 7$</div>
+      <div class="example-step"><span>$y = 3x - 7$</span><span class="why">solve second eq. for $y$</span></div>
+      <div class="example-step"><span>$x + 2(3x-7) = 7$</span><span class="why">substitute into first eq.</span></div>
+      <div class="example-step"><span>$7x = 21 \Rightarrow x = 3$</span><span class="why">simplify and solve</span></div>
+      <div class="example-step"><span>$y = 3(3) - 7 = 2$</span><span class="why">back-substitute</span></div>
+    </div>
+  </section>
+
+  <!-- ── 5. Factoring ───────────────────────────────────────────────── -->
+  <section id="factoring">
+    <div class="chapter-num">Chapter 5</div>
+    <h3>Factoring</h3>
+
+    <p>
+      <span class="key">Factoring</span> rewrites a polynomial as a product of simpler
+      polynomials. It is the reverse of expanding.
+    </p>
+
+    <p>
+      <strong>GCF:</strong> Factor out the greatest common factor first.
+      <strong>Difference of squares:</strong> $a^2 - b^2 = (a+b)(a-b)$.
+      <strong>Trinomials</strong> $x^2 + bx + c$: find two numbers that multiply to $c$ and
+      add to $b$.
+      <strong>Leading coefficient ≠ 1</strong> ($ax^2 + bx + c$): use the AC method — find
+      two numbers multiplying to $ac$ that add to $b$, then factor by grouping.
+    </p>
+
+    <div class="formula">
+      <div class="label">Key patterns</div>
+      $$a^2 - b^2 = (a+b)(a-b)$$
+      $$x^2 + bx + c = (x + p)(x + q) \quad \text{where } p+q=b,\ pq=c$$
+    </div>
+
+    <div class="example">
+      <div class="label">Worked example — factor $x^2 + 2x - 8$</div>
+      <div class="example-step"><span>find $p, q$: $pq = -8$, $p+q = 2$</span><span class="why">$p=4$, $q=-2$</span></div>
+      <div class="example-step"><span>$(x + 4)(x - 2)$</span><span class="why">write the factored form</span></div>
+    </div>
+
+    <div class="example">
+      <div class="label">Worked example — factor $2x^2 + 5x - 3$</div>
+      <div class="example-step"><span>$ac = 2 \cdot (-3) = -6$; find $p, q$: $pq=-6$, $p+q=5$</span><span class="why">$p=6$, $q=-1$</span></div>
+      <div class="example-step"><span>$2x^2 + 6x - x - 3$</span><span class="why">rewrite middle term</span></div>
+      <div class="example-step"><span>$2x(x + 3) - 1(x + 3)$</span><span class="why">factor by grouping</span></div>
+      <div class="example-step"><span>$(2x - 1)(x + 3)$</span><span class="why">factor out $(x+3)$</span></div>
+    </div>
+  </section>
+
+  <!-- ── 6. Quadratic Equations ─────────────────────────────────────── -->
+  <section id="quadratics">
+    <div class="chapter-num">Chapter 6</div>
+    <h3>Quadratic Equations</h3>
+
+    <p>
+      A <span class="key">quadratic equation</span> has the form $ax^2 + bx + c = 0$.
+      Three main solution methods:
+    </p>
+
+    <p>
+      <strong>Factoring:</strong> Factor the left side; use the zero-product property
+      ($AB = 0 \Rightarrow A = 0$ or $B = 0$).
+      <strong>Completing the square:</strong> Rewrite as $(x + h)^2 = k$, then take square roots.
+      <strong>Quadratic formula:</strong> Always works — use when factoring is not obvious.
+    </p>
+
+    <div class="formula">
+      <div class="label">Quadratic formula</div>
+      $$x = \frac{-b \pm \sqrt{b^2 - 4ac}}{2a}$$
+    </div>
+
+    <div class="formula">
+      <div class="label">Vertex form (completing the square)</div>
+      $$y = a(x - h)^2 + k \quad \text{vertex at } (h, k)$$
+    </div>
+
+    <div class="example">
+      <div class="label">Worked example (factoring) — solve $x^2 - 5x + 6 = 0$</div>
+      <div class="example-step"><span>$(x - 2)(x - 3) = 0$</span><span class="why">factors: $-2 \cdot -3 = 6$, $-2 + -3 = -5$</span></div>
+      <div class="example-step"><span>$x = 2$ or $x = 3$</span><span class="why">zero-product property</span></div>
+    </div>
+
+    <div class="example">
+      <div class="label">Worked example (completing the square) — solve $x^2 + 6x - 7 = 0$</div>
+      <div class="example-step"><span>$x^2 + 6x = 7$</span><span class="why">move constant</span></div>
+      <div class="example-step"><span>$x^2 + 6x + 9 = 16$</span><span class="why">add $(6/2)^2 = 9$ to both sides</span></div>
+      <div class="example-step"><span>$(x + 3)^2 = 16$</span><span class="why">perfect square</span></div>
+      <div class="example-step"><span>$x + 3 = \pm 4$</span><span class="why">take square root</span></div>
+      <div class="example-step"><span>$x = 1$ or $x = -7$</span><span class="why">solve each case</span></div>
+    </div>
+
+    <div class="example">
+      <div class="label">Worked example (FOIL expansion) — expand $(2x - 3)(x + 4)$</div>
+      <div class="example-step"><span>$2x \cdot x + 2x \cdot 4 + (-3) \cdot x + (-3) \cdot 4$</span><span class="why">FOIL</span></div>
+      <div class="example-step"><span>$2x^2 + 8x - 3x - 12$</span><span class="why">multiply each pair</span></div>
+      <div class="example-step"><span>$2x^2 + 5x - 12$</span><span class="why">combine like terms</span></div>
+    </div>
+  </section>
+
+  <!-- ── 7. Rational Expressions ───────────────────────────────────── -->
+  <section id="rational">
+    <div class="chapter-num">Chapter 7</div>
+    <h3>Rational Expressions</h3>
+
+    <p>
+      A <span class="key">rational expression</span> is a fraction whose numerator and
+      denominator are polynomials. Simplify by factoring both and cancelling common factors.
+      The cancelled factors create <span class="key">restrictions</span> on the domain
+      (values that make the denominator zero are excluded).
+    </p>
+
+    <p>
+      To solve an equation with rational expressions, multiply both sides by the
+      <span class="key">LCD</span> (least common denominator) to clear all fractions.
+    </p>
+
+    <div class="example">
+      <div class="label">Worked example — simplify $\dfrac{x^2 - 9}{x + 3}$</div>
+      <div class="example-step"><span>$\dfrac{(x+3)(x-3)}{x+3}$</span><span class="why">factor numerator: difference of squares</span></div>
+      <div class="example-step"><span>$x - 3$</span><span class="why">cancel $(x+3)$, $x \ne -3$</span></div>
+    </div>
+
+    <div class="example">
+      <div class="label">Worked example — solve $\dfrac{x+2}{x-2} = 3$</div>
+      <div class="example-step"><span>$x + 2 = 3(x - 2)$</span><span class="why">multiply both sides by $(x-2)$</span></div>
+      <div class="example-step"><span>$x + 2 = 3x - 6$</span><span class="why">distribute</span></div>
+      <div class="example-step"><span>$8 = 2x \Rightarrow x = 4$</span><span class="why">solve the linear equation</span></div>
+    </div>
+  </section>
+
+  <!-- ── 8. Radicals ───────────────────────────────────────────────── -->
+  <section id="radicals">
+    <div class="chapter-num">Chapter 8</div>
+    <h3>Radicals</h3>
+
+    <p>
+      The <span class="key">square root</span> $\sqrt{a}$ is the non-negative number whose
+      square equals $a$. To solve an equation containing a square root, isolate the radical
+      and then square both sides. Always check your solution — squaring can introduce
+      extraneous roots.
+    </p>
+
+    <div class="formula">
+      <div class="label">Key rule</div>
+      $$\text{If } \sqrt{x} = k \text{ (and } k \ge 0\text{), then } x = k^2$$
+    </div>
+
+    <div class="example">
+      <div class="label">Worked example — solve $\sqrt{x} = 8$</div>
+      <div class="example-step"><span>$(\sqrt{x})^2 = 8^2$</span><span class="why">square both sides</span></div>
+      <div class="example-step"><span>$x = 64$</span><span class="why">check: $\sqrt{64} = 8$ ✓</span></div>
+    </div>
+
+    <div class="example">
+      <div class="label">Worked example — solve $x^3 = 8$</div>
+      <div class="example-step"><span>$x = \sqrt[3]{8}$</span><span class="why">take the cube root of both sides</span></div>
+      <div class="example-step"><span>$x = 2$</span><span class="why">since $2^3 = 8$</span></div>
+    </div>
+  </section>
+
+  <!-- ── 9. Absolute Value Equations ──────────────────────────────── -->
+  <section id="absolute">
+    <div class="chapter-num">Chapter 9</div>
+    <h3>Absolute Value Equations</h3>
+
+    <p>
+      The <span class="key">absolute value</span> $|a|$ gives the distance from $a$ to zero,
+      so it is always non-negative. The equation $|A| = b$ (with $b \ge 0$) has two cases:
+      the expression inside equals $b$ or $-b$.
+    </p>
+
+    <div class="formula">
+      <div class="label">Key rule</div>
+      $$|A| = b \implies A = b \quad \text{or} \quad A = -b \qquad (b \ge 0)$$
+    </div>
+
+    <div class="example">
+      <div class="label">Worked example — solve $|2x - 3| = 7$</div>
+      <div class="example-step"><span>$2x - 3 = 7$</span><span class="why">case 1</span></div>
+      <div class="example-step"><span>$x = 5$</span><span class="why">add 3, divide by 2</span></div>
+      <div class="example-step"><span>$2x - 3 = -7$</span><span class="why">case 2</span></div>
+      <div class="example-step"><span>$x = -2$</span><span class="why">add 3, divide by 2</span></div>
+    </div>
+  </section>
+
+  <!-- ── 10. Exponentials & Logarithms ─────────────────────────────── -->
+  <section id="explog">
+    <div class="chapter-num">Chapter 10</div>
+    <h3>Exponentials &amp; Logarithms</h3>
+
+    <p>
+      An <span class="key">exponential equation</span> has the variable in the exponent.
+      If both sides can be written with the same base, set the exponents equal.
+      A <span class="key">logarithm</span> is the inverse of exponentiation:
+      $\log_b(x) = y$ means $b^y = x$.
+    </p>
+
+    <div class="formula">
+      <div class="label">Key identities</div>
+      $$b^x = b^y \implies x = y \qquad \text{(same base)}$$
+      $$\log_b(x) = y \iff b^y = x \qquad \text{(definition)}$$
+      $$\log_b(b^x) = x \quad \text{and} \quad b^{\log_b x} = x$$
+    </div>
+
+    <div class="example">
+      <div class="label">Worked example — solve $3^x = 27$</div>
+      <div class="example-step"><span>$3^x = 3^3$</span><span class="why">write $27 = 3^3$</span></div>
+      <div class="example-step"><span>$x = 3$</span><span class="why">exponents must be equal</span></div>
+    </div>
+
+    <div class="example">
+      <div class="label">Worked example — solve $\log_3(x + 1) = 2$</div>
+      <div class="example-step"><span>$3^2 = x + 1$</span><span class="why">rewrite in exponential form</span></div>
+      <div class="example-step"><span>$9 = x + 1$</span><span class="why">evaluate $3^2$</span></div>
+      <div class="example-step"><span>$x = 8$</span><span class="why">subtract 1</span></div>
+    </div>
+
+    <div class="example">
+      <div class="label">Worked example — solve $e^{2x} = e^6$</div>
+      <div class="example-step"><span>$2x = 6$</span><span class="why">same base $e$; set exponents equal</span></div>
+      <div class="example-step"><span>$x = 3$</span><span class="why">divide by 2</span></div>
+    </div>
+  </section>
+
+  <!-- ── 11. Functions & Inverses ──────────────────────────────────── -->
+  <section id="functions">
+    <div class="chapter-num">Chapter 11</div>
+    <h3>Functions &amp; Inverses</h3>
+
+    <p>
+      A <span class="key">function</span> $f$ assigns exactly one output to each input.
+      The notation $f(x)$ means "the value of $f$ at $x$." To evaluate, replace every $x$
+      with the given input and simplify.
+    </p>
+
+    <p>
+      The <span class="key">inverse function</span> $f^{-1}$ reverses the mapping of $f$:
+      if $f(a) = b$ then $f^{-1}(b) = a$. To find $f^{-1}$, swap $x$ and $y$ in
+      $y = f(x)$, then solve for $y$.
+    </p>
+
+    <div class="formula">
+      <div class="label">Finding an inverse</div>
+      <p style="margin:0; font-size:0.9rem; line-height:1.9">
+        1. Replace $f(x)$ with $y$.<br>
+        2. Swap every $x$ and $y$.<br>
+        3. Solve for $y$.<br>
+        4. Write the result as $f^{-1}(x)$.
+      </p>
+    </div>
+
+    <div class="example">
+      <div class="label">Worked example — find $f^{-1}$ for $f(x) = 3x - 6$</div>
+      <div class="example-step"><span>$y = 3x - 6$</span><span class="why">write with $y$</span></div>
+      <div class="example-step"><span>$x = 3y - 6$</span><span class="why">swap $x$ and $y$</span></div>
+      <div class="example-step"><span>$x + 6 = 3y$</span><span class="why">add 6 to both sides</span></div>
+      <div class="example-step"><span>$f^{-1}(x) = \dfrac{x+6}{3}$</span><span class="why">divide by 3</span></div>
+    </div>
+  </section>
+
+  <a class="back" href="index.html">Play Now →</a>
+
+</div>
+</body>
+</html>

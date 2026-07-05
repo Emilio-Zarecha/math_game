@@ -42,17 +42,20 @@
       color: var(--accent);
     }
 
-    #manual-link {
-      display: block;
-      text-align: center;
+    .header-links {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      margin-top: -4px;
+      margin-bottom: 4px;
+    }
+    #manual-link, .textbook-link {
       font-size: 0.75rem;
       color: var(--muted);
       text-decoration: none;
-      margin-top: -4px;
-      margin-bottom: 4px;
       letter-spacing: 0.05em;
     }
-    #manual-link:hover { color: var(--accent); }
+    #manual-link:hover, .textbook-link:hover { color: var(--accent); }
 
     /* ── Score bar ─────────────────────────────────────────── */
     #score-bar {
@@ -790,7 +793,10 @@
 <body>
 
 <h1>Math Game</h1>
-<a id="manual-link" href="manual.html">Player Manual</a>
+<div class="header-links">
+  <a id="manual-link" href="manual.html">Player Manual</a>
+  <a class="textbook-link" href="textbook_algebra.html">Algebra Textbook</a>
+</div>
 
 <div id="score-bar">
   Solved: <b id="sc-solved">0</b>
