@@ -76,6 +76,25 @@ def save(name, parts):
     with open(os.path.join(OUT, name), 'w') as f:
         f.write(content)
 
+# ── Hover-hotspot helpers ────────────────────────────────────
+def hs(label, *parts):
+    """Wrap SVG elements in a named hotspot group (data-label triggers JS tooltip)."""
+    return f'<g data-label="{label}" style="cursor:crosshair">{"".join(parts)}</g>'
+
+def hitln(x1, y1, x2, y2, w=14):
+    """Transparent wide line — makes thin strokes easy to hover over."""
+    return (f'<line x1="{x1:.0f}" y1="{y1:.0f}" x2="{x2:.0f}" y2="{y2:.0f}" '
+            f'stroke="transparent" stroke-width="{w}"/>')
+
+def hitring(cx, cy, r, w=14):
+    """Transparent ring hit area around a circle arc."""
+    return (f'<circle cx="{cx:.0f}" cy="{cy:.0f}" r="{r:.0f}" '
+            f'fill="none" stroke="transparent" stroke-width="{w}"/>')
+
+def hitdot(cx, cy, r=16):
+    """Transparent filled circle — makes a dot / point easy to hover over."""
+    return f'<circle cx="{cx:.0f}" cy="{cy:.0f}" r="{r:.0f}" fill="transparent"/>'
+
 def pt(mx, my, ox, oy, sx, sy):
     """Math coords to SVG coords."""
     return (ox + mx*sx, oy - my*sy)
@@ -332,20 +351,47 @@ def unit_circle_shape(angle_deg, extra_label="", multi_pts=None):
               60:"cos=1/2  sin=√3/2", 90:"cos=0  sin=1", 120:"cos=-1/2  sin=√3/2",
               135:"cos=-√2/2  sin=√2/2", 150:"cos=-√3/2  sin=1/2",
               180:"cos=-1  sin=0"}
+    SIN = {0:"0", 30:"1/2", 45:"√2/2", 60:"√3/2", 90:"1", 120:"√3/2", 135:"√2/2", 150:"1/2", 180:"0"}
+    COS = {0:"1", 30:"√3/2", 45:"√2/2", 60:"1/2", 90:"0", 120:"-1/2", 135:"-√2/2", 150:"-√3/2", 180:"-1"}
+    sin_lbl = SIN.get(angle_deg, "sin θ")
+    cos_lbl = COS.get(angle_deg, "cos θ")
     lbl = extra_label or LABELS.get(angle_deg, f'{angle_deg}°')
     parts = [
-        ln(cx-cr-15,cy, cx+cr+15,cy, col=DM, w=1),
-        ln(cx,cy+cr+15, cx,cy-cr-15, col=DM, w=1),
-        tx(cx+cr+17, cy+4, 'x', col=DM, sz=9),
-        tx(cx+4, cy-cr-16, 'y', col=DM, sz=9),
-        ci(cx,cy,cr),
-        arc_seg(cx,cy, 22, 0, angle_deg, col=OG, w=1.5),
-        ln(cx,cy, px,py, col=AC, w=2.2),
-        ln(px,py, px,cy, col=AC, w=1, dash="4,3"),
-        ln(px,py, cx,py, col=AC, w=1, dash="4,3"),
-        ci(px,py, 4.5, fi=OG, col=OG, w=0),
+        # Axes
+        hs("x-axis",
+            ln(cx-cr-15,cy, cx+cr+15,cy, col=DM, w=1),
+            tx(cx+cr+17, cy+4, 'x', col=DM, sz=9),
+            hitln(cx-cr-15,cy, cx+cr+15,cy, 10)),
+        hs("y-axis",
+            ln(cx,cy+cr+15, cx,cy-cr-15, col=DM, w=1),
+            tx(cx+4, cy-cr-16, 'y', col=DM, sz=9),
+            hitln(cx,cy+cr+15, cx,cy-cr-15, 10)),
+        # Unit circle
+        hs("Unit circle — radius = 1",
+            ci(cx,cy,cr),
+            hitring(cx,cy,cr, 16)),
+        # Angle arc
+        hs(f"Angle θ = {angle_deg}°",
+            arc_seg(cx,cy, 22, 0, angle_deg, col=OG, w=1.5),
+            tx(cx+32, cy-10, f'{angle_deg}°', col=OG, sz=10),
+            hitdot(cx, cy, 32)),
+        # Unit radius (hypotenuse)
+        hs("Radius = 1  (hypotenuse of right triangle)",
+            ln(cx,cy, px,py, col=AC, w=2.2),
+            hitln(cx,cy, px,py, 12)),
+        # sin line — vertical dashed
+        hs(f"sin θ = {sin_lbl}  (vertical leg — distance from point to x-axis)",
+            ln(px,py, px,cy, col=AC, w=1, dash="4,3"),
+            hitln(px,py, px,cy, 12)),
+        # cos line — horizontal dashed
+        hs(f"cos θ = {cos_lbl}  (horizontal leg — distance from point to y-axis)",
+            ln(px,py, cx,py, col=AC, w=1, dash="4,3"),
+            hitln(px,py, cx,py, 12)),
+        # Point on circle
+        hs(f"Point (cos θ, sin θ) = ({cos_lbl}, {sin_lbl})",
+            ci(px,py, 4.5, fi=OG, col=OG, w=0),
+            hitdot(px, py, 12)),
         ci(cx,cy, 2, fi=AC, col=AC),
-        tx(cx+32, cy-10, f'{angle_deg}°', col=OG, sz=10),
         tx(cx, cy+cr+18, lbl, sz=9),
     ]
     if multi_pts:
@@ -365,7 +411,14 @@ def trig_30_60_90_shape():
             tx(x0-16, (y0+y2)/2, '1', anch="end"),
             tx((x1+x2)/2+22, (y1+y2)/2, '2'),
             tx(x1-26, y1-15, '30°', sz=10, col=OG),
-            tx(x2+20, y2+26, '60°', sz=10, col=OG)]
+            tx(x2+20, y2+26, '60°', sz=10, col=OG),
+            # Hotspot overlays
+            hs("Adjacent leg = √3  (bottom, opposite the 60° angle)", hitln(x0,y0,x1,y1)),
+            hs("Opposite leg = 1  (left side, opposite the 30° angle)", hitln(x0,y0,x2,y2)),
+            hs("Hypotenuse = 2  (longest side)", hitln(x1,y1,x2,y2)),
+            hs("30° angle", hitdot(x1,y1, 26)),
+            hs("60° angle", hitdot(x2,y2, 22)),
+            hs("90° right angle", hitdot(x0,y0, 18))]
 
 def trig_45_45_90_shape():
     x0,y0 = 55,165; x1,y1 = 185,165; x2,y2 = 55,35
@@ -377,7 +430,14 @@ def trig_45_45_90_shape():
             tx(x0-16, (y0+y2)/2, '1', anch="end"),
             tx((x1+x2)/2+24, (y1+y2)/2, '√2'),
             tx(x1-26, y1-16, '45°', sz=10, col=OG),
-            tx(x2+20, y2+28, '45°', sz=10, col=OG)]
+            tx(x2+20, y2+28, '45°', sz=10, col=OG),
+            # Hotspot overlays
+            hs("Adjacent leg = 1  (bottom)", hitln(x0,y0,x1,y1)),
+            hs("Opposite leg = 1  (left side)", hitln(x0,y0,x2,y2)),
+            hs("Hypotenuse = √2  (longest side)", hitln(x1,y1,x2,y2)),
+            hs("45° angle", hitdot(x1,y1, 26)),
+            hs("45° angle", hitdot(x2,y2, 22)),
+            hs("90° right angle", hitdot(x0,y0, 18))]
 
 def trig_labeled_shape():
     x0,y0 = 48,165; x1,y1 = 192,165; x2,y2 = 48,70
@@ -387,10 +447,29 @@ def trig_labeled_shape():
             tx((x0+x1)/2, y0+16, 'adjacent', sz=9),
             tx(x0-9, (y0+y2)/2, 'opposite', anch="end", sz=9),
             tx((x1+x2)/2+32, (y1+y2)/2, 'hypotenuse', sz=9),
-            tx(x1-24, y1-17, 'θ', sz=13, col=OG, fw="bold")]
+            tx(x1-24, y1-17, 'θ', sz=13, col=OG, fw="bold"),
+            # Hotspot overlays
+            hs("Adjacent side — the leg next to angle θ (base)", hitln(x0,y0,x1,y1)),
+            hs("Opposite side — the leg across from angle θ", hitln(x0,y0,x2,y2)),
+            hs("Hypotenuse — the longest side, opposite the right angle", hitln(x1,y1,x2,y2)),
+            hs("Angle θ — the reference angle for sin, cos, tan", hitdot(x1,y1, 28)),
+            hs("90° right angle", hitdot(x0,y0, 18))]
 
 def trig_3_4_5_shape():
-    return right_triangle(4, 3, 5, label_a='adj=4', label_b='opp=3', label_c='hyp=5')
+    a,b,c = 4,3,5
+    sc = min(110/max(a,b), 13)
+    pw = a*sc; ph = b*sc
+    x0 = (W-pw)/2; y0 = H/2+ph/2
+    x1 = x0+pw; y1 = y0; x2 = x0; y2 = y0-ph
+    return [pg([(x0,y0),(x1,y1),(x2,y2)]), ra_mark(x0,y0),
+            tx((x0+x1)/2, y0+16, 'adj=4'),
+            tx(x0-18, (y0+y2)/2, 'opp=3', anch="end"),
+            tx((x1+x2)/2+16, (y1+y2)/2, 'hyp=5'),
+            # Hotspot overlays
+            hs("Adjacent leg = 4  (base, next to the reference angle)", hitln(x0,y0,x1,y1)),
+            hs("Opposite leg = 3  (vertical side, across from reference angle)", hitln(x0,y0,x2,y2)),
+            hs("Hypotenuse = 5  (longest side;  3² + 4² = 5²)", hitln(x1,y1,x2,y2)),
+            hs("90° right angle", hitdot(x0,y0, 18))]
 
 def trig_sec_shape():
     x0,y0 = 48,165; x1,y1 = 192,165; x2,y2 = 48,90
@@ -401,7 +480,13 @@ def trig_sec_shape():
             tx(x0-9, (y0+y2)/2, 'opp', anch="end"),
             tx((x1+x2)/2+24, (y1+y2)/2, 'hyp'),
             tx(x1-26, y1-15, 'θ', sz=12, col=OG, fw="bold"),
-            tx(W/2, 20, 'sec(θ) = hyp/adj = 1/cos(θ)', sz=9, col=LB)]
+            tx(W/2, 20, 'sec(θ) = hyp/adj = 1/cos(θ)', sz=9, col=LB),
+            # Hotspot overlays
+            hs("Adjacent (adj) — leg next to θ;  cos θ = adj/hyp", hitln(x0,y0,x1,y1)),
+            hs("Opposite (opp) — leg across from θ;  sin θ = opp/hyp", hitln(x0,y0,x2,y2)),
+            hs("Hypotenuse (hyp) — longest side;  sec θ = hyp/adj", hitln(x1,y1,x2,y2)),
+            hs("Angle θ — reference angle;  sec θ = 1/cos θ", hitdot(x1,y1, 26)),
+            hs("90° right angle", hitdot(x0,y0, 18))]
 
 def trig_law_sines_shape(a, A_deg, B_deg):
     C_deg = 180 - A_deg - B_deg
@@ -422,39 +507,57 @@ def trig_law_sines_shape(a, A_deg, B_deg):
             tx(P1[0]-26, P1[1]-12, f'B={B_deg}°', sz=10, col=OG, anch="end"),
             tx((P0[0]+P2[0])/2-16, (P0[1]+P2[1])/2, f'b=?', col=AC, anch="end", sz=11),
             tx((P0[0]+P1[0])/2, P0[1]+16, f'(c)', sz=10),
-            tx((P1[0]+P2[0])/2+14, (P1[1]+P2[1])/2, f'a={a}', sz=10)]
+            tx((P1[0]+P2[0])/2+14, (P1[1]+P2[1])/2, f'a={a}', sz=10),
+            # Hotspot overlays
+            hs(f"Side b (unknown) — opposite angle B={B_deg}°;  b/sin B = a/sin A", hitln(P0[0],P0[1],P2[0],P2[1])),
+            hs(f"Side c — opposite angle C={C_deg}°;  c/sin C = a/sin A", hitln(P0[0],P0[1],P1[0],P1[1])),
+            hs(f"Side a = {a} — opposite angle A={A_deg}°", hitln(P1[0],P1[1],P2[0],P2[1])),
+            hs(f"Angle A = {A_deg}°  (at left vertex)", hitdot(P0[0],P0[1], 26)),
+            hs(f"Angle B = {B_deg}°  (at right vertex)", hitdot(P1[0],P1[1], 26))]
 
 def sine_wave_shape(A, period_pi):
     ox,oy = 30,100; sx=170; sy=50
-    xs = [i*0.05 for i in range(int(2*math.pi/0.05)+1)]
-    pts = [(ox + x//(2*math.pi/(period_pi*math.pi)) * sx/(period_pi*math.pi) * (period_pi*math.pi),
-            oy - A * math.sin(2*math.pi/period_pi * x) * sy/A) for x in xs]
-    # simpler: just draw one period
     pts = []
     for i in range(101):
         x = 2*math.pi * i/100
         svg_x = ox + x/(2*math.pi) * sx
         svg_y = oy - A/A * math.sin(2*math.pi/period_pi * x) * 45
         pts.append((svg_x, svg_y))
-    # Mark amplitude
-    return [ln(ox,oy, ox+sx,oy, col=DM, w=1),  # x-axis
-            ln(ox,oy-55, ox,oy+55, col=DM, w=1),  # y-axis
-            pl(pts, col=OG, w=2),
+    return [
+        hs("x-axis  (y = 0 baseline)",
+            ln(ox,oy, ox+sx,oy, col=DM, w=1),
+            hitln(ox,oy, ox+sx,oy, 10)),
+        hs("y-axis",
+            ln(ox,oy-55, ox,oy+55, col=DM, w=1),
+            hitln(ox,oy-55, ox,oy+55, 10)),
+        hs(f"Sine curve  y = {A}·sin(x / {period_pi}) — one complete period shown",
+            pl(pts, col=OG, w=2)),
+        hs(f"Amplitude = {A}  (peak height above x-axis)",
             ln(ox,oy-45, ox+6,oy-45, col=AC, w=1.2),
             tx(ox+22, oy-45, f'A={A}', col=AC, sz=10, anch="start"),
-            tx(W/2, H-10, f'Period = {period_pi}π', sz=10, col=LB)]
+            hitln(ox,oy-45, ox+50,oy-45, 14)),
+        hs(f"Period = {period_pi}π  (horizontal length of one full cycle)",
+            tx(W/2, H-10, f'Period = {period_pi}π', sz=10, col=LB),
+            hitdot(W/2, H-10, 40)),
+    ]
 
 # ════════════════════════════════════════════════════════════
 # CALCULUS GRAPHS
 # ════════════════════════════════════════════════════════════
 
 def axes_shape(ox=120, oy=155, xr=85, yr=130):
-    return [ln(ox-xr,oy, ox+xr,oy, col=DM, w=1),
-            ln(ox,oy+25, ox,oy-yr, col=DM, w=1),
+    return [
+        hs("x-axis  (horizontal axis — independent variable x)",
+            ln(ox-xr,oy, ox+xr,oy, col=DM, w=1),
             pg([(ox+xr,oy-3),(ox+xr+8,oy),(ox+xr,oy+3)], fi=DM, col=DM, w=0),
-            pg([(ox-3,oy-yr),(ox,oy-yr-8),(ox+3,oy-yr)], fi=DM, col=DM, w=0),
             tx(ox+xr+12, oy+4, 'x', col=DM, sz=9),
-            tx(ox+4, oy-yr-10, 'y', col=DM, sz=9)]
+            hitln(ox-xr,oy, ox+xr+8,oy, 10)),
+        hs("y-axis  (vertical axis — dependent variable y = f(x))",
+            ln(ox,oy+25, ox,oy-yr, col=DM, w=1),
+            pg([(ox-3,oy-yr),(ox,oy-yr-8),(ox+3,oy-yr)], fi=DM, col=DM, w=0),
+            tx(ox+4, oy-yr-10, 'y', col=DM, sz=9),
+            hitln(ox,oy+25, ox,oy-yr, 10)),
+    ]
 
 def curve_pts(f, x_lo, x_hi, n=80):
     return [(x_lo + (x_hi-x_lo)*i/n, f(x_lo + (x_hi-x_lo)*i/n)) for i in range(n+1)]
@@ -475,17 +578,24 @@ def graph_power(n, tangent_at_x=1):
     else: x_lo,x_hi = -2.3,2.3
     pts = curve_pts(lambda x: x**n, x_lo, x_hi)
     svg_pts = math_to_svg(pts, ox, oy, sx, sy, y_clip=oy-130)
-    # Tangent line at x=tangent_at_x
     y0t = tangent_at_x**n
     slope = n * tangent_at_x**(n-1)
-    tang_pts = [(tangent_at_x-1.5, y0t - slope*1.5), (tangent_at_x+1.5, y0t + slope*1.5)]
+    tang_pts = [(tangent_at_x-1.5, y0t-slope*1.5), (tangent_at_x+1.5, y0t+slope*1.5)]
     t_svg = math_to_svg(tang_pts, ox, oy, sx, sy)
     dot_x = ox+tangent_at_x*sx; dot_y = oy-y0t*sy
     return axes_shape(ox,oy) + [
-        pl(svg_pts, col=OG, w=2.2),
-        pl(t_svg, col=AC, w=2),
-        ci(dot_x,dot_y, 3.5, fi=OG, col=OG, w=0),
-        tx(W/2, 16, f"d/dx[x^{n}] = {n}x^{n-1}", sz=10, col=LB)]
+        hs(f"Curve y = x^{n} — power function",
+            pl(svg_pts, col=OG, w=2.2)),
+        hs(f"Tangent line at x={tangent_at_x}  (slope = {slope:.0f} = the derivative there)",
+            pl(t_svg, col=AC, w=2),
+            hitln(t_svg[0][0],t_svg[0][1],t_svg[-1][0],t_svg[-1][1], 12)),
+        hs(f"Point ({tangent_at_x}, {y0t:.0f}) — where the tangent touches the curve",
+            ci(dot_x,dot_y, 3.5, fi=OG, col=OG, w=0),
+            hitdot(dot_x, dot_y, 14)),
+        hs(f"Power rule: d/dx[x^{n}] = {n}·x^{n-1}",
+            tx(W/2, 16, f"d/dx[x^{n}] = {n}x^{n-1}", sz=10, col=LB),
+            hitdot(W/2, 16, 65)),
+    ]
 
 def graph_linear_fn(m, label=""):
     ox,oy = 120,140; sx=22; sy=10
@@ -493,22 +603,30 @@ def graph_linear_fn(m, label=""):
     svg_pts = math_to_svg(pts, ox, oy, sx, sy)
     lbl = label or f"f(x) = {m}x"
     return axes_shape(ox,oy,xr=90,yr=120) + [
-        pl(svg_pts, col=OG, w=2.2),
-        tx(W/2, 16, lbl, sz=10, col=LB)]
+        hs(f"Line f(x) = {m}x — constant slope {m} everywhere",
+            pl(svg_pts, col=OG, w=2.2),
+            hitln(svg_pts[0][0],svg_pts[0][1],svg_pts[-1][0],svg_pts[-1][1], 12)),
+        hs(f"Derivative = {m}  (the slope is constant — d/dx[{m}x] = {m})",
+            tx(W/2, 16, lbl, sz=10, col=LB),
+            hitdot(W/2, 16, 65)),
+    ]
 
 def graph_constant(c, label=""):
     ox,oy = 120,140; sy=10
     y_svg = oy - c*sy
     lbl = label or f"f(x) = {c}  →  derivative = 0"
     return axes_shape(ox,oy,xr=90,yr=120) + [
-        ln(30, y_svg, 210, y_svg, col=OG, w=2.2),
-        tx(W/2, 16, lbl, sz=10, col=LB)]
+        hs(f"Horizontal line f(x) = {c} — slope is zero everywhere",
+            ln(30, y_svg, 210, y_svg, col=OG, w=2.2),
+            hitln(30, y_svg, 210, y_svg, 12)),
+        hs("Derivative = 0  (constant functions never rise or fall)",
+            tx(W/2, 16, lbl, sz=10, col=LB),
+            hitdot(W/2, 16, 65)),
+    ]
 
 def graph_with_area(f, f_label, x_lo, x_hi, ox=50, oy=155, sx=None, sy=10, y_max=None):
-    # Auto-scale x
     if sx is None:
         sx = min(150/(x_hi+0.5), 30)
-    # Draw filled area under curve
     shade_pts = [(ox + x_lo*sx, oy)]
     n = 60
     for i in range(n+1):
@@ -517,62 +635,108 @@ def graph_with_area(f, f_label, x_lo, x_hi, ox=50, oy=155, sx=None, sy=10, y_max
         shade_pts.append((ox+x*sx, oy-y*sy))
     shade_pts.append((ox+x_hi*sx, oy))
     p = " ".join(f"{x:.0f},{y:.0f}" for x,y in shade_pts)
-    # Full curve
     curve_x_lo = 0; curve_x_hi = x_hi + 0.5
     full_pts = []
     for i in range(81):
         x = curve_x_lo + (curve_x_hi-curve_x_lo)*i/80
         full_pts.append((ox+x*sx, oy - min(f(x),y_max or 999)*sy))
-    return [ln(ox-10,oy, ox+(x_hi+1)*sx,oy, col=DM, w=1),
+    lx = ox+x_lo*sx; rx = ox+x_hi*sx
+    return [
+        hs("x-axis  (horizontal axis — independent variable x)",
+            ln(ox-10,oy, ox+(x_hi+1)*sx,oy, col=DM, w=1),
+            hitln(ox-10,oy, ox+(x_hi+1)*sx,oy, 10)),
+        hs("y-axis  (vertical axis — dependent variable y = f(x))",
             ln(ox,oy+10, ox,oy-120, col=DM, w=1),
-            f'<polygon points="{p}" fill="{FI2}" stroke="{OG}" stroke-width="1.5"/>',
-            pl(full_pts, col=OG, w=2),
-            ln(ox+x_lo*sx,oy, ox+x_lo*sx,oy-5, col=DM, w=1),
-            ln(ox+x_hi*sx,oy, ox+x_hi*sx,oy-5, col=DM, w=1),
-            tx(ox+x_lo*sx, oy+12, str(x_lo), sz=9, col=DM),
-            tx(ox+x_hi*sx, oy+12, str(x_hi), sz=9, col=DM),
-            tx(W/2, 16, f"∫ {f_label} dx", sz=11, col=LB)]
+            hitln(ox,oy+10, ox,oy-120, 10)),
+        hs(f"Shaded area = ∫ from {x_lo} to {x_hi} of {f_label} dx  (the definite integral)",
+            f'<polygon points="{p}" fill="{FI2}" stroke="{OG}" stroke-width="1.5"/>'),
+        hs(f"Curve f(x) = {f_label}  (the integrand — function being integrated)",
+            pl(full_pts, col=OG, w=2)),
+        hs(f"Left bound x = {x_lo}  (lower limit of integration)",
+            ln(lx,oy, lx,oy-5, col=DM, w=1),
+            tx(lx, oy+12, str(x_lo), sz=9, col=DM),
+            hitln(lx,oy-5, lx,oy+12, 14)),
+        hs(f"Right bound x = {x_hi}  (upper limit of integration)",
+            ln(rx,oy, rx,oy-5, col=DM, w=1),
+            tx(rx, oy+12, str(x_hi), sz=9, col=DM),
+            hitln(rx,oy-5, rx,oy+12, 14)),
+        hs(f"∫ {f_label} dx  (antiderivative — find a function whose derivative is {f_label})",
+            tx(W/2, 16, f"∫ {f_label} dx", sz=11, col=LB),
+            hitdot(W/2, 16, 60)),
+    ]
 
 def graph_limit(f, x_to, label, ox=120, oy=155, x_lo=-3, x_hi=3, sx=22, sy=8):
     pts = curve_pts(f, x_lo, x_hi)
     svg_pts = math_to_svg(pts, ox, oy, sx, sy, y_clip=oy-130)
     dot_x = ox+x_to*sx; dot_y = oy-f(x_to)*sy
+    lim_val = f(x_to)
     return axes_shape(ox,oy) + [
-        pl(svg_pts, col=OG, w=2.2),
-        ln(dot_x,oy, dot_x,dot_y, col=AC, w=1.5, dash="4,3"),
-        ci(dot_x,dot_y, 4, fi=OG, col=OG, w=0),
-        tx(dot_x, oy+14, f'x→{x_to}', sz=9, col=AC),
-        tx(W/2, 16, label, sz=10, col=LB)]
+        hs("Curve f(x)  (the function whose limit is being evaluated)",
+            pl(svg_pts, col=OG, w=2.2)),
+        hs(f"x → {x_to}  (vertical dashed line — x approaches this value from both sides)",
+            ln(dot_x,oy, dot_x,dot_y, col=AC, w=1.5, dash="4,3"),
+            tx(dot_x, oy+14, f'x→{x_to}', sz=9, col=AC),
+            hitln(dot_x,oy, dot_x,dot_y, 14)),
+        hs(f"Limit point — f(x) approaches {lim_val:.4g} as x → {x_to}",
+            ci(dot_x,dot_y, 4, fi=OG, col=OG, w=0),
+            hitdot(dot_x, dot_y, 14)),
+        hs(f"Limit: {label}",
+            tx(W/2, 16, label, sz=10, col=LB),
+            hitdot(W/2, 16, 65)),
+    ]
 
 def graph_exp():
     ox,oy = 60,155; sx=22; sy=12
     pts = curve_pts(lambda x: math.exp(x), -2, 3)
     svg_pts = [(ox+mx*sx, max(oy-my*sy, 10)) for mx,my in pts]
+    yi_x = ox; yi_y = oy - 1*sy  # y-intercept at (0, e^0=1)
     return axes_shape(ox,oy, xr=150, yr=140) + [
-        pl(svg_pts, col=OG, w=2.2),
-        tx(W/2, 16, "f(x) = eˣ", sz=11, col=LB)]
+        hs("Curve f(x) = eˣ — grows without bound; always positive",
+            pl(svg_pts, col=OG, w=2.2)),
+        hs("y-intercept at (0, 1) — because e⁰ = 1",
+            ci(yi_x, yi_y, 4, fi=AC, col=AC, w=0),
+            hitdot(yi_x, yi_y, 14)),
+        hs("d/dx[eˣ] = eˣ  (eˣ is its own derivative)",
+            tx(W/2, 16, "f(x) = eˣ", sz=11, col=LB),
+            hitdot(W/2, 16, 45)),
+    ]
 
 def graph_ln():
     ox,oy = 60,155; sx=22; sy=22
     pts = [(0.1+(3.5-0.1)*i/80, 0) for i in range(81)]
     pts = [(x, math.log(x)) for x,_ in pts]
     svg_pts = math_to_svg(pts, ox, oy, sx, sy, y_clip=oy-140)
+    xi_x = ox+1*sx; xi_y = oy  # x-intercept at (1, 0)
     return axes_shape(ox,oy, xr=150, yr=140) + [
-        pl(svg_pts, col=OG, w=2.2),
-        tx(W/2, 16, "f(x) = ln(x)", sz=11, col=LB)]
+        hs("Curve f(x) = ln(x) — defined only for x > 0; negative for 0 < x < 1",
+            pl(svg_pts, col=OG, w=2.2)),
+        hs("x-intercept at (1, 0) — because ln(1) = 0",
+            ci(xi_x, xi_y, 4, fi=AC, col=AC, w=0),
+            hitdot(xi_x, xi_y, 14)),
+        hs("d/dx[ln(x)] = 1/x  (inverse of eˣ)",
+            tx(W/2, 16, "f(x) = ln(x)", sz=11, col=LB),
+            hitdot(W/2, 16, 45)),
+    ]
 
 def graph_sinx():
     ox,oy = 40,110; sx=25; sy=45
     pts = curve_pts(lambda x: math.sin(x), -math.pi, 2*math.pi)
     svg_pts = math_to_svg(pts, ox, oy, sx, sy)
-    # Tangent at x=0 (slope=1)
     t_pts = [(-0.8, -0.8), (0.8, 0.8)]
     t_svg = math_to_svg(t_pts, ox, oy, sx, sy)
     return axes_shape(ox,oy, xr=190, yr=80) + [
-        pl(svg_pts, col=OG, w=2.2),
-        pl(t_svg, col=AC, w=2),
-        ci(ox,oy, 3.5, fi=OG, col=OG, w=0),
-        tx(W/2, 16, "d/dx[sin(x)] = cos(x)", sz=10, col=LB)]
+        hs("Curve y = sin(x) — oscillates between −1 and +1",
+            pl(svg_pts, col=OG, w=2.2)),
+        hs("Tangent at x=0  (slope = cos(0) = 1 — the steepest point)",
+            pl(t_svg, col=AC, w=2),
+            hitln(t_svg[0][0],t_svg[0][1],t_svg[-1][0],t_svg[-1][1], 12)),
+        hs("Origin (0, 0) — sin(0) = 0; tangent touches here",
+            ci(ox,oy, 3.5, fi=OG, col=OG, w=0),
+            hitdot(ox, oy, 14)),
+        hs("d/dx[sin(x)] = cos(x)  (derivative of sine is cosine)",
+            tx(W/2, 16, "d/dx[sin(x)] = cos(x)", sz=10, col=LB),
+            hitdot(W/2, 16, 65)),
+    ]
 
 def graph_sinx_area():
     ox,oy = 40,115; sx=28; sy=50
@@ -581,11 +745,26 @@ def graph_sinx_area():
     p = " ".join(f"{x:.0f},{y:.0f}" for x,y in shade_pts)
     full_pts = curve_pts(lambda x: math.sin(x), -0.2, math.pi+0.2)
     svg_full = math_to_svg(full_pts, ox, oy, sx, sy)
-    return [ln(ox-10,oy, ox+130,oy, col=DM, w=1),
+    pi_x = ox+math.pi*sx
+    return [
+        hs("x-axis  (baseline — integral is area above this line)",
+            ln(ox-10,oy, ox+130,oy, col=DM, w=1),
+            hitln(ox-10,oy, ox+130,oy, 10)),
+        hs("y-axis",
             ln(ox,oy+20, ox,oy-60, col=DM, w=1),
-            f'<polygon points="{p}" fill="{FI2}" stroke="{OG}" stroke-width="1.5"/>',
-            pl(svg_full, col=OG, w=2.2),
-            tx(W/2, 16, "∫ sin(x) dx = −cos(x) + C", sz=10, col=LB)]
+            hitln(ox,oy+20, ox,oy-60, 10)),
+        hs("Shaded area = ∫₀^π sin(x) dx = 2  (one full arch above x-axis)",
+            f'<polygon points="{p}" fill="{FI2}" stroke="{OG}" stroke-width="1.5"/>'),
+        hs("Curve y = sin(x)",
+            pl(svg_full, col=OG, w=2.2)),
+        hs("Left bound x = 0  (sin starts at zero here)",
+            hitdot(ox, oy, 12)),
+        hs("Right bound x = π  (sin returns to zero at π)",
+            hitdot(pi_x, oy, 12)),
+        hs("∫ sin(x) dx = −cos(x) + C  (antiderivative of sin is −cos)",
+            tx(W/2, 16, "∫ sin(x) dx = −cos(x) + C", sz=10, col=LB),
+            hitdot(W/2, 16, 65)),
+    ]
 
 def graph_1_over_x():
     ox,oy = 120,120; sx=22; sy=20
@@ -594,8 +773,15 @@ def graph_1_over_x():
     s1 = math_to_svg(pts_pos, ox, oy, sx, sy, y_clip=oy-110)
     s2 = math_to_svg(pts_neg, ox, oy, sx, sy)
     s2 = [(x, max(y, oy-110)) for x,y in s2]
-    return axes_shape(ox,oy) + [pl(s1, col=OG, w=2.2), pl(s2, col=OG, w=2.2),
-            tx(W/2, 16, "f(x) = 1/x", sz=11, col=LB)]
+    return axes_shape(ox,oy) + [
+        hs("f(x) = 1/x for x > 0  — positive, decreasing; approaches 0 as x→∞",
+            pl(s1, col=OG, w=2.2)),
+        hs("f(x) = 1/x for x < 0  — negative, increasing; vertical asymptote at x = 0",
+            pl(s2, col=OG, w=2.2)),
+        hs("f(x) = 1/x  — undefined at x = 0 (vertical asymptote);  d/dx[1/x] = −1/x²",
+            tx(W/2, 16, "f(x) = 1/x", sz=11, col=LB),
+            hitdot(W/2, 16, 45)),
+    ]
 
 def graph_1_over_x_area():
     ox,oy = 60,155; sx=38; sy=50
@@ -604,15 +790,30 @@ def graph_1_over_x_area():
     p = " ".join(f"{x:.0f},{y:.0f}" for x,y in shade_pts)
     full_pts = curve_pts(lambda x: 1/x, 0.5, math.e+0.3)
     svg_full = math_to_svg(full_pts, ox, oy, sx, sy, y_clip=oy-130)
-    return [ln(ox-10,oy, ox+(math.e+0.5)*sx,oy, col=DM, w=1),
+    lx = ox+1*sx; rx = ox+math.e*sx
+    return [
+        hs("x-axis  (horizontal axis)",
+            ln(ox-10,oy, ox+(math.e+0.5)*sx,oy, col=DM, w=1),
+            hitln(ox-10,oy, ox+(math.e+0.5)*sx,oy, 10)),
+        hs("y-axis",
             ln(ox,oy+10, ox,oy-140, col=DM, w=1),
-            f'<polygon points="{p}" fill="{FI2}" stroke="{OG}" stroke-width="1.5"/>',
-            pl(svg_full, col=OG, w=2.2),
-            ln(ox+1*sx,oy, ox+1*sx,oy-6, col=DM, w=1),
-            ln(ox+math.e*sx,oy, ox+math.e*sx,oy-6, col=DM, w=1),
-            tx(ox+1*sx, oy+12, '1', sz=9, col=DM),
-            tx(ox+math.e*sx, oy+12, 'e', sz=9, col=DM),
-            tx(W/2, 16, "∫₁ᵉ (1/x) dx = ln(e)−ln(1) = 1", sz=9, col=LB)]
+            hitln(ox,oy+10, ox,oy-140, 10)),
+        hs("Shaded area = ∫₁ᵉ (1/x) dx = ln(e) − ln(1) = 1",
+            f'<polygon points="{p}" fill="{FI2}" stroke="{OG}" stroke-width="1.5"/>'),
+        hs("Curve f(x) = 1/x  (the integrand)",
+            pl(svg_full, col=OG, w=2.2)),
+        hs("Left bound x = 1  (lower limit of integration)",
+            ln(lx,oy, lx,oy-6, col=DM, w=1),
+            tx(lx, oy+12, '1', sz=9, col=DM),
+            hitln(lx,oy-6, lx,oy+12, 14)),
+        hs("Right bound x = e ≈ 2.718  (upper limit of integration)",
+            ln(rx,oy, rx,oy-6, col=DM, w=1),
+            tx(rx, oy+12, 'e', sz=9, col=DM),
+            hitln(rx,oy-6, rx,oy+12, 14)),
+        hs("∫₁ᵉ (1/x) dx = ln(e)−ln(1) = 1  (fundamental theorem of calculus)",
+            tx(W/2, 16, "∫₁ᵉ (1/x) dx = ln(e)−ln(1) = 1", sz=9, col=LB),
+            hitdot(W/2, 16, 65)),
+    ]
 
 def graph_sin_over_x():
     ox,oy = 120,130; sx=25; sy=80
@@ -621,49 +822,78 @@ def graph_sin_over_x():
     pts = [(x_lo/10, f(x_lo/10)) for x_lo in range(-35,36) if abs(x_lo) > 1] + [(0, 1)]
     pts.sort()
     svg_pts = math_to_svg(pts, ox, oy, sx, sy, y_clip=oy-110)
+    lim_y = oy-sy
     return axes_shape(ox,oy) + [
-        pl(svg_pts, col=OG, w=2.2),
-        ci(ox,oy-sy, 4.5, fi=OG, col=OG, w=0),
-        ci(ox,oy-sy, 6.5, fi="none", col=AC, w=1.5),
-        tx(ox+18, oy-sy-8, 'limit=1', sz=10, col=AC),
-        tx(W/2, 16, "lim(sinx/x) as x→0 = 1", sz=10, col=LB)]
+        hs("Curve f(x) = sin(x)/x — oscillates and decays away from x=0",
+            pl(svg_pts, col=OG, w=2.2)),
+        hs("Limit value = 1  (filled dot — function approaches 1 from both sides as x→0)",
+            ci(ox,lim_y, 4.5, fi=OG, col=OG, w=0),
+            hitdot(ox, lim_y, 14)),
+        hs("Removable discontinuity at x=0  (circle outline — sin(0)/0 is undefined, but limit = 1)",
+            ci(ox,lim_y, 6.5, fi="none", col=AC, w=1.5),
+            tx(ox+18, lim_y-8, 'limit=1', sz=10, col=AC),
+            hitdot(ox, lim_y, 20)),
+        hs("lim(sin x/x) as x→0 = 1  (a fundamental limit in calculus)",
+            tx(W/2, 16, "lim(sinx/x) as x→0 = 1", sz=10, col=LB),
+            hitdot(W/2, 16, 65)),
+    ]
 
 def graph_chain_rule():
-    """Chain rule concept: composition f(g(x))."""
+    cpts = math_to_svg(curve_pts(lambda x: min((x**2+1)**3/30, 12), -2.5, 2.5), 120, 155, 22, 8, y_clip=15)
     return axes_shape() + [
-        # Draw y=(x²+1)³ approximation
-        pl(math_to_svg(curve_pts(lambda x: min((x**2+1)**3 / 30, 12), -2.5, 2.5),
-                       120, 155, 22, 8, y_clip=15), col=OG, w=2.2),
-        tx(W/2, 16, "d/dx[(x²+1)³] = 3(x²+1)²·2x", sz=9, col=LB)]
+        hs("Curve y = (x²+1)³  — outer function (cube) applied to inner function (x²+1)",
+            pl(cpts, col=OG, w=2.2)),
+        hs("Chain rule: d/dx[(x²+1)³] = 3(x²+1)²·2x  (outer' × inner')",
+            tx(W/2, 16, "d/dx[(x²+1)³] = 3(x²+1)²·2x", sz=9, col=LB),
+            hitdot(W/2, 16, 65)),
+    ]
 
 def graph_product_rule():
+    cpts = math_to_svg(curve_pts(lambda x: x**2*math.sin(x), -3, 3), 120, 155, 22, 12, y_clip=10)
     return axes_shape() + [
-        pl(math_to_svg(curve_pts(lambda x: x**2 * math.sin(x), -3, 3),
-                       120, 155, 22, 12, y_clip=10), col=OG, w=2.2),
-        tx(W/2, 16, "d/dx[x²sinx] = 2x sinx + x²cosx", sz=9, col=LB)]
+        hs("Curve y = x²·sin(x)  — product of two functions: x² and sin(x)",
+            pl(cpts, col=OG, w=2.2)),
+        hs("Product rule: d/dx[x²sinx] = 2x sinx + x²cosx  (u'v + uv')",
+            tx(W/2, 16, "d/dx[x²sinx] = 2x sinx + x²cosx", sz=9, col=LB),
+            hitdot(W/2, 16, 65)),
+    ]
 
 def graph_quotient_rule():
     def f(x):
         if abs(math.sin(x)) < 0.3: return None
-        return x**2 / math.sin(x) if abs(x**2/math.sin(x)) < 8 else None
+        return x**2/math.sin(x) if abs(x**2/math.sin(x)) < 8 else None
     pts = [(0.1*i-3, f(0.1*i-3)) for i in range(61) if f(0.1*i-3) is not None]
     if not pts: return axes_shape() + [tx(W/2, 100, 'x²/sin(x)', sz=11)]
     svg_pts = math_to_svg(pts, 120, 130, 22, 15)
-    return axes_shape(120,130) + [pl(svg_pts, col=OG, w=2),
-            tx(W/2, 16, "d/dx[x²/sinx] = (2x sinx - x²cosx)/sin²x", sz=8, col=LB)]
+    return axes_shape(120,130) + [
+        hs("Curve y = x²/sin(x)  — quotient of two functions (undefined where sin(x) = 0)",
+            pl(svg_pts, col=OG, w=2)),
+        hs("Quotient rule: d/dx[x²/sinx] = (2x sinx − x²cosx)/sin²x  ((u'v − uv')/v²)",
+            tx(W/2, 16, "d/dx[x²/sinx] = (2x sinx - x²cosx)/sin²x", sz=8, col=LB),
+            hitdot(W/2, 16, 65)),
+    ]
 
 def graph_ibp():
-    """Integration by parts: xeˣ with area."""
     ox,oy = 60,155; sx=22; sy=18
     pts = curve_pts(lambda x: x*math.exp(x), 0, 2.5)
     shade_pts = [(ox,oy)] + [(ox+x*sx, max(oy-y*sy, 10)) for x,y in pts] + [(ox+2.5*sx,oy)]
     p = " ".join(f"{x:.0f},{y:.0f}" for x,y in shade_pts)
     svg_pts = [(ox+x*sx, max(oy-y*sy,10)) for x,y in pts]
-    return [ln(ox-10,oy, ox+80,oy, col=DM, w=1),
+    return [
+        hs("x-axis  (horizontal axis)",
+            ln(ox-10,oy, ox+80,oy, col=DM, w=1),
+            hitln(ox-10,oy, ox+80,oy, 10)),
+        hs("y-axis",
             ln(ox,oy+10, ox,oy-145, col=DM, w=1),
-            f'<polygon points="{p}" fill="{FI2}" stroke="none"/>',
-            pl(svg_pts, col=OG, w=2.2),
-            tx(W/2, 16, "∫ x eˣ dx = xeˣ − eˣ + C", sz=10, col=LB)]
+            hitln(ox,oy+10, ox,oy-145, 10)),
+        hs("Shaded area = ∫₀^2.5 x·eˣ dx  (evaluated using integration by parts)",
+            f'<polygon points="{p}" fill="{FI2}" stroke="none"/>'),
+        hs("Curve f(x) = x·eˣ  — grows rapidly; faster than eˣ alone",
+            pl(svg_pts, col=OG, w=2.2)),
+        hs("∫ x eˣ dx = xeˣ − eˣ + C  (integration by parts: u=x, dv=eˣ dx)",
+            tx(W/2, 16, "∫ x eˣ dx = xeˣ − eˣ + C", sz=10, col=LB),
+            hitdot(W/2, 16, 65)),
+    ]
 
 def graph_ex_minus_1_x():
     ox,oy = 120,130; sx=30; sy=80
@@ -671,45 +901,69 @@ def graph_ex_minus_1_x():
         return (math.exp(x)-1)/x if abs(x) > 0.001 else 1.0
     pts = [(0.1*i-2.5, f(0.1*i-2.5)) for i in range(51)]
     svg_pts = math_to_svg(pts, ox, oy, sx, sy, y_clip=20)
+    lim_y = oy-sy
     return axes_shape(ox,oy) + [
-        pl(svg_pts, col=OG, w=2.2),
-        ci(ox,oy-sy, 4.5, fi=OG, col=OG, w=0),
-        ci(ox,oy-sy, 6.5, fi="none", col=AC, w=1.5),
-        tx(ox+22, oy-sy-8, 'limit=1', sz=10, col=AC),
-        tx(W/2, 16, "lim((eˣ-1)/x) as x→0 = 1", sz=9, col=LB)]
+        hs("Curve f(x) = (eˣ−1)/x  — undefined at x=0; limit exists",
+            pl(svg_pts, col=OG, w=2.2)),
+        hs("Limit value = 1  (filled dot — (eˣ−1)/x → 1 as x→0)",
+            ci(ox,lim_y, 4.5, fi=OG, col=OG, w=0),
+            hitdot(ox, lim_y, 14)),
+        hs("Removable discontinuity at x=0  (function undefined here, but limit = 1)",
+            ci(ox,lim_y, 6.5, fi="none", col=AC, w=1.5),
+            tx(ox+22, lim_y-8, 'limit=1', sz=10, col=AC),
+            hitdot(ox, lim_y, 22)),
+        hs("lim((eˣ−1)/x) as x→0 = 1  (related to the definition of e)",
+            tx(W/2, 16, "lim((eˣ-1)/x) as x→0 = 1", sz=9, col=LB),
+            hitdot(W/2, 16, 65)),
+    ]
 
 def graph_xx():
     ox,oy = 60,155; sx=30; sy=40
     pts = [(0.05*i, (0.05*i)**(0.05*i) if 0.05*i > 0 else 1) for i in range(1, 61)]
     svg_pts = [(ox+x*sx, oy-y*sy) for x,y in pts]
     return axes_shape(ox,oy, xr=170, yr=140) + [
-        pl(svg_pts, col=OG, w=2.2),
-        tx(W/2, 16, "d/dx[xˣ] = xˣ(ln x + 1)", sz=10, col=LB)]
+        hs("Curve f(x) = xˣ  — defined for x > 0; minimum near x = 1/e ≈ 0.37",
+            pl(svg_pts, col=OG, w=2.2)),
+        hs("d/dx[xˣ] = xˣ(ln x + 1)  (use logarithmic differentiation)",
+            tx(W/2, 16, "d/dx[xˣ] = xˣ(ln x + 1)", sz=10, col=LB),
+            hitdot(W/2, 16, 65)),
+    ]
 
 def graph_sinx_cosx():
     ox,oy = 120,120; sx=28; sy=60
     pts = curve_pts(lambda x: math.sin(x)*math.cos(x), -math.pi, math.pi)
     svg_pts = math_to_svg(pts, ox, oy, sx, sy)
     return axes_shape(ox,oy) + [
-        pl(svg_pts, col=OG, w=2.2),
-        tx(W/2, 16, "∫ sinx cosx dx = sin²x/2 + C", sz=9, col=LB)]
+        hs("Curve y = sin(x)·cos(x) = ½sin(2x)  — double-frequency sine wave",
+            pl(svg_pts, col=OG, w=2.2)),
+        hs("∫ sinx cosx dx = sin²x/2 + C  (use substitution u = sin x)",
+            tx(W/2, 16, "∫ sinx cosx dx = sin²x/2 + C", sz=9, col=LB),
+            hitdot(W/2, 16, 65)),
+    ]
 
 def graph_x4_poly():
     ox,oy = 120,155; sx=18; sy=5
     pts = curve_pts(lambda x: x**4 - 3*x**2 + 2, -2.3, 2.3)
     svg_pts = math_to_svg(pts, ox, oy, sx, sy, y_clip=15)
-    # Mark inflection regions
     return axes_shape(ox,oy) + [
-        pl(svg_pts, col=OG, w=2.2),
-        tx(W/2, 16, "y = x⁴−3x²+2  →  y'' = 12x²−6", sz=9, col=LB)]
+        hs("Curve y = x⁴−3x²+2  — degree-4 polynomial with two local minima and one local max",
+            pl(svg_pts, col=OG, w=2.2)),
+        hs("y'' = 12x²−6 — second derivative; set to 0 to find inflection points (x = ±1/√2)",
+            tx(W/2, 16, "y = x⁴−3x²+2  →  y'' = 12x²−6", sz=9, col=LB),
+            hitdot(W/2, 16, 65)),
+    ]
 
 def graph_e_x2():
     ox,oy = 120,160; sx=28; sy=12
     pts = curve_pts(lambda x: math.exp(x**2), -1.8, 1.8)
     svg_pts = math_to_svg(pts, ox, oy, sx, sy, y_clip=15)
     return axes_shape(ox,oy) + [
-        pl(svg_pts, col=OG, w=2.2),
-        tx(W/2, 16, "d/dx[e^(x²)] = 2x e^(x²)", sz=10, col=LB)]
+        hs("Curve f(x) = e^(x²)  — symmetric about y-axis; grows faster than eˣ",
+            pl(svg_pts, col=OG, w=2.2)),
+        hs("Chain rule: d/dx[e^(x²)] = 2x·e^(x²)  (outer' = eˣ, inner' = 2x)",
+            tx(W/2, 16, "d/dx[e^(x²)] = 2x e^(x²)", sz=10, col=LB),
+            hitdot(W/2, 16, 65)),
+    ]
 
 def graph_def_integral_x2():
     return graph_with_area(lambda x: x**2, "x²", 0, 1, ox=60, oy=155, sx=110, sy=90, y_max=1.2)
@@ -797,8 +1051,11 @@ save("calc-e-006.svg", graph_power(4))
 save("calc-e-007.svg", graph_with_area(lambda x: 3, "3", 0, 3, ox=60, oy=155, sx=40, sy=30))
 save("calc-e-008.svg", graph_limit(lambda x: x**2, 2, "lim(x→2) x² = 4"))
 save("calc-e-009.svg", axes_shape() + [
-     pl(math_to_svg(curve_pts(lambda x: x**2+3*x, -4,1.5), 120,155,22,10,y_clip=10), col=OG, w=2.2),
-     tx(W/2, 16, "d/dx[x²+3x] = 2x+3", sz=10, col=LB)])
+     hs("Curve y = x²+3x  — a parabola shifted left and down",
+         pl(math_to_svg(curve_pts(lambda x: x**2+3*x, -4,1.5), 120,155,22,10,y_clip=10), col=OG, w=2.2)),
+     hs("Power rule + sum rule: d/dx[x²+3x] = 2x+3",
+         tx(W/2, 16, "d/dx[x²+3x] = 2x+3", sz=10, col=LB),
+         hitdot(W/2, 16, 65))])
 save("calc-e-010.svg", graph_def_integral_x2())
 save("calc-m-001.svg", graph_product_rule())
 save("calc-m-002.svg", graph_quotient_rule())

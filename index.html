@@ -42,6 +42,18 @@
       color: var(--accent);
     }
 
+    #manual-link {
+      display: block;
+      text-align: center;
+      font-size: 0.75rem;
+      color: var(--muted);
+      text-decoration: none;
+      margin-top: -4px;
+      margin-bottom: 4px;
+      letter-spacing: 0.05em;
+    }
+    #manual-link:hover { color: var(--accent); }
+
     /* ── Score bar ─────────────────────────────────────────── */
     #score-bar {
       font-size: 0.82rem;
@@ -299,6 +311,117 @@
     .ctrl-btn.primary:hover { filter: brightness(1.15); }
     .ctrl-btn.nav { font-size: 1rem; padding: 8px 18px; }
 
+    /* Notes button badge */
+    #notes-btn { position: relative; }
+    #notes-btn .badge {
+      position: absolute;
+      top: 4px; right: 4px;
+      width: 7px; height: 7px;
+      border-radius: 50%;
+      background: var(--hint);
+      display: none;
+    }
+    #notes-btn.has-notes .badge { display: block; }
+
+    /* Notes modal overlay */
+    #notes-modal {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.55);
+      z-index: 8000;
+      align-items: center;
+      justify-content: center;
+    }
+    #notes-modal.open { display: flex; }
+
+    #notes-drawer {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      width: min(580px, 92vw);
+      max-height: 80vh;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0 16px 48px rgba(0,0,0,0.6);
+      overflow: hidden;
+    }
+
+    #notes-drawer header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 16px 20px 12px;
+      border-bottom: 1px solid var(--border);
+      flex-shrink: 0;
+    }
+    #notes-drawer header h2 {
+      font-size: 0.85rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin: 0;
+    }
+    #notes-drawer header .puzzle-title {
+      font-size: 0.88rem;
+      color: var(--accent);
+      font-weight: 600;
+    }
+    #notes-close {
+      background: none;
+      border: none;
+      color: var(--muted);
+      font-size: 1.3rem;
+      cursor: pointer;
+      line-height: 1;
+      padding: 2px 6px;
+      border-radius: 4px;
+    }
+    #notes-close:hover { color: var(--text); background: var(--panel); }
+
+    #notes-body { padding: 16px 20px 20px; display: flex; flex-direction: column; gap: 10px; flex: 1; min-height: 0; }
+
+    #notes-textarea {
+      flex: 1;
+      min-height: 220px;
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      color: var(--text);
+      font-family: system-ui, sans-serif;
+      font-size: 0.92rem;
+      line-height: 1.6;
+      padding: 12px 14px;
+      resize: vertical;
+      outline: none;
+      transition: border-color 0.15s;
+    }
+    #notes-textarea:focus { border-color: var(--accent); }
+    #notes-textarea::placeholder { color: var(--muted); }
+
+    #notes-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      flex-shrink: 0;
+    }
+    #notes-status {
+      font-size: 0.75rem;
+      color: var(--muted);
+      min-width: 80px;
+    }
+    #notes-clear {
+      background: none;
+      border: 1px solid var(--border);
+      color: var(--muted);
+      border-radius: 7px;
+      padding: 6px 14px;
+      font-size: 0.82rem;
+      cursor: pointer;
+    }
+    #notes-clear:hover { border-color: var(--wrong); color: var(--wrong); }
+
     /* Completion banner */
     #completion {
       display: none;
@@ -319,12 +442,42 @@
       justify-content: center;
     }
     #puzzle-img:empty { display: none; }
-    #puzzle-img img {
+    #puzzle-img img, #puzzle-img svg {
       max-width: 240px;
       max-height: 160px;
-      width: auto;
+      width: 100%;
       height: auto;
       border-radius: 6px;
+    }
+
+    /* SVG hover tooltip */
+    #svg-tip {
+      position: fixed;
+      display: none;
+      background: var(--panel);
+      border: 1px solid var(--accent);
+      color: var(--text);
+      font-size: 0.8rem;
+      padding: 5px 11px;
+      border-radius: 7px;
+      pointer-events: none;
+      z-index: 10000;
+      white-space: nowrap;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.5);
+    }
+
+    /* Ghost piece that flies during animated solve */
+    .ghost-drag {
+      position: fixed;
+      pointer-events: none;
+      z-index: 9999;
+      border-radius: 8px;
+      background: var(--surface);
+      border: 2px solid var(--accent);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 6px 28px rgba(92,138,255,0.55);
     }
 
     /* Step fade transition */
@@ -415,6 +568,7 @@
 <body>
 
 <h1>Math Game</h1>
+<a id="manual-link" href="manual.html">Player Manual</a>
 
 <div id="score-bar">
   Solved: <b id="sc-solved">0</b>
@@ -474,8 +628,29 @@
       <button class="ctrl-btn" id="hint-btn" disabled>Give Up This Step</button>
       <button class="ctrl-btn" id="reset-btn">Reset</button>
       <button class="ctrl-btn primary" id="final-btn">Final Answer</button>
+      <button class="ctrl-btn" id="notes-btn">📝 Notes<span class="badge"></span></button>
     </div>
 
+  </div>
+</div>
+
+<!-- Notes modal -->
+<div id="notes-modal" role="dialog" aria-modal="true" aria-label="Puzzle Notes">
+  <div id="notes-drawer">
+    <header>
+      <div>
+        <h2>Notes</h2>
+        <div class="puzzle-title" id="notes-puzzle-title"></div>
+      </div>
+      <button id="notes-close" aria-label="Close notes">✕</button>
+    </header>
+    <div id="notes-body">
+      <textarea id="notes-textarea" placeholder="Jot down your thoughts, formulas, or reminders about this puzzle…" spellcheck="true"></textarea>
+      <div id="notes-footer">
+        <span id="notes-status"></span>
+        <button id="notes-clear">Clear notes</button>
+      </div>
+    </div>
   </div>
 </div>
 
@@ -490,7 +665,8 @@ const G = {
   currentStep:     0,     // index into visibleSteps()
   completedDrops:  null,
   draggingId:      null,
-  autoTimer:       null,
+  animating:       false, // true while ghost-drag animation is in flight
+  stepVer:         0,     // increments on every step change to invalidate stale ghosts
   score:           { solved: 0, hints: 0 },
 };
 
@@ -557,7 +733,6 @@ function loadPuzzle() {
   G.currentStep    = 0;
   G.completedDrops = new Set();
   G.mergedSyms     = { ...G.globalSyms, ...(G.puzzle.symbols || {}) };
-  cancelAutoTimer();
   completion.style.display = 'none';
 
   const topicIndex = topicSel.selectedIndex;            // 0–4
@@ -567,9 +742,30 @@ function loadPuzzle() {
   $('puzzle-num-badge').textContent = `#${globalNum}`;
 
   renderAll();
+  loadNotes();
 }
 
 $('load-btn').addEventListener('click', loadPuzzle);
+
+// ── SVG tooltip ────────────────────────────────────────────────
+const svgTip = document.createElement('div');
+svgTip.id = 'svg-tip';
+document.body.appendChild(svgTip);
+
+function setupSvgTooltips(container) {
+  container.addEventListener('mousemove', e => {
+    const hot = e.target.closest('[data-label]');
+    if (hot) {
+      svgTip.textContent = hot.dataset.label;
+      svgTip.style.display = 'block';
+      svgTip.style.left = (e.clientX + 14) + 'px';
+      svgTip.style.top  = (e.clientY - 36) + 'px';
+    } else {
+      svgTip.style.display = 'none';
+    }
+  });
+  container.addEventListener('mouseleave', () => { svgTip.style.display = 'none'; });
+}
 
 // ── Master render ──────────────────────────────────────────────
 function renderAll() {
@@ -583,11 +779,20 @@ function renderQuestion() {
   renderLatex(G.puzzle.question.latex, qRender);
   qPlain.textContent = G.puzzle.question.plain;
   const imgDiv = $('puzzle-img');
-  if (G.puzzle.image) {
-    imgDiv.innerHTML = `<img src="puzzles/images/${G.puzzle.image}" alt="diagram" />`;
-  } else {
-    imgDiv.innerHTML = '';
-  }
+  if (!G.puzzle.image) { imgDiv.innerHTML = ''; return; }
+
+  // Inline SVG so data-label hover events work (img tags block DOM events)
+  fetch(`puzzles/images/${G.puzzle.image}`)
+    .then(r => r.text())
+    .then(svg => {
+      imgDiv.innerHTML = svg;
+      const el = imgDiv.querySelector('svg');
+      if (el) { el.style.maxWidth = '240px'; el.style.width = '100%'; el.style.height = 'auto'; }
+      setupSvgTooltips(imgDiv);
+    })
+    .catch(() => {
+      imgDiv.innerHTML = `<img src="puzzles/images/${G.puzzle.image}" alt="diagram"/>`;
+    });
 }
 
 // ── Palette ────────────────────────────────────────────────────
@@ -699,7 +904,6 @@ function renderCurrentStep() {
   stepEq.innerHTML = '';
   if (targets.length === 0) {
     renderLatex(step.toLatex, stepEq, true);
-    G.autoTimer = setTimeout(() => advanceStep(), 1000);
   } else {
     buildDropZoneEquation(step.fromLatex, targets, stepEq);
   }
@@ -800,8 +1004,14 @@ function handleDrop(dz, dzIdx, paletteId) {
   }
 }
 
+function cancelAnimation() {
+  G.animating = false;
+  document.querySelectorAll('.ghost-drag').forEach(el => el.remove());
+}
+
 function advanceStep() {
-  cancelAutoTimer();
+  cancelAnimation();
+  G.stepVer++;
   stepEq.classList.add('fading');
   setTimeout(() => {
     G.currentStep++;
@@ -816,10 +1026,6 @@ function advanceStep() {
       stepEq.classList.remove('fading');
     }));
   }, 400);
-}
-
-function cancelAutoTimer() {
-  if (G.autoTimer) { clearTimeout(G.autoTimer); G.autoTimer = null; }
 }
 
 // ── Hint / Give Up ─────────────────────────────────────────────
@@ -881,7 +1087,8 @@ function goNext() {
 
 function goPrev() {
   if (!G.puzzle || G.currentStep <= 0) return;
-  cancelAutoTimer();
+  cancelAnimation();
+  G.stepVer++;
   G.currentStep--;
   G.completedDrops = new Set();
   clearHint();
@@ -891,16 +1098,15 @@ function goPrev() {
 function updateNavButtons() {
   prevBtn.disabled = !G.puzzle || G.currentStep <= 0;
   const step = visibleSteps()[G.currentStep];
-  nextBtn.disabled = !step || !!step.paletteRef;
+  nextBtn.disabled = !G.puzzle || !step || G.currentStep >= visibleSteps().length;
   hintBtn.disabled = !step || !step.paletteRef;
 }
 
 prevBtn.addEventListener('click', goPrev);
-nextBtn.addEventListener('click', goNext);
+nextBtn.addEventListener('click', playNextStep);
 
 $('reset-btn').addEventListener('click', () => {
   if (!G.puzzle) return;
-  cancelAutoTimer();
   G.currentStep    = 0;
   G.completedDrops = new Set();
   clearHint();
@@ -927,9 +1133,91 @@ $('final-btn').addEventListener('click', () => {
   updateNavButtons();
 });
 
+// ── Animated right-arrow solve ─────────────────────────────────
+function flyGhost(fromEl, toEl, ver, onArrive) {
+  const fr = fromEl.getBoundingClientRect();
+  const tr = toEl.getBoundingClientRect();
+
+  const ghost = document.createElement('div');
+  ghost.className = 'ghost-drag';
+  Object.assign(ghost.style, {
+    left: fr.left + 'px', top: fr.top + 'px',
+    width: fr.width + 'px', height: fr.height + 'px',
+    opacity: '0.92',
+  });
+  const inner = fromEl.querySelector('span');
+  if (inner) ghost.innerHTML = inner.outerHTML;
+  document.body.appendChild(ghost);
+
+  const dx = tr.left + (tr.width  - fr.width)  / 2 - fr.left;
+  const dy = tr.top  + (tr.height - fr.height) / 2 - fr.top;
+
+  // Double-rAF ensures the browser paints the start position first
+  requestAnimationFrame(() => requestAnimationFrame(() => {
+    ghost.style.transition = 'transform 2s cubic-bezier(0.4, 0, 0.2, 1)';
+    ghost.style.transform  = `translate(${dx}px, ${dy}px)`;
+  }));
+
+  setTimeout(() => {
+    ghost.style.transition = 'opacity 0.15s';
+    ghost.style.opacity = '0';
+    setTimeout(() => {
+      ghost.remove();
+      if (G.stepVer === ver) onArrive();
+    }, 160);
+  }, 2000);
+}
+
+function animatedSolve() {
+  if (G.animating) return;
+  const step = visibleSteps()[G.currentStep];
+  if (!step || !step.paletteRef) return;
+
+  const palItem   = $('palette').querySelector(`[data-id="${step.paletteRef}"]`);
+  if (!palItem) return;
+  const dropZones = Array.from(stepEq.querySelectorAll('.drop-zone:not(.done)'));
+  if (!dropZones.length) return;
+
+  G.animating = true;
+  const ver = G.stepVer;
+
+  // Phase 1: highlight both for 700 ms so the user can see what will happen
+  palItem.classList.add('hint-highlight');
+  dropZones.forEach(dz => dz.classList.add('hint-target'));
+
+  setTimeout(() => {
+    if (G.stepVer !== ver) { G.animating = false; return; }
+    palItem.classList.remove('hint-highlight');
+    dropZones.forEach(dz => dz.classList.remove('hint-target'));
+
+    // Phase 2: fly ghost from palette item to first drop zone
+    flyGhost(palItem, dropZones[0], ver, () => {
+      G.animating = false;
+      // Complete all uncompleted drops for this step
+      dropZones.forEach(dz => {
+        const idx = parseInt(dz.dataset.dzIdx);
+        if (!isNaN(idx) && !G.completedDrops.has(idx)) {
+          handleDrop(dz, idx, step.paletteRef);
+        }
+      });
+    });
+  }, 700);
+}
+
+function playNextStep() {
+  if (!G.puzzle || G.animating) return;
+  const step = visibleSteps()[G.currentStep];
+  if (!step) return;
+  if (step.paletteRef) {
+    animatedSolve();
+  } else {
+    advanceStep();
+  }
+}
+
 // ── Keyboard ───────────────────────────────────────────────────
 document.addEventListener('keydown', e => {
-  if (e.key === 'ArrowRight') goNext();
+  if (e.key === 'ArrowRight') playNextStep();
   if (e.key === 'ArrowLeft')  goPrev();
 });
 
@@ -964,6 +1252,77 @@ function moveTip(e) {
   symTip.style.left = (e.clientX + 14) + 'px';
   symTip.style.top  = (e.clientY - 10) + 'px';
 }
+
+// ── Gamer Notes ────────────────────────────────────────────────
+const notesModal    = $('notes-modal');
+const notesTextarea = $('notes-textarea');
+const notesStatus   = $('notes-status');
+const notesBtn      = $('notes-btn');
+const notesPuzzleTitle = $('notes-puzzle-title');
+
+let _notesSaveTimer = null;
+
+function notesKey() {
+  return G.puzzle ? `notes.${G.puzzle.id}` : null;
+}
+
+function loadNotes() {
+  const key = notesKey();
+  notesTextarea.value = key ? (localStorage.getItem(key) || '') : '';
+  updateNotesBadge();
+  notesStatus.textContent = '';
+  if (G.puzzle) notesPuzzleTitle.textContent = G.puzzle.id;
+}
+
+function saveNotes() {
+  const key = notesKey();
+  if (!key) return;
+  const val = notesTextarea.value;
+  if (val.trim()) {
+    localStorage.setItem(key, val);
+  } else {
+    localStorage.removeItem(key);
+  }
+  updateNotesBadge();
+  notesStatus.textContent = 'Saved';
+  setTimeout(() => { if (notesStatus.textContent === 'Saved') notesStatus.textContent = ''; }, 1800);
+}
+
+function updateNotesBadge() {
+  const key = notesKey();
+  const hasNote = key && !!localStorage.getItem(key);
+  notesBtn.classList.toggle('has-notes', hasNote);
+}
+
+notesTextarea.addEventListener('input', () => {
+  notesStatus.textContent = '…';
+  clearTimeout(_notesSaveTimer);
+  _notesSaveTimer = setTimeout(saveNotes, 500);
+});
+
+notesBtn.addEventListener('click', () => {
+  notesModal.classList.add('open');
+  notesTextarea.focus();
+});
+
+$('notes-close').addEventListener('click', () => notesModal.classList.remove('open'));
+
+notesModal.addEventListener('click', e => {
+  if (e.target === notesModal) notesModal.classList.remove('open');
+});
+
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape' && notesModal.classList.contains('open')) {
+    notesModal.classList.remove('open');
+  }
+});
+
+$('notes-clear').addEventListener('click', () => {
+  if (!notesTextarea.value.trim()) return;
+  if (!confirm('Clear all notes for this puzzle?')) return;
+  notesTextarea.value = '';
+  saveNotes();
+});
 
 // ── Init ───────────────────────────────────────────────────────
 (async () => {
