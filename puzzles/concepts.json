@@ -137,5 +137,63 @@
     "puzzles": [
       "calc-h-002"
     ]
+  },
+  {
+    "label": "Quadratic Formula",
+    "puzzles": [
+      "alg2-m-001",
+      "alg2-h-001","alg2-h-010"
+    ]
+  },
+  {
+    "label": "Complex Numbers",
+    "puzzles": [
+      "alg2-e-002","alg2-e-003","alg2-e-007",
+      "alg2-h-006"
+    ]
+  },
+  {
+    "label": "Factoring",
+    "puzzles": [
+      "alg2-e-001","alg2-e-008","alg2-e-009",
+      "alg2-m-002",
+      "alg2-h-002","alg2-h-003","alg2-h-008","alg2-h-009"
+    ]
+  },
+  {
+    "label": "Completing the Square",
+    "puzzles": [
+      "alg2-m-002","alg2-m-009"
+    ]
+  },
+  {
+    "label": "Sequences & Series",
+    "puzzles": [
+      "alg2-e-006",
+      "alg2-m-005","alg2-m-006",
+      "alg2-h-005"
+    ]
+  },
+  {
+    "label": "Exponential (eˣ)",
+    "puzzles": [
+      "calc-m-005","calc-m-007",
+      "calc-h-002","calc-h-007","calc-h-009",
+      "alg2-m-007","alg2-h-004"
+    ]
+  },
+  {
+    "label": "Logarithm (ln)",
+    "puzzles": [
+      "calc-m-006",
+      "calc-h-001","calc-h-004","calc-h-008","calc-h-009",
+      "alg2-h-003"
+    ]
+  },
+  {
+    "label": "Function Composition",
+    "puzzles": [
+      "alg2-e-010","alg2-m-003"
+    ]
   }
 ]
