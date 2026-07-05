@@ -2950,5 +2950,210 @@
         "description": "Combine like terms: 8x − 3x = 5x"
       }
     ]
+  },
+  {
+    "id": "alg-e-016", "topic": "algebra", "difficulty": "easy",
+    "question": {"latex": "2 + 3 \\times 4 = ?", "plain": "Evaluate using the order of operations (PEMDAS)"},
+    "symbols": {"PEMDAS": "Multiply before adding"},
+    "palette": [
+      {"id": "p1", "latex": "12", "description": "3 × 4 = 12"},
+      {"id": "p2", "latex": "14", "description": "2 + 12 = 14"}
+    ],
+    "steps": [
+      {"id": "s1", "fromLatex": "2 + 3 \\times 4", "toLatex": "2 + 12", "paletteRef": "p1", "dropTargets": ["3 \\times 4"], "description": "Multiply first (PEMDAS): 3 × 4 = 12"},
+      {"id": "s2", "fromLatex": "2 + 12", "toLatex": "14", "paletteRef": "p2", "dropTargets": ["2 + 12"], "description": "Then add: 2 + 12 = 14"}
+    ]
+  },
+  {
+    "id": "alg-e-017", "topic": "algebra", "difficulty": "easy",
+    "question": {"latex": "x + 4 > 9", "plain": "Solve the inequality"},
+    "symbols": {">": "Greater than; solve like an equation"},
+    "palette": [
+      {"id": "p1", "latex": "5", "description": "9 − 4 = 5"}
+    ],
+    "steps": [
+      {"id": "s1", "fromLatex": "x > 9 - 4", "toLatex": "x > 5", "paletteRef": "p1", "dropTargets": ["9 - 4"], "description": "Subtract 4 from both sides: 9 − 4 = 5"}
+    ]
+  },
+  {
+    "id": "alg-e-018", "topic": "algebra", "difficulty": "easy",
+    "question": {"latex": "y = 3x + 5", "plain": "Find the y-intercept (set x = 0)"},
+    "symbols": {"y-intercept": "The value of y when x = 0"},
+    "palette": [
+      {"id": "p1", "latex": "5", "description": "0 + 5 = 5"}
+    ],
+    "steps": [
+      {"id": "s1a", "fromLatex": "y = 3(0) + 5", "toLatex": "y = 0 + 5", "paletteRef": null, "dropTargets": [], "description": "Set x = 0"},
+      {"id": "s2", "fromLatex": "y = 0 + 5", "toLatex": "y = 5", "paletteRef": "p1", "dropTargets": ["0 + 5"], "description": "Simplify: 0 + 5 = 5; y-intercept is (0, 5)"}
+    ]
+  },
+  {
+    "id": "alg-e-019", "topic": "algebra", "difficulty": "easy",
+    "question": {"latex": "(2x + 3) + (4x - 1)", "plain": "Add the polynomials"},
+    "symbols": {},
+    "palette": [
+      {"id": "p1", "latex": "6x", "description": "2x + 4x = 6x"},
+      {"id": "p2", "latex": "2", "description": "3 − 1 = 2"}
+    ],
+    "steps": [
+      {"id": "s1", "fromLatex": "2x + 4x + 3 - 1", "toLatex": "6x + 3 - 1", "paletteRef": "p1", "dropTargets": ["2x + 4x"], "description": "Combine x-terms: 2x + 4x = 6x"},
+      {"id": "s2", "fromLatex": "6x + 3 - 1", "toLatex": "6x + 2", "paletteRef": "p2", "dropTargets": ["3 - 1"], "description": "Combine constants: 3 − 1 = 2"}
+    ]
+  },
+  {
+    "id": "alg-e-020", "topic": "algebra", "difficulty": "easy",
+    "question": {"latex": "(x + 3)^2 = ?", "plain": "Expand the perfect square trinomial"},
+    "symbols": {"(a+b)^2": "= a² + 2ab + b²"},
+    "palette": [
+      {"id": "p1", "latex": "6x", "description": "2 · x · 3 = 6x"},
+      {"id": "p2", "latex": "9", "description": "3² = 9"}
+    ],
+    "steps": [
+      {"id": "s1a", "fromLatex": "x^2 + 2 \\cdot x \\cdot 3 + 3^2", "toLatex": "x^2 + 2 \\cdot x \\cdot 3 + 3^2", "paletteRef": null, "dropTargets": [], "description": "Apply (a+b)² = a² + 2ab + b² with a = x, b = 3"},
+      {"id": "s2", "fromLatex": "x^2 + 2 \\cdot x \\cdot 3 + 3^2", "toLatex": "x^2 + 6x + 3^2", "paletteRef": "p1", "dropTargets": ["2 \\cdot x \\cdot 3"], "description": "Middle term: 2·x·3 = 6x"},
+      {"id": "s3", "fromLatex": "x^2 + 6x + 3^2", "toLatex": "x^2 + 6x + 9", "paletteRef": "p2", "dropTargets": ["3^2"], "description": "Last term: 3² = 9"}
+    ]
+  },
+  {
+    "id": "alg-m-016", "topic": "algebra", "difficulty": "medium",
+    "question": {"latex": "3x - 2 \\leq 10", "plain": "Solve the inequality"},
+    "symbols": {"\\leq": "Less than or equal to"},
+    "palette": [
+      {"id": "p1", "latex": "12", "description": "10 + 2 = 12"},
+      {"id": "p2", "latex": "4", "description": "12 ÷ 3 = 4"}
+    ],
+    "steps": [
+      {"id": "s1", "fromLatex": "3x \\leq 10 + 2", "toLatex": "3x \\leq 12", "paletteRef": "p1", "dropTargets": ["10 + 2"], "description": "Add 2 to both sides: 10 + 2 = 12"},
+      {"id": "s2", "fromLatex": "x \\leq \\frac{12}{3}", "toLatex": "x \\leq 4", "paletteRef": "p2", "dropTargets": ["\\frac{12}{3}"], "description": "Divide both sides by 3: 12 ÷ 3 = 4"}
+    ]
+  },
+  {
+    "id": "alg-m-017", "topic": "algebra", "difficulty": "medium",
+    "question": {"latex": "x^2 - 6x + 8 = 0", "plain": "Solve using the quadratic formula"},
+    "symbols": {"a": "1", "b": "-6", "c": "8"},
+    "palette": [
+      {"id": "p1", "latex": "4", "description": "36 − 32 = 4 (the discriminant)"},
+      {"id": "p2", "latex": "2", "description": "√4 = 2"}
+    ],
+    "steps": [
+      {"id": "s1a", "fromLatex": "x = \\frac{6 \\pm \\sqrt{(-6)^2 - 4(1)(8)}}{2(1)}", "toLatex": "x = \\frac{6 \\pm \\sqrt{36 - 32}}{2}", "paletteRef": null, "dropTargets": [], "description": "Substitute a=1, b=−6, c=8 into x = (−b ± √(b²−4ac)) / 2a"},
+      {"id": "s2", "fromLatex": "x = \\frac{6 \\pm \\sqrt{36 - 32}}{2}", "toLatex": "x = \\frac{6 \\pm \\sqrt{4}}{2}", "paletteRef": "p1", "dropTargets": ["36 - 32"], "description": "Compute discriminant: 36 − 32 = 4"},
+      {"id": "s3", "fromLatex": "x = \\frac{6 \\pm \\sqrt{4}}{2}", "toLatex": "x = \\frac{6 \\pm 2}{2}", "paletteRef": "p2", "dropTargets": ["\\sqrt{4}"], "description": "Take square root: √4 = 2"},
+      {"id": "s4a", "fromLatex": "x = \\frac{6+2}{2} = 4 \\quad \\text{or} \\quad x = \\frac{6-2}{2} = 2", "toLatex": "x = 4 \\text{ or } x = 2", "paletteRef": null, "dropTargets": [], "description": "Evaluate both cases"}
+    ]
+  },
+  {
+    "id": "alg-m-018", "topic": "algebra", "difficulty": "medium",
+    "question": {"latex": "2x + 4y = 12", "plain": "Convert standard form to slope-intercept form y = mx + b"},
+    "symbols": {"Ax + By = C": "Standard form of a linear equation"},
+    "palette": [
+      {"id": "p1", "latex": "-\\frac{x}{2} + 3", "description": "Divide −2x+12 by 4: −x/2 + 3"}
+    ],
+    "steps": [
+      {"id": "s1a", "fromLatex": "4y = -2x + 12", "toLatex": "4y = -2x + 12", "paletteRef": null, "dropTargets": [], "description": "Subtract 2x from both sides"},
+      {"id": "s2", "fromLatex": "y = \\frac{-2x + 12}{4}", "toLatex": "y = -\\frac{x}{2} + 3", "paletteRef": "p1", "dropTargets": ["\\frac{-2x + 12}{4}"], "description": "Divide both sides by 4 and simplify each term"}
+    ]
+  },
+  {
+    "id": "alg-m-019", "topic": "algebra", "difficulty": "medium",
+    "question": {"latex": "(3x - 2)(3x + 2) = ?", "plain": "Expand using the difference of squares pattern"},
+    "symbols": {"(a-b)(a+b)": "= a² − b²"},
+    "palette": [
+      {"id": "p1", "latex": "9x^2", "description": "(3x)² = 9x²"},
+      {"id": "p2", "latex": "4", "description": "2² = 4"}
+    ],
+    "steps": [
+      {"id": "s1a", "fromLatex": "(3x)^2 - 2^2", "toLatex": "(3x)^2 - 2^2", "paletteRef": null, "dropTargets": [], "description": "Apply (a−b)(a+b) = a² − b² with a = 3x, b = 2"},
+      {"id": "s2", "fromLatex": "(3x)^2 - 2^2", "toLatex": "9x^2 - 2^2", "paletteRef": "p1", "dropTargets": ["(3x)^2"], "description": "Compute (3x)² = 9x²"},
+      {"id": "s3", "fromLatex": "9x^2 - 2^2", "toLatex": "9x^2 - 4", "paletteRef": "p2", "dropTargets": ["2^2"], "description": "Compute 2² = 4"}
+    ]
+  },
+  {
+    "id": "alg-m-020", "topic": "algebra", "difficulty": "medium",
+    "question": {"latex": "3x - 2y = 12", "plain": "Find the x-intercept (set y = 0)"},
+    "symbols": {"x-intercept": "The point where y = 0"},
+    "palette": [
+      {"id": "p1", "latex": "12", "description": "3x − 0 = 12"},
+      {"id": "p2", "latex": "4", "description": "12 ÷ 3 = 4"}
+    ],
+    "steps": [
+      {"id": "s1", "fromLatex": "3x - 2(0) = 12", "toLatex": "3x = 12", "paletteRef": "p1", "dropTargets": ["3x - 2(0)"], "description": "Set y = 0; simplify: 3x − 0 = 3x = 12"},
+      {"id": "s2", "fromLatex": "x = \\frac{12}{3}", "toLatex": "x = 4", "paletteRef": "p2", "dropTargets": ["\\frac{12}{3}"], "description": "Divide: 12 ÷ 3 = 4; x-intercept is (4, 0)"}
+    ]
+  },
+  {
+    "id": "alg-h-016", "topic": "algebra", "difficulty": "hard",
+    "question": {"latex": "2x^2 + x - 3 = 0", "plain": "Solve using the quadratic formula"},
+    "symbols": {"a": "2", "b": "1", "c": "-3"},
+    "palette": [
+      {"id": "p1", "latex": "25", "description": "1 + 24 = 25 (the discriminant)"},
+      {"id": "p2", "latex": "5", "description": "√25 = 5"}
+    ],
+    "steps": [
+      {"id": "s1a", "fromLatex": "x = \\frac{-1 \\pm \\sqrt{1^2 - 4(2)(-3)}}{2(2)}", "toLatex": "x = \\frac{-1 \\pm \\sqrt{1 + 24}}{4}", "paletteRef": null, "dropTargets": [], "description": "Substitute a=2, b=1, c=−3 into the quadratic formula"},
+      {"id": "s2", "fromLatex": "x = \\frac{-1 \\pm \\sqrt{1 + 24}}{4}", "toLatex": "x = \\frac{-1 \\pm \\sqrt{25}}{4}", "paletteRef": "p1", "dropTargets": ["1 + 24"], "description": "Compute discriminant: 1 + 24 = 25"},
+      {"id": "s3", "fromLatex": "x = \\frac{-1 \\pm \\sqrt{25}}{4}", "toLatex": "x = \\frac{-1 \\pm 5}{4}", "paletteRef": "p2", "dropTargets": ["\\sqrt{25}"], "description": "Take square root: √25 = 5"},
+      {"id": "s4a", "fromLatex": "x = \\frac{-1+5}{4} = 1 \\quad \\text{or} \\quad x = \\frac{-1-5}{4} = -\\frac{3}{2}", "toLatex": "x = 1 \\text{ or } x = -\\frac{3}{2}", "paletteRef": null, "dropTargets": [], "description": "Evaluate both cases: x = 1 or x = −3/2"}
+    ]
+  },
+  {
+    "id": "alg-h-017", "topic": "algebra", "difficulty": "hard",
+    "question": {"latex": "|2x - 1| \\leq 5", "plain": "Solve the absolute value inequality"},
+    "symbols": {"|A| \\leq b": "means −b ≤ A ≤ b"},
+    "palette": [
+      {"id": "p1", "latex": "-2", "description": "−4 ÷ 2 = −2"},
+      {"id": "p2", "latex": "3", "description": "6 ÷ 2 = 3"}
+    ],
+    "steps": [
+      {"id": "s1a", "fromLatex": "-5 \\leq 2x - 1 \\leq 5", "toLatex": "-5 \\leq 2x - 1 \\leq 5", "paletteRef": null, "dropTargets": [], "description": "|A| ≤ b means −b ≤ A ≤ b"},
+      {"id": "s2a", "fromLatex": "-4 \\leq 2x \\leq 6", "toLatex": "-4 \\leq 2x \\leq 6", "paletteRef": null, "dropTargets": [], "description": "Add 1 to all three parts: −5+1=−4 and 5+1=6"},
+      {"id": "s3", "fromLatex": "\\frac{-4}{2} \\leq x \\leq \\frac{6}{2}", "toLatex": "-2 \\leq x \\leq \\frac{6}{2}", "paletteRef": "p1", "dropTargets": ["\\frac{-4}{2}"], "description": "Divide left bound by 2: −4 ÷ 2 = −2"},
+      {"id": "s4", "fromLatex": "-2 \\leq x \\leq \\frac{6}{2}", "toLatex": "-2 \\leq x \\leq 3", "paletteRef": "p2", "dropTargets": ["\\frac{6}{2}"], "description": "Divide right bound by 2: 6 ÷ 2 = 3"}
+    ]
+  },
+  {
+    "id": "alg-h-018", "topic": "algebra", "difficulty": "hard",
+    "question": {"latex": "x^{2/3} = 4", "plain": "Solve using rational exponents"},
+    "symbols": {"x^{m/n}": "= (ⁿ√x)^m; raise both sides to the n/m power to isolate x"},
+    "palette": [
+      {"id": "p1", "latex": "2", "description": "√4 = 2"},
+      {"id": "p2", "latex": "8", "description": "2³ = 8"}
+    ],
+    "steps": [
+      {"id": "s1a", "fromLatex": "x = 4^{3/2} = (\\sqrt{4})^3", "toLatex": "x = (\\sqrt{4})^3", "paletteRef": null, "dropTargets": [], "description": "Raise both sides to the 3/2 power: x = 4^(3/2) = (√4)³"},
+      {"id": "s2", "fromLatex": "x = (\\sqrt{4})^3", "toLatex": "x = 2^3", "paletteRef": "p1", "dropTargets": ["\\sqrt{4}"], "description": "Compute √4 = 2"},
+      {"id": "s3", "fromLatex": "x = 2^3", "toLatex": "x = 8", "paletteRef": "p2", "dropTargets": ["2^3"], "description": "Compute 2³ = 8"}
+    ]
+  },
+  {
+    "id": "alg-h-019", "topic": "algebra", "difficulty": "hard",
+    "question": {"latex": "f(x) = 3x-1,\\ g(x) = x^2,\\ (f \\circ g)(2) = ?", "plain": "Evaluate the composition of functions at x = 2"},
+    "symbols": {"(f \\circ g)(x)": "= f(g(x)) — apply g first, then f"},
+    "palette": [
+      {"id": "p1", "latex": "4", "description": "g(2) = 2² = 4"},
+      {"id": "p2", "latex": "12", "description": "3 × 4 = 12"},
+      {"id": "p3", "latex": "11", "description": "12 − 1 = 11"}
+    ],
+    "steps": [
+      {"id": "s1", "fromLatex": "g(2) = 2^2", "toLatex": "g(2) = 4", "paletteRef": "p1", "dropTargets": ["2^2"], "description": "Evaluate g first: g(2) = 2² = 4"},
+      {"id": "s2", "fromLatex": "f(4) = 3 \\cdot 4 - 1", "toLatex": "f(4) = 12 - 1", "paletteRef": "p2", "dropTargets": ["3 \\cdot 4"], "description": "Feed result to f: compute 3 × 4 = 12"},
+      {"id": "s3", "fromLatex": "f(4) = 12 - 1", "toLatex": "f(4) = 11", "paletteRef": "p3", "dropTargets": ["12 - 1"], "description": "Subtract: 12 − 1 = 11"}
+    ]
+  },
+  {
+    "id": "alg-h-020", "topic": "algebra", "difficulty": "hard",
+    "question": {"latex": "(4x^3 - 2x^2 + x) - (x^3 + 3x^2 - 4x)", "plain": "Subtract the polynomials"},
+    "symbols": {},
+    "palette": [
+      {"id": "p1", "latex": "3x^3", "description": "4x³ − x³ = 3x³"},
+      {"id": "p2", "latex": "-5x^2", "description": "−2x² − 3x² = −5x²"},
+      {"id": "p3", "latex": "5x", "description": "x + 4x = 5x"}
+    ],
+    "steps": [
+      {"id": "s1a", "fromLatex": "4x^3 - 2x^2 + x - x^3 - 3x^2 + 4x", "toLatex": "4x^3 - 2x^2 + x - x^3 - 3x^2 + 4x", "paletteRef": null, "dropTargets": [], "description": "Distribute the minus sign: change signs of all terms in the second polynomial"},
+      {"id": "s2", "fromLatex": "4x^3 - x^3 - 2x^2 - 3x^2 + x + 4x", "toLatex": "3x^3 - 2x^2 - 3x^2 + x + 4x", "paletteRef": "p1", "dropTargets": ["4x^3 - x^3"], "description": "Combine x³ terms: 4x³ − x³ = 3x³"},
+      {"id": "s3", "fromLatex": "3x^3 - 2x^2 - 3x^2 + x + 4x", "toLatex": "3x^3 - 5x^2 + x + 4x", "paletteRef": "p2", "dropTargets": ["- 2x^2 - 3x^2"], "description": "Combine x² terms: −2x² − 3x² = −5x²"},
+      {"id": "s4", "fromLatex": "3x^3 - 5x^2 + x + 4x", "toLatex": "3x^3 - 5x^2 + 5x", "paletteRef": "p3", "dropTargets": ["x + 4x"], "description": "Combine x terms: x + 4x = 5x"}
+    ]
   }
 ]
