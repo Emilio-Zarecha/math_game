@@ -86,34 +86,40 @@
     }
     #picker button:hover { filter: brightness(1.15); }
 
-    #concept-row {
+    #browse-toggle {
       width: 100%;
       display: flex;
-      align-items: center;
       justify-content: center;
-      gap: 10px;
-      padding-top: 4px;
-      border-top: 1px solid var(--border);
-      margin-top: 2px;
+      gap: 0;
+      margin-bottom: 2px;
     }
-    #concept-label {
-      font-size: 0.78rem;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--muted);
+    .browse-tab {
+      background: var(--panel) !important;
+      border: 1px solid var(--border) !important;
+      color: var(--muted) !important;
+      font-weight: 400 !important;
+      font-size: 0.82rem !important;
+      padding: 5px 18px !important;
+      cursor: pointer;
+      transition: background 0.15s, color 0.15s;
     }
+    .browse-tab:first-child { border-radius: var(--radius) 0 0 var(--radius) !important; }
+    .browse-tab:last-child  { border-radius: 0 var(--radius) var(--radius) 0 !important; border-left: none !important; }
+    .browse-tab.active {
+      background: var(--accent) !important;
+      border-color: var(--accent) !important;
+      color: #fff !important;
+      font-weight: 600 !important;
+    }
+    .browse-tab:hover:not(.active) { background: var(--surface) !important; color: var(--text) !important; }
+
     #concept-count {
       font-size: 0.78rem;
       color: var(--muted);
       min-width: 80px;
+      align-self: center;
     }
-    #concept-select {
-      min-width: 220px;
-    }
-    #concept-select.active {
-      border-color: var(--accent);
-      color: var(--accent);
-    }
+    #concept-select { min-width: 220px; }
 
     /* ── Main layout ───────────────────────────────────────── */
     #layout {
@@ -607,6 +613,10 @@
 </div>
 
 <div id="picker">
+  <div id="browse-toggle">
+    <button class="browse-tab active" id="tab-topic">By Topic</button>
+    <button class="browse-tab" id="tab-concept">By Concept</button>
+  </div>
   <select id="topic-select">
     <option value="algebra.json">Algebra</option>
     <option value="arithmetic.json">Arithmetic</option>
@@ -614,13 +624,10 @@
     <option value="trigonometry.json">Trigonometry</option>
     <option value="calculus.json">Calculus</option>
   </select>
+  <select id="concept-select" style="display:none"><option value="">— Select a concept —</option></select>
+  <span id="concept-count" style="display:none"></span>
   <select id="puzzle-select"><option>Loading…</option></select>
   <button id="load-btn">Load Puzzle</button>
-  <div id="concept-row">
-    <label for="concept-select" id="concept-label">Concept:</label>
-    <select id="concept-select"><option value="">— All Puzzles —</option></select>
-    <span id="concept-count"></span>
-  </div>
 </div>
 
 <div id="layout">
@@ -756,18 +763,41 @@ async function loadTopicIndex() {
   }
 }
 
-topicSel.addEventListener('change', () => {
-  conceptSel.value = '';
-  conceptSel.classList.remove('active');
-  $('concept-count').textContent = '';
-  puzzleSel._dataMeta = null;
-  loadTopicIndex();
-});
+topicSel.addEventListener('change', loadTopicIndex);
+
+// ── Browse mode toggle ─────────────────────────────────────────
+const conceptSel  = $('concept-select');
+const conceptCount = $('concept-count');
+const tabTopic    = $('tab-topic');
+const tabConcept  = $('tab-concept');
+
+function setMode(mode) {
+  if (mode === 'topic') {
+    tabTopic.classList.add('active');
+    tabConcept.classList.remove('active');
+    topicSel.style.display   = '';
+    conceptSel.style.display = 'none';
+    conceptCount.style.display = 'none';
+    puzzleSel._dataMeta = null;
+    loadTopicIndex();
+  } else {
+    tabConcept.classList.add('active');
+    tabTopic.classList.remove('active');
+    topicSel.style.display   = 'none';
+    conceptSel.style.display = '';
+    conceptCount.style.display = '';
+    conceptSel.value = '';
+    puzzleSel.innerHTML = '<option>— Select a concept above —</option>';
+    puzzleSel._data     = null;
+    puzzleSel._dataMeta = null;
+    conceptCount.textContent = '';
+  }
+}
+
+tabTopic.addEventListener('click',   () => setMode('topic'));
+tabConcept.addEventListener('click', () => setMode('concept'));
 
 // ── Concept filter ─────────────────────────────────────────────
-const conceptSel = $('concept-select');
-
-// preloaded trig+calc puzzle arrays, keyed by filename
 const G_topicCache = {};
 
 async function preloadTopicCache() {
@@ -784,7 +814,7 @@ async function loadConcepts() {
     const r = await fetch('puzzles/concepts.json');
     const concepts = await r.json();
     conceptSel.innerHTML =
-      '<option value="">— All Puzzles —</option>' +
+      '<option value="">— Select a concept —</option>' +
       concepts.map((c, i) =>
         `<option value="${i}">${c.label} (${c.puzzles.length})</option>`
       ).join('');
@@ -792,7 +822,6 @@ async function loadConcepts() {
   } catch(e) {}
 }
 
-// Map puzzle id prefix to { file, topicIndex }
 const TOPIC_META = {
   'trig': { file: 'trigonometry.json', topicIndex: 3 },
   'calc': { file: 'calculus.json',     topicIndex: 4 },
@@ -801,24 +830,19 @@ const TOPIC_META = {
 conceptSel.addEventListener('change', () => {
   const val = conceptSel.value;
   if (val === '') {
-    // Clear filter — restore topic-driven list
-    conceptSel.classList.remove('active');
-    $('concept-count').textContent = '';
+    puzzleSel.innerHTML = '<option>— Select a concept above —</option>';
+    puzzleSel._data     = null;
     puzzleSel._dataMeta = null;
-    loadTopicIndex();
+    conceptCount.textContent = '';
     return;
   }
   const concept = conceptSel._data[parseInt(val, 10)];
   if (!concept) return;
 
-  conceptSel.classList.add('active');
-
-  // Build filtered puzzle list from preloaded trig+calc caches
-  const filtered = [];   // puzzle objects
-  const meta     = [];   // { topicIndex, puzzleIdxInTopic }
-
+  const filtered = [];
+  const meta     = [];
   for (const pid of concept.puzzles) {
-    const prefix = pid.split('-')[0];  // 'trig' or 'calc'
+    const prefix = pid.split('-')[0];
     const tm = TOPIC_META[prefix];
     if (!tm) continue;
     const arr = G_topicCache[tm.file] || [];
@@ -833,8 +857,7 @@ conceptSel.addEventListener('change', () => {
   ).join('');
   puzzleSel._data     = filtered;
   puzzleSel._dataMeta = meta;
-
-  $('concept-count').textContent = `${filtered.length} puzzle${filtered.length !== 1 ? 's' : ''}`;
+  conceptCount.textContent = `${filtered.length} puzzle${filtered.length !== 1 ? 's' : ''}`;
 });
 
 // ── Load puzzle ────────────────────────────────────────────────
