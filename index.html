@@ -86,6 +86,35 @@
     }
     #picker button:hover { filter: brightness(1.15); }
 
+    #concept-row {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding-top: 4px;
+      border-top: 1px solid var(--border);
+      margin-top: 2px;
+    }
+    #concept-label {
+      font-size: 0.78rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+    #concept-count {
+      font-size: 0.78rem;
+      color: var(--muted);
+      min-width: 80px;
+    }
+    #concept-select {
+      min-width: 220px;
+    }
+    #concept-select.active {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
     /* ── Main layout ───────────────────────────────────────── */
     #layout {
       display: flex;
@@ -587,6 +616,11 @@
   </select>
   <select id="puzzle-select"><option>Loading…</option></select>
   <button id="load-btn">Load Puzzle</button>
+  <div id="concept-row">
+    <label for="concept-select" id="concept-label">Concept:</label>
+    <select id="concept-select"><option value="">— All Puzzles —</option></select>
+    <span id="concept-count"></span>
+  </div>
 </div>
 
 <div id="layout">
@@ -722,21 +756,102 @@ async function loadTopicIndex() {
   }
 }
 
-topicSel.addEventListener('change', loadTopicIndex);
+topicSel.addEventListener('change', () => {
+  conceptSel.value = '';
+  conceptSel.classList.remove('active');
+  $('concept-count').textContent = '';
+  puzzleSel._dataMeta = null;
+  loadTopicIndex();
+});
+
+// ── Concept filter ─────────────────────────────────────────────
+const conceptSel = $('concept-select');
+
+// preloaded trig+calc puzzle arrays, keyed by filename
+const G_topicCache = {};
+
+async function preloadTopicCache() {
+  for (const file of ['trigonometry.json', 'calculus.json']) {
+    try {
+      const r = await fetch(`puzzles/${file}`);
+      G_topicCache[file] = await r.json();
+    } catch(e) { G_topicCache[file] = []; }
+  }
+}
+
+async function loadConcepts() {
+  try {
+    const r = await fetch('puzzles/concepts.json');
+    const concepts = await r.json();
+    conceptSel.innerHTML =
+      '<option value="">— All Puzzles —</option>' +
+      concepts.map((c, i) =>
+        `<option value="${i}">${c.label} (${c.puzzles.length})</option>`
+      ).join('');
+    conceptSel._data = concepts;
+  } catch(e) {}
+}
+
+// Map puzzle id prefix to { file, topicIndex }
+const TOPIC_META = {
+  'trig': { file: 'trigonometry.json', topicIndex: 3 },
+  'calc': { file: 'calculus.json',     topicIndex: 4 },
+};
+
+conceptSel.addEventListener('change', () => {
+  const val = conceptSel.value;
+  if (val === '') {
+    // Clear filter — restore topic-driven list
+    conceptSel.classList.remove('active');
+    $('concept-count').textContent = '';
+    puzzleSel._dataMeta = null;
+    loadTopicIndex();
+    return;
+  }
+  const concept = conceptSel._data[parseInt(val, 10)];
+  if (!concept) return;
+
+  conceptSel.classList.add('active');
+
+  // Build filtered puzzle list from preloaded trig+calc caches
+  const filtered = [];   // puzzle objects
+  const meta     = [];   // { topicIndex, puzzleIdxInTopic }
+
+  for (const pid of concept.puzzles) {
+    const prefix = pid.split('-')[0];  // 'trig' or 'calc'
+    const tm = TOPIC_META[prefix];
+    if (!tm) continue;
+    const arr = G_topicCache[tm.file] || [];
+    const idx = arr.findIndex(p => p.id === pid);
+    if (idx === -1) continue;
+    filtered.push(arr[idx]);
+    meta.push({ topicIndex: tm.topicIndex, puzzleIdxInTopic: idx });
+  }
+
+  puzzleSel.innerHTML = filtered.map((p, i) =>
+    `<option value="${i}">[${p.id.split('-')[0].toUpperCase()}] ${p.id} — ${p.question.plain} (${p.difficulty})</option>`
+  ).join('');
+  puzzleSel._data     = filtered;
+  puzzleSel._dataMeta = meta;
+
+  $('concept-count').textContent = `${filtered.length} puzzle${filtered.length !== 1 ? 's' : ''}`;
+});
 
 // ── Load puzzle ────────────────────────────────────────────────
 function loadPuzzle() {
   const puzzles = puzzleSel._data;
   if (!puzzles) return;
-  const puzzleIndex    = parseInt(puzzleSel.value, 10);
+  const puzzleIndex = parseInt(puzzleSel.value, 10);
   G.puzzle         = puzzles[puzzleIndex];
   G.currentStep    = 0;
   G.completedDrops = new Set();
   G.mergedSyms     = { ...G.globalSyms, ...(G.puzzle.symbols || {}) };
   completion.style.display = 'none';
 
-  const topicIndex = topicSel.selectedIndex;            // 0–4
-  const globalNum  = topicIndex * 30 + puzzleIndex + 1; // 1–150
+  const meta = puzzleSel._dataMeta;
+  const topicIndex      = meta ? meta[puzzleIndex].topicIndex        : topicSel.selectedIndex;
+  const idxInTopic      = meta ? meta[puzzleIndex].puzzleIdxInTopic  : puzzleIndex;
+  const globalNum       = topicIndex * 30 + idxInTopic + 1;
   $('sc-num').textContent    = `#${globalNum}`;
   $('sc-puzzle').textContent = G.puzzle.id;
   $('puzzle-num-badge').textContent = `#${globalNum}`;
@@ -1328,6 +1443,7 @@ $('notes-clear').addEventListener('click', () => {
 (async () => {
   await loadGlobalSymbols();
   await loadTopicIndex();
+  await Promise.all([preloadTopicCache(), loadConcepts()]);
 })();
 </script>
 </body>
