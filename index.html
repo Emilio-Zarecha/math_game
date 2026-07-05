@@ -638,6 +638,153 @@
       .ctrl-btn.nav { padding: 11px 16px; font-size: 0.9rem; }
       #controls { gap: 7px; justify-content: center; }
     }
+
+    /* ── Sigma stepper modal ────────────────────────────────────── */
+    #sigma-modal {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.55);
+      z-index: 8000;
+      align-items: center;
+      justify-content: center;
+    }
+    #sigma-modal.open { display: flex; }
+
+    #sigma-drawer {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      width: min(600px, 94vw);
+      max-height: 85vh;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0 16px 48px rgba(0,0,0,0.6);
+      overflow: hidden;
+    }
+
+    #sigma-drawer header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 16px 20px 12px;
+      border-bottom: 1px solid var(--border);
+      flex-shrink: 0;
+    }
+    #sigma-drawer header h2 {
+      font-size: 0.85rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin: 0 0 4px;
+    }
+    #sigma-expr-display {
+      font-size: 1.1rem;
+      color: var(--accent);
+    }
+    #sigma-close {
+      background: none;
+      border: none;
+      color: var(--muted);
+      font-size: 1.3rem;
+      cursor: pointer;
+      line-height: 1;
+      padding: 2px 6px;
+      border-radius: 4px;
+      align-self: flex-start;
+    }
+    #sigma-close:hover { color: var(--text); background: var(--panel); }
+
+    #sigma-body {
+      padding: 16px 20px 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      flex: 1;
+      min-height: 0;
+      overflow-y: auto;
+    }
+
+    #sigma-current-display {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 16px 20px;
+      text-align: center;
+    }
+    #sigma-k-label {
+      font-size: 0.75rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 8px;
+    }
+    #sigma-term-render { font-size: 1.15rem; margin-bottom: 6px; }
+    #sigma-sum-render  { font-size: 1.3rem; color: var(--correct); }
+
+    #sigma-table-wrap {
+      overflow-x: auto;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      flex-shrink: 0;
+    }
+    #sigma-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.88rem;
+    }
+    #sigma-table thead th {
+      background: var(--panel);
+      color: var(--muted);
+      font-size: 0.72rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 8px 14px;
+      text-align: center;
+      border-bottom: 1px solid var(--border);
+    }
+    #sigma-table tbody tr td {
+      padding: 7px 14px;
+      text-align: center;
+      border-bottom: 1px solid var(--border);
+      color: var(--muted);
+      transition: background 0.15s;
+    }
+    #sigma-table tbody tr:last-child td { border-bottom: none; }
+    #sigma-table tbody tr.sigma-active td {
+      background: rgba(92,138,255,0.1);
+      color: var(--text);
+      font-weight: 600;
+    }
+    #sigma-table tbody tr.sigma-past td { color: var(--text); }
+    #sigma-table tbody tr.sigma-active td:first-child { color: var(--accent); }
+    #sigma-table tbody tr { cursor: pointer; }
+    #sigma-table tbody tr:hover td { background: rgba(92,138,255,0.07); }
+
+    #sigma-nav {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      flex-shrink: 0;
+    }
+    #sigma-step-label {
+      font-size: 0.82rem;
+      color: var(--muted);
+      min-width: 80px;
+      text-align: center;
+    }
+    .sigma-nav-btn {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      color: var(--text);
+      border-radius: 8px;
+      padding: 8px 18px;
+      font-size: 0.88rem;
+      cursor: pointer;
+    }
+    .sigma-nav-btn:hover:not(:disabled) { border-color: var(--accent); color: var(--accent); }
+    .sigma-nav-btn:disabled { opacity: 0.35; cursor: default; }
   </style>
 </head>
 <body>
@@ -711,8 +858,46 @@
       <button class="ctrl-btn" id="reset-btn">Reset</button>
       <button class="ctrl-btn primary" id="final-btn">Final Answer</button>
       <button class="ctrl-btn" id="notes-btn">📝 Notes<span class="badge"></span></button>
+      <button class="ctrl-btn" id="sigma-btn" style="display:none">∑ Expand</button>
     </div>
 
+  </div>
+</div>
+
+<!-- Sigma stepper modal -->
+<div id="sigma-modal" role="dialog" aria-modal="true" aria-label="Summation Walkthrough">
+  <div id="sigma-drawer">
+    <header>
+      <div>
+        <h2>Summation Walkthrough</h2>
+        <div id="sigma-expr-display"></div>
+      </div>
+      <button id="sigma-close" aria-label="Close">✕</button>
+    </header>
+    <div id="sigma-body">
+      <div id="sigma-current-display">
+        <div id="sigma-k-label">Current term</div>
+        <div id="sigma-term-render"></div>
+        <div id="sigma-sum-render"></div>
+      </div>
+      <div id="sigma-table-wrap">
+        <table id="sigma-table">
+          <thead>
+            <tr>
+              <th id="sigma-var-head">k</th>
+              <th>Term value</th>
+              <th>Running sum</th>
+            </tr>
+          </thead>
+          <tbody id="sigma-rows"></tbody>
+        </table>
+      </div>
+      <div id="sigma-nav">
+        <button class="sigma-nav-btn" id="sigma-prev">← Prev</button>
+        <span id="sigma-step-label">1 of 10</span>
+        <button class="sigma-nav-btn" id="sigma-next">Next →</button>
+      </div>
+    </div>
   </div>
 </div>
 
@@ -778,6 +963,7 @@ const symTip     = $('sym-tip');
 const prevBtn    = $('prev-btn');
 const nextBtn    = $('next-btn');
 const hintBtn    = $('hint-btn');
+const sigmaBtn   = $('sigma-btn');
 
 // ── KaTeX ──────────────────────────────────────────────────────
 function renderLatex(latex, el, displayMode = false) {
@@ -1077,6 +1263,7 @@ function renderCurrentStep() {
     hideSideMsg();
     syncPaletteUsed();
     updateNavButtons();
+    sigmaBtn.style.display = 'none';
     return;
   }
 
@@ -1100,6 +1287,7 @@ function renderCurrentStep() {
   updateNavButtons();
   syncPaletteUsed();
   attachSymbolHovers();
+  updateSigmaBtn();
 }
 
 // ── Build equation with inline drop zones ──────────────────────
@@ -1403,6 +1591,7 @@ function playNextStep() {
 
 // ── Keyboard ───────────────────────────────────────────────────
 document.addEventListener('keydown', e => {
+  if (sigmaModal.classList.contains('open')) return;
   if (e.key === 'ArrowRight') playNextStep();
   if (e.key === 'ArrowLeft')  goPrev();
 });
@@ -1551,6 +1740,164 @@ $('notes-clear').addEventListener('click', () => {
   if (!confirm('Clear all notes for this puzzle?')) return;
   notesTextarea.value = '';
   saveNotes();
+});
+
+// ── Sigma Stepper ──────────────────────────────────────────────
+const sigmaModal  = $('sigma-modal');
+let _sigmaTerms   = [];   // [{k, term, runSum}]
+let _sigmaIdx     = 0;    // current row index
+let _sigmaInfo    = null; // {varName, lower, upper, bodyLatex}
+
+// Parse \sum_{k=lower}^{upper} body from a LaTeX string.
+// Returns null if not found or bounds are non-numeric.
+function parseSigma(latex) {
+  const m = latex.match(/\\sum_\{([a-z])=(-?\d+)\}\^\{?(-?\d+)\}?\s*([\s\S]+)/);
+  if (!m) return null;
+  const [, varName, lowerStr, upperStr, bodyLatex] = m;
+  const lower = parseInt(lowerStr, 10);
+  const upper = parseInt(upperStr, 10);
+  if (isNaN(lower) || isNaN(upper) || upper < lower) return null;
+  return { varName, lower, upper, bodyLatex: bodyLatex.trim() };
+}
+
+// Convert a simple LaTeX body expression to a JS-evaluable string.
+function latexBodyToJs(latex) {
+  let s = latex
+    .replace(/\\cdot\s*/g, '*')
+    .replace(/\\times\s*/g, '*')
+    .replace(/\\left\(/g, '(').replace(/\\right\)/g, ')')
+    .replace(/\\left\[/g, '(').replace(/\\right\]/g, ')')
+    .replace(/\\frac\{([^{}]+)\}\{([^{}]+)\}/g, '(($1)/($2))')
+    .replace(/\^{([^}]+)}/g, '**($1)')
+    .replace(/\^(-?\d+)/g, '**$1')
+    .replace(/[{}\\]/g, '')
+    .replace(/\s+/g, '');
+  // 2k → 2*k, 3( → 3*(
+  s = s.replace(/(\d)([a-z(])/g, '$1*$2');
+  // k( → k*(
+  s = s.replace(/([a-z])\(/g, '$1*(');
+  return s;
+}
+
+function evalSigmaTerms(info) {
+  const { varName, lower, upper, bodyLatex } = info;
+  const jsExpr = latexBodyToJs(bodyLatex);
+  let fn;
+  try { fn = new Function(varName, `return (${jsExpr});`); }
+  catch { return null; }
+  const terms = [];
+  let runSum = 0;
+  for (let k = lower; k <= upper; k++) {
+    let term;
+    try { term = fn(k); } catch { return null; }
+    if (!isFinite(term)) return null;
+    runSum += term;
+    // Round to avoid floating-point noise
+    const tRound  = Math.round(term  * 1e9) / 1e9;
+    const sRound  = Math.round(runSum * 1e9) / 1e9;
+    terms.push({ k, term: tRound, runSum: sRound });
+  }
+  return terms;
+}
+
+function renderSigmaStep(idx) {
+  const row  = _sigmaTerms[idx];
+  const info = _sigmaInfo;
+  const n    = _sigmaTerms.length;
+
+  // Header k label
+  $('sigma-k-label').textContent = `${info.varName} = ${row.k} (step ${idx + 1} of ${n})`;
+
+  // Current term display
+  renderLatex(`${info.varName} = ${row.k} \\Rightarrow \\text{ term } = ${row.term}`, $('sigma-term-render'), false);
+
+  // Running sum as partial sum equation
+  const MAX_SHOWN = 5;
+  let sumLatex;
+  if (idx < MAX_SHOWN) {
+    const parts = _sigmaTerms.slice(0, idx + 1).map(r => String(r.term));
+    sumLatex = parts.join(' + ') + ' = ' + row.runSum;
+  } else {
+    const first3 = _sigmaTerms.slice(0, 2).map(r => String(r.term)).join(' + ');
+    sumLatex = first3 + ' + \\cdots + ' + row.term + ' = ' + row.runSum;
+  }
+  renderLatex(sumLatex, $('sigma-sum-render'), false);
+
+  // Nav label & buttons
+  $('sigma-step-label').textContent = `${idx + 1} of ${n}`;
+  $('sigma-prev').disabled = idx === 0;
+  $('sigma-next').disabled = idx === n - 1;
+
+  // Highlight table row
+  $('sigma-rows').querySelectorAll('tr').forEach((tr, i) => {
+    tr.classList.toggle('sigma-active', i === idx);
+    tr.classList.toggle('sigma-past',   i < idx);
+  });
+
+  // Scroll active row into view
+  const activeRow = $('sigma-rows').children[idx];
+  if (activeRow) activeRow.scrollIntoView({ block: 'nearest' });
+}
+
+function openSigmaModal() {
+  const step = visibleSteps()[G.currentStep];
+  if (!step) return;
+  const latex = step.fromLatex || step.toLatex || '';
+  const info  = parseSigma(latex);
+  if (!info) return;
+  const terms = evalSigmaTerms(info);
+  if (!terms) { alert('Could not evaluate this summation symbolically.'); return; }
+
+  _sigmaInfo  = info;
+  _sigmaTerms = terms;
+  _sigmaIdx   = 0;
+
+  // Render sigma expression header
+  renderLatex(`\\sum_{${info.varName}=${info.lower}}^{${info.upper}} ${info.bodyLatex}`, $('sigma-expr-display'), false);
+
+  // Column header
+  $('sigma-var-head').textContent = info.varName;
+
+  // Build table rows
+  const tbody = $('sigma-rows');
+  tbody.innerHTML = '';
+  terms.forEach((row, i) => {
+    const tr = document.createElement('tr');
+    tr.innerHTML = `<td>${row.k}</td><td>${row.term}</td><td>${row.runSum}</td>`;
+    tr.addEventListener('click', () => { _sigmaIdx = i; renderSigmaStep(i); });
+    tbody.appendChild(tr);
+  });
+
+  renderSigmaStep(0);
+  sigmaModal.classList.add('open');
+}
+
+function closeSigmaModal() {
+  sigmaModal.classList.remove('open');
+}
+
+// Show/hide sigma button based on current step
+function updateSigmaBtn() {
+  if (!G.puzzle || G.currentStep >= visibleSteps().length) {
+    sigmaBtn.style.display = 'none';
+    return;
+  }
+  const step  = visibleSteps()[G.currentStep];
+  const latex = step.fromLatex || step.toLatex || '';
+  const info  = parseSigma(latex);
+  sigmaBtn.style.display = info ? '' : 'none';
+}
+
+sigmaBtn.addEventListener('click', openSigmaModal);
+$('sigma-close').addEventListener('click', closeSigmaModal);
+$('sigma-prev').addEventListener('click', () => { if (_sigmaIdx > 0) renderSigmaStep(--_sigmaIdx); });
+$('sigma-next').addEventListener('click', () => { if (_sigmaIdx < _sigmaTerms.length - 1) renderSigmaStep(++_sigmaIdx); });
+sigmaModal.addEventListener('click', e => { if (e.target === sigmaModal) closeSigmaModal(); });
+document.addEventListener('keydown', e => {
+  if (!sigmaModal.classList.contains('open')) return;
+  if (e.key === 'Escape') { closeSigmaModal(); return; }
+  if (e.key === 'ArrowUp'   && _sigmaIdx > 0)                     { e.preventDefault(); renderSigmaStep(--_sigmaIdx); }
+  if (e.key === 'ArrowDown' && _sigmaIdx < _sigmaTerms.length - 1){ e.preventDefault(); renderSigmaStep(++_sigmaIdx); }
 });
 
 // ── Init ───────────────────────────────────────────────────────

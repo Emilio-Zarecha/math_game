@@ -223,10 +223,9 @@
       { "id": "p2", "latex": "55", "description": "10×11÷2 = 55" }
     ],
     "steps": [
-      { "id": "s1", "fromLatex": "S_n = \\frac{n(n+1)}{2}", "toLatex": "S_n = \\frac{n(n+1)}{2}", "paletteRef": "p1", "dropTargets": ["\\sum_{k=1}^{10} k"], "description": "Apply the arithmetic series formula" },
-      { "id": "s2", "fromLatex": "S_{10} = \\frac{10(10+1)}{2} = \\frac{10 \\cdot 11}{2}", "toLatex": "S_{10} = \\frac{110}{2}", "paletteRef": null, "dropTargets": [], "description": "Substitute n=10: 10×11=110" },
-      { "id": "s2a", "fromLatex": "110 \\div 2 = 55", "toLatex": "110 \\div 2 = 55", "paletteRef": null, "dropTargets": [], "description": "Compute: 110 ÷ 2 = 55" },
-      { "id": "s3", "fromLatex": "S_{10} = \\frac{110}{2}", "toLatex": "S_{10} = 55", "paletteRef": "p2", "dropTargets": ["\\frac{110}{2}"], "description": "Result: sum of 1 through 10 is 55" }
+      { "id": "s1", "fromLatex": "S_{10} = \\sum_{k=1}^{10} k", "toLatex": "S_{10} = \\frac{10(10+1)}{2}", "paletteRef": "p1", "dropTargets": ["\\sum_{k=1}^{10} k"], "description": "Apply the formula Sₙ = n(n+1)/2 with n=10" },
+      { "id": "s1a", "fromLatex": "10 \\times 11 = 110", "toLatex": "10 \\times 11 = 110", "paletteRef": null, "dropTargets": [], "description": "Compute numerator: 10 × 11 = 110" },
+      { "id": "s2", "fromLatex": "S_{10} = \\frac{110}{2}", "toLatex": "S_{10} = 55", "paletteRef": "p2", "dropTargets": ["\\frac{110}{2}"], "description": "Compute: 110 ÷ 2 = 55" }
     ]
   },
   {
