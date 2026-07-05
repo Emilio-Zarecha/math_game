@@ -659,6 +659,7 @@
   </div>
   <select id="topic-select">
     <option value="algebra.json">Algebra</option>
+    <option value="algebra2.json">Algebra 2</option>
     <option value="arithmetic.json">Arithmetic</option>
     <option value="geometry.json">Geometry</option>
     <option value="trigonometry.json">Trigonometry</option>
@@ -846,7 +847,7 @@ tabConcept.addEventListener('click', () => setMode('concept'));
 const G_topicCache = {};
 
 async function preloadTopicCache() {
-  for (const file of ['trigonometry.json', 'calculus.json']) {
+  for (const file of ['algebra2.json', 'trigonometry.json', 'calculus.json']) {
     try {
       const r = await fetch(`puzzles/${file}`);
       G_topicCache[file] = await r.json();
@@ -868,9 +869,11 @@ async function loadConcepts() {
 }
 
 const TOPIC_META = {
-  'trig': { file: 'trigonometry.json', topicIndex: 3 },
-  'calc': { file: 'calculus.json',     topicIndex: 4 },
+  'trig': { file: 'trigonometry.json', topicIndex: 4 },
+  'calc': { file: 'calculus.json',     topicIndex: 5 },
+  'alg2': { file: 'algebra2.json',     topicIndex: 1 },
 };
+
 
 conceptSel.addEventListener('change', () => {
   const val = conceptSel.value;
