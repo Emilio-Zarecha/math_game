@@ -2909,5 +2909,193 @@
         "description": "(1/3) × 36 × 4 = 48"
       }
     ]
+  },
+  {
+    "id": "geo-e-016", "topic": "geometry", "difficulty": "easy",
+    "question": {"latex": "\\angle A = 35^\\circ,\\quad \\angle A + \\angle B = 90^\\circ", "plain": "Find the complement of 35°"},
+    "symbols": {"Complementary": "Two angles that sum to 90°"},
+    "palette": [{"id": "p1", "latex": "55^\\circ", "description": "90° − 35° = 55°"}],
+    "steps": [
+      {"id": "s1", "fromLatex": "90^\\circ - 35^\\circ", "toLatex": "55^\\circ", "paletteRef": "p1", "dropTargets": ["90^\\circ - 35^\\circ"], "description": "Complementary angles sum to 90°: 90° − 35° = 55°"}
+    ]
+  },
+  {
+    "id": "geo-e-017", "topic": "geometry", "difficulty": "easy",
+    "question": {"latex": "\\angle B = 120^\\circ,\\quad \\angle A + \\angle B = 180^\\circ", "plain": "Find the supplement of 120°"},
+    "symbols": {"Supplementary": "Two angles that sum to 180°"},
+    "palette": [{"id": "p1", "latex": "60^\\circ", "description": "180° − 120° = 60°"}],
+    "steps": [
+      {"id": "s1", "fromLatex": "180^\\circ - 120^\\circ", "toLatex": "60^\\circ", "paletteRef": "p1", "dropTargets": ["180^\\circ - 120^\\circ"], "description": "Supplementary angles sum to 180°: 180° − 120° = 60°"}
+    ]
+  },
+  {
+    "id": "geo-e-018", "topic": "geometry", "difficulty": "easy",
+    "question": {"latex": "\\angle 1 = 47^\\circ,\\quad \\angle 1 \\text{ and } \\angle 3 \\text{ are vertical angles}", "plain": "Find the vertical angle"},
+    "symbols": {"Vertical angles": "Opposite angles formed by two intersecting lines; they are equal"},
+    "palette": [{"id": "p1", "latex": "47^\\circ", "description": "Vertical angles are equal"}],
+    "steps": [
+      {"id": "s1a", "fromLatex": "\\angle 3 = \\angle 1 = 47^\\circ", "toLatex": "\\angle 3 = 47^\\circ", "paletteRef": null, "dropTargets": [], "description": "Vertical angles are always equal"}
+    ]
+  },
+  {
+    "id": "geo-e-019", "topic": "geometry", "difficulty": "easy",
+    "question": {"latex": "d\\bigl((0,0),(3,4)\\bigr) = ?", "plain": "Find the distance from (0,0) to (3,4)"},
+    "symbols": {"d": "Distance = √((x₂−x₁)² + (y₂−y₁)²)"},
+    "palette": [
+      {"id": "p1", "latex": "25", "description": "9 + 16 = 25"},
+      {"id": "p2", "latex": "5", "description": "√25 = 5"}
+    ],
+    "steps": [
+      {"id": "s1a", "fromLatex": "d = \\sqrt{3^2 + 4^2}", "toLatex": "d = \\sqrt{9 + 16}", "paletteRef": null, "dropTargets": [], "description": "Apply the distance formula: √(3² + 4²)"},
+      {"id": "s2", "fromLatex": "d = \\sqrt{9 + 16}", "toLatex": "d = \\sqrt{25}", "paletteRef": "p1", "dropTargets": ["9 + 16"], "description": "Add: 9 + 16 = 25"},
+      {"id": "s3", "fromLatex": "d = \\sqrt{25}", "toLatex": "d = 5", "paletteRef": "p2", "dropTargets": ["\\sqrt{25}"], "description": "Take the square root: √25 = 5"}
+    ]
+  },
+  {
+    "id": "geo-e-020", "topic": "geometry", "difficulty": "easy",
+    "question": {"latex": "M\\bigl((0,0),(6,4)\\bigr) = ?", "plain": "Find the midpoint of (0,0) and (6,4)"},
+    "symbols": {"M": "Midpoint = ((x₁+x₂)/2, (y₁+y₂)/2)"},
+    "palette": [
+      {"id": "p1", "latex": "3", "description": "(0+6)/2 = 3"},
+      {"id": "p2", "latex": "2", "description": "(0+4)/2 = 2"}
+    ],
+    "steps": [
+      {"id": "s1", "fromLatex": "M = \\left(\\frac{0+6}{2}, \\frac{0+4}{2}\\right)", "toLatex": "M = \\left(3, \\frac{0+4}{2}\\right)", "paletteRef": "p1", "dropTargets": ["\\frac{0+6}{2}"], "description": "x-coordinate: (0+6)/2 = 3"},
+      {"id": "s2", "fromLatex": "M = \\left(3, \\frac{0+4}{2}\\right)", "toLatex": "M = (3, 2)", "paletteRef": "p2", "dropTargets": ["\\frac{0+4}{2}"], "description": "y-coordinate: (0+4)/2 = 2"}
+    ]
+  },
+  {
+    "id": "geo-m-016", "topic": "geometry", "difficulty": "medium",
+    "question": {"latex": "\\text{45-45-90 triangle, leg} = 5", "plain": "Find the hypotenuse of a 45-45-90 triangle with leg = 5"},
+    "symbols": {"45-45-90": "Side ratio: leg : leg : leg√2"},
+    "palette": [
+      {"id": "p1", "latex": "50", "description": "5² + 5² = 25 + 25 = 50"},
+      {"id": "p2", "latex": "5\\sqrt{2}", "description": "√50 = 5√2"}
+    ],
+    "steps": [
+      {"id": "s1", "fromLatex": "c^2 = 5^2 + 5^2", "toLatex": "c^2 = 50", "paletteRef": "p1", "dropTargets": ["5^2 + 5^2"], "description": "Both legs equal 5: 25 + 25 = 50"},
+      {"id": "s2", "fromLatex": "c = \\sqrt{50}", "toLatex": "c = 5\\sqrt{2}", "paletteRef": "p2", "dropTargets": ["\\sqrt{50}"], "description": "Simplify: √50 = √(25·2) = 5√2"}
+    ]
+  },
+  {
+    "id": "geo-m-017", "topic": "geometry", "difficulty": "medium",
+    "question": {"latex": "\\text{30-60-90 triangle, shorter leg} = 4", "plain": "Find the hypotenuse of a 30-60-90 triangle with shorter leg = 4"},
+    "symbols": {"30-60-90": "Side ratio: a : a√3 : 2a (shorter leg : longer leg : hypotenuse)"},
+    "palette": [{"id": "p1", "latex": "8", "description": "2 × 4 = 8"}],
+    "steps": [
+      {"id": "s1a", "fromLatex": "c = 2 \\times \\text{shorter leg}", "toLatex": "c = 2 \\times 4", "paletteRef": null, "dropTargets": [], "description": "In a 30-60-90 triangle: hypotenuse = 2 × shorter leg"},
+      {"id": "s2", "fromLatex": "c = 2 \\times 4", "toLatex": "c = 8", "paletteRef": "p1", "dropTargets": ["2 \\times 4"], "description": "Compute: 2 × 4 = 8"}
+    ]
+  },
+  {
+    "id": "geo-m-018", "topic": "geometry", "difficulty": "medium",
+    "question": {"latex": "\\triangle ABC \\sim \\triangle DEF,\\quad \\text{sides } 3,4,5 \\text{ and } 6,8,\\,?", "plain": "Find the missing side of the similar triangle"},
+    "symbols": {"~": "Similar triangles have proportional sides"},
+    "palette": [
+      {"id": "p1", "latex": "2", "description": "6 ÷ 3 = 2 (scale factor)"},
+      {"id": "p2", "latex": "10", "description": "2 × 5 = 10"}
+    ],
+    "steps": [
+      {"id": "s1", "fromLatex": "k = \\frac{6}{3}", "toLatex": "k = 2", "paletteRef": "p1", "dropTargets": ["\\frac{6}{3}"], "description": "Find the scale factor: 6 ÷ 3 = 2"},
+      {"id": "s2", "fromLatex": "? = 2 \\times 5", "toLatex": "? = 10", "paletteRef": "p2", "dropTargets": ["2 \\times 5"], "description": "Multiply the corresponding side by k: 2 × 5 = 10"}
+    ]
+  },
+  {
+    "id": "geo-m-019", "topic": "geometry", "difficulty": "medium",
+    "question": {"latex": "\\frac{a}{\\sin A} = \\frac{b}{\\sin B},\\quad a=10,\\ A=90^\\circ,\\ B=45^\\circ", "plain": "Use the Law of Sines to find side b"},
+    "symbols": {"Law of Sines": "a/sin A = b/sin B"},
+    "palette": [
+      {"id": "p1", "latex": "\\frac{\\sqrt{2}}{2}", "description": "sin 45° = √2/2"},
+      {"id": "p2", "latex": "5\\sqrt{2}", "description": "10 · (√2/2) = 5√2"}
+    ],
+    "steps": [
+      {"id": "s1a", "fromLatex": "b = 10 \\cdot \\sin 45^\\circ", "toLatex": "b = 10 \\cdot \\sin 45^\\circ", "paletteRef": null, "dropTargets": [], "description": "Since sin 90° = 1: b/sin 45° = 10, so b = 10 · sin 45°"},
+      {"id": "s2", "fromLatex": "b = 10 \\cdot \\sin 45^\\circ", "toLatex": "b = 10 \\cdot \\frac{\\sqrt{2}}{2}", "paletteRef": "p1", "dropTargets": ["\\sin 45^\\circ"], "description": "Substitute sin 45° = √2/2"},
+      {"id": "s3", "fromLatex": "b = 10 \\cdot \\frac{\\sqrt{2}}{2}", "toLatex": "b = 5\\sqrt{2}", "paletteRef": "p2", "dropTargets": ["10 \\cdot \\frac{\\sqrt{2}}{2}"], "description": "Simplify: 10 · (√2/2) = 5√2"}
+    ]
+  },
+  {
+    "id": "geo-m-020", "topic": "geometry", "difficulty": "medium",
+    "question": {"latex": "\\text{Regular octagon } (n=8),\\quad \\text{each interior angle} = ?", "plain": "Find each interior angle of a regular octagon"},
+    "symbols": {"Regular polygon": "All sides and angles equal"},
+    "palette": [
+      {"id": "p1", "latex": "6", "description": "8 − 2 = 6"},
+      {"id": "p2", "latex": "1080^\\circ", "description": "6 × 180° = 1080°"},
+      {"id": "p3", "latex": "135^\\circ", "description": "1080° ÷ 8 = 135°"}
+    ],
+    "steps": [
+      {"id": "s1", "fromLatex": "\\frac{(8-2) \\times 180^\\circ}{8}", "toLatex": "\\frac{6 \\times 180^\\circ}{8}", "paletteRef": "p1", "dropTargets": ["8-2"], "description": "Compute n−2: 8−2 = 6"},
+      {"id": "s2", "fromLatex": "\\frac{6 \\times 180^\\circ}{8}", "toLatex": "\\frac{1080^\\circ}{8}", "paletteRef": "p2", "dropTargets": ["6 \\times 180^\\circ"], "description": "Multiply: 6 × 180° = 1080°"},
+      {"id": "s3", "fromLatex": "\\frac{1080^\\circ}{8}", "toLatex": "135^\\circ", "paletteRef": "p3", "dropTargets": ["\\frac{1080^\\circ}{8}"], "description": "Divide: 1080° ÷ 8 = 135°"}
+    ]
+  },
+  {
+    "id": "geo-h-016", "topic": "geometry", "difficulty": "hard",
+    "question": {"latex": "d\\bigl((1,2),(7,10)\\bigr) = ?", "plain": "Find the distance between (1,2) and (7,10)"},
+    "symbols": {"d": "Distance formula"},
+    "palette": [
+      {"id": "p1", "latex": "100", "description": "36 + 64 = 100"},
+      {"id": "p2", "latex": "10", "description": "√100 = 10"}
+    ],
+    "steps": [
+      {"id": "s1a", "fromLatex": "d = \\sqrt{(7-1)^2 + (10-2)^2}", "toLatex": "d = \\sqrt{6^2 + 8^2}", "paletteRef": null, "dropTargets": [], "description": "Subtract coordinates: (7−1)=6, (10−2)=8"},
+      {"id": "s2", "fromLatex": "d = \\sqrt{6^2 + 8^2}", "toLatex": "d = \\sqrt{100}", "paletteRef": "p1", "dropTargets": ["6^2 + 8^2"], "description": "Square and add: 36 + 64 = 100"},
+      {"id": "s3", "fromLatex": "d = \\sqrt{100}", "toLatex": "d = 10", "paletteRef": "p2", "dropTargets": ["\\sqrt{100}"], "description": "Take the square root: √100 = 10"}
+    ]
+  },
+  {
+    "id": "geo-h-017", "topic": "geometry", "difficulty": "hard",
+    "question": {"latex": "\\text{30-60-90 triangle, hypotenuse} = 12", "plain": "Find the longer leg of a 30-60-90 triangle with hypotenuse = 12"},
+    "symbols": {"30-60-90": "Ratio a : a√3 : 2a"},
+    "palette": [
+      {"id": "p1", "latex": "6", "description": "12 ÷ 2 = 6 (shorter leg)"},
+      {"id": "p2", "latex": "6\\sqrt{3}", "description": "6 · √3 (longer leg)"}
+    ],
+    "steps": [
+      {"id": "s1", "fromLatex": "\\text{shorter leg} = \\frac{12}{2}", "toLatex": "\\text{shorter leg} = 6", "paletteRef": "p1", "dropTargets": ["\\frac{12}{2}"], "description": "Shorter leg = hypotenuse ÷ 2: 12 ÷ 2 = 6"},
+      {"id": "s2", "fromLatex": "\\text{longer leg} = 6 \\cdot \\sqrt{3}", "toLatex": "\\text{longer leg} = 6\\sqrt{3}", "paletteRef": "p2", "dropTargets": ["6 \\cdot \\sqrt{3}"], "description": "Longer leg = shorter leg × √3 = 6√3"}
+    ]
+  },
+  {
+    "id": "geo-h-018", "topic": "geometry", "difficulty": "hard",
+    "question": {"latex": "a=4,\\ A=90^\\circ,\\ b=2;\\quad \\text{find } \\angle B", "plain": "Use the Law of Sines to find angle B"},
+    "symbols": {"Law of Sines": "sin B = b·sin A / a"},
+    "palette": [
+      {"id": "p1", "latex": "\\frac{2}{4}", "description": "2 · sin 90° / 4 = 2/4"},
+      {"id": "p2", "latex": "\\frac{1}{2}", "description": "2/4 = 1/2"},
+      {"id": "p3", "latex": "30^\\circ", "description": "arcsin(1/2) = 30°"}
+    ],
+    "steps": [
+      {"id": "s1", "fromLatex": "\\sin B = \\frac{2 \\cdot \\sin 90^\\circ}{4}", "toLatex": "\\sin B = \\frac{2}{4}", "paletteRef": "p1", "dropTargets": ["\\frac{2 \\cdot \\sin 90^\\circ}{4}"], "description": "Substitute sin 90° = 1: sin B = 2/4"},
+      {"id": "s2", "fromLatex": "\\sin B = \\frac{2}{4}", "toLatex": "\\sin B = \\frac{1}{2}", "paletteRef": "p2", "dropTargets": ["\\frac{2}{4}"], "description": "Simplify: 2/4 = 1/2"},
+      {"id": "s3", "fromLatex": "B = \\arcsin\\left(\\frac{1}{2}\\right)", "toLatex": "B = 30^\\circ", "paletteRef": "p3", "dropTargets": ["\\arcsin\\left(\\frac{1}{2}\\right)"], "description": "Evaluate: arcsin(1/2) = 30°"}
+    ]
+  },
+  {
+    "id": "geo-h-019", "topic": "geometry", "difficulty": "hard",
+    "question": {"latex": "M\\bigl((2,4),(8,10)\\bigr),\\quad d(M, A) = ?", "plain": "Find the midpoint M of A=(2,4) and B=(8,10), then the distance from M to A"},
+    "symbols": {},
+    "palette": [
+      {"id": "p1", "latex": "5", "description": "(2+8)/2 = 5"},
+      {"id": "p2", "latex": "7", "description": "(4+10)/2 = 7"},
+      {"id": "p3", "latex": "18", "description": "9 + 9 = 18"},
+      {"id": "p4", "latex": "3\\sqrt{2}", "description": "√18 = 3√2"}
+    ],
+    "steps": [
+      {"id": "s1", "fromLatex": "M = \\left(\\frac{2+8}{2}, \\frac{4+10}{2}\\right)", "toLatex": "M = \\left(5, \\frac{4+10}{2}\\right)", "paletteRef": "p1", "dropTargets": ["\\frac{2+8}{2}"], "description": "x-coordinate of midpoint: (2+8)/2 = 5"},
+      {"id": "s2", "fromLatex": "M = \\left(5, \\frac{4+10}{2}\\right)", "toLatex": "M = (5, 7)", "paletteRef": "p2", "dropTargets": ["\\frac{4+10}{2}"], "description": "y-coordinate of midpoint: (4+10)/2 = 7"},
+      {"id": "s3", "fromLatex": "d = \\sqrt{(5-2)^2 + (7-4)^2}", "toLatex": "d = \\sqrt{18}", "paletteRef": "p3", "dropTargets": ["(5-2)^2 + (7-4)^2"], "description": "Distance MA: √(3² + 3²) = √(9+9) = √18"},
+      {"id": "s4", "fromLatex": "d = \\sqrt{18}", "toLatex": "d = 3\\sqrt{2}", "paletteRef": "p4", "dropTargets": ["\\sqrt{18}"], "description": "Simplify: √18 = √(9·2) = 3√2"}
+    ]
+  },
+  {
+    "id": "geo-h-020", "topic": "geometry", "difficulty": "hard",
+    "question": {"latex": "\\text{Exterior angle} = 24^\\circ;\\quad \\text{find } n", "plain": "Find the number of sides of a regular polygon with exterior angle 24°"},
+    "symbols": {"Exterior angle": "Each exterior angle of a regular n-gon = 360°/n"},
+    "palette": [{"id": "p1", "latex": "15", "description": "360° ÷ 24° = 15"}],
+    "steps": [
+      {"id": "s1a", "fromLatex": "n = \\frac{360^\\circ}{24^\\circ}", "toLatex": "n = \\frac{360^\\circ}{24^\\circ}", "paletteRef": null, "dropTargets": [], "description": "Each exterior angle of a regular polygon = 360°/n, so n = 360°/exterior angle"},
+      {"id": "s2", "fromLatex": "n = \\frac{360^\\circ}{24^\\circ}", "toLatex": "n = 15", "paletteRef": "p1", "dropTargets": ["\\frac{360^\\circ}{24^\\circ}"], "description": "Divide: 360° ÷ 24° = 15 sides"}
+    ]
   }
 ]
