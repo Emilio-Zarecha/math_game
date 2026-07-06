@@ -167,30 +167,196 @@
     <div class="chapter-num">Chapter 4</div>
     <h3>Product, Quotient &amp; Chain Rules</h3>
 
+    <p>
+      The basic power, sum, and constant rules handle simple expressions, but most real-world
+      functions are built by <em>combining</em> simpler ones — multiplying them, dividing them,
+      or plugging one inside another. Three rules cover these cases.
+    </p>
+
+    <!-- ─── Product Rule ─────────────────────────────────────────── -->
+    <h4 style="color:var(--hint);margin:24px 0 8px;font-size:1rem;">The Product Rule</h4>
+
+    <p>
+      <strong>What it is.</strong> When two differentiable functions $u(x)$ and $v(x)$ are
+      multiplied together, the derivative of their product is <em>not</em> simply $u' \cdot v'$.
+      Instead:
+    </p>
+
     <div class="formula">
       <div class="label">Product rule</div>
-      $$\frac{d}{dx}[uv] = u'v + uv'$$
+      $$\frac{d}{dx}[u \cdot v] = u'v + uv'$$
     </div>
+
+    <p>
+      <strong>Why it exists.</strong> Think about how a small change $\Delta x$ affects the
+      product $u \cdot v$. If $u$ grows by $\Delta u$ and $v$ grows by $\Delta v$, the new
+      product is $(u + \Delta u)(v + \Delta v) = uv + u\,\Delta v + v\,\Delta u + \Delta u\,\Delta v$.
+      Subtracting the original $uv$ and dividing by $\Delta x$, the $\Delta u\,\Delta v$ term
+      vanishes as $\Delta x \to 0$, leaving $u\,\frac{dv}{dx} + v\,\frac{du}{dx}$. In words:
+      <em>each factor gets differentiated in turn while the other is held fixed, and the
+      results are added.</em>
+    </p>
+
+    <p>
+      <strong>When to use it.</strong> Reach for the product rule any time your function is
+      written (or can be written) as two distinct parts multiplied together —
+      for example $x^3 \sin x$, $e^x \ln x$, or $(x^2 + 1)(x - 4)$. If both parts are
+      simple polynomials you could expand first, but the product rule works either way.
+    </p>
+
+    <p>
+      <strong>How to use it.</strong>
+    </p>
+    <ol style="margin:0 0 14px 20px;line-height:2;font-size:0.95rem;">
+      <li>Label the two factors: call one $u$ and the other $v$.</li>
+      <li>Differentiate each one separately: find $u'$ and $v'$.</li>
+      <li>Plug into the formula: $u'v + uv'$.</li>
+      <li>Simplify if possible.</li>
+    </ol>
+
+    <div class="example">
+      <div class="label">Worked example — $\dfrac{d}{dx}[x^2 \sin x]$</div>
+      <div class="example-step"><span>$u = x^2, \quad v = \sin x$</span><span class="why">identify the two factors</span></div>
+      <div class="example-step"><span>$u' = 2x, \quad v' = \cos x$</span><span class="why">differentiate each separately</span></div>
+      <div class="example-step"><span>$= u'v + uv' = 2x\sin x + x^2\cos x$</span><span class="why">apply the formula</span></div>
+    </div>
+
+    <div class="example">
+      <div class="label">Worked example — $\dfrac{d}{dx}[e^x \ln x]$</div>
+      <div class="example-step"><span>$u = e^x,\; u' = e^x \quad v = \ln x,\; v' = 1/x$</span><span class="why">both factors, both derivatives</span></div>
+      <div class="example-step"><span>$= e^x \ln x + e^x \cdot \dfrac{1}{x} = e^x\!\left(\ln x + \dfrac{1}{x}\right)$</span><span class="why">$u'v + uv'$; factor out $e^x$</span></div>
+    </div>
+
+    <!-- ─── Quotient Rule ─────────────────────────────────────────── -->
+    <h4 style="color:var(--hint);margin:32px 0 8px;font-size:1rem;">The Quotient Rule</h4>
+
+    <p>
+      <strong>What it is.</strong> When one function is divided by another, the derivative
+      follows a specific pattern — again, <em>not</em> simply $u'/v'$:
+    </p>
 
     <div class="formula">
       <div class="label">Quotient rule</div>
       $$\frac{d}{dx}\!\left[\frac{u}{v}\right] = \frac{u'v - uv'}{v^2}$$
     </div>
 
+    <p>
+      <strong>Why it exists.</strong> You can derive the quotient rule from the product rule
+      by writing $u/v = u \cdot v^{-1}$ and applying the chain rule to $v^{-1}$, giving
+      $u'v^{-1} + u \cdot (-v^{-2})v' = \dfrac{u'v - uv'}{v^2}$.
+      The denominator is squared because shrinking $v$ makes the fraction grow faster than
+      $v$ changes — the $v^2$ in the denominator captures that accelerated sensitivity.
+    </p>
+
+    <p>
+      <strong>When to use it.</strong> Use the quotient rule when your function is a fraction
+      where both the numerator and denominator depend on $x$ —
+      $\dfrac{x^2}{\sin x}$, $\dfrac{e^x}{x+1}$, $\dfrac{\ln x}{x^2}$.
+      If only the numerator contains $x$ (denominator is a constant), the constant multiple
+      rule is simpler.
+    </p>
+
+    <p>
+      <strong>How to use it.</strong> A common mnemonic is <em>"low d-high minus high d-low,
+      all over low squared"</em> — where "high" is the numerator and "low" is the denominator.
+    </p>
+    <ol style="margin:0 0 14px 20px;line-height:2;font-size:0.95rem;">
+      <li>Identify $u$ (numerator) and $v$ (denominator).</li>
+      <li>Find $u'$ and $v'$.</li>
+      <li>Compute $u'v - uv'$ (numerator of the answer).</li>
+      <li>Divide by $v^2$.</li>
+      <li>Simplify.</li>
+    </ol>
+
+    <div class="example">
+      <div class="label">Worked example — $\dfrac{d}{dx}\!\left[\dfrac{x^2}{\sin x}\right]$</div>
+      <div class="example-step"><span>$u = x^2,\; u' = 2x \quad v = \sin x,\; v' = \cos x$</span><span class="why">numerator and denominator</span></div>
+      <div class="example-step"><span>$= \dfrac{2x\sin x - x^2\cos x}{\sin^2 x}$</span><span class="why">$\frac{u'v - uv'}{v^2}$</span></div>
+      <div class="example-step"><span>$= \dfrac{x(2\sin x - x\cos x)}{\sin^2 x}$</span><span class="why">factor $x$ from numerator</span></div>
+    </div>
+
+    <div class="example">
+      <div class="label">Worked example — $\dfrac{d}{dx}\!\left[\dfrac{\ln x}{x^2}\right]$</div>
+      <div class="example-step"><span>$u = \ln x,\; u' = 1/x \quad v = x^2,\; v' = 2x$</span><span class="why">identify parts</span></div>
+      <div class="example-step"><span>$= \dfrac{(1/x)x^2 - (\ln x)(2x)}{x^4} = \dfrac{x - 2x\ln x}{x^4}$</span><span class="why">apply formula; simplify numerator</span></div>
+      <div class="example-step"><span>$= \dfrac{1 - 2\ln x}{x^3}$</span><span class="why">cancel one factor of $x$</span></div>
+    </div>
+
+    <!-- ─── Chain Rule ────────────────────────────────────────────── -->
+    <h4 style="color:var(--hint);margin:32px 0 8px;font-size:1rem;">The Chain Rule</h4>
+
+    <p>
+      <strong>What it is.</strong> The chain rule handles <em>composite</em> functions —
+      a function plugged inside another function. If $y = f(g(x))$, think of $g(x)$ as the
+      "inner" function and $f$ as the "outer" function:
+    </p>
+
     <div class="formula">
       <div class="label">Chain rule</div>
       $$\frac{d}{dx}[f(g(x))] = f'(g(x)) \cdot g'(x)$$
+      <p style="margin-top:8px;">Equivalently, with $u = g(x)$: $\;\dfrac{dy}{dx} = \dfrac{dy}{du} \cdot \dfrac{du}{dx}$</p>
+    </div>
+
+    <p>
+      <strong>Why it exists.</strong> Suppose $u$ changes at rate $du/dx$ when $x$ changes,
+      and $y$ changes at rate $dy/du$ when $u$ changes. Then the rate at which $y$ changes
+      with respect to $x$ is the product of those rates — like gears: if gear A turns twice
+      as fast as gear B, and gear B turns three times as fast as gear C, then gear A turns
+      six times as fast as gear C. The chain rule is that multiplication of rates.
+    </p>
+
+    <p>
+      <strong>When to use it.</strong> Use the chain rule when you can see a function
+      <em>inside</em> another function: $\sin(x^2)$, $e^{3x}$, $\sqrt{x^2+1}$,
+      $\ln(\cos x)$. The telltale sign is that if you tried to evaluate the function at a
+      number, you would perform two steps — compute the inner part first, then feed it into
+      the outer part.
+    </p>
+
+    <p>
+      <strong>How to use it.</strong>
+    </p>
+    <ol style="margin:0 0 14px 20px;line-height:2;font-size:0.95rem;">
+      <li>Identify the outer function $f$ and the inner function $g(x)$.</li>
+      <li>Differentiate the outer function, leaving the inner function in place: $f'(g(x))$.</li>
+      <li>Multiply by the derivative of the inner function: $g'(x)$.</li>
+      <li>Simplify.</li>
+    </ol>
+
+    <div class="example">
+      <div class="label">Worked example — $\dfrac{d}{dx}[\sin(x^2)]$</div>
+      <div class="example-step"><span>outer: $f(u) = \sin u$; inner: $g(x) = x^2$</span><span class="why">peel apart the composition</span></div>
+      <div class="example-step"><span>$f'(u) = \cos u$; $g'(x) = 2x$</span><span class="why">differentiate each piece separately</span></div>
+      <div class="example-step"><span>$= \cos(x^2) \cdot 2x = 2x\cos(x^2)$</span><span class="why">chain rule: outer derivative × inner derivative</span></div>
     </div>
 
     <div class="example">
-      <div class="label">Worked example — differentiate $x^2 \sin x$ (product rule)</div>
-      <div class="example-step"><span>$u = x^2, \; v = \sin x$; $u' = 2x, \; v' = \cos x$</span><span class="why">identify parts</span></div>
-      <div class="example-step"><span>$= 2x\sin x + x^2\cos x$</span><span class="why">$u'v + uv'$</span></div>
+      <div class="label">Worked example — $\dfrac{d}{dx}[(x^2+1)^3]$</div>
+      <div class="example-step"><span>outer: $f(u) = u^3$; inner: $g(x) = x^2 + 1$</span><span class="why">identify layers</span></div>
+      <div class="example-step"><span>$f'(u) = 3u^2$; $g'(x) = 2x$</span><span class="why">power rule on each</span></div>
+      <div class="example-step"><span>$= 3(x^2+1)^2 \cdot 2x = 6x(x^2+1)^2$</span><span class="why">substitute back; multiply</span></div>
     </div>
 
     <div class="example">
-      <div class="label">Worked example — differentiate $(x^2+1)^3$ (chain rule)</div>
-      <div class="example-step"><span>$= 3(x^2+1)^2 \cdot 2x = 6x(x^2+1)^2$</span><span class="why">outer rule × inner derivative</span></div>
+      <div class="label">Worked example — $\dfrac{d}{dx}[e^{x^2}]$</div>
+      <div class="example-step"><span>outer: $e^u$; inner: $x^2$; inner derivative: $2x$</span><span class="why">$e^u$ differentiates to itself</span></div>
+      <div class="example-step"><span>$= e^{x^2} \cdot 2x = 2xe^{x^2}$</span><span class="why">chain rule</span></div>
+    </div>
+
+    <!-- ─── Combining the Rules ───────────────────────────────────── -->
+    <h4 style="color:var(--hint);margin:32px 0 8px;font-size:1rem;">Combining the Rules</h4>
+
+    <p>
+      Real functions often require two or more rules at once. The key is to work
+      <em>from the outside in</em>: identify the outermost operation first, apply its rule,
+      and then handle any inner products, quotients, or compositions as you go.
+    </p>
+
+    <div class="example">
+      <div class="label">Worked example — $\dfrac{d}{dx}[x^2 e^{x^2}]$ (product + chain)</div>
+      <div class="example-step"><span>Product rule: $u = x^2$, $v = e^{x^2}$</span><span class="why">outermost structure is a product</span></div>
+      <div class="example-step"><span>$u' = 2x$; $v' = e^{x^2} \cdot 2x$ (chain rule on $v$)</span><span class="why">chain rule needed for $e^{x^2}$</span></div>
+      <div class="example-step"><span>$= 2x \cdot e^{x^2} + x^2 \cdot 2xe^{x^2} = 2xe^{x^2}(1 + x^2)$</span><span class="why">$u'v + uv'$; factor</span></div>
     </div>
   </section>
 
