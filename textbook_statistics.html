@@ -1,0 +1,694 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Introductory Statistics Textbook</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
+    onload="renderMathInElement(document.body, {delimiters:[
+      {left:'$$',right:'$$',display:true},
+      {left:'$',right:'$',display:false}
+    ]})"></script>
+  <style>
+    :root {
+      --bg: #1a1a2e; --surface: #16213e; --panel: #0f3460;
+      --border: #e94560; --accent: #e94560; --correct: #4caf50;
+      --hint: #ff9800; --text: #eaeaea; --muted: #9e9e9e;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { background: var(--bg); color: var(--text); font-family: 'Segoe UI', sans-serif;
+           line-height: 1.7; padding: 2rem; max-width: 860px; margin: auto; }
+    h1 { color: var(--accent); font-size: 2.2rem; text-align: center; margin-bottom: 0.4rem; }
+    .subtitle { text-align: center; color: var(--muted); margin-bottom: 2.5rem; font-size: 0.95rem; }
+    .toc { background: var(--surface); border: 1px solid var(--panel);
+           border-radius: 8px; padding: 1.5rem 2rem; margin-bottom: 2.5rem; }
+    .toc h2 { color: var(--accent); margin-bottom: 0.8rem; font-size: 1.1rem; }
+    .toc ol { padding-left: 1.4rem; }
+    .toc li { padding: 0.2rem 0; }
+    .toc a { color: var(--hint); text-decoration: none; }
+    .toc a:hover { text-decoration: underline; }
+    .chapter { background: var(--surface); border-radius: 10px;
+               padding: 2rem; margin-bottom: 2.5rem; }
+    .chapter-num { color: var(--accent); font-size: 0.85rem; font-weight: 700;
+                   text-transform: uppercase; letter-spacing: 1px; margin-bottom: 0.3rem; }
+    .chapter h2 { color: #fff; font-size: 1.6rem; margin-bottom: 1.2rem; }
+    .chapter h3 { color: var(--hint); font-size: 1.15rem; margin: 1.4rem 0 0.5rem; }
+    .chapter p { margin-bottom: 0.9rem; }
+    .formula { background: var(--panel); border-left: 4px solid #4fc3f7;
+               border-radius: 6px; padding: 0.9rem 1.2rem; margin: 1rem 0; }
+    .formula-label { color: #4fc3f7; font-size: 0.8rem; font-weight: 700;
+                     text-transform: uppercase; margin-bottom: 0.3rem; }
+    .example { background: #0d2818; border-left: 4px solid var(--correct);
+               border-radius: 6px; padding: 0.9rem 1.2rem; margin: 1rem 0; }
+    .example-label { color: var(--correct); font-size: 0.8rem; font-weight: 700;
+                     text-transform: uppercase; margin-bottom: 0.4rem; }
+    table.example-steps { width: 100%; border-collapse: collapse; margin-top: 0.5rem; }
+    table.example-steps td { padding: 0.35rem 0.6rem; vertical-align: top; }
+    table.example-steps td:first-child { color: #4fc3f7; font-weight: 600; white-space: nowrap; width: 28%; }
+    table.example-steps td.why { color: var(--muted); font-size: 0.88rem; }
+    .definition { background: #1e1e35; border-left: 4px solid var(--hint);
+                  border-radius: 6px; padding: 0.9rem 1.2rem; margin: 1rem 0; }
+    .definition-label { color: var(--hint); font-size: 0.8rem; font-weight: 700;
+                        text-transform: uppercase; margin-bottom: 0.3rem; }
+    ul, ol { padding-left: 1.4rem; margin-bottom: 0.9rem; }
+    li { margin-bottom: 0.3rem; }
+    .attribution { text-align: center; color: var(--muted); font-size: 0.82rem;
+                   margin-top: 3rem; padding-top: 1.5rem; border-top: 1px solid var(--panel); }
+    .back-link { display: inline-block; margin-bottom: 1.5rem; color: var(--accent);
+                 text-decoration: none; font-size: 0.9rem; }
+    .back-link:hover { text-decoration: underline; }
+  </style>
+</head>
+<body>
+
+<a class="back-link" href="index.html">← Back to Math Game</a>
+<h1>Introductory Statistics</h1>
+<p class="subtitle">Based on <em>OpenStax Introductory Statistics</em> — CC BY 4.0</p>
+
+<nav class="toc">
+  <h2>Table of Contents</h2>
+  <ol>
+    <li><a href="#ch1">Sampling and Data</a></li>
+    <li><a href="#ch2">Descriptive Statistics — Center</a></li>
+    <li><a href="#ch3">Descriptive Statistics — Spread</a></li>
+    <li><a href="#ch4">Data Visualization</a></li>
+    <li><a href="#ch5">Probability Fundamentals</a></li>
+    <li><a href="#ch6">Counting Methods</a></li>
+    <li><a href="#ch7">Discrete Probability Distributions</a></li>
+    <li><a href="#ch8">Normal Distribution and Z-Scores</a></li>
+    <li><a href="#ch9">Sampling Distributions and the Central Limit Theorem</a></li>
+    <li><a href="#ch10">Confidence Intervals</a></li>
+    <li><a href="#ch11">Hypothesis Testing</a></li>
+    <li><a href="#ch12">Linear Regression and Correlation</a></li>
+  </ol>
+</nav>
+
+<!-- ═══════════════════════════════════════════════════════ CHAPTER 1 -->
+<section class="chapter" id="ch1">
+  <div class="chapter-num">Chapter 1</div>
+  <h2>Sampling and Data</h2>
+
+  <h3>Key Terms</h3>
+  <div class="definition">
+    <div class="definition-label">Definitions</div>
+    <ul>
+      <li><strong>Population</strong> — the entire group of interest.</li>
+      <li><strong>Sample</strong> — a subset of the population used to draw conclusions.</li>
+      <li><strong>Parameter</strong> — a numerical summary of a <em>population</em> (e.g., $\mu$, $\sigma$).</li>
+      <li><strong>Statistic</strong> — a numerical summary of a <em>sample</em> (e.g., $\bar x$, $s$).</li>
+      <li><strong>Variable</strong> — a characteristic measured on each individual.</li>
+    </ul>
+  </div>
+
+  <h3>Types of Data</h3>
+  <p><strong>Quantitative (numerical):</strong> measured on a numeric scale. Can be <em>discrete</em> (counts, like number of children) or <em>continuous</em> (measurements, like height).</p>
+  <p><strong>Qualitative (categorical):</strong> describes a category or group (e.g., eye color, zip code). Cannot be averaged.</p>
+
+  <h3>Sampling Methods</h3>
+  <ul>
+    <li><strong>Simple Random Sample (SRS)</strong> — every individual and every group of size $n$ has an equal chance of being selected.</li>
+    <li><strong>Stratified</strong> — divide population into homogeneous groups (strata), then SRS within each stratum.</li>
+    <li><strong>Cluster</strong> — divide into groups (clusters), randomly select whole clusters.</li>
+    <li><strong>Systematic</strong> — select every $k$-th individual from a list.</li>
+    <li><strong>Convenience</strong> — use whoever is easiest to reach (non-random; prone to bias).</li>
+  </ul>
+
+  <h3>Levels of Measurement</h3>
+  <p><strong>Nominal</strong> — categories with no order (eye color). <strong>Ordinal</strong> — categories with order but unequal spacing (letter grades). <strong>Interval</strong> — equal spacing, no true zero (temperature in °C). <strong>Ratio</strong> — equal spacing with a true zero (height, weight).</p>
+
+  <div class="example">
+    <div class="example-label">Example — Classifying Variables</div>
+    <p>In a study of 200 college students, data collected includes: GPA (quantitative, continuous, ratio), class year (qualitative, ordinal), number of siblings (quantitative, discrete, ratio).</p>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════ CHAPTER 2 -->
+<section class="chapter" id="ch2">
+  <div class="chapter-num">Chapter 2</div>
+  <h2>Descriptive Statistics — Measures of Center</h2>
+
+  <h3>Mean</h3>
+  <p>The <strong>arithmetic mean</strong> is the sum of all values divided by the count. It is the balance point of a distribution and is sensitive to extreme values (outliers).</p>
+  <div class="formula">
+    <div class="formula-label">Population Mean</div>
+    $$\mu = \frac{\sum x_i}{N}$$
+  </div>
+  <div class="formula">
+    <div class="formula-label">Sample Mean</div>
+    $$\bar{x} = \frac{\sum x_i}{n}$$
+  </div>
+
+  <div class="example">
+    <div class="example-label">Example — Computing the Mean</div>
+    <table class="example-steps">
+      <tr><td>Data</td><td>$\{4, 8, 6, 10, 2\}$</td><td class="why">5 values</td></tr>
+      <tr><td>Sum</td><td>$4+8+6+10+2 = 30$</td><td class="why">add all values</td></tr>
+      <tr><td>Mean</td><td>$\bar{x} = \dfrac{30}{5} = 6$</td><td class="why">divide by $n=5$</td></tr>
+    </table>
+  </div>
+
+  <h3>Median</h3>
+  <p>The <strong>median</strong> is the middle value when data are sorted. It is resistant to outliers. For an even number of values, average the two middle values.</p>
+
+  <div class="example">
+    <div class="example-label">Example — Odd and Even Count</div>
+    <table class="example-steps">
+      <tr><td>Sorted (odd)</td><td>$2, 3, \boldsymbol{5}, 7, 9$</td><td class="why">middle is 5th position, value = 5</td></tr>
+      <tr><td>Sorted (even)</td><td>$2, \boldsymbol{4, 6}, 8$</td><td class="why">average middle two: $(4+6)/2 = 5$</td></tr>
+    </table>
+  </div>
+
+  <h3>Mode</h3>
+  <p>The <strong>mode</strong> is the value that appears most often. A distribution may be unimodal, bimodal, or have no mode. It is the only measure of center applicable to nominal data.</p>
+
+  <h3>Weighted Mean</h3>
+  <p>When values have different importance (weights $w_i$), use:</p>
+  <div class="formula">
+    <div class="formula-label">Weighted Mean</div>
+    $$\bar{x}_w = \frac{\sum w_i x_i}{\sum w_i}$$
+  </div>
+
+  <div class="example">
+    <div class="example-label">Example — Course GPA</div>
+    <table class="example-steps">
+      <tr><td>Data</td><td>Scores 80, 90, 70; weights 0.2, 0.5, 0.3</td><td class="why">weights sum to 1</td></tr>
+      <tr><td>Products</td><td>$80(0.2)+90(0.5)+70(0.3) = 16+45+21$</td><td class="why">multiply each score by weight</td></tr>
+      <tr><td>Weighted mean</td><td>$= 82$</td><td class="why">sum the products</td></tr>
+    </table>
+  </div>
+
+  <h3>Choosing the Right Measure</h3>
+  <ul>
+    <li>Symmetric distributions: mean ≈ median; either works.</li>
+    <li>Skewed distributions or outliers: median is more representative.</li>
+    <li>Categorical data: mode only.</li>
+  </ul>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════ CHAPTER 3 -->
+<section class="chapter" id="ch3">
+  <div class="chapter-num">Chapter 3</div>
+  <h2>Descriptive Statistics — Measures of Spread</h2>
+
+  <h3>Range</h3>
+  <div class="formula">
+    <div class="formula-label">Range</div>
+    $$\text{Range} = \text{max} - \text{min}$$
+  </div>
+  <p>Simple but sensitive to extreme values.</p>
+
+  <h3>Interquartile Range (IQR)</h3>
+  <p>Quartiles divide sorted data into four equal parts: $Q_1$ (25th percentile), $Q_2$ (median, 50th), $Q_3$ (75th).</p>
+  <div class="formula">
+    <div class="formula-label">IQR</div>
+    $$IQR = Q_3 - Q_1$$
+  </div>
+  <p>The IQR is resistant to outliers. An observation is an <strong>outlier</strong> if it falls below $Q_1 - 1.5 \cdot IQR$ or above $Q_3 + 1.5 \cdot IQR$.</p>
+
+  <h3>Variance and Standard Deviation</h3>
+  <p>The <strong>variance</strong> measures the average squared distance from the mean. The <strong>standard deviation</strong> is its square root — in the same units as the data.</p>
+  <div class="formula">
+    <div class="formula-label">Population Variance and Standard Deviation</div>
+    $$\sigma^2 = \frac{\sum (x_i - \mu)^2}{N}, \qquad \sigma = \sqrt{\sigma^2}$$
+  </div>
+  <div class="formula">
+    <div class="formula-label">Sample Variance and Standard Deviation</div>
+    $$s^2 = \frac{\sum (x_i - \bar{x})^2}{n-1}, \qquad s = \sqrt{s^2}$$
+  </div>
+  <p>We divide by $n-1$ (not $n$) to make $s^2$ an unbiased estimator of $\sigma^2$.</p>
+
+  <div class="example">
+    <div class="example-label">Example — Sample Variance of $\{2, 4, 6\}$, $\bar{x}=4$</div>
+    <table class="example-steps">
+      <tr><td>Deviations</td><td>$2-4=-2,\; 4-4=0,\; 6-4=2$</td><td class="why">each value minus mean</td></tr>
+      <tr><td>Squared dev.</td><td>$(-2)^2=4,\; 0^2=0,\; 2^2=4$</td><td class="why">square each deviation</td></tr>
+      <tr><td>Sum</td><td>$4+0+4=8$</td><td class="why">sum of squared deviations</td></tr>
+      <tr><td>$s^2$</td><td>$\dfrac{8}{3-1} = 4$</td><td class="why">divide by $n-1=2$</td></tr>
+      <tr><td>$s$</td><td>$\sqrt{4} = 2$</td><td class="why">take square root</td></tr>
+    </table>
+  </div>
+
+  <h3>Coefficient of Variation</h3>
+  <div class="formula">
+    <div class="formula-label">CV</div>
+    $$CV = \frac{s}{\bar{x}} \times 100\%$$
+  </div>
+  <p>Expresses standard deviation as a percent of the mean. Useful for comparing variability across different units or scales.</p>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════ CHAPTER 4 -->
+<section class="chapter" id="ch4">
+  <div class="chapter-num">Chapter 4</div>
+  <h2>Data Visualization</h2>
+
+  <h3>Frequency Tables</h3>
+  <p>A <strong>frequency table</strong> lists each value (or class interval) and how many times it appears. A <strong>relative frequency</strong> is the proportion of the total:</p>
+  <div class="formula">
+    <div class="formula-label">Relative Frequency</div>
+    $$\text{Relative frequency} = \frac{\text{frequency}}{n}$$
+  </div>
+
+  <h3>Histograms</h3>
+  <p>A <strong>histogram</strong> displays quantitative data in adjacent bars. The horizontal axis shows class intervals; the vertical axis shows frequency or relative frequency. The <strong>shape</strong> of a histogram reveals:</p>
+  <ul>
+    <li><strong>Symmetric</strong> (bell-shaped): mean ≈ median.</li>
+    <li><strong>Right-skewed</strong> (tail to the right): mean &gt; median.</li>
+    <li><strong>Left-skewed</strong> (tail to the left): mean &lt; median.</li>
+  </ul>
+
+  <h3>Box Plots (Box-and-Whisker)</h3>
+  <p>A box plot displays the five-number summary: min, $Q_1$, median, $Q_3$, max. The box spans the IQR; whiskers extend to the data extremes (excluding outliers, which are plotted individually).</p>
+
+  <h3>Stem-and-Leaf Plots</h3>
+  <p>Splits each value into a <em>stem</em> (leading digit(s)) and a <em>leaf</em> (last digit). Preserves individual data values while showing the distribution shape.</p>
+
+  <h3>Ogives and Cumulative Frequency</h3>
+  <p>An <strong>ogive</strong> plots cumulative relative frequency against the upper class boundary. Used to find percentiles and compare distributions.</p>
+
+  <div class="example">
+    <div class="example-label">Example — Relative Frequency</div>
+    <table class="example-steps">
+      <tr><td>Freq</td><td>15 students passed out of 60</td><td class="why">raw count</td></tr>
+      <tr><td>Rel. freq.</td><td>$\dfrac{15}{60} = 0.25 = 25\%$</td><td class="why">divide by total</td></tr>
+    </table>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════ CHAPTER 5 -->
+<section class="chapter" id="ch5">
+  <div class="chapter-num">Chapter 5</div>
+  <h2>Probability Fundamentals</h2>
+
+  <h3>Basic Definitions</h3>
+  <div class="definition">
+    <div class="definition-label">Key Terms</div>
+    <ul>
+      <li><strong>Experiment</strong> — a process with uncertain outcome.</li>
+      <li><strong>Sample Space $S$</strong> — set of all possible outcomes.</li>
+      <li><strong>Event $A$</strong> — a subset of $S$.</li>
+      <li><strong>Probability</strong> — a number in $[0,1]$ measuring likelihood.</li>
+    </ul>
+  </div>
+
+  <div class="formula">
+    <div class="formula-label">Classical Probability</div>
+    $$P(A) = \frac{\text{number of outcomes in } A}{\text{total outcomes in } S}$$
+  </div>
+
+  <h3>Complement Rule</h3>
+  <div class="formula">
+    <div class="formula-label">Complement</div>
+    $$P(A^c) = 1 - P(A)$$
+  </div>
+  <p><em>The complement of event $A$ is everything that is not $A$.</em></p>
+
+  <h3>Addition Rules</h3>
+  <div class="formula">
+    <div class="formula-label">General Addition Rule</div>
+    $$P(A \cup B) = P(A) + P(B) - P(A \cap B)$$
+  </div>
+  <div class="formula">
+    <div class="formula-label">Mutually Exclusive Events (no overlap)</div>
+    $$P(A \cup B) = P(A) + P(B)$$
+  </div>
+
+  <h3>Conditional Probability</h3>
+  <p>The probability of $A$ given that $B$ has occurred:</p>
+  <div class="formula">
+    <div class="formula-label">Conditional Probability</div>
+    $$P(A|B) = \frac{P(A \cap B)}{P(B)}, \quad P(B) > 0$$
+  </div>
+
+  <h3>Multiplication Rule and Independence</h3>
+  <div class="formula">
+    <div class="formula-label">General Multiplication Rule</div>
+    $$P(A \cap B) = P(A|B) \cdot P(B)$$
+  </div>
+  <div class="formula">
+    <div class="formula-label">Independent Events</div>
+    $$P(A \cap B) = P(A) \cdot P(B)$$
+  </div>
+  <p>Events $A$ and $B$ are <strong>independent</strong> when knowing $B$ occurred does not change the probability of $A$: $P(A|B) = P(A)$.</p>
+
+  <h3>Bayes' Theorem</h3>
+  <div class="formula">
+    <div class="formula-label">Bayes' Theorem</div>
+    $$P(A|B) = \frac{P(B|A)\cdot P(A)}{P(B)}$$
+  </div>
+
+  <div class="example">
+    <div class="example-label">Example — Bayes' Theorem</div>
+    <table class="example-steps">
+      <tr><td>Given</td><td>$P(B|A)=0.9,\; P(A)=0.1,\; P(B)=0.15$</td><td class="why"></td></tr>
+      <tr><td>Numerator</td><td>$P(B|A)\cdot P(A) = 0.9 \times 0.1 = 0.09$</td><td class="why">joint probability</td></tr>
+      <tr><td>$P(A|B)$</td><td>$\dfrac{0.09}{0.15} = 0.6$</td><td class="why">divide by $P(B)$</td></tr>
+    </table>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════ CHAPTER 6 -->
+<section class="chapter" id="ch6">
+  <div class="chapter-num">Chapter 6</div>
+  <h2>Counting Methods</h2>
+
+  <h3>Fundamental Counting Principle</h3>
+  <p>If event $A$ can occur in $m$ ways and event $B$ in $n$ ways, together they can occur in $m \times n$ ways.</p>
+
+  <h3>Permutations — Order Matters</h3>
+  <div class="formula">
+    <div class="formula-label">Permutations of $n$ things taken $r$ at a time</div>
+    $$P(n,r) = \frac{n!}{(n-r)!}$$
+  </div>
+  <div class="example">
+    <div class="example-label">Example</div>
+    <table class="example-steps">
+      <tr><td>$P(5,2)$</td><td>$\dfrac{5!}{3!} = 5 \times 4 = 20$</td><td class="why">ordered arrangements of 2 from 5</td></tr>
+    </table>
+  </div>
+
+  <h3>Combinations — Order Does Not Matter</h3>
+  <div class="formula">
+    <div class="formula-label">Combinations of $n$ things taken $r$ at a time</div>
+    $$\binom{n}{r} = \frac{n!}{r!\,(n-r)!}$$
+  </div>
+  <div class="example">
+    <div class="example-label">Example</div>
+    <table class="example-steps">
+      <tr><td>$\binom{5}{2}$</td><td>$\dfrac{5!}{2!\,3!} = \dfrac{120}{12} = 10$</td><td class="why">unordered groups of 2 from 5</td></tr>
+    </table>
+  </div>
+
+  <h3>When to Use Which</h3>
+  <ul>
+    <li><strong>Permutations</strong>: rankings, sequences, passwords where order matters.</li>
+    <li><strong>Combinations</strong>: committees, teams, hands of cards where order doesn't matter.</li>
+  </ul>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════ CHAPTER 7 -->
+<section class="chapter" id="ch7">
+  <div class="chapter-num">Chapter 7</div>
+  <h2>Discrete Probability Distributions</h2>
+
+  <h3>Probability Distribution</h3>
+  <p>A <strong>probability distribution</strong> lists all possible values of a discrete random variable $X$ and their probabilities, satisfying: $P(x) \geq 0$ for all $x$ and $\sum P(x) = 1$.</p>
+
+  <h3>Expected Value and Variance</h3>
+  <div class="formula">
+    <div class="formula-label">Expected Value (Mean)</div>
+    $$E(X) = \mu = \sum x \cdot P(x)$$
+  </div>
+  <div class="formula">
+    <div class="formula-label">Variance</div>
+    $$Var(X) = \sigma^2 = \sum (x - \mu)^2 P(x)$$
+  </div>
+
+  <h3>Linear Transformation Rules</h3>
+  <div class="formula">
+    <div class="formula-label">Properties of $aX + b$</div>
+    $$E(aX + b) = a\,E(X) + b$$
+    $$Var(aX + b) = a^2\,Var(X)$$
+  </div>
+  <p>Adding a constant shifts the mean but does not affect variance. Multiplying by $a$ scales variance by $a^2$.</p>
+
+  <h3>Sum of Independent Random Variables</h3>
+  <div class="formula">
+    <div class="formula-label">Independent $X$ and $Y$</div>
+    $$E(X+Y) = E(X) + E(Y)$$
+    $$Var(X+Y) = Var(X) + Var(Y)$$
+  </div>
+
+  <h3>Binomial Distribution</h3>
+  <p>Use the binomial when: fixed number of trials $n$, each trial is success/failure, trials are independent, constant probability of success $p$.</p>
+  <div class="formula">
+    <div class="formula-label">Binomial PMF</div>
+    $$P(X=k) = \binom{n}{k} p^k (1-p)^{n-k}$$
+  </div>
+  <div class="formula">
+    <div class="formula-label">Binomial Mean and Variance</div>
+    $$E(X) = np, \qquad Var(X) = np(1-p)$$
+  </div>
+
+  <div class="example">
+    <div class="example-label">Example — Binomial $n=3,\, p=0.5,\, k=2$</div>
+    <table class="example-steps">
+      <tr><td>Formula</td><td>$\binom{3}{2}(0.5)^2(0.5)^1$</td><td class="why">choose 2 successes from 3 trials</td></tr>
+      <tr><td>Evaluate</td><td>$3 \times 0.25 \times 0.5$</td><td class="why">$\binom{3}{2}=3$; $(0.5)^2=0.25$</td></tr>
+      <tr><td>Result</td><td>$= 0.375$</td><td class="why">37.5% probability</td></tr>
+    </table>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════ CHAPTER 8 -->
+<section class="chapter" id="ch8">
+  <div class="chapter-num">Chapter 8</div>
+  <h2>Normal Distribution and Z-Scores</h2>
+
+  <h3>The Normal Distribution</h3>
+  <p>The <strong>normal distribution</strong> is a symmetric, bell-shaped continuous distribution characterized by its mean $\mu$ and standard deviation $\sigma$. Its PDF is:</p>
+  <div class="formula">
+    <div class="formula-label">Normal PDF</div>
+    $$f(x) = \frac{1}{\sigma\sqrt{2\pi}} e^{-\frac{(x-\mu)^2}{2\sigma^2}}$$
+  </div>
+  <p>The total area under the curve equals 1. The distribution is completely symmetric about $\mu$.</p>
+
+  <h3>The Standard Normal</h3>
+  <p>A normal distribution with $\mu=0$ and $\sigma=1$ is the <strong>standard normal</strong>, denoted $Z \sim N(0,1)$. Any normal variable can be standardized:</p>
+  <div class="formula">
+    <div class="formula-label">Z-Score (standardizing)</div>
+    $$z = \frac{x - \mu}{\sigma}$$
+  </div>
+  <p>The z-score tells how many standard deviations $x$ is above (positive) or below (negative) the mean. To recover $x$ from $z$:</p>
+  <div class="formula">
+    <div class="formula-label">Reverse: Raw Score from Z</div>
+    $$x = \mu + z\,\sigma$$
+  </div>
+
+  <h3>The Empirical Rule (68–95–99.7)</h3>
+  <p>For any normal distribution:</p>
+  <ul>
+    <li>Approximately $68\%$ of data fall within $\mu \pm 1\sigma$.</li>
+    <li>Approximately $95\%$ of data fall within $\mu \pm 2\sigma$.</li>
+    <li>Approximately $99.7\%$ of data fall within $\mu \pm 3\sigma$.</li>
+  </ul>
+
+  <div class="example">
+    <div class="example-label">Example — Finding a Z-Score</div>
+    <table class="example-steps">
+      <tr><td>Given</td><td>$x=85,\; \mu=75,\; \sigma=5$</td><td class="why"></td></tr>
+      <tr><td>$z$</td><td>$\dfrac{85-75}{5} = \dfrac{10}{5} = 2$</td><td class="why">85 is 2 standard deviations above the mean</td></tr>
+    </table>
+  </div>
+
+  <div class="example">
+    <div class="example-label">Example — Raw Score from Z</div>
+    <table class="example-steps">
+      <tr><td>Given</td><td>$z=2,\; \mu=50,\; \sigma=10$</td><td class="why"></td></tr>
+      <tr><td>$x$</td><td>$50 + 2(10) = 70$</td><td class="why">use $x = \mu + z\sigma$</td></tr>
+    </table>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════ CHAPTER 9 -->
+<section class="chapter" id="ch9">
+  <div class="chapter-num">Chapter 9</div>
+  <h2>Sampling Distributions and the Central Limit Theorem</h2>
+
+  <h3>Sampling Distribution of $\bar{x}$</h3>
+  <p>When we take repeated random samples of size $n$ from a population with mean $\mu$ and standard deviation $\sigma$, the <strong>sampling distribution of the sample mean</strong> has:</p>
+  <div class="formula">
+    <div class="formula-label">Mean and Standard Error of $\bar{x}$</div>
+    $$\mu_{\bar x} = \mu, \qquad \sigma_{\bar x} = \frac{\sigma}{\sqrt{n}}$$
+  </div>
+  <p>$\sigma_{\bar x}$ is called the <strong>standard error (SE)</strong>. As $n$ increases, SE decreases — larger samples give more precise estimates.</p>
+
+  <h3>Central Limit Theorem (CLT)</h3>
+  <p>For sufficiently large $n$ (typically $n \geq 30$), the sampling distribution of $\bar{x}$ is approximately normal, <em>regardless of the population's shape</em>. This is the most important theorem in statistics.</p>
+  <div class="formula">
+    <div class="formula-label">CLT: Z-score for a Sample Mean</div>
+    $$z = \frac{\bar{x} - \mu}{\sigma/\sqrt{n}}$$
+  </div>
+
+  <div class="example">
+    <div class="example-label">Example — Z-Score for $\bar{x}$</div>
+    <table class="example-steps">
+      <tr><td>Given</td><td>$\bar{x}=55,\; \mu=50,\; \sigma=10,\; n=25$</td><td class="why"></td></tr>
+      <tr><td>SE</td><td>$\dfrac{10}{\sqrt{25}} = \dfrac{10}{5} = 2$</td><td class="why">standard error</td></tr>
+      <tr><td>$z$</td><td>$\dfrac{55-50}{2} = 2.5$</td><td class="why">2.5 SE above mean</td></tr>
+    </table>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════ CHAPTER 10 -->
+<section class="chapter" id="ch10">
+  <div class="chapter-num">Chapter 10</div>
+  <h2>Confidence Intervals</h2>
+
+  <h3>What Is a Confidence Interval?</h3>
+  <p>A <strong>confidence interval (CI)</strong> is a range of values that is likely to contain the true population parameter. A 95% CI means: if we repeated the sampling procedure many times, 95% of the intervals produced would contain the true parameter.</p>
+
+  <h3>CI for a Population Mean ($\sigma$ known)</h3>
+  <div class="formula">
+    <div class="formula-label">Confidence Interval for $\mu$</div>
+    $$\bar{x} \pm z^* \cdot \frac{\sigma}{\sqrt{n}}$$
+  </div>
+  <p>Common critical values: $z^*_{90\%} = 1.645$, $z^*_{95\%} = 1.96$, $z^*_{99\%} = 2.576$.</p>
+  <div class="formula">
+    <div class="formula-label">Margin of Error</div>
+    $$ME = z^* \cdot \frac{\sigma}{\sqrt{n}}$$
+  </div>
+
+  <div class="example">
+    <div class="example-label">Example — 95% CI</div>
+    <table class="example-steps">
+      <tr><td>Given</td><td>$\bar{x}=50,\; \sigma=8,\; n=16,\; z^*=1.96$</td><td class="why"></td></tr>
+      <tr><td>SE</td><td>$8/\sqrt{16} = 8/4 = 2$</td><td class="why">standard error</td></tr>
+      <tr><td>ME</td><td>$1.96 \times 2 = 3.92$</td><td class="why">margin of error</td></tr>
+      <tr><td>CI</td><td>$(50-3.92,\; 50+3.92) = (46.08,\; 53.92)$</td><td class="why">interval estimate</td></tr>
+    </table>
+  </div>
+
+  <h3>CI for a Proportion</h3>
+  <div class="formula">
+    <div class="formula-label">CI for Proportion $p$</div>
+    $$\hat{p} \pm z^* \sqrt{\frac{\hat{p}(1-\hat{p})}{n}}$$
+  </div>
+
+  <div class="example">
+    <div class="example-label">Example — Proportion CI</div>
+    <table class="example-steps">
+      <tr><td>Given</td><td>$\hat{p}=0.5,\; n=400,\; z^*=1.96$</td><td class="why"></td></tr>
+      <tr><td>SE</td><td>$\sqrt{0.5(0.5)/400} = \sqrt{0.000625} = 0.025$</td><td class="why"></td></tr>
+      <tr><td>ME</td><td>$1.96 \times 0.025 = 0.049$</td><td class="why"></td></tr>
+      <tr><td>CI</td><td>$(0.451,\; 0.549)$</td><td class="why">contains true proportion with 95% confidence</td></tr>
+    </table>
+  </div>
+
+  <h3>Required Sample Size</h3>
+  <div class="formula">
+    <div class="formula-label">Minimum $n$ for desired ME</div>
+    $$n \geq \left(\frac{z^* \cdot \sigma}{ME}\right)^2$$
+  </div>
+  <p>Always round <em>up</em> to ensure the margin of error is at most the specified value.</p>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════ CHAPTER 11 -->
+<section class="chapter" id="ch11">
+  <div class="chapter-num">Chapter 11</div>
+  <h2>Hypothesis Testing</h2>
+
+  <h3>The Logic of Hypothesis Testing</h3>
+  <p>We start with a <strong>null hypothesis $H_0$</strong> (a claim of no effect / no difference) and an <strong>alternative hypothesis $H_a$</strong>. We use sample data to decide whether to <em>reject</em> $H_0$.</p>
+
+  <h3>One-Sample Z-Test for a Mean</h3>
+  <div class="formula">
+    <div class="formula-label">Z-Test Statistic</div>
+    $$z = \frac{\bar{x} - \mu_0}{\sigma/\sqrt{n}}$$
+  </div>
+
+  <div class="example">
+    <div class="example-label">Example</div>
+    <table class="example-steps">
+      <tr><td>Given</td><td>$\bar{x}=52,\; \mu_0=50,\; \sigma=4,\; n=16$</td><td class="why">testing $H_0{:}\,\mu=50$</td></tr>
+      <tr><td>SE</td><td>$4/\sqrt{16} = 1$</td><td class="why"></td></tr>
+      <tr><td>$z$</td><td>$(52-50)/1 = 2$</td><td class="why">2 SE above the hypothesized mean</td></tr>
+      <tr><td>Decision</td><td>$|z|=2 > 1.96$ → reject $H_0$ at $\alpha=0.05$</td><td class="why">strong evidence against $H_0$</td></tr>
+    </table>
+  </div>
+
+  <h3>P-Value and Significance Level</h3>
+  <p>The <strong>p-value</strong> is the probability of observing a test statistic at least as extreme as the one computed, assuming $H_0$ is true.</p>
+  <ul>
+    <li>If $p \leq \alpha$: reject $H_0$ (results are statistically significant).</li>
+    <li>If $p > \alpha$: fail to reject $H_0$ (insufficient evidence).</li>
+  </ul>
+
+  <h3>Type I and Type II Errors</h3>
+  <ul>
+    <li><strong>Type I error ($\alpha$)</strong> — rejecting a true $H_0$ ("false positive").</li>
+    <li><strong>Type II error ($\beta$)</strong> — failing to reject a false $H_0$ ("false negative").</li>
+    <li><strong>Power</strong> $= 1 - \beta$ — probability of correctly rejecting a false $H_0$.</li>
+  </ul>
+
+  <h3>Chi-Square Goodness-of-Fit</h3>
+  <p>Tests whether observed frequencies match expected frequencies.</p>
+  <div class="formula">
+    <div class="formula-label">Chi-Square Statistic</div>
+    $$\chi^2 = \sum \frac{(O - E)^2}{E}$$
+  </div>
+
+  <div class="example">
+    <div class="example-label">Example — $\chi^2$ with Observed $\{10,20,30\}$, Expected $\{20,20,20\}$</div>
+    <table class="example-steps">
+      <tr><td>Compute</td><td>$\dfrac{(10-20)^2}{20} + \dfrac{(20-20)^2}{20} + \dfrac{(30-20)^2}{20}$</td><td class="why">one term per category</td></tr>
+      <tr><td></td><td>$= 5 + 0 + 5 = 10$</td><td class="why">$\chi^2 = 10$</td></tr>
+    </table>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════ CHAPTER 12 -->
+<section class="chapter" id="ch12">
+  <div class="chapter-num">Chapter 12</div>
+  <h2>Linear Regression and Correlation</h2>
+
+  <h3>Scatterplots and Correlation</h3>
+  <p>A <strong>scatterplot</strong> displays paired data $(x, y)$. We look for direction (positive/negative), form (linear/curved), and strength. The <strong>Pearson correlation coefficient</strong> $r$ measures linear association:</p>
+  <div class="formula">
+    <div class="formula-label">Pearson Correlation $r$</div>
+    $$r = \frac{\sum (x_i - \bar{x})(y_i - \bar{y})}{(n-1)\,s_x\,s_y} = \frac{Cov(X,Y)}{s_x s_y}$$
+  </div>
+  <p>$r$ is always in $[-1, 1]$. $r = \pm 1$ is a perfect linear relationship; $r = 0$ means no linear association.</p>
+
+  <h3>Covariance</h3>
+  <div class="formula">
+    <div class="formula-label">Sample Covariance</div>
+    $$Cov(X,Y) = \frac{\sum (x_i - \bar{x})(y_i - \bar{y})}{n-1}$$
+  </div>
+
+  <h3>Least-Squares Regression Line</h3>
+  <p>The <strong>regression line</strong> $\hat{y} = b_0 + b_1 x$ minimizes the sum of squared residuals.</p>
+  <div class="formula">
+    <div class="formula-label">Slope and Intercept</div>
+    $$b_1 = r \cdot \frac{s_y}{s_x}, \qquad b_0 = \bar{y} - b_1 \bar{x}$$
+  </div>
+
+  <div class="example">
+    <div class="example-label">Example — Finding the Regression Line</div>
+    <table class="example-steps">
+      <tr><td>Given</td><td>$r=0.8,\; s_y=5,\; s_x=2,\; \bar{x}=10,\; \bar{y}=30$</td><td class="why"></td></tr>
+      <tr><td>$b_1$</td><td>$0.8 \times \dfrac{5}{2} = 2$</td><td class="why">slope</td></tr>
+      <tr><td>$b_0$</td><td>$30 - 2(10) = 10$</td><td class="why">y-intercept</td></tr>
+      <tr><td>Line</td><td>$\hat{y} = 10 + 2x$</td><td class="why">regression equation</td></tr>
+      <tr><td>Predict $x=3$</td><td>$10 + 2(3) = 16$</td><td class="why">plug in $x$</td></tr>
+    </table>
+  </div>
+
+  <h3>Coefficient of Determination $r^2$</h3>
+  <p>$r^2$ is the proportion of the total variation in $y$ explained by the linear relationship with $x$. If $r = 0.8$, then $r^2 = 0.64$: the regression model accounts for 64% of the variability in $y$.</p>
+  <div class="formula">
+    <div class="formula-label">Coefficient of Determination</div>
+    $$r^2 = (r)^2, \quad 0 \leq r^2 \leq 1$$
+  </div>
+
+  <h3>Residuals and Regression Assumptions</h3>
+  <p>A <strong>residual</strong> is $e_i = y_i - \hat{y}_i$. The regression model assumes: linearity, independence, constant variance (homoscedasticity), and normally distributed residuals. Always plot residuals to check assumptions.</p>
+
+  <div class="example">
+    <div class="example-label">Example — Prediction</div>
+    <table class="example-steps">
+      <tr><td>Line</td><td>$\hat{y} = 2x + 5$</td><td class="why">given regression equation</td></tr>
+      <tr><td>Predict</td><td>$\hat{y} = 2(3) + 5 = 6 + 5 = 11$</td><td class="why">substitute $x = 3$</td></tr>
+    </table>
+  </div>
+</section>
+
+<p class="attribution">
+  Content adapted from <em>OpenStax Introductory Statistics</em>, OpenStax, 2013.<br>
+  Licensed under Creative Commons Attribution 4.0 International (CC BY 4.0).<br>
+  Available free at <strong>openstax.org</strong>.
+</p>
+
+</body>
+</html>

@@ -1,0 +1,1914 @@
+[
+  {
+    "id": "stat-e-001",
+    "topic": "statistics",
+    "difficulty": "easy",
+    "question": {
+      "latex": "\\text{Find the mean of } \\{4, 8, 6, 10, 2\\}.",
+      "plain": "Find the mean of the data set {4, 8, 6, 10, 2}."
+    },
+    "symbols": {},
+    "palette": [
+      { "id": "p1", "latex": "30", "description": "4+8+6+10+2 = 30" },
+      { "id": "p2", "latex": "6", "description": "30 ÷ 5 = 6" }
+    ],
+    "steps": [
+      {
+        "id": "s1",
+        "fromLatex": "\\bar{x} = \\frac{4+8+6+10+2}{5}",
+        "toLatex": "\\frac{30}{5}",
+        "paletteRef": "p1",
+        "dropTargets": ["4+8+6+10+2"],
+        "description": "Sum the values: 4+8+6+10+2 = 30"
+      },
+      {
+        "id": "s2",
+        "fromLatex": "\\frac{30}{5}",
+        "toLatex": "6",
+        "paletteRef": "p2",
+        "dropTargets": ["\\frac{30}{5}"],
+        "description": "Divide by n = 5: 30 ÷ 5 = 6"
+      }
+    ]
+  },
+
+  {
+    "id": "stat-e-002",
+    "topic": "statistics",
+    "difficulty": "easy",
+    "question": {
+      "latex": "\\text{Find the median of } \\{2, 3, 5, 7, 9\\}.",
+      "plain": "Find the median of the sorted data set {2, 3, 5, 7, 9}."
+    },
+    "symbols": {},
+    "palette": [
+      { "id": "p1", "latex": "5", "description": "Middle value of 5 numbers is the 3rd: 5" }
+    ],
+    "steps": [
+      {
+        "id": "s1",
+        "fromLatex": "2, 3, \\boldsymbol{5}, 7, 9",
+        "toLatex": "5",
+        "paletteRef": "p1",
+        "dropTargets": ["2, 3, \\boldsymbol{5}, 7, 9"],
+        "description": "5 values → middle is the 3rd: 5"
+      }
+    ]
+  },
+
+  {
+    "id": "stat-e-003",
+    "topic": "statistics",
+    "difficulty": "easy",
+    "question": {
+      "latex": "\\text{Find the mode of } \\{3, 7, 3, 2, 7, 3\\}.",
+      "plain": "Find the mode of {3, 7, 3, 2, 7, 3}."
+    },
+    "symbols": {},
+    "palette": [
+      { "id": "p1", "latex": "3", "description": "3 appears 3 times — more than any other value" }
+    ],
+    "steps": [
+      {
+        "id": "s1",
+        "fromLatex": "3 \\text{ appears 3 times (most frequent)}",
+        "toLatex": "3",
+        "paletteRef": "p1",
+        "dropTargets": ["3 \\text{ appears 3 times (most frequent)}"],
+        "description": "Mode is the most-frequent value: 3"
+      }
+    ]
+  },
+
+  {
+    "id": "stat-e-004",
+    "topic": "statistics",
+    "difficulty": "easy",
+    "question": {
+      "latex": "\\text{Find the range of } \\{4, 8, 15, 2, 11\\}.",
+      "plain": "Find the range of {4, 8, 15, 2, 11}."
+    },
+    "symbols": {},
+    "palette": [
+      { "id": "p1", "latex": "13", "description": "Range = max − min = 15 − 2 = 13" }
+    ],
+    "steps": [
+      {
+        "id": "s1",
+        "fromLatex": "\\text{max} - \\text{min} = 15 - 2",
+        "toLatex": "13",
+        "paletteRef": "p1",
+        "dropTargets": ["15 - 2"],
+        "description": "max = 15, min = 2; range = 13"
+      }
+    ]
+  },
+
+  {
+    "id": "stat-e-005",
+    "topic": "statistics",
+    "difficulty": "easy",
+    "question": {
+      "latex": "\\text{A fair die is rolled. } P(\\text{rolling a 4}) = ?",
+      "plain": "A fair six-sided die is rolled. What is P(rolling a 4)?"
+    },
+    "symbols": {},
+    "palette": [
+      { "id": "p1", "latex": "\\frac{1}{6}", "description": "1 favorable outcome out of 6 equally likely" }
+    ],
+    "steps": [
+      {
+        "id": "s1",
+        "fromLatex": "P(4) = \\frac{\\text{favorable outcomes}}{\\text{total outcomes}}",
+        "toLatex": "\\frac{1}{6}",
+        "paletteRef": "p1",
+        "dropTargets": ["\\frac{\\text{favorable outcomes}}{\\text{total outcomes}}"],
+        "description": "1 way to roll a 4; 6 total outcomes"
+      }
+    ]
+  },
+
+  {
+    "id": "stat-e-006",
+    "topic": "statistics",
+    "difficulty": "easy",
+    "question": {
+      "latex": "P(A) = 0.3. \\quad P(\\text{not } A) = ?",
+      "plain": "If P(A) = 0.3, find P(not A) using the complement rule."
+    },
+    "symbols": {},
+    "palette": [
+      { "id": "p1", "latex": "0.7", "description": "1 − 0.3 = 0.7" }
+    ],
+    "steps": [
+      {
+        "id": "s1",
+        "fromLatex": "P(A^c) = 1 - P(A)",
+        "toLatex": "1 - P(A)",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "Complement rule: P(not A) = 1 − P(A)"
+      },
+      {
+        "id": "s2",
+        "fromLatex": "1 - 0.3",
+        "toLatex": "0.7",
+        "paletteRef": "p1",
+        "dropTargets": ["1 - 0.3"],
+        "description": "Subtract: 1 − 0.3 = 0.7"
+      }
+    ]
+  },
+
+  {
+    "id": "stat-e-007",
+    "topic": "statistics",
+    "difficulty": "easy",
+    "question": {
+      "latex": "\\text{A standard deck has 26 red cards. } P(\\text{red}) = ?",
+      "plain": "A standard 52-card deck has 26 red cards. What is P(drawing a red card)?"
+    },
+    "symbols": {},
+    "palette": [
+      { "id": "p1", "latex": "\\frac{1}{2}", "description": "26/52 simplifies to 1/2" }
+    ],
+    "steps": [
+      {
+        "id": "s1",
+        "fromLatex": "\\frac{26}{52}",
+        "toLatex": "\\frac{1}{2}",
+        "paletteRef": "p1",
+        "dropTargets": ["\\frac{26}{52}"],
+        "description": "Simplify by GCF 26: 26/52 = 1/2"
+      }
+    ]
+  },
+
+  {
+    "id": "stat-e-008",
+    "topic": "statistics",
+    "difficulty": "easy",
+    "question": {
+      "latex": "\\text{Find the median of } \\{2, 4, 6, 8\\}.",
+      "plain": "Find the median of the sorted even-length data set {2, 4, 6, 8}."
+    },
+    "symbols": {},
+    "palette": [
+      { "id": "p1", "latex": "5", "description": "(4 + 6) / 2 = 5" }
+    ],
+    "steps": [
+      {
+        "id": "s1",
+        "fromLatex": "2, \\boldsymbol{4, 6}, 8",
+        "toLatex": "\\frac{4+6}{2}",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "Even count → average the two middle values: 4 and 6"
+      },
+      {
+        "id": "s2",
+        "fromLatex": "\\frac{4+6}{2}",
+        "toLatex": "5",
+        "paletteRef": "p1",
+        "dropTargets": ["\\frac{4+6}{2}"],
+        "description": "10 ÷ 2 = 5"
+      }
+    ]
+  },
+
+  {
+    "id": "stat-e-009",
+    "topic": "statistics",
+    "difficulty": "easy",
+    "question": {
+      "latex": "x = 70, \\; \\mu = 60, \\; \\sigma = 10. \\quad z = ?",
+      "plain": "Find the z-score for x = 70 when μ = 60 and σ = 10."
+    },
+    "symbols": { "z": "standard score" },
+    "palette": [
+      { "id": "p1", "latex": "\\frac{10}{10}", "description": "Numerator: 70 − 60 = 10" },
+      { "id": "p2", "latex": "1", "description": "10 ÷ 10 = 1" }
+    ],
+    "steps": [
+      {
+        "id": "s1",
+        "fromLatex": "z = \\frac{70-60}{10}",
+        "toLatex": "\\frac{10}{10}",
+        "paletteRef": "p1",
+        "dropTargets": ["70-60"],
+        "description": "z = (x − μ)/σ; numerator: 70 − 60 = 10"
+      },
+      {
+        "id": "s2",
+        "fromLatex": "\\frac{10}{10}",
+        "toLatex": "1",
+        "paletteRef": "p2",
+        "dropTargets": ["\\frac{10}{10}"],
+        "description": "10 ÷ 10 = 1"
+      }
+    ]
+  },
+
+  {
+    "id": "stat-e-010",
+    "topic": "statistics",
+    "difficulty": "easy",
+    "question": {
+      "latex": "P(A) = 0.4, \\; P(B) = 0.3, \\; A \\text{ and } B \\text{ mutually exclusive.} \\quad P(A \\cup B) = ?",
+      "plain": "P(A) = 0.4, P(B) = 0.3, A and B mutually exclusive. Find P(A or B)."
+    },
+    "symbols": {},
+    "palette": [
+      { "id": "p1", "latex": "0.7", "description": "0.4 + 0.3 = 0.7" }
+    ],
+    "steps": [
+      {
+        "id": "s1",
+        "fromLatex": "P(A \\cup B) = P(A) + P(B)",
+        "toLatex": "P(A) + P(B)",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "Mutually exclusive: P(A∪B) = P(A) + P(B)"
+      },
+      {
+        "id": "s2",
+        "fromLatex": "0.4 + 0.3",
+        "toLatex": "0.7",
+        "paletteRef": "p1",
+        "dropTargets": ["0.4 + 0.3"],
+        "description": "Add: 0.4 + 0.3 = 0.7"
+      }
+    ]
+  },
+
+  {
+    "id": "stat-e-011",
+    "topic": "statistics",
+    "difficulty": "easy",
+    "question": {
+      "latex": "\\text{Find the mean of } \\{10, 20, 30, 40\\}.",
+      "plain": "Find the mean of {10, 20, 30, 40}."
+    },
+    "symbols": {},
+    "palette": [
+      { "id": "p1", "latex": "100", "description": "10+20+30+40 = 100" },
+      { "id": "p2", "latex": "25", "description": "100 ÷ 4 = 25" }
+    ],
+    "steps": [
+      {
+        "id": "s1",
+        "fromLatex": "\\frac{10+20+30+40}{4}",
+        "toLatex": "\\frac{100}{4}",
+        "paletteRef": "p1",
+        "dropTargets": ["10+20+30+40"],
+        "description": "Sum: 10+20+30+40 = 100"
+      },
+      {
+        "id": "s2",
+        "fromLatex": "\\frac{100}{4}",
+        "toLatex": "25",
+        "paletteRef": "p2",
+        "dropTargets": ["\\frac{100}{4}"],
+        "description": "100 ÷ 4 = 25"
+      }
+    ]
+  },
+
+  {
+    "id": "stat-e-012",
+    "topic": "statistics",
+    "difficulty": "easy",
+    "question": {
+      "latex": "\\text{A standard deck has 4 aces. } P(\\text{ace}) = ?",
+      "plain": "A standard 52-card deck has 4 aces. What is P(drawing an ace)?"
+    },
+    "symbols": {},
+    "palette": [
+      { "id": "p1", "latex": "\\frac{1}{13}", "description": "4/52 = 1/13" }
+    ],
+    "steps": [
+      {
+        "id": "s1",
+        "fromLatex": "\\frac{4}{52}",
+        "toLatex": "\\frac{1}{13}",
+        "paletteRef": "p1",
+        "dropTargets": ["\\frac{4}{52}"],
+        "description": "Simplify by GCF 4: 4/52 = 1/13"
+      }
+    ]
+  },
+
+  {
+    "id": "stat-e-013",
+    "topic": "statistics",
+    "difficulty": "easy",
+    "question": {
+      "latex": "\\text{Find the range of } \\{10, 25, 15, 30, 5\\}.",
+      "plain": "Find the range of {10, 25, 15, 30, 5}."
+    },
+    "symbols": {},
+    "palette": [
+      { "id": "p1", "latex": "25", "description": "Range = 30 − 5 = 25" }
+    ],
+    "steps": [
+      {
+        "id": "s1",
+        "fromLatex": "30 - 5",
+        "toLatex": "25",
+        "paletteRef": "p1",
+        "dropTargets": ["30 - 5"],
+        "description": "max = 30, min = 5; range = 25"
+      }
+    ]
+  },
+
+  {
+    "id": "stat-e-014",
+    "topic": "statistics",
+    "difficulty": "easy",
+    "question": {
+      "latex": "\\text{The empirical rule: } \\mu \\pm \\sigma \\text{ contains what percent of data?}",
+      "plain": "According to the empirical rule, what percent of data falls within one standard deviation of the mean?"
+    },
+    "symbols": {},
+    "palette": [
+      { "id": "p1", "latex": "68\\%", "description": "68% of data lies within μ ± σ" }
+    ],
+    "steps": [
+      {
+        "id": "s1",
+        "fromLatex": "\\mu \\pm \\sigma",
+        "toLatex": "68\\%",
+        "paletteRef": "p1",
+        "dropTargets": ["\\mu \\pm \\sigma"],
+        "description": "Empirical rule (68–95–99.7): μ ± 1σ covers 68%"
+      }
+    ]
+  },
+
+  {
+    "id": "stat-e-015",
+    "topic": "statistics",
+    "difficulty": "easy",
+    "question": {
+      "latex": "\\text{Find the mean of } \\{7, 7, 7, 7, 7\\}.",
+      "plain": "Find the mean of {7, 7, 7, 7, 7}."
+    },
+    "symbols": {},
+    "palette": [
+      { "id": "p1", "latex": "35", "description": "7×5 = 35" },
+      { "id": "p2", "latex": "7", "description": "35 ÷ 5 = 7" }
+    ],
+    "steps": [
+      {
+        "id": "s1",
+        "fromLatex": "\\frac{7+7+7+7+7}{5}",
+        "toLatex": "\\frac{35}{5}",
+        "paletteRef": "p1",
+        "dropTargets": ["7+7+7+7+7"],
+        "description": "Sum: 7×5 = 35"
+      },
+      {
+        "id": "s2",
+        "fromLatex": "\\frac{35}{5}",
+        "toLatex": "7",
+        "paletteRef": "p2",
+        "dropTargets": ["\\frac{35}{5}"],
+        "description": "35 ÷ 5 = 7"
+      }
+    ]
+  },
+
+  {
+    "id": "stat-m-001",
+    "topic": "statistics",
+    "difficulty": "medium",
+    "question": {
+      "latex": "\\text{Data: } \\{2, 4, 6\\}. \\quad \\bar{x} = 4. \\quad \\text{Find the sample variance } s^2.",
+      "plain": "For {2, 4, 6} with mean 4, find the sample variance s²."
+    },
+    "symbols": { "s^2": "sample variance" },
+    "palette": [
+      { "id": "p1", "latex": "\\frac{4+0+4}{2}", "description": "Squared deviations: (−2)²=4, 0²=0, 2²=4; n−1=2" },
+      { "id": "p2", "latex": "\\frac{8}{2}", "description": "Sum = 8; divide by n−1 = 2" },
+      { "id": "p3", "latex": "4", "description": "8 ÷ 2 = 4" }
+    ],
+    "steps": [
+      {
+        "id": "s1",
+        "fromLatex": "s^2 = \\frac{(-2)^2 + 0^2 + 2^2}{3-1}",
+        "toLatex": "\\frac{4+0+4}{2}",
+        "paletteRef": "p1",
+        "dropTargets": ["(-2)^2 + 0^2 + 2^2"],
+        "description": "Compute squared deviations from mean"
+      },
+      {
+        "id": "s2",
+        "fromLatex": "\\frac{4+0+4}{2}",
+        "toLatex": "\\frac{8}{2}",
+        "paletteRef": "p2",
+        "dropTargets": ["4+0+4"],
+        "description": "Sum numerator: 4+0+4 = 8"
+      },
+      {
+        "id": "s3",
+        "fromLatex": "\\frac{8}{2}",
+        "toLatex": "4",
+        "paletteRef": "p3",
+        "dropTargets": ["\\frac{8}{2}"],
+        "description": "Divide: 8 ÷ 2 = 4"
+      }
+    ]
+  },
+
+  {
+    "id": "stat-m-002",
+    "topic": "statistics",
+    "difficulty": "medium",
+    "question": {
+      "latex": "s^2 = 9. \\quad \\text{Find the standard deviation } s.",
+      "plain": "The sample variance is s² = 9. Find the standard deviation s."
+    },
+    "symbols": {},
+    "palette": [
+      { "id": "p1", "latex": "3", "description": "√9 = 3" }
+    ],
+    "steps": [
+      {
+        "id": "s1",
+        "fromLatex": "s = \\sqrt{9}",
+        "toLatex": "3",
+        "paletteRef": "p1",
+        "dropTargets": ["\\sqrt{9}"],
+        "description": "Standard deviation = √(variance) = √9 = 3"
+      }
+    ]
+  },
+
+  {
+    "id": "stat-m-003",
+    "topic": "statistics",
+    "difficulty": "medium",
+    "question": {
+      "latex": "P(A \\cap B) = 0.12, \\; P(B) = 0.4. \\quad P(A|B) = ?",
+      "plain": "Find the conditional probability P(A|B) given P(A∩B) = 0.12 and P(B) = 0.4."
+    },
+    "symbols": {},
+    "palette": [
+      { "id": "p1", "latex": "0.3", "description": "0.12 ÷ 0.4 = 0.3" }
+    ],
+    "steps": [
+      {
+        "id": "s1",
+        "fromLatex": "P(A|B) = \\frac{P(A \\cap B)}{P(B)} = \\frac{0.12}{0.4}",
+        "toLatex": "0.3",
+        "paletteRef": "p1",
+        "dropTargets": ["\\frac{0.12}{0.4}"],
+        "description": "Conditional probability formula; divide 0.12 ÷ 0.4 = 0.3"
+      }
+    ]
+  },
+
+  {
+    "id": "stat-m-004",
+    "topic": "statistics",
+    "difficulty": "medium",
+    "question": {
+      "latex": "X \\sim B(n{=}3,\\, p{=}0.5). \\quad P(X=2) = ?",
+      "plain": "For a binomial distribution with n=3 and p=0.5, find P(X=2)."
+    },
+    "symbols": {},
+    "palette": [
+      { "id": "p1", "latex": "3 \\cdot 0.25 \\cdot 0.5", "description": "C(3,2) = 3; (0.5)² = 0.25; (0.5)¹ = 0.5" },
+      { "id": "p2", "latex": "0.375", "description": "3 × 0.25 × 0.5 = 0.375" }
+    ],
+    "steps": [
+      {
+        "id": "s1",
+        "fromLatex": "\\binom{3}{2}(0.5)^2(0.5)^1",
+        "toLatex": "3 \\cdot 0.25 \\cdot 0.5",
+        "paletteRef": "p1",
+        "dropTargets": ["\\binom{3}{2}"],
+        "description": "C(3,2) = 3; evaluate powers of 0.5"
+      },
+      {
+        "id": "s2",
+        "fromLatex": "3 \\cdot 0.25 \\cdot 0.5",
+        "toLatex": "0.375",
+        "paletteRef": "p2",
+        "dropTargets": ["3 \\cdot 0.25 \\cdot 0.5"],
+        "description": "Multiply: 3 × 0.25 × 0.5 = 0.375"
+      }
+    ]
+  },
+
+  {
+    "id": "stat-m-005",
+    "topic": "statistics",
+    "difficulty": "medium",
+    "question": {
+      "latex": "X: \\; P(1)=0.2,\\; P(2)=0.5,\\; P(3)=0.3. \\quad E(X) = ?",
+      "plain": "Find E(X) for the distribution: P(X=1)=0.2, P(X=2)=0.5, P(X=3)=0.3."
+    },
+    "symbols": {},
+    "palette": [
+      { "id": "p1", "latex": "0.2 + 1.0 + 0.9", "description": "1(0.2)=0.2; 2(0.5)=1.0; 3(0.3)=0.9" },
+      { "id": "p2", "latex": "2.1", "description": "0.2 + 1.0 + 0.9 = 2.1" }
+    ],
+    "steps": [
+      {
+        "id": "s1",
+        "fromLatex": "1(0.2) + 2(0.5) + 3(0.3)",
+        "toLatex": "0.2 + 1.0 + 0.9",
+        "paletteRef": "p1",
+        "dropTargets": ["1(0.2) + 2(0.5) + 3(0.3)"],
+        "description": "Multiply each value by its probability"
+      },
+      {
+        "id": "s2",
+        "fromLatex": "0.2 + 1.0 + 0.9",
+        "toLatex": "2.1",
+        "paletteRef": "p2",
+        "dropTargets": ["0.2 + 1.0 + 0.9"],
+        "description": "Sum: 0.2 + 1.0 + 0.9 = 2.1"
+      }
+    ]
+  },
+
+  {
+    "id": "stat-m-006",
+    "topic": "statistics",
+    "difficulty": "medium",
+    "question": {
+      "latex": "x = 85, \\; \\mu = 75, \\; \\sigma = 5. \\quad z = ?",
+      "plain": "Find the z-score for x = 85 when μ = 75 and σ = 5."
+    },
+    "symbols": {},
+    "palette": [
+      { "id": "p1", "latex": "\\frac{10}{5}", "description": "85 − 75 = 10" },
+      { "id": "p2", "latex": "2", "description": "10 ÷ 5 = 2" }
+    ],
+    "steps": [
+      {
+        "id": "s1",
+        "fromLatex": "z = \\frac{85-75}{5}",
+        "toLatex": "\\frac{10}{5}",
+        "paletteRef": "p1",
+        "dropTargets": ["85-75"],
+        "description": "Numerator: 85 − 75 = 10"
+      },
+      {
+        "id": "s2",
+        "fromLatex": "\\frac{10}{5}",
+        "toLatex": "2",
+        "paletteRef": "p2",
+        "dropTargets": ["\\frac{10}{5}"],
+        "description": "10 ÷ 5 = 2"
+      }
+    ]
+  },
+
+  {
+    "id": "stat-m-007",
+    "topic": "statistics",
+    "difficulty": "medium",
+    "question": {
+      "latex": "P(A) = 0.3, \\; P(B) = 0.4, \\; A \\perp B. \\quad P(A \\cap B) = ?",
+      "plain": "A and B are independent events with P(A)=0.3 and P(B)=0.4. Find P(A and B)."
+    },
+    "symbols": {},
+    "palette": [
+      { "id": "p1", "latex": "0.12", "description": "0.3 × 0.4 = 0.12" }
+    ],
+    "steps": [
+      {
+        "id": "s1",
+        "fromLatex": "P(A \\cap B) = 0.3 \\times 0.4",
+        "toLatex": "0.12",
+        "paletteRef": "p1",
+        "dropTargets": ["0.3 \\times 0.4"],
+        "description": "Independent: P(A∩B) = P(A)·P(B) = 0.3 × 0.4 = 0.12"
+      }
+    ]
+  },
+
+  {
+    "id": "stat-m-008",
+    "topic": "statistics",
+    "difficulty": "medium",
+    "question": {
+      "latex": "z^* = 1.645, \\; \\sigma = 10, \\; n = 25. \\quad ME = ?",
+      "plain": "Find the margin of error for a 90% CI with z*=1.645, σ=10, n=25."
+    },
+    "symbols": { "ME": "margin of error" },
+    "palette": [
+      { "id": "p1", "latex": "\\frac{10}{5}", "description": "σ/√n = 10/√25 = 10/5" },
+      { "id": "p2", "latex": "1.645 \\times 2", "description": "10/5 = 2; ME = 1.645 × 2" },
+      { "id": "p3", "latex": "3.29", "description": "1.645 × 2 = 3.29" }
+    ],
+    "steps": [
+      {
+        "id": "s1",
+        "fromLatex": "\\frac{\\sigma}{\\sqrt{n}} = \\frac{10}{\\sqrt{25}}",
+        "toLatex": "\\frac{10}{5}",
+        "paletteRef": "p1",
+        "dropTargets": ["\\sqrt{25}"],
+        "description": "√25 = 5; standard error = 10/5"
+      },
+      {
+        "id": "s2",
+        "fromLatex": "ME = 1.645 \\times \\frac{10}{5}",
+        "toLatex": "1.645 \\times 2",
+        "paletteRef": "p2",
+        "dropTargets": ["\\frac{10}{5}"],
+        "description": "10/5 = 2"
+      },
+      {
+        "id": "s3",
+        "fromLatex": "1.645 \\times 2",
+        "toLatex": "3.29",
+        "paletteRef": "p3",
+        "dropTargets": ["1.645 \\times 2"],
+        "description": "Multiply: 1.645 × 2 = 3.29"
+      }
+    ]
+  },
+
+  {
+    "id": "stat-m-009",
+    "topic": "statistics",
+    "difficulty": "medium",
+    "question": {
+      "latex": "Q_1 = 20, \\; Q_3 = 35. \\quad IQR = ?",
+      "plain": "Find the interquartile range (IQR) when Q1 = 20 and Q3 = 35."
+    },
+    "symbols": {},
+    "palette": [
+      { "id": "p1", "latex": "15", "description": "35 − 20 = 15" }
+    ],
+    "steps": [
+      {
+        "id": "s1",
+        "fromLatex": "IQR = Q_3 - Q_1 = 35 - 20",
+        "toLatex": "15",
+        "paletteRef": "p1",
+        "dropTargets": ["35 - 20"],
+        "description": "IQR = Q3 − Q1 = 35 − 20 = 15"
+      }
+    ]
+  },
+
+  {
+    "id": "stat-m-010",
+    "topic": "statistics",
+    "difficulty": "medium",
+    "question": {
+      "latex": "P(5, 2) = ? \\quad \\text{(permutations of 5 things taken 2 at a time)}",
+      "plain": "How many ordered arrangements of 2 items chosen from 5 (P(5,2))?"
+    },
+    "symbols": {},
+    "palette": [
+      { "id": "p1", "latex": "5 \\times 4", "description": "5!/3! cancels to 5 × 4" },
+      { "id": "p2", "latex": "20", "description": "5 × 4 = 20" }
+    ],
+    "steps": [
+      {
+        "id": "s1",
+        "fromLatex": "P(5,2) = \\frac{5!}{(5-2)!} = \\frac{5!}{3!}",
+        "toLatex": "5 \\times 4",
+        "paletteRef": "p1",
+        "dropTargets": ["\\frac{5!}{3!}"],
+        "description": "5!/3! = 5 × 4 (cancel 3!)"
+      },
+      {
+        "id": "s2",
+        "fromLatex": "5 \\times 4",
+        "toLatex": "20",
+        "paletteRef": "p2",
+        "dropTargets": ["5 \\times 4"],
+        "description": "5 × 4 = 20"
+      }
+    ]
+  },
+
+  {
+    "id": "stat-m-011",
+    "topic": "statistics",
+    "difficulty": "medium",
+    "question": {
+      "latex": "\\binom{5}{2} = ? \\quad \\text{(combinations of 5 things taken 2 at a time)}",
+      "plain": "How many ways to choose 2 items from 5 (order doesn't matter)?"
+    },
+    "symbols": {},
+    "palette": [
+      { "id": "p1", "latex": "\\frac{120}{2 \\cdot 6}", "description": "5! = 120; 2! = 2; 3! = 6" },
+      { "id": "p2", "latex": "\\frac{120}{12}", "description": "2 × 6 = 12" },
+      { "id": "p3", "latex": "10", "description": "120 ÷ 12 = 10" }
+    ],
+    "steps": [
+      {
+        "id": "s1",
+        "fromLatex": "\\binom{5}{2} = \\frac{5!}{2! \\cdot 3!}",
+        "toLatex": "\\frac{120}{2 \\cdot 6}",
+        "paletteRef": "p1",
+        "dropTargets": ["\\frac{5!}{2! \\cdot 3!}"],
+        "description": "Expand factorials: 5!=120, 2!=2, 3!=6"
+      },
+      {
+        "id": "s2",
+        "fromLatex": "\\frac{120}{2 \\cdot 6}",
+        "toLatex": "\\frac{120}{12}",
+        "paletteRef": "p2",
+        "dropTargets": ["2 \\cdot 6"],
+        "description": "2 × 6 = 12"
+      },
+      {
+        "id": "s3",
+        "fromLatex": "\\frac{120}{12}",
+        "toLatex": "10",
+        "paletteRef": "p3",
+        "dropTargets": ["\\frac{120}{12}"],
+        "description": "120 ÷ 12 = 10"
+      }
+    ]
+  },
+
+  {
+    "id": "stat-m-012",
+    "topic": "statistics",
+    "difficulty": "medium",
+    "question": {
+      "latex": "z = 2, \\; \\mu = 50, \\; \\sigma = 10. \\quad \\text{Find } x.",
+      "plain": "Find the raw score x when z = 2, μ = 50, and σ = 10."
+    },
+    "symbols": {},
+    "palette": [
+      { "id": "p1", "latex": "20", "description": "2 × 10 = 20" },
+      { "id": "p2", "latex": "70", "description": "50 + 20 = 70" }
+    ],
+    "steps": [
+      {
+        "id": "s1",
+        "fromLatex": "x = \\mu + z \\cdot \\sigma = 50 + 2 \\times 10",
+        "toLatex": "50 + 20",
+        "paletteRef": "p1",
+        "dropTargets": ["2 \\times 10"],
+        "description": "x = μ + z·σ; compute z·σ = 2 × 10 = 20"
+      },
+      {
+        "id": "s2",
+        "fromLatex": "50 + 20",
+        "toLatex": "70",
+        "paletteRef": "p2",
+        "dropTargets": ["50 + 20"],
+        "description": "50 + 20 = 70"
+      }
+    ]
+  },
+
+  {
+    "id": "stat-m-013",
+    "topic": "statistics",
+    "difficulty": "medium",
+    "question": {
+      "latex": "15 \\text{ students out of 60 passed. Relative frequency} = ?",
+      "plain": "15 students out of 60 passed. Find the relative frequency."
+    },
+    "symbols": {},
+    "palette": [
+      { "id": "p1", "latex": "\\frac{1}{4}", "description": "15/60 = 1/4" },
+      { "id": "p2", "latex": "0.25", "description": "1/4 = 0.25" }
+    ],
+    "steps": [
+      {
+        "id": "s1",
+        "fromLatex": "\\frac{15}{60}",
+        "toLatex": "\\frac{1}{4}",
+        "paletteRef": "p1",
+        "dropTargets": ["\\frac{15}{60}"],
+        "description": "Simplify by GCF 15: 15/60 = 1/4"
+      },
+      {
+        "id": "s2",
+        "fromLatex": "\\frac{1}{4}",
+        "toLatex": "0.25",
+        "paletteRef": "p2",
+        "dropTargets": ["\\frac{1}{4}"],
+        "description": "Convert to decimal: 1/4 = 0.25 = 25%"
+      }
+    ]
+  },
+
+  {
+    "id": "stat-m-014",
+    "topic": "statistics",
+    "difficulty": "medium",
+    "question": {
+      "latex": "\\text{Data: } \\{1, 3, 5\\}, \\; \\bar{x} = 3. \\quad s^2 = ?",
+      "plain": "For {1, 3, 5} with mean 3, find the sample variance s²."
+    },
+    "symbols": {},
+    "palette": [
+      { "id": "p1", "latex": "\\frac{8}{2}", "description": "(-2)²+0²+2² = 8; n−1 = 2" },
+      { "id": "p2", "latex": "4", "description": "8 ÷ 2 = 4" }
+    ],
+    "steps": [
+      {
+        "id": "s1",
+        "fromLatex": "\\frac{(-2)^2 + 0^2 + 2^2}{3-1}",
+        "toLatex": "\\frac{8}{2}",
+        "paletteRef": "p1",
+        "dropTargets": ["\\frac{(-2)^2 + 0^2 + 2^2}{3-1}"],
+        "description": "Squared deviations: 4+0+4=8; denominator n−1=2"
+      },
+      {
+        "id": "s2",
+        "fromLatex": "\\frac{8}{2}",
+        "toLatex": "4",
+        "paletteRef": "p2",
+        "dropTargets": ["\\frac{8}{2}"],
+        "description": "8 ÷ 2 = 4"
+      }
+    ]
+  },
+
+  {
+    "id": "stat-m-015",
+    "topic": "statistics",
+    "difficulty": "medium",
+    "question": {
+      "latex": "\\hat{y} = 2x + 5. \\quad \\text{Predict } \\hat{y} \\text{ when } x = 3.",
+      "plain": "Using the regression line ŷ = 2x + 5, predict ŷ when x = 3."
+    },
+    "symbols": {},
+    "palette": [
+      { "id": "p1", "latex": "6", "description": "2(3) = 6" },
+      { "id": "p2", "latex": "11", "description": "6 + 5 = 11" }
+    ],
+    "steps": [
+      {
+        "id": "s1",
+        "fromLatex": "\\hat{y} = 2(3) + 5",
+        "toLatex": "6 + 5",
+        "paletteRef": "p1",
+        "dropTargets": ["2(3)"],
+        "description": "Substitute x = 3: 2(3) = 6"
+      },
+      {
+        "id": "s2",
+        "fromLatex": "6 + 5",
+        "toLatex": "11",
+        "paletteRef": "p2",
+        "dropTargets": ["6 + 5"],
+        "description": "6 + 5 = 11"
+      }
+    ]
+  },
+
+  {
+    "id": "stat-h-001",
+    "topic": "statistics",
+    "difficulty": "hard",
+    "question": {
+      "latex": "\\bar{x}=50,\\; \\sigma=8,\\; n=16,\\; z^*=1.96. \\quad \\text{Find the margin of error.}",
+      "plain": "Find the 95% CI margin of error: x̄=50, σ=8, n=16, z*=1.96."
+    },
+    "symbols": { "ME": "margin of error" },
+    "palette": [
+      { "id": "p1", "latex": "4", "description": "√16 = 4" },
+      { "id": "p2", "latex": "2", "description": "8 ÷ 4 = 2" },
+      { "id": "p3", "latex": "3.92", "description": "1.96 × 2 = 3.92" }
+    ],
+    "steps": [
+      {
+        "id": "s1",
+        "fromLatex": "\\frac{8}{\\sqrt{16}}",
+        "toLatex": "\\frac{8}{4}",
+        "paletteRef": "p1",
+        "dropTargets": ["\\sqrt{16}"],
+        "description": "√16 = 4"
+      },
+      {
+        "id": "s2",
+        "fromLatex": "\\frac{8}{4}",
+        "toLatex": "2",
+        "paletteRef": "p2",
+        "dropTargets": ["\\frac{8}{4}"],
+        "description": "Standard error σ/√n = 8/4 = 2"
+      },
+      {
+        "id": "s3",
+        "fromLatex": "ME = 1.96 \\times 2",
+        "toLatex": "3.92",
+        "paletteRef": "p3",
+        "dropTargets": ["1.96 \\times 2"],
+        "description": "ME = z* × SE = 1.96 × 2 = 3.92"
+      }
+    ]
+  },
+
+  {
+    "id": "stat-h-002",
+    "topic": "statistics",
+    "difficulty": "hard",
+    "question": {
+      "latex": "\\text{Observed: } \\{10,20,30\\}, \\; \\text{Expected: } \\{20,20,20\\}. \\quad \\chi^2 = ?",
+      "plain": "Compute the chi-square statistic for observed {10,20,30} vs. expected {20,20,20}."
+    },
+    "symbols": {},
+    "palette": [
+      { "id": "p1", "latex": "\\frac{100}{20} + 0 + \\frac{100}{20}", "description": "(10-20)²=100; (20-20)²=0; (30-20)²=100" },
+      { "id": "p2", "latex": "5 + 0 + 5", "description": "100/20 = 5" },
+      { "id": "p3", "latex": "10", "description": "5 + 0 + 5 = 10" }
+    ],
+    "steps": [
+      {
+        "id": "s1",
+        "fromLatex": "\\frac{(10-20)^2}{20} + \\frac{(20-20)^2}{20} + \\frac{(30-20)^2}{20}",
+        "toLatex": "\\frac{100}{20} + 0 + \\frac{100}{20}",
+        "paletteRef": "p1",
+        "dropTargets": ["\\frac{(10-20)^2}{20} + \\frac{(20-20)^2}{20} + \\frac{(30-20)^2}{20}"],
+        "description": "χ² = Σ(O−E)²/E; compute each squared difference"
+      },
+      {
+        "id": "s2",
+        "fromLatex": "\\frac{100}{20} + 0 + \\frac{100}{20}",
+        "toLatex": "5 + 0 + 5",
+        "paletteRef": "p2",
+        "dropTargets": ["\\frac{100}{20} + 0 + \\frac{100}{20}"],
+        "description": "100/20 = 5 each"
+      },
+      {
+        "id": "s3",
+        "fromLatex": "5 + 0 + 5",
+        "toLatex": "10",
+        "paletteRef": "p3",
+        "dropTargets": ["5 + 0 + 5"],
+        "description": "Sum: 5 + 0 + 5 = 10"
+      }
+    ]
+  },
+
+  {
+    "id": "stat-h-003",
+    "topic": "statistics",
+    "difficulty": "hard",
+    "question": {
+      "latex": "r = 0.8, \\; s_y = 5, \\; s_x = 2. \\quad \\text{Find regression slope } b_1.",
+      "plain": "Find the regression slope b₁ = r·(sy/sx) with r=0.8, sy=5, sx=2."
+    },
+    "symbols": { "b_1": "slope of the regression line" },
+    "palette": [
+      { "id": "p1", "latex": "0.8 \\times 2.5", "description": "sy/sx = 5/2 = 2.5" },
+      { "id": "p2", "latex": "2", "description": "0.8 × 2.5 = 2" }
+    ],
+    "steps": [
+      {
+        "id": "s1",
+        "fromLatex": "b_1 = r \\cdot \\frac{s_y}{s_x} = 0.8 \\times \\frac{5}{2}",
+        "toLatex": "0.8 \\times 2.5",
+        "paletteRef": "p1",
+        "dropTargets": ["\\frac{5}{2}"],
+        "description": "sy/sx = 5/2 = 2.5"
+      },
+      {
+        "id": "s2",
+        "fromLatex": "0.8 \\times 2.5",
+        "toLatex": "2",
+        "paletteRef": "p2",
+        "dropTargets": ["0.8 \\times 2.5"],
+        "description": "0.8 × 2.5 = 2"
+      }
+    ]
+  },
+
+  {
+    "id": "stat-h-004",
+    "topic": "statistics",
+    "difficulty": "hard",
+    "question": {
+      "latex": "P(B|A)=0.9,\\; P(A)=0.1,\\; P(B)=0.15. \\quad P(A|B) = ?",
+      "plain": "Use Bayes' theorem to find P(A|B) given P(B|A)=0.9, P(A)=0.1, P(B)=0.15."
+    },
+    "symbols": {},
+    "palette": [
+      { "id": "p1", "latex": "\\frac{0.09}{0.15}", "description": "P(B|A)·P(A) = 0.9 × 0.1 = 0.09" },
+      { "id": "p2", "latex": "0.6", "description": "0.09 ÷ 0.15 = 0.6" }
+    ],
+    "steps": [
+      {
+        "id": "s1",
+        "fromLatex": "P(A|B) = \\frac{P(B|A) \\cdot P(A)}{P(B)} = \\frac{0.9 \\times 0.1}{0.15}",
+        "toLatex": "\\frac{0.09}{0.15}",
+        "paletteRef": "p1",
+        "dropTargets": ["0.9 \\times 0.1"],
+        "description": "Numerator: P(B|A)·P(A) = 0.9 × 0.1 = 0.09"
+      },
+      {
+        "id": "s2",
+        "fromLatex": "\\frac{0.09}{0.15}",
+        "toLatex": "0.6",
+        "paletteRef": "p2",
+        "dropTargets": ["\\frac{0.09}{0.15}"],
+        "description": "0.09 ÷ 0.15 = 0.6"
+      }
+    ]
+  },
+
+  {
+    "id": "stat-h-005",
+    "topic": "statistics",
+    "difficulty": "hard",
+    "question": {
+      "latex": "\\sigma = 12, \\; n = 36. \\quad SE = \\frac{\\sigma}{\\sqrt{n}} = ?",
+      "plain": "Find the standard error of the mean when σ = 12 and n = 36."
+    },
+    "symbols": { "SE": "standard error" },
+    "palette": [
+      { "id": "p1", "latex": "6", "description": "√36 = 6" },
+      { "id": "p2", "latex": "2", "description": "12 ÷ 6 = 2" }
+    ],
+    "steps": [
+      {
+        "id": "s1",
+        "fromLatex": "SE = \\frac{12}{\\sqrt{36}}",
+        "toLatex": "\\frac{12}{6}",
+        "paletteRef": "p1",
+        "dropTargets": ["\\sqrt{36}"],
+        "description": "√36 = 6"
+      },
+      {
+        "id": "s2",
+        "fromLatex": "\\frac{12}{6}",
+        "toLatex": "2",
+        "paletteRef": "p2",
+        "dropTargets": ["\\frac{12}{6}"],
+        "description": "12 ÷ 6 = 2"
+      }
+    ]
+  },
+
+  {
+    "id": "stat-h-006",
+    "topic": "statistics",
+    "difficulty": "hard",
+    "question": {
+      "latex": "X \\sim B(n{=}20,\\, p{=}0.3). \\quad E(X) = np = ?",
+      "plain": "For a Binomial distribution with n=20 and p=0.3, find E(X)."
+    },
+    "symbols": {},
+    "palette": [
+      { "id": "p1", "latex": "6", "description": "20 × 0.3 = 6" }
+    ],
+    "steps": [
+      {
+        "id": "s1",
+        "fromLatex": "E(X) = np = 20 \\times 0.3",
+        "toLatex": "6",
+        "paletteRef": "p1",
+        "dropTargets": ["20 \\times 0.3"],
+        "description": "E(X) = np = 20 × 0.3 = 6"
+      }
+    ]
+  },
+
+  {
+    "id": "stat-h-007",
+    "topic": "statistics",
+    "difficulty": "hard",
+    "question": {
+      "latex": "X \\sim B(n{=}20,\\, p{=}0.3). \\quad Var(X) = np(1-p) = ?",
+      "plain": "For Binomial n=20, p=0.3, find the variance Var(X) = np(1−p)."
+    },
+    "symbols": {},
+    "palette": [
+      { "id": "p1", "latex": "6 \\times 0.7", "description": "np = 20 × 0.3 = 6" },
+      { "id": "p2", "latex": "4.2", "description": "6 × 0.7 = 4.2" }
+    ],
+    "steps": [
+      {
+        "id": "s1",
+        "fromLatex": "Var(X) = 20 \\times 0.3 \\times 0.7",
+        "toLatex": "6 \\times 0.7",
+        "paletteRef": "p1",
+        "dropTargets": ["20 \\times 0.3"],
+        "description": "np = 20 × 0.3 = 6"
+      },
+      {
+        "id": "s2",
+        "fromLatex": "6 \\times 0.7",
+        "toLatex": "4.2",
+        "paletteRef": "p2",
+        "dropTargets": ["6 \\times 0.7"],
+        "description": "6 × 0.7 = 4.2"
+      }
+    ]
+  },
+
+  {
+    "id": "stat-h-008",
+    "topic": "statistics",
+    "difficulty": "hard",
+    "question": {
+      "latex": "\\bar{x}=52,\\; \\mu_0=50,\\; \\sigma=4,\\; n=16. \\quad z = ?",
+      "plain": "Compute the one-sample z-test statistic: x̄=52, μ₀=50, σ=4, n=16."
+    },
+    "symbols": {},
+    "palette": [
+      { "id": "p1", "latex": "1", "description": "σ/√n = 4/√16 = 4/4 = 1" },
+      { "id": "p2", "latex": "z = 2", "description": "(52−50)/1 = 2" }
+    ],
+    "steps": [
+      {
+        "id": "s1",
+        "fromLatex": "\\frac{4}{\\sqrt{16}}",
+        "toLatex": "1",
+        "paletteRef": "p1",
+        "dropTargets": ["\\frac{4}{\\sqrt{16}}"],
+        "description": "Standard error: σ/√n = 4/4 = 1"
+      },
+      {
+        "id": "s2",
+        "fromLatex": "z = \\frac{52-50}{1}",
+        "toLatex": "z = 2",
+        "paletteRef": "p2",
+        "dropTargets": ["52-50"],
+        "description": "(x̄ − μ₀)/SE = (52−50)/1 = 2"
+      }
+    ]
+  },
+
+  {
+    "id": "stat-h-009",
+    "topic": "statistics",
+    "difficulty": "hard",
+    "question": {
+      "latex": "\\bar{x} = 100, \\; ME = 3.92. \\quad \\text{Find the 95\\% confidence interval.}",
+      "plain": "Construct the 95% confidence interval when x̄ = 100 and ME = 3.92."
+    },
+    "symbols": {},
+    "palette": [
+      { "id": "p1", "latex": "96.08", "description": "100 − 3.92 = 96.08" },
+      { "id": "p2", "latex": "103.92", "description": "100 + 3.92 = 103.92" }
+    ],
+    "steps": [
+      {
+        "id": "s1",
+        "fromLatex": "100 - 3.92",
+        "toLatex": "96.08",
+        "paletteRef": "p1",
+        "dropTargets": ["100 - 3.92"],
+        "description": "Lower bound: x̄ − ME = 100 − 3.92 = 96.08"
+      },
+      {
+        "id": "s2",
+        "fromLatex": "100 + 3.92",
+        "toLatex": "103.92",
+        "paletteRef": "p2",
+        "dropTargets": ["100 + 3.92"],
+        "description": "Upper bound: x̄ + ME = 100 + 3.92 = 103.92"
+      }
+    ]
+  },
+
+  {
+    "id": "stat-h-010",
+    "topic": "statistics",
+    "difficulty": "hard",
+    "question": {
+      "latex": "b_1 = 2, \\; \\bar{x} = 10, \\; \\bar{y} = 30. \\quad b_0 = \\bar{y} - b_1\\bar{x} = ?",
+      "plain": "Find the regression intercept b₀ = ȳ − b₁x̄ when b₁=2, x̄=10, ȳ=30."
+    },
+    "symbols": { "b_0": "y-intercept of regression line" },
+    "palette": [
+      { "id": "p1", "latex": "20", "description": "b₁ × x̄ = 2 × 10 = 20" },
+      { "id": "p2", "latex": "10", "description": "30 − 20 = 10" }
+    ],
+    "steps": [
+      {
+        "id": "s1",
+        "fromLatex": "b_0 = \\bar{y} - b_1\\bar{x} = 30 - 2(10)",
+        "toLatex": "30 - 20",
+        "paletteRef": "p1",
+        "dropTargets": ["2(10)"],
+        "description": "Compute b₁·x̄ = 2 × 10 = 20"
+      },
+      {
+        "id": "s2",
+        "fromLatex": "30 - 20",
+        "toLatex": "10",
+        "paletteRef": "p2",
+        "dropTargets": ["30 - 20"],
+        "description": "30 − 20 = 10"
+      }
+    ]
+  },
+
+  {
+    "id": "stat-h-011",
+    "topic": "statistics",
+    "difficulty": "hard",
+    "question": {
+      "latex": "\\text{Data: } \\{2,4,6,8,10\\}, \\; \\mu=6. \\quad \\text{Find } \\sigma^2 \\text{ and } \\sigma.",
+      "plain": "For the population {2,4,6,8,10} with μ=6, find σ² and σ."
+    },
+    "symbols": {},
+    "palette": [
+      { "id": "p1", "latex": "40", "description": "16+4+0+4+16 = 40" },
+      { "id": "p2", "latex": "8", "description": "40 ÷ 5 = 8" },
+      { "id": "p3", "latex": "2\\sqrt{2}", "description": "√8 = 2√2" }
+    ],
+    "steps": [
+      {
+        "id": "s1",
+        "fromLatex": "\\sigma^2 = \\frac{16+4+0+4+16}{5}",
+        "toLatex": "\\frac{40}{5}",
+        "paletteRef": "p1",
+        "dropTargets": ["16+4+0+4+16"],
+        "description": "Squared deviations: (−4)²+(−2)²+0²+2²+4² = 16+4+0+4+16 = 40"
+      },
+      {
+        "id": "s2",
+        "fromLatex": "\\frac{40}{5}",
+        "toLatex": "8",
+        "paletteRef": "p2",
+        "dropTargets": ["\\frac{40}{5}"],
+        "description": "σ² = 40 ÷ 5 = 8"
+      },
+      {
+        "id": "s3",
+        "fromLatex": "\\sigma = \\sqrt{8}",
+        "toLatex": "2\\sqrt{2}",
+        "paletteRef": "p3",
+        "dropTargets": ["\\sqrt{8}"],
+        "description": "√8 = √(4·2) = 2√2"
+      }
+    ]
+  },
+
+  {
+    "id": "stat-h-012",
+    "topic": "statistics",
+    "difficulty": "hard",
+    "question": {
+      "latex": "P(A|B) = 0.6, \\; P(B) = 0.25. \\quad P(A \\cap B) = ?",
+      "plain": "Find P(A∩B) using the multiplication rule: P(A|B) = 0.6, P(B) = 0.25."
+    },
+    "symbols": {},
+    "palette": [
+      { "id": "p1", "latex": "0.15", "description": "0.6 × 0.25 = 0.15" }
+    ],
+    "steps": [
+      {
+        "id": "s1",
+        "fromLatex": "P(A \\cap B) = P(A|B) \\cdot P(B) = 0.6 \\times 0.25",
+        "toLatex": "0.15",
+        "paletteRef": "p1",
+        "dropTargets": ["0.6 \\times 0.25"],
+        "description": "Multiplication rule: P(A∩B) = P(A|B)·P(B) = 0.6 × 0.25 = 0.15"
+      }
+    ]
+  },
+
+  {
+    "id": "stat-h-013",
+    "topic": "statistics",
+    "difficulty": "hard",
+    "question": {
+      "latex": "z^*=1.96, \\; \\sigma=10, \\; ME=2. \\quad \\text{Find minimum sample size } n.",
+      "plain": "Find the minimum sample size n for ME ≤ 2, using z*=1.96 and σ=10."
+    },
+    "symbols": { "n": "sample size" },
+    "palette": [
+      { "id": "p1", "latex": "19.6", "description": "z*·σ = 1.96 × 10 = 19.6" },
+      { "id": "p2", "latex": "9.8", "description": "19.6 ÷ 2 = 9.8" },
+      { "id": "p3", "latex": "96.04", "description": "9.8² = 96.04; round up to n = 97" }
+    ],
+    "steps": [
+      {
+        "id": "s1",
+        "fromLatex": "\\frac{z^* \\cdot \\sigma}{ME} = \\frac{1.96 \\times 10}{2}",
+        "toLatex": "\\frac{19.6}{2}",
+        "paletteRef": "p1",
+        "dropTargets": ["1.96 \\times 10"],
+        "description": "Numerator: 1.96 × 10 = 19.6"
+      },
+      {
+        "id": "s2",
+        "fromLatex": "\\frac{19.6}{2}",
+        "toLatex": "9.8",
+        "paletteRef": "p2",
+        "dropTargets": ["\\frac{19.6}{2}"],
+        "description": "19.6 ÷ 2 = 9.8"
+      },
+      {
+        "id": "s3",
+        "fromLatex": "n \\geq (9.8)^2",
+        "toLatex": "96.04",
+        "paletteRef": "p3",
+        "dropTargets": ["(9.8)^2"],
+        "description": "Square: 9.8² = 96.04 → round up to n = 97"
+      }
+    ]
+  },
+
+  {
+    "id": "stat-h-014",
+    "topic": "statistics",
+    "difficulty": "hard",
+    "question": {
+      "latex": "x{=}\\{1,2,3\\},\\; y{=}\\{2,5,8\\},\\; \\bar{x}{=}2,\\; \\bar{y}{=}5. \\quad Cov(X,Y) = ?",
+      "plain": "Find Cov(X,Y) for x={1,2,3}, y={2,5,8} with x̄=2, ȳ=5."
+    },
+    "symbols": {},
+    "palette": [
+      { "id": "p1", "latex": "3 + 0 + 3", "description": "(1-2)(2-5)=3; (2-2)(5-5)=0; (3-2)(8-5)=3" },
+      { "id": "p2", "latex": "6", "description": "3 + 0 + 3 = 6" },
+      { "id": "p3", "latex": "2", "description": "6 ÷ 3 = 2" }
+    ],
+    "steps": [
+      {
+        "id": "s1",
+        "fromLatex": "(-1)(-3) + (0)(0) + (1)(3)",
+        "toLatex": "3 + 0 + 3",
+        "paletteRef": "p1",
+        "dropTargets": ["(-1)(-3) + (0)(0) + (1)(3)"],
+        "description": "Compute each (xi−x̄)(yi−ȳ): (−1)(−3)=3, (0)(0)=0, (1)(3)=3"
+      },
+      {
+        "id": "s2",
+        "fromLatex": "3 + 0 + 3",
+        "toLatex": "6",
+        "paletteRef": "p2",
+        "dropTargets": ["3 + 0 + 3"],
+        "description": "Sum: 3 + 0 + 3 = 6"
+      },
+      {
+        "id": "s3",
+        "fromLatex": "\\frac{6}{3}",
+        "toLatex": "2",
+        "paletteRef": "p3",
+        "dropTargets": ["\\frac{6}{3}"],
+        "description": "Divide by n = 3: Cov = 6/3 = 2"
+      }
+    ]
+  },
+
+  {
+    "id": "stat-h-015",
+    "topic": "statistics",
+    "difficulty": "hard",
+    "question": {
+      "latex": "Cov(X,Y) = 4, \\; s_X = 2, \\; s_Y = 2. \\quad r = \\frac{Cov(X,Y)}{s_X s_Y} = ?",
+      "plain": "Find the Pearson correlation coefficient r given Cov=4, sX=2, sY=2."
+    },
+    "symbols": { "r": "Pearson correlation coefficient" },
+    "palette": [
+      { "id": "p1", "latex": "\\frac{4}{4}", "description": "sX × sY = 2 × 2 = 4" },
+      { "id": "p2", "latex": "1", "description": "4/4 = 1 (perfect positive correlation)" }
+    ],
+    "steps": [
+      {
+        "id": "s1",
+        "fromLatex": "r = \\frac{4}{2 \\times 2}",
+        "toLatex": "\\frac{4}{4}",
+        "paletteRef": "p1",
+        "dropTargets": ["2 \\times 2"],
+        "description": "Denominator: sX·sY = 2 × 2 = 4"
+      },
+      {
+        "id": "s2",
+        "fromLatex": "\\frac{4}{4}",
+        "toLatex": "1",
+        "paletteRef": "p2",
+        "dropTargets": ["\\frac{4}{4}"],
+        "description": "4/4 = 1 (perfect positive linear relationship)"
+      }
+    ]
+  },
+
+  {
+    "id": "stat-e-016",
+    "topic": "statistics",
+    "difficulty": "easy",
+    "question": {
+      "latex": "\\text{Find the mean of } \\{5, 10, 15\\}.",
+      "plain": "Find the mean of {5, 10, 15}."
+    },
+    "symbols": {},
+    "palette": [
+      { "id": "p1", "latex": "30", "description": "5+10+15 = 30" },
+      { "id": "p2", "latex": "10", "description": "30 ÷ 3 = 10" }
+    ],
+    "steps": [
+      {
+        "id": "s1",
+        "fromLatex": "\\frac{5+10+15}{3}",
+        "toLatex": "\\frac{30}{3}",
+        "paletteRef": "p1",
+        "dropTargets": ["5+10+15"],
+        "description": "Sum: 5+10+15 = 30"
+      },
+      {
+        "id": "s2",
+        "fromLatex": "\\frac{30}{3}",
+        "toLatex": "10",
+        "paletteRef": "p2",
+        "dropTargets": ["\\frac{30}{3}"],
+        "description": "30 ÷ 3 = 10"
+      }
+    ]
+  },
+
+  {
+    "id": "stat-e-017",
+    "topic": "statistics",
+    "difficulty": "easy",
+    "question": {
+      "latex": "\\text{Find the median of } \\{1, 3, 5, 7, 9, 11\\}.",
+      "plain": "Find the median of the sorted set {1, 3, 5, 7, 9, 11}."
+    },
+    "symbols": {},
+    "palette": [
+      { "id": "p1", "latex": "\\frac{12}{2}", "description": "Middle two are 5 and 7; average = 12/2" },
+      { "id": "p2", "latex": "6", "description": "12 ÷ 2 = 6" }
+    ],
+    "steps": [
+      {
+        "id": "s1",
+        "fromLatex": "\\frac{5+7}{2}",
+        "toLatex": "\\frac{12}{2}",
+        "paletteRef": "p1",
+        "dropTargets": ["\\frac{5+7}{2}"],
+        "description": "6 values → average the 3rd and 4th: (5+7)/2"
+      },
+      {
+        "id": "s2",
+        "fromLatex": "\\frac{12}{2}",
+        "toLatex": "6",
+        "paletteRef": "p2",
+        "dropTargets": ["\\frac{12}{2}"],
+        "description": "12 ÷ 2 = 6"
+      }
+    ]
+  },
+
+  {
+    "id": "stat-e-018",
+    "topic": "statistics",
+    "difficulty": "easy",
+    "question": {
+      "latex": "\\text{A fair die is rolled. } P(\\text{even number}) = ?",
+      "plain": "A fair six-sided die is rolled. What is P(rolling an even number)?"
+    },
+    "symbols": {},
+    "palette": [
+      { "id": "p1", "latex": "\\frac{1}{2}", "description": "3 even outcomes {2,4,6} out of 6" }
+    ],
+    "steps": [
+      {
+        "id": "s1",
+        "fromLatex": "\\frac{3}{6}",
+        "toLatex": "\\frac{1}{2}",
+        "paletteRef": "p1",
+        "dropTargets": ["\\frac{3}{6}"],
+        "description": "3 even numbers out of 6 → 3/6 = 1/2"
+      }
+    ]
+  },
+
+  {
+    "id": "stat-e-019",
+    "topic": "statistics",
+    "difficulty": "easy",
+    "question": {
+      "latex": "P(A) = 0.65. \\quad P(A^c) = ?",
+      "plain": "If P(A) = 0.65, find the probability of the complement P(Aᶜ)."
+    },
+    "symbols": {},
+    "palette": [
+      { "id": "p1", "latex": "0.35", "description": "1 − 0.65 = 0.35" }
+    ],
+    "steps": [
+      {
+        "id": "s1",
+        "fromLatex": "1 - 0.65",
+        "toLatex": "0.35",
+        "paletteRef": "p1",
+        "dropTargets": ["1 - 0.65"],
+        "description": "Complement rule: 1 − 0.65 = 0.35"
+      }
+    ]
+  },
+
+  {
+    "id": "stat-e-020",
+    "topic": "statistics",
+    "difficulty": "easy",
+    "question": {
+      "latex": "\\text{A data set has max} = 25, \\; \\text{min} = 5. \\quad \\text{Range} = ?",
+      "plain": "A data set has max = 25 and min = 5. Find the range."
+    },
+    "symbols": {},
+    "palette": [
+      { "id": "p1", "latex": "20", "description": "25 − 5 = 20" }
+    ],
+    "steps": [
+      {
+        "id": "s1",
+        "fromLatex": "25 - 5",
+        "toLatex": "20",
+        "paletteRef": "p1",
+        "dropTargets": ["25 - 5"],
+        "description": "Range = max − min = 25 − 5 = 20"
+      }
+    ]
+  },
+
+  {
+    "id": "stat-m-016",
+    "topic": "statistics",
+    "difficulty": "medium",
+    "question": {
+      "latex": "\\text{Scores: 80, 90, 70. Weights: 0.2, 0.5, 0.3.} \\quad \\bar{x}_w = ?",
+      "plain": "Find the weighted mean: scores {80, 90, 70} with weights {0.2, 0.5, 0.3}."
+    },
+    "symbols": {},
+    "palette": [
+      { "id": "p1", "latex": "16 + 45 + 21", "description": "80(0.2)=16; 90(0.5)=45; 70(0.3)=21" },
+      { "id": "p2", "latex": "82", "description": "16 + 45 + 21 = 82" }
+    ],
+    "steps": [
+      {
+        "id": "s1",
+        "fromLatex": "80(0.2) + 90(0.5) + 70(0.3)",
+        "toLatex": "16 + 45 + 21",
+        "paletteRef": "p1",
+        "dropTargets": ["80(0.2) + 90(0.5) + 70(0.3)"],
+        "description": "Multiply each score by its weight"
+      },
+      {
+        "id": "s2",
+        "fromLatex": "16 + 45 + 21",
+        "toLatex": "82",
+        "paletteRef": "p2",
+        "dropTargets": ["16 + 45 + 21"],
+        "description": "Sum: 16 + 45 + 21 = 82"
+      }
+    ]
+  },
+
+  {
+    "id": "stat-m-017",
+    "topic": "statistics",
+    "difficulty": "medium",
+    "question": {
+      "latex": "P(A)=0.5,\\; P(B)=0.4,\\; P(A \\cap B)=0.2. \\quad P(A \\cup B) = ?",
+      "plain": "Find P(A∪B) using the general addition rule."
+    },
+    "symbols": {},
+    "palette": [
+      { "id": "p1", "latex": "0.7", "description": "0.5 + 0.4 − 0.2 = 0.7" }
+    ],
+    "steps": [
+      {
+        "id": "s1",
+        "fromLatex": "P(A \\cup B) = P(A) + P(B) - P(A \\cap B)",
+        "toLatex": "P(A) + P(B) - P(A \\cap B)",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "General addition rule"
+      },
+      {
+        "id": "s2",
+        "fromLatex": "0.5 + 0.4 - 0.2",
+        "toLatex": "0.7",
+        "paletteRef": "p1",
+        "dropTargets": ["0.5 + 0.4 - 0.2"],
+        "description": "0.5 + 0.4 − 0.2 = 0.7"
+      }
+    ]
+  },
+
+  {
+    "id": "stat-m-018",
+    "topic": "statistics",
+    "difficulty": "medium",
+    "question": {
+      "latex": "s = 6, \\; \\bar{x} = 30. \\quad CV = \\frac{s}{\\bar{x}} \\times 100\\% = ?",
+      "plain": "Find the coefficient of variation (CV) when s = 6 and x̄ = 30."
+    },
+    "symbols": { "CV": "coefficient of variation" },
+    "palette": [
+      { "id": "p1", "latex": "0.2 \\times 100\\%", "description": "6/30 = 0.2" },
+      { "id": "p2", "latex": "20\\%", "description": "0.2 × 100% = 20%" }
+    ],
+    "steps": [
+      {
+        "id": "s1",
+        "fromLatex": "CV = \\frac{6}{30} \\times 100\\%",
+        "toLatex": "0.2 \\times 100\\%",
+        "paletteRef": "p1",
+        "dropTargets": ["\\frac{6}{30}"],
+        "description": "6/30 = 0.2"
+      },
+      {
+        "id": "s2",
+        "fromLatex": "0.2 \\times 100\\%",
+        "toLatex": "20\\%",
+        "paletteRef": "p2",
+        "dropTargets": ["0.2 \\times 100\\%"],
+        "description": "0.2 × 100% = 20%"
+      }
+    ]
+  },
+
+  {
+    "id": "stat-m-019",
+    "topic": "statistics",
+    "difficulty": "medium",
+    "question": {
+      "latex": "\\text{Win } \\$5 \\text{ with } P=0.3; \\; \\text{lose } \\$2 \\text{ with } P=0.7. \\quad E(X) = ?",
+      "plain": "Find the expected value: win $5 with P=0.3, lose $2 with P=0.7."
+    },
+    "symbols": {},
+    "palette": [
+      { "id": "p1", "latex": "1.5 + (-1.4)", "description": "5(0.3)=1.5; (−2)(0.7)=−1.4" },
+      { "id": "p2", "latex": "0.1", "description": "1.5 − 1.4 = 0.1" }
+    ],
+    "steps": [
+      {
+        "id": "s1",
+        "fromLatex": "E(X) = 5(0.3) + (-2)(0.7)",
+        "toLatex": "1.5 + (-1.4)",
+        "paletteRef": "p1",
+        "dropTargets": ["5(0.3) + (-2)(0.7)"],
+        "description": "Multiply each outcome by its probability"
+      },
+      {
+        "id": "s2",
+        "fromLatex": "1.5 + (-1.4)",
+        "toLatex": "0.1",
+        "paletteRef": "p2",
+        "dropTargets": ["1.5 + (-1.4)"],
+        "description": "1.5 − 1.4 = 0.1"
+      }
+    ]
+  },
+
+  {
+    "id": "stat-m-020",
+    "topic": "statistics",
+    "difficulty": "medium",
+    "question": {
+      "latex": "\\bar{x}=55,\\; \\mu=50,\\; \\sigma=10,\\; n=25. \\quad z = ?",
+      "plain": "Find the z-score for a sample mean: x̄=55, μ=50, σ=10, n=25."
+    },
+    "symbols": {},
+    "palette": [
+      { "id": "p1", "latex": "\\frac{10}{5}", "description": "SE = σ/√n = 10/√25 = 2" },
+      { "id": "p2", "latex": "\\frac{5}{2}", "description": "z = (55−50)/2 = 5/2" },
+      { "id": "p3", "latex": "2.5", "description": "5 ÷ 2 = 2.5" }
+    ],
+    "steps": [
+      {
+        "id": "s1",
+        "fromLatex": "SE = \\frac{\\sigma}{\\sqrt{n}} = \\frac{10}{\\sqrt{25}}",
+        "toLatex": "\\frac{10}{5}",
+        "paletteRef": "p1",
+        "dropTargets": ["\\sqrt{25}"],
+        "description": "√25 = 5; SE = 10/5 = 2"
+      },
+      {
+        "id": "s2",
+        "fromLatex": "z = \\frac{55-50}{\\frac{10}{5}}",
+        "toLatex": "\\frac{5}{2}",
+        "paletteRef": "p2",
+        "dropTargets": ["55-50"],
+        "description": "Numerator 55−50=5; denominator SE=2"
+      },
+      {
+        "id": "s3",
+        "fromLatex": "\\frac{5}{2}",
+        "toLatex": "2.5",
+        "paletteRef": "p3",
+        "dropTargets": ["\\frac{5}{2}"],
+        "description": "5 ÷ 2 = 2.5"
+      }
+    ]
+  },
+
+  {
+    "id": "stat-h-016",
+    "topic": "statistics",
+    "difficulty": "hard",
+    "question": {
+      "latex": "\\hat{p}=0.5,\\; n=400,\\; z^*=1.96. \\quad ME = z^*\\sqrt{\\tfrac{\\hat{p}(1-\\hat{p})}{n}} = ?",
+      "plain": "Find the proportion CI margin of error: p̂=0.5, n=400, z*=1.96."
+    },
+    "symbols": {},
+    "palette": [
+      { "id": "p1", "latex": "\\sqrt{\\frac{0.25}{400}}", "description": "p̂(1−p̂) = 0.5(0.5) = 0.25" },
+      { "id": "p2", "latex": "\\sqrt{0.000625}", "description": "0.25/400 = 0.000625" },
+      { "id": "p3", "latex": "0.025", "description": "√0.000625 = 0.025" },
+      { "id": "p4", "latex": "0.049", "description": "1.96 × 0.025 = 0.049" }
+    ],
+    "steps": [
+      {
+        "id": "s1",
+        "fromLatex": "\\sqrt{\\frac{0.5(0.5)}{400}}",
+        "toLatex": "\\sqrt{\\frac{0.25}{400}}",
+        "paletteRef": "p1",
+        "dropTargets": ["0.5(0.5)"],
+        "description": "p̂(1−p̂) = 0.5 × 0.5 = 0.25"
+      },
+      {
+        "id": "s2",
+        "fromLatex": "\\sqrt{\\frac{0.25}{400}}",
+        "toLatex": "\\sqrt{0.000625}",
+        "paletteRef": "p2",
+        "dropTargets": ["\\frac{0.25}{400}"],
+        "description": "0.25 ÷ 400 = 0.000625"
+      },
+      {
+        "id": "s3",
+        "fromLatex": "\\sqrt{0.000625}",
+        "toLatex": "0.025",
+        "paletteRef": "p3",
+        "dropTargets": ["\\sqrt{0.000625}"],
+        "description": "√0.000625 = 0.025"
+      },
+      {
+        "id": "s4",
+        "fromLatex": "ME = 1.96 \\times 0.025",
+        "toLatex": "0.049",
+        "paletteRef": "p4",
+        "dropTargets": ["1.96 \\times 0.025"],
+        "description": "ME = 1.96 × 0.025 = 0.049"
+      }
+    ]
+  },
+
+  {
+    "id": "stat-h-017",
+    "topic": "statistics",
+    "difficulty": "hard",
+    "question": {
+      "latex": "X \\sim B(n{=}5,\\, p{=}0.5). \\quad P(X=5) = ?",
+      "plain": "Find P(X = 5) for Binomial(n=5, p=0.5)."
+    },
+    "symbols": {},
+    "palette": [
+      { "id": "p1", "latex": "1 \\times \\frac{1}{32} \\times 1", "description": "C(5,5)=1; (0.5)⁵=1/32; (0.5)⁰=1" },
+      { "id": "p2", "latex": "\\frac{1}{32}", "description": "1 × (1/32) × 1 = 1/32 ≈ 0.031" }
+    ],
+    "steps": [
+      {
+        "id": "s1",
+        "fromLatex": "\\binom{5}{5}(0.5)^5(0.5)^0",
+        "toLatex": "1 \\times \\frac{1}{32} \\times 1",
+        "paletteRef": "p1",
+        "dropTargets": ["\\binom{5}{5}"],
+        "description": "C(5,5)=1; (0.5)⁵=1/32; (0.5)⁰=1"
+      },
+      {
+        "id": "s2",
+        "fromLatex": "1 \\times \\frac{1}{32} \\times 1",
+        "toLatex": "\\frac{1}{32}",
+        "paletteRef": "p2",
+        "dropTargets": ["1 \\times \\frac{1}{32} \\times 1"],
+        "description": "P(X=5) = 1/32"
+      }
+    ]
+  },
+
+  {
+    "id": "stat-h-018",
+    "topic": "statistics",
+    "difficulty": "hard",
+    "question": {
+      "latex": "X \\perp Y. \\quad E(X)=3,\\; E(Y)=5,\\; Var(X)=4,\\; Var(Y)=9.",
+      "plain": "X and Y are independent. Find E(X+Y) and Var(X+Y)."
+    },
+    "symbols": {},
+    "palette": [
+      { "id": "p1", "latex": "8", "description": "E(X+Y) = 3+5 = 8" },
+      { "id": "p2", "latex": "13", "description": "Var(X+Y) = 4+9 = 13" }
+    ],
+    "steps": [
+      {
+        "id": "s1",
+        "fromLatex": "E(X+Y) = 3 + 5",
+        "toLatex": "8",
+        "paletteRef": "p1",
+        "dropTargets": ["3 + 5"],
+        "description": "E(X+Y) = E(X)+E(Y) = 3+5 = 8"
+      },
+      {
+        "id": "s2",
+        "fromLatex": "Var(X+Y) = 4 + 9",
+        "toLatex": "13",
+        "paletteRef": "p2",
+        "dropTargets": ["4 + 9"],
+        "description": "Independent: Var(X+Y) = Var(X)+Var(Y) = 4+9 = 13"
+      }
+    ]
+  },
+
+  {
+    "id": "stat-h-019",
+    "topic": "statistics",
+    "difficulty": "hard",
+    "question": {
+      "latex": "Var(X) = 4. \\quad Var(3X + 5) = ?",
+      "plain": "Find Var(3X+5) given Var(X) = 4, using Var(aX+b) = a²Var(X)."
+    },
+    "symbols": {},
+    "palette": [
+      { "id": "p1", "latex": "9 \\cdot 4", "description": "a²=3²=9; adding constant doesn't affect variance" },
+      { "id": "p2", "latex": "36", "description": "9 × 4 = 36" }
+    ],
+    "steps": [
+      {
+        "id": "s1",
+        "fromLatex": "Var(3X+5) = 3^2 \\cdot Var(X)",
+        "toLatex": "9 \\cdot 4",
+        "paletteRef": "p1",
+        "dropTargets": ["3^2"],
+        "description": "Var(aX+b) = a²Var(X); a²=9, Var(X)=4"
+      },
+      {
+        "id": "s2",
+        "fromLatex": "9 \\cdot 4",
+        "toLatex": "36",
+        "paletteRef": "p2",
+        "dropTargets": ["9 \\cdot 4"],
+        "description": "9 × 4 = 36"
+      }
+    ]
+  },
+
+  {
+    "id": "stat-h-020",
+    "topic": "statistics",
+    "difficulty": "hard",
+    "question": {
+      "latex": "r = 0.8. \\quad r^2 = ? \\quad \\text{(coefficient of determination)}",
+      "plain": "If the correlation r = 0.8, find r² (the coefficient of determination)."
+    },
+    "symbols": { "r^2": "proportion of variation in Y explained by X" },
+    "palette": [
+      { "id": "p1", "latex": "0.64", "description": "r² = 0.8² = 0.64; 64% of variation explained" }
+    ],
+    "steps": [
+      {
+        "id": "s1",
+        "fromLatex": "r^2 = (0.8)^2",
+        "toLatex": "0.64",
+        "paletteRef": "p1",
+        "dropTargets": ["(0.8)^2"],
+        "description": "r² = 0.64; the model explains 64% of variance in Y"
+      }
+    ]
+  }
+]

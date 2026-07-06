@@ -801,6 +801,7 @@
   <a class="textbook-link" href="textbook_trigonometry.html">Trigonometry Textbook</a>
   <a class="textbook-link" href="textbook_calculus.html">Calculus Textbook</a>
   <a class="textbook-link" href="textbook_algebra2.html">Algebra 2 Textbook</a>
+  <a class="textbook-link" href="textbook_statistics.html">Statistics Textbook</a>
 </div>
 
 <div id="score-bar">
@@ -822,6 +823,7 @@
     <option value="geometry.json">Geometry</option>
     <option value="trigonometry.json">Trigonometry</option>
     <option value="calculus.json">Calculus</option>
+    <option value="statistics.json">Statistics</option>
   </select>
   <select id="concept-select" style="display:none"><option value="">— Select a concept —</option></select>
   <span id="concept-count" style="display:none"></span>
@@ -1044,7 +1046,7 @@ tabConcept.addEventListener('click', () => setMode('concept'));
 const G_topicCache = {};
 
 async function preloadTopicCache() {
-  for (const file of ['algebra2.json', 'trigonometry.json', 'calculus.json']) {
+  for (const file of ['algebra2.json', 'trigonometry.json', 'calculus.json', 'statistics.json']) {
     try {
       const r = await fetch(`puzzles/${file}`);
       G_topicCache[file] = await r.json();
@@ -1069,6 +1071,7 @@ const TOPIC_META = {
   'trig': { file: 'trigonometry.json', topicIndex: 4 },
   'calc': { file: 'calculus.json',     topicIndex: 5 },
   'alg2': { file: 'algebra2.json',     topicIndex: 1 },
+  'stat': { file: 'statistics.json',   topicIndex: 6 },
 };
 
 
