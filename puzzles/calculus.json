@@ -2486,5 +2486,520 @@
         "description": "Factor eˣ: eˣ(1+x+1) = eˣ(2+x)"
       }
     ]
+  },
+
+  {
+    "id": "calc-e-016",
+    "topic": "calculus",
+    "difficulty": "easy",
+    "question": {
+      "latex": "\\frac{d}{dx}\\left[x^{1/2}\\right] = ?",
+      "plain": "Differentiate x^(1/2) using the power rule."
+    },
+    "symbols": {},
+    "palette": [
+      { "id": "p1", "latex": "\\frac{1}{2} x^{-1/2}", "description": "Power rule: bring down 1/2, subtract 1" },
+      { "id": "p2", "latex": "\\frac{1}{2\\sqrt{x}}", "description": "Rewrite x^(−1/2) = 1/√x" }
+    ],
+    "steps": [
+      {
+        "id": "s1",
+        "fromLatex": "\\frac{d}{dx}\\left[x^{1/2}\\right]",
+        "toLatex": "\\frac{1}{2} x^{-1/2}",
+        "paletteRef": "p1",
+        "dropTargets": ["\\frac{d}{dx}\\left[x^{1/2}\\right]"],
+        "description": "Power rule: nx^(n−1) with n = 1/2"
+      },
+      {
+        "id": "s2",
+        "fromLatex": "\\frac{1}{2} x^{-1/2}",
+        "toLatex": "\\frac{1}{2\\sqrt{x}}",
+        "paletteRef": "p2",
+        "dropTargets": ["\\frac{1}{2} x^{-1/2}"],
+        "description": "Rewrite: x^(−1/2) = 1/√x"
+      }
+    ]
+  },
+
+  {
+    "id": "calc-e-017",
+    "topic": "calculus",
+    "difficulty": "easy",
+    "question": {
+      "latex": "\\lim_{x \\to \\infty} \\frac{1}{x} = ?",
+      "plain": "Evaluate the limit as x → ∞ of 1/x."
+    },
+    "symbols": {},
+    "palette": [
+      { "id": "p1", "latex": "0", "description": "As x → ∞, 1/x → 0" }
+    ],
+    "steps": [
+      {
+        "id": "s1",
+        "fromLatex": "\\lim_{x \\to \\infty} \\frac{1}{x}",
+        "toLatex": "0",
+        "paletteRef": "p1",
+        "dropTargets": ["\\lim_{x \\to \\infty} \\frac{1}{x}"],
+        "description": "Numerator degree < denominator degree → limit is 0"
+      }
+    ]
+  },
+
+  {
+    "id": "calc-e-018",
+    "topic": "calculus",
+    "difficulty": "easy",
+    "question": {
+      "latex": "f(x) = x^2. \\quad \\text{Find the slope of the tangent at } x = 3.",
+      "plain": "For f(x) = x², find the slope of the tangent line at x = 3."
+    },
+    "symbols": {},
+    "palette": [
+      { "id": "p1", "latex": "6", "description": "f'(3) = 2 × 3 = 6" }
+    ],
+    "steps": [
+      {
+        "id": "s1",
+        "fromLatex": "f'(x) = 2x",
+        "toLatex": "f'(x) = 2x",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "Derivative by power rule: f'(x) = 2x"
+      },
+      {
+        "id": "s2",
+        "fromLatex": "f'(3) = 2 \\cdot 3",
+        "toLatex": "6",
+        "paletteRef": "p1",
+        "dropTargets": ["2 \\cdot 3"],
+        "description": "Evaluate at x = 3: 2 × 3 = 6"
+      }
+    ]
+  },
+
+  {
+    "id": "calc-e-019",
+    "topic": "calculus",
+    "difficulty": "easy",
+    "question": {
+      "latex": "\\frac{d}{dx}\\left[3x^2 + 2x - 5\\right] = ?",
+      "plain": "Differentiate 3x² + 2x − 5."
+    },
+    "symbols": {},
+    "palette": [
+      { "id": "p1", "latex": "6x + 2", "description": "Power rule on each term; constant vanishes" }
+    ],
+    "steps": [
+      {
+        "id": "s1",
+        "fromLatex": "\\frac{d}{dx}\\left[3x^2 + 2x - 5\\right]",
+        "toLatex": "6x + 2",
+        "paletteRef": "p1",
+        "dropTargets": ["\\frac{d}{dx}\\left[3x^2 + 2x - 5\\right]"],
+        "description": "d/dx[3x²] = 6x; d/dx[2x] = 2; d/dx[−5] = 0"
+      }
+    ]
+  },
+
+  {
+    "id": "calc-e-020",
+    "topic": "calculus",
+    "difficulty": "easy",
+    "question": {
+      "latex": "\\int 6x^2 \\, dx = ?",
+      "plain": "Integrate 6x² with respect to x."
+    },
+    "symbols": {},
+    "palette": [
+      { "id": "p1", "latex": "\\frac{6x^3}{3} + C", "description": "Power rule: raise exponent by 1, divide by new exponent" },
+      { "id": "p2", "latex": "2x^3 + C", "description": "Simplify: 6/3 = 2" }
+    ],
+    "steps": [
+      {
+        "id": "s1",
+        "fromLatex": "\\int 6x^2 \\, dx",
+        "toLatex": "\\frac{6x^3}{3} + C",
+        "paletteRef": "p1",
+        "dropTargets": ["\\int 6x^2 \\, dx"],
+        "description": "Power rule for integration: ∫x² dx = x³/3"
+      },
+      {
+        "id": "s2",
+        "fromLatex": "\\frac{6x^3}{3} + C",
+        "toLatex": "2x^3 + C",
+        "paletteRef": "p2",
+        "dropTargets": ["\\frac{6x^3}{3}"],
+        "description": "Simplify: 6/3 = 2"
+      }
+    ]
+  },
+
+  {
+    "id": "calc-m-016",
+    "topic": "calculus",
+    "difficulty": "medium",
+    "question": {
+      "latex": "x^2 + y^2 = 25. \\quad \\text{Find } \\frac{dy}{dx} \\text{ (implicit differentiation).}",
+      "plain": "Use implicit differentiation on x² + y² = 25 to find dy/dx."
+    },
+    "symbols": { "y": "function of x" },
+    "palette": [
+      { "id": "p1", "latex": "-\\frac{x}{y}", "description": "Solve: 2y(dy/dx) = −2x → dy/dx = −x/y" }
+    ],
+    "steps": [
+      {
+        "id": "s1",
+        "fromLatex": "2x + 2y \\frac{dy}{dx} = 0",
+        "toLatex": "2x + 2y \\frac{dy}{dx} = 0",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "Differentiate both sides w.r.t. x; chain rule on y²"
+      },
+      {
+        "id": "s2",
+        "fromLatex": "2y \\frac{dy}{dx} = -2x",
+        "toLatex": "\\frac{dy}{dx} = -\\frac{x}{y}",
+        "paletteRef": "p1",
+        "dropTargets": ["2y \\frac{dy}{dx} = -2x"],
+        "description": "Divide both sides by 2y"
+      }
+    ]
+  },
+
+  {
+    "id": "calc-m-017",
+    "topic": "calculus",
+    "difficulty": "medium",
+    "question": {
+      "latex": "\\text{Find the area between } y = x \\text{ and } y = x^2 \\text{ on } [0,1].",
+      "plain": "Find the area between y = x and y = x² on [0, 1]."
+    },
+    "symbols": {},
+    "palette": [
+      { "id": "p1", "latex": "\\left[\\frac{x^2}{2} - \\frac{x^3}{3}\\right]_0^1", "description": "Integrate (x − x²)" },
+      { "id": "p2", "latex": "\\frac{1}{6}", "description": "1/2 − 1/3 = 1/6" }
+    ],
+    "steps": [
+      {
+        "id": "s1",
+        "fromLatex": "\\int_0^1 (x - x^2) \\, dx",
+        "toLatex": "\\left[\\frac{x^2}{2} - \\frac{x^3}{3}\\right]_0^1",
+        "paletteRef": "p1",
+        "dropTargets": ["\\int_0^1 (x - x^2) \\, dx"],
+        "description": "Antiderivative: x → x²/2; x² → x³/3"
+      },
+      {
+        "id": "s2",
+        "fromLatex": "\\frac{1}{2} - \\frac{1}{3}",
+        "toLatex": "\\frac{1}{6}",
+        "paletteRef": "p2",
+        "dropTargets": ["\\frac{1}{2} - \\frac{1}{3}"],
+        "description": "LCD 6: 3/6 − 2/6 = 1/6"
+      }
+    ]
+  },
+
+  {
+    "id": "calc-m-018",
+    "topic": "calculus",
+    "difficulty": "medium",
+    "question": {
+      "latex": "f(x) = x^3 - 3x. \\quad \\text{Find all critical points.}",
+      "plain": "Find all critical points of f(x) = x³ − 3x."
+    },
+    "symbols": {},
+    "palette": [
+      { "id": "p1", "latex": "x^2 = 1", "description": "3x² − 3 = 0 → x² = 1" },
+      { "id": "p2", "latex": "\\pm 1", "description": "x = ±1" }
+    ],
+    "steps": [
+      {
+        "id": "s1",
+        "fromLatex": "3x^2 - 3 = 0",
+        "toLatex": "x^2 = 1",
+        "paletteRef": "p1",
+        "dropTargets": ["3x^2 - 3 = 0"],
+        "description": "f'(x) = 3x² − 3; set to zero and add 3, divide by 3"
+      },
+      {
+        "id": "s2",
+        "fromLatex": "x^2 = 1",
+        "toLatex": "x = \\pm 1",
+        "paletteRef": "p2",
+        "dropTargets": ["x^2 = 1"],
+        "description": "Take square root of both sides"
+      }
+    ]
+  },
+
+  {
+    "id": "calc-m-019",
+    "topic": "calculus",
+    "difficulty": "medium",
+    "question": {
+      "latex": "\\sum_{n=1}^{4} n = ?",
+      "plain": "Evaluate the sum: 1 + 2 + 3 + 4."
+    },
+    "symbols": {},
+    "palette": [
+      { "id": "p1", "latex": "10", "description": "1 + 2 + 3 + 4 = 10" }
+    ],
+    "steps": [
+      {
+        "id": "s1",
+        "fromLatex": "\\sum_{n=1}^{4} n = 1 + 2 + 3 + 4",
+        "toLatex": "1 + 2 + 3 + 4",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "Expand the sigma notation"
+      },
+      {
+        "id": "s2",
+        "fromLatex": "1 + 2 + 3 + 4",
+        "toLatex": "10",
+        "paletteRef": "p1",
+        "dropTargets": ["1 + 2 + 3 + 4"],
+        "description": "Add: 1+2+3+4 = 10 (or use N(N+1)/2 = 4·5/2 = 10)"
+      }
+    ]
+  },
+
+  {
+    "id": "calc-m-020",
+    "topic": "calculus",
+    "difficulty": "medium",
+    "question": {
+      "latex": "y = x^2 \\text{ at } (1,1). \\quad \\text{Find the equation of the tangent line.}",
+      "plain": "Find the equation of the tangent line to y = x² at the point (1, 1)."
+    },
+    "symbols": {},
+    "palette": [
+      { "id": "p1", "latex": "2x - 1", "description": "y = 2x − 1" }
+    ],
+    "steps": [
+      {
+        "id": "s1",
+        "fromLatex": "f'(x) = 2x, \\quad f'(1) = 2",
+        "toLatex": "f'(x) = 2x, \\quad f'(1) = 2",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "Derivative: f'(x) = 2x; slope at x=1 is 2"
+      },
+      {
+        "id": "s2",
+        "fromLatex": "y - 1 = 2(x - 1)",
+        "toLatex": "y = 2x - 1",
+        "paletteRef": "p1",
+        "dropTargets": ["y - 1 = 2(x - 1)"],
+        "description": "Point-slope form; simplify to slope-intercept"
+      }
+    ]
+  },
+
+  {
+    "id": "calc-h-016",
+    "topic": "calculus",
+    "difficulty": "hard",
+    "question": {
+      "latex": "\\int_1^{\\infty} x^{-2} \\, dx = ?",
+      "plain": "Evaluate the improper integral of x^(−2) from 1 to ∞."
+    },
+    "symbols": {},
+    "palette": [
+      { "id": "p1", "latex": "\\left[-x^{-1}\\right]_1^{\\infty}", "description": "Antiderivative of x^(−2) is −x^(−1)" },
+      { "id": "p2", "latex": "0 - (-1)", "description": "Limit as x → ∞ of −1/x = 0; at x=1 it's −1" },
+      { "id": "p3", "latex": "1", "description": "0 − (−1) = 1" }
+    ],
+    "steps": [
+      {
+        "id": "s1",
+        "fromLatex": "\\int_1^{\\infty} x^{-2} \\, dx",
+        "toLatex": "\\left[-x^{-1}\\right]_1^{\\infty}",
+        "paletteRef": "p1",
+        "dropTargets": ["\\int_1^{\\infty} x^{-2} \\, dx"],
+        "description": "Antiderivative: ∫x^(−2) dx = −x^(−1)"
+      },
+      {
+        "id": "s2",
+        "fromLatex": "\\left[-x^{-1}\\right]_1^{\\infty}",
+        "toLatex": "0 - (-1)",
+        "paletteRef": "p2",
+        "dropTargets": ["\\left[-x^{-1}\\right]_1^{\\infty}"],
+        "description": "Upper bound: lim(−1/x) as x→∞ = 0; lower: −1/1 = −1"
+      },
+      {
+        "id": "s3",
+        "fromLatex": "0 - (-1)",
+        "toLatex": "1",
+        "paletteRef": "p3",
+        "dropTargets": ["0 - (-1)"],
+        "description": "Subtract: 0 − (−1) = 1"
+      }
+    ]
+  },
+
+  {
+    "id": "calc-h-017",
+    "topic": "calculus",
+    "difficulty": "hard",
+    "question": {
+      "latex": "\\int 2x(x^2+1)^3 \\, dx = ?",
+      "plain": "Integrate 2x(x²+1)³ dx using u-substitution."
+    },
+    "symbols": { "u": "x² + 1" },
+    "palette": [
+      { "id": "p1", "latex": "\\frac{u^4}{4} + C", "description": "∫u³ du = u⁴/4 + C" },
+      { "id": "p2", "latex": "\\frac{(x^2+1)^4}{4} + C", "description": "Back-substitute u = x² + 1" }
+    ],
+    "steps": [
+      {
+        "id": "s1",
+        "fromLatex": "u = x^2 + 1, \\quad du = 2x \\, dx",
+        "toLatex": "u = x^2 + 1, \\quad du = 2x \\, dx",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "Let u = x² + 1; then du = 2x dx — matches the integrand"
+      },
+      {
+        "id": "s2",
+        "fromLatex": "\\int u^3 \\, du",
+        "toLatex": "\\frac{u^4}{4} + C",
+        "paletteRef": "p1",
+        "dropTargets": ["\\int u^3 \\, du"],
+        "description": "Power rule for integration: ∫u³ du = u⁴/4 + C"
+      },
+      {
+        "id": "s3",
+        "fromLatex": "\\frac{u^4}{4} + C",
+        "toLatex": "\\frac{(x^2+1)^4}{4} + C",
+        "paletteRef": "p2",
+        "dropTargets": ["u^4"],
+        "description": "Back-substitute: u = x² + 1"
+      }
+    ]
+  },
+
+  {
+    "id": "calc-h-018",
+    "topic": "calculus",
+    "difficulty": "hard",
+    "question": {
+      "latex": "\\text{Apply MVT to } f(x) = x^2 \\text{ on } [1,3]. \\text{ Find } c.",
+      "plain": "Apply the Mean Value Theorem to f(x) = x² on [1, 3]. Find the value c."
+    },
+    "symbols": { "c": "value guaranteed by MVT" },
+    "palette": [
+      { "id": "p1", "latex": "8", "description": "f(3) − f(1) = 9 − 1 = 8" },
+      { "id": "p2", "latex": "4", "description": "8 ÷ 2 = 4 (average rate of change)" },
+      { "id": "p3", "latex": "2", "description": "f'(c) = 2c = 4 → c = 2" }
+    ],
+    "steps": [
+      {
+        "id": "s1",
+        "fromLatex": "\\frac{f(3) - f(1)}{3 - 1} = \\frac{9 - 1}{2}",
+        "toLatex": "\\frac{8}{2}",
+        "paletteRef": "p1",
+        "dropTargets": ["9 - 1"],
+        "description": "f(3) = 9, f(1) = 1; numerator = 8"
+      },
+      {
+        "id": "s2",
+        "fromLatex": "\\frac{8}{2}",
+        "toLatex": "4",
+        "paletteRef": "p2",
+        "dropTargets": ["\\frac{8}{2}"],
+        "description": "Average rate of change = 4"
+      },
+      {
+        "id": "s3",
+        "fromLatex": "f'(c) = 2c = 4",
+        "toLatex": "c = 2",
+        "paletteRef": "p3",
+        "dropTargets": ["2c = 4"],
+        "description": "Set f'(c) = 4; solve: c = 2 ∈ (1,3)"
+      }
+    ]
+  },
+
+  {
+    "id": "calc-h-019",
+    "topic": "calculus",
+    "difficulty": "hard",
+    "question": {
+      "latex": "\\int x^2 e^x \\, dx = ?",
+      "plain": "Integrate x²eˣ using integration by parts (twice)."
+    },
+    "symbols": {},
+    "palette": [
+      { "id": "p1", "latex": "x^2 e^x - 2(xe^x - e^x) + C", "description": "Apply parts twice: second integral ∫xeˣ dx = xeˣ − eˣ" },
+      { "id": "p2", "latex": "e^x(x^2 - 2x + 2) + C", "description": "Factor eˣ from x²eˣ − 2xeˣ + 2eˣ" }
+    ],
+    "steps": [
+      {
+        "id": "s1",
+        "fromLatex": "u = x^2, \\; dv = e^x dx \\Rightarrow x^2 e^x - 2\\int x e^x \\, dx",
+        "toLatex": "x^2 e^x - 2\\int x e^x \\, dx",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "First by-parts: u = x², dv = eˣ dx; v = eˣ; du = 2x dx"
+      },
+      {
+        "id": "s2",
+        "fromLatex": "x^2 e^x - 2\\int x e^x \\, dx",
+        "toLatex": "x^2 e^x - 2(xe^x - e^x) + C",
+        "paletteRef": "p1",
+        "dropTargets": ["x^2 e^x - 2\\int x e^x \\, dx"],
+        "description": "Second by-parts: ∫xeˣ dx = xeˣ − eˣ + C"
+      },
+      {
+        "id": "s3",
+        "fromLatex": "x^2 e^x - 2(xe^x - e^x) + C",
+        "toLatex": "e^x(x^2 - 2x + 2) + C",
+        "paletteRef": "p2",
+        "dropTargets": ["x^2 e^x - 2(xe^x - e^x) + C"],
+        "description": "Expand and factor: eˣ(x² − 2x + 2)"
+      }
+    ]
+  },
+
+  {
+    "id": "calc-h-020",
+    "topic": "calculus",
+    "difficulty": "hard",
+    "question": {
+      "latex": "V = \\tfrac{4}{3}\\pi r^3, \\; \\frac{dV}{dt} = 2. \\quad \\text{Find } \\frac{dr}{dt} \\text{ when } r = 3.",
+      "plain": "A sphere's volume grows at dV/dt = 2. Find dr/dt when r = 3 (related rates)."
+    },
+    "symbols": { "r": "radius", "t": "time" },
+    "palette": [
+      { "id": "p1", "latex": "36\\pi", "description": "4π(3)² = 36π" },
+      { "id": "p2", "latex": "\\frac{1}{18\\pi}", "description": "2 ÷ 36π = 1/(18π)" }
+    ],
+    "steps": [
+      {
+        "id": "s1",
+        "fromLatex": "\\frac{dV}{dt} = 4\\pi r^2 \\frac{dr}{dt}",
+        "toLatex": "\\frac{dV}{dt} = 4\\pi r^2 \\frac{dr}{dt}",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "Differentiate V = (4/3)πr³ with respect to t"
+      },
+      {
+        "id": "s2",
+        "fromLatex": "2 = 4\\pi (3)^2 \\frac{dr}{dt}",
+        "toLatex": "2 = 36\\pi \\frac{dr}{dt}",
+        "paletteRef": "p1",
+        "dropTargets": ["4\\pi (3)^2"],
+        "description": "Substitute dV/dt = 2 and r = 3; evaluate 4π(9) = 36π"
+      },
+      {
+        "id": "s3",
+        "fromLatex": "\\frac{dr}{dt} = \\frac{2}{36\\pi}",
+        "toLatex": "\\frac{dr}{dt} = \\frac{1}{18\\pi}",
+        "paletteRef": "p2",
+        "dropTargets": ["\\frac{2}{36\\pi}"],
+        "description": "Simplify: 2/(36π) = 1/(18π)"
+      }
+    ]
   }
 ]

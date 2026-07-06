@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Calculus — Math Game Textbook</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css" />
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
+          onload="renderMathInElement(document.body, {
+            delimiters: [{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}]
+          })"></script>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root { --bg:#0d0d1a; --surface:#151528; --panel:#1c1c35; --border:#2e2e55; --accent:#5c8aff; --correct:#3ecf8e; --hint:#ffb830; --text:#e0e0f0; --muted:#7070a0; }
+    body { background:var(--bg); color:var(--text); font-family:system-ui,sans-serif; min-height:100vh; padding:48px 24px 80px; display:flex; flex-direction:column; align-items:center; }
+    .page { width:100%; max-width:820px; }
+    header { display:flex; align-items:baseline; gap:16px; margin-bottom:12px; }
+    header h1 { font-size:1.5rem; font-weight:700; letter-spacing:.12em; text-transform:uppercase; color:var(--accent); }
+    header a { font-size:0.85rem; color:var(--muted); text-decoration:none; }
+    header a:hover { color:var(--accent); }
+    .subtitle { font-size:0.75rem; color:var(--muted); margin-bottom:36px; }
+    .subtitle a { color:var(--muted); }
+    .subtitle a:hover { color:var(--accent); }
+    nav { background:var(--surface); border:1px solid var(--border); border-radius:12px; padding:24px 32px; margin-bottom:32px; }
+    nav h2 { font-size:0.7rem; letter-spacing:.18em; text-transform:uppercase; color:var(--hint); margin-bottom:16px; }
+    nav ol { padding-left:20px; display:grid; grid-template-columns:1fr 1fr; gap:6px 32px; }
+    nav li { font-size:0.9rem; }
+    nav a { color:var(--accent); text-decoration:none; }
+    nav a:hover { text-decoration:underline; }
+    section { background:var(--surface); border:1px solid var(--border); border-radius:12px; padding:32px 36px; margin-bottom:24px; scroll-margin-top:24px; }
+    section h3 { font-size:1.05rem; font-weight:700; color:var(--accent); margin-bottom:6px; }
+    .chapter-num { font-size:0.7rem; letter-spacing:.14em; text-transform:uppercase; color:var(--muted); margin-bottom:14px; }
+    p { line-height:1.8; color:var(--text); font-size:0.95rem; margin-bottom:14px; }
+    p:last-child { margin-bottom:0; }
+    .formula { background:var(--panel); border:1px solid var(--border); border-left:3px solid var(--accent); border-radius:8px; padding:14px 20px; margin:16px 0; }
+    .formula .label { font-size:0.7rem; letter-spacing:.14em; text-transform:uppercase; color:var(--hint); margin-bottom:8px; }
+    .formula p { margin-bottom:0; font-size:0.9rem; line-height:1.9; }
+    .example { background:var(--panel); border:1px solid var(--border); border-left:3px solid var(--correct); border-radius:8px; padding:14px 20px; margin:16px 0; }
+    .example .label { font-size:0.7rem; letter-spacing:.14em; text-transform:uppercase; color:var(--correct); margin-bottom:10px; }
+    .example-step { display:flex; align-items:baseline; gap:12px; padding:4px 0; font-size:0.92rem; line-height:1.7; }
+    .example-step .why { color:var(--muted); font-size:0.82rem; min-width:200px; }
+    .key { color:var(--hint); font-weight:600; }
+    .back { display:inline-block; margin-top:36px; padding:10px 24px; background:var(--accent); color:#fff; border-radius:8px; text-decoration:none; font-size:0.9rem; font-weight:600; }
+    .back:hover { opacity:0.85; }
+    @media (max-width:600px) { nav ol { grid-template-columns:1fr; } section { padding:24px 20px; } .example-step { flex-direction:column; gap:2px; } }
+  </style>
+</head>
+<body>
+<div class="page">
+
+  <header>
+    <h1>Calculus</h1>
+    <a href="index.html">← Back to game</a>
+  </header>
+  <p class="subtitle">
+    Adapted from <a href="https://openstax.org/details/books/calculus-volume-1" target="_blank">OpenStax Calculus Volume 1 &amp; 2</a>
+    (CC BY 4.0).
+  </p>
+
+  <nav>
+    <h2>Contents</h2>
+    <ol>
+      <li><a href="#limits">Limits &amp; Continuity</a></li>
+      <li><a href="#defn">The Derivative — Definition</a></li>
+      <li><a href="#rules">Basic Differentiation Rules</a></li>
+      <li><a href="#chain">Product, Quotient &amp; Chain Rules</a></li>
+      <li><a href="#implicit">Implicit Differentiation</a></li>
+      <li><a href="#related">Related Rates</a></li>
+      <li><a href="#apps">Applications of Derivatives</a></li>
+      <li><a href="#integrals">The Definite Integral</a></li>
+      <li><a href="#ftc">Fundamental Theorem of Calculus</a></li>
+      <li><a href="#techniques">Integration Techniques</a></li>
+      <li><a href="#appint">Applications of Integration</a></li>
+      <li><a href="#series">Sequences, Series &amp; Sigma Notation</a></li>
+    </ol>
+  </nav>
+
+  <!-- ── 1. Limits & Continuity ─────────────────────────────────────── -->
+  <section id="limits">
+    <div class="chapter-num">Chapter 1</div>
+    <h3>Limits &amp; Continuity</h3>
+
+    <p>
+      The <span class="key">limit</span> $\displaystyle\lim_{x \to a} f(x) = L$ means $f(x)$
+      approaches $L$ as $x$ approaches $a$ (but does not need to equal $f(a)$).
+      A function is <span class="key">continuous</span> at $a$ if the limit equals the function
+      value: $\lim_{x\to a} f(x) = f(a)$.
+    </p>
+
+    <p>
+      <span class="key">Limit at infinity:</span> if the degree of the numerator is less than
+      the degree of the denominator, the limit as $x \to \infty$ is $0$.
+      <span class="key">L'Hôpital's Rule:</span> if a limit yields $0/0$ or $\pm\infty/\infty$,
+      differentiate numerator and denominator separately.
+    </p>
+
+    <div class="formula">
+      <div class="label">Key limit facts</div>
+      $$\lim_{x\to a} x^n = a^n \qquad \lim_{x\to 0} \frac{\sin x}{x} = 1 \qquad \lim_{x\to\infty} \frac{1}{x} = 0$$
+    </div>
+
+    <div class="example">
+      <div class="label">Worked example — $\displaystyle\lim_{x\to 2} x^2$</div>
+      <div class="example-step"><span>$= 2^2 = 4$</span><span class="why">polynomial; substitute directly</span></div>
+    </div>
+
+    <div class="example">
+      <div class="label">Worked example — $\displaystyle\lim_{x\to\infty} \dfrac{1}{x}$</div>
+      <div class="example-step"><span>As $x \to \infty$, $1/x \to 0$</span><span class="why">numerator degree 0 &lt; denominator degree 1</span></div>
+    </div>
+  </section>
+
+  <!-- ── 2. The Derivative — Definition ─────────────────────────────── -->
+  <section id="defn">
+    <div class="chapter-num">Chapter 2</div>
+    <h3>The Derivative — Definition</h3>
+
+    <p>
+      The <span class="key">derivative</span> of $f$ at $x$ is the instantaneous rate of change:
+      $$f'(x) = \lim_{h \to 0} \frac{f(x+h) - f(x)}{h}$$
+      Geometrically, $f'(a)$ is the slope of the tangent line to $y = f(x)$ at $x = a$.
+      The <span class="key">tangent line</span> at $(a, f(a))$ is $y - f(a) = f'(a)(x - a)$.
+    </p>
+
+    <div class="example">
+      <div class="label">Worked example — tangent line to $y = x^2$ at $(1, 1)$</div>
+      <div class="example-step"><span>$f'(x) = 2x$; $f'(1) = 2$ (slope)</span><span class="why">power rule</span></div>
+      <div class="example-step"><span>$y - 1 = 2(x - 1) \Rightarrow y = 2x - 1$</span><span class="why">point-slope form</span></div>
+    </div>
+  </section>
+
+  <!-- ── 3. Basic Differentiation Rules ────────────────────────────── -->
+  <section id="rules">
+    <div class="chapter-num">Chapter 3</div>
+    <h3>Basic Differentiation Rules</h3>
+
+    <p>
+      These rules let us differentiate without using the limit definition directly.
+    </p>
+
+    <div class="formula">
+      <div class="label">Power, constant, and sum rules</div>
+      $$\frac{d}{dx}[x^n] = nx^{n-1} \qquad \frac{d}{dx}[c] = 0 \qquad \frac{d}{dx}[cf] = cf'$$
+      $$\frac{d}{dx}[f \pm g] = f' \pm g'$$
+    </div>
+
+    <div class="formula">
+      <div class="label">Derivatives of basic functions</div>
+      $$\frac{d}{dx}[e^x] = e^x \qquad \frac{d}{dx}[\ln x] = \frac{1}{x}$$
+      $$\frac{d}{dx}[\sin x] = \cos x \qquad \frac{d}{dx}[\cos x] = -\sin x$$
+    </div>
+
+    <div class="example">
+      <div class="label">Worked example — differentiate $3x^2 + 2x - 5$</div>
+      <div class="example-step"><span>$= 6x + 2$</span><span class="why">power rule on each term; constant vanishes</span></div>
+    </div>
+
+    <div class="example">
+      <div class="label">Worked example — differentiate $x^{1/2}$</div>
+      <div class="example-step"><span>$\dfrac{d}{dx}[x^{1/2}] = \tfrac{1}{2} x^{-1/2} = \dfrac{1}{2\sqrt{x}}$</span><span class="why">power rule; rewrite negative exponent</span></div>
+    </div>
+  </section>
+
+  <!-- ── 4. Product, Quotient & Chain Rules ─────────────────────────── -->
+  <section id="chain">
+    <div class="chapter-num">Chapter 4</div>
+    <h3>Product, Quotient &amp; Chain Rules</h3>
+
+    <div class="formula">
+      <div class="label">Product rule</div>
+      $$\frac{d}{dx}[uv] = u'v + uv'$$
+    </div>
+
+    <div class="formula">
+      <div class="label">Quotient rule</div>
+      $$\frac{d}{dx}\!\left[\frac{u}{v}\right] = \frac{u'v - uv'}{v^2}$$
+    </div>
+
+    <div class="formula">
+      <div class="label">Chain rule</div>
+      $$\frac{d}{dx}[f(g(x))] = f'(g(x)) \cdot g'(x)$$
+    </div>
+
+    <div class="example">
+      <div class="label">Worked example — differentiate $x^2 \sin x$ (product rule)</div>
+      <div class="example-step"><span>$u = x^2, \; v = \sin x$; $u' = 2x, \; v' = \cos x$</span><span class="why">identify parts</span></div>
+      <div class="example-step"><span>$= 2x\sin x + x^2\cos x$</span><span class="why">$u'v + uv'$</span></div>
+    </div>
+
+    <div class="example">
+      <div class="label">Worked example — differentiate $(x^2+1)^3$ (chain rule)</div>
+      <div class="example-step"><span>$= 3(x^2+1)^2 \cdot 2x = 6x(x^2+1)^2$</span><span class="why">outer rule × inner derivative</span></div>
+    </div>
+  </section>
+
+  <!-- ── 5. Implicit Differentiation ───────────────────────────────── -->
+  <section id="implicit">
+    <div class="chapter-num">Chapter 5</div>
+    <h3>Implicit Differentiation</h3>
+
+    <p>
+      When $y$ is defined implicitly by an equation in $x$ and $y$, differentiate both sides
+      with respect to $x$, applying the chain rule to any $y$ term (writing $dy/dx$), then
+      solve for $dy/dx$.
+    </p>
+
+    <div class="example">
+      <div class="label">Worked example — $x^2 + y^2 = 25$. Find $dy/dx$.</div>
+      <div class="example-step"><span>$2x + 2y\,\dfrac{dy}{dx} = 0$</span><span class="why">differentiate both sides w.r.t. $x$</span></div>
+      <div class="example-step"><span>$\dfrac{dy}{dx} = -\dfrac{x}{y}$</span><span class="why">solve for $dy/dx$</span></div>
+    </div>
+
+    <div class="example">
+      <div class="label">Worked example — $\arctan(x)$. Find $dy/dx$ via implicit differentiation.</div>
+      <div class="example-step"><span>$\tan y = x \Rightarrow \sec^2 y \cdot \dfrac{dy}{dx} = 1$</span><span class="why">differentiate implicitly</span></div>
+      <div class="example-step"><span>$\dfrac{dy}{dx} = \cos^2 y = \dfrac{1}{1+x^2}$</span><span class="why">$\sec^2 y = 1 + \tan^2 y = 1 + x^2$</span></div>
+    </div>
+  </section>
+
+  <!-- ── 6. Related Rates ───────────────────────────────────────────── -->
+  <section id="related">
+    <div class="chapter-num">Chapter 6</div>
+    <h3>Related Rates</h3>
+
+    <p>
+      <span class="key">Related rates</span> problems find how fast one quantity changes given
+      the rate of change of a related quantity. Differentiate the geometric or physical
+      relationship with respect to time $t$, then substitute the known values.
+    </p>
+
+    <div class="example">
+      <div class="label">Worked example — sphere: $V = \frac{4}{3}\pi r^3$, $dV/dt = 2$. Find $dr/dt$ when $r = 3$.</div>
+      <div class="example-step"><span>$\dfrac{dV}{dt} = 4\pi r^2 \dfrac{dr}{dt}$</span><span class="why">differentiate w.r.t. $t$; chain rule</span></div>
+      <div class="example-step"><span>$2 = 4\pi(9)\dfrac{dr}{dt} \Rightarrow \dfrac{dr}{dt} = \dfrac{2}{36\pi} = \dfrac{1}{18\pi}$</span><span class="why">substitute $r = 3$; solve</span></div>
+    </div>
+  </section>
+
+  <!-- ── 7. Applications of Derivatives ────────────────────────────── -->
+  <section id="apps">
+    <div class="chapter-num">Chapter 7</div>
+    <h3>Applications of Derivatives</h3>
+
+    <p>
+      <span class="key">Critical points</span> occur where $f'(x) = 0$ or $f'$ is undefined.
+      A critical point is a <span class="key">local maximum</span> if $f''(x) &lt; 0$ and a
+      <span class="key">local minimum</span> if $f''(x) &gt; 0$ (second derivative test).
+    </p>
+
+    <p>
+      The <span class="key">Mean Value Theorem (MVT)</span> states that if $f$ is continuous
+      on $[a,b]$ and differentiable on $(a,b)$, there exists $c \in (a,b)$ such that
+      $f'(c) = \dfrac{f(b)-f(a)}{b-a}$.
+    </p>
+
+    <div class="formula">
+      <div class="label">Second derivative test</div>
+      $$f'(c) = 0 \text{ and } f''(c) > 0 \Rightarrow \text{local min} \qquad f''(c) < 0 \Rightarrow \text{local max}$$
+    </div>
+
+    <div class="example">
+      <div class="label">Worked example — critical points of $f(x) = x^3 - 3x$</div>
+      <div class="example-step"><span>$f'(x) = 3x^2 - 3 = 0 \Rightarrow x^2 = 1 \Rightarrow x = \pm 1$</span><span class="why">set derivative to zero</span></div>
+      <div class="example-step"><span>$f''(x) = 6x$; $f''(1) = 6 > 0$ (min); $f''(-1) = -6 < 0$ (max)</span><span class="why">second derivative test</span></div>
+    </div>
+
+    <div class="example">
+      <div class="label">Worked example — MVT for $f(x) = x^2$ on $[1,3]$</div>
+      <div class="example-step"><span>$\dfrac{f(3)-f(1)}{3-1} = \dfrac{9-1}{2} = 4$</span><span class="why">average rate of change</span></div>
+      <div class="example-step"><span>$f'(c) = 2c = 4 \Rightarrow c = 2$</span><span class="why">MVT guarantees $c = 2 \in (1,3)$</span></div>
+    </div>
+  </section>
+
+  <!-- ── 8. The Definite Integral ───────────────────────────────────── -->
+  <section id="integrals">
+    <div class="chapter-num">Chapter 8</div>
+    <h3>The Definite Integral</h3>
+
+    <p>
+      The <span class="key">definite integral</span> $\displaystyle\int_a^b f(x)\,dx$
+      represents the signed area between $y = f(x)$ and the $x$-axis on $[a,b]$.
+      It is defined as a limit of <span class="key">Riemann sums</span>:
+      $\displaystyle\int_a^b f(x)\,dx = \lim_{n\to\infty} \sum_{i=1}^n f(x_i^*)\Delta x$.
+    </p>
+
+    <div class="formula">
+      <div class="label">Properties of definite integrals</div>
+      $$\int_a^b [f \pm g]\,dx = \int_a^b f\,dx \pm \int_a^b g\,dx$$
+      $$\int_a^b cf\,dx = c\int_a^b f\,dx \qquad \int_a^a f\,dx = 0 \qquad \int_a^b f\,dx = -\int_b^a f\,dx$$
+    </div>
+
+    <div class="example">
+      <div class="label">Worked example — $\displaystyle\int_0^1 x^2\,dx$</div>
+      <div class="example-step"><span>$= \left[\dfrac{x^3}{3}\right]_0^1 = \dfrac{1}{3} - 0 = \dfrac{1}{3}$</span><span class="why">antiderivative, then evaluate at bounds</span></div>
+    </div>
+  </section>
+
+  <!-- ── 9. Fundamental Theorem of Calculus ─────────────────────────── -->
+  <section id="ftc">
+    <div class="chapter-num">Chapter 9</div>
+    <h3>Fundamental Theorem of Calculus</h3>
+
+    <p>
+      The FTC has two parts:
+    </p>
+    <p>
+      <strong>Part 1:</strong> If $F(x) = \displaystyle\int_a^x f(t)\,dt$, then $F'(x) = f(x)$.
+      Every continuous function has an antiderivative.
+    </p>
+    <p>
+      <strong>Part 2:</strong> If $F$ is any antiderivative of $f$, then
+      $\displaystyle\int_a^b f(x)\,dx = F(b) - F(a)$.
+    </p>
+
+    <div class="formula">
+      <div class="label">Antiderivative table (basic)</div>
+      $$\int x^n\,dx = \frac{x^{n+1}}{n+1} + C \quad (n \ne -1) \qquad \int \frac{1}{x}\,dx = \ln|x| + C$$
+      $$\int e^x\,dx = e^x + C \qquad \int \sin x\,dx = -\cos x + C \qquad \int \cos x\,dx = \sin x + C$$
+    </div>
+
+    <div class="example">
+      <div class="label">Worked example — $\displaystyle\int_1^e \frac{1}{x}\,dx$</div>
+      <div class="example-step"><span>$= \big[\ln x\big]_1^e = \ln e - \ln 1 = 1 - 0 = 1$</span><span class="why">antiderivative of $1/x$ is $\ln x$</span></div>
+    </div>
+  </section>
+
+  <!-- ── 10. Integration Techniques ────────────────────────────────── -->
+  <section id="techniques">
+    <div class="chapter-num">Chapter 10</div>
+    <h3>Integration Techniques</h3>
+
+    <p>
+      <span class="key">Substitution ($u$-sub):</span> let $u = g(x)$, $du = g'(x)\,dx$.
+      Rewrite the integral in terms of $u$, integrate, substitute back.
+    </p>
+    <p>
+      <span class="key">Integration by parts:</span>
+      $\displaystyle\int u\,dv = uv - \int v\,du$.
+      Choose $u$ to be the part that simplifies when differentiated (LIATE: logarithm,
+      inverse trig, algebraic, trig, exponential).
+    </p>
+
+    <div class="formula">
+      <div class="label">Integration by parts</div>
+      $$\int u\,dv = uv - \int v\,du$$
+    </div>
+
+    <div class="example">
+      <div class="label">Worked example — $\displaystyle\int 2x(x^2+1)^3\,dx$ (substitution)</div>
+      <div class="example-step"><span>$u = x^2+1$, $du = 2x\,dx$</span><span class="why">$u$-sub</span></div>
+      <div class="example-step"><span>$\displaystyle\int u^3\,du = \dfrac{u^4}{4} + C = \dfrac{(x^2+1)^4}{4} + C$</span><span class="why">integrate then back-substitute</span></div>
+    </div>
+
+    <div class="example">
+      <div class="label">Worked example — $\displaystyle\int x^2 e^x\,dx$ (integration by parts, twice)</div>
+      <div class="example-step"><span>First: $u = x^2$, $dv = e^x\,dx$ → $x^2 e^x - 2\displaystyle\int xe^x\,dx$</span><span class="why">by parts</span></div>
+      <div class="example-step"><span>Second: $\displaystyle\int xe^x\,dx = xe^x - e^x$</span><span class="why">by parts again</span></div>
+      <div class="example-step"><span>$= x^2 e^x - 2(xe^x - e^x) + C = e^x(x^2 - 2x + 2) + C$</span><span class="why">combine</span></div>
+    </div>
+
+    <div class="example">
+      <div class="label">Worked example — $\displaystyle\int_1^{\infty} x^{-2}\,dx$ (improper integral)</div>
+      <div class="example-step"><span>$= \lim_{b\to\infty}\left[-x^{-1}\right]_1^b = \lim_{b\to\infty}\!\left(-\dfrac{1}{b} + 1\right) = 1$</span><span class="why">use a limit for the infinite bound</span></div>
+    </div>
+  </section>
+
+  <!-- ── 11. Applications of Integration ───────────────────────────── -->
+  <section id="appint">
+    <div class="chapter-num">Chapter 11</div>
+    <h3>Applications of Integration</h3>
+
+    <p>
+      <span class="key">Area between curves:</span> if $f(x) \geq g(x)$ on $[a,b]$, the area
+      between them is $\displaystyle\int_a^b [f(x) - g(x)]\,dx$.
+    </p>
+
+    <p>
+      <span class="key">Volumes by disks:</span> rotating $y = f(x)$ around the $x$-axis gives
+      $V = \pi\displaystyle\int_a^b [f(x)]^2\,dx$.
+    </p>
+
+    <div class="example">
+      <div class="label">Worked example — area between $y = x$ and $y = x^2$ on $[0,1]$</div>
+      <div class="example-step"><span>$y = x \geq y = x^2$ on $[0,1]$</span><span class="why">$x \geq x^2$ for $0 \leq x \leq 1$</span></div>
+      <div class="example-step"><span>$\displaystyle\int_0^1 (x - x^2)\,dx = \left[\dfrac{x^2}{2} - \dfrac{x^3}{3}\right]_0^1 = \dfrac{1}{2} - \dfrac{1}{3} = \dfrac{1}{6}$</span><span class="why">integrate the difference</span></div>
+    </div>
+
+    <div class="example">
+      <div class="label">Worked example — $\displaystyle\int_0^{\pi} \sin x\,dx$ (area under sine)</div>
+      <div class="example-step"><span>$= \big[-\cos x\big]_0^{\pi} = (-\cos\pi) - (-\cos 0) = 1 + 1 = 2$</span><span class="why">antiderivative of $\sin x$ is $-\cos x$</span></div>
+    </div>
+  </section>
+
+  <!-- ── 12. Sequences, Series & Sigma Notation ─────────────────────── -->
+  <section id="series">
+    <div class="chapter-num">Chapter 12</div>
+    <h3>Sequences, Series &amp; Sigma Notation</h3>
+
+    <p>
+      A <span class="key">sequence</span> is an ordered list of numbers $\{a_n\}$.
+      A <span class="key">series</span> is a sum of sequence terms.
+      <span class="key">Sigma notation</span> compactly represents sums:
+      $\displaystyle\sum_{n=1}^{N} a_n = a_1 + a_2 + \cdots + a_N$.
+    </p>
+
+    <p>
+      A <span class="key">geometric series</span> $\displaystyle\sum_{n=0}^{\infty} ar^n$
+      converges to $\dfrac{a}{1-r}$ when $|r| &lt; 1$.
+      A <span class="key">power series</span> represents functions as infinite sums;
+      the <span class="key">Taylor series</span> is the most important example.
+    </p>
+
+    <div class="formula">
+      <div class="label">Common summation formulas</div>
+      $$\sum_{n=1}^{N} n = \frac{N(N+1)}{2} \qquad \sum_{n=1}^{N} n^2 = \frac{N(N+1)(2N+1)}{6}$$
+      $$\sum_{n=0}^{\infty} ar^n = \frac{a}{1-r} \quad (|r| < 1)$$
+    </div>
+
+    <div class="example">
+      <div class="label">Worked example — $\displaystyle\sum_{n=1}^{4} n$</div>
+      <div class="example-step"><span>$= 1 + 2 + 3 + 4 = 10$</span><span class="why">or: $N(N+1)/2 = 4(5)/2 = 10$</span></div>
+    </div>
+
+    <div class="example">
+      <div class="label">Worked example — $\displaystyle\sum_{n=0}^{\infty} \left(\tfrac{1}{2}\right)^n$</div>
+      <div class="example-step"><span>$a = 1$, $r = 1/2$; sum $= \dfrac{1}{1 - 1/2} = 2$</span><span class="why">geometric series formula; $|r| = 1/2 < 1$</span></div>
+    </div>
+  </section>
+
+  <a class="back" href="index.html">Play Now →</a>
+
+</div>
+</body>
+</html>
