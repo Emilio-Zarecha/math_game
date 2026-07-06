@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Algebra 2 — Math Game Textbook</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css" />
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
+          onload="renderMathInElement(document.body, {
+            delimiters: [{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}]
+          })"></script>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root { --bg:#0d0d1a; --surface:#151528; --panel:#1c1c35; --border:#2e2e55; --accent:#5c8aff; --correct:#3ecf8e; --hint:#ffb830; --text:#e0e0f0; --muted:#7070a0; }
+    body { background:var(--bg); color:var(--text); font-family:system-ui,sans-serif; min-height:100vh; padding:48px 24px 80px; display:flex; flex-direction:column; align-items:center; }
+    .page { width:100%; max-width:820px; }
+    header { display:flex; align-items:baseline; gap:16px; margin-bottom:12px; }
+    header h1 { font-size:1.5rem; font-weight:700; letter-spacing:.12em; text-transform:uppercase; color:var(--accent); }
+    header a { font-size:0.85rem; color:var(--muted); text-decoration:none; }
+    header a:hover { color:var(--accent); }
+    .subtitle { font-size:0.75rem; color:var(--muted); margin-bottom:36px; }
+    .subtitle a { color:var(--muted); }
+    .subtitle a:hover { color:var(--accent); }
+    nav { background:var(--surface); border:1px solid var(--border); border-radius:12px; padding:24px 32px; margin-bottom:32px; }
+    nav h2 { font-size:0.7rem; letter-spacing:.18em; text-transform:uppercase; color:var(--hint); margin-bottom:16px; }
+    nav ol { padding-left:20px; display:grid; grid-template-columns:1fr 1fr; gap:6px 32px; }
+    nav li { font-size:0.9rem; }
+    nav a { color:var(--accent); text-decoration:none; }
+    nav a:hover { text-decoration:underline; }
+    section { background:var(--surface); border:1px solid var(--border); border-radius:12px; padding:32px 36px; margin-bottom:24px; scroll-margin-top:24px; }
+    section h3 { font-size:1.05rem; font-weight:700; color:var(--accent); margin-bottom:6px; }
+    .chapter-num { font-size:0.7rem; letter-spacing:.14em; text-transform:uppercase; color:var(--muted); margin-bottom:14px; }
+    p { line-height:1.8; color:var(--text); font-size:0.95rem; margin-bottom:14px; }
+    p:last-child { margin-bottom:0; }
+    .formula { background:var(--panel); border:1px solid var(--border); border-left:3px solid var(--accent); border-radius:8px; padding:14px 20px; margin:16px 0; }
+    .formula .label { font-size:0.7rem; letter-spacing:.14em; text-transform:uppercase; color:var(--hint); margin-bottom:8px; }
+    .formula p { margin-bottom:0; font-size:0.9rem; line-height:1.9; }
+    .example { background:var(--panel); border:1px solid var(--border); border-left:3px solid var(--correct); border-radius:8px; padding:14px 20px; margin:16px 0; }
+    .example .label { font-size:0.7rem; letter-spacing:.14em; text-transform:uppercase; color:var(--correct); margin-bottom:10px; }
+    .example-step { display:flex; align-items:baseline; gap:12px; padding:4px 0; font-size:0.92rem; line-height:1.7; }
+    .example-step .why { color:var(--muted); font-size:0.82rem; min-width:200px; }
+    .key { color:var(--hint); font-weight:600; }
+    .back { display:inline-block; margin-top:36px; padding:10px 24px; background:var(--accent); color:#fff; border-radius:8px; text-decoration:none; font-size:0.9rem; font-weight:600; }
+    .back:hover { opacity:0.85; }
+    @media (max-width:600px) { nav ol { grid-template-columns:1fr; } section { padding:24px 20px; } .example-step { flex-direction:column; gap:2px; } }
+  </style>
+</head>
+<body>
+<div class="page">
+
+  <header>
+    <h1>Algebra 2</h1>
+    <a href="index.html">← Back to game</a>
+  </header>
+  <p class="subtitle">
+    Adapted from <a href="https://openstax.org/details/books/intermediate-algebra-2e" target="_blank">OpenStax Intermediate Algebra 2e</a>
+    and <a href="https://openstax.org/details/books/algebra-and-trigonometry-2e" target="_blank">Algebra and Trigonometry 2e</a>
+    (CC BY 4.0).
+  </p>
+
+  <nav>
+    <h2>Contents</h2>
+    <ol>
+      <li><a href="#complex">Complex Numbers</a></li>
+      <li><a href="#quadratic">Quadratic Equations &amp; Functions</a></li>
+      <li><a href="#polynomials">Polynomial Functions</a></li>
+      <li><a href="#rational">Rational Expressions &amp; Equations</a></li>
+      <li><a href="#radical">Radical Equations</a></li>
+      <li><a href="#exponential">Exponential Functions</a></li>
+      <li><a href="#logarithmic">Logarithmic Functions</a></li>
+      <li><a href="#conics">Conic Sections</a></li>
+      <li><a href="#systems">Systems of Equations</a></li>
+      <li><a href="#sequences">Sequences &amp; Series</a></li>
+      <li><a href="#matrices">Matrices</a></li>
+      <li><a href="#counting">Counting &amp; Probability</a></li>
+    </ol>
+  </nav>
+
+  <!-- ── 1. Complex Numbers ──────────────────────────────────────────── -->
+  <section id="complex">
+    <div class="chapter-num">Chapter 1</div>
+    <h3>Complex Numbers</h3>
+
+    <p>
+      The <span class="key">imaginary unit</span> $i = \sqrt{-1}$, so $i^2 = -1$.
+      A <span class="key">complex number</span> is $a + bi$ where $a$ (real part) and $b$
+      (imaginary part) are real numbers. Complex numbers are added component-wise, multiplied
+      by distributing (and using $i^2 = -1$), and divided by multiplying by the
+      <span class="key">complex conjugate</span> $\overline{a+bi} = a - bi$.
+    </p>
+
+    <div class="formula">
+      <div class="label">Key operations</div>
+      $$(a+bi)(c+di) = (ac-bd) + (ad+bc)i$$
+      $$\frac{a+bi}{c+di} = \frac{(a+bi)(c-di)}{c^2+d^2}$$
+    </div>
+
+    <div class="example">
+      <div class="label">Worked example — $\sqrt{-9}$</div>
+      <div class="example-step"><span>$\sqrt{-9} = \sqrt{9} \cdot \sqrt{-1} = 3i$</span><span class="why">factor out $-1$; $\sqrt{-1} = i$</span></div>
+    </div>
+
+    <div class="example">
+      <div class="label">Worked example — divide $(3+2i) \div (1-i)$</div>
+      <div class="example-step"><span>$= \dfrac{(3+2i)(1+i)}{(1-i)(1+i)} = \dfrac{3+3i+2i+2i^2}{1+1} = \dfrac{1+5i}{2}$</span><span class="why">multiply by conjugate; $i^2 = -1$</span></div>
+      <div class="example-step"><span>$= \dfrac{1}{2} + \dfrac{5}{2}i$</span><span class="why">write in $a + bi$ form</span></div>
+    </div>
+  </section>
+
+  <!-- ── 2. Quadratic Equations & Functions ─────────────────────────── -->
+  <section id="quadratic">
+    <div class="chapter-num">Chapter 2</div>
+    <h3>Quadratic Equations &amp; Functions</h3>
+
+    <p>
+      A <span class="key">quadratic function</span> $f(x) = ax^2 + bx + c$ has a parabola as
+      its graph. The <span class="key">vertex</span> is at $\left(-\dfrac{b}{2a},\,
+      f\!\left(-\dfrac{b}{2a}\right)\right)$, and the <span class="key">axis of symmetry</span>
+      is $x = -\dfrac{b}{2a}$.
+    </p>
+
+    <p>
+      <span class="key">Vertex form:</span> $f(x) = a(x-h)^2 + k$ where $(h,k)$ is the vertex.
+      The <span class="key">discriminant</span> $\Delta = b^2 - 4ac$ determines the nature of
+      the roots: $\Delta > 0$ → two real roots; $\Delta = 0$ → one real root;
+      $\Delta < 0$ → two complex roots.
+    </p>
+
+    <div class="formula">
+      <div class="label">Quadratic formula and discriminant</div>
+      $$x = \frac{-b \pm \sqrt{b^2 - 4ac}}{2a} \qquad \Delta = b^2 - 4ac$$
+    </div>
+
+    <div class="example">
+      <div class="label">Worked example — complete the square for $x^2 + 6x + 5 = 0$</div>
+      <div class="example-step"><span>$(x+3)^2 - 9 + 5 = 0 \Rightarrow (x+3)^2 = 4$</span><span class="why">add and subtract $(b/2)^2 = 9$</span></div>
+      <div class="example-step"><span>$x + 3 = \pm 2 \Rightarrow x = -1$ or $x = -5$</span><span class="why">take square root of both sides</span></div>
+    </div>
+  </section>
+
+  <!-- ── 3. Polynomial Functions ────────────────────────────────────── -->
+  <section id="polynomials">
+    <div class="chapter-num">Chapter 3</div>
+    <h3>Polynomial Functions</h3>
+
+    <p>
+      A <span class="key">polynomial</span> of degree $n$ has at most $n$ real roots and at
+      most $n-1$ turning points. The <span class="key">Fundamental Theorem of Algebra</span>
+      guarantees exactly $n$ roots in $\mathbb{C}$.
+    </p>
+
+    <p>
+      <span class="key">Rational Root Theorem:</span> if $p/q$ (in lowest terms) is a rational
+      root of $a_n x^n + \cdots + a_0$, then $p | a_0$ and $q | a_n$.
+      The <span class="key">Remainder Theorem</span> says the remainder of $f(x) \div (x-c)$
+      equals $f(c)$.
+    </p>
+
+    <div class="formula">
+      <div class="label">Binomial theorem ($n$ a non-negative integer)</div>
+      $$(a+b)^n = \sum_{k=0}^n \binom{n}{k} a^{n-k} b^k$$
+    </div>
+
+    <div class="example">
+      <div class="label">Worked example — Remainder Theorem: $f(x) = x^3 - 2x + 1$ at $x = 2$</div>
+      <div class="example-step"><span>$f(2) = 8 - 4 + 1 = 5$</span><span class="why">the remainder when $f(x) \div (x-2)$ is $f(2) = 5$</span></div>
+    </div>
+  </section>
+
+  <!-- ── 4. Rational Expressions & Equations ────────────────────────── -->
+  <section id="rational">
+    <div class="chapter-num">Chapter 4</div>
+    <h3>Rational Expressions &amp; Equations</h3>
+
+    <p>
+      A <span class="key">rational expression</span> is a quotient of polynomials.
+      Simplify by factoring numerator and denominator, then canceling common factors.
+      To add/subtract, find the LCD; to multiply/divide, factor first.
+      Always state the values of $x$ that make the denominator zero.
+    </p>
+
+    <div class="example">
+      <div class="label">Worked example — simplify $\dfrac{x^2 - 4}{x - 2}$ $(x \ne 2)$</div>
+      <div class="example-step"><span>$= \dfrac{(x-2)(x+2)}{x-2} = x+2$</span><span class="why">difference of squares; cancel $(x-2)$</span></div>
+    </div>
+  </section>
+
+  <!-- ── 5. Radical Equations ───────────────────────────────────────── -->
+  <section id="radical">
+    <div class="chapter-num">Chapter 5</div>
+    <h3>Radical Equations</h3>
+
+    <p>
+      Isolate the radical, then raise both sides to the appropriate power to eliminate it.
+      Always <span class="key">check for extraneous solutions</span> — squaring can introduce
+      solutions that don't satisfy the original equation.
+    </p>
+
+    <div class="example">
+      <div class="label">Worked example — solve $\sqrt{x+3} = 4$</div>
+      <div class="example-step"><span>$(\sqrt{x+3})^2 = 4^2 \Rightarrow x + 3 = 16 \Rightarrow x = 13$</span><span class="why">square both sides; solve</span></div>
+      <div class="example-step"><span>Check: $\sqrt{13+3} = \sqrt{16} = 4$ ✓</span><span class="why">verify no extraneous solution</span></div>
+    </div>
+
+    <div class="example">
+      <div class="label">Worked example — solve $\sqrt{2x-3} = x-3$</div>
+      <div class="example-step"><span>$2x-3 = (x-3)^2 = x^2 - 6x + 9$</span><span class="why">square both sides</span></div>
+      <div class="example-step"><span>$x^2 - 8x + 12 = 0 \Rightarrow (x-2)(x-6) = 0$</span><span class="why">rearrange; factor</span></div>
+      <div class="example-step"><span>$x = 2$ fails check ($\sqrt{1} \ne -1$); $x = 6$ ✓</span><span class="why">extraneous: x=2 rejected</span></div>
+    </div>
+  </section>
+
+  <!-- ── 6. Exponential Functions ───────────────────────────────────── -->
+  <section id="exponential">
+    <div class="chapter-num">Chapter 6</div>
+    <h3>Exponential Functions</h3>
+
+    <p>
+      An <span class="key">exponential function</span> $f(x) = a \cdot b^x$ has constant ratio
+      per unit increase in $x$. The base $b > 0$, $b \ne 1$.
+      The natural exponential $e^x$ uses Euler's number $e \approx 2.718$.
+    </p>
+
+    <p>
+      To solve exponential equations, write both sides with the same base and equate exponents,
+      or take logarithms of both sides.
+    </p>
+
+    <div class="formula">
+      <div class="label">Exponent laws (review)</div>
+      $$b^m \cdot b^n = b^{m+n} \qquad \frac{b^m}{b^n} = b^{m-n} \qquad (b^m)^n = b^{mn}$$
+    </div>
+
+    <div class="example">
+      <div class="label">Worked example — solve $3^{2x} = 81$</div>
+      <div class="example-step"><span>$3^{2x} = 3^4 \Rightarrow 2x = 4 \Rightarrow x = 2$</span><span class="why">81 = 3⁴; matching bases</span></div>
+    </div>
+
+    <div class="example">
+      <div class="label">Worked example — solve $2^x = 5$ (not a perfect power)</div>
+      <div class="example-step"><span>$x = \log_2(5) = \dfrac{\ln 5}{\ln 2} \approx 2.322$</span><span class="why">take log₂; change of base for calculator</span></div>
+    </div>
+  </section>
+
+  <!-- ── 7. Logarithmic Functions ───────────────────────────────────── -->
+  <section id="logarithmic">
+    <div class="chapter-num">Chapter 7</div>
+    <h3>Logarithmic Functions</h3>
+
+    <p>
+      $\log_b(x) = y \iff b^y = x$. The natural log $\ln x = \log_e x$.
+      Logarithm and exponential are inverse functions: $b^{\log_b x} = x$ and
+      $\log_b(b^x) = x$.
+    </p>
+
+    <div class="formula">
+      <div class="label">Logarithm properties</div>
+      $$\log_b(MN) = \log_b M + \log_b N$$
+      $$\log_b\!\left(\frac{M}{N}\right) = \log_b M - \log_b N$$
+      $$\log_b(M^k) = k\log_b M$$
+      $$\log_b M = \frac{\ln M}{\ln b} \quad \text{(change of base)}$$
+    </div>
+
+    <div class="example">
+      <div class="label">Worked example — evaluate $\log_2(8)$</div>
+      <div class="example-step"><span>$\log_2(8) = \log_2(2^3) = 3$</span><span class="why">$8 = 2^3$; power rule</span></div>
+    </div>
+
+    <div class="example">
+      <div class="label">Worked example — simplify $\log_2(32/4)$</div>
+      <div class="example-step"><span>$= \log_2(32) - \log_2(4) = 5 - 2 = 3$</span><span class="why">quotient property; $32 = 2^5$, $4 = 2^2$</span></div>
+    </div>
+  </section>
+
+  <!-- ── 8. Conic Sections ──────────────────────────────────────────── -->
+  <section id="conics">
+    <div class="chapter-num">Chapter 8</div>
+    <h3>Conic Sections</h3>
+
+    <p>
+      Conics are curves formed by the intersection of a plane and a double cone.
+    </p>
+
+    <div class="formula">
+      <div class="label">Standard forms (center at origin)</div>
+      <p>
+      <strong>Circle:</strong> $x^2 + y^2 = r^2$ — center $(0,0)$, radius $r$<br>
+      <strong>Ellipse:</strong> $\dfrac{x^2}{a^2} + \dfrac{y^2}{b^2} = 1$ — semi-axes $a, b$; major axis along $x$ if $a > b$<br>
+      <strong>Hyperbola (horizontal):</strong> $\dfrac{x^2}{a^2} - \dfrac{y^2}{b^2} = 1$ — vertices $(\pm a, 0)$; $c^2 = a^2 + b^2$<br>
+      <strong>Parabola:</strong> $y = ax^2 + bx + c$ or $x = ay^2 + by + c$
+      </p>
+    </div>
+
+    <div class="example">
+      <div class="label">Worked example — circle $x^2 + y^2 = 16$: find center and radius</div>
+      <div class="example-step"><span>$r^2 = 16 \Rightarrow r = 4$; center $= (0, 0)$</span><span class="why">standard form</span></div>
+    </div>
+
+    <div class="example">
+      <div class="label">Worked example — ellipse $\dfrac{x^2}{9} + \dfrac{y^2}{4} = 1$: find semi-axes</div>
+      <div class="example-step"><span>$a^2 = 9 \Rightarrow a = 3$; $b^2 = 4 \Rightarrow b = 2$</span><span class="why">read from standard form</span></div>
+      <div class="example-step"><span>Major axis along $x$ (since $a > b$); $c = \sqrt{9-4} = \sqrt{5}$</span><span class="why">$c^2 = a^2 - b^2$ for ellipse</span></div>
+    </div>
+
+    <div class="example">
+      <div class="label">Worked example — hyperbola: vertices $(\pm 3, 0)$, foci $(\pm 5, 0)$</div>
+      <div class="example-step"><span>$a = 3$, $c = 5$; $b^2 = c^2 - a^2 = 25 - 9 = 16$</span><span class="why">$c^2 = a^2 + b^2$ for hyperbola</span></div>
+      <div class="example-step"><span>Equation: $\dfrac{x^2}{9} - \dfrac{y^2}{16} = 1$</span><span class="why">horizontal hyperbola; substitute $a^2$, $b^2$</span></div>
+    </div>
+  </section>
+
+  <!-- ── 9. Systems of Equations ────────────────────────────────────── -->
+  <section id="systems">
+    <div class="chapter-num">Chapter 9</div>
+    <h3>Systems of Equations</h3>
+
+    <p>
+      A <span class="key">nonlinear system</span> can have 0, 1, or more solutions.
+      To solve, substitute one equation into the other (or use elimination), then solve
+      the resulting equation. Always substitute back to find the full solution $(x, y)$.
+    </p>
+
+    <div class="example">
+      <div class="label">Worked example — solve $x^2 + y^2 = 25$ and $y = x + 1$</div>
+      <div class="example-step"><span>$x^2 + (x+1)^2 = 25 \Rightarrow 2x^2 + 2x + 1 = 25$</span><span class="why">substitute $y = x+1$</span></div>
+      <div class="example-step"><span>$x^2 + x - 12 = 0 \Rightarrow (x+4)(x-3) = 0$</span><span class="why">simplify; factor</span></div>
+      <div class="example-step"><span>$(x,y) = (-4,-3)$ or $(3, 4)$</span><span class="why">$y = x + 1$</span></div>
+    </div>
+  </section>
+
+  <!-- ── 10. Sequences & Series ─────────────────────────────────────── -->
+  <section id="sequences">
+    <div class="chapter-num">Chapter 10</div>
+    <h3>Sequences &amp; Series</h3>
+
+    <p>
+      An <span class="key">arithmetic sequence</span> has constant difference $d$:
+      $a_n = a_1 + (n-1)d$.
+      A <span class="key">geometric sequence</span> has constant ratio $r$:
+      $a_n = a_1 \cdot r^{n-1}$.
+    </p>
+
+    <div class="formula">
+      <div class="label">Sum formulas</div>
+      $$S_n^{\text{arith}} = \frac{n}{2}(a_1 + a_n) \qquad S_n^{\text{geo}} = \frac{a_1(1-r^n)}{1-r} \quad (r \ne 1)$$
+      $$S_\infty^{\text{geo}} = \frac{a_1}{1-r} \quad (|r| < 1)$$
+    </div>
+
+    <div class="example">
+      <div class="label">Worked example — infinite geometric series $1 + 1/2 + 1/4 + \cdots$</div>
+      <div class="example-step"><span>$a_1 = 1$, $r = 1/2$; $S_\infty = \dfrac{1}{1-1/2} = 2$</span><span class="why">$|r| < 1$, so it converges</span></div>
+    </div>
+  </section>
+
+  <!-- ── 11. Matrices ───────────────────────────────────────────────── -->
+  <section id="matrices">
+    <div class="chapter-num">Chapter 11</div>
+    <h3>Matrices</h3>
+
+    <p>
+      A <span class="key">matrix</span> is a rectangular array of numbers.
+      Matrices of the same size are added element-wise.
+      <span class="key">Matrix multiplication</span> $AB$: entry $(i,j)$ is the dot product
+      of row $i$ of $A$ and column $j$ of $B$ — only defined when the number of columns
+      of $A$ equals the number of rows of $B$.
+    </p>
+
+    <p>
+      For a $2\times 2$ matrix $M = \begin{pmatrix}a&b\\c&d\end{pmatrix}$:
+      $\det M = ad - bc$; $M^{-1} = \dfrac{1}{\det M}\begin{pmatrix}d&-b\\-c&a\end{pmatrix}$
+      when $\det M \ne 0$.
+    </p>
+
+    <div class="example">
+      <div class="label">Worked example — multiply $\begin{pmatrix}1&2\\3&4\end{pmatrix}\begin{pmatrix}2&0\\1&1\end{pmatrix}$</div>
+      <div class="example-step"><span>Row 1: $[1(2)+2(1),\; 1(0)+2(1)] = [4, 2]$</span><span class="why">dot product of row 1 with each column</span></div>
+      <div class="example-step"><span>Row 2: $[3(2)+4(1),\; 3(0)+4(1)] = [10, 4]$</span><span class="why">dot product of row 2 with each column</span></div>
+      <div class="example-step"><span>Result: $\begin{pmatrix}4&2\\10&4\end{pmatrix}$</span><span class="why">assemble rows</span></div>
+    </div>
+
+    <div class="example">
+      <div class="label">Worked example — inverse of $\begin{pmatrix}1&2\\3&4\end{pmatrix}$</div>
+      <div class="example-step"><span>$\det = 1(4) - 2(3) = -2$</span><span class="why">$ad - bc$</span></div>
+      <div class="example-step"><span>$M^{-1} = \dfrac{1}{-2}\begin{pmatrix}4&-2\\-3&1\end{pmatrix} = \begin{pmatrix}-2&1\\\frac{3}{2}&-\frac{1}{2}\end{pmatrix}$</span><span class="why">swap diagonal, negate off-diagonal, multiply by $1/\det$</span></div>
+    </div>
+  </section>
+
+  <!-- ── 12. Counting & Probability ─────────────────────────────────── -->
+  <section id="counting">
+    <div class="chapter-num">Chapter 12</div>
+    <h3>Counting &amp; Probability</h3>
+
+    <p>
+      The <span class="key">Fundamental Counting Principle</span>: if event $A$ can occur in
+      $m$ ways and event $B$ in $n$ ways, together they can occur in $mn$ ways.
+      A <span class="key">permutation</span> counts ordered arrangements:
+      $P(n,r) = \dfrac{n!}{(n-r)!}$.
+      A <span class="key">combination</span> counts unordered selections:
+      $\dbinom{n}{r} = \dfrac{n!}{r!(n-r)!}$.
+    </p>
+
+    <p>
+      <span class="key">Probability</span> of event $E$: $P(E) = \dfrac{\text{favorable outcomes}}{\text{total outcomes}}$.
+      For independent events: $P(A \text{ and } B) = P(A) \cdot P(B)$.
+    </p>
+
+    <div class="formula">
+      <div class="label">Binomial probability</div>
+      $$P(X = k) = \binom{n}{k} p^k (1-p)^{n-k}$$
+    </div>
+
+    <div class="example">
+      <div class="label">Worked example — how many ways to choose 3 from 5?</div>
+      <div class="example-step"><span>$\dbinom{5}{3} = \dfrac{5!}{3!\,2!} = \dfrac{5 \times 4}{2} = 10$</span><span class="why">combination formula; order doesn't matter</span></div>
+    </div>
+  </section>
+
+  <a class="back" href="index.html">Play Now →</a>
+
+</div>
+</body>
+</html>
