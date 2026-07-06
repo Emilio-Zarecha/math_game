@@ -2654,5 +2654,524 @@
         "description": "Add: 125 + 81 = 206"
       }
     ]
+  },
+
+  {
+    "id": "arith-e-016",
+    "topic": "arithmetic",
+    "difficulty": "easy",
+    "question": {
+      "latex": "-8 + 3 = ?",
+      "plain": "What is -8 + 3?"
+    },
+    "symbols": {},
+    "palette": [
+      { "id": "p1", "latex": "-5", "description": "Different signs: subtract, keep sign of larger absolute value" }
+    ],
+    "steps": [
+      {
+        "id": "s1",
+        "fromLatex": "-8 + 3",
+        "toLatex": "-5",
+        "paletteRef": "p1",
+        "dropTargets": ["-8 + 3"],
+        "description": "|−8|−|3| = 5; keep negative sign → −5"
+      }
+    ]
+  },
+
+  {
+    "id": "arith-e-017",
+    "topic": "arithmetic",
+    "difficulty": "easy",
+    "question": {
+      "latex": "\\text{Convert } 0.75 \\text{ to a fraction.}",
+      "plain": "Convert 0.75 to a fraction in lowest terms."
+    },
+    "symbols": {},
+    "palette": [
+      { "id": "p1", "latex": "\\frac{75}{100}", "description": "Two decimal places → denominator 100" },
+      { "id": "p2", "latex": "\\frac{3}{4}", "description": "Divide numerator and denominator by GCF 25" }
+    ],
+    "steps": [
+      {
+        "id": "s1",
+        "fromLatex": "0.75",
+        "toLatex": "\\frac{75}{100}",
+        "paletteRef": "p1",
+        "dropTargets": ["0.75"],
+        "description": "Write as a fraction over 100"
+      },
+      {
+        "id": "s2",
+        "fromLatex": "\\frac{75}{100}",
+        "toLatex": "\\frac{3}{4}",
+        "paletteRef": "p2",
+        "dropTargets": ["\\frac{75}{100}"],
+        "description": "Simplify by dividing by GCF 25"
+      }
+    ]
+  },
+
+  {
+    "id": "arith-e-018",
+    "topic": "arithmetic",
+    "difficulty": "easy",
+    "question": {
+      "latex": "\\text{Simplify the ratio } 12:18",
+      "plain": "Simplify the ratio 12:18."
+    },
+    "symbols": {},
+    "palette": [
+      { "id": "p1", "latex": "\\frac{2}{3}", "description": "Divide both terms by GCF 6" }
+    ],
+    "steps": [
+      {
+        "id": "s1",
+        "fromLatex": "\\frac{12 \\div 6}{18 \\div 6}",
+        "toLatex": "\\frac{2}{3}",
+        "paletteRef": "p1",
+        "dropTargets": ["\\frac{12 \\div 6}{18 \\div 6}"],
+        "description": "GCF(12,18) = 6; divide both by 6"
+      }
+    ]
+  },
+
+  {
+    "id": "arith-e-019",
+    "topic": "arithmetic",
+    "difficulty": "easy",
+    "question": {
+      "latex": "-5 - (-3) = ?",
+      "plain": "What is -5 - (-3)?"
+    },
+    "symbols": {},
+    "palette": [
+      { "id": "p1", "latex": "-5 + 3", "description": "Subtracting a negative = adding a positive" },
+      { "id": "p2", "latex": "-2", "description": "5 - 3 = 2; keep negative sign" }
+    ],
+    "steps": [
+      {
+        "id": "s1",
+        "fromLatex": "-5 - (-3)",
+        "toLatex": "-5 + 3",
+        "paletteRef": "p1",
+        "dropTargets": ["-5 - (-3)"],
+        "description": "Subtracting a negative becomes addition"
+      },
+      {
+        "id": "s2",
+        "fromLatex": "-5 + 3",
+        "toLatex": "-2",
+        "paletteRef": "p2",
+        "dropTargets": ["-5 + 3"],
+        "description": "|−5|−|3| = 2; sign of −5 → −2"
+      }
+    ]
+  },
+
+  {
+    "id": "arith-e-020",
+    "topic": "arithmetic",
+    "difficulty": "easy",
+    "question": {
+      "latex": "\\text{Convert } \\frac{5}{4} \\text{ to a decimal.}",
+      "plain": "Convert 5/4 to a decimal."
+    },
+    "symbols": {},
+    "palette": [
+      { "id": "p1", "latex": "0.25", "description": "1/4 = 0.25" },
+      { "id": "p2", "latex": "1.25", "description": "1 + 0.25 = 1.25" }
+    ],
+    "steps": [
+      {
+        "id": "s1",
+        "fromLatex": "1 + \\frac{1}{4}",
+        "toLatex": "1 + 0.25",
+        "paletteRef": "p1",
+        "dropTargets": ["\\frac{1}{4}"],
+        "description": "5/4 = 1 remainder 1; 1/4 = 0.25"
+      },
+      {
+        "id": "s2",
+        "fromLatex": "1 + 0.25",
+        "toLatex": "1.25",
+        "paletteRef": "p2",
+        "dropTargets": ["1 + 0.25"],
+        "description": "Add: 1 + 0.25 = 1.25"
+      }
+    ]
+  },
+
+  {
+    "id": "arith-m-016",
+    "topic": "arithmetic",
+    "difficulty": "medium",
+    "question": {
+      "latex": "\\frac{3}{4} = \\frac{x}{20} \\quad \\text{Find } x.",
+      "plain": "Solve the proportion 3/4 = x/20."
+    },
+    "symbols": { "x": "unknown value" },
+    "palette": [
+      { "id": "p1", "latex": "60", "description": "3 × 20 = 60" },
+      { "id": "p2", "latex": "15", "description": "60 ÷ 4 = 15" }
+    ],
+    "steps": [
+      {
+        "id": "s1",
+        "fromLatex": "4x = 3 \\times 20",
+        "toLatex": "4x = 60",
+        "paletteRef": "p1",
+        "dropTargets": ["3 \\times 20"],
+        "description": "Cross-multiply: 4x = 3 × 20 = 60"
+      },
+      {
+        "id": "s2",
+        "fromLatex": "x = \\frac{60}{4}",
+        "toLatex": "x = 15",
+        "paletteRef": "p2",
+        "dropTargets": ["\\frac{60}{4}"],
+        "description": "Divide both sides by 4"
+      }
+    ]
+  },
+
+  {
+    "id": "arith-m-017",
+    "topic": "arithmetic",
+    "difficulty": "medium",
+    "question": {
+      "latex": "\\text{Price rises from } \\$40 \\text{ to } \\$50. \\text{ Percent increase?}",
+      "plain": "A price rises from $40 to $50. What is the percent increase?"
+    },
+    "symbols": {},
+    "palette": [
+      { "id": "p1", "latex": "10", "description": "50 − 40 = 10" },
+      { "id": "p2", "latex": "0.25", "description": "10 ÷ 40 = 0.25" },
+      { "id": "p3", "latex": "25\\%", "description": "0.25 × 100% = 25%" }
+    ],
+    "steps": [
+      {
+        "id": "s1",
+        "fromLatex": "\\frac{50 - 40}{40} \\times 100\\%",
+        "toLatex": "\\frac{10}{40} \\times 100\\%",
+        "paletteRef": "p1",
+        "dropTargets": ["50 - 40"],
+        "description": "Numerator: 50 − 40 = 10"
+      },
+      {
+        "id": "s2",
+        "fromLatex": "\\frac{10}{40} \\times 100\\%",
+        "toLatex": "0.25 \\times 100\\%",
+        "paletteRef": "p2",
+        "dropTargets": ["\\frac{10}{40}"],
+        "description": "Divide: 10 ÷ 40 = 0.25"
+      },
+      {
+        "id": "s3",
+        "fromLatex": "0.25 \\times 100\\%",
+        "toLatex": "25\\%",
+        "paletteRef": "p3",
+        "dropTargets": ["0.25 \\times 100\\%"],
+        "description": "Multiply: 0.25 × 100% = 25%"
+      }
+    ]
+  },
+
+  {
+    "id": "arith-m-018",
+    "topic": "arithmetic",
+    "difficulty": "medium",
+    "question": {
+      "latex": "2\\frac{1}{3} + 1\\frac{3}{4} = ?",
+      "plain": "Add the mixed numbers: 2 1/3 + 1 3/4."
+    },
+    "symbols": {},
+    "palette": [
+      { "id": "p1", "latex": "\\frac{49}{12}", "description": "28/12 + 21/12 = 49/12" },
+      { "id": "p2", "latex": "4\\frac{1}{12}", "description": "49 = 4 × 12 + 1" }
+    ],
+    "steps": [
+      {
+        "id": "s1",
+        "fromLatex": "2\\frac{1}{3} + 1\\frac{3}{4}",
+        "toLatex": "\\frac{7}{3} + \\frac{7}{4}",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "Convert to improper fractions: 2⅓ = 7/3, 1¾ = 7/4"
+      },
+      {
+        "id": "s2",
+        "fromLatex": "\\frac{28}{12} + \\frac{21}{12}",
+        "toLatex": "\\frac{49}{12}",
+        "paletteRef": "p1",
+        "dropTargets": ["\\frac{28}{12} + \\frac{21}{12}"],
+        "description": "LCD = 12; add numerators 28 + 21 = 49"
+      },
+      {
+        "id": "s3",
+        "fromLatex": "\\frac{49}{12}",
+        "toLatex": "4\\frac{1}{12}",
+        "paletteRef": "p2",
+        "dropTargets": ["\\frac{49}{12}"],
+        "description": "Convert to mixed number: 49 ÷ 12 = 4 remainder 1"
+      }
+    ]
+  },
+
+  {
+    "id": "arith-m-019",
+    "topic": "arithmetic",
+    "difficulty": "medium",
+    "question": {
+      "latex": "\\text{Write } 45{,}000 \\text{ in scientific notation.}",
+      "plain": "Write 45,000 in scientific notation."
+    },
+    "symbols": {},
+    "palette": [
+      { "id": "p1", "latex": "4.5 \\times 10^4", "description": "Move decimal 4 places left; exponent = 4" }
+    ],
+    "steps": [
+      {
+        "id": "s1",
+        "fromLatex": "45000",
+        "toLatex": "4.5 \\times 10^4",
+        "paletteRef": "p1",
+        "dropTargets": ["45000"],
+        "description": "Move decimal 4 places left: 4.5 × 10⁴"
+      }
+    ]
+  },
+
+  {
+    "id": "arith-m-020",
+    "topic": "arithmetic",
+    "difficulty": "medium",
+    "question": {
+      "latex": "2^{-3} = ?",
+      "plain": "What is 2 to the power of −3?"
+    },
+    "symbols": {},
+    "palette": [
+      { "id": "p1", "latex": "\\frac{1}{8}", "description": "1 ÷ 2³ = 1/8" }
+    ],
+    "steps": [
+      {
+        "id": "s1",
+        "fromLatex": "2^{-3}",
+        "toLatex": "\\frac{1}{2^3}",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "Negative exponent: a⁻ⁿ = 1/aⁿ"
+      },
+      {
+        "id": "s2",
+        "fromLatex": "\\frac{1}{2^3}",
+        "toLatex": "\\frac{1}{8}",
+        "paletteRef": "p1",
+        "dropTargets": ["\\frac{1}{2^3}"],
+        "description": "Evaluate: 2³ = 8"
+      }
+    ]
+  },
+
+  {
+    "id": "arith-h-016",
+    "topic": "arithmetic",
+    "difficulty": "hard",
+    "question": {
+      "latex": "\\text{Find the sale price after a 20\\% discount on } \\$85.",
+      "plain": "What is the price after a 20% discount on $85?"
+    },
+    "symbols": {},
+    "palette": [
+      { "id": "p1", "latex": "17", "description": "0.20 × 85 = 17" },
+      { "id": "p2", "latex": "68", "description": "85 − 17 = 68" }
+    ],
+    "steps": [
+      {
+        "id": "s1",
+        "fromLatex": "0.20 \\times 85",
+        "toLatex": "17",
+        "paletteRef": "p1",
+        "dropTargets": ["0.20 \\times 85"],
+        "description": "Compute discount: 0.20 × 85 = 17"
+      },
+      {
+        "id": "s2",
+        "fromLatex": "85 - 17",
+        "toLatex": "68",
+        "paletteRef": "p2",
+        "dropTargets": ["85 - 17"],
+        "description": "Subtract discount: 85 − 17 = 68"
+      }
+    ]
+  },
+
+  {
+    "id": "arith-h-017",
+    "topic": "arithmetic",
+    "difficulty": "hard",
+    "question": {
+      "latex": "(3 \\times 10^4) \\times (2 \\times 10^3) = ?",
+      "plain": "Multiply (3 × 10⁴) × (2 × 10³) in scientific notation."
+    },
+    "symbols": {},
+    "palette": [
+      { "id": "p1", "latex": "6", "description": "3 × 2 = 6" },
+      { "id": "p2", "latex": "10^7", "description": "10⁴ × 10³ = 10⁴⁺³ = 10⁷" }
+    ],
+    "steps": [
+      {
+        "id": "s1",
+        "fromLatex": "(3 \\times 2) \\times (10^4 \\times 10^3)",
+        "toLatex": "6 \\times 10^4 \\times 10^3",
+        "paletteRef": "p1",
+        "dropTargets": ["3 \\times 2"],
+        "description": "Multiply coefficients: 3 × 2 = 6"
+      },
+      {
+        "id": "s2",
+        "fromLatex": "6 \\times 10^4 \\times 10^3",
+        "toLatex": "6 \\times 10^7",
+        "paletteRef": "p2",
+        "dropTargets": ["10^4 \\times 10^3"],
+        "description": "Add exponents: 4 + 3 = 7"
+      }
+    ]
+  },
+
+  {
+    "id": "arith-h-018",
+    "topic": "arithmetic",
+    "difficulty": "hard",
+    "question": {
+      "latex": "\\text{5 apples cost } \\$2.50. \\text{ How much for 8 apples?}",
+      "plain": "If 5 apples cost $2.50, how much do 8 apples cost?"
+    },
+    "symbols": {},
+    "palette": [
+      { "id": "p1", "latex": "0.50", "description": "$2.50 ÷ 5 = $0.50 per apple" },
+      { "id": "p2", "latex": "4.00", "description": "8 × $0.50 = $4.00" }
+    ],
+    "steps": [
+      {
+        "id": "s1",
+        "fromLatex": "\\frac{2.50}{5}",
+        "toLatex": "0.50",
+        "paletteRef": "p1",
+        "dropTargets": ["\\frac{2.50}{5}"],
+        "description": "Find unit rate: $2.50 ÷ 5 = $0.50 per apple"
+      },
+      {
+        "id": "s2",
+        "fromLatex": "8 \\times 0.50",
+        "toLatex": "4.00",
+        "paletteRef": "p2",
+        "dropTargets": ["8 \\times 0.50"],
+        "description": "Multiply: 8 × $0.50 = $4.00"
+      }
+    ]
+  },
+
+  {
+    "id": "arith-h-019",
+    "topic": "arithmetic",
+    "difficulty": "hard",
+    "question": {
+      "latex": "3^2 + 4 \\times (8 - 5) \\div 6 = ?",
+      "plain": "Evaluate: 3² + 4 × (8 − 5) ÷ 6 using order of operations."
+    },
+    "symbols": {},
+    "palette": [
+      { "id": "p1", "latex": "3", "description": "8 − 5 = 3 (parentheses)" },
+      { "id": "p2", "latex": "9", "description": "3² = 9 (exponent)" },
+      { "id": "p3", "latex": "12", "description": "4 × 3 = 12 (multiply)" },
+      { "id": "p4", "latex": "2", "description": "12 ÷ 6 = 2 (divide)" },
+      { "id": "p5", "latex": "11", "description": "9 + 2 = 11 (add)" }
+    ],
+    "steps": [
+      {
+        "id": "s1",
+        "fromLatex": "3^2 + 4 \\times (8 - 5) \\div 6",
+        "toLatex": "3^2 + 4 \\times 3 \\div 6",
+        "paletteRef": "p1",
+        "dropTargets": ["8 - 5"],
+        "description": "Parentheses first: 8 − 5 = 3"
+      },
+      {
+        "id": "s2",
+        "fromLatex": "3^2 + 4 \\times 3 \\div 6",
+        "toLatex": "9 + 4 \\times 3 \\div 6",
+        "paletteRef": "p2",
+        "dropTargets": ["3^2"],
+        "description": "Exponent: 3² = 9"
+      },
+      {
+        "id": "s3",
+        "fromLatex": "9 + 4 \\times 3 \\div 6",
+        "toLatex": "9 + 12 \\div 6",
+        "paletteRef": "p3",
+        "dropTargets": ["4 \\times 3"],
+        "description": "Multiply (left to right): 4 × 3 = 12"
+      },
+      {
+        "id": "s4",
+        "fromLatex": "9 + 12 \\div 6",
+        "toLatex": "9 + 2",
+        "paletteRef": "p4",
+        "dropTargets": ["12 \\div 6"],
+        "description": "Divide: 12 ÷ 6 = 2"
+      },
+      {
+        "id": "s5",
+        "fromLatex": "9 + 2",
+        "toLatex": "11",
+        "paletteRef": "p5",
+        "dropTargets": ["9 + 2"],
+        "description": "Add: 9 + 2 = 11"
+      }
+    ]
+  },
+
+  {
+    "id": "arith-h-020",
+    "topic": "arithmetic",
+    "difficulty": "hard",
+    "question": {
+      "latex": "\\text{Convert } 0.\\overline{3} \\text{ to a fraction.}",
+      "plain": "Convert the repeating decimal 0.333... to a fraction."
+    },
+    "symbols": { "x": "0.333..." },
+    "palette": [
+      { "id": "p1", "latex": "\\frac{3}{9}", "description": "9x = 3 → x = 3/9" },
+      { "id": "p2", "latex": "\\frac{1}{3}", "description": "Simplify 3/9 = 1/3" }
+    ],
+    "steps": [
+      {
+        "id": "s1",
+        "fromLatex": "x = 0.\\overline{3}, \\quad 10x = 3.\\overline{3}",
+        "toLatex": "x = 0.\\overline{3}, \\quad 10x = 3.\\overline{3}",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "Let x = 0.333...; multiply both sides by 10"
+      },
+      {
+        "id": "s2",
+        "fromLatex": "9x = 3",
+        "toLatex": "x = \\frac{3}{9}",
+        "paletteRef": "p1",
+        "dropTargets": ["9x"],
+        "description": "10x − x = 9x = 3; divide by 9"
+      },
+      {
+        "id": "s3",
+        "fromLatex": "x = \\frac{3}{9}",
+        "toLatex": "x = \\frac{1}{3}",
+        "paletteRef": "p2",
+        "dropTargets": ["\\frac{3}{9}"],
+        "description": "Simplify: GCF(3,9) = 3"
+      }
+    ]
   }
 ]

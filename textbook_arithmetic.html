@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Arithmetic — Math Game Textbook</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css" />
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
+          onload="renderMathInElement(document.body, {
+            delimiters: [{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}]
+          })"></script>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root { --bg:#0d0d1a; --surface:#151528; --panel:#1c1c35; --border:#2e2e55; --accent:#5c8aff; --correct:#3ecf8e; --hint:#ffb830; --text:#e0e0f0; --muted:#7070a0; }
+    body { background:var(--bg); color:var(--text); font-family:system-ui,sans-serif; min-height:100vh; padding:48px 24px 80px; display:flex; flex-direction:column; align-items:center; }
+    .page { width:100%; max-width:820px; }
+    header { display:flex; align-items:baseline; gap:16px; margin-bottom:12px; }
+    header h1 { font-size:1.5rem; font-weight:700; letter-spacing:.12em; text-transform:uppercase; color:var(--accent); }
+    header a { font-size:0.85rem; color:var(--muted); text-decoration:none; }
+    header a:hover { color:var(--accent); }
+    .subtitle { font-size:0.75rem; color:var(--muted); margin-bottom:36px; }
+    .subtitle a { color:var(--muted); }
+    .subtitle a:hover { color:var(--accent); }
+    nav { background:var(--surface); border:1px solid var(--border); border-radius:12px; padding:24px 32px; margin-bottom:32px; }
+    nav h2 { font-size:0.7rem; letter-spacing:.18em; text-transform:uppercase; color:var(--hint); margin-bottom:16px; }
+    nav ol { padding-left:20px; display:grid; grid-template-columns:1fr 1fr; gap:6px 32px; }
+    nav li { font-size:0.9rem; }
+    nav a { color:var(--accent); text-decoration:none; }
+    nav a:hover { text-decoration:underline; }
+    section { background:var(--surface); border:1px solid var(--border); border-radius:12px; padding:32px 36px; margin-bottom:24px; scroll-margin-top:24px; }
+    section h3 { font-size:1.05rem; font-weight:700; color:var(--accent); margin-bottom:6px; }
+    .chapter-num { font-size:0.7rem; letter-spacing:.14em; text-transform:uppercase; color:var(--muted); margin-bottom:14px; }
+    p { line-height:1.8; color:var(--text); font-size:0.95rem; margin-bottom:14px; }
+    p:last-child { margin-bottom:0; }
+    .formula { background:var(--panel); border:1px solid var(--border); border-left:3px solid var(--accent); border-radius:8px; padding:14px 20px; margin:16px 0; }
+    .formula .label { font-size:0.7rem; letter-spacing:.14em; text-transform:uppercase; color:var(--hint); margin-bottom:8px; }
+    .formula p { margin-bottom:0; font-size:0.9rem; line-height:1.9; }
+    .example { background:var(--panel); border:1px solid var(--border); border-left:3px solid var(--correct); border-radius:8px; padding:14px 20px; margin:16px 0; }
+    .example .label { font-size:0.7rem; letter-spacing:.14em; text-transform:uppercase; color:var(--correct); margin-bottom:10px; }
+    .example-step { display:flex; align-items:baseline; gap:12px; padding:4px 0; font-size:0.92rem; line-height:1.7; }
+    .example-step .why { color:var(--muted); font-size:0.82rem; min-width:200px; }
+    .key { color:var(--hint); font-weight:600; }
+    .back { display:inline-block; margin-top:36px; padding:10px 24px; background:var(--accent); color:#fff; border-radius:8px; text-decoration:none; font-size:0.9rem; font-weight:600; }
+    .back:hover { opacity:0.85; }
+    @media (max-width:600px) { nav ol { grid-template-columns:1fr; } section { padding:24px 20px; } .example-step { flex-direction:column; gap:2px; } }
+  </style>
+</head>
+<body>
+<div class="page">
+
+  <header>
+    <h1>Arithmetic</h1>
+    <a href="index.html">← Back to game</a>
+  </header>
+  <p class="subtitle">
+    Adapted from <a href="https://openstax.org/details/books/prealgebra-2e" target="_blank">OpenStax Prealgebra 2e</a>
+    (CC BY 4.0).
+  </p>
+
+  <nav>
+    <h2>Contents</h2>
+    <ol>
+      <li><a href="#whole">Whole Numbers &amp; Place Value</a></li>
+      <li><a href="#integers">Integers &amp; Absolute Value</a></li>
+      <li><a href="#fractions">Fractions</a></li>
+      <li><a href="#decimals">Decimals</a></li>
+      <li><a href="#ratios">Ratios &amp; Proportions</a></li>
+      <li><a href="#percents">Percents</a></li>
+      <li><a href="#exponents">Exponents &amp; Roots</a></li>
+      <li><a href="#numtheory">Number Theory</a></li>
+      <li><a href="#scientific">Scientific Notation</a></li>
+      <li><a href="#factorials">Factorials &amp; Counting</a></li>
+    </ol>
+  </nav>
+
+  <!-- ── 1. Whole Numbers & Place Value ─────────────────────────────── -->
+  <section id="whole">
+    <div class="chapter-num">Chapter 1</div>
+    <h3>Whole Numbers &amp; Place Value</h3>
+
+    <p>
+      <span class="key">Place value</span> determines a digit's worth by its position.
+      From right to left: ones, tens, hundreds, thousands, ten-thousands, …
+      To <span class="key">round</span> a number, look at the digit immediately to the right
+      of the target place: if it is 5 or more, round up; otherwise round down.
+    </p>
+
+    <p>
+      <span class="key">Order of operations (PEMDAS)</span> governs all arithmetic expressions:
+      Parentheses → Exponents → Multiplication &amp; Division (left to right) →
+      Addition &amp; Subtraction (left to right).
+    </p>
+
+    <div class="formula">
+      <div class="label">Basic operations</div>
+      <p>
+        Addition: $a + b = b + a$ (commutative)<br>
+        Subtraction: $a - b$ (not commutative)<br>
+        Multiplication: $a \times b = b \times a$<br>
+        Division: $a \div b = \dfrac{a}{b}$ ($b \ne 0$)
+      </p>
+    </div>
+
+    <div class="example">
+      <div class="label">Worked example — PEMDAS: $3^2 + 4 \times (8-5) \div 6$</div>
+      <div class="example-step"><span>$= 3^2 + 4 \times 3 \div 6$</span><span class="why">parentheses first: $8-5=3$</span></div>
+      <div class="example-step"><span>$= 9 + 4 \times 3 \div 6$</span><span class="why">exponent: $3^2=9$</span></div>
+      <div class="example-step"><span>$= 9 + 12 \div 6$</span><span class="why">multiply: $4 \times 3=12$</span></div>
+      <div class="example-step"><span>$= 9 + 2 = 11$</span><span class="why">divide then add</span></div>
+    </div>
+
+    <div class="example">
+      <div class="label">Worked example — round $4{,}367$ to the nearest ten</div>
+      <div class="example-step"><span>ones digit $= 7 \geq 5$, so round up</span><span class="why">look one place right of target</span></div>
+      <div class="example-step"><span>$4{,}370$</span><span class="why">tens digit increases by 1; ones become 0</span></div>
+    </div>
+  </section>
+
+  <!-- ── 2. Integers & Absolute Value ───────────────────────────────── -->
+  <section id="integers">
+    <div class="chapter-num">Chapter 2</div>
+    <h3>Integers &amp; Absolute Value</h3>
+
+    <p>
+      <span class="key">Integers</span> extend the whole numbers to include negatives:
+      $\ldots, -3, -2, -1, 0, 1, 2, 3, \ldots$
+      The <span class="key">absolute value</span> $|a|$ gives the distance from $a$ to zero —
+      always non-negative.
+    </p>
+
+    <p>
+      <strong>Adding integers:</strong> same sign → add and keep the sign; different signs →
+      subtract the smaller absolute value from the larger and keep the sign of the larger.
+      <strong>Subtracting:</strong> $a - b = a + (-b)$ — add the opposite.
+      <strong>Multiplying/dividing:</strong> same signs → positive result; opposite signs →
+      negative result.
+    </p>
+
+    <div class="formula">
+      <div class="label">Sign rules for multiplication and division</div>
+      $$(+)(+) = + \qquad (-)(-)= + \qquad (+)(-) = - \qquad (-)(+) = -$$
+    </div>
+
+    <div class="example">
+      <div class="label">Worked example — $-8 + 3$</div>
+      <div class="example-step"><span>Different signs: $|{-8}| - |3| = 8 - 3 = 5$</span><span class="why">subtract smaller from larger</span></div>
+      <div class="example-step"><span>$= -5$</span><span class="why">keep sign of $-8$ (larger absolute value)</span></div>
+    </div>
+
+    <div class="example">
+      <div class="label">Worked example — $-5 - (-3)$</div>
+      <div class="example-step"><span>$= -5 + 3$</span><span class="why">subtracting a negative = adding a positive</span></div>
+      <div class="example-step"><span>$= -2$</span><span class="why">$|-5| - |3| = 2$; sign of $-5$</span></div>
+    </div>
+  </section>
+
+  <!-- ── 3. Fractions ───────────────────────────────────────────────── -->
+  <section id="fractions">
+    <div class="chapter-num">Chapter 3</div>
+    <h3>Fractions</h3>
+
+    <p>
+      A <span class="key">fraction</span> $\dfrac{a}{b}$ represents $a$ parts of a whole
+      divided into $b$ equal parts ($b \ne 0$). An <span class="key">improper fraction</span>
+      has $a \geq b$; a <span class="key">mixed number</span> combines a whole number and a
+      proper fraction: $2\frac{1}{3} = \dfrac{7}{3}$.
+    </p>
+
+    <p>
+      To add or subtract fractions, find the <span class="key">LCD</span> (least common
+      denominator), convert each fraction, then operate on the numerators.
+      To multiply, multiply numerators and denominators separately.
+      To divide, multiply by the <span class="key">reciprocal</span>:
+      $\dfrac{a}{b} \div \dfrac{c}{d} = \dfrac{a}{b} \times \dfrac{d}{c}$.
+    </p>
+
+    <div class="formula">
+      <div class="label">Key rules</div>
+      $$\frac{a}{b} + \frac{c}{b} = \frac{a+c}{b} \qquad \text{(same denominator)}$$
+      $$\frac{a}{b} \times \frac{c}{d} = \frac{ac}{bd} \qquad \frac{a}{b} \div \frac{c}{d} = \frac{a}{b} \times \frac{d}{c}$$
+    </div>
+
+    <div class="example">
+      <div class="label">Worked example — $\dfrac{3}{4} + \dfrac{1}{6}$</div>
+      <div class="example-step"><span>LCD $= 12$</span><span class="why">smallest multiple of 4 and 6</span></div>
+      <div class="example-step"><span>$\dfrac{9}{12} + \dfrac{2}{12} = \dfrac{11}{12}$</span><span class="why">convert then add numerators</span></div>
+    </div>
+
+    <div class="example">
+      <div class="label">Worked example — $\dfrac{2}{3} \div \dfrac{4}{5}$</div>
+      <div class="example-step"><span>$= \dfrac{2}{3} \times \dfrac{5}{4} = \dfrac{10}{12} = \dfrac{5}{6}$</span><span class="why">multiply by the reciprocal</span></div>
+    </div>
+
+    <div class="example">
+      <div class="label">Worked example — add mixed numbers $2\frac{1}{3} + 1\frac{3}{4}$</div>
+      <div class="example-step"><span>$\dfrac{7}{3} + \dfrac{7}{4} = \dfrac{28}{12} + \dfrac{21}{12} = \dfrac{49}{12}$</span><span class="why">convert to improper; LCD = 12</span></div>
+      <div class="example-step"><span>$= 4\dfrac{1}{12}$</span><span class="why">$49 = 4 \times 12 + 1$</span></div>
+    </div>
+  </section>
+
+  <!-- ── 4. Decimals ────────────────────────────────────────────────── -->
+  <section id="decimals">
+    <div class="chapter-num">Chapter 4</div>
+    <h3>Decimals</h3>
+
+    <p>
+      <span class="key">Decimals</span> extend place value to the right of the decimal point:
+      tenths ($0.1$), hundredths ($0.01$), thousandths ($0.001$), …
+      To convert a <span class="key">decimal to a fraction</span>, write the decimal digits
+      over the appropriate power of 10 and simplify.
+      To convert a <span class="key">fraction to a decimal</span>, divide the numerator by
+      the denominator.
+    </p>
+
+    <p>
+      A <span class="key">repeating decimal</span> has a block of digits that cycles forever,
+      denoted with a bar: $0.\overline{3} = 0.3333\ldots = \dfrac{1}{3}$.
+      To convert, let $x$ equal the decimal, multiply by a power of 10 to shift one full cycle,
+      subtract the original equation, and solve for $x$.
+    </p>
+
+    <div class="example">
+      <div class="label">Worked example — convert $0.75$ to a fraction</div>
+      <div class="example-step"><span>$0.75 = \dfrac{75}{100} = \dfrac{3}{4}$</span><span class="why">two decimal places → denominator 100; simplify by GCF 25</span></div>
+    </div>
+
+    <div class="example">
+      <div class="label">Worked example — convert $\dfrac{5}{4}$ to a decimal</div>
+      <div class="example-step"><span>$5 \div 4 = 1.25$</span><span class="why">$4$ goes into $5$ once; remainder $1 \to 10 \div 4 = 2$ remainder $2 \to 20 \div 4 = 5$</span></div>
+    </div>
+
+    <div class="example">
+      <div class="label">Worked example — convert $0.\overline{3}$ to a fraction</div>
+      <div class="example-step"><span>let $x = 0.\overline{3}$; then $10x = 3.\overline{3}$</span><span class="why">multiply by 10 to shift one cycle</span></div>
+      <div class="example-step"><span>$10x - x = 3 \Rightarrow 9x = 3 \Rightarrow x = \dfrac{1}{3}$</span><span class="why">subtract; solve</span></div>
+    </div>
+  </section>
+
+  <!-- ── 5. Ratios & Proportions ────────────────────────────────────── -->
+  <section id="ratios">
+    <div class="chapter-num">Chapter 5</div>
+    <h3>Ratios &amp; Proportions</h3>
+
+    <p>
+      A <span class="key">ratio</span> compares two quantities: $a : b$ or $\dfrac{a}{b}$.
+      Simplify ratios by dividing both terms by their GCF.
+      A <span class="key">rate</span> compares quantities with different units (e.g., miles per
+      hour). A <span class="key">unit rate</span> has denominator 1 (e.g., $60$ mph).
+    </p>
+
+    <p>
+      A <span class="key">proportion</span> states two ratios are equal: $\dfrac{a}{b} = \dfrac{c}{d}$.
+      Solve by <span class="key">cross-multiplying</span>: $ad = bc$.
+    </p>
+
+    <div class="formula">
+      <div class="label">Cross-multiplication</div>
+      $$\frac{a}{b} = \frac{c}{d} \implies ad = bc$$
+    </div>
+
+    <div class="example">
+      <div class="label">Worked example — simplify $12:18$</div>
+      <div class="example-step"><span>$\text{GCF}(12,18) = 6$</span><span class="why">largest factor dividing both</span></div>
+      <div class="example-step"><span>$12:18 = 2:3$</span><span class="why">divide both by 6</span></div>
+    </div>
+
+    <div class="example">
+      <div class="label">Worked example — solve $\dfrac{3}{4} = \dfrac{x}{20}$</div>
+      <div class="example-step"><span>$4x = 3 \times 20 = 60$</span><span class="why">cross-multiply</span></div>
+      <div class="example-step"><span>$x = 15$</span><span class="why">divide both sides by 4</span></div>
+    </div>
+
+    <div class="example">
+      <div class="label">Worked example — unit rate: 5 apples cost $\$2.50$</div>
+      <div class="example-step"><span>$\$2.50 \div 5 = \$0.50$ per apple</span><span class="why">divide total cost by quantity</span></div>
+      <div class="example-step"><span>$8 \text{ apples} = 8 \times \$0.50 = \$4.00$</span><span class="why">multiply unit rate by quantity</span></div>
+    </div>
+  </section>
+
+  <!-- ── 6. Percents ────────────────────────────────────────────────── -->
+  <section id="percents">
+    <div class="chapter-num">Chapter 6</div>
+    <h3>Percents</h3>
+
+    <p>
+      <span class="key">Percent</span> means "per hundred": $p\% = \dfrac{p}{100}$.
+      To find a percent of a number, convert the percent to a decimal and multiply.
+      <span class="key">Percent change</span> compares a change to the original value.
+    </p>
+
+    <div class="formula">
+      <div class="label">Key formulas</div>
+      $$\text{Percent of:} \quad p\% \times \text{whole} = \text{part}$$
+      $$\text{Percent change:} \quad \frac{\text{new} - \text{old}}{\text{old}} \times 100\%$$
+      $$\text{Discount price:} \quad \text{original} \times (1 - r) \quad \text{where } r = \text{rate as decimal}$$
+    </div>
+
+    <div class="example">
+      <div class="label">Worked example — $15\%$ of $240$</div>
+      <div class="example-step"><span>$0.15 \times 240 = 36$</span><span class="why">convert 15% to 0.15; multiply</span></div>
+    </div>
+
+    <div class="example">
+      <div class="label">Worked example — percent increase from $\$40$ to $\$50$</div>
+      <div class="example-step"><span>$\dfrac{50 - 40}{40} \times 100\% = \dfrac{10}{40} \times 100\% = 25\%$</span><span class="why">change ÷ original × 100%</span></div>
+    </div>
+
+    <div class="example">
+      <div class="label">Worked example — $20\%$ off $\$85$</div>
+      <div class="example-step"><span>discount $= 0.20 \times 85 = 17$</span><span class="why">find the discount amount</span></div>
+      <div class="example-step"><span>price $= 85 - 17 = \$68$</span><span class="why">subtract discount from original</span></div>
+    </div>
+  </section>
+
+  <!-- ── 7. Exponents & Roots ───────────────────────────────────────── -->
+  <section id="exponents">
+    <div class="chapter-num">Chapter 7</div>
+    <h3>Exponents &amp; Roots</h3>
+
+    <p>
+      $a^n$ means $a$ multiplied by itself $n$ times. A <span class="key">negative
+      exponent</span> means the reciprocal: $a^{-n} = \dfrac{1}{a^n}$.
+      The <span class="key">square root</span> $\sqrt{a}$ is the non-negative number whose
+      square is $a$. More generally, $\sqrt[n]{a} = a^{1/n}$.
+    </p>
+
+    <div class="formula">
+      <div class="label">Exponent rules</div>
+      $$a^m \cdot a^n = a^{m+n} \qquad \frac{a^m}{a^n} = a^{m-n} \qquad (a^m)^n = a^{mn}$$
+      $$a^0 = 1 \quad (a \ne 0) \qquad a^{-n} = \frac{1}{a^n}$$
+    </div>
+
+    <div class="example">
+      <div class="label">Worked example — $2^8$</div>
+      <div class="example-step"><span>$2^8 = 2^4 \times 2^4 = 16 \times 16 = 256$</span><span class="why">split into two equal halves</span></div>
+    </div>
+
+    <div class="example">
+      <div class="label">Worked example — $2^{-3}$</div>
+      <div class="example-step"><span>$2^{-3} = \dfrac{1}{2^3} = \dfrac{1}{8}$</span><span class="why">negative exponent = reciprocal</span></div>
+    </div>
+
+    <div class="example">
+      <div class="label">Worked example — $\sqrt{169}$</div>
+      <div class="example-step"><span>$13^2 = 169$, so $\sqrt{169} = 13$</span><span class="why">find the number whose square is 169</span></div>
+    </div>
+  </section>
+
+  <!-- ── 8. Number Theory ───────────────────────────────────────────── -->
+  <section id="numtheory">
+    <div class="chapter-num">Chapter 8</div>
+    <h3>Number Theory</h3>
+
+    <p>
+      A <span class="key">prime number</span> has exactly two factors: 1 and itself.
+      A <span class="key">composite number</span> has more than two factors.
+      <span class="key">Prime factorization</span> writes a composite as a product of primes.
+    </p>
+
+    <p>
+      The <span class="key">GCF</span> (greatest common factor) of two numbers is the largest
+      factor they share. The <span class="key">LCM</span> (least common multiple) is the
+      smallest multiple they share. From prime factorizations:
+      GCF uses the lowest power of each common prime;
+      LCM uses the highest power of each prime that appears.
+    </p>
+
+    <div class="formula">
+      <div class="label">GCF and LCM from prime factorizations</div>
+      $$\text{GCF: lowest powers of common primes}$$
+      $$\text{LCM: highest powers of all primes}$$
+    </div>
+
+    <div class="example">
+      <div class="label">Worked example — prime factorization of $60$</div>
+      <div class="example-step"><span>$60 = 2 \times 30 = 2 \times 2 \times 15 = 2^2 \times 3 \times 5$</span><span class="why">divide by smallest prime repeatedly</span></div>
+    </div>
+
+    <div class="example">
+      <div class="label">Worked example — GCF and LCM of $24$ and $36$</div>
+      <div class="example-step"><span>$24 = 2^3 \times 3$, $\quad 36 = 2^2 \times 3^2$</span><span class="why">prime factorizations</span></div>
+      <div class="example-step"><span>$\text{GCF} = 2^2 \times 3 = 12$</span><span class="why">lowest powers of common primes</span></div>
+      <div class="example-step"><span>$\text{LCM} = 2^3 \times 3^2 = 72$</span><span class="why">highest powers of all primes</span></div>
+    </div>
+  </section>
+
+  <!-- ── 9. Scientific Notation ─────────────────────────────────────── -->
+  <section id="scientific">
+    <div class="chapter-num">Chapter 9</div>
+    <h3>Scientific Notation</h3>
+
+    <p>
+      <span class="key">Scientific notation</span> writes a number as $a \times 10^n$ where
+      $1 \leq |a| &lt; 10$ and $n$ is an integer.
+      Move the decimal point: each place to the left increases $n$ by 1; each place to the
+      right decreases $n$ by 1.
+    </p>
+
+    <p>
+      To multiply in scientific notation, multiply the coefficients and add the exponents.
+      To divide, divide the coefficients and subtract the exponents. Adjust if the result's
+      coefficient is not between 1 and 10.
+    </p>
+
+    <div class="formula">
+      <div class="label">Arithmetic in scientific notation</div>
+      $$(a \times 10^m)(b \times 10^n) = ab \times 10^{m+n}$$
+      $$\frac{a \times 10^m}{b \times 10^n} = \frac{a}{b} \times 10^{m-n}$$
+    </div>
+
+    <div class="example">
+      <div class="label">Worked example — write $45{,}000$ in scientific notation</div>
+      <div class="example-step"><span>$45{,}000 = 4.5 \times 10^4$</span><span class="why">move decimal 4 places left; exponent $= 4$</span></div>
+    </div>
+
+    <div class="example">
+      <div class="label">Worked example — $(3 \times 10^4) \times (2 \times 10^3)$</div>
+      <div class="example-step"><span>$= (3 \times 2) \times 10^{4+3} = 6 \times 10^7$</span><span class="why">multiply coefficients; add exponents</span></div>
+    </div>
+
+    <div class="example">
+      <div class="label">Worked example — write $0.00052$ in scientific notation</div>
+      <div class="example-step"><span>$= 5.2 \times 10^{-4}$</span><span class="why">move decimal 4 places right; exponent $= -4$</span></div>
+    </div>
+  </section>
+
+  <!-- ── 10. Factorials & Counting ──────────────────────────────────── -->
+  <section id="factorials">
+    <div class="chapter-num">Chapter 10</div>
+    <h3>Factorials &amp; Counting</h3>
+
+    <p>
+      The <span class="key">factorial</span> $n!$ is the product of all positive integers up
+      to $n$: $n! = n \times (n-1) \times \cdots \times 2 \times 1$, with $0! = 1$.
+      Factorials count <span class="key">permutations</span> — ordered arrangements.
+    </p>
+
+    <p>
+      The number of ways to arrange $r$ items chosen from $n$ (order matters) is
+      $P(n,r) = \dfrac{n!}{(n-r)!}$.
+      The number of ways to choose $r$ from $n$ (order does not matter) is
+      $\dbinom{n}{r} = \dfrac{n!}{r!(n-r)!}$.
+    </p>
+
+    <div class="formula">
+      <div class="label">Key formulas</div>
+      $$n! = n \times (n-1) \times \cdots \times 1, \qquad 0! = 1$$
+      $$P(n,r) = \frac{n!}{(n-r)!} \qquad \binom{n}{r} = \frac{n!}{r!(n-r)!}$$
+    </div>
+
+    <div class="example">
+      <div class="label">Worked example — $5!$</div>
+      <div class="example-step"><span>$5! = 5 \times 4 \times 3 \times 2 \times 1 = 120$</span><span class="why">multiply all integers from 1 to 5</span></div>
+    </div>
+
+    <div class="example">
+      <div class="label">Worked example — $\dfrac{6!}{4!}$</div>
+      <div class="example-step"><span>$= \dfrac{6 \times 5 \times 4!}{4!} = 6 \times 5 = 30$</span><span class="why">cancel the $4!$ in numerator and denominator</span></div>
+    </div>
+
+    <div class="example">
+      <div class="label">Worked example — $4! + 3!$</div>
+      <div class="example-step"><span>$24 + 6 = 30$</span><span class="why">$4!=24$, $3!=6$; add</span></div>
+    </div>
+  </section>
+
+  <a class="back" href="index.html">Play Now →</a>
+
+</div>
+</body>
+</html>
