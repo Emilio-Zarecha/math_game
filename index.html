@@ -170,6 +170,7 @@
     }
     .palette-item:hover { border-color: var(--accent); }
     .palette-item.dragging { opacity: 0.35; cursor: grabbing; }
+    .palette-item.dragging .pal-tip { display: none !important; }
     .palette-item.used { opacity: 0.3; pointer-events: none; }
     .palette-item.hint-highlight {
       border-color: var(--hint);
@@ -1217,6 +1218,7 @@ function renderPalette() {
       G.draggingId = e.currentTarget.dataset.id;
       e.currentTarget.classList.add('dragging');
       e.dataTransfer.effectAllowed = 'move';
+      symTip.style.display = 'none';
     });
     div.addEventListener('dragend', e => {
       e.currentTarget.classList.remove('dragging');
@@ -1227,6 +1229,7 @@ function renderPalette() {
     div.addEventListener('touchstart', () => {
       G.draggingId = item.id;
       div.classList.add('dragging');
+      symTip.style.display = 'none';
     }, { passive: true });
 
     div.addEventListener('touchmove', e => {
