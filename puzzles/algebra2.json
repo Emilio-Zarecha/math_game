@@ -461,14 +461,6 @@
         "description": "Substitute x=3 into g(x)=x²"
       },
       {
-        "id": "s1a",
-        "fromLatex": "3^2 = 3 \\times 3 = 9",
-        "toLatex": "3^2=9",
-        "paletteRef": null,
-        "dropTargets": [],
-        "description": "Compute: 3² = 9"
-      },
-      {
         "id": "s2",
         "fromLatex": "f(3^2) = f(9)",
         "toLatex": "10",
@@ -516,14 +508,6 @@
         "description": "Apply Sₙ = n(n+1)/2 with n=5"
       },
       {
-        "id": "s1a",
-        "fromLatex": "5 \\cdot 6 = 30",
-        "toLatex": "5 \\cdot 6 = 30",
-        "paletteRef": null,
-        "dropTargets": [],
-        "description": "Compute numerator: 5 × 6 = 30"
-      },
-      {
         "id": "s2",
         "fromLatex": "S_5 = \\frac{30}{2}",
         "toLatex": "S_5 = 15",
@@ -563,14 +547,6 @@
           "\\sum_{k=1}^{4} 3"
         ],
         "description": "A constant summed n times equals n times that constant"
-      },
-      {
-        "id": "s2",
-        "fromLatex": "4 \\times 3 = 12",
-        "toLatex": "S = 12",
-        "paletteRef": null,
-        "dropTargets": [],
-        "description": "Compute: 4 × 3 = 12"
       }
     ]
   },
@@ -607,14 +583,6 @@
           "\\sum_{k=1}^{3} k^2"
         ],
         "description": "Expand the sigma: write out each term"
-      },
-      {
-        "id": "s1a",
-        "fromLatex": "1 + 4 + 9 = 14",
-        "toLatex": "1 + 4 + 9 = 14",
-        "paletteRef": null,
-        "dropTargets": [],
-        "description": "Evaluate: 1² = 1, 2² = 4, 3² = 9"
       },
       {
         "id": "s2",
@@ -771,14 +739,6 @@
         "description": "Substitute and simplify: 25−16=9"
       },
       {
-        "id": "s2a",
-        "fromLatex": "(-5)^2=25,\\; 4(1)(4)=16,\\; 25-16=9",
-        "toLatex": "(-5)^2=25,\\; 4(1)(4)=16,\\; 25-16=9",
-        "paletteRef": null,
-        "dropTargets": [],
-        "description": "Compute inside the radical: 25−16=9"
-      },
-      {
         "id": "s3",
         "fromLatex": "x = \\frac{5 \\pm \\sqrt{9}}{2}",
         "toLatex": "x = \\frac{5 \\pm 3}{2}",
@@ -852,14 +812,6 @@
           "right side"
         ],
         "description": "Add (b/2)²=9 to both sides"
-      },
-      {
-        "id": "s2a",
-        "fromLatex": "-5+9=4",
-        "toLatex": "-5+9=4",
-        "paletteRef": null,
-        "dropTargets": [],
-        "description": "Compute: −5+9=4 (right side)"
       },
       {
         "id": "s3",
@@ -1063,14 +1015,6 @@
           "3 \\cdot 2^5"
         ],
         "description": "Compute: 2⁵=32 and 3×32=96"
-      },
-      {
-        "id": "s2a",
-        "fromLatex": "2^5 = 2 \\times 2 \\times 2 \\times 2 \\times 2 = 32",
-        "toLatex": "2^5=32",
-        "paletteRef": null,
-        "dropTargets": [],
-        "description": "Verify: 2⁵ = 32"
       }
     ]
   },
@@ -1108,14 +1052,6 @@
           "\\sum_{k=1}^{10} k"
         ],
         "description": "Apply the formula Sₙ = n(n+1)/2 with n=10"
-      },
-      {
-        "id": "s1a",
-        "fromLatex": "10 \\times 11 = 110",
-        "toLatex": "10 \\times 11 = 110",
-        "paletteRef": null,
-        "dropTargets": [],
-        "description": "Compute numerator: 10 × 11 = 110"
       },
       {
         "id": "s2",
@@ -1159,14 +1095,6 @@
         "description": "Rewrite 64 as a power of 4"
       },
       {
-        "id": "s1a",
-        "fromLatex": "4^3 = 4 \\times 4 \\times 4 = 64 \\checkmark",
-        "toLatex": "4^3=64 \\checkmark",
-        "paletteRef": null,
-        "dropTargets": [],
-        "description": "Verify: 4³ = 4×4×4 = 64 ✓"
-      },
-      {
         "id": "s2",
         "fromLatex": "4^x = 4^3",
         "toLatex": "x = 3",
@@ -1203,14 +1131,6 @@
         "paletteRef": null,
         "dropTargets": [],
         "description": "Product rule: add exponents when multiplying same base"
-      },
-      {
-        "id": "s1a",
-        "fromLatex": "3 + 2 = 5",
-        "toLatex": "3+2=5",
-        "paletteRef": null,
-        "dropTargets": [],
-        "description": "Compute: 3 + 2 = 5"
       },
       {
         "id": "s2",
@@ -1259,14 +1179,6 @@
           "subtract 4 outside"
         ],
         "description": "Add and subtract (b/2)²=4 to complete the square"
-      },
-      {
-        "id": "s1a",
-        "fromLatex": "7 - 4 = 3",
-        "toLatex": "7-4=3",
-        "paletteRef": null,
-        "dropTargets": [],
-        "description": "Compute constant: 7 − 4 = 3"
       },
       {
         "id": "s2",
@@ -1369,14 +1281,6 @@
         "description": "Apply ∑k² = n(n+1)(2n+1)/6 with n=5; 2n+1=11"
       },
       {
-        "id": "s1a",
-        "fromLatex": "5 \\cdot 6 \\cdot 11 = 330",
-        "toLatex": "5 \\cdot 6 \\cdot 11 = 330",
-        "paletteRef": null,
-        "dropTargets": [],
-        "description": "Compute numerator: 5 × 6 × 11 = 330"
-      },
-      {
         "id": "s2",
         "fromLatex": "S_5 = \\frac{330}{6}",
         "toLatex": "S_5 = 55",
@@ -1470,14 +1374,6 @@
         "description": "Geometric series: S = (rⁿ⁺¹ − 1)/(r−1); r=2, upper index=4"
       },
       {
-        "id": "s1a",
-        "fromLatex": "2^5 - 1 = 32 - 1 = 31",
-        "toLatex": "2^5 - 1 = 32 - 1 = 31",
-        "paletteRef": null,
-        "dropTargets": [],
-        "description": "Compute: 2⁵ = 32, so numerator = 31"
-      },
-      {
         "id": "s2",
         "fromLatex": "2^5 - 1 = 31",
         "toLatex": "S = 31",
@@ -1520,14 +1416,6 @@
           "\\sum_{k=1}^{8} k"
         ],
         "description": "Apply Sₙ = n(n+1)/2 with n=8"
-      },
-      {
-        "id": "s1a",
-        "fromLatex": "8 \\times 9 = 72",
-        "toLatex": "8 \\times 9 = 72",
-        "paletteRef": null,
-        "dropTargets": [],
-        "description": "Compute numerator: 8 × 9 = 72"
       },
       {
         "id": "s2",
@@ -1574,14 +1462,6 @@
           "\\sum_{k=3}^{7} k"
         ],
         "description": "Arithmetic series: n=5 terms, first=3, last=7; S = n(a₁+aₙ)/2"
-      },
-      {
-        "id": "s1a",
-        "fromLatex": "\\frac{3+7}{2} = 5",
-        "toLatex": "\\frac{3+7}{2} = 5",
-        "paletteRef": null,
-        "dropTargets": [],
-        "description": "Compute mean of first and last: (3+7)/2 = 5"
       },
       {
         "id": "s2",
@@ -1641,14 +1521,6 @@
           "-2 \\pm \\sqrt{2^2 - 4(1)(-1)}"
         ],
         "description": "Substitute and compute discriminant: 4+4=8"
-      },
-      {
-        "id": "s2a",
-        "fromLatex": "2^2=4,\\; 4(1)(-1)=-4,\\; 4-(-4)=8",
-        "toLatex": "4-(-4)=8",
-        "paletteRef": null,
-        "dropTargets": [],
-        "description": "Compute: 4−(−4)=8 (the discriminant)"
       },
       {
         "id": "s3",
@@ -1805,14 +1677,6 @@
           "3"
         ],
         "description": "Convert to exponential: 2³=8"
-      },
-      {
-        "id": "s2a",
-        "fromLatex": "2^3 = 2 \\times 2 \\times 2 = 8",
-        "toLatex": "2^3=8",
-        "paletteRef": null,
-        "dropTargets": [],
-        "description": "Verify: 2³=8"
       },
       {
         "id": "s3",
@@ -1980,14 +1844,6 @@
         "description": "Apply formula S = a/(1−r) with a=1, r=½"
       },
       {
-        "id": "s2a",
-        "fromLatex": "1 - \\frac{1}{2} = \\frac{1}{2}",
-        "toLatex": "1-\\tfrac{1}{2}=\\tfrac{1}{2}",
-        "paletteRef": null,
-        "dropTargets": [],
-        "description": "Compute denominator: 1 − ½ = ½"
-      },
-      {
         "id": "s3",
         "fromLatex": "S = \\frac{1}{\\frac{1}{2}}",
         "toLatex": "S = 2",
@@ -2111,22 +1967,6 @@
           "p(2)"
         ],
         "description": "Remainder Theorem: substitute x=2 into p(x)"
-      },
-      {
-        "id": "s1a",
-        "fromLatex": "2^3 = 8",
-        "toLatex": "2^3=8",
-        "paletteRef": null,
-        "dropTargets": [],
-        "description": "Compute: 2³ = 8"
-      },
-      {
-        "id": "s1b",
-        "fromLatex": "2(2) = 4",
-        "toLatex": "2(2)=4",
-        "paletteRef": null,
-        "dropTargets": [],
-        "description": "Compute: 2(2) = 4"
       },
       {
         "id": "s2",
@@ -2387,14 +2227,6 @@
         "description": "Apply ∑k² = n(n+1)(2n+1)/6 with n=10; 2n+1=21"
       },
       {
-        "id": "s1a",
-        "fromLatex": "10 \\times 11 \\times 21 = 2310",
-        "toLatex": "10 \\times 11 \\times 21 = 2310",
-        "paletteRef": null,
-        "dropTargets": [],
-        "description": "Compute numerator: 10×11=110, then 110×21=2310"
-      },
-      {
         "id": "s2",
         "fromLatex": "S_{10} = \\frac{2310}{6}",
         "toLatex": "S_{10} = 385",
@@ -2439,14 +2271,6 @@
           "\\sum_{k=1}^{5} k^3"
         ],
         "description": "Apply ∑k³ = [n(n+1)/2]² with n=5"
-      },
-      {
-        "id": "s1a",
-        "fromLatex": "\\frac{5 \\cdot 6}{2} = 15",
-        "toLatex": "\\frac{5 \\cdot 6}{2} = 15",
-        "paletteRef": null,
-        "dropTargets": [],
-        "description": "Compute inner value: 5·6/2 = 15"
       },
       {
         "id": "s2",
@@ -2494,14 +2318,6 @@
           "\\sum_{k=0}^{5} 3^k"
         ],
         "description": "Geometric series: S = (rⁿ⁺¹ − 1)/(r−1); r=3, upper index=5"
-      },
-      {
-        "id": "s1a",
-        "fromLatex": "3^6 = 729, \\quad 729 - 1 = 728",
-        "toLatex": "3^6 = 729, \\quad 729 - 1 = 728",
-        "paletteRef": null,
-        "dropTargets": [],
-        "description": "Compute: 3⁶ = 729, numerator = 728"
       },
       {
         "id": "s2",
@@ -2552,14 +2368,6 @@
         "description": "Arithmetic series: a₁=3(1)−1=2, a₁₀=29, n=10; S = n(a₁+aₙ)/2"
       },
       {
-        "id": "s1a",
-        "fromLatex": "2 + 29 = 31, \\quad 10 \\cdot \\frac{31}{2} = 155",
-        "toLatex": "2 + 29 = 31, \\quad 10 \\cdot \\frac{31}{2} = 155",
-        "paletteRef": null,
-        "dropTargets": [],
-        "description": "Compute: (2+29)=31; 10×31/2=155"
-      },
-      {
         "id": "s2",
         "fromLatex": "S = 10 \\cdot \\frac{2 + 29}{2}",
         "toLatex": "S = 155",
@@ -2605,14 +2413,6 @@
           "\\sum_{k=1}^{10} k(k+1)"
         ],
         "description": "Apply ∑k(k+1) = n(n+1)(n+2)/3 with n=10"
-      },
-      {
-        "id": "s1a",
-        "fromLatex": "10 \\times 11 \\times 12 = 1320",
-        "toLatex": "10 \\times 11 \\times 12 = 1320",
-        "paletteRef": null,
-        "dropTargets": [],
-        "description": "Compute numerator: 10×11=110, then 110×12=1320"
       },
       {
         "id": "s2",

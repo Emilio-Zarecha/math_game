@@ -34,14 +34,6 @@
         "description": "Power rule: bring down exponent 2, reduce power by 1"
       },
       {
-        "id": "s1a",
-        "fromLatex": "2 - 1 = 1",
-        "toLatex": "2 - 1 = 1 \\quad (\\text{new exponent})",
-        "paletteRef": null,
-        "dropTargets": [],
-        "description": "Compute: 2 − 1 = 1 (reduce the exponent by 1)"
-      },
-      {
         "id": "s2",
         "fromLatex": "2 \\cdot x^{2-1}",
         "toLatex": "2x",
@@ -89,14 +81,6 @@
         "description": "Power rule: multiply by 3, reduce exponent by 1"
       },
       {
-        "id": "s1a",
-        "fromLatex": "3 - 1 = 2",
-        "toLatex": "3 - 1 = 2 \\quad (\\text{new exponent})",
-        "paletteRef": null,
-        "dropTargets": [],
-        "description": "Compute: 3 − 1 = 2"
-      },
-      {
         "id": "s2",
         "fromLatex": "3 \\cdot x^{3-1}",
         "toLatex": "3x^2",
@@ -137,14 +121,6 @@
         "paletteRef": null,
         "dropTargets": [],
         "description": "d/dx[x] = 1 (power rule with exponent 1)"
-      },
-      {
-        "id": "s2a",
-        "fromLatex": "5 \\times 1 = 5",
-        "toLatex": "5",
-        "paletteRef": null,
-        "dropTargets": [],
-        "description": "Compute: 5 × 1 = 5"
       }
     ],
     "image": "calc-e-003.svg"
@@ -215,28 +191,12 @@
         "description": "Apply reverse power rule: multiply by 1/(n+1), increase power by 1"
       },
       {
-        "id": "s1a",
-        "fromLatex": "1 + 1 = 2",
-        "toLatex": "1 + 1 = 2 \\quad (\\text{new exponent and new denominator})",
-        "paletteRef": null,
-        "dropTargets": [],
-        "description": "Compute: 1 + 1 = 2 (both the new exponent and the denominator)"
-      },
-      {
         "id": "s2",
         "fromLatex": "2 \\cdot \\frac{x^{1+1}}{1+1}",
         "toLatex": "2 \\cdot \\frac{x^2}{2}",
         "paletteRef": null,
         "dropTargets": [],
         "description": "Simplify exponent: 1+1=2"
-      },
-      {
-        "id": "s2a",
-        "fromLatex": "\\frac{2}{2} = 1",
-        "toLatex": "\\frac{2}{2} = 1 \\quad (\\text{the 2s cancel})",
-        "paletteRef": null,
-        "dropTargets": [],
-        "description": "Compute: 2/2 = 1, so the constant factor cancels"
       },
       {
         "id": "s3",
@@ -294,14 +254,6 @@
           "x^4"
         ],
         "description": "Multiply by exponent 4, reduce power by 1"
-      },
-      {
-        "id": "s1a",
-        "fromLatex": "4 - 1 = 3",
-        "toLatex": "4 - 1 = 3 \\quad (\\text{new exponent})",
-        "paletteRef": null,
-        "dropTargets": [],
-        "description": "Compute: 4 − 1 = 3"
       },
       {
         "id": "s2",
@@ -386,14 +338,6 @@
         "paletteRef": null,
         "dropTargets": [],
         "description": "Polynomial — substitute x = 2 directly"
-      },
-      {
-        "id": "s1a",
-        "fromLatex": "2^2 = 2 \\times 2 = 4",
-        "toLatex": "4",
-        "paletteRef": null,
-        "dropTargets": [],
-        "description": "Compute: 2² = 2 × 2 = 4"
       }
     ],
     "image": "calc-e-008.svg"
@@ -486,14 +430,6 @@
         "paletteRef": null,
         "dropTargets": [],
         "description": "Reverse power rule: increase exponent by 1, divide by new exponent"
-      },
-      {
-        "id": "s1a",
-        "fromLatex": "2 + 1 = 3",
-        "toLatex": "2 + 1 = 3 \\quad (\\text{new exponent and denominator})",
-        "paletteRef": null,
-        "dropTargets": [],
-        "description": "Compute: 2 + 1 = 3"
       },
       {
         "id": "s2",
@@ -714,14 +650,6 @@
         "description": "Inner derivative: d/dx[x²+1] = 2x"
       },
       {
-        "id": "s2a",
-        "fromLatex": "3 \\times 2 = 6",
-        "toLatex": "3 \\times 2 = 6 \\quad (\\text{multiply the numeric coefficients})",
-        "paletteRef": null,
-        "dropTargets": [],
-        "description": "Compute: 3 × 2 = 6"
-      },
-      {
         "id": "s3",
         "fromLatex": "3(x^2+1)^2 \\cdot 2x",
         "toLatex": "6x(x^2+1)^2",
@@ -770,30 +698,6 @@
         "paletteRef": null,
         "dropTargets": [],
         "description": "Evaluate at upper and lower bounds: F(1) − F(0)"
-      },
-      {
-        "id": "s2a",
-        "fromLatex": "1^3 = 1",
-        "toLatex": "1^3 = 1 \\times 1 \\times 1 = 1",
-        "paletteRef": null,
-        "dropTargets": [],
-        "description": "Compute: 1³ = 1 × 1 × 1 = 1"
-      },
-      {
-        "id": "s2b",
-        "fromLatex": "0^3 = 0",
-        "toLatex": "0^3 = 0 \\times 0 \\times 0 = 0",
-        "paletteRef": null,
-        "dropTargets": [],
-        "description": "Compute: 0³ = 0 × 0 × 0 = 0"
-      },
-      {
-        "id": "s2c",
-        "fromLatex": "\\frac{1}{3} - \\frac{0}{3} = \\frac{1}{3} - 0 = \\frac{1}{3}",
-        "toLatex": "\\frac{1}{3}",
-        "paletteRef": null,
-        "dropTargets": [],
-        "description": "Compute: 1/3 − 0/3 = 1/3 − 0 = 1/3"
       }
     ],
     "image": "calc-m-004.svg"
@@ -1009,30 +913,6 @@
         "paletteRef": null,
         "dropTargets": [],
         "description": "Evaluate at x=2 and x=0"
-      },
-      {
-        "id": "s2a",
-        "fromLatex": "2^2 = 2 \\times 2 = 4",
-        "toLatex": "2^2 = 4",
-        "paletteRef": null,
-        "dropTargets": [],
-        "description": "Compute: 2² = 4"
-      },
-      {
-        "id": "s2b",
-        "fromLatex": "4 + 2 = 6",
-        "toLatex": "4 + 2 = 6",
-        "paletteRef": null,
-        "dropTargets": [],
-        "description": "Compute: 4 + 2 = 6"
-      },
-      {
-        "id": "s3",
-        "fromLatex": "(2^2 + 2) - (0^2 + 0)",
-        "toLatex": "6",
-        "paletteRef": null,
-        "dropTargets": [],
-        "description": "4 + 2 = 6, and 0 + 0 = 0"
       }
     ],
     "image": "calc-m-010.svg"

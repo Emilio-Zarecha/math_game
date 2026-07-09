@@ -467,14 +467,6 @@
         "description": "sin(30°)=1/2, cos(30°)=√3/2"
       },
       {
-        "id": "s3a",
-        "fromLatex": "2 \\times \\frac{1}{2} = 1",
-        "toLatex": "2 \\times \\frac{1}{2} = 1 \\quad \\text{(the 2 and } \\tfrac{1}{2} \\text{ cancel)}",
-        "paletteRef": null,
-        "dropTargets": [],
-        "description": "Compute: 2 × 1/2 = 1"
-      },
-      {
         "id": "s3b",
         "fromLatex": "1 \\times \\frac{\\sqrt{3}}{2} = \\frac{\\sqrt{3}}{2}",
         "toLatex": "1 \\times \\frac{\\sqrt{3}}{2} = \\frac{\\sqrt{3}}{2}",
@@ -532,28 +524,12 @@
         "description": "Rearrange the Pythagorean identity"
       },
       {
-        "id": "s1a",
-        "fromLatex": "\\left(\\frac{3}{5}\\right)^2 = \\frac{3^2}{5^2} = \\frac{9}{25}",
-        "toLatex": "\\sin^2(\\theta) = \\left(\\frac{3}{5}\\right)^2 = \\frac{9}{25} \\quad (3^2=9,\\ 5^2=25)",
-        "paletteRef": null,
-        "dropTargets": [],
-        "description": "Compute: (3/5)² = 3²/5² = 9/25"
-      },
-      {
         "id": "s2",
         "fromLatex": "\\cos^2(\\theta) = 1 - \\sin^2(\\theta)",
         "toLatex": "\\cos^2(\\theta) = 1 - \\frac{9}{25}",
         "paletteRef": null,
         "dropTargets": [],
         "description": "Substitute sin(θ)=3/5, so sin²(θ)=9/25"
-      },
-      {
-        "id": "s2a",
-        "fromLatex": "1 - \\frac{9}{25} = \\frac{25}{25} - \\frac{9}{25} = \\frac{16}{25}",
-        "toLatex": "1 - \\frac{9}{25} = \\frac{25}{25} - \\frac{9}{25} = \\frac{16}{25}",
-        "paletteRef": null,
-        "dropTargets": [],
-        "description": "Compute: 1 = 25/25, so 25/25 − 9/25 = 16/25"
       },
       {
         "id": "s3",
@@ -637,22 +613,6 @@
         "paletteRef": null,
         "dropTargets": [],
         "description": "sin²(45°) = (√2/2)² = 1/2"
-      },
-      {
-        "id": "s3a",
-        "fromLatex": "2 \\times \\frac{1}{2} = 1",
-        "toLatex": "2 \\times \\frac{1}{2} = 1",
-        "paletteRef": null,
-        "dropTargets": [],
-        "description": "Compute: 2 × 1/2 = 1"
-      },
-      {
-        "id": "s3b",
-        "fromLatex": "1 - 1 = 0",
-        "toLatex": "\\cos(90^\\circ) = 0",
-        "paletteRef": null,
-        "dropTargets": [],
-        "description": "Compute: 1 − 1 = 0"
       }
     ],
     "image": "trig-m-005.svg"
@@ -698,14 +658,6 @@
         "paletteRef": null,
         "dropTargets": [],
         "description": "Write as a single fraction"
-      },
-      {
-        "id": "s2a",
-        "fromLatex": "\\gcd(135, 180) = 45 \\Rightarrow 135 \\div 45 = 3,\\ 180 \\div 45 = 4",
-        "toLatex": "135 \\div 45 = 3 \\quad \\text{and} \\quad 180 \\div 45 = 4",
-        "paletteRef": null,
-        "dropTargets": [],
-        "description": "Compute: GCF(135,180)=45; 135÷45=3 and 180÷45=4"
       },
       {
         "id": "s3",
@@ -756,22 +708,6 @@
         "paletteRef": null,
         "dropTargets": [],
         "description": "Cancel π and simplify"
-      },
-      {
-        "id": "s2a",
-        "fromLatex": "180 \\div 6 = 30",
-        "toLatex": "180 \\div 6 = 30",
-        "paletteRef": null,
-        "dropTargets": [],
-        "description": "Compute: 180 ÷ 6 = 30"
-      },
-      {
-        "id": "s2b",
-        "fromLatex": "5 \\times 30 = 150",
-        "toLatex": "150^\\circ",
-        "paletteRef": null,
-        "dropTargets": [],
-        "description": "Compute: 5 × 30 = 150"
       }
     ],
     "image": "trig-m-007.svg"
@@ -823,14 +759,6 @@
         "description": "Substitute known values"
       },
       {
-        "id": "s3a",
-        "fromLatex": "\\frac{1}{2} \\times \\frac{1}{2} = \\frac{1}{4}",
-        "toLatex": "\\frac{1}{2} \\times \\frac{1}{2} = \\frac{1 \\times 1}{2 \\times 2} = \\frac{1}{4}",
-        "paletteRef": null,
-        "dropTargets": [],
-        "description": "Compute: 1/2 × 1/2 = 1/4"
-      },
-      {
         "id": "s3b",
         "fromLatex": "\\frac{\\sqrt{3}}{2} \\times \\frac{\\sqrt{3}}{2} = \\frac{3}{4}",
         "toLatex": "\\frac{\\sqrt{3}}{2} \\times \\frac{\\sqrt{3}}{2} = \\frac{(\\sqrt{3})^2}{4} = \\frac{3}{4}",
@@ -845,14 +773,6 @@
         "paletteRef": null,
         "dropTargets": [],
         "description": "Multiply: 1/4 + 3/4"
-      },
-      {
-        "id": "s4a",
-        "fromLatex": "\\frac{1}{4} + \\frac{3}{4} = \\frac{4}{4} = 1",
-        "toLatex": "\\sin(90^\\circ) = 1",
-        "paletteRef": null,
-        "dropTargets": [],
-        "description": "Compute: 1/4 + 3/4 = 4/4 = 1"
       }
     ],
     "image": "trig-m-008.svg"
@@ -895,14 +815,6 @@
         "paletteRef": null,
         "dropTargets": [],
         "description": "Substitute cos(θ) = 1/2"
-      },
-      {
-        "id": "s2a",
-        "fromLatex": "1 \\div \\frac{1}{2} = 1 \\times \\frac{2}{1} = 2",
-        "toLatex": "\\sec(\\theta) = 2",
-        "paletteRef": null,
-        "dropTargets": [],
-        "description": "Compute: 1 ÷ (1/2) = 1 × 2 = 2 (invert and multiply)"
       }
     ],
     "image": "trig-m-009.svg"

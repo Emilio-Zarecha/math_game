@@ -39,14 +39,6 @@
         "description": "Subtract 5 from both sides"
       },
       {
-        "id": "s1a",
-        "fromLatex": "20 - 5 = 15",
-        "toLatex": "20 - 5 = 15",
-        "paletteRef": null,
-        "dropTargets": [],
-        "description": "Compute: 20 − 5 = 15"
-      },
-      {
         "id": "s2",
         "fromLatex": "3x + 5 - 5 = 20 - 5",
         "toLatex": "3x = 15",
@@ -68,14 +60,6 @@
           "right side"
         ],
         "description": "Divide both sides by 3"
-      },
-      {
-        "id": "s3a",
-        "fromLatex": "15 \\div 3 = 5",
-        "toLatex": "15 \\div 3 = 5",
-        "paletteRef": null,
-        "dropTargets": [],
-        "description": "Compute: 15 ÷ 3 = 5"
       },
       {
         "id": "s4",
@@ -127,14 +111,6 @@
         "description": "Add 7 to both sides"
       },
       {
-        "id": "s1a",
-        "fromLatex": "11 + 7 = 18",
-        "toLatex": "11 + 7 = 18",
-        "paletteRef": null,
-        "dropTargets": [],
-        "description": "Compute: 11 + 7 = 18"
-      },
-      {
         "id": "s2",
         "fromLatex": "2x - 7 + 7 = 11 + 7",
         "toLatex": "2x = 18",
@@ -156,14 +132,6 @@
           "right side"
         ],
         "description": "Divide both sides by 2"
-      },
-      {
-        "id": "s3a",
-        "fromLatex": "18 \\div 2 = 9",
-        "toLatex": "18 \\div 2 = 9",
-        "paletteRef": null,
-        "dropTargets": [],
-        "description": "Compute: 18 ÷ 2 = 9"
       },
       {
         "id": "s4",
@@ -210,14 +178,6 @@
         "description": "Divide both sides by 5"
       },
       {
-        "id": "s1a",
-        "fromLatex": "35 \\div 5 = 7",
-        "toLatex": "35 \\div 5 = 7",
-        "paletteRef": null,
-        "dropTargets": [],
-        "description": "Compute: 35 ÷ 5 = 7"
-      },
-      {
         "id": "s2",
         "fromLatex": "\\frac{5x}{5} = \\frac{35}{5}",
         "toLatex": "x = 7",
@@ -262,14 +222,6 @@
         "description": "Subtract 12 from both sides"
       },
       {
-        "id": "s1a",
-        "fromLatex": "20 - 12 = 8",
-        "toLatex": "20 - 12 = 8",
-        "paletteRef": null,
-        "dropTargets": [],
-        "description": "Compute: 20 − 12 = 8"
-      },
-      {
         "id": "s2",
         "fromLatex": "x + 12 - 12 = 20 - 12",
         "toLatex": "x = 8",
@@ -312,14 +264,6 @@
           "right side"
         ],
         "description": "Multiply both sides by 4"
-      },
-      {
-        "id": "s1a",
-        "fromLatex": "6 \\times 4 = 24",
-        "toLatex": "6 \\times 4 = 24",
-        "paletteRef": null,
-        "dropTargets": [],
-        "description": "Compute: 6 × 4 = 24"
       },
       {
         "id": "s2",
@@ -371,14 +315,6 @@
         "description": "Subtract 2 from both sides"
       },
       {
-        "id": "s1a",
-        "fromLatex": "18 - 2 = 16",
-        "toLatex": "18 - 2 = 16",
-        "paletteRef": null,
-        "dropTargets": [],
-        "description": "Compute: 18 − 2 = 16"
-      },
-      {
         "id": "s2",
         "fromLatex": "4x + 2 - 2 = 18 - 2",
         "toLatex": "4x = 16",
@@ -400,14 +336,6 @@
           "right side"
         ],
         "description": "Divide both sides by 4"
-      },
-      {
-        "id": "s3a",
-        "fromLatex": "16 \\div 4 = 4",
-        "toLatex": "16 \\div 4 = 4",
-        "paletteRef": null,
-        "dropTargets": [],
-        "description": "Compute: 16 ÷ 4 = 4"
       },
       {
         "id": "s4",
@@ -452,14 +380,6 @@
           "right side"
         ],
         "description": "Add 9 to both sides"
-      },
-      {
-        "id": "s1a",
-        "fromLatex": "5 + 9 = 14",
-        "toLatex": "5 + 9 = 14",
-        "paletteRef": null,
-        "dropTargets": [],
-        "description": "Compute: 5 + 9 = 14"
       },
       {
         "id": "s2",
@@ -511,14 +431,6 @@
         "description": "Subtract 3 from both sides"
       },
       {
-        "id": "s1a",
-        "fromLatex": "11 - 3 = 8",
-        "toLatex": "11 - 3 = 8",
-        "paletteRef": null,
-        "dropTargets": [],
-        "description": "Compute: 11 − 3 = 8"
-      },
-      {
         "id": "s2",
         "fromLatex": "2x + 3 - 3 = 11 - 3",
         "toLatex": "2x = 8",
@@ -540,14 +452,6 @@
           "right side"
         ],
         "description": "Divide both sides by 2"
-      },
-      {
-        "id": "s3a",
-        "fromLatex": "8 \\div 2 = 4",
-        "toLatex": "8 \\div 2 = 4",
-        "paletteRef": null,
-        "dropTargets": [],
-        "description": "Compute: 8 ÷ 2 = 4"
       },
       {
         "id": "s4",
@@ -592,14 +496,6 @@
           "right side"
         ],
         "description": "Multiply both sides by 3"
-      },
-      {
-        "id": "s1a",
-        "fromLatex": "7 \\times 3 = 21",
-        "toLatex": "7 \\times 3 = 21",
-        "paletteRef": null,
-        "dropTargets": [],
-        "description": "Compute: 7 × 3 = 21"
       },
       {
         "id": "s2",
@@ -651,14 +547,6 @@
         "description": "Add 4 to both sides"
       },
       {
-        "id": "s1a",
-        "fromLatex": "14 + 4 = 18",
-        "toLatex": "14 + 4 = 18",
-        "paletteRef": null,
-        "dropTargets": [],
-        "description": "Compute: 14 + 4 = 18"
-      },
-      {
         "id": "s2",
         "fromLatex": "6x - 4 + 4 = 14 + 4",
         "toLatex": "6x = 18",
@@ -680,14 +568,6 @@
           "right side"
         ],
         "description": "Divide both sides by 6"
-      },
-      {
-        "id": "s3a",
-        "fromLatex": "18 \\div 6 = 3",
-        "toLatex": "18 \\div 6 = 3",
-        "paletteRef": null,
-        "dropTargets": [],
-        "description": "Compute: 18 ÷ 6 = 3"
       },
       {
         "id": "s4",
@@ -743,14 +623,6 @@
           "right side"
         ],
         "description": "Add 9 to both sides"
-      },
-      {
-        "id": "s1a",
-        "fromLatex": "0 + 9 = 9",
-        "toLatex": "0 + 9 = 9",
-        "paletteRef": null,
-        "dropTargets": [],
-        "description": "Compute: 0 + 9 = 9"
       },
       {
         "id": "s2",
@@ -833,14 +705,6 @@
           "right side"
         ],
         "description": "Divide both sides by 2"
-      },
-      {
-        "id": "s1a",
-        "fromLatex": "50 \\div 2 = 25",
-        "toLatex": "50 \\div 2 = 25",
-        "paletteRef": null,
-        "dropTargets": [],
-        "description": "Compute: 50 ÷ 2 = 25"
       },
       {
         "id": "s2",
@@ -959,14 +823,6 @@
         "description": "Add 3 to both sides"
       },
       {
-        "id": "s3a",
-        "fromLatex": "9 + 3 = 12",
-        "toLatex": "9 + 3 = 12",
-        "paletteRef": null,
-        "dropTargets": [],
-        "description": "Compute: 9 + 3 = 12"
-      },
-      {
         "id": "s4",
         "fromLatex": "2x - 3 + 3 = 9 + 3",
         "toLatex": "2x = 12",
@@ -988,14 +844,6 @@
           "right side"
         ],
         "description": "Divide both sides by 2"
-      },
-      {
-        "id": "s5a",
-        "fromLatex": "12 \\div 2 = 6",
-        "toLatex": "12 \\div 2 = 6",
-        "paletteRef": null,
-        "dropTargets": [],
-        "description": "Compute: 12 ÷ 2 = 6"
       },
       {
         "id": "s6",
@@ -1043,14 +891,6 @@
         "paletteRef": null,
         "dropTargets": [],
         "description": "Zero product property: set each factor equal to 0"
-      },
-      {
-        "id": "s1b",
-        "fromLatex": "0 + 4 = 4",
-        "toLatex": "0 + 4 = 4 \\quad (\\text{from } x - 4 = 0 \\Rightarrow x = 4)",
-        "paletteRef": null,
-        "dropTargets": [],
-        "description": "Compute: x − 4 = 0 → x = 0 + 4 = 4"
       },
       {
         "id": "s2",
@@ -1110,28 +950,12 @@
         "description": "Compute: 6 ÷ 2 = 3 and 6 ÷ 3 = 2 (distribute 6 into fractions)"
       },
       {
-        "id": "s1b",
-        "fromLatex": "5 \\times 6 = 30",
-        "toLatex": "5 \\times 6 = 30",
-        "paletteRef": null,
-        "dropTargets": [],
-        "description": "Compute: 5 × 6 = 30 (right side)"
-      },
-      {
         "id": "s2",
         "fromLatex": "\\left(\\frac{x}{2} + \\frac{x}{3}\\right) \\times 6 = 5 \\times 6",
         "toLatex": "3x + 2x = 30",
         "paletteRef": null,
         "dropTargets": [],
         "description": "Distribute 6 and simplify"
-      },
-      {
-        "id": "s2a",
-        "fromLatex": "3 + 2 = 5",
-        "toLatex": "3 + 2 = 5",
-        "paletteRef": null,
-        "dropTargets": [],
-        "description": "Compute: 3 + 2 = 5 (coefficients combine)"
       },
       {
         "id": "s3",
@@ -1155,14 +979,6 @@
           "right side"
         ],
         "description": "Divide both sides by 5"
-      },
-      {
-        "id": "s4a",
-        "fromLatex": "30 \\div 5 = 6",
-        "toLatex": "30 \\div 5 = 6",
-        "paletteRef": null,
-        "dropTargets": [],
-        "description": "Compute: 30 ÷ 5 = 6"
       },
       {
         "id": "s5",
@@ -1208,14 +1024,6 @@
           "right side"
         ],
         "description": "Square both sides"
-      },
-      {
-        "id": "s1a",
-        "fromLatex": "8^2 = 8 \\times 8 = 64",
-        "toLatex": "8^2 = 8 \\times 8 = 64",
-        "paletteRef": null,
-        "dropTargets": [],
-        "description": "Compute: 8² = 8 × 8 = 64"
       },
       {
         "id": "s2",
@@ -1303,14 +1111,6 @@
         "description": "Add 2 to both sides"
       },
       {
-        "id": "s3a",
-        "fromLatex": "10 + 2 = 12",
-        "toLatex": "10 + 2 = 12",
-        "paletteRef": null,
-        "dropTargets": [],
-        "description": "Compute: 10 + 2 = 12"
-      },
-      {
         "id": "s4",
         "fromLatex": "2x - 2 + 2 = 10 + 2",
         "toLatex": "2x = 12",
@@ -1332,14 +1132,6 @@
           "right side"
         ],
         "description": "Divide both sides by 2"
-      },
-      {
-        "id": "s5a",
-        "fromLatex": "12 \\div 2 = 6",
-        "toLatex": "12 \\div 2 = 6",
-        "paletteRef": null,
-        "dropTargets": [],
-        "description": "Compute: 12 ÷ 2 = 6"
       },
       {
         "id": "s6",
@@ -1442,14 +1234,6 @@
           "\\log_2(x)"
         ],
         "description": "Rewrite in exponential form"
-      },
-      {
-        "id": "s1a",
-        "fromLatex": "2^5 = 2 \\times 2 \\times 2 \\times 2 \\times 2 = 32",
-        "toLatex": "2^5 = 2 \\times 2 \\times 2 \\times 2 \\times 2 = 32",
-        "paletteRef": null,
-        "dropTargets": [],
-        "description": "Compute: 2⁵ = 2×2×2×2×2 = 32"
       },
       {
         "id": "s2",
@@ -1658,14 +1442,6 @@
         "description": "Zero product property"
       },
       {
-        "id": "s2a",
-        "fromLatex": "1 \\div 2 = 0.5 = \\tfrac{1}{2}",
-        "toLatex": "1 \\div 2 = \\tfrac{1}{2} \\quad (\\text{from } 2x = 1)",
-        "paletteRef": null,
-        "dropTargets": [],
-        "description": "Compute: 1 ÷ 2 = ½ (solving left equation)"
-      },
-      {
         "id": "s3",
         "fromLatex": "2x - 1 = 0 \\text{ or } x - 3 = 0",
         "toLatex": "x = \\tfrac{1}{2} \\text{ or } x = 3",
@@ -1703,14 +1479,6 @@
           "27"
         ],
         "description": "Rewrite 27 as 3³"
-      },
-      {
-        "id": "s1a",
-        "fromLatex": "3^3 = 3 \\times 3 \\times 3 = 27",
-        "toLatex": "3^3 = 3 \\times 3 \\times 3 = 27",
-        "paletteRef": null,
-        "dropTargets": [],
-        "description": "Compute: 3³ = 3×3×3 = 27 ✓"
       },
       {
         "id": "s2",
@@ -1758,14 +1526,6 @@
         "description": "Rewrite in exponential form"
       },
       {
-        "id": "s1a",
-        "fromLatex": "3^2 = 3 \\times 3 = 9",
-        "toLatex": "3^2 = 3 \\times 3 = 9",
-        "paletteRef": null,
-        "dropTargets": [],
-        "description": "Compute: 3² = 3 × 3 = 9"
-      },
-      {
         "id": "s2",
         "fromLatex": "3^2 = x + 1",
         "toLatex": "9 = x + 1",
@@ -1787,14 +1547,6 @@
           "right side"
         ],
         "description": "Subtract 1 from both sides"
-      },
-      {
-        "id": "s3a",
-        "fromLatex": "9 - 1 = 8",
-        "toLatex": "9 - 1 = 8",
-        "paletteRef": null,
-        "dropTargets": [],
-        "description": "Compute: 9 − 1 = 8"
       },
       {
         "id": "s4",
@@ -1841,14 +1593,6 @@
         "description": "Rewrite 16 as 2⁴"
       },
       {
-        "id": "s1a",
-        "fromLatex": "2^4 = 2 \\times 2 \\times 2 \\times 2 = 16",
-        "toLatex": "2^4 = 2 \\times 2 \\times 2 \\times 2 = 16",
-        "paletteRef": null,
-        "dropTargets": [],
-        "description": "Compute: 2⁴ = 2×2×2×2 = 16 ✓"
-      },
-      {
         "id": "s2",
         "fromLatex": "2^{x+1} = 2^4",
         "toLatex": "x + 1 = 4",
@@ -1870,14 +1614,6 @@
           "right side"
         ],
         "description": "Subtract 1 from both sides"
-      },
-      {
-        "id": "s3a",
-        "fromLatex": "4 - 1 = 3",
-        "toLatex": "4 - 1 = 3",
-        "paletteRef": null,
-        "dropTargets": [],
-        "description": "Compute: 4 − 1 = 3"
       },
       {
         "id": "s4",
@@ -2181,22 +1917,6 @@
         "description": "Add 6 to both sides"
       },
       {
-        "id": "s4a",
-        "fromLatex": "2 + 6 = 8",
-        "toLatex": "2 + 6 = 8",
-        "paletteRef": null,
-        "dropTargets": [],
-        "description": "Compute: 2 + 6 = 8"
-      },
-      {
-        "id": "s4b",
-        "fromLatex": "8 \\div 2 = 4",
-        "toLatex": "8 \\div 2 = 4",
-        "paletteRef": null,
-        "dropTargets": [],
-        "description": "Compute: 8 ÷ 2 = 4"
-      },
-      {
         "id": "s5",
         "fromLatex": "8 = 2x",
         "toLatex": "x = 4",
@@ -2248,14 +1968,6 @@
           "right side"
         ],
         "description": "Divide both sides by 2"
-      },
-      {
-        "id": "s2a",
-        "fromLatex": "6 \\div 2 = 3",
-        "toLatex": "6 \\div 2 = 3",
-        "paletteRef": null,
-        "dropTargets": [],
-        "description": "Compute: 6 ÷ 2 = 3"
       },
       {
         "id": "s3",
