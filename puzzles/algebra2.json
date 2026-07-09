@@ -1,676 +1,2631 @@
 [
   {
-    "id": "alg2-e-001", "topic": "algebra2", "difficulty": "easy",
-    "question": { "latex": "x^2 - 5x + 6 = 0", "plain": "Solve by factoring" },
-    "symbols": { "x": "The unknown variable" },
+    "id": "alg2-e-001",
+    "topic": "algebra2",
+    "difficulty": "easy",
+    "question": {
+      "latex": "x^2 - 5x + 6 = 0",
+      "plain": "Solve by factoring"
+    },
+    "symbols": {
+      "x": "The unknown variable"
+    },
     "palette": [
-      { "id": "p1", "latex": "(x-2)(x-3)", "description": "Find two numbers that multiply to +6 and add to −5: −2 and −3" }
+      {
+        "id": "p1",
+        "latex": "(x-2)(x-3)",
+        "description": "Find two numbers that multiply to +6 and add to −5: −2 and −3"
+      }
     ],
     "steps": [
-      { "id": "s1", "fromLatex": "x^2 - 5x + 6 = 0", "toLatex": "(x-2)(x-3) = 0", "paletteRef": "p1", "dropTargets": ["x^2 - 5x + 6"], "description": "Factor the quadratic" },
-      { "id": "s1a", "fromLatex": "(-2)\\times(-3)=6 \\text{ and } (-2)+(-3)=-5", "toLatex": "(-2)\\times(-3)=6 \\text{ and } (-2)+(-3)=-5", "paletteRef": null, "dropTargets": [], "description": "Verify factors: (−2)(−3)=6 ✓ and (−2)+(−3)=−5 ✓" },
-      { "id": "s2", "fromLatex": "(x-2)(x-3) = 0", "toLatex": "x-2=0 \\text{ or } x-3=0", "paletteRef": null, "dropTargets": [], "description": "Zero product property: if AB=0 then A=0 or B=0" },
-      { "id": "s2a", "fromLatex": "0+2=2 \\text{ and } 0+3=3", "toLatex": "0+2=2 \\text{ and } 0+3=3", "paletteRef": null, "dropTargets": [], "description": "Compute: solve each linear equation" },
-      { "id": "s3", "fromLatex": "x-2=0 \\text{ or } x-3=0", "toLatex": "x=2 \\text{ or } x=3", "paletteRef": null, "dropTargets": [], "description": "Solutions" }
+      {
+        "id": "s1",
+        "fromLatex": "x^2 - 5x + 6 = 0",
+        "toLatex": "(x-2)(x-3) = 0",
+        "paletteRef": "p1",
+        "dropTargets": [
+          "x^2 - 5x + 6"
+        ],
+        "description": "Factor the quadratic"
+      },
+      {
+        "id": "s1a",
+        "fromLatex": "(-2)\\times(-3)=6 \\text{ and } (-2)+(-3)=-5",
+        "toLatex": "(-2)\\times(-3)=6 \\text{ and } (-2)+(-3)=-5",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "Verify factors: (−2)(−3)=6 ✓ and (−2)+(−3)=−5 ✓"
+      },
+      {
+        "id": "s2",
+        "fromLatex": "(x-2)(x-3) = 0",
+        "toLatex": "x-2=0 \\text{ or } x-3=0",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "Zero product property: if AB=0 then A=0 or B=0"
+      },
+      {
+        "id": "s2a",
+        "fromLatex": "0+2=2 \\text{ and } 0+3=3",
+        "toLatex": "0+2=2 \\text{ and } 0+3=3",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "Compute: solve each linear equation"
+      },
+      {
+        "id": "s3",
+        "fromLatex": "x-2=0 \\text{ or } x-3=0",
+        "toLatex": "x=2 \\text{ or } x=3",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "Solutions"
+      }
     ]
   },
   {
-    "id": "alg2-e-002", "topic": "algebra2", "difficulty": "easy",
-    "question": { "latex": "\\sqrt{-9}", "plain": "Simplify the square root of −9" },
-    "symbols": { "i": "Imaginary unit — defined as i = √(−1), so i² = −1" },
+    "id": "alg2-e-002",
+    "topic": "algebra2",
+    "difficulty": "easy",
+    "question": {
+      "latex": "\\sqrt{-9}",
+      "plain": "Simplify the square root of −9"
+    },
+    "symbols": {
+      "i": "Imaginary unit — defined as i = √(−1), so i² = −1"
+    },
     "palette": [
-      { "id": "p1", "latex": "i", "description": "Replace √(−1) with the imaginary unit i" }
+      {
+        "id": "p1",
+        "latex": "i",
+        "description": "Replace √(−1) with the imaginary unit i"
+      }
     ],
     "steps": [
-      { "id": "s1", "fromLatex": "\\sqrt{-9}", "toLatex": "\\sqrt{9 \\cdot (-1)}", "paletteRef": null, "dropTargets": [], "description": "Factor out −1 from the radicand" },
-      { "id": "s1a", "fromLatex": "\\sqrt{9 \\cdot (-1)} = \\sqrt{9} \\cdot \\sqrt{-1}", "toLatex": "\\sqrt{9} \\cdot \\sqrt{-1}", "paletteRef": null, "dropTargets": [], "description": "Product rule for radicals: √(ab) = √a · √b" },
-      { "id": "s1b", "fromLatex": "\\sqrt{9} = 3 \\quad (3^2=9)", "toLatex": "\\sqrt{9} = 3", "paletteRef": null, "dropTargets": [], "description": "Compute: √9 = 3 (since 3² = 9)" },
-      { "id": "s2", "fromLatex": "\\sqrt{9} \\cdot \\sqrt{-1}", "toLatex": "3i", "paletteRef": "p1", "dropTargets": ["\\sqrt{-1}"], "description": "Replace √(−1) with i — result is 3i" }
+      {
+        "id": "s1",
+        "fromLatex": "\\sqrt{-9}",
+        "toLatex": "\\sqrt{9 \\cdot (-1)}",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "Factor out −1 from the radicand"
+      },
+      {
+        "id": "s1a",
+        "fromLatex": "\\sqrt{9 \\cdot (-1)} = \\sqrt{9} \\cdot \\sqrt{-1}",
+        "toLatex": "\\sqrt{9} \\cdot \\sqrt{-1}",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "Product rule for radicals: √(ab) = √a · √b"
+      },
+      {
+        "id": "s1b",
+        "fromLatex": "\\sqrt{9} = 3 \\quad (3^2=9)",
+        "toLatex": "\\sqrt{9} = 3",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "Compute: √9 = 3 (since 3² = 9)"
+      },
+      {
+        "id": "s2",
+        "fromLatex": "\\sqrt{9} \\cdot \\sqrt{-1}",
+        "toLatex": "3i",
+        "paletteRef": "p1",
+        "dropTargets": [
+          "\\sqrt{-1}"
+        ],
+        "description": "Replace √(−1) with i — result is 3i"
+      }
     ]
   },
   {
-    "id": "alg2-e-003", "topic": "algebra2", "difficulty": "easy",
-    "question": { "latex": "(2 + 3i) + (1 - i)", "plain": "Add the complex numbers" },
-    "symbols": { "i": "Imaginary unit — i² = −1" },
+    "id": "alg2-e-003",
+    "topic": "algebra2",
+    "difficulty": "easy",
+    "question": {
+      "latex": "(2 + 3i) + (1 - i)",
+      "plain": "Add the complex numbers"
+    },
+    "symbols": {
+      "i": "Imaginary unit — i² = −1"
+    },
     "palette": [
-      { "id": "p1", "latex": "3 + 2i", "description": "Combine: real parts 2+1=3, imaginary parts 3i−i=2i" }
+      {
+        "id": "p1",
+        "latex": "3 + 2i",
+        "description": "Combine: real parts 2+1=3, imaginary parts 3i−i=2i"
+      }
     ],
     "steps": [
-      { "id": "s1", "fromLatex": "(2 + 3i) + (1 - i)", "toLatex": "(2 + 1) + (3i - i)", "paletteRef": null, "dropTargets": [], "description": "Group real parts and imaginary parts separately" },
-      { "id": "s1a", "fromLatex": "2+1=3 \\text{ and } 3-1=2", "toLatex": "2+1=3 \\text{ and } 3-1=2", "paletteRef": null, "dropTargets": [], "description": "Compute: real 2+1=3 and imaginary coefficient 3−1=2" },
-      { "id": "s2", "fromLatex": "(2 + 1) + (3i - i)", "toLatex": "3 + 2i", "paletteRef": "p1", "dropTargets": ["(2 + 1) + (3i - i)"], "description": "Combine like terms — result" }
+      {
+        "id": "s1",
+        "fromLatex": "(2 + 3i) + (1 - i)",
+        "toLatex": "(2 + 1) + (3i - i)",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "Group real parts and imaginary parts separately"
+      },
+      {
+        "id": "s1a",
+        "fromLatex": "2+1=3 \\text{ and } 3-1=2",
+        "toLatex": "2+1=3 \\text{ and } 3-1=2",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "Compute: real 2+1=3 and imaginary coefficient 3−1=2"
+      },
+      {
+        "id": "s2",
+        "fromLatex": "(2 + 1) + (3i - i)",
+        "toLatex": "3 + 2i",
+        "paletteRef": "p1",
+        "dropTargets": [
+          "(2 + 1) + (3i - i)"
+        ],
+        "description": "Combine like terms — result"
+      }
     ]
   },
   {
-    "id": "alg2-e-004", "topic": "algebra2", "difficulty": "easy",
-    "question": { "latex": "y = (x - 4)^2 + 1", "plain": "Identify the vertex of the parabola" },
-    "symbols": { "x": "Input variable", "y": "Output variable" },
+    "id": "alg2-e-004",
+    "topic": "algebra2",
+    "difficulty": "easy",
+    "question": {
+      "latex": "y = (x - 4)^2 + 1",
+      "plain": "Identify the vertex of the parabola"
+    },
+    "symbols": {
+      "x": "Input variable",
+      "y": "Output variable"
+    },
     "palette": [
-      { "id": "p1", "latex": "(4,\\, 1)", "description": "Vertex form y=(x−h)²+k gives vertex (h,k): here h=4, k=1" }
+      {
+        "id": "p1",
+        "latex": "(4,\\, 1)",
+        "description": "Vertex form y=(x−h)²+k gives vertex (h,k): here h=4, k=1"
+      }
     ],
     "steps": [
-      { "id": "s1", "fromLatex": "y = (x - h)^2 + k \\Rightarrow \\text{vertex} = (h, k)", "toLatex": "y = (x - h)^2 + k \\Rightarrow \\text{vertex} = (h, k)", "paletteRef": null, "dropTargets": [], "description": "Vertex form: vertex is at (h, k)" },
-      { "id": "s2", "fromLatex": "y = (x - 4)^2 + 1", "toLatex": "h = 4,\\; k = 1", "paletteRef": null, "dropTargets": [], "description": "Read h and k from the equation" },
-      { "id": "s3", "fromLatex": "h = 4,\\; k = 1", "toLatex": "\\text{vertex} = (4,\\, 1)", "paletteRef": "p1", "dropTargets": ["h = 4,\\; k = 1"], "description": "State the vertex" }
+      {
+        "id": "s1",
+        "fromLatex": "y = (x - h)^2 + k \\Rightarrow \\text{vertex} = (h, k)",
+        "toLatex": "y = (x - h)^2 + k \\Rightarrow \\text{vertex} = (h, k)",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "Vertex form: vertex is at (h, k)"
+      },
+      {
+        "id": "s2",
+        "fromLatex": "y = (x - 4)^2 + 1",
+        "toLatex": "h = 4,\\; k = 1",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "Read h and k from the equation"
+      },
+      {
+        "id": "s3",
+        "fromLatex": "h = 4,\\; k = 1",
+        "toLatex": "\\text{vertex} = (4,\\, 1)",
+        "paletteRef": "p1",
+        "dropTargets": [
+          "h = 4,\\; k = 1"
+        ],
+        "description": "State the vertex"
+      }
     ]
   },
   {
-    "id": "alg2-e-005", "topic": "algebra2", "difficulty": "easy",
-    "question": { "latex": "x^2 - 4x + 4 = 0", "plain": "Find the discriminant and number of real roots" },
-    "symbols": { "\\Delta": "Discriminant — determines number and type of roots: b²−4ac" },
+    "id": "alg2-e-005",
+    "topic": "algebra2",
+    "difficulty": "easy",
+    "question": {
+      "latex": "x^2 - 4x + 4 = 0",
+      "plain": "Find the discriminant and number of real roots"
+    },
+    "symbols": {
+      "\\Delta": "Discriminant — determines number and type of roots: b²−4ac"
+    },
     "palette": [
-      { "id": "p1", "latex": "0", "description": "Δ=0 → exactly one real (repeated) root" }
+      {
+        "id": "p1",
+        "latex": "0",
+        "description": "Δ=0 → exactly one real (repeated) root"
+      }
     ],
     "steps": [
-      { "id": "s1", "fromLatex": "x^2 - 4x + 4 = 0", "toLatex": "a=1,\\; b=-4,\\; c=4", "paletteRef": null, "dropTargets": [], "description": "Identify coefficients: a=1, b=−4, c=4" },
-      { "id": "s1a", "fromLatex": "\\Delta = b^2 - 4ac = (-4)^2 - 4(1)(4)", "toLatex": "\\Delta = (-4)^2 - 4(1)(4)", "paletteRef": null, "dropTargets": [], "description": "Substitute into discriminant formula Δ=b²−4ac" },
-      { "id": "s1b", "fromLatex": "(-4)^2 = 16 \\text{ and } 4(1)(4)=16", "toLatex": "(-4)^2=16 \\text{ and } 4(1)(4)=16", "paletteRef": null, "dropTargets": [], "description": "Compute: (−4)²=16 and 4×1×4=16" },
-      { "id": "s2", "fromLatex": "\\Delta = 16 - 16", "toLatex": "\\Delta = 0", "paletteRef": "p1", "dropTargets": ["16 - 16"], "description": "Δ = 16 − 16 = 0 → one repeated real root" }
+      {
+        "id": "s1",
+        "fromLatex": "x^2 - 4x + 4 = 0",
+        "toLatex": "a=1,\\; b=-4,\\; c=4",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "Identify coefficients: a=1, b=−4, c=4"
+      },
+      {
+        "id": "s1a",
+        "fromLatex": "\\Delta = b^2 - 4ac = (-4)^2 - 4(1)(4)",
+        "toLatex": "\\Delta = (-4)^2 - 4(1)(4)",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "Substitute into discriminant formula Δ=b²−4ac"
+      },
+      {
+        "id": "s1b",
+        "fromLatex": "(-4)^2 = 16 \\text{ and } 4(1)(4)=16",
+        "toLatex": "(-4)^2=16 \\text{ and } 4(1)(4)=16",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "Compute: (−4)²=16 and 4×1×4=16"
+      },
+      {
+        "id": "s2",
+        "fromLatex": "\\Delta = 16 - 16",
+        "toLatex": "\\Delta = 0",
+        "paletteRef": "p1",
+        "dropTargets": [
+          "16 - 16"
+        ],
+        "description": "Δ = 16 − 16 = 0 → one repeated real root"
+      }
     ]
   },
   {
-    "id": "alg2-e-006", "topic": "algebra2", "difficulty": "easy",
-    "question": { "latex": "3,\\; 7,\\; 11,\\; 15,\\; \\ldots", "plain": "Find the next term of the arithmetic sequence" },
-    "symbols": { "d": "Common difference — added to each term to get the next" },
+    "id": "alg2-e-006",
+    "topic": "algebra2",
+    "difficulty": "easy",
+    "question": {
+      "latex": "3,\\; 7,\\; 11,\\; 15,\\; \\ldots",
+      "plain": "Find the next term of the arithmetic sequence"
+    },
+    "symbols": {
+      "d": "Common difference — added to each term to get the next"
+    },
     "palette": [
-      { "id": "p1", "latex": "+4", "description": "Common difference d = 7−3 = 4; add 4 to the last term" }
+      {
+        "id": "p1",
+        "latex": "+4",
+        "description": "Common difference d = 7−3 = 4; add 4 to the last term"
+      }
     ],
     "steps": [
-      { "id": "s1", "fromLatex": "d = 7 - 3 = 4", "toLatex": "d = 7 - 3 = 4", "paletteRef": null, "dropTargets": [], "description": "Find common difference: d = 7 − 3 = 4" },
-      { "id": "s2", "fromLatex": "15 + d", "toLatex": "15 + 4 = 19", "paletteRef": "p1", "dropTargets": ["15 + d"], "description": "Add d to the last term: 15 + 4 = 19" }
+      {
+        "id": "s1",
+        "fromLatex": "d = 7 - 3 = 4",
+        "toLatex": "d = 7 - 3 = 4",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "Find common difference: d = 7 − 3 = 4"
+      },
+      {
+        "id": "s2",
+        "fromLatex": "15 + d",
+        "toLatex": "15 + 4 = 19",
+        "paletteRef": "p1",
+        "dropTargets": [
+          "15 + d"
+        ],
+        "description": "Add d to the last term: 15 + 4 = 19"
+      }
     ]
   },
   {
-    "id": "alg2-e-007", "topic": "algebra2", "difficulty": "easy",
-    "question": { "latex": "(2 + i)(2 - i)", "plain": "Multiply the complex conjugates" },
-    "symbols": { "i": "Imaginary unit — i² = −1" },
-    "palette": [
-      { "id": "p1", "latex": "5", "description": "Conjugate pairs: (a+i)(a−i) = a²+1; here 4+1=5" }
-    ],
+    "id": "alg2-e-007",
+    "topic": "algebra2",
+    "difficulty": "easy",
+    "question": {
+      "latex": "(2 + i)(2 - i)",
+      "plain": "Multiply the complex conjugates"
+    },
+    "symbols": {
+      "i": "Imaginary unit — i² = −1"
+    },
+    "palette": [],
     "steps": [
-      { "id": "s1", "fromLatex": "(2+i)(2-i)", "toLatex": "2^2 - i^2", "paletteRef": null, "dropTargets": [], "description": "Difference of squares pattern: (a+b)(a−b) = a²−b²" },
-      { "id": "s1a", "fromLatex": "2^2 = 4 \\text{ and } i^2 = -1", "toLatex": "2^2=4 \\text{ and } i^2=-1", "paletteRef": null, "dropTargets": [], "description": "Compute: 2²=4 and i²=−1 (by definition)" },
-      { "id": "s2", "fromLatex": "4 - (-1)", "toLatex": "4 + 1 = 5", "paletteRef": "p1", "dropTargets": ["4 - (-1)"], "description": "Subtract negative: 4−(−1)=4+1=5" }
+      {
+        "id": "s1",
+        "fromLatex": "(2+i)(2-i)",
+        "toLatex": "2^2 - i^2",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "Difference of squares pattern: (a+b)(a−b) = a²−b²"
+      },
+      {
+        "id": "s1a",
+        "fromLatex": "2^2 = 4 \\text{ and } i^2 = -1",
+        "toLatex": "4 + 1 = 5",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "Compute: 2²=4 and i²=−1 (by definition)"
+      }
     ]
   },
   {
-    "id": "alg2-e-008", "topic": "algebra2", "difficulty": "easy",
-    "question": { "latex": "\\frac{x^2 - 4}{x - 2}", "plain": "Simplify the rational expression (x ≠ 2)" },
-    "symbols": { "x": "The variable (x ≠ 2 to avoid division by zero)" },
+    "id": "alg2-e-008",
+    "topic": "algebra2",
+    "difficulty": "easy",
+    "question": {
+      "latex": "\\frac{x^2 - 4}{x - 2}",
+      "plain": "Simplify the rational expression (x ≠ 2)"
+    },
+    "symbols": {
+      "x": "The variable (x ≠ 2 to avoid division by zero)"
+    },
     "palette": [
-      { "id": "p1", "latex": "(x+2)(x-2)", "description": "Difference of squares: x²−4 = (x+2)(x−2)" }
+      {
+        "id": "p1",
+        "latex": "(x+2)(x-2)",
+        "description": "Difference of squares: x²−4 = (x+2)(x−2)"
+      }
     ],
     "steps": [
-      { "id": "s1", "fromLatex": "\\frac{x^2 - 4}{x - 2}", "toLatex": "\\frac{(x+2)(x-2)}{x-2}", "paletteRef": "p1", "dropTargets": ["x^2 - 4"], "description": "Factor numerator using difference of squares" },
-      { "id": "s1a", "fromLatex": "(x+2)(x-2) = x^2 - 4 \\checkmark", "toLatex": "(x+2)(x-2)=x^2-4 \\checkmark", "paletteRef": null, "dropTargets": [], "description": "Verify FOIL: (x+2)(x−2) = x²−4 ✓" },
-      { "id": "s2", "fromLatex": "\\frac{(x+2)(x-2)}{x-2}", "toLatex": "x + 2", "paletteRef": null, "dropTargets": [], "description": "Cancel common factor (x−2) — result is x+2" }
+      {
+        "id": "s1",
+        "fromLatex": "\\frac{x^2 - 4}{x - 2}",
+        "toLatex": "\\frac{(x+2)(x-2)}{x-2}",
+        "paletteRef": "p1",
+        "dropTargets": [
+          "x^2 - 4"
+        ],
+        "description": "Factor numerator using difference of squares"
+      },
+      {
+        "id": "s1a",
+        "fromLatex": "(x+2)(x-2) = x^2 - 4 \\checkmark",
+        "toLatex": "(x+2)(x-2)=x^2-4 \\checkmark",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "Verify FOIL: (x+2)(x−2) = x²−4 ✓"
+      },
+      {
+        "id": "s2",
+        "fromLatex": "\\frac{(x+2)(x-2)}{x-2}",
+        "toLatex": "x + 2",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "Cancel common factor (x−2) — result is x+2"
+      }
     ]
   },
   {
-    "id": "alg2-e-009", "topic": "algebra2", "difficulty": "easy",
-    "question": { "latex": "3x^2 - 6x", "plain": "Factor out the GCF" },
-    "symbols": { "x": "The variable", "GCF": "Greatest Common Factor" },
+    "id": "alg2-e-009",
+    "topic": "algebra2",
+    "difficulty": "easy",
+    "question": {
+      "latex": "3x^2 - 6x",
+      "plain": "Factor out the GCF"
+    },
+    "symbols": {
+      "x": "The variable",
+      "GCF": "Greatest Common Factor"
+    },
     "palette": [
-      { "id": "p1", "latex": "3x", "description": "GCF of 3x² and 6x is 3x (both divisible by 3 and x)" }
+      {
+        "id": "p1",
+        "latex": "3x",
+        "description": "GCF of 3x² and 6x is 3x (both divisible by 3 and x)"
+      }
     ],
     "steps": [
-      { "id": "s1", "fromLatex": "3x^2 - 6x", "toLatex": "3x(x - 2)", "paletteRef": "p1", "dropTargets": ["3x^2 - 6x"], "description": "Factor out GCF = 3x" },
-      { "id": "s1a", "fromLatex": "3x^2 \\div 3x = x \\text{ and } 6x \\div 3x = 2", "toLatex": "3x^2 \\div 3x = x \\text{ and } 6x \\div 3x = 2", "paletteRef": null, "dropTargets": [], "description": "Verify: 3x²÷3x = x and 6x÷3x = 2 ✓" },
-      { "id": "s2", "fromLatex": "3x(x - 2)", "toLatex": "3x(x-2)", "paletteRef": null, "dropTargets": [], "description": "Fully factored form" }
+      {
+        "id": "s1",
+        "fromLatex": "3x^2 - 6x",
+        "toLatex": "3x(x - 2)",
+        "paletteRef": "p1",
+        "dropTargets": [
+          "3x^2 - 6x"
+        ],
+        "description": "Factor out GCF = 3x"
+      },
+      {
+        "id": "s1a",
+        "fromLatex": "3x^2 \\div 3x = x \\text{ and } 6x \\div 3x = 2",
+        "toLatex": "3x^2 \\div 3x = x \\text{ and } 6x \\div 3x = 2",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "Verify: 3x²÷3x = x and 6x÷3x = 2 ✓"
+      },
+      {
+        "id": "s2",
+        "fromLatex": "3x(x - 2)",
+        "toLatex": "3x(x-2)",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "Fully factored form"
+      }
     ]
   },
   {
-    "id": "alg2-e-010", "topic": "algebra2", "difficulty": "easy",
-    "question": { "latex": "f(x) = x + 1,\\quad g(x) = x^2", "plain": "Evaluate f(g(3)) — function composition" },
-    "symbols": { "f": "Outer function f(x) = x+1", "g": "Inner function g(x) = x²" },
+    "id": "alg2-e-010",
+    "topic": "algebra2",
+    "difficulty": "easy",
+    "question": {
+      "latex": "f(x) = x + 1,\\quad g(x) = x^2",
+      "plain": "Evaluate f(g(3)) — function composition"
+    },
+    "symbols": {
+      "f": "Outer function f(x) = x+1",
+      "g": "Inner function g(x) = x²"
+    },
     "palette": [
-      { "id": "p1", "latex": "9", "description": "g(3) = 3² = 9 (evaluate the inner function first)" },
-      { "id": "p2", "latex": "10", "description": "f(9) = 9+1 = 10 (apply the outer function)" }
+      {
+        "id": "p1",
+        "latex": "9",
+        "description": "g(3) = 3² = 9 (evaluate the inner function first)"
+      }
     ],
     "steps": [
-      { "id": "s1", "fromLatex": "f(g(3))", "toLatex": "f(3^2)", "paletteRef": null, "dropTargets": [], "description": "Substitute x=3 into g(x)=x²" },
-      { "id": "s1a", "fromLatex": "3^2 = 3 \\times 3 = 9", "toLatex": "3^2=9", "paletteRef": null, "dropTargets": [], "description": "Compute: 3² = 9" },
-      { "id": "s2", "fromLatex": "f(3^2) = f(9)", "toLatex": "f(9) = 9 + 1", "paletteRef": "p1", "dropTargets": ["3^2"], "description": "Replace 3² with 9, then apply f" },
-      { "id": "s3", "fromLatex": "9 + 1", "toLatex": "10", "paletteRef": "p2", "dropTargets": ["9 + 1"], "description": "Compute: 9 + 1 = 10" }
-    ]
-  },
-
-  {
-    "id": "alg2-e-011", "topic": "algebra2", "difficulty": "easy",
-    "question": { "latex": "S_5 = \\sum_{k=1}^{5} k", "plain": "Find the sum of the first 5 positive integers" },
-    "symbols": { "S_n": "Sum of first n integers", "k": "Index variable" },
-    "palette": [
-      { "id": "p1", "latex": "\\frac{5 \\cdot 6}{2}", "description": "Formula n(n+1)/2 with n=5" },
-      { "id": "p2", "latex": "15", "description": "5·6/2 = 15" }
-    ],
-    "steps": [
-      { "id": "s1", "fromLatex": "S_5 = \\sum_{k=1}^{5} k", "toLatex": "S_5 = \\frac{5 \\cdot 6}{2}", "paletteRef": "p1", "dropTargets": ["\\sum_{k=1}^{5} k"], "description": "Apply Sₙ = n(n+1)/2 with n=5" },
-      { "id": "s1a", "fromLatex": "5 \\cdot 6 = 30", "toLatex": "5 \\cdot 6 = 30", "paletteRef": null, "dropTargets": [], "description": "Compute numerator: 5 × 6 = 30" },
-      { "id": "s2", "fromLatex": "S_5 = \\frac{30}{2}", "toLatex": "S_5 = 15", "paletteRef": "p2", "dropTargets": ["\\frac{30}{2}"], "description": "Divide: 30 ÷ 2 = 15" }
-    ]
-  },
-
-  {
-    "id": "alg2-e-012", "topic": "algebra2", "difficulty": "easy",
-    "question": { "latex": "S = \\sum_{k=1}^{4} 3", "plain": "Add the constant 3 four times" },
-    "symbols": { "k": "Index variable; the term is the constant 3" },
-    "palette": [
-      { "id": "p1", "latex": "4 \\times 3", "description": "Constant c summed n times = n·c; here n=4, c=3" }
-    ],
-    "steps": [
-      { "id": "s1", "fromLatex": "S = \\sum_{k=1}^{4} 3", "toLatex": "S = 4 \\times 3", "paletteRef": "p1", "dropTargets": ["\\sum_{k=1}^{4} 3"], "description": "A constant summed n times equals n times that constant" },
-      { "id": "s2", "fromLatex": "4 \\times 3 = 12", "toLatex": "S = 12", "paletteRef": null, "dropTargets": [], "description": "Compute: 4 × 3 = 12" }
-    ]
-  },
-
-  {
-    "id": "alg2-e-013", "topic": "algebra2", "difficulty": "easy",
-    "question": { "latex": "S = \\sum_{k=1}^{3} k^2", "plain": "Sum the first 3 perfect squares" },
-    "symbols": { "k^2": "The square of k" },
-    "palette": [
-      { "id": "p1", "latex": "1^2 + 2^2 + 3^2", "description": "Expand: write out all three terms" },
-      { "id": "p2", "latex": "14", "description": "1 + 4 + 9 = 14" }
-    ],
-    "steps": [
-      { "id": "s1", "fromLatex": "S = \\sum_{k=1}^{3} k^2", "toLatex": "S = 1^2 + 2^2 + 3^2", "paletteRef": "p1", "dropTargets": ["\\sum_{k=1}^{3} k^2"], "description": "Expand the sigma: write out each term" },
-      { "id": "s1a", "fromLatex": "1 + 4 + 9 = 14", "toLatex": "1 + 4 + 9 = 14", "paletteRef": null, "dropTargets": [], "description": "Evaluate: 1² = 1, 2² = 4, 3² = 9" },
-      { "id": "s2", "fromLatex": "S = 1^2 + 2^2 + 3^2", "toLatex": "S = 14", "paletteRef": "p2", "dropTargets": ["1^2 + 2^2 + 3^2"], "description": "Sum: 1 + 4 + 9 = 14" }
-    ]
-  },
-
-  {
-    "id": "alg2-e-014", "topic": "algebra2", "difficulty": "easy",
-    "question": { "latex": "S = \\sum_{k=2}^{5} k", "plain": "Add the integers from 2 to 5" },
-    "symbols": { "k": "Index runs from 2 to 5" },
-    "palette": [
-      { "id": "p1", "latex": "2 + 3 + 4 + 5", "description": "Expand: list all four terms" },
-      { "id": "p2", "latex": "14", "description": "2 + 3 + 4 + 5 = 14" }
-    ],
-    "steps": [
-      { "id": "s1", "fromLatex": "S = \\sum_{k=2}^{5} k", "toLatex": "S = 2 + 3 + 4 + 5", "paletteRef": "p1", "dropTargets": ["\\sum_{k=2}^{5} k"], "description": "Expand the sigma by writing out each term" },
-      { "id": "s2", "fromLatex": "S = 2 + 3 + 4 + 5", "toLatex": "S = 14", "paletteRef": "p2", "dropTargets": ["2 + 3 + 4 + 5"], "description": "Add: 2 + 3 + 4 + 5 = 14" }
-    ]
-  },
-
-  {
-    "id": "alg2-e-015", "topic": "algebra2", "difficulty": "easy",
-    "question": { "latex": "S = \\sum_{k=1}^{3} 2k", "plain": "Sum the first 3 even positive integers" },
-    "symbols": { "2k": "Even integers: 2, 4, 6" },
-    "palette": [
-      { "id": "p1", "latex": "2 + 4 + 6", "description": "Substitute k = 1, 2, 3 to get 2, 4, 6" },
-      { "id": "p2", "latex": "12", "description": "2 + 4 + 6 = 12" }
-    ],
-    "steps": [
-      { "id": "s1", "fromLatex": "S = \\sum_{k=1}^{3} 2k", "toLatex": "S = 2 + 4 + 6", "paletteRef": "p1", "dropTargets": ["\\sum_{k=1}^{3} 2k"], "description": "Substitute k = 1, 2, 3: get 2(1)=2, 2(2)=4, 2(3)=6" },
-      { "id": "s2", "fromLatex": "S = 2 + 4 + 6", "toLatex": "S = 12", "paletteRef": "p2", "dropTargets": ["2 + 4 + 6"], "description": "Add: 2 + 4 + 6 = 12" }
-    ]
-  },
-
-  {
-    "id": "alg2-m-001", "topic": "algebra2", "difficulty": "medium",
-    "question": { "latex": "x^2 - 5x + 4 = 0", "plain": "Solve using the quadratic formula" },
-    "symbols": { "x": "The unknown variable" },
-    "palette": [
-      { "id": "p1", "latex": "\\frac{5 \\pm \\sqrt{9}}{2}", "description": "Quadratic formula with a=1,b=−5,c=4: (5±√(25−16))/2 = (5±√9)/2" },
-      { "id": "p2", "latex": "3", "description": "√9 = 3 (since 3²=9)" }
-    ],
-    "steps": [
-      { "id": "s1", "fromLatex": "x^2 - 5x + 4 = 0", "toLatex": "a=1,\\; b=-5,\\; c=4", "paletteRef": null, "dropTargets": [], "description": "Identify: a=1, b=−5, c=4" },
-      { "id": "s1a", "fromLatex": "x = \\frac{-b \\pm \\sqrt{b^2-4ac}}{2a}", "toLatex": "x = \\frac{-b \\pm \\sqrt{b^2-4ac}}{2a}", "paletteRef": null, "dropTargets": [], "description": "Quadratic formula" },
-      { "id": "s2", "fromLatex": "x = \\frac{-(-5) \\pm \\sqrt{(-5)^2 - 4(1)(4)}}{2(1)}", "toLatex": "x = \\frac{5 \\pm \\sqrt{9}}{2}", "paletteRef": "p1", "dropTargets": ["-(-5) \\pm \\sqrt{(-5)^2 - 4(1)(4)}"], "description": "Substitute and simplify: 25−16=9" },
-      { "id": "s2a", "fromLatex": "(-5)^2=25,\\; 4(1)(4)=16,\\; 25-16=9", "toLatex": "(-5)^2=25,\\; 4(1)(4)=16,\\; 25-16=9", "paletteRef": null, "dropTargets": [], "description": "Compute inside the radical: 25−16=9" },
-      { "id": "s3", "fromLatex": "x = \\frac{5 \\pm \\sqrt{9}}{2}", "toLatex": "x = \\frac{5 \\pm 3}{2}", "paletteRef": "p2", "dropTargets": ["\\sqrt{9}"], "description": "Evaluate √9 = 3" },
-      { "id": "s3a", "fromLatex": "\\frac{5+3}{2}=4 \\text{ and } \\frac{5-3}{2}=1", "toLatex": "\\frac{5+3}{2}=4 \\text{ and } \\frac{5-3}{2}=1", "paletteRef": null, "dropTargets": [], "description": "Compute both cases: (5+3)/2=4 and (5−3)/2=1" },
-      { "id": "s4", "fromLatex": "x = \\frac{5 \\pm 3}{2}", "toLatex": "x = 4 \\text{ or } x = 1", "paletteRef": null, "dropTargets": [], "description": "Two solutions" }
+      {
+        "id": "s1",
+        "fromLatex": "f(g(3))",
+        "toLatex": "f(3^2)",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "Substitute x=3 into g(x)=x²"
+      },
+      {
+        "id": "s1a",
+        "fromLatex": "3^2 = 3 \\times 3 = 9",
+        "toLatex": "3^2=9",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "Compute: 3² = 9"
+      },
+      {
+        "id": "s2",
+        "fromLatex": "f(3^2) = f(9)",
+        "toLatex": "10",
+        "paletteRef": "p1",
+        "dropTargets": [
+          "3^2"
+        ],
+        "description": "Replace 3² with 9, then apply f"
+      }
     ]
   },
   {
-    "id": "alg2-m-002", "topic": "algebra2", "difficulty": "medium",
-    "question": { "latex": "x^2 - 6x + 5 = 0", "plain": "Solve by completing the square" },
-    "symbols": { "x": "The unknown variable" },
+    "id": "alg2-e-011",
+    "topic": "algebra2",
+    "difficulty": "easy",
+    "question": {
+      "latex": "S_5 = \\sum_{k=1}^{5} k",
+      "plain": "Find the sum of the first 5 positive integers"
+    },
+    "symbols": {
+      "S_n": "Sum of first n integers",
+      "k": "Index variable"
+    },
     "palette": [
-      { "id": "p1", "latex": "9", "description": "(b/2)² = (−6/2)² = (−3)² = 9 — the value to complete the square" },
-      { "id": "p2", "latex": "\\pm 2", "description": "√4 = ±2 — remember both roots" }
+      {
+        "id": "p1",
+        "latex": "\\frac{5 \\cdot 6}{2}",
+        "description": "Formula n(n+1)/2 with n=5"
+      },
+      {
+        "id": "p2",
+        "latex": "15",
+        "description": "5·6/2 = 15"
+      }
     ],
     "steps": [
-      { "id": "s1", "fromLatex": "x^2 - 6x + 5 = 0", "toLatex": "x^2 - 6x = -5", "paletteRef": null, "dropTargets": [], "description": "Move constant to the right side" },
-      { "id": "s2", "fromLatex": "x^2 - 6x + 9 = -5 + 9", "toLatex": "x^2 - 6x + 9 = 4", "paletteRef": "p1", "dropTargets": ["x^2 - 6x", "-5"], "dropSideLabels": ["left side", "right side"], "description": "Add (b/2)²=9 to both sides" },
-      { "id": "s2a", "fromLatex": "-5+9=4", "toLatex": "-5+9=4", "paletteRef": null, "dropTargets": [], "description": "Compute: −5+9=4 (right side)" },
-      { "id": "s3", "fromLatex": "x^2 - 6x + 9 = 4", "toLatex": "(x-3)^2 = 4", "paletteRef": null, "dropTargets": [], "description": "Left side is a perfect square trinomial: (x−3)²" },
-      { "id": "s4", "fromLatex": "(x-3)^2 = 4", "toLatex": "x - 3 = \\pm 2", "paletteRef": "p2", "dropTargets": ["\\sqrt{4}"], "description": "Take square root of both sides: √4 = ±2" },
-      { "id": "s4a", "fromLatex": "3+2=5 \\text{ and } 3-2=1", "toLatex": "3+2=5 \\text{ and } 3-2=1", "paletteRef": null, "dropTargets": [], "description": "Compute: 3+2=5 and 3−2=1" },
-      { "id": "s5", "fromLatex": "x - 3 = \\pm 2", "toLatex": "x = 5 \\text{ or } x = 1", "paletteRef": null, "dropTargets": [], "description": "Add 3 to each case — solutions" }
+      {
+        "id": "s1",
+        "fromLatex": "S_5 = \\sum_{k=1}^{5} k",
+        "toLatex": "S_5 = \\frac{5 \\cdot 6}{2}",
+        "paletteRef": "p1",
+        "dropTargets": [
+          "\\sum_{k=1}^{5} k"
+        ],
+        "description": "Apply Sₙ = n(n+1)/2 with n=5"
+      },
+      {
+        "id": "s1a",
+        "fromLatex": "5 \\cdot 6 = 30",
+        "toLatex": "5 \\cdot 6 = 30",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "Compute numerator: 5 × 6 = 30"
+      },
+      {
+        "id": "s2",
+        "fromLatex": "S_5 = \\frac{30}{2}",
+        "toLatex": "S_5 = 15",
+        "paletteRef": "p2",
+        "dropTargets": [
+          "\\frac{30}{2}"
+        ],
+        "description": "Divide: 30 ÷ 2 = 15"
+      }
     ]
   },
   {
-    "id": "alg2-m-003", "topic": "algebra2", "difficulty": "medium",
-    "question": { "latex": "f(x) = 2x + 3", "plain": "Find the inverse function f⁻¹(x)" },
-    "symbols": { "f^{-1}": "Inverse function — swaps input and output" },
+    "id": "alg2-e-012",
+    "topic": "algebra2",
+    "difficulty": "easy",
+    "question": {
+      "latex": "S = \\sum_{k=1}^{4} 3",
+      "plain": "Add the constant 3 four times"
+    },
+    "symbols": {
+      "k": "Index variable; the term is the constant 3"
+    },
     "palette": [
-      { "id": "p1", "latex": "x", "description": "Swap x and y to find the inverse: replace f(x)=y with x and y" },
-      { "id": "p2", "latex": "\\frac{x-3}{2}", "description": "Solve for y: subtract 3, then divide by 2" }
+      {
+        "id": "p1",
+        "latex": "4 \\times 3",
+        "description": "Constant c summed n times = n·c; here n=4, c=3"
+      }
     ],
     "steps": [
-      { "id": "s1", "fromLatex": "y = 2x + 3", "toLatex": "x = 2y + 3", "paletteRef": "p1", "dropTargets": ["x", "y"], "dropSideLabels": ["original x", "original y"], "description": "Swap x and y to begin finding the inverse" },
-      { "id": "s2", "fromLatex": "x = 2y + 3", "toLatex": "x - 3 = 2y", "paletteRef": null, "dropTargets": [], "description": "Subtract 3 from both sides" },
-      { "id": "s2a", "fromLatex": "2y \\div 2 = y", "toLatex": "2y \\div 2 = y", "paletteRef": null, "dropTargets": [], "description": "Divide both sides by 2 to isolate y" },
-      { "id": "s3", "fromLatex": "y = \\frac{x-3}{2}", "toLatex": "f^{-1}(x) = \\frac{x-3}{2}", "paletteRef": "p2", "dropTargets": ["y"], "description": "Write using inverse notation — done" }
+      {
+        "id": "s1",
+        "fromLatex": "S = \\sum_{k=1}^{4} 3",
+        "toLatex": "S = 4 \\times 3",
+        "paletteRef": "p1",
+        "dropTargets": [
+          "\\sum_{k=1}^{4} 3"
+        ],
+        "description": "A constant summed n times equals n times that constant"
+      },
+      {
+        "id": "s2",
+        "fromLatex": "4 \\times 3 = 12",
+        "toLatex": "S = 12",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "Compute: 4 × 3 = 12"
+      }
     ]
   },
   {
-    "id": "alg2-m-004", "topic": "algebra2", "difficulty": "medium",
-    "question": { "latex": "|x - 2| = 5", "plain": "Solve the absolute value equation" },
-    "symbols": { "|\\cdot|": "Absolute value — distance from zero on the number line" },
+    "id": "alg2-e-013",
+    "topic": "algebra2",
+    "difficulty": "easy",
+    "question": {
+      "latex": "S = \\sum_{k=1}^{3} k^2",
+      "plain": "Sum the first 3 perfect squares"
+    },
+    "symbols": {
+      "k^2": "The square of k"
+    },
     "palette": [
-      { "id": "p1", "latex": "\\pm 5", "description": "Absolute value creates two cases: x−2=5 and x−2=−5" }
+      {
+        "id": "p1",
+        "latex": "1^2 + 2^2 + 3^2",
+        "description": "Expand: write out all three terms"
+      },
+      {
+        "id": "p2",
+        "latex": "14",
+        "description": "1 + 4 + 9 = 14"
+      }
     ],
     "steps": [
-      { "id": "s1", "fromLatex": "|x - 2| = 5", "toLatex": "x - 2 = 5 \\text{ or } x - 2 = -5", "paletteRef": "p1", "dropTargets": ["|x - 2|"], "description": "Remove absolute value — two equations" },
-      { "id": "s1a", "fromLatex": "2+5=7 \\text{ and } 2+(-5)=-3", "toLatex": "2+5=7 \\text{ and } 2+(-5)=-3", "paletteRef": null, "dropTargets": [], "description": "Compute: add 2 to each case → 7 and −3" },
-      { "id": "s2", "fromLatex": "x - 2 = 5 \\text{ or } x - 2 = -5", "toLatex": "x = 7 \\text{ or } x = -3", "paletteRef": null, "dropTargets": [], "description": "Add 2 to both sides of each equation" }
+      {
+        "id": "s1",
+        "fromLatex": "S = \\sum_{k=1}^{3} k^2",
+        "toLatex": "S = 1^2 + 2^2 + 3^2",
+        "paletteRef": "p1",
+        "dropTargets": [
+          "\\sum_{k=1}^{3} k^2"
+        ],
+        "description": "Expand the sigma: write out each term"
+      },
+      {
+        "id": "s1a",
+        "fromLatex": "1 + 4 + 9 = 14",
+        "toLatex": "1 + 4 + 9 = 14",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "Evaluate: 1² = 1, 2² = 4, 3² = 9"
+      },
+      {
+        "id": "s2",
+        "fromLatex": "S = 1^2 + 2^2 + 3^2",
+        "toLatex": "S = 14",
+        "paletteRef": "p2",
+        "dropTargets": [
+          "1^2 + 2^2 + 3^2"
+        ],
+        "description": "Sum: 1 + 4 + 9 = 14"
+      }
     ]
   },
   {
-    "id": "alg2-m-005", "topic": "algebra2", "difficulty": "medium",
-    "question": { "latex": "3,\\; 6,\\; 12,\\; 24,\\; \\ldots", "plain": "Find the common ratio and the 6th term" },
-    "symbols": { "r": "Common ratio — each term is multiplied by r to get the next", "a_n": "n-th term of the geometric sequence" },
+    "id": "alg2-e-014",
+    "topic": "algebra2",
+    "difficulty": "easy",
+    "question": {
+      "latex": "S = \\sum_{k=2}^{5} k",
+      "plain": "Add the integers from 2 to 5"
+    },
+    "symbols": {
+      "k": "Index runs from 2 to 5"
+    },
     "palette": [
-      { "id": "p1", "latex": "2", "description": "r = 6÷3 = 2 — the common ratio" },
-      { "id": "p2", "latex": "96", "description": "a₆ = 3·2⁵ = 3·32 = 96" }
+      {
+        "id": "p1",
+        "latex": "2 + 3 + 4 + 5",
+        "description": "Expand: list all four terms"
+      },
+      {
+        "id": "p2",
+        "latex": "14",
+        "description": "2 + 3 + 4 + 5 = 14"
+      }
     ],
     "steps": [
-      { "id": "s1", "fromLatex": "r = \\frac{6}{3}", "toLatex": "r = 2", "paletteRef": "p1", "dropTargets": ["\\frac{6}{3}"], "description": "Common ratio r = 6÷3 = 2" },
-      { "id": "s1a", "fromLatex": "a_n = a_1 \\cdot r^{n-1}", "toLatex": "a_n = a_1 \\cdot r^{n-1}", "paletteRef": null, "dropTargets": [], "description": "Geometric sequence formula: aₙ = a₁·rⁿ⁻¹" },
-      { "id": "s2", "fromLatex": "a_6 = 3 \\cdot 2^{6-1} = 3 \\cdot 2^5", "toLatex": "a_6 = 3 \\cdot 32 = 96", "paletteRef": "p2", "dropTargets": ["3 \\cdot 2^5"], "description": "Compute: 2⁵=32 and 3×32=96" },
-      { "id": "s2a", "fromLatex": "2^5 = 2 \\times 2 \\times 2 \\times 2 \\times 2 = 32", "toLatex": "2^5=32", "paletteRef": null, "dropTargets": [], "description": "Verify: 2⁵ = 32" }
+      {
+        "id": "s1",
+        "fromLatex": "S = \\sum_{k=2}^{5} k",
+        "toLatex": "S = 2 + 3 + 4 + 5",
+        "paletteRef": "p1",
+        "dropTargets": [
+          "\\sum_{k=2}^{5} k"
+        ],
+        "description": "Expand the sigma by writing out each term"
+      },
+      {
+        "id": "s2",
+        "fromLatex": "S = 2 + 3 + 4 + 5",
+        "toLatex": "S = 14",
+        "paletteRef": "p2",
+        "dropTargets": [
+          "2 + 3 + 4 + 5"
+        ],
+        "description": "Add: 2 + 3 + 4 + 5 = 14"
+      }
     ]
   },
   {
-    "id": "alg2-m-006", "topic": "algebra2", "difficulty": "medium",
-    "question": { "latex": "S_{10} = \\sum_{k=1}^{10} k", "plain": "Find the sum of the first 10 positive integers" },
-    "symbols": { "S_n": "Sum of first n terms of an arithmetic series", "n": "Number of terms" },
+    "id": "alg2-e-015",
+    "topic": "algebra2",
+    "difficulty": "easy",
+    "question": {
+      "latex": "S = \\sum_{k=1}^{3} 2k",
+      "plain": "Sum the first 3 even positive integers"
+    },
+    "symbols": {
+      "2k": "Even integers: 2, 4, 6"
+    },
     "palette": [
-      { "id": "p1", "latex": "\\frac{n(n+1)}{2}", "description": "Arithmetic series formula: Sₙ = n(n+1)/2" },
-      { "id": "p2", "latex": "55", "description": "10×11÷2 = 55" }
+      {
+        "id": "p1",
+        "latex": "2 + 4 + 6",
+        "description": "Substitute k = 1, 2, 3 to get 2, 4, 6"
+      },
+      {
+        "id": "p2",
+        "latex": "12",
+        "description": "2 + 4 + 6 = 12"
+      }
     ],
     "steps": [
-      { "id": "s1", "fromLatex": "S_{10} = \\sum_{k=1}^{10} k", "toLatex": "S_{10} = \\frac{10(10+1)}{2}", "paletteRef": "p1", "dropTargets": ["\\sum_{k=1}^{10} k"], "description": "Apply the formula Sₙ = n(n+1)/2 with n=10" },
-      { "id": "s1a", "fromLatex": "10 \\times 11 = 110", "toLatex": "10 \\times 11 = 110", "paletteRef": null, "dropTargets": [], "description": "Compute numerator: 10 × 11 = 110" },
-      { "id": "s2", "fromLatex": "S_{10} = \\frac{110}{2}", "toLatex": "S_{10} = 55", "paletteRef": "p2", "dropTargets": ["\\frac{110}{2}"], "description": "Compute: 110 ÷ 2 = 55" }
+      {
+        "id": "s1",
+        "fromLatex": "S = \\sum_{k=1}^{3} 2k",
+        "toLatex": "S = 2 + 4 + 6",
+        "paletteRef": "p1",
+        "dropTargets": [
+          "\\sum_{k=1}^{3} 2k"
+        ],
+        "description": "Substitute k = 1, 2, 3: get 2(1)=2, 2(2)=4, 2(3)=6"
+      },
+      {
+        "id": "s2",
+        "fromLatex": "S = 2 + 4 + 6",
+        "toLatex": "S = 12",
+        "paletteRef": "p2",
+        "dropTargets": [
+          "2 + 4 + 6"
+        ],
+        "description": "Add: 2 + 4 + 6 = 12"
+      }
     ]
   },
   {
-    "id": "alg2-m-007", "topic": "algebra2", "difficulty": "medium",
-    "question": { "latex": "4^x = 64", "plain": "Solve the exponential equation" },
-    "symbols": { "x": "The unknown exponent" },
+    "id": "alg2-m-001",
+    "topic": "algebra2",
+    "difficulty": "medium",
+    "question": {
+      "latex": "x^2 - 5x + 4 = 0",
+      "plain": "Solve using the quadratic formula"
+    },
+    "symbols": {
+      "x": "The unknown variable"
+    },
     "palette": [
-      { "id": "p1", "latex": "4^3", "description": "Express 64 as a power of 4: 4³ = 64" }
+      {
+        "id": "p1",
+        "latex": "\\frac{5 \\pm \\sqrt{9}}{2}",
+        "description": "Quadratic formula with a=1,b=−5,c=4: (5±√(25−16))/2 = (5±√9)/2"
+      },
+      {
+        "id": "p2",
+        "latex": "3",
+        "description": "√9 = 3 (since 3²=9)"
+      }
     ],
     "steps": [
-      { "id": "s1", "fromLatex": "4^x = 64", "toLatex": "4^x = 4^3", "paletteRef": "p1", "dropTargets": ["64"], "description": "Rewrite 64 as a power of 4" },
-      { "id": "s1a", "fromLatex": "4^3 = 4 \\times 4 \\times 4 = 64 \\checkmark", "toLatex": "4^3=64 \\checkmark", "paletteRef": null, "dropTargets": [], "description": "Verify: 4³ = 4×4×4 = 64 ✓" },
-      { "id": "s2", "fromLatex": "4^x = 4^3", "toLatex": "x = 3", "paletteRef": null, "dropTargets": [], "description": "Equal bases → exponents must be equal" }
+      {
+        "id": "s1",
+        "fromLatex": "x^2 - 5x + 4 = 0",
+        "toLatex": "a=1,\\; b=-5,\\; c=4",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "Identify: a=1, b=−5, c=4"
+      },
+      {
+        "id": "s1a",
+        "fromLatex": "x = \\frac{-b \\pm \\sqrt{b^2-4ac}}{2a}",
+        "toLatex": "x = \\frac{-b \\pm \\sqrt{b^2-4ac}}{2a}",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "Quadratic formula"
+      },
+      {
+        "id": "s2",
+        "fromLatex": "x = \\frac{-(-5) \\pm \\sqrt{(-5)^2 - 4(1)(4)}}{2(1)}",
+        "toLatex": "x = \\frac{5 \\pm \\sqrt{9}}{2}",
+        "paletteRef": "p1",
+        "dropTargets": [
+          "-(-5) \\pm \\sqrt{(-5)^2 - 4(1)(4)}"
+        ],
+        "description": "Substitute and simplify: 25−16=9"
+      },
+      {
+        "id": "s2a",
+        "fromLatex": "(-5)^2=25,\\; 4(1)(4)=16,\\; 25-16=9",
+        "toLatex": "(-5)^2=25,\\; 4(1)(4)=16,\\; 25-16=9",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "Compute inside the radical: 25−16=9"
+      },
+      {
+        "id": "s3",
+        "fromLatex": "x = \\frac{5 \\pm \\sqrt{9}}{2}",
+        "toLatex": "x = \\frac{5 \\pm 3}{2}",
+        "paletteRef": "p2",
+        "dropTargets": [
+          "\\sqrt{9}"
+        ],
+        "description": "Evaluate √9 = 3"
+      },
+      {
+        "id": "s3a",
+        "fromLatex": "\\frac{5+3}{2}=4 \\text{ and } \\frac{5-3}{2}=1",
+        "toLatex": "\\frac{5+3}{2}=4 \\text{ and } \\frac{5-3}{2}=1",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "Compute both cases: (5+3)/2=4 and (5−3)/2=1"
+      },
+      {
+        "id": "s4",
+        "fromLatex": "x = \\frac{5 \\pm 3}{2}",
+        "toLatex": "x = 4 \\text{ or } x = 1",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "Two solutions"
+      }
     ]
   },
   {
-    "id": "alg2-m-008", "topic": "algebra2", "difficulty": "medium",
-    "question": { "latex": "x^3 \\cdot x^2", "plain": "Simplify using exponent rules" },
-    "symbols": { "x": "The base", "a^m \\cdot a^n = a^{m+n}": "Product rule for exponents" },
+    "id": "alg2-m-002",
+    "topic": "algebra2",
+    "difficulty": "medium",
+    "question": {
+      "latex": "x^2 - 6x + 5 = 0",
+      "plain": "Solve by completing the square"
+    },
+    "symbols": {
+      "x": "The unknown variable"
+    },
     "palette": [
-      { "id": "p1", "latex": "x^5", "description": "Product rule: xᵐ·xⁿ = xᵐ⁺ⁿ; here 3+2=5" }
+      {
+        "id": "p1",
+        "latex": "9",
+        "description": "(b/2)² = (−6/2)² = (−3)² = 9 — the value to complete the square"
+      },
+      {
+        "id": "p2",
+        "latex": "\\pm 2",
+        "description": "√4 = ±2 — remember both roots"
+      }
     ],
     "steps": [
-      { "id": "s1", "fromLatex": "x^3 \\cdot x^2", "toLatex": "x^{3+2}", "paletteRef": null, "dropTargets": [], "description": "Product rule: add exponents when multiplying same base" },
-      { "id": "s1a", "fromLatex": "3 + 2 = 5", "toLatex": "3+2=5", "paletteRef": null, "dropTargets": [], "description": "Compute: 3 + 2 = 5" },
-      { "id": "s2", "fromLatex": "x^{3+2}", "toLatex": "x^5", "paletteRef": "p1", "dropTargets": ["x^{3+2}"], "description": "Simplified result" }
+      {
+        "id": "s1",
+        "fromLatex": "x^2 - 6x + 5 = 0",
+        "toLatex": "x^2 - 6x = -5",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "Move constant to the right side"
+      },
+      {
+        "id": "s2",
+        "fromLatex": "x^2 - 6x + 9 = -5 + 9",
+        "toLatex": "x^2 - 6x + 9 = 4",
+        "paletteRef": "p1",
+        "dropTargets": [
+          "x^2 - 6x",
+          "-5"
+        ],
+        "dropSideLabels": [
+          "left side",
+          "right side"
+        ],
+        "description": "Add (b/2)²=9 to both sides"
+      },
+      {
+        "id": "s2a",
+        "fromLatex": "-5+9=4",
+        "toLatex": "-5+9=4",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "Compute: −5+9=4 (right side)"
+      },
+      {
+        "id": "s3",
+        "fromLatex": "x^2 - 6x + 9 = 4",
+        "toLatex": "(x-3)^2 = 4",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "Left side is a perfect square trinomial: (x−3)²"
+      },
+      {
+        "id": "s4",
+        "fromLatex": "(x-3)^2 = 4",
+        "toLatex": "x - 3 = \\pm 2",
+        "paletteRef": "p2",
+        "dropTargets": [
+          "4"
+        ],
+        "description": "Take square root of both sides: √4 = ±2"
+      },
+      {
+        "id": "s4a",
+        "fromLatex": "3+2=5 \\text{ and } 3-2=1",
+        "toLatex": "3+2=5 \\text{ and } 3-2=1",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "Compute: 3+2=5 and 3−2=1"
+      },
+      {
+        "id": "s5",
+        "fromLatex": "x - 3 = \\pm 2",
+        "toLatex": "x = 5 \\text{ or } x = 1",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "Add 3 to each case — solutions"
+      }
     ]
   },
   {
-    "id": "alg2-m-009", "topic": "algebra2", "difficulty": "medium",
-    "question": { "latex": "y = x^2 - 4x + 7", "plain": "Convert to vertex form by completing the square" },
-    "symbols": { "x": "The variable", "h": "x-coordinate of vertex", "k": "y-coordinate of vertex" },
+    "id": "alg2-m-003",
+    "topic": "algebra2",
+    "difficulty": "medium",
+    "question": {
+      "latex": "f(x) = 2x + 3",
+      "plain": "Find the inverse function f⁻¹(x)"
+    },
+    "symbols": {
+      "f^{-1}": "Inverse function — swaps input and output"
+    },
     "palette": [
-      { "id": "p1", "latex": "4", "description": "(b/2)² = (−4/2)² = (−2)² = 4 — value that completes the square" }
+      {
+        "id": "p1",
+        "latex": "x",
+        "description": "Swap x and y to find the inverse: replace f(x)=y with x and y"
+      },
+      {
+        "id": "p2",
+        "latex": "\\frac{x-3}{2}",
+        "description": "Solve for y: subtract 3, then divide by 2"
+      }
     ],
     "steps": [
-      { "id": "s1", "fromLatex": "y = x^2 - 4x + 7", "toLatex": "y = (x^2 - 4x + 4) + 7 - 4", "paletteRef": "p1", "dropTargets": ["x^2 - 4x", "7"], "dropSideLabels": ["add 4 inside", "subtract 4 outside"], "description": "Add and subtract (b/2)²=4 to complete the square" },
-      { "id": "s1a", "fromLatex": "7 - 4 = 3", "toLatex": "7-4=3", "paletteRef": null, "dropTargets": [], "description": "Compute constant: 7 − 4 = 3" },
-      { "id": "s2", "fromLatex": "y = (x^2 - 4x + 4) + 3", "toLatex": "y = (x - 2)^2 + 3", "paletteRef": null, "dropTargets": [], "description": "Factor perfect square trinomial: x²−4x+4 = (x−2)²" },
-      { "id": "s3", "fromLatex": "y = (x - 2)^2 + 3", "toLatex": "\\text{vertex} = (2,\\, 3)", "paletteRef": null, "dropTargets": [], "description": "Vertex form y=(x−h)²+k → vertex (2, 3)" }
+      {
+        "id": "s1",
+        "fromLatex": "y = 2x + 3",
+        "toLatex": "x = 2y + 3",
+        "paletteRef": "p1",
+        "dropTargets": [
+          "x",
+          "y"
+        ],
+        "dropSideLabels": [
+          "original x",
+          "original y"
+        ],
+        "description": "Swap x and y to begin finding the inverse"
+      },
+      {
+        "id": "s2",
+        "fromLatex": "x = 2y + 3",
+        "toLatex": "x - 3 = 2y",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "Subtract 3 from both sides"
+      },
+      {
+        "id": "s2a",
+        "fromLatex": "2y \\div 2 = y",
+        "toLatex": "2y \\div 2 = y",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "Divide both sides by 2 to isolate y"
+      },
+      {
+        "id": "s3",
+        "fromLatex": "y = \\frac{x-3}{2}",
+        "toLatex": "f^{-1}(x) = \\frac{x-3}{2}",
+        "paletteRef": "p2",
+        "dropTargets": [
+          "y"
+        ],
+        "description": "Write using inverse notation — done"
+      }
     ]
   },
   {
-    "id": "alg2-m-010", "topic": "algebra2", "difficulty": "medium",
-    "question": { "latex": "(x + 1)^3", "plain": "Expand using the binomial theorem" },
-    "symbols": { "\\binom{n}{k}": "Binomial coefficient — number of ways to choose k items from n" },
+    "id": "alg2-m-004",
+    "topic": "algebra2",
+    "difficulty": "medium",
+    "question": {
+      "latex": "|x - 2| = 5",
+      "plain": "Solve the absolute value equation"
+    },
+    "symbols": {
+      "|\\cdot|": "Absolute value — distance from zero on the number line"
+    },
     "palette": [
-      { "id": "p1", "latex": "x^3 + 3x^2 + 3x + 1", "description": "Binomial theorem: (x+1)³ = x³+3x²+3x+1 using Pascal's row 1 3 3 1" }
+      {
+        "id": "p1",
+        "latex": "\\pm 5",
+        "description": "Absolute value creates two cases: x−2=5 and x−2=−5"
+      }
     ],
     "steps": [
-      { "id": "s1", "fromLatex": "(x+1)^3", "toLatex": "\\binom{3}{0}x^3 + \\binom{3}{1}x^2 + \\binom{3}{2}x + \\binom{3}{3}", "paletteRef": null, "dropTargets": [], "description": "Apply binomial theorem: (x+1)³ = Σ C(3,k)·x³⁻ᵏ" },
-      { "id": "s1a", "fromLatex": "\\binom{3}{0}=1,\\; \\binom{3}{1}=3,\\; \\binom{3}{2}=3,\\; \\binom{3}{3}=1", "toLatex": "\\binom{3}{0}=1,\\; \\binom{3}{1}=3,\\; \\binom{3}{2}=3,\\; \\binom{3}{3}=1", "paletteRef": null, "dropTargets": [], "description": "Pascal's triangle row 3: 1  3  3  1" },
-      { "id": "s2", "fromLatex": "1 \\cdot x^3 + 3 \\cdot x^2 + 3 \\cdot x + 1", "toLatex": "x^3 + 3x^2 + 3x + 1", "paletteRef": "p1", "dropTargets": ["1 \\cdot x^3 + 3 \\cdot x^2 + 3 \\cdot x + 1"], "description": "Simplify — expanded form" }
-    ]
-  },
-
-  {
-    "id": "alg2-m-011", "topic": "algebra2", "difficulty": "medium",
-    "question": { "latex": "S_5 = \\sum_{k=1}^{5} k^2", "plain": "Find the sum of the first 5 perfect squares" },
-    "symbols": { "S_n": "Sum of k² from k=1 to n", "\\frac{n(n+1)(2n+1)}{6}": "Sum-of-squares formula" },
-    "palette": [
-      { "id": "p1", "latex": "\\frac{5 \\cdot 6 \\cdot 11}{6}", "description": "Apply n(n+1)(2n+1)/6 with n=5; 2(5)+1=11" },
-      { "id": "p2", "latex": "55", "description": "5·6·11/6 = 330/6 = 55" }
-    ],
-    "steps": [
-      { "id": "s1", "fromLatex": "S_5 = \\sum_{k=1}^{5} k^2", "toLatex": "S_5 = \\frac{5 \\cdot 6 \\cdot 11}{6}", "paletteRef": "p1", "dropTargets": ["\\sum_{k=1}^{5} k^2"], "description": "Apply ∑k² = n(n+1)(2n+1)/6 with n=5; 2n+1=11" },
-      { "id": "s1a", "fromLatex": "5 \\cdot 6 \\cdot 11 = 330", "toLatex": "5 \\cdot 6 \\cdot 11 = 330", "paletteRef": null, "dropTargets": [], "description": "Compute numerator: 5 × 6 × 11 = 330" },
-      { "id": "s2", "fromLatex": "S_5 = \\frac{330}{6}", "toLatex": "S_5 = 55", "paletteRef": "p2", "dropTargets": ["\\frac{330}{6}"], "description": "Divide: 330 ÷ 6 = 55" }
-    ]
-  },
-
-  {
-    "id": "alg2-m-012", "topic": "algebra2", "difficulty": "medium",
-    "question": { "latex": "S = \\sum_{k=1}^{6} (2k-1)", "plain": "Find the sum of the first 6 odd numbers" },
-    "symbols": { "2k-1": "The k-th odd number (1, 3, 5, 7, 9, 11)" },
-    "palette": [
-      { "id": "p1", "latex": "6^2", "description": "Sum of first n odd numbers = n²; here n=6" },
-      { "id": "p2", "latex": "36", "description": "6² = 36" }
-    ],
-    "steps": [
-      { "id": "s1", "fromLatex": "S = \\sum_{k=1}^{6} (2k-1)", "toLatex": "S = 6^2", "paletteRef": "p1", "dropTargets": ["\\sum_{k=1}^{6} (2k-1)"], "description": "Sum of first n odd numbers = n²; n=6" },
-      { "id": "s2", "fromLatex": "S = 6^2", "toLatex": "S = 36", "paletteRef": "p2", "dropTargets": ["6^2"], "description": "Compute: 6² = 36" }
-    ]
-  },
-
-  {
-    "id": "alg2-m-013", "topic": "algebra2", "difficulty": "medium",
-    "question": { "latex": "S = \\sum_{k=0}^{4} 2^k", "plain": "Sum the geometric series 1 + 2 + 4 + 8 + 16" },
-    "symbols": { "2^k": "Powers of 2: 1, 2, 4, 8, 16", "r": "Common ratio = 2" },
-    "palette": [
-      { "id": "p1", "latex": "\\frac{2^5 - 1}{2 - 1}", "description": "Geometric sum: (rⁿ⁺¹ − 1)/(r−1); r=2, n=4" },
-      { "id": "p2", "latex": "31", "description": "(32 − 1)/1 = 31" }
-    ],
-    "steps": [
-      { "id": "s1", "fromLatex": "S = \\sum_{k=0}^{4} 2^k", "toLatex": "S = \\frac{2^5 - 1}{2 - 1}", "paletteRef": "p1", "dropTargets": ["\\sum_{k=0}^{4} 2^k"], "description": "Geometric series: S = (rⁿ⁺¹ − 1)/(r−1); r=2, upper index=4" },
-      { "id": "s1a", "fromLatex": "2^5 - 1 = 32 - 1 = 31", "toLatex": "2^5 - 1 = 32 - 1 = 31", "paletteRef": null, "dropTargets": [], "description": "Compute: 2⁵ = 32, so numerator = 31" },
-      { "id": "s2", "fromLatex": "2^5 - 1 = 31", "toLatex": "S = 31", "paletteRef": "p2", "dropTargets": [], "description": "Denominator is 2−1=1, so S = 31" }
-    ]
-  },
-
-  {
-    "id": "alg2-m-014", "topic": "algebra2", "difficulty": "medium",
-    "question": { "latex": "S_8 = \\sum_{k=1}^{8} k", "plain": "Find the sum of integers from 1 to 8" },
-    "symbols": { "S_n": "Sum of first n integers" },
-    "palette": [
-      { "id": "p1", "latex": "\\frac{8 \\cdot 9}{2}", "description": "Formula n(n+1)/2 with n=8" },
-      { "id": "p2", "latex": "36", "description": "8·9/2 = 36" }
-    ],
-    "steps": [
-      { "id": "s1", "fromLatex": "S_8 = \\sum_{k=1}^{8} k", "toLatex": "S_8 = \\frac{8 \\cdot 9}{2}", "paletteRef": "p1", "dropTargets": ["\\sum_{k=1}^{8} k"], "description": "Apply Sₙ = n(n+1)/2 with n=8" },
-      { "id": "s1a", "fromLatex": "8 \\times 9 = 72", "toLatex": "8 \\times 9 = 72", "paletteRef": null, "dropTargets": [], "description": "Compute numerator: 8 × 9 = 72" },
-      { "id": "s2", "fromLatex": "S_8 = \\frac{72}{2}", "toLatex": "S_8 = 36", "paletteRef": "p2", "dropTargets": ["\\frac{72}{2}"], "description": "Divide: 72 ÷ 2 = 36" }
-    ]
-  },
-
-  {
-    "id": "alg2-m-015", "topic": "algebra2", "difficulty": "medium",
-    "question": { "latex": "S = \\sum_{k=3}^{7} k", "plain": "Sum the integers from 3 to 7" },
-    "symbols": { "k": "Index from 3 to 7; that's 5 terms" },
-    "palette": [
-      { "id": "p1", "latex": "5 \\cdot \\frac{3+7}{2}", "description": "Arithmetic series: n·(first+last)/2; n=5, first=3, last=7" },
-      { "id": "p2", "latex": "25", "description": "5 × 5 = 25" }
-    ],
-    "steps": [
-      { "id": "s1", "fromLatex": "S = \\sum_{k=3}^{7} k", "toLatex": "S = 5 \\cdot \\frac{3+7}{2}", "paletteRef": "p1", "dropTargets": ["\\sum_{k=3}^{7} k"], "description": "Arithmetic series: n=5 terms, first=3, last=7; S = n(a₁+aₙ)/2" },
-      { "id": "s1a", "fromLatex": "\\frac{3+7}{2} = 5", "toLatex": "\\frac{3+7}{2} = 5", "paletteRef": null, "dropTargets": [], "description": "Compute mean of first and last: (3+7)/2 = 5" },
-      { "id": "s2", "fromLatex": "S = 5 \\cdot \\frac{3+7}{2}", "toLatex": "S = 25", "paletteRef": "p2", "dropTargets": ["5 \\cdot \\frac{3+7}{2}"], "description": "Multiply: 5 × 5 = 25" }
-    ]
-  },
-
-  {
-    "id": "alg2-h-001", "topic": "algebra2", "difficulty": "hard",
-    "question": { "latex": "x^2 + 2x - 1 = 0", "plain": "Solve using the quadratic formula — irrational roots" },
-    "symbols": { "x": "The unknown variable" },
-    "palette": [
-      { "id": "p1", "latex": "\\frac{-2 \\pm \\sqrt{8}}{2}", "description": "Quadratic formula: a=1,b=2,c=−1 → (−2±√(4+4))/2 = (−2±√8)/2" },
-      { "id": "p2", "latex": "2\\sqrt{2}", "description": "Simplify √8 = √(4·2) = 2√2" },
-      { "id": "p3", "latex": "-1 \\pm \\sqrt{2}", "description": "Divide numerator and denominator by 2: (−2±2√2)/2 = −1±√2" }
-    ],
-    "steps": [
-      { "id": "s1", "fromLatex": "x^2 + 2x - 1 = 0", "toLatex": "a=1,\\; b=2,\\; c=-1", "paletteRef": null, "dropTargets": [], "description": "Identify: a=1, b=2, c=−1" },
-      { "id": "s2", "fromLatex": "x = \\frac{-2 \\pm \\sqrt{2^2 - 4(1)(-1)}}{2(1)}", "toLatex": "x = \\frac{-2 \\pm \\sqrt{8}}{2}", "paletteRef": "p1", "dropTargets": ["-2 \\pm \\sqrt{2^2 - 4(1)(-1)}"], "description": "Substitute and compute discriminant: 4+4=8" },
-      { "id": "s2a", "fromLatex": "2^2=4,\\; 4(1)(-1)=-4,\\; 4-(-4)=8", "toLatex": "4-(-4)=8", "paletteRef": null, "dropTargets": [], "description": "Compute: 4−(−4)=8 (the discriminant)" },
-      { "id": "s3", "fromLatex": "\\sqrt{8} = \\sqrt{4 \\cdot 2}", "toLatex": "\\sqrt{8} = 2\\sqrt{2}", "paletteRef": "p2", "dropTargets": ["\\sqrt{8}"], "description": "Simplify √8 = 2√2" },
-      { "id": "s4", "fromLatex": "x = \\frac{-2 \\pm 2\\sqrt{2}}{2}", "toLatex": "x = -1 \\pm \\sqrt{2}", "paletteRef": "p3", "dropTargets": ["\\frac{-2 \\pm 2\\sqrt{2}}{2}"], "description": "Divide numerator and denominator by 2" },
-      { "id": "s5", "fromLatex": "x = -1 \\pm \\sqrt{2}", "toLatex": "x = -1 + \\sqrt{2} \\approx 0.414 \\text{ or } x = -1 - \\sqrt{2} \\approx -2.414", "paletteRef": null, "dropTargets": [], "description": "Two irrational solutions" }
+      {
+        "id": "s1",
+        "fromLatex": "|x - 2| = 5",
+        "toLatex": "x - 2 = 5 \\text{ or } x - 2 = -5",
+        "paletteRef": "p1",
+        "dropTargets": [
+          "|x - 2|"
+        ],
+        "description": "Remove absolute value — two equations"
+      },
+      {
+        "id": "s1a",
+        "fromLatex": "2+5=7 \\text{ and } 2+(-5)=-3",
+        "toLatex": "2+5=7 \\text{ and } 2+(-5)=-3",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "Compute: add 2 to each case → 7 and −3"
+      },
+      {
+        "id": "s2",
+        "fromLatex": "x - 2 = 5 \\text{ or } x - 2 = -5",
+        "toLatex": "x = 7 \\text{ or } x = -3",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "Add 2 to both sides of each equation"
+      }
     ]
   },
   {
-    "id": "alg2-h-002", "topic": "algebra2", "difficulty": "hard",
-    "question": { "latex": "x^3 - 6x^2 + 11x - 6 = 0", "plain": "Find all real roots using the rational root theorem" },
-    "symbols": { "x": "The unknown variable" },
+    "id": "alg2-m-005",
+    "topic": "algebra2",
+    "difficulty": "medium",
+    "question": {
+      "latex": "3,\\; 6,\\; 12,\\; 24,\\; \\ldots",
+      "plain": "Find the common ratio and the 6th term"
+    },
+    "symbols": {
+      "r": "Common ratio — each term is multiplied by r to get the next",
+      "a_n": "n-th term of the geometric sequence"
+    },
     "palette": [
-      { "id": "p1", "latex": "x=1", "description": "Test x=1: 1−6+11−6=0 ✓ — so (x−1) is a factor" },
-      { "id": "p2", "latex": "x^2 - 5x + 6", "description": "Divide out (x−1): the remaining quadratic is x²−5x+6" },
-      { "id": "p3", "latex": "(x-2)(x-3)", "description": "Factor x²−5x+6: find two numbers multiplying to 6 and adding to −5" }
+      {
+        "id": "p1",
+        "latex": "2",
+        "description": "r = 6÷3 = 2 — the common ratio"
+      },
+      {
+        "id": "p2",
+        "latex": "96",
+        "description": "a₆ = 3·2⁵ = 3·32 = 96"
+      }
     ],
     "steps": [
-      { "id": "s1", "fromLatex": "\\text{Possible rational roots: } \\pm 1, \\pm 2, \\pm 3, \\pm 6", "toLatex": "\\text{Possible rational roots: } \\pm 1, \\pm 2, \\pm 3, \\pm 6", "paletteRef": null, "dropTargets": [], "description": "Rational root theorem: factors of constant ÷ factors of leading coefficient" },
-      { "id": "s2", "fromLatex": "p(1) = 1 - 6 + 11 - 6", "toLatex": "p(1) = 0", "paletteRef": "p1", "dropTargets": ["1 - 6 + 11 - 6"], "description": "Test x=1: p(1)=0 ✓ — root found" },
-      { "id": "s3", "fromLatex": "x^3 - 6x^2 + 11x - 6 = (x-1)(x^2 - 5x + 6)", "toLatex": "(x-1)(x^2 - 5x + 6)", "paletteRef": "p2", "dropTargets": ["x^2 - 5x + 6"], "description": "Divide by (x−1) via synthetic division → quotient x²−5x+6" },
-      { "id": "s4", "fromLatex": "x^2 - 5x + 6", "toLatex": "(x-2)(x-3)", "paletteRef": "p3", "dropTargets": ["x^2 - 5x + 6"], "description": "Factor the quadratic: (x−2)(x−3)" },
-      { "id": "s5", "fromLatex": "(x-1)(x-2)(x-3) = 0", "toLatex": "x=1 \\text{ or } x=2 \\text{ or } x=3", "paletteRef": null, "dropTargets": [], "description": "Zero product property — three roots" }
+      {
+        "id": "s1",
+        "fromLatex": "r = \\frac{6}{3}",
+        "toLatex": "r = 2",
+        "paletteRef": "p1",
+        "dropTargets": [
+          "\\frac{6}{3}"
+        ],
+        "description": "Common ratio r = 6÷3 = 2"
+      },
+      {
+        "id": "s1a",
+        "fromLatex": "a_n = a_1 \\cdot r^{n-1}",
+        "toLatex": "a_n = a_1 \\cdot r^{n-1}",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "Geometric sequence formula: aₙ = a₁·rⁿ⁻¹"
+      },
+      {
+        "id": "s2",
+        "fromLatex": "a_6 = 3 \\cdot 2^{6-1} = 3 \\cdot 2^5",
+        "toLatex": "a_6 = 3 \\cdot 32 = 96",
+        "paletteRef": "p2",
+        "dropTargets": [
+          "3 \\cdot 2^5"
+        ],
+        "description": "Compute: 2⁵=32 and 3×32=96"
+      },
+      {
+        "id": "s2a",
+        "fromLatex": "2^5 = 2 \\times 2 \\times 2 \\times 2 \\times 2 = 32",
+        "toLatex": "2^5=32",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "Verify: 2⁵ = 32"
+      }
     ]
   },
   {
-    "id": "alg2-h-003", "topic": "algebra2", "difficulty": "hard",
-    "question": { "latex": "\\log_2(x) + \\log_2(x-2) = 3", "plain": "Solve the logarithmic equation" },
-    "symbols": { "\\log_2": "Log base 2 — the exponent needed to reach x from base 2" },
+    "id": "alg2-m-006",
+    "topic": "algebra2",
+    "difficulty": "medium",
+    "question": {
+      "latex": "S_{10} = \\sum_{k=1}^{10} k",
+      "plain": "Find the sum of the first 10 positive integers"
+    },
+    "symbols": {
+      "S_n": "Sum of first n terms of an arithmetic series",
+      "n": "Number of terms"
+    },
     "palette": [
-      { "id": "p1", "latex": "\\log_2(x(x-2))", "description": "Product rule: log(A)+log(B) = log(A·B)" },
-      { "id": "p2", "latex": "8", "description": "Convert: log₂(…)=3 means 2³=8" },
-      { "id": "p3", "latex": "(x-4)(x+2)", "description": "Factor x²−2x−8 = (x−4)(x+2)" }
+      {
+        "id": "p1",
+        "latex": "\\frac{n(n+1)}{2}",
+        "description": "Arithmetic series formula: Sₙ = n(n+1)/2"
+      },
+      {
+        "id": "p2",
+        "latex": "55",
+        "description": "10×11÷2 = 55"
+      }
     ],
     "steps": [
-      { "id": "s1", "fromLatex": "\\log_2(x) + \\log_2(x-2) = 3", "toLatex": "\\log_2(x(x-2)) = 3", "paletteRef": "p1", "dropTargets": ["\\log_2(x) + \\log_2(x-2)"], "description": "Product rule: log(x)+log(x−2) = log(x(x−2))" },
-      { "id": "s2", "fromLatex": "\\log_2(x(x-2)) = 3", "toLatex": "x(x-2) = 8", "paletteRef": "p2", "dropTargets": ["3"], "description": "Convert to exponential: 2³=8" },
-      { "id": "s2a", "fromLatex": "2^3 = 2 \\times 2 \\times 2 = 8", "toLatex": "2^3=8", "paletteRef": null, "dropTargets": [], "description": "Verify: 2³=8" },
-      { "id": "s3", "fromLatex": "x(x-2) = 8", "toLatex": "x^2 - 2x - 8 = 0", "paletteRef": null, "dropTargets": [], "description": "Expand and move 8 to left side" },
-      { "id": "s4", "fromLatex": "x^2 - 2x - 8 = 0", "toLatex": "(x-4)(x+2) = 0", "paletteRef": "p3", "dropTargets": ["x^2 - 2x - 8"], "description": "Factor the quadratic" },
-      { "id": "s5", "fromLatex": "(x-4)(x+2) = 0", "toLatex": "x = 4 \\text{ (reject } x=-2 \\text{ — domain requires } x>0\\text{)}", "paletteRef": null, "dropTargets": [], "description": "x=4 or x=−2; reject x=−2 (log of negative undefined)" }
+      {
+        "id": "s1",
+        "fromLatex": "S_{10} = \\sum_{k=1}^{10} k",
+        "toLatex": "S_{10} = \\frac{10(10+1)}{2}",
+        "paletteRef": "p1",
+        "dropTargets": [
+          "\\sum_{k=1}^{10} k"
+        ],
+        "description": "Apply the formula Sₙ = n(n+1)/2 with n=10"
+      },
+      {
+        "id": "s1a",
+        "fromLatex": "10 \\times 11 = 110",
+        "toLatex": "10 \\times 11 = 110",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "Compute numerator: 10 × 11 = 110"
+      },
+      {
+        "id": "s2",
+        "fromLatex": "S_{10} = \\frac{110}{2}",
+        "toLatex": "S_{10} = 55",
+        "paletteRef": "p2",
+        "dropTargets": [
+          "\\frac{110}{2}"
+        ],
+        "description": "Compute: 110 ÷ 2 = 55"
+      }
     ]
   },
   {
-    "id": "alg2-h-004", "topic": "algebra2", "difficulty": "hard",
-    "question": { "latex": "3^{x+1} = 27^{x-1}", "plain": "Solve by matching bases" },
-    "symbols": { "x": "The unknown exponent" },
+    "id": "alg2-m-007",
+    "topic": "algebra2",
+    "difficulty": "medium",
+    "question": {
+      "latex": "4^x = 64",
+      "plain": "Solve the exponential equation"
+    },
+    "symbols": {
+      "x": "The unknown exponent"
+    },
     "palette": [
-      { "id": "p1", "latex": "3^3", "description": "Rewrite 27 as 3³ so both sides share base 3" },
-      { "id": "p2", "latex": "3(x-1)", "description": "Apply power rule: (3³)^(x−1) = 3^(3(x−1)) = 3^(3x−3)" }
+      {
+        "id": "p1",
+        "latex": "4^3",
+        "description": "Express 64 as a power of 4: 4³ = 64"
+      }
     ],
     "steps": [
-      { "id": "s1", "fromLatex": "3^{x+1} = 27^{x-1}", "toLatex": "3^{x+1} = (3^3)^{x-1}", "paletteRef": "p1", "dropTargets": ["27"], "description": "Rewrite 27 = 3³ for common base" },
-      { "id": "s2", "fromLatex": "(3^3)^{x-1}", "toLatex": "3^{3(x-1)}", "paletteRef": "p2", "dropTargets": ["(3^3)^{x-1}"], "description": "Power rule: (aᵐ)ⁿ = aᵐⁿ" },
-      { "id": "s2a", "fromLatex": "3(x-1) = 3x - 3", "toLatex": "3(x-1)=3x-3", "paletteRef": null, "dropTargets": [], "description": "Distribute: 3(x−1)=3x−3" },
-      { "id": "s3", "fromLatex": "3^{x+1} = 3^{3x-3}", "toLatex": "x + 1 = 3x - 3", "paletteRef": null, "dropTargets": [], "description": "Equal bases → equate exponents" },
-      { "id": "s3a", "fromLatex": "1 + 3 = 4 \\text{ and } 3x - x = 2x", "toLatex": "4 = 2x", "paletteRef": null, "dropTargets": [], "description": "Rearrange: move x terms and constants" },
-      { "id": "s4", "fromLatex": "4 = 2x", "toLatex": "x = 2", "paletteRef": null, "dropTargets": [], "description": "Divide by 2 — solution" }
+      {
+        "id": "s1",
+        "fromLatex": "4^x = 64",
+        "toLatex": "4^x = 4^3",
+        "paletteRef": "p1",
+        "dropTargets": [
+          "64"
+        ],
+        "description": "Rewrite 64 as a power of 4"
+      },
+      {
+        "id": "s1a",
+        "fromLatex": "4^3 = 4 \\times 4 \\times 4 = 64 \\checkmark",
+        "toLatex": "4^3=64 \\checkmark",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "Verify: 4³ = 4×4×4 = 64 ✓"
+      },
+      {
+        "id": "s2",
+        "fromLatex": "4^x = 4^3",
+        "toLatex": "x = 3",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "Equal bases → exponents must be equal"
+      }
     ]
   },
   {
-    "id": "alg2-h-005", "topic": "algebra2", "difficulty": "hard",
-    "question": { "latex": "S = 1 + \\frac{1}{2} + \\frac{1}{4} + \\frac{1}{8} + \\cdots", "plain": "Find the sum of the infinite geometric series" },
-    "symbols": { "S": "Sum of the infinite series", "r": "Common ratio", "a": "First term" },
+    "id": "alg2-m-008",
+    "topic": "algebra2",
+    "difficulty": "medium",
+    "question": {
+      "latex": "x^3 \\cdot x^2",
+      "plain": "Simplify using exponent rules"
+    },
+    "symbols": {
+      "x": "The base",
+      "a^m \\cdot a^n = a^{m+n}": "Product rule for exponents"
+    },
     "palette": [
-      { "id": "p1", "latex": "\\frac{1}{2}", "description": "Common ratio r = (1/2)÷1 = 1/2 — each term is half the previous" },
-      { "id": "p2", "latex": "\\frac{1}{1 - r}", "description": "Infinite geometric series formula: S = a/(1−r), valid when |r|<1" },
-      { "id": "p3", "latex": "2", "description": "S = 1/(1−1/2) = 1/(1/2) = 2" }
+      {
+        "id": "p1",
+        "latex": "x^5",
+        "description": "Product rule: xᵐ·xⁿ = xᵐ⁺ⁿ; here 3+2=5"
+      }
     ],
     "steps": [
-      { "id": "s1", "fromLatex": "r = \\frac{1/2}{1}", "toLatex": "r = \\frac{1}{2}", "paletteRef": "p1", "dropTargets": ["\\frac{1/2}{1}"], "description": "Find common ratio: r = (½)÷1 = ½" },
-      { "id": "s1a", "fromLatex": "|r| = \\frac{1}{2} < 1", "toLatex": "|r| = \\tfrac{1}{2} < 1 \\Rightarrow \\text{series converges}", "paletteRef": null, "dropTargets": [], "description": "Since |r|<1 the series converges" },
-      { "id": "s2", "fromLatex": "S = \\frac{a}{1-r}", "toLatex": "S = \\frac{1}{1 - \\frac{1}{2}}", "paletteRef": "p2", "dropTargets": ["\\frac{a}{1-r}"], "description": "Apply formula S = a/(1−r) with a=1, r=½" },
-      { "id": "s2a", "fromLatex": "1 - \\frac{1}{2} = \\frac{1}{2}", "toLatex": "1-\\tfrac{1}{2}=\\tfrac{1}{2}", "paletteRef": null, "dropTargets": [], "description": "Compute denominator: 1 − ½ = ½" },
-      { "id": "s3", "fromLatex": "S = \\frac{1}{\\frac{1}{2}}", "toLatex": "S = 2", "paletteRef": "p3", "dropTargets": ["\\frac{1}{\\frac{1}{2}}"], "description": "Dividing by ½ is multiplying by 2 → S = 2" }
+      {
+        "id": "s1",
+        "fromLatex": "x^3 \\cdot x^2",
+        "toLatex": "x^{3+2}",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "Product rule: add exponents when multiplying same base"
+      },
+      {
+        "id": "s1a",
+        "fromLatex": "3 + 2 = 5",
+        "toLatex": "3+2=5",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "Compute: 3 + 2 = 5"
+      },
+      {
+        "id": "s2",
+        "fromLatex": "x^{3+2}",
+        "toLatex": "x^5",
+        "paletteRef": "p1",
+        "dropTargets": [
+          "x^{3+2}"
+        ],
+        "description": "Simplified result"
+      }
     ]
   },
   {
-    "id": "alg2-h-006", "topic": "algebra2", "difficulty": "hard",
-    "question": { "latex": "\\frac{2 + 3i}{1 - i}", "plain": "Divide the complex numbers" },
-    "symbols": { "i": "Imaginary unit — i² = −1", "\\bar{z}": "Complex conjugate — flip sign of imaginary part" },
+    "id": "alg2-m-009",
+    "topic": "algebra2",
+    "difficulty": "medium",
+    "question": {
+      "latex": "y = x^2 - 4x + 7",
+      "plain": "Convert to vertex form by completing the square"
+    },
+    "symbols": {
+      "x": "The variable",
+      "h": "x-coordinate of vertex",
+      "k": "y-coordinate of vertex"
+    },
     "palette": [
-      { "id": "p1", "latex": "\\frac{1+i}{1+i}", "description": "Multiply by conjugate of denominator: conjugate of (1−i) is (1+i)" },
-      { "id": "p2", "latex": "-1 + 5i", "description": "Numerator: (2+3i)(1+i) = 2+2i+3i+3i² = 2+5i+3(−1) = −1+5i" },
-      { "id": "p3", "latex": "2", "description": "Denominator: (1−i)(1+i) = 1−i² = 1−(−1) = 2" }
+      {
+        "id": "p1",
+        "latex": "4",
+        "description": "(b/2)² = (−4/2)² = (−2)² = 4 — value that completes the square"
+      }
     ],
     "steps": [
-      { "id": "s1", "fromLatex": "\\frac{2+3i}{1-i}", "toLatex": "\\frac{(2+3i)(1+i)}{(1-i)(1+i)}", "paletteRef": "p1", "dropTargets": ["\\frac{2+3i}{1-i}"], "description": "Multiply numerator and denominator by conjugate (1+i)" },
-      { "id": "s2", "fromLatex": "(2+3i)(1+i) = 2+2i+3i+3i^2", "toLatex": "2+5i+3(-1) = -1+5i", "paletteRef": "p2", "dropTargets": ["2+2i+3i+3i^2"], "description": "Expand numerator using FOIL; i²=−1" },
-      { "id": "s2a", "fromLatex": "2+2i+3i+3(-1) = 2+5i-3=-1+5i", "toLatex": "-1+5i", "paletteRef": null, "dropTargets": [], "description": "Compute: 2−3=−1 and 2i+3i=5i → −1+5i" },
-      { "id": "s3", "fromLatex": "(1-i)(1+i) = 1 - i^2", "toLatex": "1 - (-1) = 2", "paletteRef": "p3", "dropTargets": ["1 - i^2"], "description": "Denominator: difference of squares (1−i)(1+i)=1−i²=1+1=2" },
-      { "id": "s4", "fromLatex": "\\frac{-1+5i}{2}", "toLatex": "-\\frac{1}{2} + \\frac{5}{2}i", "paletteRef": null, "dropTargets": [], "description": "Write in standard form a+bi" }
+      {
+        "id": "s1",
+        "fromLatex": "y = x^2 - 4x + 7",
+        "toLatex": "y = (x^2 - 4x + 4) + 7 - 4",
+        "paletteRef": "p1",
+        "dropTargets": [
+          "x^2 - 4x",
+          "7"
+        ],
+        "dropSideLabels": [
+          "add 4 inside",
+          "subtract 4 outside"
+        ],
+        "description": "Add and subtract (b/2)²=4 to complete the square"
+      },
+      {
+        "id": "s1a",
+        "fromLatex": "7 - 4 = 3",
+        "toLatex": "7-4=3",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "Compute constant: 7 − 4 = 3"
+      },
+      {
+        "id": "s2",
+        "fromLatex": "y = (x^2 - 4x + 4) + 3",
+        "toLatex": "y = (x - 2)^2 + 3",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "Factor perfect square trinomial: x²−4x+4 = (x−2)²"
+      },
+      {
+        "id": "s3",
+        "fromLatex": "y = (x - 2)^2 + 3",
+        "toLatex": "\\text{vertex} = (2,\\, 3)",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "Vertex form y=(x−h)²+k → vertex (2, 3)"
+      }
     ]
   },
   {
-    "id": "alg2-h-007", "topic": "algebra2", "difficulty": "hard",
-    "question": { "latex": "p(x) = x^3 + 2x - 1", "plain": "Use the Remainder Theorem to find the remainder when p(x) is divided by (x − 2)" },
-    "symbols": { "p(x)": "Polynomial p(x) = x³+2x−1", "r": "Remainder from polynomial division" },
+    "id": "alg2-m-010",
+    "topic": "algebra2",
+    "difficulty": "medium",
+    "question": {
+      "latex": "(x + 1)^3",
+      "plain": "Expand using the binomial theorem"
+    },
+    "symbols": {
+      "\\binom{n}{k}": "Binomial coefficient — number of ways to choose k items from n"
+    },
     "palette": [
-      { "id": "p1", "latex": "p(2)", "description": "Remainder Theorem: the remainder when p(x)÷(x−a) equals p(a)" },
-      { "id": "p2", "latex": "11", "description": "p(2) = 2³+2(2)−1 = 8+4−1 = 11" }
+      {
+        "id": "p1",
+        "latex": "x^3 + 3x^2 + 3x + 1",
+        "description": "Binomial theorem: (x+1)³ = x³+3x²+3x+1 using Pascal's row 1 3 3 1"
+      }
     ],
     "steps": [
-      { "id": "s1", "fromLatex": "\\text{Remainder} = p(2)", "toLatex": "p(2) = 2^3 + 2(2) - 1", "paletteRef": "p1", "dropTargets": ["p(2)"], "description": "Remainder Theorem: substitute x=2 into p(x)" },
-      { "id": "s1a", "fromLatex": "2^3 = 8", "toLatex": "2^3=8", "paletteRef": null, "dropTargets": [], "description": "Compute: 2³ = 8" },
-      { "id": "s1b", "fromLatex": "2(2) = 4", "toLatex": "2(2)=4", "paletteRef": null, "dropTargets": [], "description": "Compute: 2(2) = 4" },
-      { "id": "s2", "fromLatex": "p(2) = 8 + 4 - 1", "toLatex": "p(2) = 11", "paletteRef": "p2", "dropTargets": ["8 + 4 - 1"], "description": "Compute: 8+4−1=11 — the remainder is 11" }
+      {
+        "id": "s1",
+        "fromLatex": "(x+1)^3",
+        "toLatex": "\\binom{3}{0}x^3 + \\binom{3}{1}x^2 + \\binom{3}{2}x + \\binom{3}{3}",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "Apply binomial theorem: (x+1)³ = Σ C(3,k)·x³⁻ᵏ"
+      },
+      {
+        "id": "s1a",
+        "fromLatex": "\\binom{3}{0}=1,\\; \\binom{3}{1}=3,\\; \\binom{3}{2}=3,\\; \\binom{3}{3}=1",
+        "toLatex": "\\binom{3}{0}=1,\\; \\binom{3}{1}=3,\\; \\binom{3}{2}=3,\\; \\binom{3}{3}=1",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "Pascal's triangle row 3: 1  3  3  1"
+      },
+      {
+        "id": "s2",
+        "fromLatex": "1 \\cdot x^3 + 3 \\cdot x^2 + 3 \\cdot x + 1",
+        "toLatex": "x^3 + 3x^2 + 3x + 1",
+        "paletteRef": "p1",
+        "dropTargets": [
+          "1 \\cdot x^3 + 3 \\cdot x^2 + 3 \\cdot x + 1"
+        ],
+        "description": "Simplify — expanded form"
+      }
     ]
   },
   {
-    "id": "alg2-h-008", "topic": "algebra2", "difficulty": "hard",
-    "question": { "latex": "\\frac{x^3 - 8}{x - 2}", "plain": "Divide the polynomial (x ≠ 2)" },
-    "symbols": { "x": "The variable (x ≠ 2)" },
+    "id": "alg2-m-011",
+    "topic": "algebra2",
+    "difficulty": "medium",
+    "question": {
+      "latex": "S_5 = \\sum_{k=1}^{5} k^2",
+      "plain": "Find the sum of the first 5 perfect squares"
+    },
+    "symbols": {
+      "S_n": "Sum of k² from k=1 to n",
+      "\\frac{n(n+1)(2n+1)}{6}": "Sum-of-squares formula"
+    },
     "palette": [
-      { "id": "p1", "latex": "(x-2)(x^2+2x+4)", "description": "Difference of cubes: a³−b³ = (a−b)(a²+ab+b²); here a=x, b=2" },
-      { "id": "p2", "latex": "x^2 + 2x + 4", "description": "Cancel (x−2) — quotient is x²+2x+4" }
+      {
+        "id": "p1",
+        "latex": "\\frac{5 \\cdot 6 \\cdot 11}{6}",
+        "description": "Apply n(n+1)(2n+1)/6 with n=5; 2(5)+1=11"
+      },
+      {
+        "id": "p2",
+        "latex": "55",
+        "description": "5·6·11/6 = 330/6 = 55"
+      }
     ],
     "steps": [
-      { "id": "s1", "fromLatex": "x^3 - 8 = x^3 - 2^3", "toLatex": "x^3-8 = (x-2)(x^2+2x+4)", "paletteRef": "p1", "dropTargets": ["x^3 - 8"], "description": "Factor numerator using difference of cubes: a³−b³=(a−b)(a²+ab+b²)" },
-      { "id": "s1a", "fromLatex": "a^3 - b^3 = (a-b)(a^2+ab+b^2)", "toLatex": "x^3-2^3=(x-2)(x^2+2x+4)", "paletteRef": null, "dropTargets": [], "description": "With a=x and b=2: x²+ax·b+b²=x²+2x+4" },
-      { "id": "s2", "fromLatex": "\\frac{(x-2)(x^2+2x+4)}{x-2}", "toLatex": "x^2 + 2x + 4", "paletteRef": "p2", "dropTargets": ["\\frac{(x-2)(x^2+2x+4)}{x-2}"], "description": "Cancel (x−2) — quotient is x²+2x+4" }
+      {
+        "id": "s1",
+        "fromLatex": "S_5 = \\sum_{k=1}^{5} k^2",
+        "toLatex": "S_5 = \\frac{5 \\cdot 6 \\cdot 11}{6}",
+        "paletteRef": "p1",
+        "dropTargets": [
+          "\\sum_{k=1}^{5} k^2"
+        ],
+        "description": "Apply ∑k² = n(n+1)(2n+1)/6 with n=5; 2n+1=11"
+      },
+      {
+        "id": "s1a",
+        "fromLatex": "5 \\cdot 6 \\cdot 11 = 330",
+        "toLatex": "5 \\cdot 6 \\cdot 11 = 330",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "Compute numerator: 5 × 6 × 11 = 330"
+      },
+      {
+        "id": "s2",
+        "fromLatex": "S_5 = \\frac{330}{6}",
+        "toLatex": "S_5 = 55",
+        "paletteRef": "p2",
+        "dropTargets": [
+          "\\frac{330}{6}"
+        ],
+        "description": "Divide: 330 ÷ 6 = 55"
+      }
     ]
   },
   {
-    "id": "alg2-h-009", "topic": "algebra2", "difficulty": "hard",
-    "question": { "latex": "x + y = 3,\\quad x^2 + y = 5", "plain": "Solve the system of equations (linear + quadratic)" },
-    "symbols": { "x": "First unknown", "y": "Second unknown" },
+    "id": "alg2-m-012",
+    "topic": "algebra2",
+    "difficulty": "medium",
+    "question": {
+      "latex": "S = \\sum_{k=1}^{6} (2k-1)",
+      "plain": "Find the sum of the first 6 odd numbers"
+    },
+    "symbols": {
+      "2k-1": "The k-th odd number (1, 3, 5, 7, 9, 11)"
+    },
     "palette": [
-      { "id": "p1", "latex": "3 - x", "description": "From the linear equation: y = 3 − x (substitution)" },
-      { "id": "p2", "latex": "(x-2)(x+1)", "description": "Factor x²−x−2 = (x−2)(x+1)" }
+      {
+        "id": "p1",
+        "latex": "6^2",
+        "description": "Sum of first n odd numbers = n²; here n=6"
+      },
+      {
+        "id": "p2",
+        "latex": "36",
+        "description": "6² = 36"
+      }
     ],
     "steps": [
-      { "id": "s1", "fromLatex": "x + y = 3", "toLatex": "y = 3 - x", "paletteRef": "p1", "dropTargets": ["3 - x"], "description": "Solve linear equation for y: y = 3−x" },
-      { "id": "s2", "fromLatex": "x^2 + (3 - x) = 5", "toLatex": "x^2 - x + 3 = 5", "paletteRef": null, "dropTargets": [], "description": "Substitute y=3−x into the second equation" },
-      { "id": "s3", "fromLatex": "x^2 - x + 3 = 5", "toLatex": "x^2 - x - 2 = 0", "paletteRef": null, "dropTargets": [], "description": "Subtract 5 from both sides" },
-      { "id": "s4", "fromLatex": "x^2 - x - 2 = 0", "toLatex": "(x-2)(x+1) = 0", "paletteRef": "p2", "dropTargets": ["x^2 - x - 2"], "description": "Factor the quadratic" },
-      { "id": "s5", "fromLatex": "(x-2)(x+1) = 0", "toLatex": "x=2 \\text{ or } x=-1", "paletteRef": null, "dropTargets": [], "description": "Zero product property" },
-      { "id": "s5a", "fromLatex": "y = 3-2=1 \\text{ and } y=3-(-1)=4", "toLatex": "y=1 \\text{ and } y=4", "paletteRef": null, "dropTargets": [], "description": "Compute y for each x: (2,1) and (−1,4)" },
-      { "id": "s6", "fromLatex": "", "toLatex": "(2,\\, 1) \\text{ and } (-1,\\, 4)", "paletteRef": null, "dropTargets": [], "description": "Two solutions: (2, 1) and (−1, 4)" }
+      {
+        "id": "s1",
+        "fromLatex": "S = \\sum_{k=1}^{6} (2k-1)",
+        "toLatex": "S = 6^2",
+        "paletteRef": "p1",
+        "dropTargets": [
+          "\\sum_{k=1}^{6} (2k-1)"
+        ],
+        "description": "Sum of first n odd numbers = n²; n=6"
+      },
+      {
+        "id": "s2",
+        "fromLatex": "S = 6^2",
+        "toLatex": "S = 36",
+        "paletteRef": "p2",
+        "dropTargets": [
+          "6^2"
+        ],
+        "description": "Compute: 6² = 36"
+      }
     ]
   },
   {
-    "id": "alg2-h-010", "topic": "algebra2", "difficulty": "hard",
-    "question": { "latex": "x^2 - 2 = 0", "plain": "Solve using the quadratic formula — verify roots are conjugate surds" },
-    "symbols": { "x": "The unknown variable", "\\sqrt{2}": "An irrational number ≈ 1.414" },
+    "id": "alg2-m-013",
+    "topic": "algebra2",
+    "difficulty": "medium",
+    "question": {
+      "latex": "S = \\sum_{k=0}^{4} 2^k",
+      "plain": "Sum the geometric series 1 + 2 + 4 + 8 + 16"
+    },
+    "symbols": {
+      "2^k": "Powers of 2: 1, 2, 4, 8, 16",
+      "r": "Common ratio = 2"
+    },
     "palette": [
-      { "id": "p1", "latex": "\\pm\\sqrt{2}", "description": "Quadratic formula: (0±√(0+8))/2 = ±√8/2 = ±√2" },
-      { "id": "p2", "latex": "0", "description": "Discriminant check: b²−4ac = 0−4(1)(−2) = 8 > 0 → two real roots" }
+      {
+        "id": "p1",
+        "latex": "\\frac{2^5 - 1}{2 - 1}",
+        "description": "Geometric sum: (rⁿ⁺¹ − 1)/(r−1); r=2, n=4"
+      },
+      {
+        "id": "p2",
+        "latex": "31",
+        "description": "(32 − 1)/1 = 31"
+      }
     ],
     "steps": [
-      { "id": "s1", "fromLatex": "x^2 - 2 = 0", "toLatex": "a=1,\\; b=0,\\; c=-2", "paletteRef": null, "dropTargets": [], "description": "Identify: a=1, b=0, c=−2 (no x term means b=0)" },
-      { "id": "s1a", "fromLatex": "\\Delta = b^2 - 4ac = 0 - 4(1)(-2) = 8", "toLatex": "\\Delta = 8 > 0", "paletteRef": "p2", "dropTargets": ["b^2"], "description": "Discriminant: b²=0, so Δ=0+8=8>0 → two real roots" },
-      { "id": "s2", "fromLatex": "x = \\frac{0 \\pm \\sqrt{8}}{2}", "toLatex": "x = \\pm\\frac{\\sqrt{8}}{2}", "paletteRef": "p1", "dropTargets": ["\\frac{0 \\pm \\sqrt{8}}{2}"], "description": "Apply formula; b=0 simplifies to ±√8/2" },
-      { "id": "s2a", "fromLatex": "\\frac{\\sqrt{8}}{2} = \\frac{2\\sqrt{2}}{2} = \\sqrt{2}", "toLatex": "\\frac{\\sqrt{8}}{2}=\\sqrt{2}", "paletteRef": null, "dropTargets": [], "description": "Simplify: √8=2√2, so √8/2=√2" },
-      { "id": "s3", "fromLatex": "x = \\pm\\sqrt{2}", "toLatex": "x = \\sqrt{2} \\text{ or } x = -\\sqrt{2}", "paletteRef": null, "dropTargets": [], "description": "Conjugate surd roots: √2 and −√2" }
+      {
+        "id": "s1",
+        "fromLatex": "S = \\sum_{k=0}^{4} 2^k",
+        "toLatex": "S = \\frac{2^5 - 1}{2 - 1}",
+        "paletteRef": "p1",
+        "dropTargets": [
+          "\\sum_{k=0}^{4} 2^k"
+        ],
+        "description": "Geometric series: S = (rⁿ⁺¹ − 1)/(r−1); r=2, upper index=4"
+      },
+      {
+        "id": "s1a",
+        "fromLatex": "2^5 - 1 = 32 - 1 = 31",
+        "toLatex": "2^5 - 1 = 32 - 1 = 31",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "Compute: 2⁵ = 32, so numerator = 31"
+      },
+      {
+        "id": "s2",
+        "fromLatex": "2^5 - 1 = 31",
+        "toLatex": "S = 31",
+        "paletteRef": "p2",
+        "dropTargets": [],
+        "description": "Denominator is 2−1=1, so S = 31"
+      }
     ]
   },
-
   {
-    "id": "alg2-h-011", "topic": "algebra2", "difficulty": "hard",
-    "question": { "latex": "S_{10} = \\sum_{k=1}^{10} k^2", "plain": "Find the sum of the first 10 perfect squares" },
-    "symbols": { "\\frac{n(n+1)(2n+1)}{6}": "Sum-of-squares formula" },
+    "id": "alg2-m-014",
+    "topic": "algebra2",
+    "difficulty": "medium",
+    "question": {
+      "latex": "S_8 = \\sum_{k=1}^{8} k",
+      "plain": "Find the sum of integers from 1 to 8"
+    },
+    "symbols": {
+      "S_n": "Sum of first n integers"
+    },
     "palette": [
-      { "id": "p1", "latex": "\\frac{10 \\cdot 11 \\cdot 21}{6}", "description": "Apply n(n+1)(2n+1)/6 with n=10; 2(10)+1=21" },
-      { "id": "p2", "latex": "385", "description": "10·11·21/6 = 2310/6 = 385" }
+      {
+        "id": "p1",
+        "latex": "\\frac{8 \\cdot 9}{2}",
+        "description": "Formula n(n+1)/2 with n=8"
+      },
+      {
+        "id": "p2",
+        "latex": "36",
+        "description": "8·9/2 = 36"
+      }
     ],
     "steps": [
-      { "id": "s1", "fromLatex": "S_{10} = \\sum_{k=1}^{10} k^2", "toLatex": "S_{10} = \\frac{10 \\cdot 11 \\cdot 21}{6}", "paletteRef": "p1", "dropTargets": ["\\sum_{k=1}^{10} k^2"], "description": "Apply ∑k² = n(n+1)(2n+1)/6 with n=10; 2n+1=21" },
-      { "id": "s1a", "fromLatex": "10 \\times 11 \\times 21 = 2310", "toLatex": "10 \\times 11 \\times 21 = 2310", "paletteRef": null, "dropTargets": [], "description": "Compute numerator: 10×11=110, then 110×21=2310" },
-      { "id": "s2", "fromLatex": "S_{10} = \\frac{2310}{6}", "toLatex": "S_{10} = 385", "paletteRef": "p2", "dropTargets": ["\\frac{2310}{6}"], "description": "Divide: 2310 ÷ 6 = 385" }
+      {
+        "id": "s1",
+        "fromLatex": "S_8 = \\sum_{k=1}^{8} k",
+        "toLatex": "S_8 = \\frac{8 \\cdot 9}{2}",
+        "paletteRef": "p1",
+        "dropTargets": [
+          "\\sum_{k=1}^{8} k"
+        ],
+        "description": "Apply Sₙ = n(n+1)/2 with n=8"
+      },
+      {
+        "id": "s1a",
+        "fromLatex": "8 \\times 9 = 72",
+        "toLatex": "8 \\times 9 = 72",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "Compute numerator: 8 × 9 = 72"
+      },
+      {
+        "id": "s2",
+        "fromLatex": "S_8 = \\frac{72}{2}",
+        "toLatex": "S_8 = 36",
+        "paletteRef": "p2",
+        "dropTargets": [
+          "\\frac{72}{2}"
+        ],
+        "description": "Divide: 72 ÷ 2 = 36"
+      }
     ]
   },
-
   {
-    "id": "alg2-h-012", "topic": "algebra2", "difficulty": "hard",
-    "question": { "latex": "S = \\sum_{k=1}^{5} k^3", "plain": "Find the sum of the first 5 perfect cubes" },
-    "symbols": { "\\left(\\frac{n(n+1)}{2}\\right)^2": "Sum-of-cubes identity: equals the square of the n-th triangular number" },
+    "id": "alg2-m-015",
+    "topic": "algebra2",
+    "difficulty": "medium",
+    "question": {
+      "latex": "S = \\sum_{k=3}^{7} k",
+      "plain": "Sum the integers from 3 to 7"
+    },
+    "symbols": {
+      "k": "Index from 3 to 7; that's 5 terms"
+    },
     "palette": [
-      { "id": "p1", "latex": "\\left(\\frac{5 \\cdot 6}{2}\\right)^2", "description": "Apply ∑k³ = [n(n+1)/2]² with n=5" },
-      { "id": "p2", "latex": "15^2", "description": "5·6/2 = 15" },
-      { "id": "p3", "latex": "225", "description": "15² = 225" }
+      {
+        "id": "p1",
+        "latex": "5 \\cdot \\frac{3+7}{2}",
+        "description": "Arithmetic series: n·(first+last)/2; n=5, first=3, last=7"
+      },
+      {
+        "id": "p2",
+        "latex": "25",
+        "description": "5 × 5 = 25"
+      }
     ],
     "steps": [
-      { "id": "s1", "fromLatex": "S = \\sum_{k=1}^{5} k^3", "toLatex": "S = \\left(\\frac{5 \\cdot 6}{2}\\right)^2", "paletteRef": "p1", "dropTargets": ["\\sum_{k=1}^{5} k^3"], "description": "Apply ∑k³ = [n(n+1)/2]² with n=5" },
-      { "id": "s1a", "fromLatex": "\\frac{5 \\cdot 6}{2} = 15", "toLatex": "\\frac{5 \\cdot 6}{2} = 15", "paletteRef": null, "dropTargets": [], "description": "Compute inner value: 5·6/2 = 15" },
-      { "id": "s2", "fromLatex": "S = 15^2", "toLatex": "S = 225", "paletteRef": "p3", "dropTargets": ["15^2"], "description": "Square: 15² = 225" }
+      {
+        "id": "s1",
+        "fromLatex": "S = \\sum_{k=3}^{7} k",
+        "toLatex": "S = 5 \\cdot \\frac{3+7}{2}",
+        "paletteRef": "p1",
+        "dropTargets": [
+          "\\sum_{k=3}^{7} k"
+        ],
+        "description": "Arithmetic series: n=5 terms, first=3, last=7; S = n(a₁+aₙ)/2"
+      },
+      {
+        "id": "s1a",
+        "fromLatex": "\\frac{3+7}{2} = 5",
+        "toLatex": "\\frac{3+7}{2} = 5",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "Compute mean of first and last: (3+7)/2 = 5"
+      },
+      {
+        "id": "s2",
+        "fromLatex": "S = 5 \\cdot \\frac{3+7}{2}",
+        "toLatex": "S = 25",
+        "paletteRef": "p2",
+        "dropTargets": [
+          "5 \\cdot \\frac{3+7}{2}"
+        ],
+        "description": "Multiply: 5 × 5 = 25"
+      }
     ]
   },
-
   {
-    "id": "alg2-h-013", "topic": "algebra2", "difficulty": "hard",
-    "question": { "latex": "S = \\sum_{k=0}^{5} 3^k", "plain": "Sum the geometric series with ratio 3" },
-    "symbols": { "3^k": "Powers of 3: 1, 3, 9, 27, 81, 243", "r": "Common ratio = 3" },
+    "id": "alg2-h-001",
+    "topic": "algebra2",
+    "difficulty": "hard",
+    "question": {
+      "latex": "x^2 + 2x - 1 = 0",
+      "plain": "Solve using the quadratic formula — irrational roots"
+    },
+    "symbols": {
+      "x": "The unknown variable"
+    },
     "palette": [
-      { "id": "p1", "latex": "\\frac{3^6 - 1}{3 - 1}", "description": "Geometric sum: (rⁿ⁺¹ − 1)/(r−1); r=3, n=5" },
-      { "id": "p2", "latex": "364", "description": "(729 − 1)/2 = 728/2 = 364" }
+      {
+        "id": "p1",
+        "latex": "\\frac{-2 \\pm \\sqrt{8}}{2}",
+        "description": "Quadratic formula: a=1,b=2,c=−1 → (−2±√(4+4))/2 = (−2±√8)/2"
+      },
+      {
+        "id": "p2",
+        "latex": "2\\sqrt{2}",
+        "description": "Simplify √8 = √(4·2) = 2√2"
+      },
+      {
+        "id": "p3",
+        "latex": "-1 \\pm \\sqrt{2}",
+        "description": "Divide numerator and denominator by 2: (−2±2√2)/2 = −1±√2"
+      }
     ],
     "steps": [
-      { "id": "s1", "fromLatex": "S = \\sum_{k=0}^{5} 3^k", "toLatex": "S = \\frac{3^6 - 1}{3 - 1}", "paletteRef": "p1", "dropTargets": ["\\sum_{k=0}^{5} 3^k"], "description": "Geometric series: S = (rⁿ⁺¹ − 1)/(r−1); r=3, upper index=5" },
-      { "id": "s1a", "fromLatex": "3^6 = 729, \\quad 729 - 1 = 728", "toLatex": "3^6 = 729, \\quad 729 - 1 = 728", "paletteRef": null, "dropTargets": [], "description": "Compute: 3⁶ = 729, numerator = 728" },
-      { "id": "s2", "fromLatex": "S = \\frac{728}{2}", "toLatex": "S = 364", "paletteRef": "p2", "dropTargets": ["\\frac{728}{2}"], "description": "Divide: 728 ÷ 2 = 364" }
+      {
+        "id": "s1",
+        "fromLatex": "x^2 + 2x - 1 = 0",
+        "toLatex": "a=1,\\; b=2,\\; c=-1",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "Identify: a=1, b=2, c=−1"
+      },
+      {
+        "id": "s2",
+        "fromLatex": "x = \\frac{-2 \\pm \\sqrt{2^2 - 4(1)(-1)}}{2(1)}",
+        "toLatex": "x = \\frac{-2 \\pm \\sqrt{8}}{2}",
+        "paletteRef": "p1",
+        "dropTargets": [
+          "-2 \\pm \\sqrt{2^2 - 4(1)(-1)}"
+        ],
+        "description": "Substitute and compute discriminant: 4+4=8"
+      },
+      {
+        "id": "s2a",
+        "fromLatex": "2^2=4,\\; 4(1)(-1)=-4,\\; 4-(-4)=8",
+        "toLatex": "4-(-4)=8",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "Compute: 4−(−4)=8 (the discriminant)"
+      },
+      {
+        "id": "s3",
+        "fromLatex": "\\sqrt{8} = \\sqrt{4 \\cdot 2}",
+        "toLatex": "\\sqrt{8} = 2\\sqrt{2}",
+        "paletteRef": "p2",
+        "dropTargets": [
+          "\\sqrt{8}"
+        ],
+        "description": "Simplify √8 = 2√2"
+      },
+      {
+        "id": "s4",
+        "fromLatex": "x = \\frac{-2 \\pm 2\\sqrt{2}}{2}",
+        "toLatex": "x = -1 \\pm \\sqrt{2}",
+        "paletteRef": "p3",
+        "dropTargets": [
+          "\\frac{-2 \\pm 2\\sqrt{2}}{2}"
+        ],
+        "description": "Divide numerator and denominator by 2"
+      },
+      {
+        "id": "s5",
+        "fromLatex": "x = -1 \\pm \\sqrt{2}",
+        "toLatex": "x = -1 + \\sqrt{2} \\approx 0.414 \\text{ or } x = -1 - \\sqrt{2} \\approx -2.414",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "Two irrational solutions"
+      }
     ]
   },
-
   {
-    "id": "alg2-h-014", "topic": "algebra2", "difficulty": "hard",
-    "question": { "latex": "S = \\sum_{k=1}^{10} (3k-1)", "plain": "Sum the arithmetic sequence 2, 5, 8, …, 29" },
-    "symbols": { "3k-1": "Arithmetic sequence: first term=2, last term=29", "a_1": "First term = 3(1)−1 = 2", "a_{10}": "Last term = 3(10)−1 = 29" },
+    "id": "alg2-h-002",
+    "topic": "algebra2",
+    "difficulty": "hard",
+    "question": {
+      "latex": "x^3 - 6x^2 + 11x - 6 = 0",
+      "plain": "Find all real roots using the rational root theorem"
+    },
+    "symbols": {
+      "x": "The unknown variable"
+    },
     "palette": [
-      { "id": "p1", "latex": "10 \\cdot \\frac{2 + 29}{2}", "description": "Arithmetic series: n(a₁+aₙ)/2; n=10, a₁=2, a₁₀=29" },
-      { "id": "p2", "latex": "155", "description": "10 × 31/2 = 155" }
+      {
+        "id": "p1",
+        "latex": "x=1",
+        "description": "Test x=1: 1−6+11−6=0 ✓ — so (x−1) is a factor"
+      },
+      {
+        "id": "p2",
+        "latex": "x^2 - 5x + 6",
+        "description": "Divide out (x−1): the remaining quadratic is x²−5x+6"
+      },
+      {
+        "id": "p3",
+        "latex": "(x-2)(x-3)",
+        "description": "Factor x²−5x+6: find two numbers multiplying to 6 and adding to −5"
+      }
     ],
     "steps": [
-      { "id": "s1", "fromLatex": "S = \\sum_{k=1}^{10} (3k-1)", "toLatex": "S = 10 \\cdot \\frac{2 + 29}{2}", "paletteRef": "p1", "dropTargets": ["\\sum_{k=1}^{10} (3k-1)"], "description": "Arithmetic series: a₁=3(1)−1=2, a₁₀=29, n=10; S = n(a₁+aₙ)/2" },
-      { "id": "s1a", "fromLatex": "2 + 29 = 31, \\quad 10 \\cdot \\frac{31}{2} = 155", "toLatex": "2 + 29 = 31, \\quad 10 \\cdot \\frac{31}{2} = 155", "paletteRef": null, "dropTargets": [], "description": "Compute: (2+29)=31; 10×31/2=155" },
-      { "id": "s2", "fromLatex": "S = 10 \\cdot \\frac{2 + 29}{2}", "toLatex": "S = 155", "paletteRef": "p2", "dropTargets": ["10 \\cdot \\frac{2 + 29}{2}"], "description": "Result: 155" }
+      {
+        "id": "s1",
+        "fromLatex": "\\text{Possible rational roots: } \\pm 1, \\pm 2, \\pm 3, \\pm 6",
+        "toLatex": "\\text{Possible rational roots: } \\pm 1, \\pm 2, \\pm 3, \\pm 6",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "Rational root theorem: factors of constant ÷ factors of leading coefficient"
+      },
+      {
+        "id": "s2",
+        "fromLatex": "p(1) = 1 - 6 + 11 - 6",
+        "toLatex": "p(1) = 0",
+        "paletteRef": "p1",
+        "dropTargets": [
+          "1 - 6 + 11 - 6"
+        ],
+        "description": "Test x=1: p(1)=0 ✓ — root found"
+      },
+      {
+        "id": "s3",
+        "fromLatex": "x^3 - 6x^2 + 11x - 6 = (x-1)(x^2 - 5x + 6)",
+        "toLatex": "(x-1)(x^2 - 5x + 6)",
+        "paletteRef": "p2",
+        "dropTargets": [
+          "x^2 - 5x + 6"
+        ],
+        "description": "Divide by (x−1) via synthetic division → quotient x²−5x+6"
+      },
+      {
+        "id": "s4",
+        "fromLatex": "x^2 - 5x + 6",
+        "toLatex": "(x-2)(x-3)",
+        "paletteRef": "p3",
+        "dropTargets": [
+          "x^2 - 5x + 6"
+        ],
+        "description": "Factor the quadratic: (x−2)(x−3)"
+      },
+      {
+        "id": "s5",
+        "fromLatex": "(x-1)(x-2)(x-3) = 0",
+        "toLatex": "x=1 \\text{ or } x=2 \\text{ or } x=3",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "Zero product property — three roots"
+      }
     ]
   },
-
   {
-    "id": "alg2-h-015", "topic": "algebra2", "difficulty": "hard",
-    "question": { "latex": "S = \\sum_{k=1}^{10} k(k+1)", "plain": "Sum the products of consecutive integers for k = 1 to 10" },
-    "symbols": { "k(k+1)": "Product of two consecutive integers", "\\frac{n(n+1)(n+2)}{3}": "Closed-form identity for this sum" },
+    "id": "alg2-h-003",
+    "topic": "algebra2",
+    "difficulty": "hard",
+    "question": {
+      "latex": "\\log_2(x) + \\log_2(x-2) = 3",
+      "plain": "Solve the logarithmic equation"
+    },
+    "symbols": {
+      "\\log_2": "Log base 2 — the exponent needed to reach x from base 2"
+    },
     "palette": [
-      { "id": "p1", "latex": "\\frac{10 \\cdot 11 \\cdot 12}{3}", "description": "Apply ∑k(k+1) = n(n+1)(n+2)/3 with n=10" },
-      { "id": "p2", "latex": "440", "description": "10·11·12/3 = 1320/3 = 440" }
+      {
+        "id": "p1",
+        "latex": "\\log_2(x(x-2))",
+        "description": "Product rule: log(A)+log(B) = log(A·B)"
+      },
+      {
+        "id": "p2",
+        "latex": "8",
+        "description": "Convert: log₂(…)=3 means 2³=8"
+      },
+      {
+        "id": "p3",
+        "latex": "(x-4)(x+2)",
+        "description": "Factor x²−2x−8 = (x−4)(x+2)"
+      }
     ],
     "steps": [
-      { "id": "s1", "fromLatex": "S = \\sum_{k=1}^{10} k(k+1)", "toLatex": "S = \\frac{10 \\cdot 11 \\cdot 12}{3}", "paletteRef": "p1", "dropTargets": ["\\sum_{k=1}^{10} k(k+1)"], "description": "Apply ∑k(k+1) = n(n+1)(n+2)/3 with n=10" },
-      { "id": "s1a", "fromLatex": "10 \\times 11 \\times 12 = 1320", "toLatex": "10 \\times 11 \\times 12 = 1320", "paletteRef": null, "dropTargets": [], "description": "Compute numerator: 10×11=110, then 110×12=1320" },
-      { "id": "s2", "fromLatex": "S = \\frac{1320}{3}", "toLatex": "S = 440", "paletteRef": "p2", "dropTargets": ["\\frac{1320}{3}"], "description": "Divide: 1320 ÷ 3 = 440" }
+      {
+        "id": "s1",
+        "fromLatex": "\\log_2(x) + \\log_2(x-2) = 3",
+        "toLatex": "\\log_2(x(x-2)) = 3",
+        "paletteRef": "p1",
+        "dropTargets": [
+          "\\log_2(x) + \\log_2(x-2)"
+        ],
+        "description": "Product rule: log(x)+log(x−2) = log(x(x−2))"
+      },
+      {
+        "id": "s2",
+        "fromLatex": "\\log_2(x(x-2)) = 3",
+        "toLatex": "x(x-2) = 8",
+        "paletteRef": "p2",
+        "dropTargets": [
+          "3"
+        ],
+        "description": "Convert to exponential: 2³=8"
+      },
+      {
+        "id": "s2a",
+        "fromLatex": "2^3 = 2 \\times 2 \\times 2 = 8",
+        "toLatex": "2^3=8",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "Verify: 2³=8"
+      },
+      {
+        "id": "s3",
+        "fromLatex": "x(x-2) = 8",
+        "toLatex": "x^2 - 2x - 8 = 0",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "Expand and move 8 to left side"
+      },
+      {
+        "id": "s4",
+        "fromLatex": "x^2 - 2x - 8 = 0",
+        "toLatex": "(x-4)(x+2) = 0",
+        "paletteRef": "p3",
+        "dropTargets": [
+          "x^2 - 2x - 8"
+        ],
+        "description": "Factor the quadratic"
+      },
+      {
+        "id": "s5",
+        "fromLatex": "(x-4)(x+2) = 0",
+        "toLatex": "x = 4 \\text{ (reject } x=-2 \\text{ — domain requires } x>0\\text{)}",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "x=4 or x=−2; reject x=−2 (log of negative undefined)"
+      }
     ]
   },
-
+  {
+    "id": "alg2-h-004",
+    "topic": "algebra2",
+    "difficulty": "hard",
+    "question": {
+      "latex": "3^{x+1} = 27^{x-1}",
+      "plain": "Solve by matching bases"
+    },
+    "symbols": {
+      "x": "The unknown exponent"
+    },
+    "palette": [
+      {
+        "id": "p1",
+        "latex": "3^3",
+        "description": "Rewrite 27 as 3³ so both sides share base 3"
+      },
+      {
+        "id": "p2",
+        "latex": "3(x-1)",
+        "description": "Apply power rule: (3³)^(x−1) = 3^(3(x−1)) = 3^(3x−3)"
+      }
+    ],
+    "steps": [
+      {
+        "id": "s1",
+        "fromLatex": "3^{x+1} = 27^{x-1}",
+        "toLatex": "3^{x+1} = (3^3)^{x-1}",
+        "paletteRef": "p1",
+        "dropTargets": [
+          "27"
+        ],
+        "description": "Rewrite 27 = 3³ for common base"
+      },
+      {
+        "id": "s2",
+        "fromLatex": "(3^3)^{x-1}",
+        "toLatex": "3^{3(x-1)}",
+        "paletteRef": "p2",
+        "dropTargets": [
+          "(3^3)^{x-1}"
+        ],
+        "description": "Power rule: (aᵐ)ⁿ = aᵐⁿ"
+      },
+      {
+        "id": "s2a",
+        "fromLatex": "3(x-1) = 3x - 3",
+        "toLatex": "3(x-1)=3x-3",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "Distribute: 3(x−1)=3x−3"
+      },
+      {
+        "id": "s3",
+        "fromLatex": "3^{x+1} = 3^{3x-3}",
+        "toLatex": "x + 1 = 3x - 3",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "Equal bases → equate exponents"
+      },
+      {
+        "id": "s3a",
+        "fromLatex": "1 + 3 = 4 \\text{ and } 3x - x = 2x",
+        "toLatex": "4 = 2x",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "Rearrange: move x terms and constants"
+      },
+      {
+        "id": "s4",
+        "fromLatex": "4 = 2x",
+        "toLatex": "x = 2",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "Divide by 2 — solution"
+      }
+    ]
+  },
+  {
+    "id": "alg2-h-005",
+    "topic": "algebra2",
+    "difficulty": "hard",
+    "question": {
+      "latex": "S = 1 + \\frac{1}{2} + \\frac{1}{4} + \\frac{1}{8} + \\cdots",
+      "plain": "Find the sum of the infinite geometric series"
+    },
+    "symbols": {
+      "S": "Sum of the infinite series",
+      "r": "Common ratio",
+      "a": "First term"
+    },
+    "palette": [
+      {
+        "id": "p1",
+        "latex": "\\frac{1}{2}",
+        "description": "Common ratio r = (1/2)÷1 = 1/2 — each term is half the previous"
+      },
+      {
+        "id": "p2",
+        "latex": "\\frac{1}{1 - r}",
+        "description": "Infinite geometric series formula: S = a/(1−r), valid when |r|<1"
+      },
+      {
+        "id": "p3",
+        "latex": "2",
+        "description": "S = 1/(1−1/2) = 1/(1/2) = 2"
+      }
+    ],
+    "steps": [
+      {
+        "id": "s1",
+        "fromLatex": "r = \\frac{1/2}{1}",
+        "toLatex": "r = \\frac{1}{2}",
+        "paletteRef": "p1",
+        "dropTargets": [
+          "\\frac{1/2}{1}"
+        ],
+        "description": "Find common ratio: r = (½)÷1 = ½"
+      },
+      {
+        "id": "s1a",
+        "fromLatex": "|r| = \\frac{1}{2} < 1",
+        "toLatex": "|r| = \\tfrac{1}{2} < 1 \\Rightarrow \\text{series converges}",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "Since |r|<1 the series converges"
+      },
+      {
+        "id": "s2",
+        "fromLatex": "S = \\frac{a}{1-r}",
+        "toLatex": "S = \\frac{1}{1 - \\frac{1}{2}}",
+        "paletteRef": "p2",
+        "dropTargets": [
+          "\\frac{a}{1-r}"
+        ],
+        "description": "Apply formula S = a/(1−r) with a=1, r=½"
+      },
+      {
+        "id": "s2a",
+        "fromLatex": "1 - \\frac{1}{2} = \\frac{1}{2}",
+        "toLatex": "1-\\tfrac{1}{2}=\\tfrac{1}{2}",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "Compute denominator: 1 − ½ = ½"
+      },
+      {
+        "id": "s3",
+        "fromLatex": "S = \\frac{1}{\\frac{1}{2}}",
+        "toLatex": "S = 2",
+        "paletteRef": "p3",
+        "dropTargets": [
+          "\\frac{1}{\\frac{1}{2}}"
+        ],
+        "description": "Dividing by ½ is multiplying by 2 → S = 2"
+      }
+    ]
+  },
+  {
+    "id": "alg2-h-006",
+    "topic": "algebra2",
+    "difficulty": "hard",
+    "question": {
+      "latex": "\\frac{2 + 3i}{1 - i}",
+      "plain": "Divide the complex numbers"
+    },
+    "symbols": {
+      "i": "Imaginary unit — i² = −1",
+      "\\bar{z}": "Complex conjugate — flip sign of imaginary part"
+    },
+    "palette": [
+      {
+        "id": "p1",
+        "latex": "\\frac{1+i}{1+i}",
+        "description": "Multiply by conjugate of denominator: conjugate of (1−i) is (1+i)"
+      },
+      {
+        "id": "p2",
+        "latex": "-1 + 5i",
+        "description": "Numerator: (2+3i)(1+i) = 2+2i+3i+3i² = 2+5i+3(−1) = −1+5i"
+      },
+      {
+        "id": "p3",
+        "latex": "2",
+        "description": "Denominator: (1−i)(1+i) = 1−i² = 1−(−1) = 2"
+      }
+    ],
+    "steps": [
+      {
+        "id": "s1",
+        "fromLatex": "\\frac{2+3i}{1-i}",
+        "toLatex": "\\frac{(2+3i)(1+i)}{(1-i)(1+i)}",
+        "paletteRef": "p1",
+        "dropTargets": [
+          "\\frac{2+3i}{1-i}"
+        ],
+        "description": "Multiply numerator and denominator by conjugate (1+i)"
+      },
+      {
+        "id": "s2",
+        "fromLatex": "(2+3i)(1+i) = 2+2i+3i+3i^2",
+        "toLatex": "2+5i+3(-1) = -1+5i",
+        "paletteRef": "p2",
+        "dropTargets": [
+          "2+2i+3i+3i^2"
+        ],
+        "description": "Expand numerator using FOIL; i²=−1"
+      },
+      {
+        "id": "s2a",
+        "fromLatex": "2+2i+3i+3(-1) = 2+5i-3=-1+5i",
+        "toLatex": "-1+5i",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "Compute: 2−3=−1 and 2i+3i=5i → −1+5i"
+      },
+      {
+        "id": "s3",
+        "fromLatex": "(1-i)(1+i) = 1 - i^2",
+        "toLatex": "1 - (-1) = 2",
+        "paletteRef": "p3",
+        "dropTargets": [
+          "1 - i^2"
+        ],
+        "description": "Denominator: difference of squares (1−i)(1+i)=1−i²=1+1=2"
+      },
+      {
+        "id": "s4",
+        "fromLatex": "\\frac{-1+5i}{2}",
+        "toLatex": "-\\frac{1}{2} + \\frac{5}{2}i",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "Write in standard form a+bi"
+      }
+    ]
+  },
+  {
+    "id": "alg2-h-007",
+    "topic": "algebra2",
+    "difficulty": "hard",
+    "question": {
+      "latex": "p(x) = x^3 + 2x - 1",
+      "plain": "Use the Remainder Theorem to find the remainder when p(x) is divided by (x − 2)"
+    },
+    "symbols": {
+      "p(x)": "Polynomial p(x) = x³+2x−1",
+      "r": "Remainder from polynomial division"
+    },
+    "palette": [
+      {
+        "id": "p1",
+        "latex": "p(2)",
+        "description": "Remainder Theorem: the remainder when p(x)÷(x−a) equals p(a)"
+      },
+      {
+        "id": "p2",
+        "latex": "11",
+        "description": "p(2) = 2³+2(2)−1 = 8+4−1 = 11"
+      }
+    ],
+    "steps": [
+      {
+        "id": "s1",
+        "fromLatex": "\\text{Remainder} = p(2)",
+        "toLatex": "p(2) = 2^3 + 2(2) - 1",
+        "paletteRef": "p1",
+        "dropTargets": [
+          "p(2)"
+        ],
+        "description": "Remainder Theorem: substitute x=2 into p(x)"
+      },
+      {
+        "id": "s1a",
+        "fromLatex": "2^3 = 8",
+        "toLatex": "2^3=8",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "Compute: 2³ = 8"
+      },
+      {
+        "id": "s1b",
+        "fromLatex": "2(2) = 4",
+        "toLatex": "2(2)=4",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "Compute: 2(2) = 4"
+      },
+      {
+        "id": "s2",
+        "fromLatex": "p(2) = 8 + 4 - 1",
+        "toLatex": "p(2) = 11",
+        "paletteRef": "p2",
+        "dropTargets": [
+          "8 + 4 - 1"
+        ],
+        "description": "Compute: 8+4−1=11 — the remainder is 11"
+      }
+    ]
+  },
+  {
+    "id": "alg2-h-008",
+    "topic": "algebra2",
+    "difficulty": "hard",
+    "question": {
+      "latex": "\\frac{x^3 - 8}{x - 2}",
+      "plain": "Divide the polynomial (x ≠ 2)"
+    },
+    "symbols": {
+      "x": "The variable (x ≠ 2)"
+    },
+    "palette": [
+      {
+        "id": "p1",
+        "latex": "(x-2)(x^2+2x+4)",
+        "description": "Difference of cubes: a³−b³ = (a−b)(a²+ab+b²); here a=x, b=2"
+      },
+      {
+        "id": "p2",
+        "latex": "x^2 + 2x + 4",
+        "description": "Cancel (x−2) — quotient is x²+2x+4"
+      }
+    ],
+    "steps": [
+      {
+        "id": "s1",
+        "fromLatex": "x^3 - 8 = x^3 - 2^3",
+        "toLatex": "x^3-8 = (x-2)(x^2+2x+4)",
+        "paletteRef": "p1",
+        "dropTargets": [
+          "x^3 - 8"
+        ],
+        "description": "Factor numerator using difference of cubes: a³−b³=(a−b)(a²+ab+b²)"
+      },
+      {
+        "id": "s1a",
+        "fromLatex": "a^3 - b^3 = (a-b)(a^2+ab+b^2)",
+        "toLatex": "x^3-2^3=(x-2)(x^2+2x+4)",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "With a=x and b=2: x²+ax·b+b²=x²+2x+4"
+      },
+      {
+        "id": "s2",
+        "fromLatex": "\\frac{(x-2)(x^2+2x+4)}{x-2}",
+        "toLatex": "x^2 + 2x + 4",
+        "paletteRef": "p2",
+        "dropTargets": [
+          "\\frac{(x-2)(x^2+2x+4)}{x-2}"
+        ],
+        "description": "Cancel (x−2) — quotient is x²+2x+4"
+      }
+    ]
+  },
+  {
+    "id": "alg2-h-009",
+    "topic": "algebra2",
+    "difficulty": "hard",
+    "question": {
+      "latex": "x + y = 3,\\quad x^2 + y = 5",
+      "plain": "Solve the system of equations (linear + quadratic)"
+    },
+    "symbols": {
+      "x": "First unknown",
+      "y": "Second unknown"
+    },
+    "palette": [
+      {
+        "id": "p1",
+        "latex": "3 - x",
+        "description": "From the linear equation: y = 3 − x (substitution)"
+      },
+      {
+        "id": "p2",
+        "latex": "(x-2)(x+1)",
+        "description": "Factor x²−x−2 = (x−2)(x+1)"
+      }
+    ],
+    "steps": [
+      {
+        "id": "s1",
+        "fromLatex": "x + y = 3",
+        "toLatex": "y = 3 - x",
+        "paletteRef": "p1",
+        "dropTargets": [
+          "y"
+        ],
+        "description": "Solve linear equation for y: y = 3−x"
+      },
+      {
+        "id": "s2",
+        "fromLatex": "x^2 + (3 - x) = 5",
+        "toLatex": "x^2 - x + 3 = 5",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "Substitute y=3−x into the second equation"
+      },
+      {
+        "id": "s3",
+        "fromLatex": "x^2 - x + 3 = 5",
+        "toLatex": "x^2 - x - 2 = 0",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "Subtract 5 from both sides"
+      },
+      {
+        "id": "s4",
+        "fromLatex": "x^2 - x - 2 = 0",
+        "toLatex": "(x-2)(x+1) = 0",
+        "paletteRef": "p2",
+        "dropTargets": [
+          "x^2 - x - 2"
+        ],
+        "description": "Factor the quadratic"
+      },
+      {
+        "id": "s5",
+        "fromLatex": "(x-2)(x+1) = 0",
+        "toLatex": "x=2 \\text{ or } x=-1",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "Zero product property"
+      },
+      {
+        "id": "s5a",
+        "fromLatex": "y = 3-2=1 \\text{ and } y=3-(-1)=4",
+        "toLatex": "y=1 \\text{ and } y=4",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "Compute y for each x: (2,1) and (−1,4)"
+      },
+      {
+        "id": "s6",
+        "fromLatex": "",
+        "toLatex": "(2,\\, 1) \\text{ and } (-1,\\, 4)",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "Two solutions: (2, 1) and (−1, 4)"
+      }
+    ]
+  },
+  {
+    "id": "alg2-h-010",
+    "topic": "algebra2",
+    "difficulty": "hard",
+    "question": {
+      "latex": "x^2 - 2 = 0",
+      "plain": "Solve using the quadratic formula — verify roots are conjugate surds"
+    },
+    "symbols": {
+      "x": "The unknown variable",
+      "\\sqrt{2}": "An irrational number ≈ 1.414"
+    },
+    "palette": [
+      {
+        "id": "p1",
+        "latex": "\\pm\\sqrt{2}",
+        "description": "Quadratic formula: (0±√(0+8))/2 = ±√8/2 = ±√2"
+      },
+      {
+        "id": "p2",
+        "latex": "0",
+        "description": "Discriminant check: b²−4ac = 0−4(1)(−2) = 8 > 0 → two real roots"
+      }
+    ],
+    "steps": [
+      {
+        "id": "s1",
+        "fromLatex": "x^2 - 2 = 0",
+        "toLatex": "a=1,\\; b=0,\\; c=-2",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "Identify: a=1, b=0, c=−2 (no x term means b=0)"
+      },
+      {
+        "id": "s1a",
+        "fromLatex": "\\Delta = b^2 - 4ac = 0 - 4(1)(-2) = 8",
+        "toLatex": "\\Delta = 8 > 0",
+        "paletteRef": "p2",
+        "dropTargets": [
+          "b^2"
+        ],
+        "description": "Discriminant: b²=0, so Δ=0+8=8>0 → two real roots"
+      },
+      {
+        "id": "s2",
+        "fromLatex": "x = \\frac{0 \\pm \\sqrt{8}}{2}",
+        "toLatex": "x = \\pm\\frac{\\sqrt{8}}{2}",
+        "paletteRef": "p1",
+        "dropTargets": [
+          "\\frac{0 \\pm \\sqrt{8}}{2}"
+        ],
+        "description": "Apply formula; b=0 simplifies to ±√8/2"
+      },
+      {
+        "id": "s2a",
+        "fromLatex": "\\frac{\\sqrt{8}}{2} = \\frac{2\\sqrt{2}}{2} = \\sqrt{2}",
+        "toLatex": "\\frac{\\sqrt{8}}{2}=\\sqrt{2}",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "Simplify: √8=2√2, so √8/2=√2"
+      },
+      {
+        "id": "s3",
+        "fromLatex": "x = \\pm\\sqrt{2}",
+        "toLatex": "x = \\sqrt{2} \\text{ or } x = -\\sqrt{2}",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "Conjugate surd roots: √2 and −√2"
+      }
+    ]
+  },
+  {
+    "id": "alg2-h-011",
+    "topic": "algebra2",
+    "difficulty": "hard",
+    "question": {
+      "latex": "S_{10} = \\sum_{k=1}^{10} k^2",
+      "plain": "Find the sum of the first 10 perfect squares"
+    },
+    "symbols": {
+      "\\frac{n(n+1)(2n+1)}{6}": "Sum-of-squares formula"
+    },
+    "palette": [
+      {
+        "id": "p1",
+        "latex": "\\frac{10 \\cdot 11 \\cdot 21}{6}",
+        "description": "Apply n(n+1)(2n+1)/6 with n=10; 2(10)+1=21"
+      },
+      {
+        "id": "p2",
+        "latex": "385",
+        "description": "10·11·21/6 = 2310/6 = 385"
+      }
+    ],
+    "steps": [
+      {
+        "id": "s1",
+        "fromLatex": "S_{10} = \\sum_{k=1}^{10} k^2",
+        "toLatex": "S_{10} = \\frac{10 \\cdot 11 \\cdot 21}{6}",
+        "paletteRef": "p1",
+        "dropTargets": [
+          "\\sum_{k=1}^{10} k^2"
+        ],
+        "description": "Apply ∑k² = n(n+1)(2n+1)/6 with n=10; 2n+1=21"
+      },
+      {
+        "id": "s1a",
+        "fromLatex": "10 \\times 11 \\times 21 = 2310",
+        "toLatex": "10 \\times 11 \\times 21 = 2310",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "Compute numerator: 10×11=110, then 110×21=2310"
+      },
+      {
+        "id": "s2",
+        "fromLatex": "S_{10} = \\frac{2310}{6}",
+        "toLatex": "S_{10} = 385",
+        "paletteRef": "p2",
+        "dropTargets": [
+          "\\frac{2310}{6}"
+        ],
+        "description": "Divide: 2310 ÷ 6 = 385"
+      }
+    ]
+  },
+  {
+    "id": "alg2-h-012",
+    "topic": "algebra2",
+    "difficulty": "hard",
+    "question": {
+      "latex": "S = \\sum_{k=1}^{5} k^3",
+      "plain": "Find the sum of the first 5 perfect cubes"
+    },
+    "symbols": {
+      "\\left(\\frac{n(n+1)}{2}\\right)^2": "Sum-of-cubes identity: equals the square of the n-th triangular number"
+    },
+    "palette": [
+      {
+        "id": "p1",
+        "latex": "\\left(\\frac{5 \\cdot 6}{2}\\right)^2",
+        "description": "Apply ∑k³ = [n(n+1)/2]² with n=5"
+      },
+      {
+        "id": "p3",
+        "latex": "225",
+        "description": "15² = 225"
+      }
+    ],
+    "steps": [
+      {
+        "id": "s1",
+        "fromLatex": "S = \\sum_{k=1}^{5} k^3",
+        "toLatex": "S = \\left(\\frac{5 \\cdot 6}{2}\\right)^2",
+        "paletteRef": "p1",
+        "dropTargets": [
+          "\\sum_{k=1}^{5} k^3"
+        ],
+        "description": "Apply ∑k³ = [n(n+1)/2]² with n=5"
+      },
+      {
+        "id": "s1a",
+        "fromLatex": "\\frac{5 \\cdot 6}{2} = 15",
+        "toLatex": "\\frac{5 \\cdot 6}{2} = 15",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "Compute inner value: 5·6/2 = 15"
+      },
+      {
+        "id": "s2",
+        "fromLatex": "S = 15^2",
+        "toLatex": "S = 225",
+        "paletteRef": "p3",
+        "dropTargets": [
+          "15^2"
+        ],
+        "description": "Square: 15² = 225"
+      }
+    ]
+  },
+  {
+    "id": "alg2-h-013",
+    "topic": "algebra2",
+    "difficulty": "hard",
+    "question": {
+      "latex": "S = \\sum_{k=0}^{5} 3^k",
+      "plain": "Sum the geometric series with ratio 3"
+    },
+    "symbols": {
+      "3^k": "Powers of 3: 1, 3, 9, 27, 81, 243",
+      "r": "Common ratio = 3"
+    },
+    "palette": [
+      {
+        "id": "p1",
+        "latex": "\\frac{3^6 - 1}{3 - 1}",
+        "description": "Geometric sum: (rⁿ⁺¹ − 1)/(r−1); r=3, n=5"
+      },
+      {
+        "id": "p2",
+        "latex": "364",
+        "description": "(729 − 1)/2 = 728/2 = 364"
+      }
+    ],
+    "steps": [
+      {
+        "id": "s1",
+        "fromLatex": "S = \\sum_{k=0}^{5} 3^k",
+        "toLatex": "S = \\frac{3^6 - 1}{3 - 1}",
+        "paletteRef": "p1",
+        "dropTargets": [
+          "\\sum_{k=0}^{5} 3^k"
+        ],
+        "description": "Geometric series: S = (rⁿ⁺¹ − 1)/(r−1); r=3, upper index=5"
+      },
+      {
+        "id": "s1a",
+        "fromLatex": "3^6 = 729, \\quad 729 - 1 = 728",
+        "toLatex": "3^6 = 729, \\quad 729 - 1 = 728",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "Compute: 3⁶ = 729, numerator = 728"
+      },
+      {
+        "id": "s2",
+        "fromLatex": "S = \\frac{728}{2}",
+        "toLatex": "S = 364",
+        "paletteRef": "p2",
+        "dropTargets": [
+          "\\frac{728}{2}"
+        ],
+        "description": "Divide: 728 ÷ 2 = 364"
+      }
+    ]
+  },
+  {
+    "id": "alg2-h-014",
+    "topic": "algebra2",
+    "difficulty": "hard",
+    "question": {
+      "latex": "S = \\sum_{k=1}^{10} (3k-1)",
+      "plain": "Sum the arithmetic sequence 2, 5, 8, …, 29"
+    },
+    "symbols": {
+      "3k-1": "Arithmetic sequence: first term=2, last term=29",
+      "a_1": "First term = 3(1)−1 = 2",
+      "a_{10}": "Last term = 3(10)−1 = 29"
+    },
+    "palette": [
+      {
+        "id": "p1",
+        "latex": "10 \\cdot \\frac{2 + 29}{2}",
+        "description": "Arithmetic series: n(a₁+aₙ)/2; n=10, a₁=2, a₁₀=29"
+      },
+      {
+        "id": "p2",
+        "latex": "155",
+        "description": "10 × 31/2 = 155"
+      }
+    ],
+    "steps": [
+      {
+        "id": "s1",
+        "fromLatex": "S = \\sum_{k=1}^{10} (3k-1)",
+        "toLatex": "S = 10 \\cdot \\frac{2 + 29}{2}",
+        "paletteRef": "p1",
+        "dropTargets": [
+          "\\sum_{k=1}^{10} (3k-1)"
+        ],
+        "description": "Arithmetic series: a₁=3(1)−1=2, a₁₀=29, n=10; S = n(a₁+aₙ)/2"
+      },
+      {
+        "id": "s1a",
+        "fromLatex": "2 + 29 = 31, \\quad 10 \\cdot \\frac{31}{2} = 155",
+        "toLatex": "2 + 29 = 31, \\quad 10 \\cdot \\frac{31}{2} = 155",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "Compute: (2+29)=31; 10×31/2=155"
+      },
+      {
+        "id": "s2",
+        "fromLatex": "S = 10 \\cdot \\frac{2 + 29}{2}",
+        "toLatex": "S = 155",
+        "paletteRef": "p2",
+        "dropTargets": [
+          "10 \\cdot \\frac{2 + 29}{2}"
+        ],
+        "description": "Result: 155"
+      }
+    ]
+  },
+  {
+    "id": "alg2-h-015",
+    "topic": "algebra2",
+    "difficulty": "hard",
+    "question": {
+      "latex": "S = \\sum_{k=1}^{10} k(k+1)",
+      "plain": "Sum the products of consecutive integers for k = 1 to 10"
+    },
+    "symbols": {
+      "k(k+1)": "Product of two consecutive integers",
+      "\\frac{n(n+1)(n+2)}{3}": "Closed-form identity for this sum"
+    },
+    "palette": [
+      {
+        "id": "p1",
+        "latex": "\\frac{10 \\cdot 11 \\cdot 12}{3}",
+        "description": "Apply ∑k(k+1) = n(n+1)(n+2)/3 with n=10"
+      },
+      {
+        "id": "p2",
+        "latex": "440",
+        "description": "10·11·12/3 = 1320/3 = 440"
+      }
+    ],
+    "steps": [
+      {
+        "id": "s1",
+        "fromLatex": "S = \\sum_{k=1}^{10} k(k+1)",
+        "toLatex": "S = \\frac{10 \\cdot 11 \\cdot 12}{3}",
+        "paletteRef": "p1",
+        "dropTargets": [
+          "\\sum_{k=1}^{10} k(k+1)"
+        ],
+        "description": "Apply ∑k(k+1) = n(n+1)(n+2)/3 with n=10"
+      },
+      {
+        "id": "s1a",
+        "fromLatex": "10 \\times 11 \\times 12 = 1320",
+        "toLatex": "10 \\times 11 \\times 12 = 1320",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "Compute numerator: 10×11=110, then 110×12=1320"
+      },
+      {
+        "id": "s2",
+        "fromLatex": "S = \\frac{1320}{3}",
+        "toLatex": "S = 440",
+        "paletteRef": "p2",
+        "dropTargets": [
+          "\\frac{1320}{3}"
+        ],
+        "description": "Divide: 1320 ÷ 3 = 440"
+      }
+    ]
+  },
   {
     "id": "alg2-e-016",
     "topic": "algebra2",
@@ -679,10 +2634,20 @@
       "latex": "\\sqrt{x+3} = 4. \\quad \\text{Solve for } x.",
       "plain": "Solve the radical equation √(x+3) = 4."
     },
-    "symbols": { "x": "unknown" },
+    "symbols": {
+      "x": "unknown"
+    },
     "palette": [
-      { "id": "p1", "latex": "x + 3 = 16", "description": "Square both sides: (√(x+3))² = 4² = 16" },
-      { "id": "p2", "latex": "13", "description": "x = 16 − 3 = 13" }
+      {
+        "id": "p1",
+        "latex": "x + 3 = 16",
+        "description": "Square both sides: (√(x+3))² = 4² = 16"
+      },
+      {
+        "id": "p2",
+        "latex": "13",
+        "description": "x = 16 − 3 = 13"
+      }
     ],
     "steps": [
       {
@@ -690,7 +2655,9 @@
         "fromLatex": "\\sqrt{x+3} = 4",
         "toLatex": "x + 3 = 16",
         "paletteRef": "p1",
-        "dropTargets": ["\\sqrt{x+3} = 4"],
+        "dropTargets": [
+          "\\sqrt{x+3} = 4"
+        ],
         "description": "Square both sides to eliminate the radical"
       },
       {
@@ -698,12 +2665,13 @@
         "fromLatex": "x + 3 = 16",
         "toLatex": "x = 13",
         "paletteRef": "p2",
-        "dropTargets": ["x + 3 = 16"],
+        "dropTargets": [
+          "x + 3 = 16"
+        ],
         "description": "Subtract 3 from both sides"
       }
     ]
   },
-
   {
     "id": "alg2-e-017",
     "topic": "algebra2",
@@ -714,7 +2682,11 @@
     },
     "symbols": {},
     "palette": [
-      { "id": "p1", "latex": "4", "description": "r² = 16 → r = √16 = 4" }
+      {
+        "id": "p1",
+        "latex": "4",
+        "description": "r² = 16 → r = √16 = 4"
+      }
     ],
     "steps": [
       {
@@ -722,12 +2694,13 @@
         "fromLatex": "r^2 = 16",
         "toLatex": "r = 4",
         "paletteRef": "p1",
-        "dropTargets": ["r^2 = 16"],
+        "dropTargets": [
+          "r^2 = 16"
+        ],
         "description": "Take the positive square root: r = √16 = 4"
       }
     ]
   },
-
   {
     "id": "alg2-e-018",
     "topic": "algebra2",
@@ -738,7 +2711,11 @@
     },
     "symbols": {},
     "palette": [
-      { "id": "p1", "latex": "3", "description": "2³ = 8, so log₂(8) = 3" }
+      {
+        "id": "p1",
+        "latex": "3",
+        "description": "2³ = 8, so log₂(8) = 3"
+      }
     ],
     "steps": [
       {
@@ -754,12 +2731,13 @@
         "fromLatex": "\\log_2(2^3)",
         "toLatex": "3",
         "paletteRef": "p1",
-        "dropTargets": ["\\log_2(2^3)"],
+        "dropTargets": [
+          "\\log_2(2^3)"
+        ],
         "description": "log_b(b^n) = n; so log₂(2³) = 3"
       }
     ]
   },
-
   {
     "id": "alg2-e-019",
     "topic": "algebra2",
@@ -769,30 +2747,18 @@
       "plain": "Evaluate the piecewise function at x = −3: f(x) = −x if x < 0, else 2x."
     },
     "symbols": {},
-    "palette": [
-      { "id": "p1", "latex": "-(-3)", "description": "x = −3 < 0, so use f(x) = −x" },
-      { "id": "p2", "latex": "3", "description": "−(−3) = 3" }
-    ],
+    "palette": [],
     "steps": [
       {
         "id": "s1",
         "fromLatex": "f(-3) = -(-3)",
-        "toLatex": "-(-3)",
+        "toLatex": "3",
         "paletteRef": null,
         "dropTargets": [],
         "description": "x = −3 < 0, so use the top branch: f(x) = −x"
-      },
-      {
-        "id": "s2",
-        "fromLatex": "-(-3)",
-        "toLatex": "3",
-        "paletteRef": "p2",
-        "dropTargets": ["-(-3)"],
-        "description": "Double negative: −(−3) = 3"
       }
     ]
   },
-
   {
     "id": "alg2-e-020",
     "topic": "algebra2",
@@ -803,7 +2769,11 @@
     },
     "symbols": {},
     "palette": [
-      { "id": "p1", "latex": "3", "description": "3³ = 27, so log₃(27) = 3" }
+      {
+        "id": "p1",
+        "latex": "3",
+        "description": "3³ = 27, so log₃(27) = 3"
+      }
     ],
     "steps": [
       {
@@ -819,12 +2789,13 @@
         "fromLatex": "\\log_3(3^3)",
         "toLatex": "3",
         "paletteRef": "p1",
-        "dropTargets": ["\\log_3(3^3)"],
+        "dropTargets": [
+          "\\log_3(3^3)"
+        ],
         "description": "log_b(b^n) = n"
       }
     ]
   },
-
   {
     "id": "alg2-m-016",
     "topic": "algebra2",
@@ -833,11 +2804,25 @@
       "latex": "\\sqrt{2x+1} = 5. \\quad \\text{Solve for } x.",
       "plain": "Solve the radical equation √(2x+1) = 5."
     },
-    "symbols": { "x": "unknown" },
+    "symbols": {
+      "x": "unknown"
+    },
     "palette": [
-      { "id": "p1", "latex": "25", "description": "5² = 25" },
-      { "id": "p2", "latex": "24", "description": "25 − 1 = 24" },
-      { "id": "p3", "latex": "12", "description": "24 ÷ 2 = 12" }
+      {
+        "id": "p1",
+        "latex": "25",
+        "description": "5² = 25"
+      },
+      {
+        "id": "p2",
+        "latex": "24",
+        "description": "25 − 1 = 24"
+      },
+      {
+        "id": "p3",
+        "latex": "12",
+        "description": "24 ÷ 2 = 12"
+      }
     ],
     "steps": [
       {
@@ -845,7 +2830,9 @@
         "fromLatex": "\\sqrt{2x+1} = 5",
         "toLatex": "2x + 1 = 25",
         "paletteRef": "p1",
-        "dropTargets": ["\\sqrt{2x+1} = 5"],
+        "dropTargets": [
+          "\\sqrt{2x+1} = 5"
+        ],
         "description": "Square both sides: 5² = 25"
       },
       {
@@ -853,7 +2840,9 @@
         "fromLatex": "2x + 1 = 25",
         "toLatex": "2x = 24",
         "paletteRef": "p2",
-        "dropTargets": ["2x + 1 = 25"],
+        "dropTargets": [
+          "2x + 1 = 25"
+        ],
         "description": "Subtract 1 from both sides"
       },
       {
@@ -861,12 +2850,13 @@
         "fromLatex": "2x = 24",
         "toLatex": "x = 12",
         "paletteRef": "p3",
-        "dropTargets": ["2x = 24"],
+        "dropTargets": [
+          "2x = 24"
+        ],
         "description": "Divide both sides by 2"
       }
     ]
   },
-
   {
     "id": "alg2-m-017",
     "topic": "algebra2",
@@ -877,7 +2867,11 @@
     },
     "symbols": {},
     "palette": [
-      { "id": "p1", "latex": "2", "description": "5² = 25, so log₅(25) = 2" }
+      {
+        "id": "p1",
+        "latex": "2",
+        "description": "5² = 25, so log₅(25) = 2"
+      }
     ],
     "steps": [
       {
@@ -893,12 +2887,13 @@
         "fromLatex": "\\log_5(5^2)",
         "toLatex": "2",
         "paletteRef": "p1",
-        "dropTargets": ["\\log_5(5^2)"],
+        "dropTargets": [
+          "\\log_5(5^2)"
+        ],
         "description": "log_b(b^n) = n; log₅(5²) = 2"
       }
     ]
   },
-
   {
     "id": "alg2-m-018",
     "topic": "algebra2",
@@ -907,10 +2902,21 @@
       "latex": "\\frac{x^2}{9} + \\frac{y^2}{4} = 1. \\quad \\text{Find semi-axes } a \\text{ and } b.",
       "plain": "Identify the semi-axes a and b of the ellipse x²/9 + y²/4 = 1."
     },
-    "symbols": { "a": "semi-major axis", "b": "semi-minor axis" },
+    "symbols": {
+      "a": "semi-major axis",
+      "b": "semi-minor axis"
+    },
     "palette": [
-      { "id": "p1", "latex": "3", "description": "a = √9 = 3" },
-      { "id": "p2", "latex": "2", "description": "b = √4 = 2" }
+      {
+        "id": "p1",
+        "latex": "3",
+        "description": "a = √9 = 3"
+      },
+      {
+        "id": "p2",
+        "latex": "2",
+        "description": "b = √4 = 2"
+      }
     ],
     "steps": [
       {
@@ -918,7 +2924,9 @@
         "fromLatex": "a^2 = 9",
         "toLatex": "a = 3",
         "paletteRef": "p1",
-        "dropTargets": ["a^2 = 9"],
+        "dropTargets": [
+          "a^2 = 9"
+        ],
         "description": "Take positive square root: a = √9 = 3"
       },
       {
@@ -926,12 +2934,13 @@
         "fromLatex": "b^2 = 4",
         "toLatex": "b = 2",
         "paletteRef": "p2",
-        "dropTargets": ["b^2 = 4"],
+        "dropTargets": [
+          "b^2 = 4"
+        ],
         "description": "Take positive square root: b = √4 = 2"
       }
     ]
   },
-
   {
     "id": "alg2-m-019",
     "topic": "algebra2",
@@ -942,7 +2951,11 @@
     },
     "symbols": {},
     "palette": [
-      { "id": "p1", "latex": "\\begin{pmatrix}4 & 2 \\\\ 10 & 4\\end{pmatrix}", "description": "Row1:[4,2] Row2:[10,4]" }
+      {
+        "id": "p1",
+        "latex": "\\begin{pmatrix}4 & 2 \\\\ 10 & 4\\end{pmatrix}",
+        "description": "Row1:[4,2] Row2:[10,4]"
+      }
     ],
     "steps": [
       {
@@ -950,12 +2963,13 @@
         "fromLatex": "\\begin{pmatrix}1\\cdot2+2\\cdot1 & 1\\cdot0+2\\cdot1 \\\\ 3\\cdot2+4\\cdot1 & 3\\cdot0+4\\cdot1\\end{pmatrix}",
         "toLatex": "\\begin{pmatrix}4 & 2 \\\\ 10 & 4\\end{pmatrix}",
         "paletteRef": "p1",
-        "dropTargets": ["\\begin{pmatrix}1\\cdot2+2\\cdot1 & 1\\cdot0+2\\cdot1 \\\\ 3\\cdot2+4\\cdot1 & 3\\cdot0+4\\cdot1\\end{pmatrix}"],
+        "dropTargets": [
+          "\\begin{pmatrix}1\\cdot2+2\\cdot1 & 1\\cdot0+2\\cdot1 \\\\ 3\\cdot2+4\\cdot1 & 3\\cdot0+4\\cdot1\\end{pmatrix}"
+        ],
         "description": "Compute each entry as row·column dot product"
       }
     ]
   },
-
   {
     "id": "alg2-m-020",
     "topic": "algebra2",
@@ -964,10 +2978,20 @@
       "latex": "3^{2x} = 81. \\quad \\text{Solve for } x.",
       "plain": "Solve the exponential equation 3^(2x) = 81."
     },
-    "symbols": { "x": "unknown" },
+    "symbols": {
+      "x": "unknown"
+    },
     "palette": [
-      { "id": "p1", "latex": "3^4", "description": "81 = 3⁴" },
-      { "id": "p2", "latex": "2", "description": "2x = 4 → x = 2" }
+      {
+        "id": "p1",
+        "latex": "3^4",
+        "description": "81 = 3⁴"
+      },
+      {
+        "id": "p2",
+        "latex": "2",
+        "description": "2x = 4 → x = 2"
+      }
     ],
     "steps": [
       {
@@ -975,7 +2999,9 @@
         "fromLatex": "3^{2x} = 81",
         "toLatex": "3^{2x} = 3^4",
         "paletteRef": "p1",
-        "dropTargets": ["81"],
+        "dropTargets": [
+          "81"
+        ],
         "description": "Rewrite 81 = 3⁴ to match bases"
       },
       {
@@ -983,12 +3009,13 @@
         "fromLatex": "2x = 4",
         "toLatex": "x = 2",
         "paletteRef": "p2",
-        "dropTargets": ["2x = 4"],
+        "dropTargets": [
+          "2x = 4"
+        ],
         "description": "Equate exponents; divide both sides by 2"
       }
     ]
   },
-
   {
     "id": "alg2-h-016",
     "topic": "algebra2",
@@ -999,9 +3026,16 @@
     },
     "symbols": {},
     "palette": [
-      { "id": "p1", "latex": "\\log_2(32) - \\log_2(4)", "description": "Quotient property: log(M/N) = log M − log N" },
-      { "id": "p2", "latex": "5 - 2", "description": "log₂(32) = 5; log₂(4) = 2" },
-      { "id": "p3", "latex": "3", "description": "5 − 2 = 3" }
+      {
+        "id": "p1",
+        "latex": "\\log_2(32) - \\log_2(4)",
+        "description": "Quotient property: log(M/N) = log M − log N"
+      },
+      {
+        "id": "p2",
+        "latex": "5 - 2",
+        "description": "log₂(32) = 5; log₂(4) = 2"
+      }
     ],
     "steps": [
       {
@@ -1009,28 +3043,23 @@
         "fromLatex": "\\log_2\\left(\\frac{32}{4}\\right)",
         "toLatex": "\\log_2(32) - \\log_2(4)",
         "paletteRef": "p1",
-        "dropTargets": ["\\log_2\\left(\\frac{32}{4}\\right)"],
+        "dropTargets": [
+          "\\log_2\\left(\\frac{32}{4}\\right)"
+        ],
         "description": "Quotient property: log(M/N) = log M − log N"
       },
       {
         "id": "s2",
         "fromLatex": "\\log_2(32) - \\log_2(4)",
-        "toLatex": "5 - 2",
-        "paletteRef": "p2",
-        "dropTargets": ["\\log_2(32) - \\log_2(4)"],
-        "description": "32 = 2⁵ → log₂(32) = 5; 4 = 2² → log₂(4) = 2"
-      },
-      {
-        "id": "s3",
-        "fromLatex": "5 - 2",
         "toLatex": "3",
-        "paletteRef": "p3",
-        "dropTargets": ["5 - 2"],
-        "description": "Subtract: 5 − 2 = 3"
+        "paletteRef": "p2",
+        "dropTargets": [
+          "\\log_2(32) - \\log_2(4)"
+        ],
+        "description": "32 = 2⁵ → log₂(32) = 5; 4 = 2² → log₂(4) = 2"
       }
     ]
   },
-
   {
     "id": "alg2-h-017",
     "topic": "algebra2",
@@ -1041,8 +3070,16 @@
     },
     "symbols": {},
     "palette": [
-      { "id": "p1", "latex": "-2", "description": "det = 1·4 − 2·3 = −2" },
-      { "id": "p2", "latex": "\\begin{pmatrix}-2 & 1 \\\\ \\frac{3}{2} & -\\frac{1}{2}\\end{pmatrix}", "description": "(1/det)·[d −b; −c a]" }
+      {
+        "id": "p1",
+        "latex": "-2",
+        "description": "det = 1·4 − 2·3 = −2"
+      },
+      {
+        "id": "p2",
+        "latex": "\\begin{pmatrix}-2 & 1 \\\\ \\frac{3}{2} & -\\frac{1}{2}\\end{pmatrix}",
+        "description": "(1/det)·[d −b; −c a]"
+      }
     ],
     "steps": [
       {
@@ -1050,7 +3087,9 @@
         "fromLatex": "\\det = 1 \\cdot 4 - 2 \\cdot 3",
         "toLatex": "-2",
         "paletteRef": "p1",
-        "dropTargets": ["1 \\cdot 4 - 2 \\cdot 3"],
+        "dropTargets": [
+          "1 \\cdot 4 - 2 \\cdot 3"
+        ],
         "description": "Determinant: ad − bc = 4 − 6 = −2"
       },
       {
@@ -1058,12 +3097,13 @@
         "fromLatex": "\\frac{1}{-2}\\begin{pmatrix}4 & -2 \\\\ -3 & 1\\end{pmatrix}",
         "toLatex": "\\begin{pmatrix}-2 & 1 \\\\ \\frac{3}{2} & -\\frac{1}{2}\\end{pmatrix}",
         "paletteRef": "p2",
-        "dropTargets": ["\\frac{1}{-2}\\begin{pmatrix}4 & -2 \\\\ -3 & 1\\end{pmatrix}"],
+        "dropTargets": [
+          "\\frac{1}{-2}\\begin{pmatrix}4 & -2 \\\\ -3 & 1\\end{pmatrix}"
+        ],
         "description": "Multiply each entry by 1/(−2)"
       }
     ]
   },
-
   {
     "id": "alg2-h-018",
     "topic": "algebra2",
@@ -1072,10 +3112,21 @@
       "latex": "\\text{Hyperbola: vertices } (\\pm 3, 0), \\text{ foci } (\\pm 5, 0). \\text{ Find the equation.}",
       "plain": "Find the equation of a hyperbola with vertices (±3, 0) and foci (±5, 0)."
     },
-    "symbols": { "a": "3 (from vertices)", "c": "5 (from foci)" },
+    "symbols": {
+      "a": "3 (from vertices)",
+      "c": "5 (from foci)"
+    },
     "palette": [
-      { "id": "p1", "latex": "16", "description": "b² = c² − a² = 25 − 9 = 16" },
-      { "id": "p2", "latex": "\\frac{x^2}{9} - \\frac{y^2}{16} = 1", "description": "Horizontal hyperbola: x²/a² − y²/b² = 1" }
+      {
+        "id": "p1",
+        "latex": "16",
+        "description": "b² = c² − a² = 25 − 9 = 16"
+      },
+      {
+        "id": "p2",
+        "latex": "\\frac{x^2}{9} - \\frac{y^2}{16} = 1",
+        "description": "Horizontal hyperbola: x²/a² − y²/b² = 1"
+      }
     ],
     "steps": [
       {
@@ -1083,7 +3134,9 @@
         "fromLatex": "b^2 = c^2 - a^2 = 25 - 9",
         "toLatex": "16",
         "paletteRef": "p1",
-        "dropTargets": ["25 - 9"],
+        "dropTargets": [
+          "25 - 9"
+        ],
         "description": "c² − a² = 25 − 9 = 16"
       },
       {
@@ -1091,12 +3144,13 @@
         "fromLatex": "\\frac{x^2}{9} - \\frac{y^2}{b^2} = 1",
         "toLatex": "\\frac{x^2}{9} - \\frac{y^2}{16} = 1",
         "paletteRef": "p2",
-        "dropTargets": ["b^2"],
+        "dropTargets": [
+          "b^2"
+        ],
         "description": "Substitute b² = 16 into horizontal hyperbola form"
       }
     ]
   },
-
   {
     "id": "alg2-h-019",
     "topic": "algebra2",
@@ -1107,10 +3161,26 @@
     },
     "symbols": {},
     "palette": [
-      { "id": "p1", "latex": "2x^2 + 2x + 1 = 25", "description": "Expand (x+1)²; combine" },
-      { "id": "p2", "latex": "x^2 + x - 12 = 0", "description": "Subtract 25, divide by 2" },
-      { "id": "p3", "latex": "(x+4)(x-3) = 0", "description": "Factor" },
-      { "id": "p4", "latex": "x = -4 \\text{ or } x = 3", "description": "Zero-product property" }
+      {
+        "id": "p1",
+        "latex": "2x^2 + 2x + 1 = 25",
+        "description": "Expand (x+1)²; combine"
+      },
+      {
+        "id": "p2",
+        "latex": "x^2 + x - 12 = 0",
+        "description": "Subtract 25, divide by 2"
+      },
+      {
+        "id": "p3",
+        "latex": "(x+4)(x-3) = 0",
+        "description": "Factor"
+      },
+      {
+        "id": "p4",
+        "latex": "x = -4 \\text{ or } x = 3",
+        "description": "Zero-product property"
+      }
     ],
     "steps": [
       {
@@ -1118,7 +3188,9 @@
         "fromLatex": "x^2 + (x+1)^2 = 25",
         "toLatex": "2x^2 + 2x + 1 = 25",
         "paletteRef": "p1",
-        "dropTargets": ["x^2 + (x+1)^2 = 25"],
+        "dropTargets": [
+          "x^2 + (x+1)^2 = 25"
+        ],
         "description": "Substitute y = x+1; expand (x+1)² = x²+2x+1"
       },
       {
@@ -1126,7 +3198,9 @@
         "fromLatex": "2x^2 + 2x + 1 = 25",
         "toLatex": "x^2 + x - 12 = 0",
         "paletteRef": "p2",
-        "dropTargets": ["2x^2 + 2x + 1 = 25"],
+        "dropTargets": [
+          "2x^2 + 2x + 1 = 25"
+        ],
         "description": "Subtract 25; divide by 2"
       },
       {
@@ -1134,7 +3208,9 @@
         "fromLatex": "x^2 + x - 12 = 0",
         "toLatex": "(x+4)(x-3) = 0",
         "paletteRef": "p3",
-        "dropTargets": ["x^2 + x - 12 = 0"],
+        "dropTargets": [
+          "x^2 + x - 12 = 0"
+        ],
         "description": "Factor: (x+4)(x−3) = 0"
       },
       {
@@ -1142,12 +3218,13 @@
         "fromLatex": "(x+4)(x-3) = 0",
         "toLatex": "x = -4 \\text{ or } x = 3",
         "paletteRef": "p4",
-        "dropTargets": ["(x+4)(x-3) = 0"],
+        "dropTargets": [
+          "(x+4)(x-3) = 0"
+        ],
         "description": "Zero-product; solutions: (−4,−3) and (3,4)"
       }
     ]
   },
-
   {
     "id": "alg2-h-020",
     "topic": "algebra2",
@@ -1156,11 +3233,25 @@
       "latex": "\\sqrt{2x-3} = x - 3. \\quad \\text{Solve and check.}",
       "plain": "Solve the radical equation √(2x−3) = x−3, rejecting extraneous solutions."
     },
-    "symbols": { "x": "unknown" },
+    "symbols": {
+      "x": "unknown"
+    },
     "palette": [
-      { "id": "p1", "latex": "x^2 - 8x + 12 = 0", "description": "Rearrange after squaring" },
-      { "id": "p2", "latex": "(x-2)(x-6) = 0", "description": "Factor" },
-      { "id": "p3", "latex": "6", "description": "x = 2 fails check; x = 6 is valid" }
+      {
+        "id": "p1",
+        "latex": "x^2 - 8x + 12 = 0",
+        "description": "Rearrange after squaring"
+      },
+      {
+        "id": "p2",
+        "latex": "(x-2)(x-6) = 0",
+        "description": "Factor"
+      },
+      {
+        "id": "p3",
+        "latex": "6",
+        "description": "x = 2 fails check; x = 6 is valid"
+      }
     ],
     "steps": [
       {
@@ -1168,7 +3259,9 @@
         "fromLatex": "2x - 3 = x^2 - 6x + 9",
         "toLatex": "x^2 - 8x + 12 = 0",
         "paletteRef": "p1",
-        "dropTargets": ["2x - 3 = x^2 - 6x + 9"],
+        "dropTargets": [
+          "2x - 3 = x^2 - 6x + 9"
+        ],
         "description": "Rearrange: move all terms to one side"
       },
       {
@@ -1176,7 +3269,9 @@
         "fromLatex": "x^2 - 8x + 12 = 0",
         "toLatex": "(x-2)(x-6) = 0",
         "paletteRef": "p2",
-        "dropTargets": ["x^2 - 8x + 12 = 0"],
+        "dropTargets": [
+          "x^2 - 8x + 12 = 0"
+        ],
         "description": "Factor the quadratic"
       },
       {
@@ -1192,7 +3287,9 @@
         "fromLatex": "\\text{Valid solution: } x = 6",
         "toLatex": "x = 6",
         "paletteRef": "p3",
-        "dropTargets": ["\\text{Valid solution: } x = 6"],
+        "dropTargets": [
+          "\\text{Valid solution: } x = 6"
+        ],
         "description": "Reject extraneous x = 2; answer is x = 6"
       }
     ]

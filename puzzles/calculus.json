@@ -120,13 +120,7 @@
     "symbols": {
       "\\frac{d}{dx}": "Derivative"
     },
-    "palette": [
-      {
-        "id": "p1",
-        "latex": "5",
-        "description": "The derivative of cx is c — constants pass straight through"
-      }
-    ],
+    "palette": [],
     "steps": [
       {
         "id": "s1",
@@ -147,20 +141,10 @@
       {
         "id": "s2a",
         "fromLatex": "5 \\times 1 = 5",
-        "toLatex": "5 \\times 1 = 5",
+        "toLatex": "5",
         "paletteRef": null,
         "dropTargets": [],
         "description": "Compute: 5 × 1 = 5"
-      },
-      {
-        "id": "s3",
-        "fromLatex": "5 \\cdot 1",
-        "toLatex": "5",
-        "paletteRef": "p1",
-        "dropTargets": [
-          "5 \\cdot 1"
-        ],
-        "description": "5 × 1 = 5"
       }
     ],
     "image": "calc-e-003.svg"
@@ -393,13 +377,7 @@
       "\\lim": "Limit — value a function approaches",
       "\\to": "Approaches"
     },
-    "palette": [
-      {
-        "id": "p1",
-        "latex": "4",
-        "description": "For polynomials, substitute directly: 2² = 4"
-      }
-    ],
+    "palette": [],
     "steps": [
       {
         "id": "s1",
@@ -412,20 +390,10 @@
       {
         "id": "s1a",
         "fromLatex": "2^2 = 2 \\times 2 = 4",
-        "toLatex": "2^2 = 2 \\times 2 = 4",
+        "toLatex": "4",
         "paletteRef": null,
         "dropTargets": [],
         "description": "Compute: 2² = 2 × 2 = 4"
-      },
-      {
-        "id": "s2",
-        "fromLatex": "2^2",
-        "toLatex": "4",
-        "paletteRef": "p1",
-        "dropTargets": [
-          "2^2"
-        ],
-        "description": "2² = 4"
       }
     ],
     "image": "calc-e-008.svg"
@@ -782,11 +750,6 @@
         "id": "p1",
         "latex": "\\frac{x^3}{3}",
         "description": "Antiderivative of x² is x³/3"
-      },
-      {
-        "id": "p2",
-        "latex": "\\frac{1}{3}",
-        "description": "F(1) − F(0) = 1/3 − 0 = 1/3"
       }
     ],
     "steps": [
@@ -827,20 +790,10 @@
       {
         "id": "s2c",
         "fromLatex": "\\frac{1}{3} - \\frac{0}{3} = \\frac{1}{3} - 0 = \\frac{1}{3}",
-        "toLatex": "\\frac{1}{3} - \\frac{0}{3} = \\frac{1}{3} - 0 = \\frac{1}{3}",
+        "toLatex": "\\frac{1}{3}",
         "paletteRef": null,
         "dropTargets": [],
         "description": "Compute: 1/3 − 0/3 = 1/3 − 0 = 1/3"
-      },
-      {
-        "id": "s3",
-        "fromLatex": "\\frac{1^3}{3} - \\frac{0^3}{3}",
-        "toLatex": "\\frac{1}{3}",
-        "paletteRef": "p2",
-        "dropTargets": [
-          "\\frac{1^3}{3} - \\frac{0^3}{3}"
-        ],
-        "description": "1/3 − 0 = 1/3"
       }
     ],
     "image": "calc-m-004.svg"
@@ -1036,11 +989,6 @@
         "id": "p1",
         "latex": "x^2 + x",
         "description": "Antiderivative: ∫(2x+1)dx = x² + x"
-      },
-      {
-        "id": "p2",
-        "latex": "6",
-        "description": "F(2) − F(0) = (4+2) − (0+0) = 6"
       }
     ],
     "steps": [
@@ -1081,20 +1029,10 @@
       {
         "id": "s3",
         "fromLatex": "(2^2 + 2) - (0^2 + 0)",
-        "toLatex": "6 - 0",
+        "toLatex": "6",
         "paletteRef": null,
         "dropTargets": [],
         "description": "4 + 2 = 6, and 0 + 0 = 0"
-      },
-      {
-        "id": "s4",
-        "fromLatex": "6 - 0",
-        "toLatex": "6",
-        "paletteRef": "p2",
-        "dropTargets": [
-          "6 - 0"
-        ],
-        "description": "6 − 0 = 6"
       }
     ],
     "image": "calc-m-010.svg"
@@ -1578,11 +1516,6 @@
         "id": "p1",
         "latex": "\\ln|x|",
         "description": "Antiderivative of 1/x is ln|x|"
-      },
-      {
-        "id": "p2",
-        "latex": "1",
-        "description": "ln(e) − ln(1) = 1 − 0 = 1"
       }
     ],
     "steps": [
@@ -1623,20 +1556,10 @@
       {
         "id": "s3",
         "fromLatex": "\\ln(e) - \\ln(1)",
-        "toLatex": "1 - 0",
+        "toLatex": "1",
         "paletteRef": null,
         "dropTargets": [],
         "description": "ln(e)=1 and ln(1)=0 by definition"
-      },
-      {
-        "id": "s4",
-        "fromLatex": "1 - 0",
-        "toLatex": "1",
-        "paletteRef": "p2",
-        "dropTargets": [
-          "1 - 0"
-        ],
-        "description": "1 − 0 = 1"
       }
     ],
     "image": "calc-h-008.svg"
@@ -1947,31 +1870,15 @@
     "symbols": {
       "\\lim": "Limit"
     },
-    "palette": [
-      {
-        "id": "p1",
-        "latex": "7",
-        "description": "5 + 2 = 7"
-      }
-    ],
+    "palette": [],
     "steps": [
       {
         "id": "s1",
         "fromLatex": "\\lim_{x \\to 5}(x + 2)",
-        "toLatex": "5 + 2",
+        "toLatex": "7",
         "paletteRef": null,
         "dropTargets": [],
         "description": "Direct substitution: replace x with 5"
-      },
-      {
-        "id": "s2",
-        "fromLatex": "5 + 2",
-        "toLatex": "7",
-        "paletteRef": "p1",
-        "dropTargets": [
-          "5 + 2"
-        ],
-        "description": "Compute 5 + 2 = 7"
       }
     ]
   },
@@ -2075,11 +1982,6 @@
         "id": "p2",
         "latex": "3^2 - 1^2",
         "description": "Evaluate at bounds: 3² − 1²"
-      },
-      {
-        "id": "p3",
-        "latex": "8",
-        "description": "9 − 1 = 8"
       }
     ],
     "steps": [
@@ -2096,22 +1998,12 @@
       {
         "id": "s2",
         "fromLatex": "\\left[x^2\\right]_1^3",
-        "toLatex": "3^2 - 1^2",
+        "toLatex": "8",
         "paletteRef": "p2",
         "dropTargets": [
           "\\left[x^2\\right]_1^3"
         ],
         "description": "Apply bounds: evaluate at 3 minus at 1"
-      },
-      {
-        "id": "s3",
-        "fromLatex": "3^2 - 1^2",
-        "toLatex": "8",
-        "paletteRef": "p3",
-        "dropTargets": [
-          "3^2 - 1^2"
-        ],
-        "description": "Compute: 9 − 1 = 8"
       }
     ]
   },
@@ -2487,7 +2379,6 @@
       }
     ]
   },
-
   {
     "id": "calc-e-016",
     "topic": "calculus",
@@ -2498,8 +2389,16 @@
     },
     "symbols": {},
     "palette": [
-      { "id": "p1", "latex": "\\frac{1}{2} x^{-1/2}", "description": "Power rule: bring down 1/2, subtract 1" },
-      { "id": "p2", "latex": "\\frac{1}{2\\sqrt{x}}", "description": "Rewrite x^(−1/2) = 1/√x" }
+      {
+        "id": "p1",
+        "latex": "\\frac{1}{2} x^{-1/2}",
+        "description": "Power rule: bring down 1/2, subtract 1"
+      },
+      {
+        "id": "p2",
+        "latex": "\\frac{1}{2\\sqrt{x}}",
+        "description": "Rewrite x^(−1/2) = 1/√x"
+      }
     ],
     "steps": [
       {
@@ -2507,7 +2406,9 @@
         "fromLatex": "\\frac{d}{dx}\\left[x^{1/2}\\right]",
         "toLatex": "\\frac{1}{2} x^{-1/2}",
         "paletteRef": "p1",
-        "dropTargets": ["\\frac{d}{dx}\\left[x^{1/2}\\right]"],
+        "dropTargets": [
+          "\\frac{d}{dx}\\left[x^{1/2}\\right]"
+        ],
         "description": "Power rule: nx^(n−1) with n = 1/2"
       },
       {
@@ -2515,12 +2416,13 @@
         "fromLatex": "\\frac{1}{2} x^{-1/2}",
         "toLatex": "\\frac{1}{2\\sqrt{x}}",
         "paletteRef": "p2",
-        "dropTargets": ["\\frac{1}{2} x^{-1/2}"],
+        "dropTargets": [
+          "\\frac{1}{2} x^{-1/2}"
+        ],
         "description": "Rewrite: x^(−1/2) = 1/√x"
       }
     ]
   },
-
   {
     "id": "calc-e-017",
     "topic": "calculus",
@@ -2531,7 +2433,11 @@
     },
     "symbols": {},
     "palette": [
-      { "id": "p1", "latex": "0", "description": "As x → ∞, 1/x → 0" }
+      {
+        "id": "p1",
+        "latex": "0",
+        "description": "As x → ∞, 1/x → 0"
+      }
     ],
     "steps": [
       {
@@ -2539,12 +2445,13 @@
         "fromLatex": "\\lim_{x \\to \\infty} \\frac{1}{x}",
         "toLatex": "0",
         "paletteRef": "p1",
-        "dropTargets": ["\\lim_{x \\to \\infty} \\frac{1}{x}"],
+        "dropTargets": [
+          "\\lim_{x \\to \\infty} \\frac{1}{x}"
+        ],
         "description": "Numerator degree < denominator degree → limit is 0"
       }
     ]
   },
-
   {
     "id": "calc-e-018",
     "topic": "calculus",
@@ -2555,7 +2462,11 @@
     },
     "symbols": {},
     "palette": [
-      { "id": "p1", "latex": "6", "description": "f'(3) = 2 × 3 = 6" }
+      {
+        "id": "p1",
+        "latex": "6",
+        "description": "f'(3) = 2 × 3 = 6"
+      }
     ],
     "steps": [
       {
@@ -2571,12 +2482,13 @@
         "fromLatex": "f'(3) = 2 \\cdot 3",
         "toLatex": "6",
         "paletteRef": "p1",
-        "dropTargets": ["2 \\cdot 3"],
+        "dropTargets": [
+          "2 \\cdot 3"
+        ],
         "description": "Evaluate at x = 3: 2 × 3 = 6"
       }
     ]
   },
-
   {
     "id": "calc-e-019",
     "topic": "calculus",
@@ -2587,7 +2499,11 @@
     },
     "symbols": {},
     "palette": [
-      { "id": "p1", "latex": "6x + 2", "description": "Power rule on each term; constant vanishes" }
+      {
+        "id": "p1",
+        "latex": "6x + 2",
+        "description": "Power rule on each term; constant vanishes"
+      }
     ],
     "steps": [
       {
@@ -2595,12 +2511,13 @@
         "fromLatex": "\\frac{d}{dx}\\left[3x^2 + 2x - 5\\right]",
         "toLatex": "6x + 2",
         "paletteRef": "p1",
-        "dropTargets": ["\\frac{d}{dx}\\left[3x^2 + 2x - 5\\right]"],
+        "dropTargets": [
+          "\\frac{d}{dx}\\left[3x^2 + 2x - 5\\right]"
+        ],
         "description": "d/dx[3x²] = 6x; d/dx[2x] = 2; d/dx[−5] = 0"
       }
     ]
   },
-
   {
     "id": "calc-e-020",
     "topic": "calculus",
@@ -2611,8 +2528,16 @@
     },
     "symbols": {},
     "palette": [
-      { "id": "p1", "latex": "\\frac{6x^3}{3} + C", "description": "Power rule: raise exponent by 1, divide by new exponent" },
-      { "id": "p2", "latex": "2x^3 + C", "description": "Simplify: 6/3 = 2" }
+      {
+        "id": "p1",
+        "latex": "\\frac{6x^3}{3} + C",
+        "description": "Power rule: raise exponent by 1, divide by new exponent"
+      },
+      {
+        "id": "p2",
+        "latex": "2x^3 + C",
+        "description": "Simplify: 6/3 = 2"
+      }
     ],
     "steps": [
       {
@@ -2620,7 +2545,9 @@
         "fromLatex": "\\int 6x^2 \\, dx",
         "toLatex": "\\frac{6x^3}{3} + C",
         "paletteRef": "p1",
-        "dropTargets": ["\\int 6x^2 \\, dx"],
+        "dropTargets": [
+          "\\int 6x^2 \\, dx"
+        ],
         "description": "Power rule for integration: ∫x² dx = x³/3"
       },
       {
@@ -2628,12 +2555,13 @@
         "fromLatex": "\\frac{6x^3}{3} + C",
         "toLatex": "2x^3 + C",
         "paletteRef": "p2",
-        "dropTargets": ["\\frac{6x^3}{3}"],
+        "dropTargets": [
+          "\\frac{6x^3}{3}"
+        ],
         "description": "Simplify: 6/3 = 2"
       }
     ]
   },
-
   {
     "id": "calc-m-016",
     "topic": "calculus",
@@ -2642,9 +2570,15 @@
       "latex": "x^2 + y^2 = 25. \\quad \\text{Find } \\frac{dy}{dx} \\text{ (implicit differentiation).}",
       "plain": "Use implicit differentiation on x² + y² = 25 to find dy/dx."
     },
-    "symbols": { "y": "function of x" },
+    "symbols": {
+      "y": "function of x"
+    },
     "palette": [
-      { "id": "p1", "latex": "-\\frac{x}{y}", "description": "Solve: 2y(dy/dx) = −2x → dy/dx = −x/y" }
+      {
+        "id": "p1",
+        "latex": "-\\frac{x}{y}",
+        "description": "Solve: 2y(dy/dx) = −2x → dy/dx = −x/y"
+      }
     ],
     "steps": [
       {
@@ -2660,12 +2594,13 @@
         "fromLatex": "2y \\frac{dy}{dx} = -2x",
         "toLatex": "\\frac{dy}{dx} = -\\frac{x}{y}",
         "paletteRef": "p1",
-        "dropTargets": ["2y \\frac{dy}{dx} = -2x"],
+        "dropTargets": [
+          "2y \\frac{dy}{dx} = -2x"
+        ],
         "description": "Divide both sides by 2y"
       }
     ]
   },
-
   {
     "id": "calc-m-017",
     "topic": "calculus",
@@ -2676,29 +2611,25 @@
     },
     "symbols": {},
     "palette": [
-      { "id": "p1", "latex": "\\left[\\frac{x^2}{2} - \\frac{x^3}{3}\\right]_0^1", "description": "Integrate (x − x²)" },
-      { "id": "p2", "latex": "\\frac{1}{6}", "description": "1/2 − 1/3 = 1/6" }
+      {
+        "id": "p1",
+        "latex": "\\left[\\frac{x^2}{2} - \\frac{x^3}{3}\\right]_0^1",
+        "description": "Integrate (x − x²)"
+      }
     ],
     "steps": [
       {
         "id": "s1",
         "fromLatex": "\\int_0^1 (x - x^2) \\, dx",
-        "toLatex": "\\left[\\frac{x^2}{2} - \\frac{x^3}{3}\\right]_0^1",
-        "paletteRef": "p1",
-        "dropTargets": ["\\int_0^1 (x - x^2) \\, dx"],
-        "description": "Antiderivative: x → x²/2; x² → x³/3"
-      },
-      {
-        "id": "s2",
-        "fromLatex": "\\frac{1}{2} - \\frac{1}{3}",
         "toLatex": "\\frac{1}{6}",
-        "paletteRef": "p2",
-        "dropTargets": ["\\frac{1}{2} - \\frac{1}{3}"],
-        "description": "LCD 6: 3/6 − 2/6 = 1/6"
+        "paletteRef": "p1",
+        "dropTargets": [
+          "\\int_0^1 (x - x^2) \\, dx"
+        ],
+        "description": "Antiderivative: x → x²/2; x² → x³/3"
       }
     ]
   },
-
   {
     "id": "calc-m-018",
     "topic": "calculus",
@@ -2709,8 +2640,16 @@
     },
     "symbols": {},
     "palette": [
-      { "id": "p1", "latex": "x^2 = 1", "description": "3x² − 3 = 0 → x² = 1" },
-      { "id": "p2", "latex": "\\pm 1", "description": "x = ±1" }
+      {
+        "id": "p1",
+        "latex": "x^2 = 1",
+        "description": "3x² − 3 = 0 → x² = 1"
+      },
+      {
+        "id": "p2",
+        "latex": "\\pm 1",
+        "description": "x = ±1"
+      }
     ],
     "steps": [
       {
@@ -2718,7 +2657,9 @@
         "fromLatex": "3x^2 - 3 = 0",
         "toLatex": "x^2 = 1",
         "paletteRef": "p1",
-        "dropTargets": ["3x^2 - 3 = 0"],
+        "dropTargets": [
+          "3x^2 - 3 = 0"
+        ],
         "description": "f'(x) = 3x² − 3; set to zero and add 3, divide by 3"
       },
       {
@@ -2726,12 +2667,13 @@
         "fromLatex": "x^2 = 1",
         "toLatex": "x = \\pm 1",
         "paletteRef": "p2",
-        "dropTargets": ["x^2 = 1"],
+        "dropTargets": [
+          "x^2 = 1"
+        ],
         "description": "Take square root of both sides"
       }
     ]
   },
-
   {
     "id": "calc-m-019",
     "topic": "calculus",
@@ -2741,29 +2683,18 @@
       "plain": "Evaluate the sum: 1 + 2 + 3 + 4."
     },
     "symbols": {},
-    "palette": [
-      { "id": "p1", "latex": "10", "description": "1 + 2 + 3 + 4 = 10" }
-    ],
+    "palette": [],
     "steps": [
       {
         "id": "s1",
         "fromLatex": "\\sum_{n=1}^{4} n = 1 + 2 + 3 + 4",
-        "toLatex": "1 + 2 + 3 + 4",
+        "toLatex": "10",
         "paletteRef": null,
         "dropTargets": [],
         "description": "Expand the sigma notation"
-      },
-      {
-        "id": "s2",
-        "fromLatex": "1 + 2 + 3 + 4",
-        "toLatex": "10",
-        "paletteRef": "p1",
-        "dropTargets": ["1 + 2 + 3 + 4"],
-        "description": "Add: 1+2+3+4 = 10 (or use N(N+1)/2 = 4·5/2 = 10)"
       }
     ]
   },
-
   {
     "id": "calc-m-020",
     "topic": "calculus",
@@ -2774,7 +2705,11 @@
     },
     "symbols": {},
     "palette": [
-      { "id": "p1", "latex": "2x - 1", "description": "y = 2x − 1" }
+      {
+        "id": "p1",
+        "latex": "2x - 1",
+        "description": "y = 2x − 1"
+      }
     ],
     "steps": [
       {
@@ -2790,12 +2725,13 @@
         "fromLatex": "y - 1 = 2(x - 1)",
         "toLatex": "y = 2x - 1",
         "paletteRef": "p1",
-        "dropTargets": ["y - 1 = 2(x - 1)"],
+        "dropTargets": [
+          "y - 1 = 2(x - 1)"
+        ],
         "description": "Point-slope form; simplify to slope-intercept"
       }
     ]
   },
-
   {
     "id": "calc-h-016",
     "topic": "calculus",
@@ -2806,9 +2742,16 @@
     },
     "symbols": {},
     "palette": [
-      { "id": "p1", "latex": "\\left[-x^{-1}\\right]_1^{\\infty}", "description": "Antiderivative of x^(−2) is −x^(−1)" },
-      { "id": "p2", "latex": "0 - (-1)", "description": "Limit as x → ∞ of −1/x = 0; at x=1 it's −1" },
-      { "id": "p3", "latex": "1", "description": "0 − (−1) = 1" }
+      {
+        "id": "p1",
+        "latex": "\\left[-x^{-1}\\right]_1^{\\infty}",
+        "description": "Antiderivative of x^(−2) is −x^(−1)"
+      },
+      {
+        "id": "p2",
+        "latex": "0 - (-1)",
+        "description": "Limit as x → ∞ of −1/x = 0; at x=1 it's −1"
+      }
     ],
     "steps": [
       {
@@ -2816,28 +2759,23 @@
         "fromLatex": "\\int_1^{\\infty} x^{-2} \\, dx",
         "toLatex": "\\left[-x^{-1}\\right]_1^{\\infty}",
         "paletteRef": "p1",
-        "dropTargets": ["\\int_1^{\\infty} x^{-2} \\, dx"],
+        "dropTargets": [
+          "\\int_1^{\\infty} x^{-2} \\, dx"
+        ],
         "description": "Antiderivative: ∫x^(−2) dx = −x^(−1)"
       },
       {
         "id": "s2",
         "fromLatex": "\\left[-x^{-1}\\right]_1^{\\infty}",
-        "toLatex": "0 - (-1)",
-        "paletteRef": "p2",
-        "dropTargets": ["\\left[-x^{-1}\\right]_1^{\\infty}"],
-        "description": "Upper bound: lim(−1/x) as x→∞ = 0; lower: −1/1 = −1"
-      },
-      {
-        "id": "s3",
-        "fromLatex": "0 - (-1)",
         "toLatex": "1",
-        "paletteRef": "p3",
-        "dropTargets": ["0 - (-1)"],
-        "description": "Subtract: 0 − (−1) = 1"
+        "paletteRef": "p2",
+        "dropTargets": [
+          "\\left[-x^{-1}\\right]_1^{\\infty}"
+        ],
+        "description": "Upper bound: lim(−1/x) as x→∞ = 0; lower: −1/1 = −1"
       }
     ]
   },
-
   {
     "id": "calc-h-017",
     "topic": "calculus",
@@ -2846,10 +2784,20 @@
       "latex": "\\int 2x(x^2+1)^3 \\, dx = ?",
       "plain": "Integrate 2x(x²+1)³ dx using u-substitution."
     },
-    "symbols": { "u": "x² + 1" },
+    "symbols": {
+      "u": "x² + 1"
+    },
     "palette": [
-      { "id": "p1", "latex": "\\frac{u^4}{4} + C", "description": "∫u³ du = u⁴/4 + C" },
-      { "id": "p2", "latex": "\\frac{(x^2+1)^4}{4} + C", "description": "Back-substitute u = x² + 1" }
+      {
+        "id": "p1",
+        "latex": "\\frac{u^4}{4} + C",
+        "description": "∫u³ du = u⁴/4 + C"
+      },
+      {
+        "id": "p2",
+        "latex": "\\frac{(x^2+1)^4}{4} + C",
+        "description": "Back-substitute u = x² + 1"
+      }
     ],
     "steps": [
       {
@@ -2865,7 +2813,9 @@
         "fromLatex": "\\int u^3 \\, du",
         "toLatex": "\\frac{u^4}{4} + C",
         "paletteRef": "p1",
-        "dropTargets": ["\\int u^3 \\, du"],
+        "dropTargets": [
+          "\\int u^3 \\, du"
+        ],
         "description": "Power rule for integration: ∫u³ du = u⁴/4 + C"
       },
       {
@@ -2873,12 +2823,13 @@
         "fromLatex": "\\frac{u^4}{4} + C",
         "toLatex": "\\frac{(x^2+1)^4}{4} + C",
         "paletteRef": "p2",
-        "dropTargets": ["u^4"],
+        "dropTargets": [
+          "u^4"
+        ],
         "description": "Back-substitute: u = x² + 1"
       }
     ]
   },
-
   {
     "id": "calc-h-018",
     "topic": "calculus",
@@ -2887,40 +2838,44 @@
       "latex": "\\text{Apply MVT to } f(x) = x^2 \\text{ on } [1,3]. \\text{ Find } c.",
       "plain": "Apply the Mean Value Theorem to f(x) = x² on [1, 3]. Find the value c."
     },
-    "symbols": { "c": "value guaranteed by MVT" },
+    "symbols": {
+      "c": "value guaranteed by MVT"
+    },
     "palette": [
-      { "id": "p1", "latex": "8", "description": "f(3) − f(1) = 9 − 1 = 8" },
-      { "id": "p2", "latex": "4", "description": "8 ÷ 2 = 4 (average rate of change)" },
-      { "id": "p3", "latex": "2", "description": "f'(c) = 2c = 4 → c = 2" }
+      {
+        "id": "p1",
+        "latex": "8",
+        "description": "f(3) − f(1) = 9 − 1 = 8"
+      },
+      {
+        "id": "p3",
+        "latex": "2",
+        "description": "f'(c) = 2c = 4 → c = 2"
+      }
     ],
     "steps": [
       {
         "id": "s1",
         "fromLatex": "\\frac{f(3) - f(1)}{3 - 1} = \\frac{9 - 1}{2}",
-        "toLatex": "\\frac{8}{2}",
-        "paletteRef": "p1",
-        "dropTargets": ["9 - 1"],
-        "description": "f(3) = 9, f(1) = 1; numerator = 8"
-      },
-      {
-        "id": "s2",
-        "fromLatex": "\\frac{8}{2}",
         "toLatex": "4",
-        "paletteRef": "p2",
-        "dropTargets": ["\\frac{8}{2}"],
-        "description": "Average rate of change = 4"
+        "paletteRef": "p1",
+        "dropTargets": [
+          "9 - 1"
+        ],
+        "description": "f(3) = 9, f(1) = 1; numerator = 8"
       },
       {
         "id": "s3",
         "fromLatex": "f'(c) = 2c = 4",
         "toLatex": "c = 2",
         "paletteRef": "p3",
-        "dropTargets": ["2c = 4"],
+        "dropTargets": [
+          "2c = 4"
+        ],
         "description": "Set f'(c) = 4; solve: c = 2 ∈ (1,3)"
       }
     ]
   },
-
   {
     "id": "calc-h-019",
     "topic": "calculus",
@@ -2931,8 +2886,16 @@
     },
     "symbols": {},
     "palette": [
-      { "id": "p1", "latex": "x^2 e^x - 2(xe^x - e^x) + C", "description": "Apply parts twice: second integral ∫xeˣ dx = xeˣ − eˣ" },
-      { "id": "p2", "latex": "e^x(x^2 - 2x + 2) + C", "description": "Factor eˣ from x²eˣ − 2xeˣ + 2eˣ" }
+      {
+        "id": "p1",
+        "latex": "x^2 e^x - 2(xe^x - e^x) + C",
+        "description": "Apply parts twice: second integral ∫xeˣ dx = xeˣ − eˣ"
+      },
+      {
+        "id": "p2",
+        "latex": "e^x(x^2 - 2x + 2) + C",
+        "description": "Factor eˣ from x²eˣ − 2xeˣ + 2eˣ"
+      }
     ],
     "steps": [
       {
@@ -2948,7 +2911,9 @@
         "fromLatex": "x^2 e^x - 2\\int x e^x \\, dx",
         "toLatex": "x^2 e^x - 2(xe^x - e^x) + C",
         "paletteRef": "p1",
-        "dropTargets": ["x^2 e^x - 2\\int x e^x \\, dx"],
+        "dropTargets": [
+          "x^2 e^x - 2\\int x e^x \\, dx"
+        ],
         "description": "Second by-parts: ∫xeˣ dx = xeˣ − eˣ + C"
       },
       {
@@ -2956,12 +2921,13 @@
         "fromLatex": "x^2 e^x - 2(xe^x - e^x) + C",
         "toLatex": "e^x(x^2 - 2x + 2) + C",
         "paletteRef": "p2",
-        "dropTargets": ["x^2 e^x - 2(xe^x - e^x) + C"],
+        "dropTargets": [
+          "x^2 e^x - 2(xe^x - e^x) + C"
+        ],
         "description": "Expand and factor: eˣ(x² − 2x + 2)"
       }
     ]
   },
-
   {
     "id": "calc-h-020",
     "topic": "calculus",
@@ -2970,10 +2936,21 @@
       "latex": "V = \\tfrac{4}{3}\\pi r^3, \\; \\frac{dV}{dt} = 2. \\quad \\text{Find } \\frac{dr}{dt} \\text{ when } r = 3.",
       "plain": "A sphere's volume grows at dV/dt = 2. Find dr/dt when r = 3 (related rates)."
     },
-    "symbols": { "r": "radius", "t": "time" },
+    "symbols": {
+      "r": "radius",
+      "t": "time"
+    },
     "palette": [
-      { "id": "p1", "latex": "36\\pi", "description": "4π(3)² = 36π" },
-      { "id": "p2", "latex": "\\frac{1}{18\\pi}", "description": "2 ÷ 36π = 1/(18π)" }
+      {
+        "id": "p1",
+        "latex": "36\\pi",
+        "description": "4π(3)² = 36π"
+      },
+      {
+        "id": "p2",
+        "latex": "\\frac{1}{18\\pi}",
+        "description": "2 ÷ 36π = 1/(18π)"
+      }
     ],
     "steps": [
       {
@@ -2989,7 +2966,9 @@
         "fromLatex": "2 = 4\\pi (3)^2 \\frac{dr}{dt}",
         "toLatex": "2 = 36\\pi \\frac{dr}{dt}",
         "paletteRef": "p1",
-        "dropTargets": ["4\\pi (3)^2"],
+        "dropTargets": [
+          "4\\pi (3)^2"
+        ],
         "description": "Substitute dV/dt = 2 and r = 3; evaluate 4π(9) = 36π"
       },
       {
@@ -2997,7 +2976,9 @@
         "fromLatex": "\\frac{dr}{dt} = \\frac{2}{36\\pi}",
         "toLatex": "\\frac{dr}{dt} = \\frac{1}{18\\pi}",
         "paletteRef": "p2",
-        "dropTargets": ["\\frac{2}{36\\pi}"],
+        "dropTargets": [
+          "\\frac{2}{36\\pi}"
+        ],
         "description": "Simplify: 2/(36π) = 1/(18π)"
       }
     ]

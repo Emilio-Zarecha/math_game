@@ -601,11 +601,6 @@
         "id": "p1",
         "latex": "1 - 2\\sin^2(\\theta)",
         "description": "Double-angle: cos(2θ) = 1 − 2sin²(θ)"
-      },
-      {
-        "id": "p2",
-        "latex": "0",
-        "description": "1 − 2×(1/2) = 1 − 1 = 0; cos(90°) = 0"
       }
     ],
     "steps": [
@@ -654,20 +649,10 @@
       {
         "id": "s3b",
         "fromLatex": "1 - 1 = 0",
-        "toLatex": "1 - 1 = 0",
+        "toLatex": "\\cos(90^\\circ) = 0",
         "paletteRef": null,
         "dropTargets": [],
         "description": "Compute: 1 − 1 = 0"
-      },
-      {
-        "id": "s4",
-        "fromLatex": "1 - 2 \\times \\frac{1}{2}",
-        "toLatex": "\\cos(90^\\circ) = 0",
-        "paletteRef": "p2",
-        "dropTargets": [
-          "1 - 2 \\times \\frac{1}{2}"
-        ],
-        "description": "1 − 1 = 0"
       }
     ],
     "image": "trig-m-005.svg"
@@ -751,11 +736,6 @@
         "id": "p1",
         "latex": "\\times \\frac{180}{\\pi}",
         "description": "Multiply radians by 180/π to convert to degrees"
-      },
-      {
-        "id": "p2",
-        "latex": "150^\\circ",
-        "description": "(5π/6) × (180/π) = 5×30 = 150°"
       }
     ],
     "steps": [
@@ -788,20 +768,10 @@
       {
         "id": "s2b",
         "fromLatex": "5 \\times 30 = 150",
-        "toLatex": "5 \\times 30 = 150",
+        "toLatex": "150^\\circ",
         "paletteRef": null,
         "dropTargets": [],
         "description": "Compute: 5 × 30 = 150"
-      },
-      {
-        "id": "s3",
-        "fromLatex": "\\frac{5 \\times 180}{6}",
-        "toLatex": "150^\\circ",
-        "paletteRef": "p2",
-        "dropTargets": [
-          "\\frac{5 \\times 180}{6}"
-        ],
-        "description": "5 × 30 = 150°"
       }
     ],
     "image": "trig-m-007.svg"
@@ -823,11 +793,6 @@
         "id": "p1",
         "latex": "\\sin A\\cos B + \\cos A\\sin B",
         "description": "Angle addition formula: sin(A+B) = sinA cosB + cosA sinB"
-      },
-      {
-        "id": "p2",
-        "latex": "1",
-        "description": "sin(90°) = 1"
       }
     ],
     "steps": [
@@ -884,20 +849,10 @@
       {
         "id": "s4a",
         "fromLatex": "\\frac{1}{4} + \\frac{3}{4} = \\frac{4}{4} = 1",
-        "toLatex": "\\frac{1}{4} + \\frac{3}{4} = \\frac{1+3}{4} = \\frac{4}{4} = 1",
+        "toLatex": "\\sin(90^\\circ) = 1",
         "paletteRef": null,
         "dropTargets": [],
         "description": "Compute: 1/4 + 3/4 = 4/4 = 1"
-      },
-      {
-        "id": "s5",
-        "fromLatex": "\\frac{1}{4} + \\frac{3}{4}",
-        "toLatex": "\\sin(90^\\circ) = 1",
-        "paletteRef": "p2",
-        "dropTargets": [
-          "\\frac{1}{4} + \\frac{3}{4}"
-        ],
-        "description": "1/4 + 3/4 = 1, confirming sin(90°)=1"
       }
     ],
     "image": "trig-m-008.svg"
@@ -920,11 +875,6 @@
         "id": "p1",
         "latex": "\\frac{1}{\\cos(\\theta)}",
         "description": "Secant is the reciprocal of cosine: sec(θ) = 1/cos(θ)"
-      },
-      {
-        "id": "p2",
-        "latex": "2",
-        "description": "1 ÷ (1/2) = 2"
       }
     ],
     "steps": [
@@ -949,20 +899,10 @@
       {
         "id": "s2a",
         "fromLatex": "1 \\div \\frac{1}{2} = 1 \\times \\frac{2}{1} = 2",
-        "toLatex": "1 \\div \\frac{1}{2} = 1 \\times 2 = 2 \\quad (\\text{dividing by a fraction flips it})",
+        "toLatex": "\\sec(\\theta) = 2",
         "paletteRef": null,
         "dropTargets": [],
         "description": "Compute: 1 ÷ (1/2) = 1 × 2 = 2 (invert and multiply)"
-      },
-      {
-        "id": "s3",
-        "fromLatex": "\\frac{1}{\\frac{1}{2}}",
-        "toLatex": "\\sec(\\theta) = 2",
-        "paletteRef": "p2",
-        "dropTargets": [
-          "\\frac{1}{\\frac{1}{2}}"
-        ],
-        "description": "1 ÷ (1/2) = 2"
       }
     ],
     "image": "trig-m-009.svg"
@@ -2343,7 +2283,6 @@
       }
     ]
   },
-
   {
     "id": "trig-e-016",
     "topic": "trigonometry",
@@ -2354,8 +2293,11 @@
     },
     "symbols": {},
     "palette": [
-      { "id": "p1", "latex": "\\frac{1}{1/2}", "description": "csc = 1/sin; sin(30°) = 1/2" },
-      { "id": "p2", "latex": "2", "description": "1 ÷ (1/2) = 2" }
+      {
+        "id": "p1",
+        "latex": "\\frac{1}{1/2}",
+        "description": "csc = 1/sin; sin(30°) = 1/2"
+      }
     ],
     "steps": [
       {
@@ -2369,22 +2311,15 @@
       {
         "id": "s2",
         "fromLatex": "\\frac{1}{\\sin(30°)}",
-        "toLatex": "\\frac{1}{1/2}",
-        "paletteRef": "p1",
-        "dropTargets": ["\\sin(30°)"],
-        "description": "sin(30°) = 1/2"
-      },
-      {
-        "id": "s3",
-        "fromLatex": "\\frac{1}{1/2}",
         "toLatex": "2",
-        "paletteRef": "p2",
-        "dropTargets": ["\\frac{1}{1/2}"],
-        "description": "1 ÷ (1/2) = 2"
+        "paletteRef": "p1",
+        "dropTargets": [
+          "\\sin(30°)"
+        ],
+        "description": "sin(30°) = 1/2"
       }
     ]
   },
-
   {
     "id": "trig-e-017",
     "topic": "trigonometry",
@@ -2395,7 +2330,11 @@
     },
     "symbols": {},
     "palette": [
-      { "id": "p1", "latex": "30°", "description": "sin(30°) = 1/2" }
+      {
+        "id": "p1",
+        "latex": "30°",
+        "description": "sin(30°) = 1/2"
+      }
     ],
     "steps": [
       {
@@ -2403,12 +2342,13 @@
         "fromLatex": "\\arcsin\\left(\\frac{1}{2}\\right)",
         "toLatex": "30°",
         "paletteRef": "p1",
-        "dropTargets": ["\\arcsin\\left(\\frac{1}{2}\\right)"],
+        "dropTargets": [
+          "\\arcsin\\left(\\frac{1}{2}\\right)"
+        ],
         "description": "sin(30°) = 1/2, so arcsin(1/2) = 30°"
       }
     ]
   },
-
   {
     "id": "trig-e-018",
     "topic": "trigonometry",
@@ -2419,7 +2359,11 @@
     },
     "symbols": {},
     "palette": [
-      { "id": "p1", "latex": "\\frac{1}{2}", "description": "π/3 = 60°; cos(60°) = 1/2" }
+      {
+        "id": "p1",
+        "latex": "\\frac{1}{2}",
+        "description": "π/3 = 60°; cos(60°) = 1/2"
+      }
     ],
     "steps": [
       {
@@ -2427,12 +2371,13 @@
         "fromLatex": "\\cos\\left(\\frac{\\pi}{3}\\right)",
         "toLatex": "\\frac{1}{2}",
         "paletteRef": "p1",
-        "dropTargets": ["\\cos\\left(\\frac{\\pi}{3}\\right)"],
+        "dropTargets": [
+          "\\cos\\left(\\frac{\\pi}{3}\\right)"
+        ],
         "description": "π/3 = 60°; cos(60°) = 1/2"
       }
     ]
   },
-
   {
     "id": "trig-e-019",
     "topic": "trigonometry",
@@ -2441,9 +2386,15 @@
       "latex": "\\text{Right triangle: opp} = 3, \\text{hyp} = 5. \\quad \\sin(\\theta) = ?",
       "plain": "A right triangle has opposite side 3 and hypotenuse 5. Find sin(θ)."
     },
-    "symbols": { "θ": "angle opposite the side of length 3" },
+    "symbols": {
+      "θ": "angle opposite the side of length 3"
+    },
     "palette": [
-      { "id": "p1", "latex": "\\frac{3}{5}", "description": "sin = opp/hyp = 3/5" }
+      {
+        "id": "p1",
+        "latex": "\\frac{3}{5}",
+        "description": "sin = opp/hyp = 3/5"
+      }
     ],
     "steps": [
       {
@@ -2459,12 +2410,13 @@
         "fromLatex": "\\frac{\\text{opp}}{\\text{hyp}}",
         "toLatex": "\\frac{3}{5}",
         "paletteRef": "p1",
-        "dropTargets": ["\\frac{\\text{opp}}{\\text{hyp}}"],
+        "dropTargets": [
+          "\\frac{\\text{opp}}{\\text{hyp}}"
+        ],
         "description": "Substitute: opp = 3, hyp = 5"
       }
     ]
   },
-
   {
     "id": "trig-e-020",
     "topic": "trigonometry",
@@ -2475,7 +2427,11 @@
     },
     "symbols": {},
     "palette": [
-      { "id": "p1", "latex": "-1", "description": "270° is at the bottom of the unit circle: (0, −1)" }
+      {
+        "id": "p1",
+        "latex": "-1",
+        "description": "270° is at the bottom of the unit circle: (0, −1)"
+      }
     ],
     "steps": [
       {
@@ -2483,12 +2439,13 @@
         "fromLatex": "\\sin(270°)",
         "toLatex": "-1",
         "paletteRef": "p1",
-        "dropTargets": ["\\sin(270°)"],
+        "dropTargets": [
+          "\\sin(270°)"
+        ],
         "description": "Unit circle at 270°: y-coordinate = −1"
       }
     ]
   },
-
   {
     "id": "trig-m-016",
     "topic": "trigonometry",
@@ -2497,9 +2454,15 @@
       "latex": "r = 5, \\; \\theta = \\frac{\\pi}{3}. \\quad \\text{Find arc length } s.",
       "plain": "Find the arc length for radius r = 5 and central angle θ = π/3."
     },
-    "symbols": { "s": "arc length" },
+    "symbols": {
+      "s": "arc length"
+    },
     "palette": [
-      { "id": "p1", "latex": "\\frac{5\\pi}{3}", "description": "s = rθ = 5 × π/3" }
+      {
+        "id": "p1",
+        "latex": "\\frac{5\\pi}{3}",
+        "description": "s = rθ = 5 × π/3"
+      }
     ],
     "steps": [
       {
@@ -2507,12 +2470,13 @@
         "fromLatex": "s = r \\theta = 5 \\cdot \\frac{\\pi}{3}",
         "toLatex": "\\frac{5\\pi}{3}",
         "paletteRef": "p1",
-        "dropTargets": ["5 \\cdot \\frac{\\pi}{3}"],
+        "dropTargets": [
+          "5 \\cdot \\frac{\\pi}{3}"
+        ],
         "description": "s = rθ = 5 · (π/3) = 5π/3"
       }
     ]
   },
-
   {
     "id": "trig-m-017",
     "topic": "trigonometry",
@@ -2521,9 +2485,15 @@
       "latex": "\\cos(\\theta) = 0, \\quad \\theta \\in [0°, 360°). \\quad \\text{Find all } \\theta.",
       "plain": "Solve cos(θ) = 0 on [0°, 360°)."
     },
-    "symbols": { "θ": "unknown angle" },
+    "symbols": {
+      "θ": "unknown angle"
+    },
     "palette": [
-      { "id": "p1", "latex": "90°, 270°", "description": "Cosine is zero at the top and bottom of the unit circle" }
+      {
+        "id": "p1",
+        "latex": "90°, 270°",
+        "description": "Cosine is zero at the top and bottom of the unit circle"
+      }
     ],
     "steps": [
       {
@@ -2531,12 +2501,13 @@
         "fromLatex": "\\cos(\\theta) = 0",
         "toLatex": "\\theta = 90°, 270°",
         "paletteRef": "p1",
-        "dropTargets": ["\\cos(\\theta) = 0"],
+        "dropTargets": [
+          "\\cos(\\theta) = 0"
+        ],
         "description": "Cosine = 0 at 90° (π/2) and 270° (3π/2)"
       }
     ]
   },
-
   {
     "id": "trig-m-018",
     "topic": "trigonometry",
@@ -2547,8 +2518,16 @@
     },
     "symbols": {},
     "palette": [
-      { "id": "p1", "latex": "\\frac{\\sqrt{3}}{2}", "description": "cos(30°) = √3/2" },
-      { "id": "p2", "latex": "5\\sqrt{3}", "description": "10 × (√3/2) = 5√3" }
+      {
+        "id": "p1",
+        "latex": "\\frac{\\sqrt{3}}{2}",
+        "description": "cos(30°) = √3/2"
+      },
+      {
+        "id": "p2",
+        "latex": "5\\sqrt{3}",
+        "description": "10 × (√3/2) = 5√3"
+      }
     ],
     "steps": [
       {
@@ -2556,7 +2535,9 @@
         "fromLatex": "\\text{adj} = 10 \\cdot \\cos(30°)",
         "toLatex": "10 \\cdot \\frac{\\sqrt{3}}{2}",
         "paletteRef": "p1",
-        "dropTargets": ["\\cos(30°)"],
+        "dropTargets": [
+          "\\cos(30°)"
+        ],
         "description": "CAH: adj = hyp × cos(30°) = 10 × (√3/2)"
       },
       {
@@ -2564,12 +2545,13 @@
         "fromLatex": "10 \\cdot \\frac{\\sqrt{3}}{2}",
         "toLatex": "5\\sqrt{3}",
         "paletteRef": "p2",
-        "dropTargets": ["10 \\cdot \\frac{\\sqrt{3}}{2}"],
+        "dropTargets": [
+          "10 \\cdot \\frac{\\sqrt{3}}{2}"
+        ],
         "description": "Multiply: 10 × √3/2 = 5√3"
       }
     ]
   },
-
   {
     "id": "trig-m-019",
     "topic": "trigonometry",
@@ -2580,7 +2562,11 @@
     },
     "symbols": {},
     "palette": [
-      { "id": "p1", "latex": "45°", "description": "tan(45°) = 1, so arctan(1) = 45°" }
+      {
+        "id": "p1",
+        "latex": "45°",
+        "description": "tan(45°) = 1, so arctan(1) = 45°"
+      }
     ],
     "steps": [
       {
@@ -2588,12 +2574,13 @@
         "fromLatex": "\\arctan(1)",
         "toLatex": "45°",
         "paletteRef": "p1",
-        "dropTargets": ["\\arctan(1)"],
+        "dropTargets": [
+          "\\arctan(1)"
+        ],
         "description": "tan(45°) = 1; arctan(1) = 45°"
       }
     ]
   },
-
   {
     "id": "trig-m-020",
     "topic": "trigonometry",
@@ -2604,29 +2591,25 @@
     },
     "symbols": {},
     "palette": [
-      { "id": "p1", "latex": "\\frac{1}{2} - \\frac{1}{2}", "description": "(√2/2)² − (√2/2)² = 1/2 − 1/2" },
-      { "id": "p2", "latex": "0", "description": "1/2 − 1/2 = 0" }
+      {
+        "id": "p1",
+        "latex": "\\frac{1}{2} - \\frac{1}{2}",
+        "description": "(√2/2)² − (√2/2)² = 1/2 − 1/2"
+      }
     ],
     "steps": [
       {
         "id": "s1",
         "fromLatex": "\\cos(45°)\\cos(45°) - \\sin(45°)\\sin(45°)",
-        "toLatex": "\\frac{1}{2} - \\frac{1}{2}",
-        "paletteRef": "p1",
-        "dropTargets": ["\\cos(45°)\\cos(45°) - \\sin(45°)\\sin(45°)"],
-        "description": "Each factor: cos(45°) = sin(45°) = √2/2; (√2/2)² = 1/2"
-      },
-      {
-        "id": "s2",
-        "fromLatex": "\\frac{1}{2} - \\frac{1}{2}",
         "toLatex": "0",
-        "paletteRef": "p2",
-        "dropTargets": ["\\frac{1}{2} - \\frac{1}{2}"],
-        "description": "Subtract: 1/2 − 1/2 = 0"
+        "paletteRef": "p1",
+        "dropTargets": [
+          "\\cos(45°)\\cos(45°) - \\sin(45°)\\sin(45°)"
+        ],
+        "description": "Each factor: cos(45°) = sin(45°) = √2/2; (√2/2)² = 1/2"
       }
     ]
   },
-
   {
     "id": "trig-h-016",
     "topic": "trigonometry",
@@ -2635,12 +2618,30 @@
       "latex": "a = 5, \\; b = 7, \\; C = 60°. \\quad \\text{Find } c \\text{ (Law of Cosines).}",
       "plain": "Use the Law of Cosines to find c when a=5, b=7, C=60°."
     },
-    "symbols": { "c": "side opposite angle C" },
+    "symbols": {
+      "c": "side opposite angle C"
+    },
     "palette": [
-      { "id": "p1", "latex": "\\frac{1}{2}", "description": "cos(60°) = 1/2" },
-      { "id": "p2", "latex": "35", "description": "70 × 1/2 = 35" },
-      { "id": "p3", "latex": "39", "description": "74 − 35 = 39" },
-      { "id": "p4", "latex": "\\sqrt{39}", "description": "c = √39" }
+      {
+        "id": "p1",
+        "latex": "\\frac{1}{2}",
+        "description": "cos(60°) = 1/2"
+      },
+      {
+        "id": "p2",
+        "latex": "35",
+        "description": "70 × 1/2 = 35"
+      },
+      {
+        "id": "p3",
+        "latex": "39",
+        "description": "74 − 35 = 39"
+      },
+      {
+        "id": "p4",
+        "latex": "\\sqrt{39}",
+        "description": "c = √39"
+      }
     ],
     "steps": [
       {
@@ -2648,7 +2649,9 @@
         "fromLatex": "c^2 = 5^2 + 7^2 - 2(5)(7)\\cos(60°)",
         "toLatex": "c^2 = 25 + 49 - 70 \\cdot \\frac{1}{2}",
         "paletteRef": "p1",
-        "dropTargets": ["\\cos(60°)"],
+        "dropTargets": [
+          "\\cos(60°)"
+        ],
         "description": "Law of Cosines; substitute cos(60°) = 1/2"
       },
       {
@@ -2656,7 +2659,9 @@
         "fromLatex": "c^2 = 25 + 49 - 70 \\cdot \\frac{1}{2}",
         "toLatex": "c^2 = 74 - 35",
         "paletteRef": "p2",
-        "dropTargets": ["70 \\cdot \\frac{1}{2}"],
+        "dropTargets": [
+          "70 \\cdot \\frac{1}{2}"
+        ],
         "description": "Evaluate: 70 × 1/2 = 35; 25 + 49 = 74"
       },
       {
@@ -2664,7 +2669,9 @@
         "fromLatex": "c^2 = 74 - 35",
         "toLatex": "c^2 = 39",
         "paletteRef": "p3",
-        "dropTargets": ["74 - 35"],
+        "dropTargets": [
+          "74 - 35"
+        ],
         "description": "Subtract: 74 − 35 = 39"
       },
       {
@@ -2672,12 +2679,13 @@
         "fromLatex": "c^2 = 39",
         "toLatex": "c = \\sqrt{39}",
         "paletteRef": "p4",
-        "dropTargets": ["c^2"],
+        "dropTargets": [
+          "c^2"
+        ],
         "description": "Take the positive square root"
       }
     ]
   },
-
   {
     "id": "trig-h-017",
     "topic": "trigonometry",
@@ -2688,7 +2696,11 @@
     },
     "symbols": {},
     "palette": [
-      { "id": "p1", "latex": "\\frac{\\pi}{4}", "description": "Phase shift = C/B = (π/2)/2 = π/4" }
+      {
+        "id": "p1",
+        "latex": "\\frac{\\pi}{4}",
+        "description": "Phase shift = C/B = (π/2)/2 = π/4"
+      }
     ],
     "steps": [
       {
@@ -2704,12 +2716,13 @@
         "fromLatex": "\\frac{\\pi}{2} \\div 2",
         "toLatex": "\\frac{\\pi}{4}",
         "paletteRef": "p1",
-        "dropTargets": ["\\frac{\\pi}{2} \\div 2"],
+        "dropTargets": [
+          "\\frac{\\pi}{2} \\div 2"
+        ],
         "description": "Phase shift = C/B = (π/2) ÷ 2 = π/4 to the right"
       }
     ]
   },
-
   {
     "id": "trig-h-018",
     "topic": "trigonometry",
@@ -2718,11 +2731,25 @@
       "latex": "\\text{Prove: } \\sec^2\\theta - \\tan^2\\theta = 1",
       "plain": "Prove the identity: sec²θ − tan²θ = 1."
     },
-    "symbols": { "θ": "any angle where cos θ ≠ 0" },
+    "symbols": {
+      "θ": "any angle where cos θ ≠ 0"
+    },
     "palette": [
-      { "id": "p1", "latex": "\\frac{1 - \\sin^2\\theta}{\\cos^2\\theta}", "description": "Common denominator: combine fractions" },
-      { "id": "p2", "latex": "\\cos^2\\theta", "description": "Pythagorean identity: 1 − sin²θ = cos²θ" },
-      { "id": "p3", "latex": "1", "description": "cos²θ / cos²θ = 1" }
+      {
+        "id": "p1",
+        "latex": "\\frac{1 - \\sin^2\\theta}{\\cos^2\\theta}",
+        "description": "Common denominator: combine fractions"
+      },
+      {
+        "id": "p2",
+        "latex": "\\cos^2\\theta",
+        "description": "Pythagorean identity: 1 − sin²θ = cos²θ"
+      },
+      {
+        "id": "p3",
+        "latex": "1",
+        "description": "cos²θ / cos²θ = 1"
+      }
     ],
     "steps": [
       {
@@ -2738,7 +2765,9 @@
         "fromLatex": "\\frac{1}{\\cos^2\\theta} - \\frac{\\sin^2\\theta}{\\cos^2\\theta}",
         "toLatex": "\\frac{1 - \\sin^2\\theta}{\\cos^2\\theta}",
         "paletteRef": "p1",
-        "dropTargets": ["\\frac{1}{\\cos^2\\theta} - \\frac{\\sin^2\\theta}{\\cos^2\\theta}"],
+        "dropTargets": [
+          "\\frac{1}{\\cos^2\\theta} - \\frac{\\sin^2\\theta}{\\cos^2\\theta}"
+        ],
         "description": "Combine over common denominator"
       },
       {
@@ -2746,7 +2775,9 @@
         "fromLatex": "\\frac{1 - \\sin^2\\theta}{\\cos^2\\theta}",
         "toLatex": "\\frac{\\cos^2\\theta}{\\cos^2\\theta}",
         "paletteRef": "p2",
-        "dropTargets": ["1 - \\sin^2\\theta"],
+        "dropTargets": [
+          "1 - \\sin^2\\theta"
+        ],
         "description": "Pythagorean identity: 1 − sin²θ = cos²θ"
       },
       {
@@ -2754,12 +2785,13 @@
         "fromLatex": "\\frac{\\cos^2\\theta}{\\cos^2\\theta}",
         "toLatex": "1",
         "paletteRef": "p3",
-        "dropTargets": ["\\frac{\\cos^2\\theta}{\\cos^2\\theta}"],
+        "dropTargets": [
+          "\\frac{\\cos^2\\theta}{\\cos^2\\theta}"
+        ],
         "description": "Simplify: cos²θ / cos²θ = 1"
       }
     ]
   },
-
   {
     "id": "trig-h-019",
     "topic": "trigonometry",
@@ -2768,10 +2800,20 @@
       "latex": "2\\cos(x) - \\sqrt{3} = 0, \\quad x \\in [0, 2\\pi). \\quad \\text{Solve.}",
       "plain": "Solve 2cos(x) − √3 = 0 on [0, 2π)."
     },
-    "symbols": { "x": "unknown angle in radians" },
+    "symbols": {
+      "x": "unknown angle in radians"
+    },
     "palette": [
-      { "id": "p1", "latex": "\\frac{\\sqrt{3}}{2}", "description": "Divide both sides by 2" },
-      { "id": "p2", "latex": "\\frac{\\pi}{6}, \\frac{11\\pi}{6}", "description": "cos = √3/2 in Q1 and Q4" }
+      {
+        "id": "p1",
+        "latex": "\\frac{\\sqrt{3}}{2}",
+        "description": "Divide both sides by 2"
+      },
+      {
+        "id": "p2",
+        "latex": "\\frac{\\pi}{6}, \\frac{11\\pi}{6}",
+        "description": "cos = √3/2 in Q1 and Q4"
+      }
     ],
     "steps": [
       {
@@ -2779,7 +2821,9 @@
         "fromLatex": "2\\cos(x) = \\sqrt{3}",
         "toLatex": "\\cos(x) = \\frac{\\sqrt{3}}{2}",
         "paletteRef": "p1",
-        "dropTargets": ["2\\cos(x) = \\sqrt{3}"],
+        "dropTargets": [
+          "2\\cos(x) = \\sqrt{3}"
+        ],
         "description": "Divide both sides by 2"
       },
       {
@@ -2787,12 +2831,13 @@
         "fromLatex": "\\cos(x) = \\frac{\\sqrt{3}}{2}",
         "toLatex": "x = \\frac{\\pi}{6}, \\frac{11\\pi}{6}",
         "paletteRef": "p2",
-        "dropTargets": ["\\cos(x) = \\frac{\\sqrt{3}}{2}"],
+        "dropTargets": [
+          "\\cos(x) = \\frac{\\sqrt{3}}{2}"
+        ],
         "description": "Cosine is positive in Q1 and Q4; reference angle π/6"
       }
     ]
   },
-
   {
     "id": "trig-h-020",
     "topic": "trigonometry",
@@ -2803,9 +2848,21 @@
     },
     "symbols": {},
     "palette": [
-      { "id": "p1", "latex": "\\frac{\\sqrt{2}}{2} \\cdot \\frac{\\sqrt{3}}{2} - \\frac{\\sqrt{2}}{2} \\cdot \\frac{1}{2}", "description": "Substitute exact values for 45° and 30°" },
-      { "id": "p2", "latex": "\\frac{\\sqrt{6}}{4} - \\frac{\\sqrt{2}}{4}", "description": "Multiply: (√2·√3)/4 − √2/4" },
-      { "id": "p3", "latex": "\\frac{\\sqrt{6} - \\sqrt{2}}{4}", "description": "Combine fractions" }
+      {
+        "id": "p1",
+        "latex": "\\frac{\\sqrt{2}}{2} \\cdot \\frac{\\sqrt{3}}{2} - \\frac{\\sqrt{2}}{2} \\cdot \\frac{1}{2}",
+        "description": "Substitute exact values for 45° and 30°"
+      },
+      {
+        "id": "p2",
+        "latex": "\\frac{\\sqrt{6}}{4} - \\frac{\\sqrt{2}}{4}",
+        "description": "Multiply: (√2·√3)/4 − √2/4"
+      },
+      {
+        "id": "p3",
+        "latex": "\\frac{\\sqrt{6} - \\sqrt{2}}{4}",
+        "description": "Combine fractions"
+      }
     ],
     "steps": [
       {
@@ -2821,7 +2878,9 @@
         "fromLatex": "\\sin(45°)\\cos(30°) - \\cos(45°)\\sin(30°)",
         "toLatex": "\\frac{\\sqrt{2}}{2} \\cdot \\frac{\\sqrt{3}}{2} - \\frac{\\sqrt{2}}{2} \\cdot \\frac{1}{2}",
         "paletteRef": "p1",
-        "dropTargets": ["\\sin(45°)\\cos(30°) - \\cos(45°)\\sin(30°)"],
+        "dropTargets": [
+          "\\sin(45°)\\cos(30°) - \\cos(45°)\\sin(30°)"
+        ],
         "description": "Substitute exact values"
       },
       {
@@ -2829,7 +2888,9 @@
         "fromLatex": "\\frac{\\sqrt{2}}{2} \\cdot \\frac{\\sqrt{3}}{2} - \\frac{\\sqrt{2}}{2} \\cdot \\frac{1}{2}",
         "toLatex": "\\frac{\\sqrt{6}}{4} - \\frac{\\sqrt{2}}{4}",
         "paletteRef": "p2",
-        "dropTargets": ["\\frac{\\sqrt{2}}{2} \\cdot \\frac{\\sqrt{3}}{2} - \\frac{\\sqrt{2}}{2} \\cdot \\frac{1}{2}"],
+        "dropTargets": [
+          "\\frac{\\sqrt{2}}{2} \\cdot \\frac{\\sqrt{3}}{2} - \\frac{\\sqrt{2}}{2} \\cdot \\frac{1}{2}"
+        ],
         "description": "Multiply: (√2·√3)/4 = √6/4; (√2·1)/4 = √2/4"
       },
       {
@@ -2837,7 +2898,9 @@
         "fromLatex": "\\frac{\\sqrt{6}}{4} - \\frac{\\sqrt{2}}{4}",
         "toLatex": "\\frac{\\sqrt{6} - \\sqrt{2}}{4}",
         "paletteRef": "p3",
-        "dropTargets": ["\\frac{\\sqrt{6}}{4} - \\frac{\\sqrt{2}}{4}"],
+        "dropTargets": [
+          "\\frac{\\sqrt{6}}{4} - \\frac{\\sqrt{2}}{4}"
+        ],
         "description": "Combine fractions with same denominator"
       }
     ]
