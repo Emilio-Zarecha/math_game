@@ -575,7 +575,9 @@
       color: var(--text);
       z-index: 300;
       pointer-events: none;
-      white-space: nowrap;
+      white-space: normal;
+      max-width: 300px;
+      line-height: 1.45;
       box-shadow: 0 4px 16px rgba(0,0,0,0.5);
     }
 
@@ -979,9 +981,17 @@ const hintBtn    = $('hint-btn');
 const sigmaBtn   = $('sigma-btn');
 
 // ── KaTeX ──────────────────────────────────────────────────────
+function annotateIntegrals(latex) {
+  // Wrap integral commands so .int-sym elements can receive tooltips after render
+  return latex
+    .replace(/\\iiint\b/g, '\\htmlClass{int-sym}{\\iiint}')
+    .replace(/\\iint\b/g,  '\\htmlClass{int-sym}{\\iint}')
+    .replace(/\\int\b/g,   '\\htmlClass{int-sym}{\\int}');
+}
+
 function renderLatex(latex, el, displayMode = false) {
   try {
-    katex.render(latex, el, { throwOnError: false, displayMode });
+    katex.render(annotateIntegrals(latex), el, { throwOnError: false, displayMode, trust: true });
   } catch(e) { el.textContent = latex; }
 }
 
@@ -1163,6 +1173,7 @@ function renderAll() {
 // ── Question ───────────────────────────────────────────────────
 function renderQuestion() {
   renderLatex(G.puzzle.question.latex, qRender);
+  attachIntegralTooltip(qRender);
   qPlain.textContent = G.puzzle.question.plain;
   const imgDiv = $('puzzle-img');
   if (!G.puzzle.image) { imgDiv.innerHTML = ''; return; }
@@ -1246,6 +1257,7 @@ function renderPalette() {
   });
 
   syncPaletteUsed();
+  attachIntegralTooltip(pal);
 }
 
 function syncPaletteUsed() {
@@ -1278,6 +1290,7 @@ function renderCurrentStep() {
     syncPaletteUsed();
     updateNavButtons();
     sigmaBtn.style.display = 'none';
+    attachIntegralTooltip(stepEq);
     return;
   }
 
@@ -1301,6 +1314,7 @@ function renderCurrentStep() {
   updateNavButtons();
   syncPaletteUsed();
   attachSymbolHovers();
+  attachIntegralTooltip(stepEq);
   updateSigmaBtn();
 }
 
@@ -1328,7 +1342,7 @@ function buildDropZoneEquation(fullLatex, targets, container) {
 
   // Render entire equation as one KaTeX expression
   try {
-    katex.render(processed, container, { throwOnError: false, displayMode: true, trust: true });
+    katex.render(annotateIntegrals(processed), container, { throwOnError: false, displayMode: true, trust: true });
   } catch(e) { container.textContent = fullLatex; return; }
 
   // Post-process: find each .dz-N group and wrap it in a drop zone span
@@ -1640,6 +1654,29 @@ function attachSymbolHovers() {
 function moveTip(e) {
   symTip.style.left = (e.clientX + 14) + 'px';
   symTip.style.top  = (e.clientY - 10) + 'px';
+}
+
+const INTEGRAL_TIP =
+  'Integral sign (∫) — Leibniz\'s elongated S for "summa" (Latin: sum, 1675). ' +
+  'Purpose: computes the antiderivative of a function, or the signed area under a curve between two limits. ' +
+  'In ∫ f(x) dx, f(x) is the integrand and dx names the variable of integration.';
+
+function attachIntegralTooltip(container) {
+  container.querySelectorAll('.int-sym').forEach(el => {
+    if (el.dataset.intBound) return;
+    el.dataset.intBound = '1';
+    el.style.cursor = 'help';
+    el.addEventListener('mouseenter', ev => {
+      symTip.textContent = INTEGRAL_TIP;
+      symTip.style.display = 'block';
+      moveTip(ev);
+      el.addEventListener('mousemove', moveTip);
+    });
+    el.addEventListener('mouseleave', () => {
+      symTip.style.display = 'none';
+      el.removeEventListener('mousemove', moveTip);
+    });
+  });
 }
 
 // ── Gamer Notes ────────────────────────────────────────────────
