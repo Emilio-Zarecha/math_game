@@ -37,7 +37,33 @@
     '  outline: none;',
     '}',
     '.note-area textarea:focus { border-left-color: var(--accent, #5c8aff); }',
-    '.note-area textarea::placeholder { color: var(--muted, #7070a0); }'
+    '.note-area textarea::placeholder { color: var(--muted, #7070a0); }',
+    /* ── toolbar ── */
+    '.notes-toolbar {',
+    '  position: fixed; bottom: 0; left: 0; right: 0;',
+    '  background: var(--surface, #151528);',
+    '  border-top: 1px solid var(--border, #2e2e55);',
+    '  padding: 9px 24px;',
+    '  display: flex; align-items: center; justify-content: center; gap: 10px;',
+    '  z-index: 200;',
+    '  transform: translateY(100%);',
+    '  transition: transform 0.2s ease;',
+    '}',
+    '.notes-toolbar.visible { transform: translateY(0); }',
+    '.notes-toolbar .tb-label {',
+    '  font-size: 0.72rem; letter-spacing: .12em; text-transform: uppercase;',
+    '  color: var(--muted, #7070a0); margin-right: 6px;',
+    '}',
+    '.notes-toolbar button {',
+    '  background: var(--panel, #1c1c35);',
+    '  border: 1px solid var(--border, #2e2e55);',
+    '  color: var(--text, #e0e0f0);',
+    '  font-size: 0.82rem; padding: 5px 14px;',
+    '  border-radius: 6px; cursor: pointer;',
+    '  transition: border-color .15s, color .15s;',
+    '}',
+    '.notes-toolbar .tb-export:hover { border-color: var(--accent, #5c8aff); color: var(--accent, #5c8aff); }',
+    '.notes-toolbar .tb-clear:hover  { border-color: #ff6b6b; color: #ff6b6b; }'
   ].join('\n');
   document.head.appendChild(styleEl);
 
@@ -62,11 +88,114 @@
     return sid + '\x1f' + boxes.indexOf(el);
   }
 
+  /* ── Toolbar ───────────────────────────────────────────────────────── */
+  var toolbar = null;
+
+  function buildToolbar() {
+    var bar = document.createElement('div');
+    bar.className = 'notes-toolbar';
+
+    var lbl = document.createElement('span');
+    lbl.className = 'tb-label';
+    lbl.textContent = 'Notes';
+
+    var btnExport = document.createElement('button');
+    btnExport.className = 'tb-export';
+    btnExport.textContent = '↓ Export';
+    btnExport.title = 'Download all notes as a text file';
+    btnExport.addEventListener('click', exportNotes);
+
+    var btnClear = document.createElement('button');
+    btnClear.className = 'tb-clear';
+    btnClear.textContent = '✕ Clear all';
+    btnClear.title = 'Delete all notes for this textbook';
+    btnClear.addEventListener('click', clearNotes);
+
+    bar.appendChild(lbl);
+    bar.appendChild(btnExport);
+    bar.appendChild(btnClear);
+    document.body.appendChild(bar);
+    return bar;
+  }
+
+  function syncToolbar() {
+    if (!toolbar) toolbar = buildToolbar();
+    var hasAny = Object.keys(load()).length > 0;
+    toolbar.classList.toggle('visible', hasAny);
+  }
+
+  /* ── Export ────────────────────────────────────────────────────────── */
+  function exportNotes() {
+    var notes = load();
+    var keys = Object.keys(notes);
+    if (!keys.length) return;
+
+    var h1 = document.querySelector('h1');
+    var title = h1 ? h1.textContent.trim() : document.title.trim();
+
+    var lines = ['=== ' + title + ' — Notes ==='];
+    lines.push('Exported: ' + new Date().toLocaleDateString());
+    lines.push('');
+
+    // Walk boxes in DOM order so output matches reading order
+    var lastSid = null;
+    document.querySelectorAll('.formula, .example').forEach(function (box) {
+      var key = boxKey(box);
+      if (!notes[key]) return;
+
+      var sec     = box.closest('section');
+      var sid     = sec ? (sec.id || '_') : '_';
+      var chNum   = sec ? sec.querySelector('.chapter-num') : null;
+      var h3      = sec ? sec.querySelector('h3') : null;
+      var secHead = (chNum ? chNum.textContent.trim() + ' — ' : '') +
+                    (h3 ? h3.textContent.trim() : sid);
+
+      if (sid !== lastSid) {
+        lines.push('--- ' + secHead + ' ---');
+        lines.push('');
+        lastSid = sid;
+      }
+
+      var labelEl  = box.querySelector('.label');
+      var boxType  = box.classList.contains('formula') ? 'Formula' : 'Example';
+      var boxLabel = labelEl ? labelEl.textContent.trim() : boxType;
+      lines.push('[' + boxType + '] ' + boxLabel);
+      lines.push(notes[key].trim());
+      lines.push('');
+    });
+
+    var blob = new Blob([lines.join('\n')], { type: 'text/plain' });
+    var url  = URL.createObjectURL(blob);
+    var a    = document.createElement('a');
+    a.href     = url;
+    a.download = title.replace(/[^a-z0-9]+/gi, '_').toLowerCase() + '_notes.txt';
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+  }
+
+  /* ── Clear all ─────────────────────────────────────────────────────── */
+  function clearNotes() {
+    if (!window.confirm('Clear all notes for this textbook? This cannot be undone.')) return;
+    save({});
+    document.querySelectorAll('.note-btn').forEach(function (btn) {
+      btn.classList.remove('has-note', 'open');
+      btn.title = 'Add note';
+    });
+    document.querySelectorAll('.note-area').forEach(function (area) {
+      area.classList.remove('open');
+      var ta = area.querySelector('textarea');
+      if (ta) ta.value = '';
+    });
+    syncToolbar();
+  }
+
   /* ── Wire up one box ───────────────────────────────────────────────── */
   function wire(box, savedText) {
     var btn = document.createElement('button');
     btn.className = 'note-btn' + (savedText ? ' has-note' : '');
-    btn.textContent = '✎'; // ✎ pencil
+    btn.textContent = '✎';
     btn.title = savedText ? 'Edit note' : 'Add note';
     btn.type = 'button';
 
@@ -89,7 +218,7 @@
     });
 
     ta.addEventListener('input', function () {
-      var key = boxKey(box);
+      var key   = boxKey(box);
       var notes = load();
       if (ta.value.trim()) {
         notes[key] = ta.value;
@@ -101,6 +230,7 @@
         btn.title = 'Add note';
       }
       save(notes);
+      syncToolbar();
     });
   }
 
@@ -110,6 +240,7 @@
     document.querySelectorAll('.formula, .example').forEach(function (box) {
       wire(box, notes[boxKey(box)] || '');
     });
+    syncToolbar();
   }
 
   if (document.readyState === 'loading') {
