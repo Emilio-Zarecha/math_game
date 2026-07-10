@@ -44,6 +44,12 @@
     .back { display:inline-block; margin-top:36px; padding:10px 24px; background:var(--accent); color:#fff; border-radius:8px; text-decoration:none; font-size:0.9rem; font-weight:600; }
     .back:hover { opacity:0.85; }
     @media (max-width:600px) { nav ol { grid-template-columns:1fr; } section { padding:24px 20px; } .example-step { flex-direction:column; gap:2px; } }
+    .interactive { background:var(--panel); border:1px solid var(--border); border-left:3px solid var(--accent); border-radius:8px; padding:16px 20px; margin:16px 0; display:flex; flex-direction:column; align-items:center; gap:12px; user-select:none; -webkit-user-select:none; }
+    .interactive .int-label { font-size:0.7rem; letter-spacing:.14em; text-transform:uppercase; color:var(--hint); align-self:flex-start; }
+    .angle-readout { display:grid; grid-template-columns:auto auto auto auto; column-gap:16px; row-gap:6px; align-items:baseline; }
+    .readout-label { font-size:0.78rem; color:var(--muted); }
+    .readout-val { font-size:0.95rem; font-weight:700; color:var(--hint); min-width:72px; }
+    #angle-canvas { cursor:crosshair; border-radius:6px; display:block; touch-action:none; }
   </style>
 </head>
 <body>
@@ -379,6 +385,17 @@
       $$\frac{d}{dx}[\sin x] = \cos x \qquad \frac{d}{dx}[\cos x] = -\sin x$$
       $$\frac{d}{dx}[\tan x] = \sec^2 x \qquad \frac{d}{dx}[\sec x] = \sec x \tan x$$
       <p style="margin-top:8px;font-size:0.88rem;color:var(--muted);">The derivative of sine is cosine, and the derivative of cosine introduces a minus sign — they chase each other around a four-step cycle: $\sin \to \cos \to -\sin \to -\cos \to \sin$.</p>
+    </div>
+
+    <div class="interactive">
+      <div class="int-label">Interactive — unit circle: sin and cos as coordinates</div>
+      <canvas id="angle-canvas" width="280" height="280"></canvas>
+      <div class="angle-readout">
+        <span class="readout-label">Degrees</span><span class="readout-val" id="readout-deg">0.0°</span>
+        <span class="readout-label">Radians</span><span class="readout-val" id="readout-rad">0</span>
+        <span class="readout-label">cos&thinsp;θ</span><span class="readout-val" id="readout-cos">1.000</span>
+        <span class="readout-label">sin&thinsp;θ</span><span class="readout-val" id="readout-sin">0.000</span>
+      </div>
     </div>
 
     <div class="example">
@@ -970,5 +987,51 @@
   <a class="back" href="index.html">Play Now →</a>
 
 </div>
+
+<script>
+function createAngleExplorer(canvasId, idPrefix) {
+  var canvas = document.getElementById(canvasId);
+  if (!canvas) return;
+  var ctx = canvas.getContext('2d');
+  var W = canvas.width, H = canvas.height;
+  var CX = W / 2, CY = H / 2, R = Math.round(W * 0.38);
+  var C = { panel:'#1c1c35', muted:'#7070a0', accent:'#5c8aff', hint:'#ffb830', correct:'#3ecf8e' };
+  var NICE = [[0,'0'],[Math.PI/6,'π/6'],[Math.PI/4,'π/4'],[Math.PI/3,'π/3'],[Math.PI/2,'π/2'],[2*Math.PI/3,'2π/3'],[3*Math.PI/4,'3π/4'],[5*Math.PI/6,'5π/6'],[Math.PI,'π'],[7*Math.PI/6,'7π/6'],[5*Math.PI/4,'5π/4'],[4*Math.PI/3,'4π/3'],[3*Math.PI/2,'3π/2'],[5*Math.PI/3,'5π/3'],[7*Math.PI/4,'7π/4'],[11*Math.PI/6,'11π/6'],[2*Math.PI,'2π']];
+  function niceRad(t) { for (var i=0;i<NICE.length;i++) { if (Math.abs(t-NICE[i][0])<0.028) return NICE[i][1]; } return t.toFixed(3)+' rad'; }
+  var theta = 0, dragging = false;
+  function getAngle(e) { var rect=canvas.getBoundingClientRect(),sx=W/rect.width,sy=H/rect.height,src=e.touches?e.touches[0]:e,x=(src.clientX-rect.left)*sx-CX,y=-((src.clientY-rect.top)*sy-CY),a=Math.atan2(y,x); return a<0?a+2*Math.PI:a; }
+  function setEl(s,t) { var el=document.getElementById(idPrefix+s); if(el) el.textContent=t; }
+  function draw() {
+    ctx.clearRect(0,0,W,H); ctx.fillStyle=C.panel; ctx.fillRect(0,0,W,H);
+    var px=CX+R*Math.cos(theta), py=CY-R*Math.sin(theta);
+    ctx.save(); ctx.strokeStyle=C.muted; ctx.lineWidth=1; ctx.globalAlpha=0.45; ctx.setLineDash([4,4]);
+    ctx.beginPath(); ctx.moveTo(14,CY); ctx.lineTo(W-14,CY); ctx.moveTo(CX,14); ctx.lineTo(CX,H-14); ctx.stroke(); ctx.restore();
+    ctx.strokeStyle=C.muted; ctx.lineWidth=1.5; ctx.beginPath(); ctx.arc(CX,CY,R,0,2*Math.PI); ctx.stroke();
+    if (theta>0.005) {
+      ctx.save(); ctx.globalAlpha=0.14; ctx.fillStyle=C.accent; ctx.beginPath(); ctx.moveTo(CX,CY); ctx.arc(CX,CY,R,0,-theta,true); ctx.closePath(); ctx.fill(); ctx.restore();
+      ctx.strokeStyle=C.accent; ctx.lineWidth=2.5; ctx.beginPath(); ctx.arc(CX,CY,R,0,-theta,true); ctx.stroke();
+    }
+    ctx.strokeStyle=C.muted; ctx.lineWidth=1.5; ctx.beginPath(); ctx.moveTo(CX,CY); ctx.lineTo(CX+R,CY); ctx.stroke();
+    ctx.strokeStyle=C.hint; ctx.lineWidth=2; ctx.beginPath(); ctx.moveTo(CX,CY); ctx.lineTo(px,py); ctx.stroke();
+    var ct=Math.cos(theta),st=Math.sin(theta);
+    if (Math.abs(st)>0.05&&Math.abs(ct)>0.05) { ctx.save(); ctx.strokeStyle=C.correct; ctx.lineWidth=1; ctx.globalAlpha=0.4; ctx.setLineDash([3,4]); ctx.beginPath(); ctx.moveTo(px,CY); ctx.lineTo(px,py); ctx.moveTo(CX,py); ctx.lineTo(px,py); ctx.stroke(); ctx.restore(); }
+    if (theta>0.12) { var ar=Math.max(14,Math.min(28,R*0.28)),ma=theta/2; ctx.fillStyle=C.accent; ctx.font='bold italic 13px system-ui,sans-serif'; ctx.textAlign='center'; ctx.textBaseline='middle'; ctx.fillText('θ',CX+ar*Math.cos(ma),CY-ar*Math.sin(ma)); }
+    ctx.fillStyle=C.muted; ctx.font='11px system-ui,sans-serif'; ctx.textBaseline='middle'; ctx.textAlign='left'; ctx.fillText('0',CX+R+6,CY); ctx.textAlign='right'; ctx.fillText('π',CX-R-6,CY); ctx.textAlign='center'; ctx.textBaseline='bottom'; ctx.fillText('π/2',CX,CY-R-5); ctx.textBaseline='top'; ctx.fillText('3π/2',CX,CY+R+5);
+    if (theta>0.18&&Math.abs(st)>0.12) { ctx.fillStyle=C.correct; ctx.font='10px system-ui,sans-serif'; ctx.textAlign='center'; ctx.textBaseline=st>0?'top':'bottom'; ctx.fillText('cos θ',px,CY+(st>0?3:-3)); }
+    if (theta>0.18&&Math.abs(ct)>0.12) { ctx.fillStyle=C.correct; ctx.font='10px system-ui,sans-serif'; ctx.textBaseline='middle'; ctx.textAlign=ct>0?'left':'right'; ctx.fillText('sin θ',CX+(ct>0?4:-4),py); }
+    ctx.fillStyle=C.hint; ctx.beginPath(); ctx.arc(px,py,7,0,2*Math.PI); ctx.fill(); ctx.strokeStyle='#fff'; ctx.lineWidth=1.5; ctx.stroke();
+    setEl('deg',(theta*180/Math.PI).toFixed(1)+'°'); setEl('rad',niceRad(theta)); setEl('cos',ct.toFixed(3)); setEl('sin',st.toFixed(3));
+  }
+  canvas.addEventListener('mousedown',function(e){dragging=true;theta=getAngle(e);draw();});
+  canvas.addEventListener('mousemove',function(e){if(dragging){theta=getAngle(e);draw();}});
+  window.addEventListener('mouseup',function(){dragging=false;});
+  canvas.addEventListener('touchstart',function(e){e.preventDefault();dragging=true;theta=getAngle(e);draw();},{passive:false});
+  canvas.addEventListener('touchmove',function(e){e.preventDefault();if(dragging){theta=getAngle(e);draw();}},{passive:false});
+  window.addEventListener('touchend',function(){dragging=false;});
+  draw();
+}
+createAngleExplorer('angle-canvas', 'readout-');
+</script>
+
 </body>
 </html>
