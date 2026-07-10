@@ -102,6 +102,23 @@
       </p>
     </div>
 
+    <p>
+      <span class="key">Why this order?</span> Exponents represent repeated multiplication,
+      so they must be resolved before multiplication is applied. Multiplication represents
+      repeated addition, so it takes priority over addition. Parentheses are simply a way to
+      override the default order when you need a different grouping. Without a convention,
+      an expression like $2 + 3 \times 4$ would be ambiguous — it could mean $5 \times 4 = 20$
+      or $2 + 12 = 14$. The standard order removes that ambiguity.
+    </p>
+
+    <p>
+      <span class="key">Left-to-right for equal-priority operations:</span> Multiplication and
+      division share the same priority level and are evaluated left to right. Likewise, addition
+      and subtraction share the same priority and go left to right. For example,
+      $12 \div 4 \times 3 = 3 \times 3 = 9$, <em>not</em> $12 \div 12 = 1$.
+      Going right to left would give the wrong answer.
+    </p>
+
     <div class="example">
       <div class="label">Worked example — PEMDAS: $3^2 + 4 \times (8-5) \div 6$</div>
       <div class="example-step"><span>$= 3^2 + 4 \times 3 \div 6$</span><span class="why">parentheses first: $8-5=3$</span></div>
@@ -114,6 +131,15 @@
       <div class="label">Worked example — round $4{,}367$ to the nearest ten</div>
       <div class="example-step"><span>ones digit $= 7 \geq 5$, so round up</span><span class="why">look one place right of target</span></div>
       <div class="example-step"><span>$4{,}370$</span><span class="why">tens digit increases by 1; ones become 0</span></div>
+    </div>
+
+    <div class="example">
+      <div class="label">Worked example — evaluate $3 + 2^2 \times (8-5) \div 6$</div>
+      <div class="example-step"><span>$= 3 + 2^2 \times 3 \div 6$</span><span class="why">parentheses first: $8-5=3$</span></div>
+      <div class="example-step"><span>$= 3 + 4 \times 3 \div 6$</span><span class="why">exponent: $2^2=4$</span></div>
+      <div class="example-step"><span>$= 3 + 12 \div 6$</span><span class="why">multiply left to right: $4 \times 3=12$</span></div>
+      <div class="example-step"><span>$= 3 + 2$</span><span class="why">divide: $12 \div 6=2$</span></div>
+      <div class="example-step"><span>$= 5$</span><span class="why">add</span></div>
     </div>
   </section>
 
@@ -142,6 +168,20 @@
       $$(+)(+) = + \qquad (-)(-)= + \qquad (+)(-) = - \qquad (-)(+) = -$$
     </div>
 
+    <p>
+      <span class="key">Why do sign rules work?</span> Think of multiplication as "groups of."
+      A positive times a negative means you're accumulating groups of debt — the result is a
+      loss (negative). A negative times a negative means you're <em>removing</em> debt —
+      removing debt is a gain, so the result is positive. Two wrongs make a right,
+      mathematically speaking.
+    </p>
+
+    <p>
+      <span class="key">Number line model for subtraction:</span> Subtracting is always the
+      same as adding the opposite. On a number line, subtracting a negative means you flip
+      direction twice — so $5 - (-3) = 5 + 3 = 8$. Removing a negative is a positive effect.
+    </p>
+
     <div class="example">
       <div class="label">Worked example — $-8 + 3$</div>
       <div class="example-step"><span>Different signs: $|{-8}| - |3| = 8 - 3 = 5$</span><span class="why">subtract smaller from larger</span></div>
@@ -152,6 +192,14 @@
       <div class="label">Worked example — $-5 - (-3)$</div>
       <div class="example-step"><span>$= -5 + 3$</span><span class="why">subtracting a negative = adding a positive</span></div>
       <div class="example-step"><span>$= -2$</span><span class="why">$|-5| - |3| = 2$; sign of $-5$</span></div>
+    </div>
+
+    <div class="example">
+      <div class="label">Worked example — simplify $(-3)(-2)(4)(-1)$</div>
+      <div class="example-step"><span>$(-3)(-2) = 6$</span><span class="why">negative $\times$ negative $=$ positive</span></div>
+      <div class="example-step"><span>$6 \times 4 = 24$</span><span class="why">positive $\times$ positive $=$ positive</span></div>
+      <div class="example-step"><span>$24 \times (-1) = -24$</span><span class="why">positive $\times$ negative $=$ negative</span></div>
+      <div class="example-step"><span>Three negative factors (odd count) $\Rightarrow$ negative result</span><span class="why">odd number of negatives $\to$ $-$; even $\to$ $+$</span></div>
     </div>
   </section>
 
@@ -181,6 +229,25 @@
       $$\frac{a}{b} \times \frac{c}{d} = \frac{ac}{bd} \qquad \frac{a}{b} \div \frac{c}{d} = \frac{a}{b} \times \frac{d}{c}$$
     </div>
 
+    <p>
+      <span class="key">Why do you need a common denominator to add fractions?</span>
+      Fractions represent parts of a whole, but the parts must be the same size before you can
+      count them together. Adding $\dfrac{1}{2}$ and $\dfrac{1}{3}$ directly would be like
+      adding "1 slice of a pie cut into 2 pieces" and "1 slice of a pie cut into 3 pieces" —
+      the slices are different sizes and can't simply be combined. The LCD gives the smallest
+      number of equal-sized pieces that both fractions can be expressed with, making addition
+      meaningful.
+    </p>
+
+    <p>
+      <span class="key">Keep-Change-Flip (KCF) for division:</span> To divide by a fraction,
+      <em>keep</em> the first fraction unchanged, <em>change</em> the division sign to
+      multiplication, and <em>flip</em> the second fraction (take its reciprocal):
+      $\dfrac{a}{b} \div \dfrac{c}{d} = \dfrac{a}{b} \times \dfrac{d}{c}$.
+      This works because $\dfrac{c}{d} \times \dfrac{d}{c} = 1$, so multiplying by the
+      reciprocal is exactly the same operation as dividing by the original fraction.
+    </p>
+
     <div class="example">
       <div class="label">Worked example — $\dfrac{3}{4} + \dfrac{1}{6}$</div>
       <div class="example-step"><span>LCD $= 12$</span><span class="why">smallest multiple of 4 and 6</span></div>
@@ -196,6 +263,15 @@
       <div class="label">Worked example — add mixed numbers $2\frac{1}{3} + 1\frac{3}{4}$</div>
       <div class="example-step"><span>$\dfrac{7}{3} + \dfrac{7}{4} = \dfrac{28}{12} + \dfrac{21}{12} = \dfrac{49}{12}$</span><span class="why">convert to improper; LCD = 12</span></div>
       <div class="example-step"><span>$= 4\dfrac{1}{12}$</span><span class="why">$49 = 4 \times 12 + 1$</span></div>
+    </div>
+
+    <div class="example">
+      <div class="label">Worked example — simplify $\left(\dfrac{3}{4} + \dfrac{1}{6}\right) \div \dfrac{5}{12}$</div>
+      <div class="example-step"><span>LCD of 4 and 6 $= 12$</span><span class="why">smallest multiple of both denominators</span></div>
+      <div class="example-step"><span>$\dfrac{3}{4} = \dfrac{9}{12}, \quad \dfrac{1}{6} = \dfrac{2}{12}$</span><span class="why">convert each fraction to the LCD</span></div>
+      <div class="example-step"><span>$\dfrac{9}{12} + \dfrac{2}{12} = \dfrac{11}{12}$</span><span class="why">add numerators; denominator stays 12</span></div>
+      <div class="example-step"><span>$\dfrac{11}{12} \div \dfrac{5}{12} = \dfrac{11}{12} \times \dfrac{12}{5} = \dfrac{11}{5}$</span><span class="why">KCF: flip $\dfrac{5}{12}$; the 12s cancel</span></div>
+      <div class="example-step"><span>$= 2\dfrac{1}{5}$</span><span class="why">$11 = 2 \times 5 + 1$</span></div>
     </div>
   </section>
 
@@ -331,6 +407,38 @@
       $$a^0 = 1 \quad (a \ne 0) \qquad a^{-n} = \frac{1}{a^n}$$
     </div>
 
+    <p>
+      <span class="key">Why the product rule?</span> $a^m \cdot a^n$ means $m$ copies of $a$
+      multiplied by $n$ more copies of $a$ — that is $m + n$ copies total.
+      For example, $2^3 \times 2^2 = (2 \times 2 \times 2) \times (2 \times 2) = 2^5$.
+    </p>
+
+    <p>
+      <span class="key">Why the quotient rule?</span> In $\dfrac{a^m}{a^n}$, you can cancel
+      $n$ copies of $a$ from numerator and denominator, leaving $m - n$ copies.
+      For example, $\dfrac{2^5}{2^3} = \dfrac{2 \times 2 \times 2 \times 2 \times 2}{2 \times 2 \times 2} = 2^2 = 4$.
+    </p>
+
+    <p>
+      <span class="key">Why $a^0 = 1$?</span> By the quotient rule,
+      $\dfrac{a^n}{a^n} = a^{n-n} = a^0$. But any nonzero number divided by itself equals 1,
+      so $a^0 = 1$ (for $a \ne 0$).
+    </p>
+
+    <p>
+      <span class="key">Why $a^{-n} = \dfrac{1}{a^n}$?</span> Extend the quotient rule to
+      cases where the denominator has more copies: $\dfrac{a^2}{a^5} = a^{2-5} = a^{-3}$.
+      But canceling directly gives $\dfrac{a^2}{a^5} = \dfrac{1}{a^3}$.
+      Therefore $a^{-3} = \dfrac{1}{a^3}$ — a negative exponent flips to the denominator.
+    </p>
+
+    <p>
+      <span class="key">Why $a^{m/n} = \sqrt[n]{a^m}$?</span> Raise $a^{m/n}$ to the $n$th
+      power: $(a^{m/n})^n = a^{(m/n) \cdot n} = a^m$ (power rule). The $n$th root of $a^m$,
+      raised to the $n$th power, also equals $a^m$. Since both expressions yield $a^m$ when
+      taken to the $n$th power, they must be equal: $a^{m/n} = \sqrt[n]{a^m}$.
+    </p>
+
     <div class="example">
       <div class="label">Worked example — $2^8$</div>
       <div class="example-step"><span>$2^8 = 2^4 \times 2^4 = 16 \times 16 = 256$</span><span class="why">split into two equal halves</span></div>
@@ -344,6 +452,14 @@
     <div class="example">
       <div class="label">Worked example — $\sqrt{169}$</div>
       <div class="example-step"><span>$13^2 = 169$, so $\sqrt{169} = 13$</span><span class="why">find the number whose square is 169</span></div>
+    </div>
+
+    <div class="example">
+      <div class="label">Worked example — simplify $\dfrac{(2x^3 y^{-2})^4}{4x^2 y^3}$</div>
+      <div class="example-step"><span>$(2x^3 y^{-2})^4 = 2^4 x^{12} y^{-8} = 16x^{12}y^{-8}$</span><span class="why">power rule: multiply each exponent by 4</span></div>
+      <div class="example-step"><span>$\dfrac{16x^{12}y^{-8}}{4x^2 y^3}$</span><span class="why">write out the division</span></div>
+      <div class="example-step"><span>$= \dfrac{16}{4} \cdot x^{12-2} \cdot y^{-8-3} = 4x^{10}y^{-11}$</span><span class="why">quotient rule: subtract exponents; simplify coefficient</span></div>
+      <div class="example-step"><span>$= \dfrac{4x^{10}}{y^{11}}$</span><span class="why">move negative exponent to denominator: $y^{-11} = \dfrac{1}{y^{11}}$</span></div>
     </div>
   </section>
 

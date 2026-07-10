@@ -212,6 +212,38 @@
       <div class="example-step"><span>$40° + 65° + \theta = 180°$</span><span class="why">angle sum in a triangle</span></div>
       <div class="example-step"><span>$\theta = 180° - 105° = 75°$</span><span class="why">subtract the known angles</span></div>
     </div>
+
+    <p>
+      The <span class="key">Isosceles Triangle Theorem</span> states that if two sides of a
+      triangle are equal, the angles opposite those sides (the <span class="key">base angles</span>)
+      are also equal. The converse holds too: if two angles are equal, the sides opposite them
+      are equal. This property appears constantly in proofs — the moment you spot two equal
+      sides you can immediately mark two angles as equal, and vice versa.
+    </p>
+
+    <p>
+      The <span class="key">Exterior Angle Theorem</span> follows directly from the angle sum
+      rule. An exterior angle and its adjacent interior angle are supplementary (sum to $180°$),
+      and the three interior angles also sum to $180°$. Combining those two facts, the exterior
+      angle must equal the sum of the two non-adjacent interior angles. This gives a quick
+      shortcut: you can find an exterior angle without first solving for all three interior
+      angles.
+    </p>
+
+    <div class="example">
+      <div class="label">Worked example — isosceles $\triangle ABC$ with $AB = AC$, $\angle A = 40°$</div>
+      <div class="example-step"><span>base angles equal: $\angle B = \angle C$</span><span class="why">Isosceles Triangle Theorem</span></div>
+      <div class="example-step"><span>$40° + \angle B + \angle C = 180°$</span><span class="why">angle sum in a triangle</span></div>
+      <div class="example-step"><span>$40° + 2\angle B = 180°$</span><span class="why">substitute $\angle C = \angle B$</span></div>
+      <div class="example-step"><span>$\angle B = \angle C = 70°$</span><span class="why">solve: $2\angle B = 140°$</span></div>
+    </div>
+
+    <div class="example">
+      <div class="label">Worked example — exterior angle $= 120°$, one non-adjacent interior $= 45°$</div>
+      <div class="example-step"><span>exterior angle $=$ sum of non-adjacent interior angles</span><span class="why">Exterior Angle Theorem</span></div>
+      <div class="example-step"><span>$120° = 45° + x$</span><span class="why">substitute the known angle</span></div>
+      <div class="example-step"><span>$x = 75°$</span><span class="why">subtract $45°$ from both sides</span></div>
+    </div>
   </section>
 
   <!-- ── 4. Congruence & Similarity ─────────────────────────────────── -->
@@ -247,6 +279,49 @@
       <div class="label">Worked example — find the missing side</div>
       <div class="example-step"><span>$\triangle ABC \sim \triangle DEF$ with sides $3, 4, 5$ and scale factor $k = 2$</span><span class="why">$k = 6/3 = 2$</span></div>
       <div class="example-step"><span>missing side $= 2 \times 5 = 10$</span><span class="why">multiply each side by $k$</span></div>
+    </div>
+
+    <p>
+      Here is why each congruence criterion works.
+      <span class="key">SSS</span> — three sides uniquely determine a triangle because the
+      triangle inequality locks the third vertex in place.
+      <span class="key">SAS</span> — the included angle pins the two sides together so only
+      one triangle shape is possible.
+      <span class="key">ASA</span> — two angles fix the third (angle sum), and the included
+      side then sets the scale.
+      <span class="key">AAS</span> — two angles determine all three angles; any one side
+      then fixes the size.
+      <span class="key">HL</span> — in a right triangle, knowing the hypotenuse and one leg
+      determines the other leg by the Pythagorean theorem.
+    </p>
+
+    <p>
+      <span class="key">SSA does not prove congruence</span> (the "ambiguous case"). Given
+      two sides and a non-included angle, two geometrically different triangles can satisfy
+      those measurements — the free side can swing to reach the opposite base in two
+      positions. This is why SSA is absent from the congruence criteria list.
+    </p>
+
+    <p>
+      For <span class="key">similar triangles</span>, the <span class="key">AA criterion</span>
+      is sufficient: if two angles of one triangle match two angles of another, the third
+      angles must also match (since all three sum to $180°$), guaranteeing the same shape
+      with proportional sides.
+    </p>
+
+    <div class="example">
+      <div class="label">Worked example — SAS congruence</div>
+      <div class="example-step"><span>$AB = DE = 5$, $BC = EF = 8$, $\angle B = \angle E = 60°$</span><span class="why">given information</span></div>
+      <div class="example-step"><span>$\angle B$ is between $AB$ and $BC$; $\angle E$ is between $DE$ and $EF$</span><span class="why">verify the angle is included</span></div>
+      <div class="example-step"><span>$\triangle ABC \cong \triangle DEF$ by SAS</span><span class="why">two sides and the included angle are equal</span></div>
+    </div>
+
+    <div class="example">
+      <div class="label">Worked example — similar triangle proportion ($\triangle PQR \sim \triangle XYZ$)</div>
+      <div class="example-step"><span>$PQ = 6$, $QR = 8$, $XY = 9$; find $YZ$</span><span class="why">given information</span></div>
+      <div class="example-step"><span>$\dfrac{PQ}{XY} = \dfrac{QR}{YZ}$</span><span class="why">corresponding sides are proportional</span></div>
+      <div class="example-step"><span>$\dfrac{6}{9} = \dfrac{8}{YZ}$</span><span class="why">substitute known values</span></div>
+      <div class="example-step"><span>$YZ = \dfrac{8 \times 9}{6} = 12$</span><span class="why">cross-multiply and solve</span></div>
     </div>
   </section>
 
@@ -367,6 +442,30 @@
       <div class="label">Worked example — circumference of circle with $r=3$</div>
       <div class="example-step"><span>$C = 2\pi(3) = 6\pi \approx 18.85$</span><span class="why">$C = 2\pi r$</span></div>
     </div>
+
+    <p>
+      The intuition behind area formulas: a <span class="key">rectangle</span> has area
+      $\text{base} \times \text{height}$ by definition — you are counting rows of unit squares.
+      A <span class="key">triangle</span> is always exactly half a rectangle: enclose any
+      triangle in the smallest rectangle and the triangle fills exactly half of it.
+      A <span class="key">parallelogram</span> is a "sheared" rectangle — tilt a rectangle
+      sideways and the base and perpendicular height stay the same, so area $= bh$ is
+      unchanged.
+    </p>
+
+    <p>
+      For <span class="key">composite shapes</span>, decompose the figure into basic shapes
+      (rectangles, triangles, circles), label each piece with its dimensions, compute each
+      area separately, then add areas together or subtract cut-out holes.
+    </p>
+
+    <div class="example">
+      <div class="label">Worked example — area of an L-shaped figure</div>
+      <div class="example-step"><span>outer rectangle $8 \times 10$; a $3 \times 4$ corner is cut from the top-right</span><span class="why">identify the composite shape</span></div>
+      <div class="example-step"><span>full rectangle area $= 8 \times 10 = 80$</span><span class="why">$A = lw$</span></div>
+      <div class="example-step"><span>cut-out area $= 3 \times 4 = 12$</span><span class="why">$A = lw$ for the removed piece</span></div>
+      <div class="example-step"><span>L-shape area $= 80 - 12 = 68$</span><span class="why">subtract the hole from the whole</span></div>
+    </div>
   </section>
 
   <!-- ── 8. Surface Area & Volume ───────────────────────────────────── -->
@@ -407,6 +506,30 @@
       <div class="label">Worked example — surface area of cylinder with $r=3$, $h=8$</div>
       <div class="example-step"><span>$SA = 2\pi(3)(3+8) = 2\pi(3)(11) = 66\pi$</span><span class="why">$SA = 2\pi r(r+h)$</span></div>
     </div>
+
+    <p>
+      <span class="key">Cavalieri's Theorem</span> unifies all prism and cylinder volume
+      formulas as $V = B \times h$, where $B$ is the base area. Every horizontal slice at
+      every height has the same cross-sectional area, so you are simply stacking identical
+      layers. A rectangular prism uses $B = lw$, a triangular prism uses
+      $B = \tfrac{1}{2}bh_{\text{base}}$, and a cylinder uses $B = \pi r^2$ — the single
+      formula $V = Bh$ covers all three.
+    </p>
+
+    <p>
+      <span class="key">Volume</span> (cubic units) answers "how much material fills this
+      solid?" — relevant for capacity, weight, or material cost.
+      <span class="key">Surface area</span> (square units) answers "how much wraps the
+      outside?" — relevant for painting, coating, packaging, or heat transfer. Always
+      confirm which quantity the problem is asking for before computing.
+    </p>
+
+    <div class="example">
+      <div class="label">Worked example — cylindrical can, diameter $8$ cm, height $12$ cm</div>
+      <div class="example-step"><span>$r = 8 \div 2 = 4$ cm</span><span class="why">radius is half the diameter</span></div>
+      <div class="example-step"><span>$V = \pi r^2 h = \pi (4)^2 (12) = 192\pi \approx 603 \text{ cm}^3$</span><span class="why">$V = \pi r^2 h$</span></div>
+      <div class="example-step"><span>Lateral $SA = 2\pi r h = 2\pi (4)(12) = 96\pi \approx 301 \text{ cm}^2$</span><span class="why">lateral surface only (no top or bottom)</span></div>
+    </div>
   </section>
 
   <!-- ── 9. Circles ─────────────────────────────────────────────────── -->
@@ -445,6 +568,30 @@
     <div class="example">
       <div class="label">Worked example — sector area with $r=6$, $\theta = \pi/3$</div>
       <div class="example-step"><span>$A = \tfrac{1}{2}(6)^2\left(\dfrac{\pi}{3}\right) = \tfrac{1}{2}(36)\left(\dfrac{\pi}{3}\right) = 6\pi$</span><span class="why">$A = \frac{1}{2}r^2\theta$</span></div>
+    </div>
+
+    <p>
+      The <span class="key">Central Angle Theorem</span>: a central angle (vertex at the
+      center) equals its intercepted arc in degrees. An inscribed angle (vertex on the
+      circle) equals <em>half</em> its intercepted arc. Therefore, when a central angle and
+      an inscribed angle both subtend the same arc, the inscribed angle is exactly half the
+      central angle.
+    </p>
+
+    <p>
+      Key circle theorems: (1) <span class="key">Angle in a semicircle</span> — any
+      inscribed angle that subtends a diameter equals $90°$, because the central angle is
+      $180°$ and the inscribed angle is half of that. (2) <span class="key">Angles in the
+      same segment</span> — all inscribed angles subtending the same arc are equal.
+      (3) <span class="key">Cyclic quadrilateral</span> — opposite angles of a quadrilateral
+      inscribed in a circle sum to $180°$.
+    </p>
+
+    <div class="example">
+      <div class="label">Worked example — central $\angle AOB = 80°$; find inscribed $\angle ACB$ on the same arc</div>
+      <div class="example-step"><span>$\angle AOB$ and $\angle ACB$ both subtend arc $AB$</span><span class="why">identify the shared arc</span></div>
+      <div class="example-step"><span>inscribed angle $= \tfrac{1}{2} \times$ central angle</span><span class="why">Central Angle Theorem</span></div>
+      <div class="example-step"><span>$\angle ACB = \tfrac{1}{2} \times 80° = 40°$</span><span class="why">substitute and compute</span></div>
     </div>
   </section>
 

@@ -506,6 +506,25 @@
       <div class="example-step"><span>$x + 2(3x-7) = 7 \Rightarrow 7x = 21 \Rightarrow x = 3$</span><span class="why">substitute into first; solve</span></div>
       <div class="example-step"><span>$y = 3(3) - 7 = 2$</span><span class="why">back-substitute</span></div>
     </div>
+
+    <p>
+      <span class="key">When to use each method:</span> Use <strong>substitution</strong> when
+      one equation is already solved for a variable, or when isolating a variable introduces
+      no messy fractions. Use <strong>elimination</strong> when both equations are in standard
+      form and the coefficients of one variable match (or are easy to match by multiplying).
+      Use <strong>graphing</strong> for visual intuition only — it is unreliable when the
+      intersection falls at non-integer coordinates.
+    </p>
+
+    <div class="example">
+      <div class="label">Worked example (word problem) — adult tickets $12, child tickets $7; 250 sold for $2,400</div>
+      <div class="example-step"><span>Let $a$ = adult tickets, $c$ = child tickets</span><span class="why">define variables</span></div>
+      <div class="example-step"><span>$a + c = 250$ and $12a + 7c = 2400$</span><span class="why">total count and total revenue</span></div>
+      <div class="example-step"><span>$a = 250 - c$</span><span class="why">solve first equation for $a$</span></div>
+      <div class="example-step"><span>$12(250 - c) + 7c = 2400$</span><span class="why">substitute into revenue equation</span></div>
+      <div class="example-step"><span>$3000 - 12c + 7c = 2400 \Rightarrow -5c = -600$</span><span class="why">distribute; simplify</span></div>
+      <div class="example-step"><span>$c = 120$, $\; a = 250 - 120 = 130$</span><span class="why">divide by $-5$; back-substitute</span></div>
+    </div>
   </section>
 
   <!-- ── 7. Polynomials ─────────────────────────────────────────────── -->
@@ -626,9 +645,11 @@
     </p>
 
     <p>
-      The <span class="key">discriminant</span> $b^2 - 4ac$ tells you the number of real
-      solutions: positive → two real solutions; zero → one real solution; negative → no real
-      solutions.
+      The <span class="key">discriminant</span> $b^2 - 4ac$ is a quick check before you solve.
+      If $b^2 - 4ac > 0$: two distinct real roots (parabola crosses the x-axis twice).
+      If $b^2 - 4ac = 0$: one repeated real root (parabola just touches the x-axis at its vertex).
+      If $b^2 - 4ac &lt; 0$: two complex conjugate roots — no real solutions (parabola does not
+      cross the x-axis). Evaluate the discriminant first to know what kind of answer to expect.
     </p>
 
     <div class="formula">
@@ -640,6 +661,15 @@
       <div class="label">Vertex form</div>
       $$y = a(x - h)^2 + k \quad \text{vertex at } (h, k)$$
     </div>
+
+    <p>
+      <span class="key">Vertex form</span> $f(x) = a(x-h)^2 + k$ reveals the vertex $(h, k)$
+      directly — no solving required. If $a &lt; 0$ the parabola opens downward and the vertex
+      is a <em>maximum</em>; if $a &gt; 0$ it is a <em>minimum</em>. This makes vertex form the
+      natural choice for maximum/minimum problems (peak height, maximum profit). Convert from
+      standard form by completing the square, or use the shortcut $h = -\tfrac{b}{2a}$ and
+      $k = f(h)$.
+    </p>
 
     <div class="example">
       <div class="label">Worked example (factoring) — solve $x^2 - 5x + 6 = 0$</div>
@@ -666,6 +696,13 @@
       <div class="label">Worked example (vertex by completing the square) — $y = x^2 - 6x + 5$</div>
       <div class="example-step"><span>$y = (x^2 - 6x + 9) + 5 - 9$</span><span class="why">add and subtract 9</span></div>
       <div class="example-step"><span>$y = (x-3)^2 - 4$</span><span class="why">vertex form; vertex at $(3, -4)$</span></div>
+    </div>
+
+    <div class="example">
+      <div class="label">Worked example (maximum height) — $h(t) = -16t^2 + 64t + 5$</div>
+      <div class="example-step"><span>$t = -\dfrac{b}{2a} = -\dfrac{64}{2(-16)} = \dfrac{-64}{-32} = 2$ seconds</span><span class="why">time of maximum: $h = -\tfrac{b}{2a}$; $a=-16$, $b=64$</span></div>
+      <div class="example-step"><span>$h(2) = -16(4) + 64(2) + 5$</span><span class="why">substitute $t = 2$</span></div>
+      <div class="example-step"><span>$= -64 + 128 + 5 = 69$ feet</span><span class="why">maximum height occurs at the vertex</span></div>
     </div>
   </section>
 
@@ -821,6 +858,37 @@
       <div class="label">Worked example — solve $e^{2x} = e^6$</div>
       <div class="example-step"><span>$2x = 6 \Rightarrow x = 3$</span><span class="why">same base $e$; divide by 2</span></div>
     </div>
+
+    <p>
+      <span class="key">Exponential equations with mismatched bases:</span> When both sides
+      cannot be rewritten with the same base, take $\ln$ (or $\log$) of both sides. The
+      power rule $\log_b(x^r) = r \log_b x$ brings the exponent down as a coefficient,
+      converting the equation into a linear one you can solve directly.
+    </p>
+
+    <div class="example">
+      <div class="label">Worked example — solve $5^{2x-1} = 100$</div>
+      <div class="example-step"><span>$(2x-1)\ln 5 = \ln 100$</span><span class="why">take $\ln$ of both sides; power rule brings down the exponent</span></div>
+      <div class="example-step"><span>$2x - 1 = \dfrac{\ln 100}{\ln 5} \approx 2.861$</span><span class="why">divide both sides by $\ln 5$</span></div>
+      <div class="example-step"><span>$2x \approx 3.861 \Rightarrow x \approx 1.93$</span><span class="why">add 1; divide by 2</span></div>
+    </div>
+
+    <p>
+      <span class="key">Logarithmic equations:</span> Use log laws to combine all logarithm
+      terms into a single log on each side, then exponentiate both sides to eliminate the
+      logarithm. Always check your solutions afterward — the argument of a logarithm must be
+      strictly positive, so any candidate that produces a zero or negative argument is
+      extraneous and must be rejected.
+    </p>
+
+    <div class="example">
+      <div class="label">Worked example — solve $\log_2(x+3) + \log_2(x-1) = 5$</div>
+      <div class="example-step"><span>$\log_2[(x+3)(x-1)] = 5$</span><span class="why">product rule: sum of logs = log of product</span></div>
+      <div class="example-step"><span>$(x+3)(x-1) = 2^5 = 32$</span><span class="why">exponentiate both sides (base 2)</span></div>
+      <div class="example-step"><span>$x^2 + 2x - 3 = 32 \Rightarrow x^2 + 2x - 35 = 0$</span><span class="why">expand; move 32 to the left</span></div>
+      <div class="example-step"><span>$(x+7)(x-5) = 0 \Rightarrow x = -7$ or $x = 5$</span><span class="why">factor</span></div>
+      <div class="example-step"><span>$x = 5$ only</span><span class="why">$x=-7$: $\log_2(-4)$ undefined; $x=5$: $\log_2 8 + \log_2 4 = 3+2 = 5$ ✓</span></div>
+    </div>
   </section>
 
   <!-- ── 14. Functions & Inverses ──────────────────────────────────── -->
@@ -858,6 +926,29 @@
       <div class="example-step"><span>$x = 3y - 6$</span><span class="why">swap $x$ and $y$</span></div>
       <div class="example-step"><span>$x + 6 = 3y$</span><span class="why">add 6 to both sides</span></div>
       <div class="example-step"><span>$f^{-1}(x) = \dfrac{x+6}{3}$</span><span class="why">divide by 3</span></div>
+    </div>
+
+    <p>
+      <span class="key">Domain restrictions:</span> A function must be <em>one-to-one</em>
+      (each output comes from exactly one input) to have an inverse on its full domain.
+      Graphically, this means it passes the <span class="key">horizontal line test</span>.
+      If it fails — for example $f(x) = x^2$, where both $f(2)$ and $f(-2)$ equal 4 —
+      you must restrict the domain first. Restricting $f(x) = x^2$ to $x \geq 0$ makes it
+      one-to-one, and its inverse on that restricted domain is $f^{-1}(x) = \sqrt{x}$.
+    </p>
+
+    <p>
+      <span class="key">Verifying inverses with composition:</span> $g$ is the inverse of $f$
+      if and only if <em>both</em> $f(g(x)) = x$ for every $x$ in the domain of $g$, and
+      $g(f(x)) = x$ for every $x$ in the domain of $f$. Checking only one direction is not
+      sufficient.
+    </p>
+
+    <div class="example">
+      <div class="label">Worked example (verifying inverses) — $f(x) = 2x+3$ and $g(x) = \dfrac{x-3}{2}$</div>
+      <div class="example-step"><span>$f(g(x)) = 2 \cdot \dfrac{x-3}{2} + 3 = (x-3)+3 = x$ ✓</span><span class="why">substitute $g(x)$ into $f$</span></div>
+      <div class="example-step"><span>$g(f(x)) = \dfrac{(2x+3)-3}{2} = \dfrac{2x}{2} = x$ ✓</span><span class="why">substitute $f(x)$ into $g$</span></div>
+      <div class="example-step"><span>both compositions equal $x$ — confirmed inverses</span><span class="why">both directions must hold</span></div>
     </div>
   </section>
 

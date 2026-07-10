@@ -137,6 +137,35 @@
       <div class="example-step"><span>$(x+3)^2 - 9 + 5 = 0 \Rightarrow (x+3)^2 = 4$</span><span class="why">add and subtract $(b/2)^2 = 9$</span></div>
       <div class="example-step"><span>$x + 3 = \pm 2 \Rightarrow x = -1$ or $x = -5$</span><span class="why">take square root of both sides</span></div>
     </div>
+
+    <p>
+      Graphically, the discriminant reveals the parabola's relationship to the $x$-axis:
+      $\Delta > 0$ means the parabola crosses the $x$-axis at <span class="key">two distinct points</span>;
+      $\Delta = 0$ means it is <span class="key">tangent to the $x$-axis</span> (touches at exactly
+      one point — the vertex); $\Delta &lt; 0$ means the parabola lies entirely
+      <span class="key">above or below</span> the $x$-axis with no real intercepts.
+    </p>
+
+    <p>
+      <span class="key">Vertex form</span> $f(x) = a(x-h)^2 + k$ lets you read off the vertex
+      $(h, k)$ and direction of opening at a glance: opens <span class="key">upward</span> when
+      $a > 0$ (minimum at vertex) and <span class="key">downward</span> when $a &lt; 0$ (maximum
+      at vertex). Converting to vertex form by completing the square also makes it easy to solve
+      the equation by taking square roots directly.
+    </p>
+
+    <div class="example">
+      <div class="label">Worked example — vertex and axis of symmetry for $f(x) = 2x^2 - 8x + 3$</div>
+      <div class="example-step"><span>$h = -\dfrac{b}{2a} = -\dfrac{-8}{2(2)} = 2$</span><span class="why">axis of symmetry formula</span></div>
+      <div class="example-step"><span>$f(2) = 2(4) - 8(2) + 3 = 8 - 16 + 3 = -5$</span><span class="why">evaluate $f$ at $h$ to find $k$</span></div>
+      <div class="example-step"><span>Vertex $= (2, -5)$; axis of symmetry: $x = 2$</span><span class="why">write the results</span></div>
+    </div>
+
+    <div class="example">
+      <div class="label">Worked example — nature of roots for $x^2 + 4x + 5 = 0$</div>
+      <div class="example-step"><span>$\Delta = b^2 - 4ac = (4)^2 - 4(1)(5) = 16 - 20 = -4$</span><span class="why">$a = 1,\ b = 4,\ c = 5$</span></div>
+      <div class="example-step"><span>$\Delta &lt; 0$ → two complex (non-real) roots; no $x$-intercepts</span><span class="why">parabola lies entirely above the $x$-axis</span></div>
+    </div>
   </section>
 
   <!-- ── 3. Polynomial Functions ────────────────────────────────────── -->
@@ -157,14 +186,47 @@
       equals $f(c)$.
     </p>
 
+    <p>
+      <span class="key">End behavior</span> is determined by the leading term $a_n x^n$.
+      When $n$ is <span class="key">even</span>: both ends of the graph point in the same direction —
+      up ($y \to +\infty$) if $a_n > 0$, down ($y \to -\infty$) if $a_n &lt; 0$.
+      When $n$ is <span class="key">odd</span>: the ends go in opposite directions — down-left and
+      up-right if $a_n > 0$; up-left and down-right if $a_n &lt; 0$.
+      A degree-$n$ polynomial has at most $n - 1$ turning points.
+    </p>
+
+    <p>
+      The <span class="key">Factor Theorem</span> is a direct consequence of the Remainder Theorem:
+      $(x - c)$ is a factor of $f(x)$ if and only if $f(c) = 0$.
+      This turns root-finding into a factoring problem — once you find a root $c$ (e.g., by
+      testing rational root candidates), divide out $(x - c)$ and work with the reduced polynomial.
+    </p>
+
     <div class="formula">
-      <div class="label">Binomial theorem ($n$ a non-negative integer)</div>
+      <div class="label">Binomial theorem &amp; Remainder/Factor Theorem</div>
       $$(a+b)^n = \sum_{k=0}^n \binom{n}{k} a^{n-k} b^k$$
+      $$\text{Remainder Theorem: remainder of } f(x) \div (x-c) \text{ equals } f(c)$$
+      $$\text{Factor Theorem: } (x-c) \mid f(x) \iff f(c) = 0$$
     </div>
 
     <div class="example">
       <div class="label">Worked example — Remainder Theorem: $f(x) = x^3 - 2x + 1$ at $x = 2$</div>
       <div class="example-step"><span>$f(2) = 8 - 4 + 1 = 5$</span><span class="why">the remainder when $f(x) \div (x-2)$ is $f(2) = 5$</span></div>
+    </div>
+
+    <div class="example">
+      <div class="label">Worked example — end behavior of $f(x) = -2x^4 + 3x^2 - x + 1$</div>
+      <div class="example-step"><span>Degree $n = 4$ (even); leading coefficient $a = -2 &lt; 0$</span><span class="why">identify leading term</span></div>
+      <div class="example-step"><span>Both ends point <strong>down</strong>: $f(x) \to -\infty$ as $x \to \pm\infty$</span><span class="why">even degree, negative leading coefficient</span></div>
+      <div class="example-step"><span>At most $n - 1 = 3$ turning points</span><span class="why">degree-4 polynomial</span></div>
+    </div>
+
+    <div class="example">
+      <div class="label">Worked example — rational roots of $f(x) = 2x^3 - 3x^2 - 8x + 12$</div>
+      <div class="example-step"><span>Candidates $p/q$: $p \mid 12$, $q \mid 2$ → $\pm 1, \pm 2, \pm 3, \pm 4, \pm 6, \pm 12, \pm\tfrac{1}{2}, \pm\tfrac{3}{2}$</span><span class="why">Rational Root Theorem</span></div>
+      <div class="example-step"><span>Test $x = 2$: $2(8) - 3(4) - 8(2) + 12 = 16 - 12 - 16 + 12 = 0$ ✓</span><span class="why">$f(2) = 0$ so $(x-2)$ is a factor</span></div>
+      <div class="example-step"><span>$f(x) = (x-2)(2x^2 + x - 6) = (x-2)(2x-3)(x+2)$</span><span class="why">polynomial division; then factor the quadratic</span></div>
+      <div class="example-step"><span>Roots: $x = 2,\quad x = \tfrac{3}{2},\quad x = -2$</span><span class="why">set each factor to zero</span></div>
     </div>
   </section>
 
@@ -180,9 +242,45 @@
       Always state the values of $x$ that make the denominator zero.
     </p>
 
+    <p>
+      <span class="key">Domain restrictions:</span> identify every value that makes
+      <em>any</em> denominator zero — these are excluded from the domain whether or not they
+      cancel out. For example, in $\dfrac{x+1}{(x-2)(x+3)}$ the domain excludes $x = 2$
+      and $x = -3$.
+    </p>
+
+    <p>
+      To <span class="key">add or subtract rational expressions</span>, first find the
+      <span class="key">least common denominator (LCD)</span>, rewrite each fraction with the
+      LCD as its denominator, then add or subtract the numerators only — the denominator stays
+      the same. Simplify the result and state all domain restrictions.
+    </p>
+
+    <p>
+      To <span class="key">solve a rational equation</span>, multiply both sides by the LCD to
+      clear all fractions, producing a polynomial equation. Solve that polynomial, then
+      <span class="key">check every solution</span> against the original domain restrictions.
+      Any solution that makes a denominator zero is <span class="key">extraneous</span> and must
+      be discarded.
+    </p>
+
     <div class="example">
       <div class="label">Worked example — simplify $\dfrac{x^2 - 4}{x - 2}$ $(x \ne 2)$</div>
       <div class="example-step"><span>$= \dfrac{(x-2)(x+2)}{x-2} = x+2$</span><span class="why">difference of squares; cancel $(x-2)$</span></div>
+    </div>
+
+    <div class="example">
+      <div class="label">Worked example — add $\dfrac{1}{x} + \dfrac{2}{x+1}$</div>
+      <div class="example-step"><span>LCD $= x(x+1)$</span><span class="why">denominators share no common factors</span></div>
+      <div class="example-step"><span>$= \dfrac{x+1}{x(x+1)} + \dfrac{2x}{x(x+1)} = \dfrac{(x+1)+2x}{x(x+1)} = \dfrac{3x+1}{x(x+1)}$</span><span class="why">convert each fraction; add numerators</span></div>
+      <div class="example-step"><span>Domain: $x \ne 0$ and $x \ne -1$</span><span class="why">original denominators cannot be zero</span></div>
+    </div>
+
+    <div class="example">
+      <div class="label">Worked example — solve $\dfrac{1}{x-2} + \dfrac{1}{3} = \dfrac{5}{x-2}$</div>
+      <div class="example-step"><span>Multiply both sides by $3(x-2)$: restriction $x \ne 2$</span><span class="why">LCD clears all fractions</span></div>
+      <div class="example-step"><span>$3 + (x-2) = 15 \Rightarrow x + 1 = 15 \Rightarrow x = 14$</span><span class="why">distribute and simplify</span></div>
+      <div class="example-step"><span>Check: $x = 14 \ne 2$ ✓ — not extraneous</span><span class="why">verify against domain restriction</span></div>
     </div>
   </section>
 
@@ -321,11 +419,33 @@
       the resulting equation. Always substitute back to find the full solution $(x, y)$.
     </p>
 
+    <p>
+      Nonlinear systems often arise from <span class="key">geometric intersections</span>:
+      a line meeting a circle gives at most 2 solutions; a parabola meeting a line gives at
+      most 2 solutions; two circles can intersect in 0, 1, or 2 points. The number of
+      intersection points equals the number of solutions of the system.
+    </p>
+
+    <p>
+      The standard strategy is <span class="key">substitution</span>: isolate one variable in
+      the simpler equation and substitute into the more complex one. This reduces the system
+      to a single-variable equation — often quadratic — that you can solve with standard
+      techniques.
+    </p>
+
     <div class="example">
       <div class="label">Worked example — solve $x^2 + y^2 = 25$ and $y = x + 1$</div>
       <div class="example-step"><span>$x^2 + (x+1)^2 = 25 \Rightarrow 2x^2 + 2x + 1 = 25$</span><span class="why">substitute $y = x+1$</span></div>
       <div class="example-step"><span>$x^2 + x - 12 = 0 \Rightarrow (x+4)(x-3) = 0$</span><span class="why">simplify; factor</span></div>
       <div class="example-step"><span>$(x,y) = (-4,-3)$ or $(3, 4)$</span><span class="why">$y = x + 1$</span></div>
+    </div>
+
+    <div class="example">
+      <div class="label">Worked example — solve $y = x^2$ and $y = 2x + 3$</div>
+      <div class="example-step"><span>$x^2 = 2x + 3 \Rightarrow x^2 - 2x - 3 = 0$</span><span class="why">substitute $y = x^2$ into the linear equation</span></div>
+      <div class="example-step"><span>$(x-3)(x+1) = 0 \Rightarrow x = 3$ or $x = -1$</span><span class="why">factor</span></div>
+      <div class="example-step"><span>$x = 3 \Rightarrow y = 9$; $\quad x = -1 \Rightarrow y = 1$</span><span class="why">substitute back into $y = x^2$</span></div>
+      <div class="example-step"><span>Solutions: $(3, 9)$ and $(-1, 1)$</span><span class="why">verify in both original equations</span></div>
     </div>
   </section>
 
@@ -333,6 +453,15 @@
   <section id="sequences">
     <div class="chapter-num">Chapter 10</div>
     <h3>Sequences &amp; Series</h3>
+
+    <p>
+      Use an <span class="key">arithmetic sequence</span> when consecutive differences are
+      constant (e.g., a salary that increases by the same dollar amount each year, uniform
+      motion). Use a <span class="key">geometric sequence</span> when consecutive ratios are
+      constant (e.g., compound interest, population growth, radioactive decay). The quick
+      diagnostic: subtract consecutive terms — if the result is the same number, arithmetic;
+      divide consecutive terms — if the result is the same number, geometric.
+    </p>
 
     <p>
       An <span class="key">arithmetic sequence</span> has constant difference $d$:
@@ -345,6 +474,20 @@
       <div class="label">Sum formulas</div>
       $$S_n^{\text{arith}} = \frac{n}{2}(a_1 + a_n) \qquad S_n^{\text{geo}} = \frac{a_1(1-r^n)}{1-r} \quad (r \ne 1)$$
       $$S_\infty^{\text{geo}} = \frac{a_1}{1-r} \quad (|r| < 1)$$
+    </div>
+
+    <p>
+      The infinite geometric series formula $S_\infty = \dfrac{a_1}{1-r}$ follows from the
+      partial-sum formula $S_n = \dfrac{a_1(1 - r^n)}{1 - r}$.
+      When $|r| &lt; 1$, the term $r^n \to 0$ as $n \to \infty$, so $S_n$ approaches
+      $\dfrac{a_1}{1-r}$. When $|r| \ge 1$ the series <span class="key">diverges</span> —
+      the partial sums grow without bound.
+    </p>
+
+    <div class="example">
+      <div class="label">Worked example — arithmetic sequence: $a_1 = 5$, $d = 3$</div>
+      <div class="example-step"><span>$a_{10} = a_1 + (n-1)d = 5 + 9(3) = 5 + 27 = 32$</span><span class="why">$n$-th term formula with $n = 10$</span></div>
+      <div class="example-step"><span>$S_{10} = \dfrac{10}{2}(a_1 + a_{10}) = 5(5 + 32) = 5(37) = 185$</span><span class="why">arithmetic sum formula</span></div>
     </div>
 
     <div class="example">
@@ -410,9 +553,40 @@
       $$P(X = k) = \binom{n}{k} p^k (1-p)^{n-k}$$
     </div>
 
+    <p>
+      The <span class="key">binomial probability formula</span> applies when: (1) there are
+      $n$ <span class="key">independent</span> trials, (2) each trial has exactly two outcomes
+      (success or failure), and (3) the probability of success $p$ is constant across all
+      trials. Here $\dbinom{n}{k}$ counts the arrangements of $k$ successes among $n$ trials,
+      $p^k$ is the probability of those successes, and $(1-p)^{n-k}$ is the probability of
+      the remaining failures.
+    </p>
+
+    <p>
+      Whether events are <span class="key">independent</span> or <span class="key">dependent</span>
+      changes how you compute joint probabilities.
+      For <span class="key">independent</span> events, $P(A \text{ and } B) = P(A) \cdot P(B)$
+      because the outcome of $A$ gives no information about $B$.
+      For <span class="key">dependent</span> events (e.g., drawing cards without replacement),
+      use $P(A \text{ and } B) = P(A) \cdot P(B \mid A)$, where $P(B \mid A)$ is the
+      conditional probability of $B$ given that $A$ has occurred.
+    </p>
+
     <div class="example">
       <div class="label">Worked example — how many ways to choose 3 from 5?</div>
       <div class="example-step"><span>$\dbinom{5}{3} = \dfrac{5!}{3!\,2!} = \dfrac{5 \times 4}{2} = 10$</span><span class="why">combination formula; order doesn't matter</span></div>
+    </div>
+
+    <div class="example">
+      <div class="label">Worked example — coin flipped 4 times: $P(\text{exactly 2 heads})$</div>
+      <div class="example-step"><span>$n = 4,\ k = 2,\ p = 0.5$</span><span class="why">4 independent trials; success = heads</span></div>
+      <div class="example-step"><span>$P(X=2) = \dbinom{4}{2}(0.5)^2(0.5)^2 = 6 \times 0.0625 = 0.375$</span><span class="why">$\dbinom{4}{2} = 6$; $(0.5)^4 = 0.0625$</span></div>
+    </div>
+
+    <div class="example">
+      <div class="label">Worked example — independent events: $P(A) = 0.3$, $P(B) = 0.5$</div>
+      <div class="example-step"><span>$P(A \text{ and } B) = 0.3 \times 0.5 = 0.15$</span><span class="why">independent: multiply probabilities</span></div>
+      <div class="example-step"><span>$P(A \text{ or } B) = P(A) + P(B) - P(A \text{ and } B) = 0.3 + 0.5 - 0.15 = 0.65$</span><span class="why">addition rule for probability</span></div>
     </div>
   </section>
 

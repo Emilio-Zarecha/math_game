@@ -136,6 +136,37 @@
       <div class="label">Worked example — find the coordinates at 270°</div>
       <div class="example-step"><span>$\cos(270°) = 0, \; \sin(270°) = -1$</span><span class="why">bottom of unit circle</span></div>
     </div>
+
+    <p>
+      <span class="key">ASTC mnemonic (All Students Take Calculus):</span>
+      In Quadrant I all six trig functions are positive. In Quadrant II only Sine is positive.
+      In Quadrant III only Tangent (and cotangent) is positive. In Quadrant IV only Cosine
+      (and secant) is positive.
+    </p>
+
+    <p>
+      For any angle $\theta$, the <span class="key">reference angle</span> is the acute angle
+      it makes with the positive $x$-axis. The magnitude of each trig function equals the
+      same value as at the reference angle; the sign is then determined by the quadrant using ASTC.
+    </p>
+
+    <div class="example">
+      <div class="label">Worked example — find $\sin(210°)$ and $\cos(210°)$</div>
+      <div class="example-step"><span>$210°$ lies in Q3 (between 180° and 270°)</span><span class="why">locate the quadrant</span></div>
+      <div class="example-step"><span>Reference angle $= 210° - 180° = 30°$</span><span class="why">subtract 180° for Q3 angles</span></div>
+      <div class="example-step"><span>$\sin(30°) = \tfrac{1}{2}$, $\cos(30°) = \tfrac{\sqrt{3}}{2}$</span><span class="why">exact values at reference angle</span></div>
+      <div class="example-step"><span>In Q3 both sine and cosine are negative (only tangent is positive)</span><span class="why">ASTC rule</span></div>
+      <div class="example-step"><span>$\sin(210°) = -\tfrac{1}{2}$, $\cos(210°) = -\tfrac{\sqrt{3}}{2}$</span><span class="why">apply the Q3 sign</span></div>
+    </div>
+
+    <div class="example">
+      <div class="label">Worked example — find all six trig functions at $\theta = 5\pi/6$</div>
+      <div class="example-step"><span>$5\pi/6$ lies in Q2 (between $\pi/2$ and $\pi$)</span><span class="why">locate the quadrant</span></div>
+      <div class="example-step"><span>Reference angle $= \pi - \tfrac{5\pi}{6} = \tfrac{\pi}{6}$ (30°)</span><span class="why">subtract from $\pi$ for Q2 angles</span></div>
+      <div class="example-step"><span>$\sin\tfrac{5\pi}{6} = +\tfrac{1}{2}$, $\cos\tfrac{5\pi}{6} = -\tfrac{\sqrt{3}}{2}$</span><span class="why">Q2: sine positive, cosine negative</span></div>
+      <div class="example-step"><span>$\tan\tfrac{5\pi}{6} = \dfrac{1/2}{-\sqrt{3}/2} = -\dfrac{1}{\sqrt{3}} = -\dfrac{\sqrt{3}}{3}$</span><span class="why">quotient identity; negative in Q2</span></div>
+      <div class="example-step"><span>$\csc = 2$, $\sec = -\dfrac{2\sqrt{3}}{3}$, $\cot = -\sqrt{3}$</span><span class="why">reciprocals of sin, cos, tan respectively</span></div>
+    </div>
   </section>
 
   <!-- ── 3. Right Triangle Trig ─────────────────────────────────────── -->
@@ -227,6 +258,32 @@
       <div class="label">Worked example — phase shift of $y = \sin(2x - \pi/2)$</div>
       <div class="example-step"><span>$B = 2$, $C = \pi/2$</span><span class="why">identify parameters</span></div>
       <div class="example-step"><span>Phase shift $= C/B = \dfrac{\pi/2}{2} = \dfrac{\pi}{4}$ to the right</span><span class="why">positive → shift right</span></div>
+    </div>
+
+    <p>
+      What each parameter does to the graph of $y = A\sin(Bx - C) + D$:
+      <span class="key">Amplitude $|A|$</span> controls height — the graph peaks at $A$ and troughs at $-A$.
+      <span class="key">Period $2\pi/|B|$</span> controls how often the wave repeats — larger $|B|$
+      compresses the graph horizontally.
+      <span class="key">Phase shift $C/B$</span> slides the graph left or right — positive means right,
+      negative means left.
+      <span class="key">Vertical shift $D$</span> moves the midline up ($D>0$) or down ($D&lt;0$).
+    </p>
+
+    <p>
+      To sketch one cycle: draw the midline $y = D$; mark amplitude $|A|$ above and below it;
+      find the starting $x$-value from the phase shift; divide the period into four equal parts
+      to locate the maximum, zero crossings, and minimum.
+    </p>
+
+    <div class="example">
+      <div class="label">Worked example — identify parameters and sketch key points for $y = 3\sin(2x - \pi/2) + 1$</div>
+      <div class="example-step"><span>$A = 3,\; B = 2,\; C = \pi/2,\; D = 1$</span><span class="why">read directly from the formula</span></div>
+      <div class="example-step"><span>Amplitude $= 3$, Period $= \pi$, Phase shift $= \pi/4$ right, Midline $y = 1$</span><span class="why">apply parameter formulas</span></div>
+      <div class="example-step"><span>Cycle starts at $x = \pi/4$; maximum at $x = \pi/2$, $y = 4$</span><span class="why">quarter-period after start; $1 + 3 = 4$</span></div>
+      <div class="example-step"><span>Midline crossing at $x = 3\pi/4$, $y = 1$</span><span class="why">half-period after start, descending</span></div>
+      <div class="example-step"><span>Minimum at $x = \pi$, $y = -2$</span><span class="why">three-quarter period after start; $1 - 3 = -2$</span></div>
+      <div class="example-step"><span>Cycle ends at $x = 5\pi/4$, $y = 1$</span><span class="why">one full period after start</span></div>
     </div>
   </section>
 
@@ -387,6 +444,26 @@
       <div class="example-step"><span>$\sin x = -\tfrac{1}{2}$ → $x = \tfrac{7\pi}{6}, \tfrac{11\pi}{6}$</span><span class="why">negative in Q3 and Q4</span></div>
       <div class="example-step"><span>$\sin x = 1$ → $x = \tfrac{\pi}{2}$</span><span class="why">top of unit circle</span></div>
     </div>
+
+    <p>
+      General strategy: <span class="key">isolate</span> the trig function, find the
+      <span class="key">principal value</span> using inverse trig, then use reference angles
+      and quadrant signs to list all solutions in $[0, 2\pi)$, then add period multiples
+      ($+\, 2\pi k$ for sin/cos, $+\,\pi k$ for tan) for the general solution.
+    </p>
+
+    <p>
+      When identities help: if the equation mixes different trig functions (e.g. sin and cos
+      together), try a Pythagorean or quotient identity to rewrite everything in terms of one
+      function before solving.
+    </p>
+
+    <div class="example">
+      <div class="label">Worked example — find the general solution to $\tan(2x) = \sqrt{3}$</div>
+      <div class="example-step"><span>Reference angle: $\arctan(\sqrt{3}) = \pi/3$</span><span class="why">$\tan(\pi/3) = \sqrt{3}$</span></div>
+      <div class="example-step"><span>Tangent is positive in Q1 and Q3, so $2x = \pi/3 + n\pi$</span><span class="why">period of tangent is $\pi$; add $n\pi$ for all solutions</span></div>
+      <div class="example-step"><span>$x = \dfrac{\pi}{6} + \dfrac{n\pi}{2}$ for any integer $n$</span><span class="why">divide both sides by 2</span></div>
+    </div>
   </section>
 
   <!-- ── 11. Law of Sines ───────────────────────────────────────────── -->
@@ -413,6 +490,25 @@
       <div class="label">Worked example — given $a = 7$, $A = 45°$, $B = 60°$, find $b$</div>
       <div class="example-step"><span>$\dfrac{b}{\sin(60°)} = \dfrac{7}{\sin(45°)}$</span><span class="why">set up proportion</span></div>
       <div class="example-step"><span>$b = \dfrac{7\sin(60°)}{\sin(45°)} = \dfrac{7 \cdot \sqrt{3}/2}{\sqrt{2}/2} = \dfrac{7\sqrt{3}}{\sqrt{2}} = \dfrac{7\sqrt{6}}{2}$</span><span class="why">solve for $b$</span></div>
+    </div>
+
+    <p>
+      <span class="key">Ambiguous case (SSA):</span> when given sides $a$, $b$ and angle $A$
+      (the angle opposite $a$), compare $a$ to $b\sin A$:
+      if $a &lt; b\sin A$ → no triangle exists;
+      if $a = b\sin A$ → exactly one right triangle;
+      if $b\sin A &lt; a &lt; b$ → two distinct triangles;
+      if $a \ge b$ → exactly one triangle.
+    </p>
+
+    <div class="example">
+      <div class="label">Worked example — ambiguous case: $A = 30°$, $a = 6$, $b = 10$</div>
+      <div class="example-step"><span>$b\sin A = 10\sin(30°) = 10 \cdot 0.5 = 5$</span><span class="why">compute the threshold</span></div>
+      <div class="example-step"><span>$b\sin A = 5 &lt; a = 6 &lt; b = 10$, so there are <strong>two triangles</strong></span><span class="why">SSA ambiguous case condition</span></div>
+      <div class="example-step"><span>$\sin B = \dfrac{b\sin A}{a} = \dfrac{10\sin(30°)}{6} = \dfrac{5}{6}$</span><span class="why">Law of Sines to find $B$</span></div>
+      <div class="example-step"><span>$B_1 = \arcsin(5/6) \approx 56.4°$, $B_2 = 180° - 56.4° = 123.6°$</span><span class="why">two supplementary angles share the same sine</span></div>
+      <div class="example-step"><span>Triangle 1: $C_1 = 180° - 30° - 56.4° = 93.6°$ ✓</span><span class="why">angles sum to 180°; positive so valid</span></div>
+      <div class="example-step"><span>Triangle 2: $C_2 = 180° - 30° - 123.6° = 26.4°$ ✓</span><span class="why">also positive, so second triangle is valid</span></div>
     </div>
   </section>
 
