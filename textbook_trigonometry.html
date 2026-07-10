@@ -149,6 +149,17 @@
       </p>
     </div>
 
+    <div class="interactive">
+      <div class="int-label">Interactive — click or drag to explore</div>
+      <canvas id="angle-canvas-2" width="280" height="280"></canvas>
+      <div class="angle-readout">
+        <span class="readout-label">Degrees</span><span class="readout-val" id="uc2-deg">0.0°</span>
+        <span class="readout-label">Radians</span><span class="readout-val" id="uc2-rad">0</span>
+        <span class="readout-label">cos&thinsp;θ</span><span class="readout-val" id="uc2-cos">1.000</span>
+        <span class="readout-label">sin&thinsp;θ</span><span class="readout-val" id="uc2-sin">0.000</span>
+      </div>
+    </div>
+
     <div class="example">
       <div class="label">Worked example — find the coordinates at 270°</div>
       <div class="example-step"><span>$\cos(270°) = 0, \; \sin(270°) = -1$</span><span class="why">bottom of unit circle</span></div>
@@ -563,8 +574,8 @@
 </div>
 
 <script>
-(function () {
-  var canvas = document.getElementById('angle-canvas');
+function createAngleExplorer(canvasId, idPrefix) {
+  var canvas = document.getElementById(canvasId);
   if (!canvas) return;
   var ctx = canvas.getContext('2d');
   var W = canvas.width, H = canvas.height;
@@ -618,8 +629,8 @@
     return a < 0 ? a + 2 * Math.PI : a;
   }
 
-  function setEl(id, text) {
-    var el = document.getElementById(id);
+  function setEl(suffix, text) {
+    var el = document.getElementById(idPrefix + suffix);
     if (el) el.textContent = text;
   }
 
@@ -751,10 +762,10 @@
 
     // Update text readouts
     var deg = theta * 180 / Math.PI;
-    setEl('readout-deg', deg.toFixed(1) + '°');
-    setEl('readout-rad', niceRad(theta));
-    setEl('readout-cos', cosTh.toFixed(3));
-    setEl('readout-sin', sinTh.toFixed(3));
+    setEl('deg', deg.toFixed(1) + '°');
+    setEl('rad', niceRad(theta));
+    setEl('cos', cosTh.toFixed(3));
+    setEl('sin', sinTh.toFixed(3));
   }
 
   canvas.addEventListener('mousedown', function (e) {
@@ -773,7 +784,10 @@
   window.addEventListener('touchend', function () { dragging = false; });
 
   draw();
-})();
+}
+
+createAngleExplorer('angle-canvas', 'readout-');
+createAngleExplorer('angle-canvas-2', 'uc2-');
 </script>
 
 </body>
