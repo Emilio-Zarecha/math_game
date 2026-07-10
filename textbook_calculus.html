@@ -82,17 +82,41 @@
     <h3>Limits &amp; Continuity</h3>
 
     <p>
-      The <span class="key">limit</span> $\displaystyle\lim_{x \to a} f(x) = L$ means $f(x)$
-      approaches $L$ as $x$ approaches $a$ (but does not need to equal $f(a)$).
-      A function is <span class="key">continuous</span> at $a$ if the limit equals the function
-      value: $\lim_{x\to a} f(x) = f(a)$.
+      <strong>What a limit is.</strong> The <span class="key">limit</span>
+      $\displaystyle\lim_{x \to a} f(x) = L$ says: as $x$ gets arbitrarily close to $a$
+      (from either side), the output $f(x)$ gets arbitrarily close to $L$.
+      The crucial point is that $x$ never actually reaches $a$ — the limit describes
+      <em>approach</em>, not arrival. This is what makes limits useful at places where
+      a function is undefined, like $\dfrac{\sin x}{x}$ at $x = 0$.
     </p>
 
     <p>
-      <span class="key">Limit at infinity:</span> if the degree of the numerator is less than
-      the degree of the denominator, the limit as $x \to \infty$ is $0$.
-      <span class="key">L'Hôpital's Rule:</span> if a limit yields $0/0$ or $\pm\infty/\infty$,
-      differentiate numerator and denominator separately.
+      <strong>One-sided limits.</strong> Sometimes a function approaches different values
+      from the left and the right. We write $\lim_{x\to a^-}$ for the
+      <span class="key">left-hand limit</span> and $\lim_{x\to a^+}$ for the
+      <span class="key">right-hand limit</span>. The two-sided limit $\lim_{x\to a}$
+      exists only when both one-sided limits exist <em>and are equal</em>.
+    </p>
+
+    <p>
+      <strong>Continuity.</strong> A function is <span class="key">continuous</span> at $a$
+      when three conditions all hold: $f(a)$ is defined, the limit exists, and they agree:
+      $\lim_{x\to a} f(x) = f(a)$. Intuitively, a continuous function can be drawn without
+      lifting your pen. Polynomials, trig functions, and exponentials are continuous everywhere
+      on their domains; rational functions break continuity wherever the denominator is zero.
+    </p>
+
+    <p>
+      <strong>Limits at infinity.</strong> $\displaystyle\lim_{x\to\infty} f(x)$ asks what
+      value $f$ settles toward as $x$ grows without bound. For rational functions, compare
+      degrees: if the numerator's degree is less than the denominator's, the limit is $0$;
+      if equal, the limit is the ratio of leading coefficients; if greater, the limit is $\pm\infty$.
+    </p>
+
+    <p>
+      <strong>L'Hôpital's Rule.</strong> When a limit produces the indeterminate form $0/0$
+      or $\pm\infty/\infty$, differentiate the numerator and denominator <em>separately</em>
+      (not as a quotient), then re-evaluate. Repeat if the result is still indeterminate.
     </p>
 
     <div class="formula">
@@ -101,13 +125,22 @@
     </div>
 
     <div class="example">
-      <div class="label">Worked example — $\displaystyle\lim_{x\to 2} x^2$</div>
-      <div class="example-step"><span>$= 2^2 = 4$</span><span class="why">polynomial; substitute directly</span></div>
+      <div class="label">Worked example — evaluating $\displaystyle\lim_{x\to 3} \dfrac{x^2 - 9}{x - 3}$</div>
+      <div class="example-step"><span>Direct substitution gives $0/0$</span><span class="why">indeterminate form</span></div>
+      <div class="example-step"><span>$\dfrac{x^2-9}{x-3} = \dfrac{(x-3)(x+3)}{x-3} = x + 3$</span><span class="why">factor and cancel; valid since $x \ne 3$</span></div>
+      <div class="example-step"><span>$\displaystyle\lim_{x\to 3}(x+3) = 6$</span><span class="why">now substitute directly</span></div>
     </div>
 
     <div class="example">
-      <div class="label">Worked example — $\displaystyle\lim_{x\to\infty} \dfrac{1}{x}$</div>
-      <div class="example-step"><span>As $x \to \infty$, $1/x \to 0$</span><span class="why">numerator degree 0 &lt; denominator degree 1</span></div>
+      <div class="label">Worked example — L'Hôpital on $\displaystyle\lim_{x\to 0} \dfrac{\sin x}{x}$</div>
+      <div class="example-step"><span>$0/0$ form; differentiate top and bottom separately</span><span class="why">L'Hôpital condition met</span></div>
+      <div class="example-step"><span>$= \displaystyle\lim_{x\to 0} \dfrac{\cos x}{1} = \cos 0 = 1$</span><span class="why">derivative of $\sin x$ is $\cos x$; derivative of $x$ is $1$</span></div>
+    </div>
+
+    <div class="example">
+      <div class="label">Worked example — $\displaystyle\lim_{x\to\infty} \dfrac{3x^2 + 1}{5x^2 - 2}$</div>
+      <div class="example-step"><span>Degrees equal (both 2); limit = ratio of leading coefficients</span><span class="why">degree rule for rational functions</span></div>
+      <div class="example-step"><span>$= \dfrac{3}{5}$</span><span class="why">divide every term by $x^2$ and let $x\to\infty$</span></div>
     </div>
   </section>
 
@@ -117,15 +150,55 @@
     <h3>The Derivative — Definition</h3>
 
     <p>
-      The <span class="key">derivative</span> of $f$ at $x$ is the instantaneous rate of change:
+      <strong>What it measures.</strong> The <span class="key">derivative</span> of $f$ at $x$
+      is the <em>instantaneous rate of change</em> of $f$ at that point. Think of average
+      speed: drive 120 miles in 2 hours and your average speed is 60 mph. But your
+      speedometer shows your speed <em>right now</em> — that is the derivative. As the time
+      interval shrinks to zero, the average rate becomes the instantaneous rate.
+    </p>
+
+    <p>
+      <strong>The limit definition.</strong> To find the instantaneous rate formally, start
+      with the slope of a <span class="key">secant line</span> through $(x, f(x))$ and
+      $(x+h, f(x+h))$, then let $h \to 0$ so the secant becomes a
+      <span class="key">tangent line</span>:
+    </p>
+
+    <div class="formula">
+      <div class="label">Derivative — limit definition</div>
       $$f'(x) = \lim_{h \to 0} \frac{f(x+h) - f(x)}{h}$$
-      Geometrically, $f'(a)$ is the slope of the tangent line to $y = f(x)$ at $x = a$.
-      The <span class="key">tangent line</span> at $(a, f(a))$ is $y - f(a) = f'(a)(x - a)$.
+    </div>
+
+    <p>
+      If this limit exists, $f$ is <em>differentiable</em> at $x$.
+      Geometrically, $f'(a)$ equals the slope of the tangent line at $(a, f(a))$.
+    </p>
+
+    <p>
+      <strong>Notation.</strong> All of the following mean "the derivative of $f$ with respect
+      to $x$":
+      $$f'(x) \qquad \frac{df}{dx} \qquad \frac{dy}{dx} \qquad Df(x)$$
+      Leibniz notation $\dfrac{dy}{dx}$ is especially useful because it explicitly names
+      both the output ($y$) and the input ($x$) being varied, which matters when multiple
+      variables are in play.
+    </p>
+
+    <p>
+      <strong>The tangent line.</strong> Once you have the slope $f'(a)$, the equation of the
+      tangent line at $(a, f(a))$ is found with point-slope form:
+      $y - f(a) = f'(a)(x - a)$.
     </p>
 
     <div class="example">
+      <div class="label">Worked example — derivative of $x^2$ from the definition</div>
+      <div class="example-step"><span>$\dfrac{(x+h)^2 - x^2}{h} = \dfrac{x^2 + 2xh + h^2 - x^2}{h}$</span><span class="why">expand $(x+h)^2$</span></div>
+      <div class="example-step"><span>$= \dfrac{2xh + h^2}{h} = 2x + h$</span><span class="why">cancel $h$ (valid since $h \ne 0$)</span></div>
+      <div class="example-step"><span>$\displaystyle\lim_{h\to 0}(2x + h) = 2x$</span><span class="why">let $h\to 0$; confirms the power rule</span></div>
+    </div>
+
+    <div class="example">
       <div class="label">Worked example — tangent line to $y = x^2$ at $(1, 1)$</div>
-      <div class="example-step"><span>$f'(x) = 2x$; $f'(1) = 2$ (slope)</span><span class="why">power rule</span></div>
+      <div class="example-step"><span>$f'(x) = 2x$; $f'(1) = 2$</span><span class="why">slope of tangent at $x = 1$</span></div>
       <div class="example-step"><span>$y - 1 = 2(x - 1) \Rightarrow y = 2x - 1$</span><span class="why">point-slope form</span></div>
     </div>
   </section>
@@ -136,29 +209,184 @@
     <h3>Basic Differentiation Rules</h3>
 
     <p>
-      These rules let us differentiate without using the limit definition directly.
+      The limit definition works, but computing it from scratch every time would be tedious.
+      These rules are proven once from the definition and then used freely. Together they
+      let you differentiate any polynomial — and most functions you'll encounter — in seconds.
+    </p>
+
+    <!-- ─── Power Rule ─────────────────────────────────────────────── -->
+    <h4 style="color:var(--hint);margin:24px 0 8px;font-size:1rem;">The Power Rule</h4>
+
+    <p>
+      <strong>What it is.</strong> To differentiate $x$ raised to any constant power $n$,
+      bring the exponent down as a multiplier and reduce the exponent by one:
     </p>
 
     <div class="formula">
-      <div class="label">Power, constant, and sum rules</div>
-      $$\frac{d}{dx}[x^n] = nx^{n-1} \qquad \frac{d}{dx}[c] = 0 \qquad \frac{d}{dx}[cf] = cf'$$
-      $$\frac{d}{dx}[f \pm g] = f' \pm g'$$
+      <div class="label">Power rule</div>
+      $$\frac{d}{dx}[x^n] = nx^{n-1}$$
+    </div>
+
+    <p>
+      <strong>Why it works.</strong> The limit definition for $x^n$ produces a binomial
+      expansion: $(x+h)^n = x^n + nx^{n-1}h + (\text{terms with } h^2, h^3, \ldots)$.
+      After subtracting $x^n$ and dividing by $h$, all terms with $h^2$ or higher vanish
+      as $h \to 0$, leaving exactly $nx^{n-1}$.
+    </p>
+
+    <p>
+      <strong>When to use it.</strong> The power rule works for <em>any</em> real exponent —
+      positive integers ($x^3$), fractions ($x^{1/2} = \sqrt{x}$), and negatives
+      ($x^{-1} = 1/x$). Rewrite roots and fractions as powers first.
+    </p>
+
+    <p>
+      <strong>How to use it.</strong>
+    </p>
+    <ol style="margin:0 0 14px 20px;line-height:2;font-size:0.95rem;">
+      <li>Rewrite any root or fraction as a power: $\sqrt{x} = x^{1/2}$, $\; 1/x^3 = x^{-3}$.</li>
+      <li>Multiply the entire coefficient by the exponent: the new coefficient is $n \times (\text{old coefficient})$.</li>
+      <li>Reduce the exponent by one: $n \to n - 1$.</li>
+      <li>Simplify: rewrite negative or fractional exponents if needed.</li>
+    </ol>
+
+    <div class="example">
+      <div class="label">Worked example — $\dfrac{d}{dx}[x^5]$</div>
+      <div class="example-step"><span>$= 5x^{5-1} = 5x^4$</span><span class="why">bring exponent down; reduce by 1</span></div>
+    </div>
+
+    <div class="example">
+      <div class="label">Worked example — $\dfrac{d}{dx}[\sqrt{x}]$</div>
+      <div class="example-step"><span>$\sqrt{x} = x^{1/2}$</span><span class="why">rewrite as a power</span></div>
+      <div class="example-step"><span>$\dfrac{d}{dx}[x^{1/2}] = \tfrac{1}{2}x^{-1/2}$</span><span class="why">power rule: bring down $\frac{1}{2}$, reduce exponent</span></div>
+      <div class="example-step"><span>$= \dfrac{1}{2\sqrt{x}}$</span><span class="why">rewrite $x^{-1/2} = 1/x^{1/2}$</span></div>
+    </div>
+
+    <div class="example">
+      <div class="label">Worked example — $\dfrac{d}{dx}\!\left[\dfrac{1}{x^3}\right]$</div>
+      <div class="example-step"><span>$\dfrac{1}{x^3} = x^{-3}$</span><span class="why">rewrite as negative exponent</span></div>
+      <div class="example-step"><span>$\dfrac{d}{dx}[x^{-3}] = -3x^{-4} = -\dfrac{3}{x^4}$</span><span class="why">power rule; rewrite result</span></div>
+    </div>
+
+    <!-- ─── Constant Rule ─────────────────────────────────────────── -->
+    <h4 style="color:var(--hint);margin:32px 0 8px;font-size:1rem;">The Constant Rule</h4>
+
+    <p>
+      <strong>What it is.</strong> The derivative of any constant is zero:
+    </p>
+
+    <div class="formula">
+      <div class="label">Constant rule</div>
+      $$\frac{d}{dx}[c] = 0$$
+    </div>
+
+    <p>
+      <strong>Why it makes sense.</strong> A constant function $f(x) = c$ is a horizontal
+      line. Horizontal lines have slope zero — so the derivative (which measures slope) is
+      zero everywhere. Formally: the numerator of the limit definition becomes
+      $f(x+h) - f(x) = c - c = 0$, so the limit is zero regardless of $h$.
+    </p>
+
+    <p>
+      <strong>In practice.</strong> Whenever you see a bare number with no $x$ attached —
+      $-7$, $\pi$, $e$, $100$ — its derivative is $0$. This is why constant terms
+      "disappear" when you differentiate.
+    </p>
+
+    <!-- ─── Constant Multiple Rule ───────────────────────────────── -->
+    <h4 style="color:var(--hint);margin:32px 0 8px;font-size:1rem;">The Constant Multiple Rule</h4>
+
+    <p>
+      <strong>What it is.</strong> A constant coefficient factors straight through the
+      derivative:
+    </p>
+
+    <div class="formula">
+      <div class="label">Constant multiple rule</div>
+      $$\frac{d}{dx}[c \cdot f(x)] = c \cdot f'(x)$$
+    </div>
+
+    <p>
+      <strong>Why it works.</strong> Multiplying $f$ by $c$ stretches every output by $c$.
+      That stretches the rise of every secant line by $c$ while the run stays the same,
+      so every slope is scaled by $c$ — including the limit slope, the derivative.
+    </p>
+
+    <p>
+      <strong>In practice.</strong> You can always pull a constant coefficient out to the
+      front, differentiate the rest, then multiply back. For example:
+      $\dfrac{d}{dx}[7x^3] = 7 \cdot \dfrac{d}{dx}[x^3] = 7 \cdot 3x^2 = 21x^2$.
+    </p>
+
+    <!-- ─── Sum / Difference Rule ─────────────────────────────────── -->
+    <h4 style="color:var(--hint);margin:32px 0 8px;font-size:1rem;">The Sum &amp; Difference Rule</h4>
+
+    <p>
+      <strong>What it is.</strong> Differentiation distributes over addition and subtraction —
+      you can differentiate term by term:
+    </p>
+
+    <div class="formula">
+      <div class="label">Sum &amp; difference rule</div>
+      $$\frac{d}{dx}[f(x) \pm g(x)] = f'(x) \pm g'(x)$$
+    </div>
+
+    <p>
+      <strong>Why it works.</strong> The limit of a sum is the sum of the limits (a standard
+      limit law). Applying this to the definition of the derivative: the numerator splits as
+      $[f(x+h) \pm g(x+h)] - [f(x) \pm g(x)] = [f(x+h)-f(x)] \pm [g(x+h)-g(x)]$, and
+      dividing by $h$ and taking the limit gives $f'(x) \pm g'(x)$.
+    </p>
+
+    <p>
+      <strong>In practice.</strong> With polynomials, differentiate each term independently.
+      The constant rule, constant multiple rule, and power rule handle every term, so the
+      sum rule is what lets you process the whole polynomial in one pass.
+    </p>
+
+    <div class="example">
+      <div class="label">Worked example — differentiate $f(x) = 4x^3 - 7x^2 + 2x - 9$</div>
+      <div class="example-step"><span>$\dfrac{d}{dx}[4x^3] = 12x^2$</span><span class="why">constant multiple × power rule</span></div>
+      <div class="example-step"><span>$\dfrac{d}{dx}[-7x^2] = -14x$</span><span class="why">constant multiple × power rule</span></div>
+      <div class="example-step"><span>$\dfrac{d}{dx}[2x] = 2$ and $\dfrac{d}{dx}[-9] = 0$</span><span class="why">power rule on $x^1$; constant rule</span></div>
+      <div class="example-step"><span>$f'(x) = 12x^2 - 14x + 2$</span><span class="why">sum/difference rule combines the terms</span></div>
+    </div>
+
+    <div class="example">
+      <div class="label">Worked example — differentiate $g(x) = \dfrac{5}{x^2} + 3\sqrt{x}$</div>
+      <div class="example-step"><span>Rewrite: $5x^{-2} + 3x^{1/2}$</span><span class="why">convert to power notation first</span></div>
+      <div class="example-step"><span>$\dfrac{d}{dx}[5x^{-2}] = 5 \cdot (-2)x^{-3} = -\dfrac{10}{x^3}$</span><span class="why">constant multiple × power rule</span></div>
+      <div class="example-step"><span>$\dfrac{d}{dx}[3x^{1/2}] = 3 \cdot \tfrac{1}{2}x^{-1/2} = \dfrac{3}{2\sqrt{x}}$</span><span class="why">constant multiple × power rule</span></div>
+      <div class="example-step"><span>$g'(x) = -\dfrac{10}{x^3} + \dfrac{3}{2\sqrt{x}}$</span><span class="why">sum rule</span></div>
+    </div>
+
+    <!-- ─── Basic function derivatives ───────────────────────────── -->
+    <h4 style="color:var(--hint);margin:32px 0 8px;font-size:1rem;">Derivatives of Basic Functions</h4>
+
+    <p>
+      These are proven from the limit definition or known identities. Memorize them — they
+      appear everywhere:
+    </p>
+
+    <div class="formula">
+      <div class="label">Exponential &amp; logarithm</div>
+      $$\frac{d}{dx}[e^x] = e^x \qquad \frac{d}{dx}[\ln x] = \frac{1}{x} \quad (x > 0)$$
+      <p style="margin-top:8px;font-size:0.88rem;color:var(--muted);">$e^x$ is unique: it is its own derivative. The slope of $y = e^x$ at every point equals its height there.</p>
     </div>
 
     <div class="formula">
-      <div class="label">Derivatives of basic functions</div>
-      $$\frac{d}{dx}[e^x] = e^x \qquad \frac{d}{dx}[\ln x] = \frac{1}{x}$$
+      <div class="label">Trigonometric functions</div>
       $$\frac{d}{dx}[\sin x] = \cos x \qquad \frac{d}{dx}[\cos x] = -\sin x$$
+      $$\frac{d}{dx}[\tan x] = \sec^2 x \qquad \frac{d}{dx}[\sec x] = \sec x \tan x$$
+      <p style="margin-top:8px;font-size:0.88rem;color:var(--muted);">The derivative of sine is cosine, and the derivative of cosine introduces a minus sign — they chase each other around a four-step cycle: $\sin \to \cos \to -\sin \to -\cos \to \sin$.</p>
     </div>
 
     <div class="example">
-      <div class="label">Worked example — differentiate $3x^2 + 2x - 5$</div>
-      <div class="example-step"><span>$= 6x + 2$</span><span class="why">power rule on each term; constant vanishes</span></div>
-    </div>
-
-    <div class="example">
-      <div class="label">Worked example — differentiate $x^{1/2}$</div>
-      <div class="example-step"><span>$\dfrac{d}{dx}[x^{1/2}] = \tfrac{1}{2} x^{-1/2} = \dfrac{1}{2\sqrt{x}}$</span><span class="why">power rule; rewrite negative exponent</span></div>
+      <div class="label">Worked example — differentiate $h(x) = e^x + 5\sin x - 3\ln x$</div>
+      <div class="example-step"><span>$\dfrac{d}{dx}[e^x] = e^x$</span><span class="why">$e^x$ is its own derivative</span></div>
+      <div class="example-step"><span>$\dfrac{d}{dx}[5\sin x] = 5\cos x$</span><span class="why">constant multiple rule</span></div>
+      <div class="example-step"><span>$\dfrac{d}{dx}[-3\ln x] = -\dfrac{3}{x}$</span><span class="why">constant multiple rule</span></div>
+      <div class="example-step"><span>$h'(x) = e^x + 5\cos x - \dfrac{3}{x}$</span><span class="why">sum rule</span></div>
     </div>
   </section>
 
@@ -366,21 +594,53 @@
     <h3>Implicit Differentiation</h3>
 
     <p>
-      When $y$ is defined implicitly by an equation in $x$ and $y$, differentiate both sides
-      with respect to $x$, applying the chain rule to any $y$ term (writing $dy/dx$), then
-      solve for $dy/dx$.
+      <strong>Why we need it.</strong> The rules in Chapters 3 and 4 work when $y$ is
+      explicitly written as a function of $x$, like $y = x^2 + 3$. But many curves — circles,
+      ellipses, foliums — are described by an equation mixing $x$ and $y$ where isolating $y$
+      is impossible or produces multiple branches. Implicit differentiation handles all of
+      these without ever solving for $y$.
     </p>
 
+    <p>
+      <strong>The key idea.</strong> Treat $y$ as a hidden function of $x$.
+      Every time you differentiate a term involving $y$, apply the chain rule:
+      $\dfrac{d}{dx}[y^n] = ny^{n-1}\dfrac{dy}{dx}$.
+      The $\dfrac{dy}{dx}$ factor appears because $y$ depends on $x$.
+      After differentiating both sides, collect all $\dfrac{dy}{dx}$ terms on one side
+      and solve algebraically.
+    </p>
+
+    <p>
+      <strong>Step-by-step strategy:</strong>
+    </p>
+    <ol style="margin:0 0 14px 20px;line-height:2;font-size:0.95rem;">
+      <li>Differentiate both sides of the equation with respect to $x$.</li>
+      <li>For any $y$ term, attach a $\dfrac{dy}{dx}$ factor (chain rule).</li>
+      <li>Expand or simplify — use product/quotient rules on mixed $xy$ terms.</li>
+      <li>Move all $\dfrac{dy}{dx}$ terms to one side; everything else to the other.</li>
+      <li>Factor out $\dfrac{dy}{dx}$ and divide.</li>
+    </ol>
+
     <div class="example">
-      <div class="label">Worked example — $x^2 + y^2 = 25$. Find $dy/dx$.</div>
-      <div class="example-step"><span>$2x + 2y\,\dfrac{dy}{dx} = 0$</span><span class="why">differentiate both sides w.r.t. $x$</span></div>
-      <div class="example-step"><span>$\dfrac{dy}{dx} = -\dfrac{x}{y}$</span><span class="why">solve for $dy/dx$</span></div>
+      <div class="label">Worked example — circle $x^2 + y^2 = 25$. Find $dy/dx$.</div>
+      <div class="example-step"><span>$\dfrac{d}{dx}[x^2] + \dfrac{d}{dx}[y^2] = \dfrac{d}{dx}[25]$</span><span class="why">differentiate both sides term by term</span></div>
+      <div class="example-step"><span>$2x + 2y\,\dfrac{dy}{dx} = 0$</span><span class="why">power rule on $x^2$; chain rule on $y^2$ adds $dy/dx$</span></div>
+      <div class="example-step"><span>$\dfrac{dy}{dx} = -\dfrac{x}{y}$</span><span class="why">isolate $dy/dx$; answer contains both $x$ and $y$</span></div>
     </div>
 
     <div class="example">
-      <div class="label">Worked example — $\arctan(x)$. Find $dy/dx$ via implicit differentiation.</div>
-      <div class="example-step"><span>$\tan y = x \Rightarrow \sec^2 y \cdot \dfrac{dy}{dx} = 1$</span><span class="why">differentiate implicitly</span></div>
-      <div class="example-step"><span>$\dfrac{dy}{dx} = \cos^2 y = \dfrac{1}{1+x^2}$</span><span class="why">$\sec^2 y = 1 + \tan^2 y = 1 + x^2$</span></div>
+      <div class="label">Worked example — $x^3 + y^3 = 6xy$. Find $dy/dx$.</div>
+      <div class="example-step"><span>$3x^2 + 3y^2\,\dfrac{dy}{dx} = 6y + 6x\,\dfrac{dy}{dx}$</span><span class="why">power rule left; product rule on $6xy$ right</span></div>
+      <div class="example-step"><span>$3y^2\,\dfrac{dy}{dx} - 6x\,\dfrac{dy}{dx} = 6y - 3x^2$</span><span class="why">collect $dy/dx$ terms on left</span></div>
+      <div class="example-step"><span>$\dfrac{dy}{dx} = \dfrac{6y - 3x^2}{3y^2 - 6x} = \dfrac{2y - x^2}{y^2 - 2x}$</span><span class="why">factor and simplify</span></div>
+    </div>
+
+    <div class="example">
+      <div class="label">Worked example — deriving $\dfrac{d}{dx}[\arctan x] = \dfrac{1}{1+x^2}$</div>
+      <div class="example-step"><span>Let $y = \arctan x$, so $\tan y = x$</span><span class="why">rewrite in implicit form</span></div>
+      <div class="example-step"><span>$\sec^2 y \cdot \dfrac{dy}{dx} = 1$</span><span class="why">differentiate both sides; chain rule on $\tan y$</span></div>
+      <div class="example-step"><span>$\dfrac{dy}{dx} = \dfrac{1}{\sec^2 y} = \cos^2 y$</span><span class="why">isolate $dy/dx$</span></div>
+      <div class="example-step"><span>$= \dfrac{1}{1 + \tan^2 y} = \dfrac{1}{1+x^2}$</span><span class="why">identity $\sec^2 y = 1 + \tan^2 y$; substitute $\tan y = x$</span></div>
     </div>
   </section>
 
@@ -390,15 +650,38 @@
     <h3>Related Rates</h3>
 
     <p>
-      <span class="key">Related rates</span> problems find how fast one quantity changes given
-      the rate of change of a related quantity. Differentiate the geometric or physical
-      relationship with respect to time $t$, then substitute the known values.
+      <strong>What they are.</strong> <span class="key">Related rates</span> problems ask:
+      given that one quantity changes at a known rate, how fast is a related quantity
+      changing? The two quantities are linked by a geometric or physical formula — differentiate
+      that formula with respect to <em>time</em> $t$, and every variable grows a $d/dt$ factor
+      via the chain rule. Then substitute the known values to find the unknown rate.
     </p>
 
+    <p>
+      <strong>Problem-solving strategy:</strong>
+    </p>
+    <ol style="margin:0 0 14px 20px;line-height:2;font-size:0.95rem;">
+      <li>Draw a diagram and label all quantities that change with time.</li>
+      <li>Write an equation relating those quantities (area, volume, Pythagorean theorem, etc.).</li>
+      <li>Differentiate both sides with respect to $t$. Each variable picks up a $d(\,)/dt$ factor via the chain rule.</li>
+      <li>Substitute the known rates and the known instantaneous values.</li>
+      <li>Solve for the unknown rate.</li>
+    </ol>
+
     <div class="example">
-      <div class="label">Worked example — sphere: $V = \frac{4}{3}\pi r^3$, $dV/dt = 2$. Find $dr/dt$ when $r = 3$.</div>
-      <div class="example-step"><span>$\dfrac{dV}{dt} = 4\pi r^2 \dfrac{dr}{dt}$</span><span class="why">differentiate w.r.t. $t$; chain rule</span></div>
-      <div class="example-step"><span>$2 = 4\pi(9)\dfrac{dr}{dt} \Rightarrow \dfrac{dr}{dt} = \dfrac{2}{36\pi} = \dfrac{1}{18\pi}$</span><span class="why">substitute $r = 3$; solve</span></div>
+      <div class="label">Worked example — inflating sphere: $dV/dt = 2\;\text{cm}^3/\text{s}$. Find $dr/dt$ when $r = 3\;\text{cm}$.</div>
+      <div class="example-step"><span>Relationship: $V = \dfrac{4}{3}\pi r^3$</span><span class="why">volume of a sphere</span></div>
+      <div class="example-step"><span>$\dfrac{dV}{dt} = 4\pi r^2 \dfrac{dr}{dt}$</span><span class="why">differentiate both sides w.r.t. $t$; chain rule on $r^3$</span></div>
+      <div class="example-step"><span>$2 = 4\pi(3)^2 \dfrac{dr}{dt} = 36\pi\,\dfrac{dr}{dt}$</span><span class="why">substitute known rate and $r = 3$</span></div>
+      <div class="example-step"><span>$\dfrac{dr}{dt} = \dfrac{2}{36\pi} = \dfrac{1}{18\pi}\;\text{cm/s}$</span><span class="why">solve for unknown rate</span></div>
+    </div>
+
+    <div class="example">
+      <div class="label">Worked example — ladder sliding down a wall. Ladder 10 ft long; base slides out at $2\;\text{ft/s}$. Find how fast the top is sliding down when the base is 6 ft from the wall.</div>
+      <div class="example-step"><span>$x^2 + y^2 = 100$, where $x$ = base distance, $y$ = height</span><span class="why">Pythagorean theorem; ladder length constant</span></div>
+      <div class="example-step"><span>$2x\dfrac{dx}{dt} + 2y\dfrac{dy}{dt} = 0$</span><span class="why">differentiate w.r.t. $t$</span></div>
+      <div class="example-step"><span>When $x = 6$: $y = \sqrt{100 - 36} = 8$</span><span class="why">find $y$ at the given instant</span></div>
+      <div class="example-step"><span>$2(6)(2) + 2(8)\dfrac{dy}{dt} = 0 \Rightarrow \dfrac{dy}{dt} = -\dfrac{3}{2}\;\text{ft/s}$</span><span class="why">substitute; negative means the top is sliding down</span></div>
     </div>
   </section>
 
@@ -467,26 +750,60 @@
     <h3>Fundamental Theorem of Calculus</h3>
 
     <p>
-      The FTC has two parts:
+      <strong>Why it's fundamental.</strong> The FTC reveals that differentiation and
+      integration are inverse operations — they undo each other. Before the FTC, computing
+      areas required painful Riemann-sum limits. After the FTC, you just need an antiderivative
+      and two plugged-in values. It is arguably the most important theorem in all of calculus.
     </p>
+
     <p>
-      <strong>Part 1:</strong> If $F(x) = \displaystyle\int_a^x f(t)\,dt$, then $F'(x) = f(x)$.
-      Every continuous function has an antiderivative.
+      <strong>Part 1 — integration creates a differentiable function.</strong>
+      Define a new function by integrating $f$ from a fixed point $a$ up to a variable upper
+      limit $x$:
+      $$F(x) = \int_a^x f(t)\,dt$$
+      Then $F'(x) = f(x)$. In other words, the derivative of the accumulated area function
+      gives back the original integrand. Every continuous function is guaranteed an
+      antiderivative.
     </p>
+
     <p>
-      <strong>Part 2:</strong> If $F$ is any antiderivative of $f$, then
-      $\displaystyle\int_a^b f(x)\,dx = F(b) - F(a)$.
+      <strong>Part 2 — evaluating definite integrals.</strong>
+      If $F$ is <em>any</em> antiderivative of $f$ (meaning $F'(x) = f(x)$), then:
+    </p>
+
+    <div class="formula">
+      <div class="label">FTC Part 2</div>
+      $$\int_a^b f(x)\,dx = F(b) - F(a) \equiv \Big[F(x)\Big]_a^b$$
+    </div>
+
+    <p>
+      The constant of integration $+C$ cancels when you subtract $F(a)$ from $F(b)$,
+      so you can ignore it for definite integrals.
     </p>
 
     <div class="formula">
       <div class="label">Antiderivative table (basic)</div>
       $$\int x^n\,dx = \frac{x^{n+1}}{n+1} + C \quad (n \ne -1) \qquad \int \frac{1}{x}\,dx = \ln|x| + C$$
       $$\int e^x\,dx = e^x + C \qquad \int \sin x\,dx = -\cos x + C \qquad \int \cos x\,dx = \sin x + C$$
+      $$\int \sec^2 x\,dx = \tan x + C \qquad \int \frac{1}{1+x^2}\,dx = \arctan x + C$$
+    </div>
+
+    <div class="example">
+      <div class="label">Worked example — $\displaystyle\int_1^4 \sqrt{x}\,dx$</div>
+      <div class="example-step"><span>$\sqrt{x} = x^{1/2}$; antiderivative is $\dfrac{x^{3/2}}{3/2} = \dfrac{2}{3}x^{3/2}$</span><span class="why">reverse power rule (add 1 to exponent, divide)</span></div>
+      <div class="example-step"><span>$= \left[\dfrac{2}{3}x^{3/2}\right]_1^4 = \dfrac{2}{3}(4^{3/2}) - \dfrac{2}{3}(1^{3/2})$</span><span class="why">FTC Part 2: evaluate at bounds and subtract</span></div>
+      <div class="example-step"><span>$= \dfrac{2}{3}(8) - \dfrac{2}{3}(1) = \dfrac{16}{3} - \dfrac{2}{3} = \dfrac{14}{3}$</span><span class="why">$4^{3/2} = (\sqrt{4})^3 = 8$</span></div>
+    </div>
+
+    <div class="example">
+      <div class="label">Worked example — FTC Part 1: $\dfrac{d}{dx}\displaystyle\int_0^x \sin(t^2)\,dt$</div>
+      <div class="example-step"><span>$= \sin(x^2)$</span><span class="why">FTC Part 1: derivative of the accumulation function is the integrand with $t$ replaced by $x$</span></div>
     </div>
 
     <div class="example">
       <div class="label">Worked example — $\displaystyle\int_1^e \frac{1}{x}\,dx$</div>
-      <div class="example-step"><span>$= \big[\ln x\big]_1^e = \ln e - \ln 1 = 1 - 0 = 1$</span><span class="why">antiderivative of $1/x$ is $\ln x$</span></div>
+      <div class="example-step"><span>Antiderivative of $\dfrac{1}{x}$ is $\ln|x|$</span><span class="why">from the antiderivative table</span></div>
+      <div class="example-step"><span>$= \big[\ln x\big]_1^e = \ln e - \ln 1 = 1 - 0 = 1$</span><span class="why">$\ln e = 1$; $\ln 1 = 0$</span></div>
     </div>
   </section>
 
@@ -536,24 +853,81 @@
     <h3>Applications of Integration</h3>
 
     <p>
-      <span class="key">Area between curves:</span> if $f(x) \geq g(x)$ on $[a,b]$, the area
-      between them is $\displaystyle\int_a^b [f(x) - g(x)]\,dx$.
+      Integration measures <em>accumulated</em> quantities: area, volume, arc length,
+      work, probability. The common thread is always the same — slice the region into
+      thin pieces, write the approximate contribution of one slice, then integrate to
+      add infinitely many slices exactly.
     </p>
 
+    <!-- ─── Area between curves ──────────────────────────────────── -->
+    <h4 style="color:var(--hint);margin:24px 0 8px;font-size:1rem;">Area Between Two Curves</h4>
+
     <p>
-      <span class="key">Volumes by disks:</span> rotating $y = f(x)$ around the $x$-axis gives
-      $V = \pi\displaystyle\int_a^b [f(x)]^2\,dx$.
+      If $f(x) \geq g(x)$ on $[a,b]$, a thin vertical slice at position $x$ has height
+      $f(x) - g(x)$ and width $dx$. Integrating those slices gives the total area:
+    </p>
+
+    <div class="formula">
+      <div class="label">Area between curves</div>
+      $$A = \int_a^b \bigl[f(x) - g(x)\bigr]\,dx$$
+    </div>
+
+    <p>
+      <strong>Finding the limits.</strong> If the bounds aren't given, set $f(x) = g(x)$ and
+      solve for the intersection points — those become $a$ and $b$.
+      If the curves cross within the interval, split the integral at each crossing and
+      always subtract the lower curve from the upper.
     </p>
 
     <div class="example">
-      <div class="label">Worked example — area between $y = x$ and $y = x^2$ on $[0,1]$</div>
-      <div class="example-step"><span>$y = x \geq y = x^2$ on $[0,1]$</span><span class="why">$x \geq x^2$ for $0 \leq x \leq 1$</span></div>
+      <div class="label">Worked example — area between $y = x$ and $y = x^2$</div>
+      <div class="example-step"><span>Set $x = x^2 \Rightarrow x(x-1) = 0 \Rightarrow x = 0,\, 1$</span><span class="why">find intersection points for limits</span></div>
+      <div class="example-step"><span>$x \geq x^2$ on $[0,1]$ (check: at $x=0.5$, $0.5 > 0.25$)</span><span class="why">identify top curve</span></div>
       <div class="example-step"><span>$\displaystyle\int_0^1 (x - x^2)\,dx = \left[\dfrac{x^2}{2} - \dfrac{x^3}{3}\right]_0^1 = \dfrac{1}{2} - \dfrac{1}{3} = \dfrac{1}{6}$</span><span class="why">integrate the difference</span></div>
     </div>
 
+    <!-- ─── Volumes by disks / washers ───────────────────────────── -->
+    <h4 style="color:var(--hint);margin:32px 0 8px;font-size:1rem;">Volumes of Revolution — Disk &amp; Washer Methods</h4>
+
+    <p>
+      Rotate a region around the $x$-axis. Each thin slice sweeps out a disk (or, if there's
+      a hole, a washer). The radius of the disk at position $x$ is $f(x)$, giving area
+      $\pi[f(x)]^2$, so:
+    </p>
+
+    <div class="formula">
+      <div class="label">Disk method (solid)</div>
+      $$V = \pi \int_a^b [f(x)]^2\,dx$$
+    </div>
+
+    <div class="formula">
+      <div class="label">Washer method (region between two curves)</div>
+      $$V = \pi \int_a^b \bigl([f(x)]^2 - [g(x)]^2\bigr)\,dx$$
+    </div>
+
     <div class="example">
-      <div class="label">Worked example — $\displaystyle\int_0^{\pi} \sin x\,dx$ (area under sine)</div>
-      <div class="example-step"><span>$= \big[-\cos x\big]_0^{\pi} = (-\cos\pi) - (-\cos 0) = 1 + 1 = 2$</span><span class="why">antiderivative of $\sin x$ is $-\cos x$</span></div>
+      <div class="label">Worked example — volume from rotating $y = \sqrt{x}$ on $[0,4]$ around the $x$-axis</div>
+      <div class="example-step"><span>$V = \pi \displaystyle\int_0^4 (\sqrt{x})^2\,dx = \pi\int_0^4 x\,dx$</span><span class="why">disk method; $(\sqrt x)^2 = x$</span></div>
+      <div class="example-step"><span>$= \pi\left[\dfrac{x^2}{2}\right]_0^4 = \pi \cdot 8 = 8\pi$</span><span class="why">FTC Part 2</span></div>
+    </div>
+
+    <!-- ─── Average value ─────────────────────────────────────────── -->
+    <h4 style="color:var(--hint);margin:32px 0 8px;font-size:1rem;">Average Value of a Function</h4>
+
+    <p>
+      The average value of $f$ on $[a,b]$ is the total accumulated value divided by the
+      length of the interval:
+    </p>
+
+    <div class="formula">
+      <div class="label">Average value</div>
+      $$f_{\text{avg}} = \frac{1}{b-a}\int_a^b f(x)\,dx$$
+    </div>
+
+    <div class="example">
+      <div class="label">Worked example — average of $f(x) = x^2$ on $[0, 3]$</div>
+      <div class="example-step"><span>$f_{\text{avg}} = \dfrac{1}{3-0}\displaystyle\int_0^3 x^2\,dx = \dfrac{1}{3}\left[\dfrac{x^3}{3}\right]_0^3$</span><span class="why">average value formula</span></div>
+      <div class="example-step"><span>$= \dfrac{1}{3} \cdot \dfrac{27}{3} = \dfrac{1}{3} \cdot 9 = 3$</span><span class="why">evaluate; the average height of the parabola over $[0,3]$ is 3</span></div>
     </div>
   </section>
 
