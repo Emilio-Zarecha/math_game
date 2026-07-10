@@ -90,37 +90,55 @@
   <div class="chapter-num">Chapter 1</div>
   <h2>Sampling and Data</h2>
 
+  <p>Statistics is the science of collecting, organizing, and interpreting data to draw conclusions about the world. Because studying an entire population is often impossible, we study a <em>sample</em> and use it to make inferences — but only if the sample is collected carefully.</p>
+
   <h3>Key Terms</h3>
   <div class="definition">
     <div class="definition-label">Definitions</div>
     <ul>
-      <li><strong>Population</strong> — the entire group of interest.</li>
+      <li><strong>Population</strong> — the entire group of interest (e.g., all U.S. adults).</li>
       <li><strong>Sample</strong> — a subset of the population used to draw conclusions.</li>
-      <li><strong>Parameter</strong> — a numerical summary of a <em>population</em> (e.g., $\mu$, $\sigma$).</li>
-      <li><strong>Statistic</strong> — a numerical summary of a <em>sample</em> (e.g., $\bar x$, $s$).</li>
-      <li><strong>Variable</strong> — a characteristic measured on each individual.</li>
+      <li><strong>Parameter</strong> — a numerical summary of a <em>population</em> (e.g., $\mu$, $\sigma$). Usually unknown.</li>
+      <li><strong>Statistic</strong> — a numerical summary of a <em>sample</em> (e.g., $\bar x$, $s$). Used to estimate the parameter.</li>
+      <li><strong>Variable</strong> — a characteristic measured on each individual in the study.</li>
     </ul>
   </div>
 
   <h3>Types of Data</h3>
-  <p><strong>Quantitative (numerical):</strong> measured on a numeric scale. Can be <em>discrete</em> (counts, like number of children) or <em>continuous</em> (measurements, like height).</p>
-  <p><strong>Qualitative (categorical):</strong> describes a category or group (e.g., eye color, zip code). Cannot be averaged.</p>
-
-  <h3>Sampling Methods</h3>
-  <ul>
-    <li><strong>Simple Random Sample (SRS)</strong> — every individual and every group of size $n$ has an equal chance of being selected.</li>
-    <li><strong>Stratified</strong> — divide population into homogeneous groups (strata), then SRS within each stratum.</li>
-    <li><strong>Cluster</strong> — divide into groups (clusters), randomly select whole clusters.</li>
-    <li><strong>Systematic</strong> — select every $k$-th individual from a list.</li>
-    <li><strong>Convenience</strong> — use whoever is easiest to reach (non-random; prone to bias).</li>
-  </ul>
+  <p><strong>Quantitative (numerical):</strong> measured on a numeric scale. Can be <em>discrete</em> (counts: 0, 1, 2, …) or <em>continuous</em> (measurements that can take any value in a range, like height or temperature).</p>
+  <p><strong>Qualitative (categorical):</strong> describes a category or group (eye color, zip code, political party). Arithmetic on these values is meaningless — you cannot average zip codes.</p>
 
   <h3>Levels of Measurement</h3>
-  <p><strong>Nominal</strong> — categories with no order (eye color). <strong>Ordinal</strong> — categories with order but unequal spacing (letter grades). <strong>Interval</strong> — equal spacing, no true zero (temperature in °C). <strong>Ratio</strong> — equal spacing with a true zero (height, weight).</p>
+  <p>Knowing the level of measurement tells you which statistical operations are valid:</p>
+  <ul>
+    <li><strong>Nominal</strong> — categories only, no ordering (eye color, blood type). Only counts and mode are meaningful.</li>
+    <li><strong>Ordinal</strong> — categories with a meaningful order, but spacing is unequal (letter grades, Likert scales). Median is meaningful; arithmetic mean is not.</li>
+    <li><strong>Interval</strong> — equal spacing, but no true zero (temperature in °C, years AD). Mean and standard deviation are valid; ratios are not ("60°C is not twice as hot as 30°C").</li>
+    <li><strong>Ratio</strong> — equal spacing with a true zero (height, weight, time, counts). All operations valid, including ratios.</li>
+  </ul>
+
+  <h3>Sampling Methods</h3>
+  <p>The goal is a sample that accurately represents the population. A <strong>biased</strong> sample systematically over- or under-represents some group.</p>
+  <ul>
+    <li><strong>Simple Random Sample (SRS)</strong> — every individual and every group of size $n$ has an equal chance. The gold standard for avoiding bias.</li>
+    <li><strong>Stratified</strong> — divide population into homogeneous subgroups (strata: age, gender, region), then SRS within each stratum. Guarantees representation of each group.</li>
+    <li><strong>Cluster</strong> — divide into naturally occurring groups (schools, city blocks), randomly select whole clusters. Practical when a complete list of individuals doesn't exist.</li>
+    <li><strong>Systematic</strong> — select every $k$-th individual from a list after a random start. Simple to implement; watch for hidden periodic patterns in the list.</li>
+    <li><strong>Convenience</strong> — use whoever is easiest to reach. Non-random and prone to serious bias. Avoid for any inferential purpose.</li>
+  </ul>
+
+  <h3>Observational Studies vs. Experiments</h3>
+  <p>In an <strong>observational study</strong>, the researcher records data without intervening. These can show association but cannot prove causation because of potential <strong>confounding variables</strong> — hidden factors that influence both the explanatory variable and the response.</p>
+  <p>In an <strong>experiment</strong>, the researcher randomly assigns subjects to treatment groups. Randomization balances out confounders, making causation claims much stronger. The "gold standard" is a <strong>randomized controlled trial (RCT)</strong> with a control group and, ideally, blinding.</p>
 
   <div class="example">
-    <div class="example-label">Example — Classifying Variables</div>
-    <p>In a study of 200 college students, data collected includes: GPA (quantitative, continuous, ratio), class year (qualitative, ordinal), number of siblings (quantitative, discrete, ratio).</p>
+    <div class="example-label">Example — Classifying Variables and Levels</div>
+    <p>A study of 200 college students collects: GPA (quantitative, continuous, <em>ratio</em>), class year (Freshman/…/Senior — qualitative, <em>ordinal</em>), number of siblings (quantitative, discrete, <em>ratio</em>), hometown zip code (qualitative, <em>nominal</em>).</p>
+  </div>
+
+  <div class="example">
+    <div class="example-label">Example — Identifying Confounding</div>
+    <p>Observation: cities with more hospitals have higher death rates. <strong>Conclusion?</strong> Not "hospitals cause death." The confounder is <em>population size</em> — larger cities have both more hospitals and more deaths. Always ask: "What third variable could explain this relationship?"</p>
   </div>
 </section>
 
@@ -129,61 +147,61 @@
   <div class="chapter-num">Chapter 2</div>
   <h2>Descriptive Statistics — Measures of Center</h2>
 
+  <p>A measure of center tries to capture a single "typical" value for a dataset. There is no universally best choice — the right measure depends on the data's shape and the presence of outliers.</p>
+
   <h3>Mean</h3>
-  <p>The <strong>arithmetic mean</strong> is the sum of all values divided by the count. It is the balance point of a distribution and is sensitive to extreme values (outliers).</p>
+  <p><strong>What it is.</strong> The <strong>arithmetic mean</strong> is the sum of all values divided by the count. Think of it as the <em>balance point</em> of the distribution: if you placed equal weights on a number line at each data value, the mean is where the line would balance. Because it depends on every value, a single extreme outlier can pull it far from the center of the bulk of the data.</p>
+
   <div class="formula">
-    <div class="formula-label">Population Mean</div>
-    $$\mu = \frac{\sum x_i}{N}$$
-  </div>
-  <div class="formula">
-    <div class="formula-label">Sample Mean</div>
-    $$\bar{x} = \frac{\sum x_i}{n}$$
+    <div class="formula-label">Population Mean &amp; Sample Mean</div>
+    $$\mu = \frac{\sum x_i}{N} \qquad \bar{x} = \frac{\sum x_i}{n}$$
   </div>
 
   <div class="example">
-    <div class="example-label">Example — Computing the Mean</div>
+    <div class="example-label">Example — How an Outlier Distorts the Mean</div>
     <table class="example-steps">
-      <tr><td>Data</td><td>$\{4, 8, 6, 10, 2\}$</td><td class="why">5 values</td></tr>
-      <tr><td>Sum</td><td>$4+8+6+10+2 = 30$</td><td class="why">add all values</td></tr>
-      <tr><td>Mean</td><td>$\bar{x} = \dfrac{30}{5} = 6$</td><td class="why">divide by $n=5$</td></tr>
+      <tr><td>Data (no outlier)</td><td>$\{4, 6, 5, 7, 8\}$; mean $= 30/5 = 6$</td><td class="why">typical center</td></tr>
+      <tr><td>Add outlier</td><td>$\{4, 6, 5, 7, 8, 100\}$; mean $= 130/6 \approx 21.7$</td><td class="why">one extreme value drags mean far right</td></tr>
+      <tr><td>Median</td><td>Sorted: $4,5,6,7,8,100$ → median $= (6+7)/2 = 6.5$</td><td class="why">barely affected; more representative here</td></tr>
     </table>
   </div>
 
   <h3>Median</h3>
-  <p>The <strong>median</strong> is the middle value when data are sorted. It is resistant to outliers. For an even number of values, average the two middle values.</p>
+  <p><strong>What it is.</strong> The <strong>median</strong> is the middle value of sorted data — half the values fall below it, half above. Because it only uses the middle position (not the actual values of all data points), it is <em>resistant</em> to outliers and skewness. For an even number of values, average the two middle values.</p>
+  <p><strong>Finding it:</strong> sort the data, then go to position $\frac{n+1}{2}$. For $n=5$, position 3. For $n=6$, average positions 3 and 4.</p>
 
   <div class="example">
     <div class="example-label">Example — Odd and Even Count</div>
     <table class="example-steps">
-      <tr><td>Sorted (odd)</td><td>$2, 3, \boldsymbol{5}, 7, 9$</td><td class="why">middle is 5th position, value = 5</td></tr>
-      <tr><td>Sorted (even)</td><td>$2, \boldsymbol{4, 6}, 8$</td><td class="why">average middle two: $(4+6)/2 = 5$</td></tr>
+      <tr><td>Sorted (odd, $n=5$)</td><td>$2, 3, \boldsymbol{5}, 7, 9$</td><td class="why">position $(5+1)/2 = 3$; median = 5</td></tr>
+      <tr><td>Sorted (even, $n=4$)</td><td>$2, \boldsymbol{4, 6}, 8$</td><td class="why">average positions 2 and 3: $(4+6)/2 = 5$</td></tr>
     </table>
   </div>
 
   <h3>Mode</h3>
-  <p>The <strong>mode</strong> is the value that appears most often. A distribution may be unimodal, bimodal, or have no mode. It is the only measure of center applicable to nominal data.</p>
+  <p>The <strong>mode</strong> is the value (or values) that appear most often. A dataset can be unimodal (one peak), bimodal (two peaks), or multimodal. The mode is the <em>only</em> measure of center applicable to nominal data — you can find the most common eye color, but not the "average" eye color.</p>
 
   <h3>Weighted Mean</h3>
-  <p>When values have different importance (weights $w_i$), use:</p>
+  <p>When different values carry different importance, multiply each value by its weight and divide by the total weight. The ordinary mean is the special case where all weights are equal.</p>
   <div class="formula">
     <div class="formula-label">Weighted Mean</div>
     $$\bar{x}_w = \frac{\sum w_i x_i}{\sum w_i}$$
   </div>
 
   <div class="example">
-    <div class="example-label">Example — Course GPA</div>
+    <div class="example-label">Example — Course GPA (weights = credit hours)</div>
     <table class="example-steps">
-      <tr><td>Data</td><td>Scores 80, 90, 70; weights 0.2, 0.5, 0.3</td><td class="why">weights sum to 1</td></tr>
-      <tr><td>Products</td><td>$80(0.2)+90(0.5)+70(0.3) = 16+45+21$</td><td class="why">multiply each score by weight</td></tr>
-      <tr><td>Weighted mean</td><td>$= 82$</td><td class="why">sum the products</td></tr>
+      <tr><td>Scores / weights</td><td>80 (wt 0.2), 90 (wt 0.5), 70 (wt 0.3)</td><td class="why">weights must sum to 1 here</td></tr>
+      <tr><td>Weighted products</td><td>$80(0.2)+90(0.5)+70(0.3) = 16+45+21 = 82$</td><td class="why">heavier weight on 90 pulls mean above simple average of 80</td></tr>
     </table>
   </div>
 
   <h3>Choosing the Right Measure</h3>
   <ul>
-    <li>Symmetric distributions: mean ≈ median; either works.</li>
-    <li>Skewed distributions or outliers: median is more representative.</li>
-    <li>Categorical data: mode only.</li>
+    <li><strong>Symmetric, no outliers</strong>: mean ≈ median; either works. Mean uses all information.</li>
+    <li><strong>Skewed or outliers present</strong>: median is more representative. Income distributions are almost always reported with median for this reason.</li>
+    <li><strong>Categorical / nominal data</strong>: mode only.</li>
+    <li><strong>Skew direction clue</strong>: if mean &gt; median, distribution is right-skewed (long tail to the right); if mean &lt; median, left-skewed.</li>
   </ul>
 </section>
 
@@ -192,23 +210,39 @@
   <div class="chapter-num">Chapter 3</div>
   <h2>Descriptive Statistics — Measures of Spread</h2>
 
+  <p>A measure of center tells you where the data is located; a measure of <strong>spread</strong> tells you how much the data varies around that center. Two datasets can have the same mean but completely different spreads — and that difference matters enormously for interpretation.</p>
+
   <h3>Range</h3>
   <div class="formula">
     <div class="formula-label">Range</div>
     $$\text{Range} = \text{max} - \text{min}$$
   </div>
-  <p>Simple but sensitive to extreme values.</p>
+  <p>Simple and easy to compute, but it only uses two data points and is completely dominated by a single extreme outlier. Use it as a quick sanity check, not a primary measure.</p>
 
-  <h3>Interquartile Range (IQR)</h3>
-  <p>Quartiles divide sorted data into four equal parts: $Q_1$ (25th percentile), $Q_2$ (median, 50th), $Q_3$ (75th).</p>
+  <h3>The Five-Number Summary and IQR</h3>
+  <p>The <strong>five-number summary</strong> — minimum, $Q_1$, median ($Q_2$), $Q_3$, maximum — gives a compact picture of the entire distribution. Quartiles divide <em>sorted</em> data into four equal parts: 25% of values fall below $Q_1$, 50% below $Q_2$, 75% below $Q_3$.</p>
   <div class="formula">
-    <div class="formula-label">IQR</div>
+    <div class="formula-label">Interquartile Range (IQR)</div>
     $$IQR = Q_3 - Q_1$$
   </div>
-  <p>The IQR is resistant to outliers. An observation is an <strong>outlier</strong> if it falls below $Q_1 - 1.5 \cdot IQR$ or above $Q_3 + 1.5 \cdot IQR$.</p>
+  <p>The IQR measures the spread of the <em>middle 50%</em> of the data. Because it ignores the top and bottom 25%, it is <strong>resistant to outliers</strong> — just like the median. The standard outlier rule: any value below $Q_1 - 1.5 \cdot IQR$ or above $Q_3 + 1.5 \cdot IQR$ is flagged as a potential outlier.</p>
+
+  <div class="example">
+    <div class="example-label">Example — Five-Number Summary and Outlier Check</div>
+    <table class="example-steps">
+      <tr><td>Sorted data</td><td>$2, 5, 7, 9, 12, 15, 18, 22, 100$</td><td class="why">$n = 9$</td></tr>
+      <tr><td>$Q_1$</td><td>median of lower half $\{2,5,7,9\}= (5+7)/2 = 6$</td><td class="why">lower 25%</td></tr>
+      <tr><td>Median $Q_2$</td><td>middle value = $12$</td><td class="why">position 5</td></tr>
+      <tr><td>$Q_3$</td><td>median of upper half $\{15,18,22,100\} = (18+22)/2 = 20$</td><td class="why">upper 25%</td></tr>
+      <tr><td>IQR</td><td>$20 - 6 = 14$</td><td class="why"></td></tr>
+      <tr><td>Outlier fence</td><td>upper: $20 + 1.5(14) = 41$; $100 > 41$ → outlier</td><td class="why">100 is flagged</td></tr>
+    </table>
+  </div>
 
   <h3>Variance and Standard Deviation</h3>
-  <p>The <strong>variance</strong> measures the average squared distance from the mean. The <strong>standard deviation</strong> is its square root — in the same units as the data.</p>
+  <p><strong>Why we square the deviations.</strong> To measure spread, start with each value's distance from the mean: $x_i - \bar{x}$. We can't simply average these — they always sum to zero (positive and negative deviations cancel). Squaring solves two problems at once: it makes all terms positive, and it penalizes large deviations more than small ones. Taking the square root at the end (to get $s$) brings the units back to the original scale.</p>
+  <p><strong>Why divide by $n-1$.</strong> When we compute the sample mean $\bar{x}$ first and use it to compute deviations, one degree of freedom is "used up" — the last deviation is completely determined by the others (they must sum to zero). Dividing by $n-1$ instead of $n$ corrects for this and makes $s^2$ an <em>unbiased</em> estimator of the population variance $\sigma^2$.</p>
+
   <div class="formula">
     <div class="formula-label">Population Variance and Standard Deviation</div>
     $$\sigma^2 = \frac{\sum (x_i - \mu)^2}{N}, \qquad \sigma = \sqrt{\sigma^2}$$
@@ -217,25 +251,32 @@
     <div class="formula-label">Sample Variance and Standard Deviation</div>
     $$s^2 = \frac{\sum (x_i - \bar{x})^2}{n-1}, \qquad s = \sqrt{s^2}$$
   </div>
-  <p>We divide by $n-1$ (not $n$) to make $s^2$ an unbiased estimator of $\sigma^2$.</p>
 
   <div class="example">
-    <div class="example-label">Example — Sample Variance of $\{2, 4, 6\}$, $\bar{x}=4$</div>
+    <div class="example-label">Example — Sample Standard Deviation of $\{2, 4, 6\}$</div>
     <table class="example-steps">
-      <tr><td>Deviations</td><td>$2-4=-2,\; 4-4=0,\; 6-4=2$</td><td class="why">each value minus mean</td></tr>
-      <tr><td>Squared dev.</td><td>$(-2)^2=4,\; 0^2=0,\; 2^2=4$</td><td class="why">square each deviation</td></tr>
-      <tr><td>Sum</td><td>$4+0+4=8$</td><td class="why">sum of squared deviations</td></tr>
-      <tr><td>$s^2$</td><td>$\dfrac{8}{3-1} = 4$</td><td class="why">divide by $n-1=2$</td></tr>
-      <tr><td>$s$</td><td>$\sqrt{4} = 2$</td><td class="why">take square root</td></tr>
+      <tr><td>Mean</td><td>$\bar{x} = (2+4+6)/3 = 4$</td><td class="why"></td></tr>
+      <tr><td>Deviations</td><td>$2-4=-2,\;\; 4-4=0,\;\; 6-4=2$</td><td class="why">each value minus mean</td></tr>
+      <tr><td>Squared</td><td>$4,\; 0,\; 4$</td><td class="why">squaring removes negatives</td></tr>
+      <tr><td>$s^2$</td><td>$\dfrac{4+0+4}{3-1} = \dfrac{8}{2} = 4$</td><td class="why">divide by $n-1=2$</td></tr>
+      <tr><td>$s$</td><td>$\sqrt{4} = 2$</td><td class="why">typical value is 2 units from the mean</td></tr>
     </table>
   </div>
 
-  <h3>Coefficient of Variation</h3>
+  <h3>Coefficient of Variation (CV)</h3>
   <div class="formula">
     <div class="formula-label">CV</div>
     $$CV = \frac{s}{\bar{x}} \times 100\%$$
   </div>
-  <p>Expresses standard deviation as a percent of the mean. Useful for comparing variability across different units or scales.</p>
+  <p>The CV expresses standard deviation as a percentage of the mean, making it <em>unitless</em>. This allows meaningful comparison of variability across different scales or units — for example, comparing the consistency of two manufacturing processes that measure different quantities.</p>
+
+  <div class="example">
+    <div class="example-label">Example — Which process is more consistent?</div>
+    <table class="example-steps">
+      <tr><td>Process A</td><td>$\bar{x}=100\text{ g},\; s=5\text{ g}$; $CV = 5\%$</td><td class="why"></td></tr>
+      <tr><td>Process B</td><td>$\bar{x}=20\text{ g},\; s=3\text{ g}$; $CV = 15\%$</td><td class="why">B has smaller $s$ but is 3× more variable relative to its mean</td></tr>
+    </table>
+  </div>
 </section>
 
 <!-- ═══════════════════════════════════════════════════════ CHAPTER 4 -->
@@ -281,45 +322,60 @@
   <div class="chapter-num">Chapter 5</div>
   <h2>Probability Fundamentals</h2>
 
+  <p>Probability is the mathematical language of uncertainty. It assigns numbers between 0 and 1 to events: 0 means impossible, 1 means certain. All of statistics rests on this foundation.</p>
+
   <h3>Basic Definitions</h3>
   <div class="definition">
     <div class="definition-label">Key Terms</div>
     <ul>
-      <li><strong>Experiment</strong> — a process with uncertain outcome.</li>
-      <li><strong>Sample Space $S$</strong> — set of all possible outcomes.</li>
-      <li><strong>Event $A$</strong> — a subset of $S$.</li>
-      <li><strong>Probability</strong> — a number in $[0,1]$ measuring likelihood.</li>
+      <li><strong>Experiment</strong> — a process with uncertain outcome (rolling a die, measuring a person's height).</li>
+      <li><strong>Sample Space $S$</strong> — the set of <em>all</em> possible outcomes. For a coin flip: $S = \{H, T\}$.</li>
+      <li><strong>Event $A$</strong> — any subset of $S$. "Rolling an even number" = $\{2, 4, 6\}$.</li>
+      <li><strong>Probability $P(A)$</strong> — a number in $[0,1]$; all probabilities in $S$ sum to 1.</li>
     </ul>
   </div>
 
   <div class="formula">
-    <div class="formula-label">Classical Probability</div>
+    <div class="formula-label">Classical Probability (equally likely outcomes)</div>
     $$P(A) = \frac{\text{number of outcomes in } A}{\text{total outcomes in } S}$$
   </div>
 
   <h3>Complement Rule</h3>
+  <p>The complement $A^c$ (also written $A'$ or $\bar{A}$) contains every outcome <em>not</em> in $A$. Since $A$ and $A^c$ together cover all of $S$:</p>
   <div class="formula">
-    <div class="formula-label">Complement</div>
+    <div class="formula-label">Complement Rule</div>
     $$P(A^c) = 1 - P(A)$$
   </div>
-  <p><em>The complement of event $A$ is everything that is not $A$.</em></p>
+  <p><strong>When to use it:</strong> "at least one" problems. Computing $P(\text{at least one success})$ directly is tedious; $1 - P(\text{no successes})$ is almost always easier.</p>
 
   <h3>Addition Rules</h3>
+  <p><strong>Intuition:</strong> $P(A \cup B)$ = probability of $A$ or $B$ or both. Simply adding $P(A) + P(B)$ double-counts the overlap $A \cap B$, so we subtract it once.</p>
   <div class="formula">
     <div class="formula-label">General Addition Rule</div>
     $$P(A \cup B) = P(A) + P(B) - P(A \cap B)$$
   </div>
   <div class="formula">
-    <div class="formula-label">Mutually Exclusive Events (no overlap)</div>
+    <div class="formula-label">Mutually Exclusive (no overlap: $P(A \cap B) = 0$)</div>
     $$P(A \cup B) = P(A) + P(B)$$
   </div>
 
+  <div class="example">
+    <div class="example-label">Example — Drawing a Card</div>
+    <table class="example-steps">
+      <tr><td>$P(\text{Heart})$</td><td>$13/52$</td><td class="why">13 hearts in 52 cards</td></tr>
+      <tr><td>$P(\text{Face card})$</td><td>$12/52$</td><td class="why">J, Q, K in each of 4 suits</td></tr>
+      <tr><td>$P(\text{Heart AND face})$</td><td>$3/52$</td><td class="why">J♥, Q♥, K♥</td></tr>
+      <tr><td>$P(\text{Heart OR face})$</td><td>$13/52 + 12/52 - 3/52 = 22/52$</td><td class="why">subtract overlap once</td></tr>
+    </table>
+  </div>
+
   <h3>Conditional Probability</h3>
-  <p>The probability of $A$ given that $B$ has occurred:</p>
+  <p><strong>Intuition:</strong> $P(A|B)$ — "the probability of $A$ given we know $B$ happened" — restricts our sample space to just the outcomes in $B$, then asks what fraction of those are also in $A$.</p>
   <div class="formula">
     <div class="formula-label">Conditional Probability</div>
     $$P(A|B) = \frac{P(A \cap B)}{P(B)}, \quad P(B) > 0$$
   </div>
+  <p>Notice: if knowing $B$ gives no information about $A$, then $P(A|B) = P(A)$ — that's the definition of <strong>independence</strong>.</p>
 
   <h3>Multiplication Rule and Independence</h3>
   <div class="formula">
@@ -327,24 +383,29 @@
     $$P(A \cap B) = P(A|B) \cdot P(B)$$
   </div>
   <div class="formula">
-    <div class="formula-label">Independent Events</div>
+    <div class="formula-label">Independent Events (knowing $B$ doesn't change $A$)</div>
     $$P(A \cap B) = P(A) \cdot P(B)$$
   </div>
-  <p>Events $A$ and $B$ are <strong>independent</strong> when knowing $B$ occurred does not change the probability of $A$: $P(A|B) = P(A)$.</p>
+  <p><strong>Check for independence:</strong> compute $P(A) \cdot P(B)$ and compare to $P(A \cap B)$. If they're equal, the events are independent; if not, they're dependent. Do not assume independence — it must be verified.</p>
 
   <h3>Bayes' Theorem</h3>
+  <p><strong>What it does.</strong> Bayes' theorem "reverses" conditional probability. If you know $P(\text{test positive} | \text{disease})$, it lets you find $P(\text{disease} | \text{test positive})$ — the far more useful quantity.</p>
   <div class="formula">
     <div class="formula-label">Bayes' Theorem</div>
     $$P(A|B) = \frac{P(B|A)\cdot P(A)}{P(B)}$$
   </div>
+  <p>The denominator $P(B)$ can be expanded using the <strong>law of total probability</strong>: $P(B) = P(B|A)\cdot P(A) + P(B|A^c)\cdot P(A^c)$.</p>
 
   <div class="example">
-    <div class="example-label">Example — Bayes' Theorem</div>
+    <div class="example-label">Example — Medical Test (classic Bayes)</div>
     <table class="example-steps">
-      <tr><td>Given</td><td>$P(B|A)=0.9,\; P(A)=0.1,\; P(B)=0.15$</td><td class="why"></td></tr>
-      <tr><td>Numerator</td><td>$P(B|A)\cdot P(A) = 0.9 \times 0.1 = 0.09$</td><td class="why">joint probability</td></tr>
-      <tr><td>$P(A|B)$</td><td>$\dfrac{0.09}{0.15} = 0.6$</td><td class="why">divide by $P(B)$</td></tr>
+      <tr><td>Setup</td><td>Disease prevalence: $P(D) = 0.01$ (1%)</td><td class="why">prior probability</td></tr>
+      <tr><td></td><td>Test sensitivity: $P(+|D) = 0.95$</td><td class="why">true positive rate</td></tr>
+      <tr><td></td><td>False positive rate: $P(+|D^c) = 0.05$</td><td class="why">5% of healthy people test positive</td></tr>
+      <tr><td>$P(+)$</td><td>$0.95(0.01) + 0.05(0.99) = 0.0095 + 0.0495 = 0.059$</td><td class="why">total probability of a positive test</td></tr>
+      <tr><td>$P(D|+)$</td><td>$\dfrac{0.95 \times 0.01}{0.059} \approx 0.161$</td><td class="why">only ~16% chance of disease given positive test!</td></tr>
     </table>
+    <p style="margin-top:0.7rem;font-size:0.9rem;color:var(--muted);">The result surprises most people. Because the disease is rare ($P(D)=0.01$), most positives are false alarms. Low prior probability dramatically reduces the posterior probability even with a 95%-sensitive test.</p>
   </div>
 </section>
 
@@ -353,38 +414,68 @@
   <div class="chapter-num">Chapter 6</div>
   <h2>Counting Methods</h2>
 
+  <p>Counting methods let us calculate probabilities by counting outcomes without listing them all. The key question is always: <em>does order matter?</em></p>
+
+  <h3>Factorials</h3>
+  <p>$n!$ ("$n$ factorial") is the product of all positive integers up to $n$: $n! = n \times (n-1) \times \cdots \times 2 \times 1$. It counts the number of ways to arrange $n$ distinct objects in a row. By definition, $0! = 1$.</p>
+  <div class="example">
+    <div class="example-label">Example — Arranging 4 books on a shelf</div>
+    <table class="example-steps">
+      <tr><td></td><td>$4! = 4 \times 3 \times 2 \times 1 = 24$ arrangements</td><td class="why">4 choices for 1st slot, 3 for 2nd, etc.</td></tr>
+    </table>
+  </div>
+
   <h3>Fundamental Counting Principle</h3>
-  <p>If event $A$ can occur in $m$ ways and event $B$ in $n$ ways, together they can occur in $m \times n$ ways.</p>
+  <p>If event $A$ can occur in $m$ ways and — <em>independently of $A$</em> — event $B$ can occur in $n$ ways, then together they can occur in $m \times n$ ways. Extend to any number of independent choices by multiplying.</p>
+  <div class="example">
+    <div class="example-label">Example — How many 3-character passwords using 26 letters + 10 digits?</div>
+    <table class="example-steps">
+      <tr><td>Each slot</td><td>36 choices (26 letters + 10 digits)</td><td class="why">with repetition allowed</td></tr>
+      <tr><td>Total</td><td>$36 \times 36 \times 36 = 36^3 = 46{,}656$</td><td class="why">multiply choices for each slot</td></tr>
+    </table>
+  </div>
 
   <h3>Permutations — Order Matters</h3>
+  <p><strong>When to use:</strong> selecting <em>and arranging</em> items where position matters — first place vs. second place, seating arrangements, a 4-digit PIN.</p>
   <div class="formula">
-    <div class="formula-label">Permutations of $n$ things taken $r$ at a time</div>
+    <div class="formula-label">Permutations: $r$ items chosen from $n$, order matters</div>
     $$P(n,r) = \frac{n!}{(n-r)!}$$
   </div>
+  <p><strong>Why:</strong> you have $n$ choices for the first slot, $n-1$ for the second, …, $n-r+1$ for the last. That product equals $\dfrac{n!}{(n-r)!}$.</p>
   <div class="example">
-    <div class="example-label">Example</div>
+    <div class="example-label">Example — Gold/Silver/Bronze from 8 athletes</div>
     <table class="example-steps">
-      <tr><td>$P(5,2)$</td><td>$\dfrac{5!}{3!} = 5 \times 4 = 20$</td><td class="why">ordered arrangements of 2 from 5</td></tr>
+      <tr><td>$P(8,3)$</td><td>$\dfrac{8!}{5!} = 8 \times 7 \times 6 = 336$</td><td class="why">order matters: gold ≠ silver ≠ bronze</td></tr>
     </table>
   </div>
 
   <h3>Combinations — Order Does Not Matter</h3>
+  <p><strong>When to use:</strong> choosing a <em>group</em> where arrangement doesn't matter — a committee, a hand of cards, a subset of questions on an exam.</p>
   <div class="formula">
-    <div class="formula-label">Combinations of $n$ things taken $r$ at a time</div>
+    <div class="formula-label">Combinations: $r$ items chosen from $n$, order irrelevant</div>
     $$\binom{n}{r} = \frac{n!}{r!\,(n-r)!}$$
   </div>
+  <p><strong>Why:</strong> start with $P(n,r)$ ordered arrangements, then divide by $r!$ (the number of ways to rearrange those $r$ chosen items — all of which produce the same group).</p>
   <div class="example">
-    <div class="example-label">Example</div>
+    <div class="example-label">Example — Choosing 3 committee members from 8 people</div>
     <table class="example-steps">
-      <tr><td>$\binom{5}{2}$</td><td>$\dfrac{5!}{2!\,3!} = \dfrac{120}{12} = 10$</td><td class="why">unordered groups of 2 from 5</td></tr>
+      <tr><td>$\binom{8}{3}$</td><td>$\dfrac{8!}{3!\,5!} = \dfrac{8 \times 7 \times 6}{3 \times 2 \times 1} = \dfrac{336}{6} = 56$</td><td class="why">order doesn't matter; divide by $3! = 6$</td></tr>
     </table>
   </div>
 
-  <h3>When to Use Which</h3>
+  <h3>Decision Guide: Permutation or Combination?</h3>
   <ul>
-    <li><strong>Permutations</strong>: rankings, sequences, passwords where order matters.</li>
-    <li><strong>Combinations</strong>: committees, teams, hands of cards where order doesn't matter.</li>
+    <li>Ask: "If I swap two of my chosen items, do I get a different outcome?"</li>
+    <li><strong>Yes → permutation</strong>: president and treasurer are different roles.</li>
+    <li><strong>No → combination</strong>: a committee of Alice, Bob, Carol is the same regardless of the order you list them.</li>
   </ul>
+
+  <div class="example">
+    <div class="example-label">Example — 5-card hand from a 52-card deck</div>
+    <table class="example-steps">
+      <tr><td></td><td>$\binom{52}{5} = 2{,}598{,}960$ possible hands</td><td class="why">order of cards in your hand doesn't matter → combination</td></tr>
+    </table>
+  </div>
 </section>
 
 <!-- ═══════════════════════════════════════════════════════ CHAPTER 7 -->
@@ -392,10 +483,17 @@
   <div class="chapter-num">Chapter 7</div>
   <h2>Discrete Probability Distributions</h2>
 
-  <h3>Probability Distribution</h3>
-  <p>A <strong>probability distribution</strong> lists all possible values of a discrete random variable $X$ and their probabilities, satisfying: $P(x) \geq 0$ for all $x$ and $\sum P(x) = 1$.</p>
+  <p>A <strong>random variable</strong> $X$ assigns a number to each outcome of an experiment. A <strong>discrete</strong> random variable takes on a countable set of values (0, 1, 2, …). Its probability distribution is a complete description of all possible values and how likely each is.</p>
 
-  <h3>Expected Value and Variance</h3>
+  <h3>Probability Distribution</h3>
+  <p>A valid probability distribution must satisfy two rules: every probability is non-negative, and all probabilities sum to exactly 1.</p>
+  <div class="formula">
+    <div class="formula-label">Rules for a Valid Distribution</div>
+    $$P(x) \geq 0 \text{ for all } x, \qquad \sum_{\text{all } x} P(x) = 1$$
+  </div>
+
+  <h3>Expected Value</h3>
+  <p><strong>What it means.</strong> $E(X)$ is the long-run average of $X$ over infinitely many repetitions of the experiment. It is a weighted average of the possible values, where each value is weighted by its probability. It is <em>not</em> necessarily a value $X$ can actually take.</p>
   <div class="formula">
     <div class="formula-label">Expected Value (Mean)</div>
     $$E(X) = \mu = \sum x \cdot P(x)$$
@@ -405,38 +503,57 @@
     $$Var(X) = \sigma^2 = \sum (x - \mu)^2 P(x)$$
   </div>
 
+  <div class="example">
+    <div class="example-label">Example — Expected Winnings on a Game</div>
+    <table class="example-steps">
+      <tr><td>Outcomes</td><td>Win $10 with $P=0.3$; Win $0 with $P=0.5$; Lose $5 with $P=0.2$</td><td class="why"></td></tr>
+      <tr><td>$E(X)$</td><td>$10(0.3) + 0(0.5) + (-5)(0.2) = 3 + 0 - 1 = 2$</td><td class="why">expected gain = $2 per play on average</td></tr>
+    </table>
+  </div>
+
   <h3>Linear Transformation Rules</h3>
+  <p>These rules avoid recomputing from scratch when you scale or shift a random variable.</p>
   <div class="formula">
     <div class="formula-label">Properties of $aX + b$</div>
-    $$E(aX + b) = a\,E(X) + b$$
-    $$Var(aX + b) = a^2\,Var(X)$$
+    $$E(aX + b) = a\,E(X) + b \qquad Var(aX + b) = a^2\,Var(X)$$
   </div>
-  <p>Adding a constant shifts the mean but does not affect variance. Multiplying by $a$ scales variance by $a^2$.</p>
+  <p><strong>Intuition:</strong> adding $b$ shifts every outcome by the same amount — the mean shifts, but spread doesn't change. Multiplying by $a$ stretches outcomes; variance scales by $a^2$ because variance is in squared units.</p>
 
   <h3>Sum of Independent Random Variables</h3>
   <div class="formula">
     <div class="formula-label">Independent $X$ and $Y$</div>
-    $$E(X+Y) = E(X) + E(Y)$$
-    $$Var(X+Y) = Var(X) + Var(Y)$$
+    $$E(X+Y) = E(X) + E(Y) \qquad Var(X+Y) = Var(X) + Var(Y)$$
   </div>
+  <p>Variances add only when $X$ and $Y$ are independent. Note: standard deviations do <em>not</em> add — $\sigma_{X+Y} = \sqrt{\sigma_X^2 + \sigma_Y^2}$.</p>
 
   <h3>Binomial Distribution</h3>
-  <p>Use the binomial when: fixed number of trials $n$, each trial is success/failure, trials are independent, constant probability of success $p$.</p>
+  <p><strong>The four conditions (BINS):</strong> a binomial situation requires all four:</p>
+  <ol>
+    <li><strong>B</strong>inary outcomes — each trial is success or failure.</li>
+    <li><strong>I</strong>ndependent trials — the result of one trial doesn't affect others.</li>
+    <li><strong>N</strong>umber of trials $n$ is fixed in advance.</li>
+    <li><strong>S</strong>ame probability $p$ of success on every trial.</li>
+  </ol>
+  <p>If any condition fails, the binomial model does not apply. (Sampling without replacement from a small population violates independence, for instance.)</p>
+
   <div class="formula">
-    <div class="formula-label">Binomial PMF</div>
+    <div class="formula-label">Binomial PMF — probability of exactly $k$ successes in $n$ trials</div>
     $$P(X=k) = \binom{n}{k} p^k (1-p)^{n-k}$$
   </div>
+  <p><strong>Reading the formula:</strong> $\binom{n}{k}$ counts the number of ways to choose <em>which</em> $k$ trials are successes; $p^k$ is the probability of those $k$ successes; $(1-p)^{n-k}$ is the probability of the remaining failures.</p>
+
   <div class="formula">
-    <div class="formula-label">Binomial Mean and Variance</div>
-    $$E(X) = np, \qquad Var(X) = np(1-p)$$
+    <div class="formula-label">Binomial Mean and Standard Deviation</div>
+    $$\mu = np, \qquad \sigma = \sqrt{np(1-p)}$$
   </div>
 
   <div class="example">
-    <div class="example-label">Example — Binomial $n=3,\, p=0.5,\, k=2$</div>
+    <div class="example-label">Example — Free-throw shooter (70% success rate) takes 5 shots. $P(\text{exactly 3 made})$?</div>
     <table class="example-steps">
-      <tr><td>Formula</td><td>$\binom{3}{2}(0.5)^2(0.5)^1$</td><td class="why">choose 2 successes from 3 trials</td></tr>
-      <tr><td>Evaluate</td><td>$3 \times 0.25 \times 0.5$</td><td class="why">$\binom{3}{2}=3$; $(0.5)^2=0.25$</td></tr>
-      <tr><td>Result</td><td>$= 0.375$</td><td class="why">37.5% probability</td></tr>
+      <tr><td>Check BINS</td><td>Binary ✓, Independent ✓, $n=5$ fixed ✓, $p=0.7$ constant ✓</td><td class="why">binomial applies</td></tr>
+      <tr><td>$P(X=3)$</td><td>$\binom{5}{3}(0.7)^3(0.3)^2$</td><td class="why">$k=3$, $n=5$, $p=0.7$</td></tr>
+      <tr><td></td><td>$= 10 \times 0.343 \times 0.09 = 0.3087$</td><td class="why">$\binom{5}{3}=10$; about 30.9%</td></tr>
+      <tr><td>$\mu$</td><td>$5(0.7) = 3.5$ made shots on average</td><td class="why">long-run expected value</td></tr>
     </table>
   </div>
 </section>
@@ -446,47 +563,59 @@
   <div class="chapter-num">Chapter 8</div>
   <h2>Normal Distribution and Z-Scores</h2>
 
+  <p>The normal distribution is the most important probability distribution in statistics. It describes countless natural phenomena — heights, measurement errors, IQ scores — and, thanks to the Central Limit Theorem (Chapter 9), it underlies nearly all inferential statistics.</p>
+
   <h3>The Normal Distribution</h3>
-  <p>The <strong>normal distribution</strong> is a symmetric, bell-shaped continuous distribution characterized by its mean $\mu$ and standard deviation $\sigma$. Its PDF is:</p>
+  <p>The <strong>normal distribution</strong> is a symmetric, bell-shaped, continuous distribution fully determined by two parameters: its mean $\mu$ (the center) and standard deviation $\sigma$ (the spread). Changing $\mu$ slides the bell left or right; changing $\sigma$ makes it wider or narrower.</p>
   <div class="formula">
     <div class="formula-label">Normal PDF</div>
-    $$f(x) = \frac{1}{\sigma\sqrt{2\pi}} e^{-\frac{(x-\mu)^2}{2\sigma^2}}$$
+    $$f(x) = \frac{1}{\sigma\sqrt{2\pi}} \, e^{-\frac{(x-\mu)^2}{2\sigma^2}}$$
   </div>
-  <p>The total area under the curve equals 1. The distribution is completely symmetric about $\mu$.</p>
+  <p>The total area under the curve equals 1 (all probabilities must sum to 1). The curve is perfectly symmetric about $\mu$, so mean = median = mode for any normal distribution.</p>
 
-  <h3>The Standard Normal</h3>
-  <p>A normal distribution with $\mu=0$ and $\sigma=1$ is the <strong>standard normal</strong>, denoted $Z \sim N(0,1)$. Any normal variable can be standardized:</p>
+  <h3>The Standard Normal and Z-Scores</h3>
+  <p>Every normal distribution can be converted to the <strong>standard normal</strong> $Z \sim N(0, 1)$ by <em>standardizing</em>. The z-score tells you how many standard deviations a value is above (positive) or below (negative) the mean — making any two normal distributions directly comparable.</p>
   <div class="formula">
-    <div class="formula-label">Z-Score (standardizing)</div>
+    <div class="formula-label">Standardizing: Z-Score</div>
     $$z = \frac{x - \mu}{\sigma}$$
   </div>
-  <p>The z-score tells how many standard deviations $x$ is above (positive) or below (negative) the mean. To recover $x$ from $z$:</p>
   <div class="formula">
     <div class="formula-label">Reverse: Raw Score from Z</div>
     $$x = \mu + z\,\sigma$$
   </div>
-
-  <h3>The Empirical Rule (68–95–99.7)</h3>
-  <p>For any normal distribution:</p>
+  <p><strong>Finding probabilities.</strong> Once you have a z-score, look up the corresponding <em>area to the left</em> in a standard normal table (or calculator). That area equals the probability $P(Z \leq z)$.</p>
   <ul>
-    <li>Approximately $68\%$ of data fall within $\mu \pm 1\sigma$.</li>
-    <li>Approximately $95\%$ of data fall within $\mu \pm 2\sigma$.</li>
-    <li>Approximately $99.7\%$ of data fall within $\mu \pm 3\sigma$.</li>
+    <li>$P(Z \leq z)$ — look up directly from the table.</li>
+    <li>$P(Z \geq z) = 1 - P(Z \leq z)$ — complement rule.</li>
+    <li>$P(z_1 \leq Z \leq z_2) = P(Z \leq z_2) - P(Z \leq z_1)$ — subtract two table values.</li>
   </ul>
 
+  <h3>The Empirical Rule (68–95–99.7)</h3>
+  <p>For <em>any</em> normal distribution, these percentages hold exactly:</p>
+  <ul>
+    <li>$\approx 68\%$ of data fall within $\mu \pm 1\sigma$ (z-scores between $-1$ and $1$).</li>
+    <li>$\approx 95\%$ of data fall within $\mu \pm 2\sigma$ (z-scores between $-2$ and $2$).</li>
+    <li>$\approx 99.7\%$ of data fall within $\mu \pm 3\sigma$ (z-scores between $-3$ and $3$).</li>
+  </ul>
+  <p>A value with $|z| > 3$ is extremely rare (less than 0.3% of a normal population). This is why $z = \pm 1.96$ corresponds to the middle 95% — the standard benchmark for 95% confidence intervals.</p>
+
   <div class="example">
-    <div class="example-label">Example — Finding a Z-Score</div>
+    <div class="example-label">Example — Probability from a Z-Score</div>
     <table class="example-steps">
-      <tr><td>Given</td><td>$x=85,\; \mu=75,\; \sigma=5$</td><td class="why"></td></tr>
-      <tr><td>$z$</td><td>$\dfrac{85-75}{5} = \dfrac{10}{5} = 2$</td><td class="why">85 is 2 standard deviations above the mean</td></tr>
+      <tr><td>Given</td><td>Exam scores $\sim N(\mu=75, \sigma=5)$. Find $P(X \leq 85)$.</td><td class="why"></td></tr>
+      <tr><td>Standardize</td><td>$z = \dfrac{85 - 75}{5} = 2.00$</td><td class="why">85 is 2 SD above the mean</td></tr>
+      <tr><td>Table lookup</td><td>$P(Z \leq 2.00) = 0.9772$</td><td class="why">from standard normal table</td></tr>
+      <tr><td>Interpret</td><td>About 97.7% of students scored at or below 85.</td><td class="why"></td></tr>
     </table>
   </div>
 
   <div class="example">
-    <div class="example-label">Example — Raw Score from Z</div>
+    <div class="example-label">Example — Between two scores</div>
     <table class="example-steps">
-      <tr><td>Given</td><td>$z=2,\; \mu=50,\; \sigma=10$</td><td class="why"></td></tr>
-      <tr><td>$x$</td><td>$50 + 2(10) = 70$</td><td class="why">use $x = \mu + z\sigma$</td></tr>
+      <tr><td>Find $P(70 \leq X \leq 80)$ with $\mu=75,\; \sigma=5$</td><td></td><td class="why"></td></tr>
+      <tr><td>$z_1$</td><td>$(70-75)/5 = -1.00$ → $P(Z \leq -1) = 0.1587$</td><td class="why"></td></tr>
+      <tr><td>$z_2$</td><td>$(80-75)/5 = 1.00$ → $P(Z \leq 1) = 0.8413$</td><td class="why"></td></tr>
+      <tr><td>$P$</td><td>$0.8413 - 0.1587 = 0.6826 \approx 68\%$</td><td class="why">confirms the empirical rule for $\pm 1\sigma$</td></tr>
     </table>
   </div>
 </section>
@@ -496,27 +625,45 @@
   <div class="chapter-num">Chapter 9</div>
   <h2>Sampling Distributions and the Central Limit Theorem</h2>
 
+  <p>This chapter contains the most important theoretical result in all of statistics. Understanding it is the key to understanding why every confidence interval and hypothesis test in the following chapters works.</p>
+
   <h3>Sampling Distribution of $\bar{x}$</h3>
-  <p>When we take repeated random samples of size $n$ from a population with mean $\mu$ and standard deviation $\sigma$, the <strong>sampling distribution of the sample mean</strong> has:</p>
+  <p>Imagine taking a random sample of size $n$, computing $\bar{x}$, writing it down, then repeating this process thousands of times. The distribution of all those $\bar{x}$ values is the <strong>sampling distribution of $\bar{x}$</strong>. It describes how much $\bar{x}$ varies from sample to sample — which determines how much we can trust any single sample mean.</p>
   <div class="formula">
     <div class="formula-label">Mean and Standard Error of $\bar{x}$</div>
-    $$\mu_{\bar x} = \mu, \qquad \sigma_{\bar x} = \frac{\sigma}{\sqrt{n}}$$
+    $$\mu_{\bar x} = \mu \qquad \sigma_{\bar x} = \frac{\sigma}{\sqrt{n}}$$
   </div>
-  <p>$\sigma_{\bar x}$ is called the <strong>standard error (SE)</strong>. As $n$ increases, SE decreases — larger samples give more precise estimates.</p>
+  <ul>
+    <li>$\mu_{\bar x} = \mu$: on average, $\bar{x}$ hits the population mean. ($\bar{x}$ is an <em>unbiased</em> estimator.)</li>
+    <li>$\sigma_{\bar x} = \sigma/\sqrt{n}$: the <strong>standard error (SE)</strong>. It shrinks as $n$ grows — larger samples produce more consistent, tightly clustered estimates. Quadrupling $n$ halves the SE.</li>
+  </ul>
 
   <h3>Central Limit Theorem (CLT)</h3>
-  <p>For sufficiently large $n$ (typically $n \geq 30$), the sampling distribution of $\bar{x}$ is approximately normal, <em>regardless of the population's shape</em>. This is the most important theorem in statistics.</p>
+  <p><strong>The statement.</strong> For sufficiently large $n$ (rule of thumb: $n \geq 30$), the sampling distribution of $\bar{x}$ is approximately normal — <em>regardless of the shape of the original population</em>. The population can be right-skewed, left-skewed, bimodal, or uniform. Average it enough times, and the averages themselves become normally distributed.</p>
+  <p><strong>Why it works intuitively.</strong> When you average many values, extremely high values and extremely low values tend to cancel each other out. The remaining variation is small and symmetric, which is the hallmark of a normal distribution. Large $n$ gives extreme outcomes fewer chances to dominate the average.</p>
+  <p><strong>Why it matters.</strong> The CLT is why we can use normal-based z-scores and t-scores for inference — even when the data itself isn't normal. It transforms a complex real-world question ("what is the true population mean?") into a manageable calculation involving the normal distribution.</p>
+
   <div class="formula">
-    <div class="formula-label">CLT: Z-score for a Sample Mean</div>
+    <div class="formula-label">CLT: Standardized Sample Mean</div>
     $$z = \frac{\bar{x} - \mu}{\sigma/\sqrt{n}}$$
   </div>
 
   <div class="example">
-    <div class="example-label">Example — Z-Score for $\bar{x}$</div>
+    <div class="example-label">Example — How likely is an average this extreme?</div>
     <table class="example-steps">
-      <tr><td>Given</td><td>$\bar{x}=55,\; \mu=50,\; \sigma=10,\; n=25$</td><td class="why"></td></tr>
-      <tr><td>SE</td><td>$\dfrac{10}{\sqrt{25}} = \dfrac{10}{5} = 2$</td><td class="why">standard error</td></tr>
-      <tr><td>$z$</td><td>$\dfrac{55-50}{2} = 2.5$</td><td class="why">2.5 SE above mean</td></tr>
+      <tr><td>Given</td><td>Population: $\mu=50,\; \sigma=10$. Sample $n=25$, observe $\bar{x}=55$.</td><td class="why"></td></tr>
+      <tr><td>SE</td><td>$\sigma/\sqrt{n} = 10/\sqrt{25} = 2$</td><td class="why">standard error of $\bar{x}$</td></tr>
+      <tr><td>$z$</td><td>$(55-50)/2 = 2.5$</td><td class="why">2.5 SEs above the hypothesized mean</td></tr>
+      <tr><td>Interpret</td><td>$P(Z \geq 2.5) \approx 0.006$</td><td class="why">only 0.6% chance of observing $\bar{x} \geq 55$ by random chance alone — strong evidence against $\mu=50$</td></tr>
+    </table>
+  </div>
+
+  <div class="example">
+    <div class="example-label">Example — Effect of Sample Size on SE</div>
+    <table class="example-steps">
+      <tr><td>$n=4$</td><td>$SE = 10/2 = 5$</td><td class="why">high variability; estimates spread widely</td></tr>
+      <tr><td>$n=25$</td><td>$SE = 10/5 = 2$</td><td class="why">more precise</td></tr>
+      <tr><td>$n=100$</td><td>$SE = 10/10 = 1$</td><td class="why">very tight; quadrupling $n$ halved SE each time</td></tr>
     </table>
   </div>
 </section>
@@ -527,51 +674,69 @@
   <h2>Confidence Intervals</h2>
 
   <h3>What Is a Confidence Interval?</h3>
-  <p>A <strong>confidence interval (CI)</strong> is a range of values that is likely to contain the true population parameter. A 95% CI means: if we repeated the sampling procedure many times, 95% of the intervals produced would contain the true parameter.</p>
+  <p>A <strong>confidence interval (CI)</strong> is a range of plausible values for the unknown population parameter, constructed from sample data. The <strong>confidence level</strong> (typically 90%, 95%, or 99%) describes the long-run reliability of the method.</p>
+  <p><strong>Correct interpretation:</strong> "We are 95% confident that the true parameter lies within this interval." This means: if we constructed 100 such intervals using 100 different samples, approximately 95 of those intervals would contain the true parameter. The parameter is fixed — it is the interval that varies from sample to sample.</p>
+  <p><strong>Common misconception:</strong> "There is a 95% probability that $\mu$ is in <em>this</em> interval." Wrong — $\mu$ either is or isn't in any specific interval; probability only applies before the interval is computed.</p>
 
   <h3>CI for a Population Mean ($\sigma$ known)</h3>
   <div class="formula">
-    <div class="formula-label">Confidence Interval for $\mu$</div>
+    <div class="formula-label">Confidence Interval for $\mu$ (z-interval)</div>
     $$\bar{x} \pm z^* \cdot \frac{\sigma}{\sqrt{n}}$$
   </div>
-  <p>Common critical values: $z^*_{90\%} = 1.645$, $z^*_{95\%} = 1.96$, $z^*_{99\%} = 2.576$.</p>
   <div class="formula">
     <div class="formula-label">Margin of Error</div>
     $$ME = z^* \cdot \frac{\sigma}{\sqrt{n}}$$
   </div>
+  <p>Common critical values: $z^*_{90\%} = 1.645$, $\;z^*_{95\%} = 1.96$, $\;z^*_{99\%} = 2.576$. A higher confidence level requires a larger $z^*$ → wider interval.</p>
 
   <div class="example">
-    <div class="example-label">Example — 95% CI</div>
+    <div class="example-label">Example — 95% CI for a mean</div>
     <table class="example-steps">
       <tr><td>Given</td><td>$\bar{x}=50,\; \sigma=8,\; n=16,\; z^*=1.96$</td><td class="why"></td></tr>
-      <tr><td>SE</td><td>$8/\sqrt{16} = 8/4 = 2$</td><td class="why">standard error</td></tr>
-      <tr><td>ME</td><td>$1.96 \times 2 = 3.92$</td><td class="why">margin of error</td></tr>
-      <tr><td>CI</td><td>$(50-3.92,\; 50+3.92) = (46.08,\; 53.92)$</td><td class="why">interval estimate</td></tr>
+      <tr><td>SE</td><td>$8/\sqrt{16} = 2$</td><td class="why">standard error</td></tr>
+      <tr><td>ME</td><td>$1.96 \times 2 = 3.92$</td><td class="why">half-width of the interval</td></tr>
+      <tr><td>CI</td><td>$(50 - 3.92,\; 50 + 3.92) = (46.08,\; 53.92)$</td><td class="why">we are 95% confident $\mu$ is in this range</td></tr>
     </table>
   </div>
+
+  <h3>CI for a Population Mean ($\sigma$ unknown — the $t$-interval)</h3>
+  <p>In practice, $\sigma$ is almost never known. We estimate it with $s$ and replace $z^*$ with $t^*$, the critical value from the <strong>$t$-distribution</strong> with $n-1$ degrees of freedom. The $t$-distribution has heavier tails than the normal — reflecting extra uncertainty from estimating $\sigma$ — but approaches the normal as $n$ grows.</p>
+  <div class="formula">
+    <div class="formula-label">$t$-Interval for $\mu$ ($\sigma$ unknown)</div>
+    $$\bar{x} \pm t^*_{n-1} \cdot \frac{s}{\sqrt{n}}$$
+  </div>
+  <p>Use the $z$-interval only when $\sigma$ is known (rare). Use the $t$-interval whenever you estimate $\sigma$ with $s$ from the sample.</p>
 
   <h3>CI for a Proportion</h3>
   <div class="formula">
     <div class="formula-label">CI for Proportion $p$</div>
     $$\hat{p} \pm z^* \sqrt{\frac{\hat{p}(1-\hat{p})}{n}}$$
   </div>
+  <p>Valid when $n\hat{p} \geq 10$ and $n(1-\hat{p}) \geq 10$ (enough successes and failures for the normal approximation to hold).</p>
 
   <div class="example">
-    <div class="example-label">Example — Proportion CI</div>
+    <div class="example-label">Example — Polling: 52% approval from 600 surveyed</div>
     <table class="example-steps">
-      <tr><td>Given</td><td>$\hat{p}=0.5,\; n=400,\; z^*=1.96$</td><td class="why"></td></tr>
-      <tr><td>SE</td><td>$\sqrt{0.5(0.5)/400} = \sqrt{0.000625} = 0.025$</td><td class="why"></td></tr>
-      <tr><td>ME</td><td>$1.96 \times 0.025 = 0.049$</td><td class="why"></td></tr>
-      <tr><td>CI</td><td>$(0.451,\; 0.549)$</td><td class="why">contains true proportion with 95% confidence</td></tr>
+      <tr><td>Given</td><td>$\hat{p}=0.52,\; n=600,\; z^*=1.96$</td><td class="why"></td></tr>
+      <tr><td>SE</td><td>$\sqrt{0.52(0.48)/600} = \sqrt{0.000416} \approx 0.0204$</td><td class="why"></td></tr>
+      <tr><td>ME</td><td>$1.96 \times 0.0204 \approx 0.040$ (±4%)</td><td class="why">the "margin of error" in news reports</td></tr>
+      <tr><td>CI</td><td>$(0.480,\; 0.560)$</td><td class="why">true approval rate is between 48% and 56% with 95% confidence</td></tr>
     </table>
   </div>
 
+  <h3>Factors That Affect the Margin of Error</h3>
+  <ul>
+    <li><strong>Larger $n$ → smaller ME</strong>: more data = more precision. ME shrinks by $1/\sqrt{n}$.</li>
+    <li><strong>Higher confidence level → larger ME</strong>: more certainty requires a wider net.</li>
+    <li><strong>Larger $\sigma$ (or $s$) → larger ME</strong>: more variable data → less precise estimates.</li>
+  </ul>
+
   <h3>Required Sample Size</h3>
   <div class="formula">
-    <div class="formula-label">Minimum $n$ for desired ME</div>
+    <div class="formula-label">Minimum $n$ for a target ME (mean)</div>
     $$n \geq \left(\frac{z^* \cdot \sigma}{ME}\right)^2$$
   </div>
-  <p>Always round <em>up</em> to ensure the margin of error is at most the specified value.</p>
+  <p>Always round <em>up</em>. If $\sigma$ is unknown, use a pilot study, prior research, or the conservative estimate $\sigma \approx \text{range}/4$.</p>
 </section>
 
 <!-- ═══════════════════════════════════════════════════════ CHAPTER 11 -->
@@ -580,50 +745,87 @@
   <h2>Hypothesis Testing</h2>
 
   <h3>The Logic of Hypothesis Testing</h3>
-  <p>We start with a <strong>null hypothesis $H_0$</strong> (a claim of no effect / no difference) and an <strong>alternative hypothesis $H_a$</strong>. We use sample data to decide whether to <em>reject</em> $H_0$.</p>
+  <p>Hypothesis testing is a formal procedure for deciding whether sample data provides strong enough evidence to reject a default assumption. The logic is proof-by-contradiction: assume the null is true, then ask "how likely is data this extreme under that assumption?" If very unlikely, reject the assumption.</p>
 
-  <h3>One-Sample Z-Test for a Mean</h3>
+  <p>We set up two competing hypotheses:</p>
+  <ul>
+    <li><strong>Null hypothesis $H_0$</strong>: the default/skeptical claim (no effect, no difference, no change). Always contains an equality: $\mu = \mu_0$, $p = p_0$, etc.</li>
+    <li><strong>Alternative hypothesis $H_a$</strong>: what we're trying to show evidence for. Can be two-sided ($\mu \ne \mu_0$) or one-sided ($\mu > \mu_0$ or $\mu < \mu_0$).</li>
+  </ul>
+  <p>We never "prove" $H_0$. We either <em>reject</em> $H_0$ (strong evidence against it) or <em>fail to reject</em> $H_0$ (insufficient evidence). "Fail to reject" is not the same as "accept" — absence of evidence is not evidence of absence.</p>
+
+  <h3>The Five-Step Procedure</h3>
+  <ol style="line-height:2;font-size:0.95rem;margin-bottom:0.9rem;">
+    <li><strong>State the hypotheses:</strong> write $H_0$ and $H_a$ in terms of the parameter.</li>
+    <li><strong>Choose significance level $\alpha$:</strong> commonly 0.05. This is the maximum acceptable probability of a Type I error.</li>
+    <li><strong>Compute the test statistic:</strong> measure how many standard errors the sample is from $H_0$.</li>
+    <li><strong>Find the p-value:</strong> the probability of observing a test statistic at least as extreme, assuming $H_0$ is true.</li>
+    <li><strong>Make a decision and interpret:</strong> if $p \leq \alpha$, reject $H_0$; state the conclusion in context.</li>
+  </ol>
+
+  <h3>One- vs. Two-Tailed Tests</h3>
+  <ul>
+    <li><strong>Two-tailed</strong> ($H_a: \mu \ne \mu_0$): evidence in either direction counts. P-value = $2 \times P(Z \geq |z|)$.</li>
+    <li><strong>Right-tailed</strong> ($H_a: \mu > \mu_0$): only unusually large values count. P-value = $P(Z \geq z)$.</li>
+    <li><strong>Left-tailed</strong> ($H_a: \mu < \mu_0$): only unusually small values count. P-value = $P(Z \leq z)$.</li>
+  </ul>
+
+  <h3>Z-Test for a Mean</h3>
   <div class="formula">
     <div class="formula-label">Z-Test Statistic</div>
     $$z = \frac{\bar{x} - \mu_0}{\sigma/\sqrt{n}}$$
   </div>
 
   <div class="example">
-    <div class="example-label">Example</div>
+    <div class="example-label">Example — Full five-step test</div>
     <table class="example-steps">
-      <tr><td>Given</td><td>$\bar{x}=52,\; \mu_0=50,\; \sigma=4,\; n=16$</td><td class="why">testing $H_0{:}\,\mu=50$</td></tr>
-      <tr><td>SE</td><td>$4/\sqrt{16} = 1$</td><td class="why"></td></tr>
-      <tr><td>$z$</td><td>$(52-50)/1 = 2$</td><td class="why">2 SE above the hypothesized mean</td></tr>
-      <tr><td>Decision</td><td>$|z|=2 > 1.96$ → reject $H_0$ at $\alpha=0.05$</td><td class="why">strong evidence against $H_0$</td></tr>
+      <tr><td>Step 1</td><td>$H_0: \mu=50$; $H_a: \mu \ne 50$ (two-tailed)</td><td class="why">testing whether mean differs from 50</td></tr>
+      <tr><td>Step 2</td><td>$\alpha = 0.05$</td><td class="why">5% significance level</td></tr>
+      <tr><td>Step 3</td><td>$z = (52-50)/(4/\sqrt{16}) = 2/1 = 2.00$</td><td class="why">$\bar x=52, \mu_0=50, \sigma=4, n=16$</td></tr>
+      <tr><td>Step 4</td><td>$p = 2 \times P(Z \geq 2.00) = 2(0.0228) = 0.0456$</td><td class="why">two-tailed; area in both tails</td></tr>
+      <tr><td>Step 5</td><td>$p = 0.046 < 0.05$ → reject $H_0$</td><td class="why">statistically significant evidence that $\mu \ne 50$</td></tr>
     </table>
   </div>
 
-  <h3>P-Value and Significance Level</h3>
-  <p>The <strong>p-value</strong> is the probability of observing a test statistic at least as extreme as the one computed, assuming $H_0$ is true.</p>
-  <ul>
-    <li>If $p \leq \alpha$: reject $H_0$ (results are statistically significant).</li>
-    <li>If $p > \alpha$: fail to reject $H_0$ (insufficient evidence).</li>
-  </ul>
+  <h3>P-Value Interpretation</h3>
+  <p>The <strong>p-value</strong> is the probability — under the assumption that $H_0$ is true — of observing a test statistic at least as extreme as what was computed. A small p-value means the observed data would be very rare if $H_0$ were true, so we doubt $H_0$.</p>
+  <p><strong>Common misconception:</strong> the p-value is <em>not</em> the probability that $H_0$ is true, nor the probability the results are due to chance alone in a general sense. It assumes $H_0$ is true and asks about the data.</p>
 
   <h3>Type I and Type II Errors</h3>
-  <ul>
-    <li><strong>Type I error ($\alpha$)</strong> — rejecting a true $H_0$ ("false positive").</li>
-    <li><strong>Type II error ($\beta$)</strong> — failing to reject a false $H_0$ ("false negative").</li>
-    <li><strong>Power</strong> $= 1 - \beta$ — probability of correctly rejecting a false $H_0$.</li>
-  </ul>
+  <table style="width:100%;border-collapse:collapse;margin:0.8rem 0;font-size:0.9rem;">
+    <tr style="background:var(--panel);color:#4fc3f7;">
+      <th style="padding:8px;text-align:left;"></th>
+      <th style="padding:8px;text-align:center;">$H_0$ is True</th>
+      <th style="padding:8px;text-align:center;">$H_0$ is False</th>
+    </tr>
+    <tr>
+      <td style="padding:8px;font-weight:600;">Reject $H_0$</td>
+      <td style="padding:8px;text-align:center;color:var(--accent);">Type I error ($\alpha$) — false positive</td>
+      <td style="padding:8px;text-align:center;color:var(--correct);">Correct! (Power = $1-\beta$)</td>
+    </tr>
+    <tr style="background:#111;">
+      <td style="padding:8px;font-weight:600;">Fail to reject $H_0$</td>
+      <td style="padding:8px;text-align:center;color:var(--correct);">Correct!</td>
+      <td style="padding:8px;text-align:center;color:var(--accent);">Type II error ($\beta$) — false negative</td>
+    </tr>
+  </table>
+  <p>Reducing $\alpha$ (fewer false positives) increases $\beta$ (more false negatives) for fixed $n$. The remedy is to increase $n$, which increases power without inflating $\alpha$.</p>
 
   <h3>Chi-Square Goodness-of-Fit</h3>
-  <p>Tests whether observed frequencies match expected frequencies.</p>
+  <p>Tests whether observed categorical frequencies match a claimed distribution. The statistic measures total discrepancy between observed ($O$) and expected ($E$) counts; larger $\chi^2$ = bigger departure from $H_0$.</p>
   <div class="formula">
     <div class="formula-label">Chi-Square Statistic</div>
-    $$\chi^2 = \sum \frac{(O - E)^2}{E}$$
+    $$\chi^2 = \sum \frac{(O - E)^2}{E}, \qquad df = k - 1$$
   </div>
+  <p>where $k$ is the number of categories. Requires $E \geq 5$ for each cell.</p>
 
   <div class="example">
-    <div class="example-label">Example — $\chi^2$ with Observed $\{10,20,30\}$, Expected $\{20,20,20\}$</div>
+    <div class="example-label">Example — Is a die fair? Roll 60 times; $H_0$: all faces equally likely</div>
     <table class="example-steps">
-      <tr><td>Compute</td><td>$\dfrac{(10-20)^2}{20} + \dfrac{(20-20)^2}{20} + \dfrac{(30-20)^2}{20}$</td><td class="why">one term per category</td></tr>
-      <tr><td></td><td>$= 5 + 0 + 5 = 10$</td><td class="why">$\chi^2 = 10$</td></tr>
+      <tr><td>Expected each face</td><td>$E = 60/6 = 10$ per face</td><td class="why">equally likely under $H_0$</td></tr>
+      <tr><td>Observed</td><td>$\{10, 8, 12, 14, 7, 9\}$</td><td class="why">actual counts</td></tr>
+      <tr><td>$\chi^2$</td><td>$\frac{0}{10}+\frac{4}{10}+\frac{4}{10}+\frac{16}{10}+\frac{9}{10}+\frac{1}{10} = 3.4$</td><td class="why">$(O-E)^2/E$ per face, summed</td></tr>
+      <tr><td>Decision</td><td>$\chi^2 = 3.4$ with $df=5$; critical value at $\alpha=0.05$ is $11.07$ → fail to reject</td><td class="why">no significant evidence the die is unfair</td></tr>
     </table>
   </div>
 </section>
@@ -633,53 +835,85 @@
   <div class="chapter-num">Chapter 12</div>
   <h2>Linear Regression and Correlation</h2>
 
-  <h3>Scatterplots and Correlation</h3>
-  <p>A <strong>scatterplot</strong> displays paired data $(x, y)$. We look for direction (positive/negative), form (linear/curved), and strength. The <strong>Pearson correlation coefficient</strong> $r$ measures linear association:</p>
+  <p>Regression and correlation let us quantify and model the relationship between two quantitative variables — useful for prediction, understanding trends, and identifying how strongly two things move together.</p>
+
+  <h3>Scatterplots: Describing Association</h3>
+  <p>Always start with a <strong>scatterplot</strong> of $(x, y)$ pairs. Describe what you see in terms of:</p>
+  <ul>
+    <li><strong>Direction:</strong> positive (both increase together) or negative (one increases as the other decreases).</li>
+    <li><strong>Form:</strong> linear, curved, or no pattern.</li>
+    <li><strong>Strength:</strong> how closely the points follow the pattern.</li>
+    <li><strong>Outliers:</strong> unusual points that deviate from the overall pattern.</li>
+  </ul>
+
+  <h3>Pearson Correlation Coefficient $r$</h3>
+  <p>$r$ measures the strength and direction of the <em>linear</em> association between $x$ and $y$. It is unit-free and always in $[-1, 1]$.</p>
   <div class="formula">
-    <div class="formula-label">Pearson Correlation $r$</div>
+    <div class="formula-label">Pearson Correlation</div>
     $$r = \frac{\sum (x_i - \bar{x})(y_i - \bar{y})}{(n-1)\,s_x\,s_y} = \frac{Cov(X,Y)}{s_x s_y}$$
   </div>
-  <p>$r$ is always in $[-1, 1]$. $r = \pm 1$ is a perfect linear relationship; $r = 0$ means no linear association.</p>
+  <ul>
+    <li>$r = +1$: perfect positive linear relationship.</li>
+    <li>$r = -1$: perfect negative linear relationship.</li>
+    <li>$r = 0$: no linear association (could still be a strong nonlinear relationship).</li>
+    <li>$|r| \geq 0.8$: usually considered strong; $0.5 \leq |r| < 0.8$: moderate; $|r| < 0.5$: weak.</li>
+  </ul>
+  <p><strong>Critical warning: Correlation does not imply causation.</strong> A high $r$ between ice cream sales and drowning deaths does not mean ice cream causes drowning — both are caused by a confounder (hot weather). Always consider third-variable explanations before claiming a cause-effect relationship.</p>
 
   <h3>Covariance</h3>
   <div class="formula">
     <div class="formula-label">Sample Covariance</div>
     $$Cov(X,Y) = \frac{\sum (x_i - \bar{x})(y_i - \bar{y})}{n-1}$$
   </div>
+  <p>Covariance measures the direction of association but its magnitude depends on the units of $x$ and $y$, making direct comparisons hard. Dividing by $s_x s_y$ standardizes it into the unit-free correlation $r$.</p>
 
   <h3>Least-Squares Regression Line</h3>
-  <p>The <strong>regression line</strong> $\hat{y} = b_0 + b_1 x$ minimizes the sum of squared residuals.</p>
+  <p>The <strong>regression line</strong> $\hat{y} = b_0 + b_1 x$ is the unique line that minimizes the sum of squared vertical distances between the data points and the line (the sum of squared residuals). It always passes through $(\bar{x}, \bar{y})$.</p>
   <div class="formula">
     <div class="formula-label">Slope and Intercept</div>
     $$b_1 = r \cdot \frac{s_y}{s_x}, \qquad b_0 = \bar{y} - b_1 \bar{x}$$
   </div>
+  <p><strong>Interpreting the slope:</strong> $b_1$ is the predicted change in $y$ for each one-unit increase in $x$. <strong>Interpreting the intercept:</strong> $b_0$ is the predicted $y$ when $x = 0$ — only meaningful if $x = 0$ is a plausible value in context.</p>
 
   <div class="example">
-    <div class="example-label">Example — Finding the Regression Line</div>
+    <div class="example-label">Example — Building and interpreting a regression line</div>
     <table class="example-steps">
       <tr><td>Given</td><td>$r=0.8,\; s_y=5,\; s_x=2,\; \bar{x}=10,\; \bar{y}=30$</td><td class="why"></td></tr>
-      <tr><td>$b_1$</td><td>$0.8 \times \dfrac{5}{2} = 2$</td><td class="why">slope</td></tr>
-      <tr><td>$b_0$</td><td>$30 - 2(10) = 10$</td><td class="why">y-intercept</td></tr>
-      <tr><td>Line</td><td>$\hat{y} = 10 + 2x$</td><td class="why">regression equation</td></tr>
-      <tr><td>Predict $x=3$</td><td>$10 + 2(3) = 16$</td><td class="why">plug in $x$</td></tr>
+      <tr><td>$b_1$</td><td>$0.8 \times \dfrac{5}{2} = 2$</td><td class="why">each 1-unit increase in $x$ predicts 2-unit increase in $y$</td></tr>
+      <tr><td>$b_0$</td><td>$30 - 2(10) = 10$</td><td class="why">predicted $y$ when $x=0$</td></tr>
+      <tr><td>Equation</td><td>$\hat{y} = 10 + 2x$</td><td class="why"></td></tr>
+      <tr><td>Predict $x=12$</td><td>$\hat{y} = 10 + 2(12) = 34$</td><td class="why">interpolation: $x=12$ is within the data range</td></tr>
     </table>
   </div>
 
   <h3>Coefficient of Determination $r^2$</h3>
-  <p>$r^2$ is the proportion of the total variation in $y$ explained by the linear relationship with $x$. If $r = 0.8$, then $r^2 = 0.64$: the regression model accounts for 64% of the variability in $y$.</p>
+  <p>$r^2$ is the proportion of the total variation in $y$ that is explained by the linear regression model. The remaining $1 - r^2$ is unexplained (due to other variables or randomness).</p>
   <div class="formula">
     <div class="formula-label">Coefficient of Determination</div>
     $$r^2 = (r)^2, \quad 0 \leq r^2 \leq 1$$
   </div>
+  <p>If $r = 0.8$, then $r^2 = 0.64$: the regression model explains 64% of the variability in $y$. The remaining 36% is due to factors not captured by $x$.</p>
 
-  <h3>Residuals and Regression Assumptions</h3>
-  <p>A <strong>residual</strong> is $e_i = y_i - \hat{y}_i$. The regression model assumes: linearity, independence, constant variance (homoscedasticity), and normally distributed residuals. Always plot residuals to check assumptions.</p>
+  <h3>Residuals and Model Assumptions</h3>
+  <p>A <strong>residual</strong> is the vertical distance between an observed point and the regression line: $e_i = y_i - \hat{y}_i$. The sum of all residuals is always zero for least-squares regression.</p>
+  <p><strong>Always plot residuals</strong> (vs. $x$ or vs. fitted values) to check the four assumptions of simple linear regression:</p>
+  <ol>
+    <li><strong>Linearity</strong> — the relationship is actually linear (residual plot should show no curved pattern).</li>
+    <li><strong>Independence</strong> — observations are independent of each other.</li>
+    <li><strong>Constant variance (homoscedasticity)</strong> — residual spread is the same for all $x$ values.</li>
+    <li><strong>Normality</strong> — residuals are approximately normally distributed.</li>
+  </ol>
+
+  <h3>Extrapolation — A Critical Warning</h3>
+  <p>Using the regression line to predict $y$ for $x$ values <em>outside</em> the range of the data is called <strong>extrapolation</strong>. The linear relationship observed in the data may not hold beyond that range, making extrapolated predictions unreliable or meaningless. Always state whether a prediction involves interpolation (safe) or extrapolation (risky).</p>
 
   <div class="example">
-    <div class="example-label">Example — Prediction</div>
+    <div class="example-label">Example — Residual calculation</div>
     <table class="example-steps">
-      <tr><td>Line</td><td>$\hat{y} = 2x + 5$</td><td class="why">given regression equation</td></tr>
-      <tr><td>Predict</td><td>$\hat{y} = 2(3) + 5 = 6 + 5 = 11$</td><td class="why">substitute $x = 3$</td></tr>
+      <tr><td>Regression line</td><td>$\hat{y} = 10 + 2x$</td><td class="why"></td></tr>
+      <tr><td>Observed point</td><td>$(x=5, y=22)$</td><td class="why"></td></tr>
+      <tr><td>Predicted</td><td>$\hat{y} = 10 + 2(5) = 20$</td><td class="why"></td></tr>
+      <tr><td>Residual</td><td>$e = 22 - 20 = +2$</td><td class="why">positive: actual is 2 above the line</td></tr>
     </table>
   </div>
 </section>
