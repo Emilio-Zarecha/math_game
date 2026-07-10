@@ -44,6 +44,12 @@
     .back { display:inline-block; margin-top:36px; padding:10px 24px; background:var(--accent); color:#fff; border-radius:8px; text-decoration:none; font-size:0.9rem; font-weight:600; }
     .back:hover { opacity:0.85; }
     @media (max-width:600px) { nav ol { grid-template-columns:1fr; } section { padding:24px 20px; } .example-step { flex-direction:column; gap:2px; } }
+    .interactive { background:var(--panel); border:1px solid var(--border); border-left:3px solid var(--accent); border-radius:8px; padding:16px 20px; margin:16px 0; display:flex; flex-direction:column; align-items:center; gap:12px; user-select:none; -webkit-user-select:none; }
+    .interactive .int-label { font-size:0.7rem; letter-spacing:.14em; text-transform:uppercase; color:var(--hint); align-self:flex-start; }
+    .angle-readout { display:grid; grid-template-columns:auto auto auto auto; column-gap:16px; row-gap:6px; align-items:baseline; }
+    .readout-label { font-size:0.78rem; color:var(--muted); }
+    .readout-val { font-size:0.95rem; font-weight:700; color:var(--hint); min-width:72px; }
+    #angle-canvas { cursor:crosshair; border-radius:6px; display:block; touch-action:none; }
   </style>
 </head>
 <body>
@@ -87,6 +93,17 @@
       <span class="key">Radians</span> measure angles by arc length on the unit circle:
       a full rotation is $2\pi$ radians.
     </p>
+
+    <div class="interactive">
+      <div class="int-label">Interactive — click or drag to explore</div>
+      <canvas id="angle-canvas" width="280" height="280"></canvas>
+      <div class="angle-readout">
+        <span class="readout-label">Degrees</span><span class="readout-val" id="readout-deg">0.0°</span>
+        <span class="readout-label">Radians</span><span class="readout-val" id="readout-rad">0</span>
+        <span class="readout-label">cos&thinsp;θ</span><span class="readout-val" id="readout-cos">1.000</span>
+        <span class="readout-label">sin&thinsp;θ</span><span class="readout-val" id="readout-sin">0.000</span>
+      </div>
+    </div>
 
     <div class="formula">
       <div class="label">Degree–Radian conversion</div>
@@ -544,5 +561,220 @@
   <a class="back" href="index.html">Play Now →</a>
 
 </div>
+
+<script>
+(function () {
+  var canvas = document.getElementById('angle-canvas');
+  if (!canvas) return;
+  var ctx = canvas.getContext('2d');
+  var W = canvas.width, H = canvas.height;
+  var CX = W / 2, CY = H / 2, R = Math.round(W * 0.38);
+
+  var C = {
+    panel:  '#1c1c35',
+    muted:  '#7070a0',
+    accent: '#5c8aff',
+    hint:   '#ffb830',
+    correct:'#3ecf8e',
+  };
+
+  var NICE = [
+    [0,                '0'],
+    [Math.PI / 6,      'π/6'],
+    [Math.PI / 4,      'π/4'],
+    [Math.PI / 3,      'π/3'],
+    [Math.PI / 2,      'π/2'],
+    [2 * Math.PI / 3,  '2π/3'],
+    [3 * Math.PI / 4,  '3π/4'],
+    [5 * Math.PI / 6,  '5π/6'],
+    [Math.PI,          'π'],
+    [7 * Math.PI / 6,  '7π/6'],
+    [5 * Math.PI / 4,  '5π/4'],
+    [4 * Math.PI / 3,  '4π/3'],
+    [3 * Math.PI / 2,  '3π/2'],
+    [5 * Math.PI / 3,  '5π/3'],
+    [7 * Math.PI / 4,  '7π/4'],
+    [11 * Math.PI / 6, '11π/6'],
+    [2 * Math.PI,      '2π'],
+  ];
+
+  function niceRad(t) {
+    for (var i = 0; i < NICE.length; i++) {
+      if (Math.abs(t - NICE[i][0]) < 0.028) return NICE[i][1];
+    }
+    return t.toFixed(3) + ' rad';
+  }
+
+  var theta = 0;
+  var dragging = false;
+
+  function getAngle(e) {
+    var rect = canvas.getBoundingClientRect();
+    var sx = W / rect.width, sy = H / rect.height;
+    var src = e.touches ? e.touches[0] : e;
+    var x = (src.clientX - rect.left) * sx - CX;
+    var y = -((src.clientY - rect.top) * sy - CY); // flip y to math convention
+    var a = Math.atan2(y, x);
+    return a < 0 ? a + 2 * Math.PI : a;
+  }
+
+  function setEl(id, text) {
+    var el = document.getElementById(id);
+    if (el) el.textContent = text;
+  }
+
+  function draw() {
+    ctx.clearRect(0, 0, W, H);
+
+    // Background
+    ctx.fillStyle = C.panel;
+    ctx.fillRect(0, 0, W, H);
+
+    var px = CX + R * Math.cos(theta);
+    var py = CY - R * Math.sin(theta);  // canvas y flipped
+
+    // Dashed axes
+    ctx.save();
+    ctx.strokeStyle = C.muted;
+    ctx.lineWidth = 1;
+    ctx.globalAlpha = 0.45;
+    ctx.setLineDash([4, 4]);
+    ctx.beginPath();
+    ctx.moveTo(14, CY); ctx.lineTo(W - 14, CY);
+    ctx.moveTo(CX, 14); ctx.lineTo(CX, H - 14);
+    ctx.stroke();
+    ctx.restore();
+
+    // Unit circle
+    ctx.strokeStyle = C.muted;
+    ctx.lineWidth = 1.5;
+    ctx.beginPath();
+    ctx.arc(CX, CY, R, 0, 2 * Math.PI);
+    ctx.stroke();
+
+    // Sector fill and arc (canvas angles go CW, math angles go CCW, so negate)
+    if (theta > 0.005) {
+      ctx.save();
+      ctx.globalAlpha = 0.14;
+      ctx.fillStyle = C.accent;
+      ctx.beginPath();
+      ctx.moveTo(CX, CY);
+      ctx.arc(CX, CY, R, 0, -theta, true); // anticlockwise on canvas = CCW on screen
+      ctx.closePath();
+      ctx.fill();
+      ctx.restore();
+
+      ctx.strokeStyle = C.accent;
+      ctx.lineWidth = 2.5;
+      ctx.beginPath();
+      ctx.arc(CX, CY, R, 0, -theta, true);
+      ctx.stroke();
+    }
+
+    // Initial ray
+    ctx.strokeStyle = C.muted;
+    ctx.lineWidth = 1.5;
+    ctx.beginPath();
+    ctx.moveTo(CX, CY);
+    ctx.lineTo(CX + R, CY);
+    ctx.stroke();
+
+    // Radius line to point
+    ctx.strokeStyle = C.hint;
+    ctx.lineWidth = 2;
+    ctx.beginPath();
+    ctx.moveTo(CX, CY);
+    ctx.lineTo(px, py);
+    ctx.stroke();
+
+    // Coordinate projection lines (dashed green)
+    var cosTh = Math.cos(theta), sinTh = Math.sin(theta);
+    if (Math.abs(sinTh) > 0.05 && Math.abs(cosTh) > 0.05) {
+      ctx.save();
+      ctx.strokeStyle = C.correct;
+      ctx.lineWidth = 1;
+      ctx.globalAlpha = 0.4;
+      ctx.setLineDash([3, 4]);
+      ctx.beginPath();
+      ctx.moveTo(px, CY); ctx.lineTo(px, py);   // vertical drop to x-axis
+      ctx.moveTo(CX, py); ctx.lineTo(px, py);   // horizontal from y-axis
+      ctx.stroke();
+      ctx.restore();
+    }
+
+    // θ label inside arc
+    if (theta > 0.12) {
+      var arcR = Math.max(14, Math.min(28, R * 0.28));
+      var midA = theta / 2;
+      ctx.fillStyle = C.accent;
+      ctx.font = 'bold italic 13px system-ui, sans-serif';
+      ctx.textAlign = 'center';
+      ctx.textBaseline = 'middle';
+      ctx.fillText('θ', CX + arcR * Math.cos(midA), CY - arcR * Math.sin(midA));
+    }
+
+    // Axis labels
+    ctx.fillStyle = C.muted;
+    ctx.font = '11px system-ui, sans-serif';
+    ctx.textBaseline = 'middle';
+    ctx.textAlign = 'left';  ctx.fillText('0',    CX + R + 6,  CY);
+    ctx.textAlign = 'right'; ctx.fillText('π',    CX - R - 6,  CY);
+    ctx.textAlign = 'center';
+    ctx.textBaseline = 'bottom'; ctx.fillText('π/2',  CX, CY - R - 5);
+    ctx.textBaseline = 'top';    ctx.fillText('3π/2', CX, CY + R + 5);
+
+    // cos θ label on x-axis projection
+    if (theta > 0.18 && Math.abs(sinTh) > 0.12) {
+      ctx.fillStyle = C.correct;
+      ctx.font = '10px system-ui, sans-serif';
+      ctx.textAlign = 'center';
+      ctx.textBaseline = sinTh > 0 ? 'top' : 'bottom';
+      ctx.fillText('cos θ', px, CY + (sinTh > 0 ? 3 : -3));
+    }
+    // sin θ label on y-axis projection
+    if (theta > 0.18 && Math.abs(cosTh) > 0.12) {
+      ctx.fillStyle = C.correct;
+      ctx.font = '10px system-ui, sans-serif';
+      ctx.textBaseline = 'middle';
+      ctx.textAlign = cosTh > 0 ? 'left' : 'right';
+      ctx.fillText('sin θ', CX + (cosTh > 0 ? 4 : -4), py);
+    }
+
+    // Handle dot
+    ctx.fillStyle = C.hint;
+    ctx.beginPath();
+    ctx.arc(px, py, 7, 0, 2 * Math.PI);
+    ctx.fill();
+    ctx.strokeStyle = '#ffffff';
+    ctx.lineWidth = 1.5;
+    ctx.stroke();
+
+    // Update text readouts
+    var deg = theta * 180 / Math.PI;
+    setEl('readout-deg', deg.toFixed(1) + '°');
+    setEl('readout-rad', niceRad(theta));
+    setEl('readout-cos', cosTh.toFixed(3));
+    setEl('readout-sin', sinTh.toFixed(3));
+  }
+
+  canvas.addEventListener('mousedown', function (e) {
+    dragging = true; theta = getAngle(e); draw();
+  });
+  canvas.addEventListener('mousemove', function (e) {
+    if (dragging) { theta = getAngle(e); draw(); }
+  });
+  window.addEventListener('mouseup', function () { dragging = false; });
+  canvas.addEventListener('touchstart', function (e) {
+    e.preventDefault(); dragging = true; theta = getAngle(e); draw();
+  }, { passive: false });
+  canvas.addEventListener('touchmove', function (e) {
+    e.preventDefault(); if (dragging) { theta = getAngle(e); draw(); }
+  }, { passive: false });
+  window.addEventListener('touchend', function () { dragging = false; });
+
+  draw();
+})();
+</script>
+
 </body>
 </html>
