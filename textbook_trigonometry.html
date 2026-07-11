@@ -50,6 +50,11 @@
     .readout-label { font-size:0.78rem; color:var(--muted); }
     .readout-val { font-size:0.95rem; font-weight:700; color:var(--hint); min-width:72px; }
     #angle-canvas { cursor:crosshair; border-radius:6px; display:block; touch-action:none; }
+    .toc-back { text-align: right; margin-top: 1.5rem; padding-top: 0.9rem;
+                border-top: 1px solid var(--panel, var(--border)); }
+    .toc-back a { color: var(--muted); font-size: 0.82rem; text-decoration: none;
+                  letter-spacing: 0.03em; }
+    .toc-back a:hover { color: var(--accent); }
   </style>
 </head>
 <body>
@@ -64,7 +69,7 @@
     (CC BY 4.0).
   </p>
 
-  <nav>
+  <nav id="toc">
     <h2>Contents</h2>
     <ol>
       <li><a href="#angles">Angles &amp; Measurement</a></li>
@@ -124,6 +129,7 @@
       <div class="label">Worked example — arc length with $r = 5$, $\theta = \pi/3$</div>
       <div class="example-step"><span>$s = 5 \cdot \dfrac{\pi}{3} = \dfrac{5\pi}{3}$</span><span class="why">$s = r\theta$</span></div>
     </div>
+    <p class="toc-back"><a href="#toc">↑ Table of Contents</a></p>
   </section>
 
   <!-- ── 2. The Unit Circle ──────────────────────────────────────────── -->
@@ -195,6 +201,7 @@
       <div class="example-step"><span>$\tan\tfrac{5\pi}{6} = \dfrac{1/2}{-\sqrt{3}/2} = -\dfrac{1}{\sqrt{3}} = -\dfrac{\sqrt{3}}{3}$</span><span class="why">quotient identity; negative in Q2</span></div>
       <div class="example-step"><span>$\csc = 2$, $\sec = -\dfrac{2\sqrt{3}}{3}$, $\cot = -\sqrt{3}$</span><span class="why">reciprocals of sin, cos, tan respectively</span></div>
     </div>
+    <p class="toc-back"><a href="#toc">↑ Table of Contents</a></p>
   </section>
 
   <!-- ── 3. Right Triangle Trig ─────────────────────────────────────── -->
@@ -226,6 +233,7 @@
       <div class="label">Worked example — hyp = 10, angle = 30°. Find the adjacent side.</div>
       <div class="example-step"><span>$\text{adj} = 10\cos(30°) = 10 \cdot \dfrac{\sqrt{3}}{2} = 5\sqrt{3}$</span><span class="why">$\cos\theta = \text{adj}/\text{hyp}$</span></div>
     </div>
+    <p class="toc-back"><a href="#toc">↑ Table of Contents</a></p>
   </section>
 
   <!-- ── 4. Trig Functions of Any Angle ─────────────────────────────── -->
@@ -255,6 +263,7 @@
       <div class="example-step"><span>$\sin^2\theta = 1 - \cos^2\theta = 1 - 16/25 = 9/25$</span><span class="why">Pythagorean identity</span></div>
       <div class="example-step"><span>$\sin\theta = +3/5$</span><span class="why">positive in Q2</span></div>
     </div>
+    <p class="toc-back"><a href="#toc">↑ Table of Contents</a></p>
   </section>
 
   <!-- ── 5. Graphs of Trig Functions ───────────────────────────────── -->
@@ -313,6 +322,7 @@
       <div class="example-step"><span>Minimum at $x = \pi$, $y = -2$</span><span class="why">three-quarter period after start; $1 - 3 = -2$</span></div>
       <div class="example-step"><span>Cycle ends at $x = 5\pi/4$, $y = 1$</span><span class="why">one full period after start</span></div>
     </div>
+    <p class="toc-back"><a href="#toc">↑ Table of Contents</a></p>
   </section>
 
   <!-- ── 6. Inverse Trig Functions ──────────────────────────────────── -->
@@ -344,6 +354,7 @@
       <div class="label">Worked example — $\arctan(1)$</div>
       <div class="example-step"><span>$\tan(45°) = 1$, so $\arctan(1) = 45° = \pi/4$</span><span class="why">$\pi/4 \in (-\pi/2, \pi/2)$</span></div>
     </div>
+    <p class="toc-back"><a href="#toc">↑ Table of Contents</a></p>
   </section>
 
   <!-- ── 7. Fundamental Identities ──────────────────────────────────── -->
@@ -381,6 +392,7 @@
       <div class="label">Worked example — $\csc(30°)$</div>
       <div class="example-step"><span>$\csc(30°) = \dfrac{1}{\sin(30°)} = \dfrac{1}{1/2} = 2$</span><span class="why">reciprocal identity</span></div>
     </div>
+    <p class="toc-back"><a href="#toc">↑ Table of Contents</a></p>
   </section>
 
   <!-- ── 8. Sum & Difference Formulas ───────────────────────────────── -->
@@ -411,6 +423,7 @@
       <div class="label">Worked example — $\cos(90°)$ via $\cos(45° + 45°)$</div>
       <div class="example-step"><span>$= \cos(45°)\cos(45°) - \sin(45°)\sin(45°) = \tfrac{1}{2} - \tfrac{1}{2} = 0$</span><span class="why">cosine sum formula</span></div>
     </div>
+    <p class="toc-back"><a href="#toc">↑ Table of Contents</a></p>
   </section>
 
   <!-- ── 9. Double & Half-Angle Formulas ────────────────────────────── -->
@@ -446,6 +459,7 @@
       <div class="example-step"><span>$\sin\!\left(\dfrac{\pi}{8}\right) = \sqrt{\dfrac{1 - \cos(\pi/4)}{2}} = \sqrt{\dfrac{1 - \sqrt{2}/2}{2}}$</span><span class="why">half-angle; $\pi/8$ is in Q1, sign $+$</span></div>
       <div class="example-step"><span>$= \sqrt{\dfrac{2 - \sqrt{2}}{4}} = \dfrac{\sqrt{2 - \sqrt{2}}}{2}$</span><span class="why">simplify</span></div>
     </div>
+    <p class="toc-back"><a href="#toc">↑ Table of Contents</a></p>
   </section>
 
   <!-- ── 10. Solving Trig Equations ─────────────────────────────────── -->
@@ -492,6 +506,7 @@
       <div class="example-step"><span>Tangent is positive in Q1 and Q3, so $2x = \pi/3 + n\pi$</span><span class="why">period of tangent is $\pi$; add $n\pi$ for all solutions</span></div>
       <div class="example-step"><span>$x = \dfrac{\pi}{6} + \dfrac{n\pi}{2}$ for any integer $n$</span><span class="why">divide both sides by 2</span></div>
     </div>
+    <p class="toc-back"><a href="#toc">↑ Table of Contents</a></p>
   </section>
 
   <!-- ── 11. Law of Sines ───────────────────────────────────────────── -->
@@ -538,6 +553,7 @@
       <div class="example-step"><span>Triangle 1: $C_1 = 180° - 30° - 56.4° = 93.6°$ ✓</span><span class="why">angles sum to 180°; positive so valid</span></div>
       <div class="example-step"><span>Triangle 2: $C_2 = 180° - 30° - 123.6° = 26.4°$ ✓</span><span class="why">also positive, so second triangle is valid</span></div>
     </div>
+    <p class="toc-back"><a href="#toc">↑ Table of Contents</a></p>
   </section>
 
   <!-- ── 12. Law of Cosines ─────────────────────────────────────────── -->
@@ -621,6 +637,7 @@
       <div class="example-step"><span>$\cos C = \dfrac{64 + 36 - 49}{2(8)(6)} = \dfrac{51}{96} = \dfrac{17}{32}$</span><span class="why">rearranged form</span></div>
       <div class="example-step"><span>$C = \arccos\!\left(\dfrac{17}{32}\right) \approx 57.9°$</span><span class="why">apply inverse cosine</span></div>
     </div>
+    <p class="toc-back"><a href="#toc">↑ Table of Contents</a></p>
   </section>
 
   <a class="back" href="index.html">Play Now →</a>

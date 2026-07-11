@@ -44,6 +44,11 @@
     .back { display:inline-block; margin-top:36px; padding:10px 24px; background:var(--accent); color:#fff; border-radius:8px; text-decoration:none; font-size:0.9rem; font-weight:600; }
     .back:hover { opacity:0.85; }
     @media (max-width:600px) { nav ol { grid-template-columns:1fr; } section { padding:24px 20px; } .example-step { flex-direction:column; gap:2px; } }
+    .toc-back { text-align: right; margin-top: 1.5rem; padding-top: 0.9rem;
+                border-top: 1px solid var(--panel, var(--border)); }
+    .toc-back a { color: var(--muted); font-size: 0.82rem; text-decoration: none;
+                  letter-spacing: 0.03em; }
+    .toc-back a:hover { color: var(--accent); }
   </style>
 </head>
 <body>
@@ -58,7 +63,7 @@
     (CC BY 4.0).
   </p>
 
-  <nav>
+  <nav id="toc">
     <h2>Contents</h2>
     <ol>
       <li><a href="#whole">Whole Numbers &amp; Place Value</a></li>
@@ -141,6 +146,7 @@
       <div class="example-step"><span>$= 3 + 2$</span><span class="why">divide: $12 \div 6=2$</span></div>
       <div class="example-step"><span>$= 5$</span><span class="why">add</span></div>
     </div>
+    <p class="toc-back"><a href="#toc">↑ Table of Contents</a></p>
   </section>
 
   <!-- ── 2. Integers & Absolute Value ───────────────────────────────── -->
@@ -201,6 +207,7 @@
       <div class="example-step"><span>$24 \times (-1) = -24$</span><span class="why">positive $\times$ negative $=$ negative</span></div>
       <div class="example-step"><span>Three negative factors (odd count) $\Rightarrow$ negative result</span><span class="why">odd number of negatives $\to$ $-$; even $\to$ $+$</span></div>
     </div>
+    <p class="toc-back"><a href="#toc">↑ Table of Contents</a></p>
   </section>
 
   <!-- ── 3. Fractions ───────────────────────────────────────────────── -->
@@ -273,6 +280,7 @@
       <div class="example-step"><span>$\dfrac{11}{12} \div \dfrac{5}{12} = \dfrac{11}{12} \times \dfrac{12}{5} = \dfrac{11}{5}$</span><span class="why">KCF: flip $\dfrac{5}{12}$; the 12s cancel</span></div>
       <div class="example-step"><span>$= 2\dfrac{1}{5}$</span><span class="why">$11 = 2 \times 5 + 1$</span></div>
     </div>
+    <p class="toc-back"><a href="#toc">↑ Table of Contents</a></p>
   </section>
 
   <!-- ── 4. Decimals ────────────────────────────────────────────────── -->
@@ -311,6 +319,7 @@
       <div class="example-step"><span>let $x = 0.\overline{3}$; then $10x = 3.\overline{3}$</span><span class="why">multiply by 10 to shift one cycle</span></div>
       <div class="example-step"><span>$10x - x = 3 \Rightarrow 9x = 3 \Rightarrow x = \dfrac{1}{3}$</span><span class="why">subtract; solve</span></div>
     </div>
+    <p class="toc-back"><a href="#toc">↑ Table of Contents</a></p>
   </section>
 
   <!-- ── 5. Ratios & Proportions ────────────────────────────────────── -->
@@ -352,6 +361,7 @@
       <div class="example-step"><span>$\$2.50 \div 5 = \$0.50$ per apple</span><span class="why">divide total cost by quantity</span></div>
       <div class="example-step"><span>$8 \text{ apples} = 8 \times \$0.50 = \$4.00$</span><span class="why">multiply unit rate by quantity</span></div>
     </div>
+    <p class="toc-back"><a href="#toc">↑ Table of Contents</a></p>
   </section>
 
   <!-- ── 6. Percents ────────────────────────────────────────────────── -->
@@ -387,6 +397,7 @@
       <div class="example-step"><span>discount $= 0.20 \times 85 = 17$</span><span class="why">find the discount amount</span></div>
       <div class="example-step"><span>price $= 85 - 17 = \$68$</span><span class="why">subtract discount from original</span></div>
     </div>
+    <p class="toc-back"><a href="#toc">↑ Table of Contents</a></p>
   </section>
 
   <!-- ── 7. Exponents & Roots ───────────────────────────────────────── -->
@@ -461,6 +472,7 @@
       <div class="example-step"><span>$= \dfrac{16}{4} \cdot x^{12-2} \cdot y^{-8-3} = 4x^{10}y^{-11}$</span><span class="why">quotient rule: subtract exponents; simplify coefficient</span></div>
       <div class="example-step"><span>$= \dfrac{4x^{10}}{y^{11}}$</span><span class="why">move negative exponent to denominator: $y^{-11} = \dfrac{1}{y^{11}}$</span></div>
     </div>
+    <p class="toc-back"><a href="#toc">↑ Table of Contents</a></p>
   </section>
 
   <!-- ── 8. Number Theory ───────────────────────────────────────────── -->
@@ -499,6 +511,7 @@
       <div class="example-step"><span>$\text{GCF} = 2^2 \times 3 = 12$</span><span class="why">lowest powers of common primes</span></div>
       <div class="example-step"><span>$\text{LCM} = 2^3 \times 3^2 = 72$</span><span class="why">highest powers of all primes</span></div>
     </div>
+    <p class="toc-back"><a href="#toc">↑ Table of Contents</a></p>
   </section>
 
   <!-- ── 9. Scientific Notation ─────────────────────────────────────── -->
@@ -539,6 +552,7 @@
       <div class="label">Worked example — write $0.00052$ in scientific notation</div>
       <div class="example-step"><span>$= 5.2 \times 10^{-4}$</span><span class="why">move decimal 4 places right; exponent $= -4$</span></div>
     </div>
+    <p class="toc-back"><a href="#toc">↑ Table of Contents</a></p>
   </section>
 
   <!-- ── 10. Factorials & Counting ──────────────────────────────────── -->
@@ -579,6 +593,7 @@
       <div class="label">Worked example — $4! + 3!$</div>
       <div class="example-step"><span>$24 + 6 = 30$</span><span class="why">$4!=24$, $3!=6$; add</span></div>
     </div>
+    <p class="toc-back"><a href="#toc">↑ Table of Contents</a></p>
   </section>
 
   <a class="back" href="index.html">Play Now →</a>

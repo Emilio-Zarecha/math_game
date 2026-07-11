@@ -202,6 +202,11 @@
       section { padding: 24px 20px; }
       .example-step { flex-direction: column; gap: 2px; }
     }
+    .toc-back { text-align: right; margin-top: 1.5rem; padding-top: 0.9rem;
+                border-top: 1px solid var(--panel, var(--border)); }
+    .toc-back a { color: var(--muted); font-size: 0.82rem; text-decoration: none;
+                  letter-spacing: 0.03em; }
+    .toc-back a:hover { color: var(--accent); }
   </style>
 </head>
 <body>
@@ -217,7 +222,7 @@
     (CC BY 4.0).
   </p>
 
-  <nav>
+  <nav id="toc">
     <h2>Contents</h2>
     <ol>
       <li><a href="#realnumbers">Real Numbers &amp; Properties</a></li>
@@ -287,6 +292,7 @@
       <div class="example-step"><span>$= 9 - 10$</span><span class="why">exponent $3^2=9$; multiply $5 \cdot 2=10$</span></div>
       <div class="example-step"><span>$= -1$</span><span class="why">subtract</span></div>
     </div>
+    <p class="toc-back"><a href="#toc">↑ Table of Contents</a></p>
   </section>
 
   <!-- ── 2. Variables & Expressions ─────────────────────────────────── -->
@@ -330,6 +336,7 @@
       <div class="label">Worked example — simplify $5x + 3x - 2x$</div>
       <div class="example-step"><span>$(5 + 3 - 2)x = 6x$</span><span class="why">all terms are like terms; combine coefficients</span></div>
     </div>
+    <p class="toc-back"><a href="#toc">↑ Table of Contents</a></p>
   </section>
 
   <!-- ── 3. Linear Equations ────────────────────────────────────────── -->
@@ -367,6 +374,7 @@
       <div class="example-step"><span>$\dfrac{3x + 2x}{6} = 5$</span><span class="why">LCD = 6; rewrite fractions</span></div>
       <div class="example-step"><span>$5x = 30 \Rightarrow x = 6$</span><span class="why">multiply both sides by 6; divide by 5</span></div>
     </div>
+    <p class="toc-back"><a href="#toc">↑ Table of Contents</a></p>
   </section>
 
   <!-- ── 4. Linear Inequalities ─────────────────────────────────────── -->
@@ -420,6 +428,7 @@
       <div class="example-step"><span>$-4 \leq 2x \leq 4$</span><span class="why">subtract 3 from all three parts</span></div>
       <div class="example-step"><span>$-2 \leq x \leq 2$, i.e., $[-2, 2]$</span><span class="why">divide all three parts by 2</span></div>
     </div>
+    <p class="toc-back"><a href="#toc">↑ Table of Contents</a></p>
   </section>
 
   <!-- ── 5. Graphing Linear Equations ──────────────────────────────── -->
@@ -474,6 +483,7 @@
       <div class="example-step"><span>$4y = -2x + 12$</span><span class="why">subtract $2x$ from both sides</span></div>
       <div class="example-step"><span>$y = -\dfrac{x}{2} + 3$</span><span class="why">divide both sides by 4; slope $= -\frac{1}{2}$, y-int $= 3$</span></div>
     </div>
+    <p class="toc-back"><a href="#toc">↑ Table of Contents</a></p>
   </section>
 
   <!-- ── 6. Systems of Equations ────────────────────────────────────── -->
@@ -525,6 +535,7 @@
       <div class="example-step"><span>$3000 - 12c + 7c = 2400 \Rightarrow -5c = -600$</span><span class="why">distribute; simplify</span></div>
       <div class="example-step"><span>$c = 120$, $\; a = 250 - 120 = 130$</span><span class="why">divide by $-5$; back-substitute</span></div>
     </div>
+    <p class="toc-back"><a href="#toc">↑ Table of Contents</a></p>
   </section>
 
   <!-- ── 7. Polynomials ─────────────────────────────────────────────── -->
@@ -585,6 +596,7 @@
       <div class="example-step"><span>$2x^2 + 8x - 3x - 12$</span><span class="why">First $2x \cdot x$, Outer $2x \cdot 4$, Inner $-3 \cdot x$, Last $-3 \cdot 4$</span></div>
       <div class="example-step"><span>$= 2x^2 + 5x - 12$</span><span class="why">combine like terms</span></div>
     </div>
+    <p class="toc-back"><a href="#toc">↑ Table of Contents</a></p>
   </section>
 
   <!-- ── 8. Factoring ───────────────────────────────────────────────── -->
@@ -625,6 +637,7 @@
       <div class="example-step"><span>$2x(x+3) - 1(x+3)$</span><span class="why">factor by grouping</span></div>
       <div class="example-step"><span>$(2x-1)(x+3)$</span><span class="why">factor out $(x+3)$</span></div>
     </div>
+    <p class="toc-back"><a href="#toc">↑ Table of Contents</a></p>
   </section>
 
   <!-- ── 9. Quadratic Equations ─────────────────────────────────────── -->
@@ -704,6 +717,7 @@
       <div class="example-step"><span>$h(2) = -16(4) + 64(2) + 5$</span><span class="why">substitute $t = 2$</span></div>
       <div class="example-step"><span>$= -64 + 128 + 5 = 69$ feet</span><span class="why">maximum height occurs at the vertex</span></div>
     </div>
+    <p class="toc-back"><a href="#toc">↑ Table of Contents</a></p>
   </section>
 
   <!-- ── 10. Rational Expressions & Equations ──────────────────────── -->
@@ -741,6 +755,7 @@
       <div class="example-step"><span>$x + 2 = 3x - 6$</span><span class="why">distribute</span></div>
       <div class="example-step"><span>$8 = 2x \Rightarrow x = 4$</span><span class="why">solve; check: $\frac{6}{2}=3$ ✓</span></div>
     </div>
+    <p class="toc-back"><a href="#toc">↑ Table of Contents</a></p>
   </section>
 
   <!-- ── 11. Radicals & Rational Exponents ─────────────────────────── -->
@@ -782,6 +797,7 @@
       <div class="example-step"><span>$x = 4^{3/2} = (\sqrt{4})^3$</span><span class="why">raise both sides to the $3/2$ power</span></div>
       <div class="example-step"><span>$= 2^3 = 8$</span><span class="why">$\sqrt{4} = 2$, then cube it</span></div>
     </div>
+    <p class="toc-back"><a href="#toc">↑ Table of Contents</a></p>
   </section>
 
   <!-- ── 12. Absolute Value ─────────────────────────────────────────── -->
@@ -818,6 +834,7 @@
       <div class="example-step"><span>$-4 \leq 2x \leq 6$</span><span class="why">add 1 to all parts</span></div>
       <div class="example-step"><span>$-2 \leq x \leq 3$</span><span class="why">divide by 2; solution is $[-2, 3]$</span></div>
     </div>
+    <p class="toc-back"><a href="#toc">↑ Table of Contents</a></p>
   </section>
 
   <!-- ── 13. Exponentials & Logarithms ─────────────────────────────── -->
@@ -889,6 +906,7 @@
       <div class="example-step"><span>$(x+7)(x-5) = 0 \Rightarrow x = -7$ or $x = 5$</span><span class="why">factor</span></div>
       <div class="example-step"><span>$x = 5$ only</span><span class="why">$x=-7$: $\log_2(-4)$ undefined; $x=5$: $\log_2 8 + \log_2 4 = 3+2 = 5$ ✓</span></div>
     </div>
+    <p class="toc-back"><a href="#toc">↑ Table of Contents</a></p>
   </section>
 
   <!-- ── 14. Functions & Inverses ──────────────────────────────────── -->
@@ -950,6 +968,7 @@
       <div class="example-step"><span>$g(f(x)) = \dfrac{(2x+3)-3}{2} = \dfrac{2x}{2} = x$ ✓</span><span class="why">substitute $f(x)$ into $g$</span></div>
       <div class="example-step"><span>both compositions equal $x$ — confirmed inverses</span><span class="why">both directions must hold</span></div>
     </div>
+    <p class="toc-back"><a href="#toc">↑ Table of Contents</a></p>
   </section>
 
   <a class="back" href="index.html">Play Now →</a>

@@ -59,6 +59,11 @@
     .back-link { display: inline-block; margin-bottom: 1.5rem; color: var(--accent);
                  text-decoration: none; font-size: 0.9rem; }
     .back-link:hover { text-decoration: underline; }
+    .toc-back { text-align: right; margin-top: 1.5rem; padding-top: 0.9rem;
+                border-top: 1px solid var(--panel, var(--border)); }
+    .toc-back a { color: var(--muted); font-size: 0.82rem; text-decoration: none;
+                  letter-spacing: 0.03em; }
+    .toc-back a:hover { color: var(--accent); }
   </style>
 </head>
 <body>
@@ -67,7 +72,7 @@
 <h1>Introductory Statistics</h1>
 <p class="subtitle">Based on <em>OpenStax Introductory Statistics</em> — CC BY 4.0</p>
 
-<nav class="toc">
+<nav class="toc" id="toc">
   <h2>Table of Contents</h2>
   <ol>
     <li><a href="#ch1">Sampling and Data</a></li>
@@ -140,6 +145,7 @@
     <div class="example-label">Example — Identifying Confounding</div>
     <p>Observation: cities with more hospitals have higher death rates. <strong>Conclusion?</strong> Not "hospitals cause death." The confounder is <em>population size</em> — larger cities have both more hospitals and more deaths. Always ask: "What third variable could explain this relationship?"</p>
   </div>
+<p class="toc-back"><a href="#toc">↑ Table of Contents</a></p>
 </section>
 
 <!-- ═══════════════════════════════════════════════════════ CHAPTER 2 -->
@@ -203,6 +209,7 @@
     <li><strong>Categorical / nominal data</strong>: mode only.</li>
     <li><strong>Skew direction clue</strong>: if mean &gt; median, distribution is right-skewed (long tail to the right); if mean &lt; median, left-skewed.</li>
   </ul>
+<p class="toc-back"><a href="#toc">↑ Table of Contents</a></p>
 </section>
 
 <!-- ═══════════════════════════════════════════════════════ CHAPTER 3 -->
@@ -277,6 +284,7 @@
       <tr><td>Process B</td><td>$\bar{x}=20\text{ g},\; s=3\text{ g}$; $CV = 15\%$</td><td class="why">B has smaller $s$ but is 3× more variable relative to its mean</td></tr>
     </table>
   </div>
+<p class="toc-back"><a href="#toc">↑ Table of Contents</a></p>
 </section>
 
 <!-- ═══════════════════════════════════════════════════════ CHAPTER 4 -->
@@ -315,6 +323,7 @@
       <tr><td>Rel. freq.</td><td>$\dfrac{15}{60} = 0.25 = 25\%$</td><td class="why">divide by total</td></tr>
     </table>
   </div>
+<p class="toc-back"><a href="#toc">↑ Table of Contents</a></p>
 </section>
 
 <!-- ═══════════════════════════════════════════════════════ CHAPTER 5 -->
@@ -407,6 +416,7 @@
     </table>
     <p style="margin-top:0.7rem;font-size:0.9rem;color:var(--muted);">The result surprises most people. Because the disease is rare ($P(D)=0.01$), most positives are false alarms. Low prior probability dramatically reduces the posterior probability even with a 95%-sensitive test.</p>
   </div>
+<p class="toc-back"><a href="#toc">↑ Table of Contents</a></p>
 </section>
 
 <!-- ═══════════════════════════════════════════════════════ CHAPTER 6 -->
@@ -476,6 +486,7 @@
       <tr><td></td><td>$\binom{52}{5} = 2{,}598{,}960$ possible hands</td><td class="why">order of cards in your hand doesn't matter → combination</td></tr>
     </table>
   </div>
+<p class="toc-back"><a href="#toc">↑ Table of Contents</a></p>
 </section>
 
 <!-- ═══════════════════════════════════════════════════════ CHAPTER 7 -->
@@ -556,6 +567,7 @@
       <tr><td>$\mu$</td><td>$5(0.7) = 3.5$ made shots on average</td><td class="why">long-run expected value</td></tr>
     </table>
   </div>
+<p class="toc-back"><a href="#toc">↑ Table of Contents</a></p>
 </section>
 
 <!-- ═══════════════════════════════════════════════════════ CHAPTER 8 -->
@@ -618,6 +630,7 @@
       <tr><td>$P$</td><td>$0.8413 - 0.1587 = 0.6826 \approx 68\%$</td><td class="why">confirms the empirical rule for $\pm 1\sigma$</td></tr>
     </table>
   </div>
+<p class="toc-back"><a href="#toc">↑ Table of Contents</a></p>
 </section>
 
 <!-- ═══════════════════════════════════════════════════════ CHAPTER 9 -->
@@ -666,6 +679,7 @@
       <tr><td>$n=100$</td><td>$SE = 10/10 = 1$</td><td class="why">very tight; quadrupling $n$ halved SE each time</td></tr>
     </table>
   </div>
+<p class="toc-back"><a href="#toc">↑ Table of Contents</a></p>
 </section>
 
 <!-- ═══════════════════════════════════════════════════════ CHAPTER 10 -->
@@ -737,6 +751,7 @@
     $$n \geq \left(\frac{z^* \cdot \sigma}{ME}\right)^2$$
   </div>
   <p>Always round <em>up</em>. If $\sigma$ is unknown, use a pilot study, prior research, or the conservative estimate $\sigma \approx \text{range}/4$.</p>
+<p class="toc-back"><a href="#toc">↑ Table of Contents</a></p>
 </section>
 
 <!-- ═══════════════════════════════════════════════════════ CHAPTER 11 -->
@@ -828,6 +843,7 @@
       <tr><td>Decision</td><td>$\chi^2 = 3.4$ with $df=5$; critical value at $\alpha=0.05$ is $11.07$ → fail to reject</td><td class="why">no significant evidence the die is unfair</td></tr>
     </table>
   </div>
+<p class="toc-back"><a href="#toc">↑ Table of Contents</a></p>
 </section>
 
 <!-- ═══════════════════════════════════════════════════════ CHAPTER 12 -->
@@ -916,6 +932,7 @@
       <tr><td>Residual</td><td>$e = 22 - 20 = +2$</td><td class="why">positive: actual is 2 above the line</td></tr>
     </table>
   </div>
+<p class="toc-back"><a href="#toc">↑ Table of Contents</a></p>
 </section>
 
 <p class="attribution">

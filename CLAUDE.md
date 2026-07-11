@@ -115,6 +115,34 @@ All new puzzles must include the `"chapter"` field (integer).
 - The game's textbook link bar uses `textbook_TOPIC.html#ch{puzzle.chapter}` to deep-link
 - Do NOT use `id="chapter-1"` or other variants
 
+**TOC navigation (required in every textbook):**
+
+1. The `<nav>` element that holds the table of contents **must** have `id="toc"`:
+   ```html
+   <nav class="toc" id="toc">
+   ```
+
+2. Every chapter/section **must** end with a "↑ Table of Contents" back-link, placed immediately before `</section>`:
+   ```html
+   <p class="toc-back"><a href="#toc">↑ Table of Contents</a></p>
+   </section>
+   ```
+
+3. Add this CSS (once per file, inside `<style>`):
+   ```css
+   .toc-back { text-align: right; margin-top: 1.5rem; padding-top: 0.9rem;
+               border-top: 1px solid var(--panel, var(--border)); }
+   .toc-back a { color: var(--muted); font-size: 0.82rem; text-decoration: none;
+                 letter-spacing: 0.03em; }
+   .toc-back a:hover { color: var(--accent); }
+   ```
+
+**Validation:** Run this to confirm every section has a matching back-link:
+```python
+body = src.split('</style>', 1)[1]
+assert body.count('</section>') == body.count('toc-back'), "sections/links mismatch"
+```
+
 **Standard CSS classes:**
 | Class | Use |
 |---|---|

@@ -50,6 +50,11 @@
     .readout-label { font-size:0.78rem; color:var(--muted); }
     .readout-val { font-size:0.95rem; font-weight:700; color:var(--hint); min-width:72px; }
     #angle-canvas { cursor:crosshair; border-radius:6px; display:block; touch-action:none; }
+    .toc-back { text-align: right; margin-top: 1.5rem; padding-top: 0.9rem;
+                border-top: 1px solid var(--panel, var(--border)); }
+    .toc-back a { color: var(--muted); font-size: 0.82rem; text-decoration: none;
+                  letter-spacing: 0.03em; }
+    .toc-back a:hover { color: var(--accent); }
   </style>
 </head>
 <body>
@@ -64,7 +69,7 @@
     (CC BY 4.0).
   </p>
 
-  <nav>
+  <nav id="toc">
     <h2>Contents</h2>
     <ol>
       <li><a href="#limits">Limits &amp; Continuity</a></li>
@@ -148,6 +153,7 @@
       <div class="example-step"><span>Degrees equal (both 2); limit = ratio of leading coefficients</span><span class="why">degree rule for rational functions</span></div>
       <div class="example-step"><span>$= \dfrac{3}{5}$</span><span class="why">divide every term by $x^2$ and let $x\to\infty$</span></div>
     </div>
+    <p class="toc-back"><a href="#toc">↑ Table of Contents</a></p>
   </section>
 
   <!-- ── 2. The Derivative — Definition ─────────────────────────────── -->
@@ -207,6 +213,7 @@
       <div class="example-step"><span>$f'(x) = 2x$; $f'(1) = 2$</span><span class="why">slope of tangent at $x = 1$</span></div>
       <div class="example-step"><span>$y - 1 = 2(x - 1) \Rightarrow y = 2x - 1$</span><span class="why">point-slope form</span></div>
     </div>
+    <p class="toc-back"><a href="#toc">↑ Table of Contents</a></p>
   </section>
 
   <!-- ── 3. Basic Differentiation Rules ────────────────────────────── -->
@@ -405,6 +412,7 @@
       <div class="example-step"><span>$\dfrac{d}{dx}[-3\ln x] = -\dfrac{3}{x}$</span><span class="why">constant multiple rule</span></div>
       <div class="example-step"><span>$h'(x) = e^x + 5\cos x - \dfrac{3}{x}$</span><span class="why">sum rule</span></div>
     </div>
+    <p class="toc-back"><a href="#toc">↑ Table of Contents</a></p>
   </section>
 
   <!-- ── 4. Product, Quotient & Chain Rules ─────────────────────────── -->
@@ -603,6 +611,7 @@
       <div class="example-step"><span>$u' = 2x$; $v' = e^{x^2} \cdot 2x$ (chain rule on $v$)</span><span class="why">chain rule needed for $e^{x^2}$</span></div>
       <div class="example-step"><span>$= 2x \cdot e^{x^2} + x^2 \cdot 2xe^{x^2} = 2xe^{x^2}(1 + x^2)$</span><span class="why">$u'v + uv'$; factor</span></div>
     </div>
+    <p class="toc-back"><a href="#toc">↑ Table of Contents</a></p>
   </section>
 
   <!-- ── 5. Implicit Differentiation ───────────────────────────────── -->
@@ -659,6 +668,7 @@
       <div class="example-step"><span>$\dfrac{dy}{dx} = \dfrac{1}{\sec^2 y} = \cos^2 y$</span><span class="why">isolate $dy/dx$</span></div>
       <div class="example-step"><span>$= \dfrac{1}{1 + \tan^2 y} = \dfrac{1}{1+x^2}$</span><span class="why">identity $\sec^2 y = 1 + \tan^2 y$; substitute $\tan y = x$</span></div>
     </div>
+    <p class="toc-back"><a href="#toc">↑ Table of Contents</a></p>
   </section>
 
   <!-- ── 6. Related Rates ───────────────────────────────────────────── -->
@@ -700,6 +710,7 @@
       <div class="example-step"><span>When $x = 6$: $y = \sqrt{100 - 36} = 8$</span><span class="why">find $y$ at the given instant</span></div>
       <div class="example-step"><span>$2(6)(2) + 2(8)\dfrac{dy}{dt} = 0 \Rightarrow \dfrac{dy}{dt} = -\dfrac{3}{2}\;\text{ft/s}$</span><span class="why">substitute; negative means the top is sliding down</span></div>
     </div>
+    <p class="toc-back"><a href="#toc">↑ Table of Contents</a></p>
   </section>
 
   <!-- ── 7. Applications of Derivatives ────────────────────────────── -->
@@ -735,6 +746,7 @@
       <div class="example-step"><span>$\dfrac{f(3)-f(1)}{3-1} = \dfrac{9-1}{2} = 4$</span><span class="why">average rate of change</span></div>
       <div class="example-step"><span>$f'(c) = 2c = 4 \Rightarrow c = 2$</span><span class="why">MVT guarantees $c = 2 \in (1,3)$</span></div>
     </div>
+    <p class="toc-back"><a href="#toc">↑ Table of Contents</a></p>
   </section>
 
   <!-- ── 8. The Definite Integral ───────────────────────────────────── -->
@@ -759,6 +771,7 @@
       <div class="label">Worked example — $\displaystyle\int_0^1 x^2\,dx$</div>
       <div class="example-step"><span>$= \left[\dfrac{x^3}{3}\right]_0^1 = \dfrac{1}{3} - 0 = \dfrac{1}{3}$</span><span class="why">antiderivative, then evaluate at bounds</span></div>
     </div>
+    <p class="toc-back"><a href="#toc">↑ Table of Contents</a></p>
   </section>
 
   <!-- ── 9. Fundamental Theorem of Calculus ─────────────────────────── -->
@@ -822,6 +835,7 @@
       <div class="example-step"><span>Antiderivative of $\dfrac{1}{x}$ is $\ln|x|$</span><span class="why">from the antiderivative table</span></div>
       <div class="example-step"><span>$= \big[\ln x\big]_1^e = \ln e - \ln 1 = 1 - 0 = 1$</span><span class="why">$\ln e = 1$; $\ln 1 = 0$</span></div>
     </div>
+    <p class="toc-back"><a href="#toc">↑ Table of Contents</a></p>
   </section>
 
   <!-- ── 10. Integration Techniques ────────────────────────────────── -->
@@ -862,6 +876,7 @@
       <div class="label">Worked example — $\displaystyle\int_1^{\infty} x^{-2}\,dx$ (improper integral)</div>
       <div class="example-step"><span>$= \lim_{b\to\infty}\left[-x^{-1}\right]_1^b = \lim_{b\to\infty}\!\left(-\dfrac{1}{b} + 1\right) = 1$</span><span class="why">use a limit for the infinite bound</span></div>
     </div>
+    <p class="toc-back"><a href="#toc">↑ Table of Contents</a></p>
   </section>
 
   <!-- ── 11. Applications of Integration ───────────────────────────── -->
@@ -946,6 +961,7 @@
       <div class="example-step"><span>$f_{\text{avg}} = \dfrac{1}{3-0}\displaystyle\int_0^3 x^2\,dx = \dfrac{1}{3}\left[\dfrac{x^3}{3}\right]_0^3$</span><span class="why">average value formula</span></div>
       <div class="example-step"><span>$= \dfrac{1}{3} \cdot \dfrac{27}{3} = \dfrac{1}{3} \cdot 9 = 3$</span><span class="why">evaluate; the average height of the parabola over $[0,3]$ is 3</span></div>
     </div>
+    <p class="toc-back"><a href="#toc">↑ Table of Contents</a></p>
   </section>
 
   <!-- ── 12. Sequences, Series & Sigma Notation ─────────────────────── -->
@@ -982,6 +998,7 @@
       <div class="label">Worked example — $\displaystyle\sum_{n=0}^{\infty} \left(\tfrac{1}{2}\right)^n$</div>
       <div class="example-step"><span>$a = 1$, $r = 1/2$; sum $= \dfrac{1}{1 - 1/2} = 2$</span><span class="why">geometric series formula; $|r| = 1/2 < 1$</span></div>
     </div>
+    <p class="toc-back"><a href="#toc">↑ Table of Contents</a></p>
   </section>
 
   <a class="back" href="index.html">Play Now →</a>

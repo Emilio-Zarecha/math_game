@@ -160,6 +160,11 @@
       margin: 0;
       color: var(--text);
     }
+    .toc-back { text-align: right; margin-top: 1.5rem; padding-top: 0.9rem;
+                border-top: 1px solid var(--panel, var(--border)); }
+    .toc-back a { color: var(--muted); font-size: 0.82rem; text-decoration: none;
+                  letter-spacing: 0.03em; }
+    .toc-back a:hover { color: var(--accent); }
   </style>
 </head>
 <body>
@@ -171,7 +176,7 @@
 
 <button id="glossary-btn" aria-haspopup="dialog">📘 Glossary</button>
 
-<nav class="toc">
+<nav class="toc" id="toc">
   <h2>Table of Contents</h2>
   <ol>
     <li><a href="#ch1">Vectors</a></li>
@@ -247,6 +252,7 @@
     <p><strong>Cosine similarity</strong> is used to retrieve semantically similar embeddings in RAG (retrieval-augmented generation) and nearest-neighbor search over vector databases.</p>
     <p><strong>Normalization:</strong> Layer Norm and RMS Norm divide an activation vector by its norm, keeping magnitudes stable across layers.</p>
   </div>
+<p class="toc-back"><a href="#toc">↑ Table of Contents</a></p>
 </section>
 
 <!-- ═══════════════════════════════════════════════════════ CHAPTER 2 -->
@@ -298,6 +304,7 @@
     <p><strong>Batch processing</strong> stacks multiple input vectors as rows of a matrix $X$, so the layer computes $XW^T$ for all inputs at once — a single matrix multiplication instead of many vector multiplications.</p>
     <p><strong>Hadamard product</strong> appears in gating mechanisms: LSTM gates, GLU (Gated Linear Units), and SwiGLU activations all use element-wise multiplication to control information flow.</p>
   </div>
+<p class="toc-back"><a href="#toc">↑ Table of Contents</a></p>
 </section>
 
 <!-- ═══════════════════════════════════════════════════════ CHAPTER 3 -->
@@ -340,6 +347,7 @@
     <p><strong>Composition = depth:</strong> Stacking layers composes transformations. A 6-layer transformer block represents a sequence of composed affine + nonlinear maps. The power of depth comes from this composition.</p>
     <p><strong>RoPE (Rotary Position Embedding)</strong> encodes position information by rotating query and key vectors using 2D rotation matrices applied in pairs of dimensions — directly using the rotation matrix from this chapter.</p>
   </div>
+<p class="toc-back"><a href="#toc">↑ Table of Contents</a></p>
 </section>
 
 <!-- ═══════════════════════════════════════════════════════ CHAPTER 4 -->
@@ -381,6 +389,7 @@
     <p><strong>Why gradient descent instead of solving directly?</strong> Neural network systems are massively overdetermined and nonlinear after activation functions. Gaussian elimination on a billion-parameter model is computationally intractable — iterative gradient descent is the only practical option.</p>
     <p><strong>Sparse systems</strong> appear in graph neural networks and attention with sparse patterns — specialized sparse solvers exploit the structure, analogous to how Gaussian elimination exploits zero entries.</p>
   </div>
+<p class="toc-back"><a href="#toc">↑ Table of Contents</a></p>
 </section>
 
 <!-- ═══════════════════════════════════════════════════════ CHAPTER 5 -->
@@ -422,6 +431,7 @@
     <p><strong>Null space = wasted capacity:</strong> Vectors in the null space of $W$ produce zero output — the model can't distinguish inputs that differ only in a null-space direction. A large null space wastes representational capacity.</p>
     <p><strong>Superposition hypothesis:</strong> Recent interpretability research suggests that transformers pack more features than dimensions into their embedding space using near-orthogonal directions — exploiting the geometry of high-dimensional vector spaces.</p>
   </div>
+<p class="toc-back"><a href="#toc">↑ Table of Contents</a></p>
 </section>
 
 <!-- ═══════════════════════════════════════════════════════ CHAPTER 6 -->
@@ -466,6 +476,7 @@
     <p><strong>Trace in analysis:</strong> The trace of the attention weight matrix $\text{tr}(\text{softmax}(QK^T/\sqrt{d}))$ equals $n$ (for $n$ tokens) and represents the total "attention budget" spread across all heads. The trace of the Hessian estimates the total curvature of the loss landscape.</p>
     <p><strong>Pseudo-inverse:</strong> When $W$ is not square or is singular, the Moore-Penrose pseudo-inverse $W^+$ solves the normal equations for least-squares problems — used in understanding the implicit bias of gradient descent.</p>
   </div>
+<p class="toc-back"><a href="#toc">↑ Table of Contents</a></p>
 </section>
 
 <!-- ═══════════════════════════════════════════════════════ CHAPTER 7 -->
@@ -508,6 +519,7 @@
     <p><strong>Orthogonal weight initialization</strong> (e.g., the Delta rule) initializes weight matrices as orthogonal matrices, ensuring gradients neither vanish nor explode at initialization by preserving the norm of activations exactly.</p>
     <p><strong>Gram-Schmidt ↔ QR:</strong> The Gram-Schmidt process computes the QR decomposition of a matrix. QR is used in some attention variants and in computing orthogonal bases for gradient subspaces in second-order optimizers.</p>
   </div>
+<p class="toc-back"><a href="#toc">↑ Table of Contents</a></p>
 </section>
 
 <!-- ═══════════════════════════════════════════════════════ CHAPTER 8 -->
@@ -547,6 +559,7 @@
     <p><strong>Vanishing/exploding gradients</strong> in deep networks are fundamentally an eigenvalue problem. When weight matrices have eigenvalues with $|\lambda| > 1$, gradients explode as they backpropagate; $|\lambda| < 1$ causes vanishing. This motivates careful initialization (Xavier, He) and normalization layers.</p>
     <p><strong>Attention head specialization:</strong> Eigenvectors of the attention pattern matrix reveal which "directions" in token-space each head is sensitive to — a lens for mechanistic interpretability.</p>
   </div>
+<p class="toc-back"><a href="#toc">↑ Table of Contents</a></p>
 </section>
 
 <!-- ═══════════════════════════════════════════════════════ CHAPTER 9 -->
@@ -593,6 +606,7 @@
     <p><strong>Dimensionality reduction:</strong> SVD of the token-context matrix gives LSA (Latent Semantic Analysis) — the precursor to word embeddings. Word2Vec and modern embeddings can be understood as approximating the SVD of a pointwise mutual information (PMI) matrix.</p>
     <p><strong>QR in training:</strong> Some adaptive optimizers (e.g., Muon) apply QR decomposition to orthogonalize the gradient before applying the update, improving conditioning and convergence speed.</p>
   </div>
+<p class="toc-back"><a href="#toc">↑ Table of Contents</a></p>
 </section>
 
 <!-- ═══════════════════════════════════════════════════════ CHAPTER 10 -->
@@ -643,6 +657,7 @@
     <p><strong>Attention scaling by $1/\sqrt{d_k}$:</strong> Without this scaling, dot products $\mathbf{q}\cdot\mathbf{k}$ grow with $d_k$ (variance $\approx d_k$ for random unit vectors), pushing the softmax into a near-one-hot distribution with near-zero gradients. Dividing by $\sqrt{d_k}$ restores unit variance.</p>
     <p><strong>Spectral normalization:</strong> In GANs, the discriminator's weight matrices are normalized by their spectral norm $\sigma_{\max}$ at each step, enforcing a Lipschitz constraint that stabilizes adversarial training.</p>
   </div>
+<p class="toc-back"><a href="#toc">↑ Table of Contents</a></p>
 </section>
 
 <!-- ═══════════════════════════════════════════════════════ GLOSSARY MODAL -->
