@@ -571,9 +571,7 @@
       $$c^2 = a^2 + b^2 - 2ab\cos C$$
       $$\cos C = \frac{a^2 + b^2 - c^2}{2ab}$$
     </div>
-    <p style="text-align:right;margin-top:6px;margin-bottom:20px;">
-      <a href="#" id="open-cos-proof" style="font-size:0.78rem;color:var(--muted);text-decoration:none;border-bottom:1px dashed var(--border);">Why does this work? See proof ↗</a>
-    </p>
+
 
     <p>
       The formula is the Pythagorean theorem plus a correction term, $-2ab\cos C$.
@@ -644,62 +642,7 @@
 
 </div>
 
-<!-- ── Law of Cosines proof modal ──────────────────────────────────────── -->
-<div id="cos-proof-modal" style="display:none;position:fixed;inset:0;background:rgba(5,5,20,0.85);z-index:500;align-items:center;justify-content:center;padding:20px 16px;">
-  <div style="background:var(--surface);border:1px solid var(--border);border-radius:16px;max-width:600px;width:100%;max-height:88vh;overflow-y:auto;padding:32px 36px;position:relative;">
-    <button id="close-cos-proof" style="position:absolute;top:14px;right:16px;background:none;border:none;color:var(--muted);font-size:1.1rem;line-height:1;cursor:pointer;padding:4px 8px;border-radius:4px;" title="Close">✕</button>
-    <div style="font-size:0.68rem;letter-spacing:.16em;text-transform:uppercase;color:var(--hint);margin-bottom:8px;">Proof</div>
-    <h4 style="font-size:1rem;font-weight:700;color:var(--accent);margin-bottom:6px;">Law of Cosines — Altitude Method</h4>
-    <p style="font-size:0.85rem;color:var(--muted);margin-bottom:20px;">Using only the Pythagorean theorem and basic right-triangle trig.</p>
 
-    <canvas id="cos-proof-canvas" width="520" height="210" style="display:block;width:100%;border-radius:8px;margin-bottom:24px;"></canvas>
-
-    <div style="font-size:0.88rem;line-height:1.9;">
-      <p style="margin-bottom:14px;">
-        Drop an altitude $h$ from $B$ perpendicular to side $b$, meeting it at point $D$.
-      </p>
-
-      <div style="background:var(--panel);border-radius:8px;padding:13px 18px;margin-bottom:10px;">
-        <div style="color:var(--muted);font-size:0.7rem;letter-spacing:.12em;text-transform:uppercase;margin-bottom:6px;">Step 1 — right △BCD gives</div>
-        $h = a\sin C \qquad CD = a\cos C$
-      </div>
-
-      <div style="background:var(--panel);border-radius:8px;padding:13px 18px;margin-bottom:10px;">
-        <div style="color:var(--muted);font-size:0.7rem;letter-spacing:.12em;text-transform:uppercase;margin-bottom:6px;">Step 2 — remaining segment on the base</div>
-        $DA = b - CD = b - a\cos C$
-      </div>
-
-      <div style="background:var(--panel);border-radius:8px;padding:13px 18px;margin-bottom:10px;">
-        <div style="color:var(--muted);font-size:0.7rem;letter-spacing:.12em;text-transform:uppercase;margin-bottom:6px;">Step 3 — Pythagorean theorem on △ABD</div>
-        $c^2 = h^2 + DA^2$
-      </div>
-
-      <div style="background:var(--panel);border-radius:8px;padding:13px 18px;margin-bottom:10px;">
-        <div style="color:var(--muted);font-size:0.7rem;letter-spacing:.12em;text-transform:uppercase;margin-bottom:6px;">Step 4 — substitute and expand</div>
-        $$c^2 = (a\sin C)^2 + (b - a\cos C)^2$$
-        $$\phantom{c^2{}} = a^2\sin^2 C + b^2 - 2ab\cos C + a^2\cos^2 C$$
-      </div>
-
-      <div style="background:var(--panel);border-radius:8px;padding:13px 18px;margin-bottom:10px;">
-        <div style="color:var(--muted);font-size:0.7rem;letter-spacing:.12em;text-transform:uppercase;margin-bottom:6px;">Step 5 — group the $a^2$ terms and apply $\sin^2 C + \cos^2 C = 1$</div>
-        $$c^2 = a^2(\sin^2 C + \cos^2 C) + b^2 - 2ab\cos C = a^2 \cdot 1 + b^2 - 2ab\cos C$$
-      </div>
-
-      <div style="background:rgba(92,138,255,0.08);border:1px solid var(--accent);border-radius:8px;padding:13px 18px;margin-bottom:14px;">
-        <div style="color:var(--accent);font-size:0.7rem;letter-spacing:.12em;text-transform:uppercase;margin-bottom:6px;">Result</div>
-        $$c^2 = a^2 + b^2 - 2ab\cos C \quad \checkmark$$
-      </div>
-
-      <p style="font-size:0.8rem;color:var(--muted);margin:0;">
-        <strong style="color:var(--text);">Obtuse case ($C &gt; 90°$):</strong>
-        when $C$ is obtuse, $D$ falls <em>outside</em> segment $AC$ (to the left of $C$),
-        so $DA = b + |CD|$. But because $\cos C &lt; 0$ when $C &gt; 90°$,
-        the expression $b - a\cos C$ still gives the correct positive length —
-        the algebra in Steps 4–5 is identical.
-      </p>
-    </div>
-  </div>
-</div>
 
 <script>
 function createAngleExplorer(canvasId, idPrefix) {
@@ -1043,137 +986,7 @@ createAngleExplorer('angle-canvas-2', 'uc2-');
 }());
 </script>
 
-<script>
-/* ── Law of Cosines proof modal ──────────────────────────────────────── */
-(function () {
-  var modal    = document.getElementById('cos-proof-modal');
-  var openBtn  = document.getElementById('open-cos-proof');
-  var closeBtn = document.getElementById('close-cos-proof');
-  var drawn    = false;
 
-  function open() {
-    modal.style.display = 'flex';
-    document.body.style.overflow = 'hidden';
-    if (!drawn) { drawProof(); drawn = true; }
-  }
-  function close() {
-    modal.style.display = 'none';
-    document.body.style.overflow = '';
-  }
-
-  if (openBtn)  openBtn.addEventListener('click', function (e) { e.preventDefault(); open(); });
-  if (closeBtn) closeBtn.addEventListener('click', close);
-  if (modal)    modal.addEventListener('click', function (e) { if (e.target === modal) close(); });
-  document.addEventListener('keydown', function (e) {
-    if (e.key === 'Escape' && modal && modal.style.display !== 'none') close();
-  });
-
-  /* ── Proof diagram ── */
-  function drawProof() {
-    var canvas = document.getElementById('cos-proof-canvas');
-    if (!canvas) return;
-    var ctx = canvas.getContext('2d');
-    var W = canvas.width, H = canvas.height;
-
-    ctx.fillStyle = '#0d0d1a';
-    ctx.fillRect(0, 0, W, H);
-
-    /* Fixed triangle vertices — chosen for clear label spacing
-       C at left, A at right (both on base), B above, D = foot of altitude */
-    var Cpx = 72,  Cpy = 174;
-    var Apx = 400, Apy = 174;
-    var Bpx = 192, Bpy = 46;
-    var Dpx = 192, Dpy = 174;   /* directly below B on the base */
-
-    /* Triangle fill */
-    ctx.beginPath();
-    ctx.moveTo(Cpx, Cpy); ctx.lineTo(Apx, Apy); ctx.lineTo(Bpx, Bpy);
-    ctx.closePath();
-    ctx.fillStyle = 'rgba(92,138,255,0.06)';
-    ctx.fill();
-
-    /* Segment CD — amber (= a cos C) */
-    ctx.beginPath(); ctx.moveTo(Cpx, Cpy); ctx.lineTo(Dpx, Dpy);
-    ctx.strokeStyle = '#ffb830'; ctx.lineWidth = 2.5; ctx.stroke();
-
-    /* Segment DA — blue (= b − a cos C) */
-    ctx.beginPath(); ctx.moveTo(Dpx, Dpy); ctx.lineTo(Apx, Apy);
-    ctx.strokeStyle = '#5c8aff'; ctx.lineWidth = 2.5; ctx.stroke();
-
-    /* Side a: C → B — green */
-    ctx.beginPath(); ctx.moveTo(Cpx, Cpy); ctx.lineTo(Bpx, Bpy);
-    ctx.strokeStyle = '#3ecf8e'; ctx.lineWidth = 2; ctx.stroke();
-
-    /* Side c: A → B — muted (the target side) */
-    ctx.beginPath(); ctx.moveTo(Apx, Apy); ctx.lineTo(Bpx, Bpy);
-    ctx.strokeStyle = '#9090b0'; ctx.lineWidth = 2; ctx.stroke();
-
-    /* Altitude h: B → D — dashed green */
-    ctx.save();
-    ctx.setLineDash([5, 4]);
-    ctx.beginPath(); ctx.moveTo(Bpx, Bpy); ctx.lineTo(Dpx, Dpy);
-    ctx.strokeStyle = '#3ecf8e'; ctx.lineWidth = 1.5; ctx.stroke();
-    ctx.restore();
-
-    /* Right-angle marker at D */
-    var ms = 8;
-    ctx.beginPath();
-    ctx.moveTo(Dpx - ms, Dpy);
-    ctx.lineTo(Dpx - ms, Dpy - ms);
-    ctx.lineTo(Dpx,      Dpy - ms);
-    ctx.strokeStyle = '#7070a0'; ctx.lineWidth = 1; ctx.stroke();
-
-    /* Angle arc at C */
-    var angCB = Math.atan2(Bpy - Cpy, Bpx - Cpx); /* negative — B is above */
-    var arcR  = 30;
-    ctx.beginPath();
-    ctx.arc(Cpx, Cpy, arcR, angCB, 0, false); /* CW from CB direction to CA (+x) */
-    ctx.strokeStyle = '#ffb830'; ctx.lineWidth = 1.5; ctx.stroke();
-
-    /* ── Labels ── */
-    ctx.textBaseline = 'middle';
-
-    /* Vertex labels */
-    ctx.font = '13px system-ui,sans-serif'; ctx.fillStyle = '#9090b0';
-    ctx.textAlign = 'right';  ctx.fillText('C', Cpx - 8, Cpy + 4);
-    ctx.textAlign = 'left';   ctx.fillText('A', Apx + 8, Apy + 4);
-    ctx.textAlign = 'center'; ctx.fillText('B', Bpx,     Bpy - 14);
-    ctx.fillText('D', Dpx, Dpy + 16);
-
-    /* Side labels */
-    ctx.font = 'bold 13px system-ui,sans-serif';
-
-    ctx.fillStyle = '#3ecf8e'; /* a */
-    ctx.textAlign = 'right';
-    ctx.fillText('a', (Cpx + Bpx) / 2 - 10, (Cpy + Bpy) / 2);
-
-    ctx.fillStyle = '#9090b0'; /* c */
-    ctx.textAlign = 'left';
-    ctx.fillText('c', (Apx + Bpx) / 2 + 10, (Apy + Bpy) / 2);
-
-    /* Segment annotations below the base */
-    ctx.font = '12px system-ui,sans-serif';
-    ctx.fillStyle = '#ffb830'; /* CD = a cos C */
-    ctx.textAlign = 'center';
-    ctx.fillText('a cos C', (Cpx + Dpx) / 2, Cpy + 18);
-
-    ctx.fillStyle = '#5c8aff'; /* DA = b − a cos C */
-    ctx.fillText('b − a cos C', (Dpx + Apx) / 2, Apy + 18);
-
-    /* Altitude label */
-    ctx.fillStyle = '#3ecf8e';
-    ctx.textAlign = 'left';
-    ctx.fillText('h = a sin C', Bpx + 8, (Bpy + Dpy) / 2);
-
-    /* Angle C label */
-    ctx.font = '11px system-ui,sans-serif';
-    ctx.fillStyle = '#ffb830'; ctx.textAlign = 'center';
-    var mid = angCB / 2;
-    var lr  = arcR + 13;
-    ctx.fillText('C', Cpx + lr * Math.cos(mid), Cpy + lr * Math.sin(mid));
-  }
-}());
-</script>
 
 <script src="textbook-notes.js"></script>
 <script src="textbook-nav.js"></script>

@@ -4,19 +4,6 @@
   /* ── Styles ── */
   var styleEl = document.createElement('style');
   styleEl.textContent = [
-    '.toc-link {',
-    '  display: block;',
-    '  text-align: right;',
-    '  margin-top: 20px;',
-    '  padding-top: 14px;',
-    '  border-top: 1px solid var(--border, #2e2e55);',
-    '  font-size: 0.78rem;',
-    '  color: var(--muted, #7070a0);',
-    '  text-decoration: none;',
-    '  letter-spacing: .05em;',
-    '  transition: color .15s;',
-    '}',
-    '.toc-link:hover { color: var(--accent, #5c8aff); }',
     '#toc-back {',
     '  display: none;',
     '  margin-top: 16px;',
@@ -68,19 +55,14 @@
     backContainer.appendChild(btn);
     nav.appendChild(backContainer);
 
-    /* "↑ Table of Contents" link at the bottom of every section */
-    document.querySelectorAll('section[id]').forEach(function (sec) {
-      var a = document.createElement('a');
-      a.className = 'toc-link';
-      a.href = '#';
-      a.textContent = '↑ Table of Contents';
+    /* Wire existing .toc-back links to save scroll position before jumping */
+    document.querySelectorAll('.toc-back a').forEach(function (a) {
       a.addEventListener('click', function (e) {
         e.preventDefault();
         savedScrollY = window.scrollY;
         backContainer.style.display = '';
         smoothScrollTo(nav);
       });
-      sec.appendChild(a);
     });
   }
 

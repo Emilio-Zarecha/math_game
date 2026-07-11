@@ -8,6 +8,8 @@
 | `puzzles/*.json` | One JSON array per topic |
 | `textbook_*.html` | One standalone textbook per topic |
 | `manual.html` | Player manual |
+| `textbook-notes.js` | Shared script — per-box and per-section notes for all textbooks |
+| `textbook-nav.js` | Shared script — wires `.toc-back` links with scroll-position memory |
 
 ---
 
@@ -161,6 +163,31 @@ assert body.count('</section>') == body.count('toc-back'), "sections/links misma
 3. `<nav class="toc">` with ordered list linking to `#ch1` ... `#chN`
 4. One `<section class="chapter" id="chN">` per chapter
 5. `.attribution` footer
+6. Both shared scripts at the bottom of `<body>`:
+   ```html
+   <script src="textbook-notes.js"></script>
+   <script src="textbook-nav.js"></script>
+   ```
+
+---
+
+## Textbook Shared Scripts
+
+### `textbook-notes.js`
+Injects note-taking UI into every textbook. No HTML changes needed beyond the `<script>` tag.
+
+- **Per-box notes**: every `.formula`, `.example`, and `.definition` block gets a `✎` button (top-right, absolutely positioned). Click to open a textarea; saves to `localStorage` keyed by section ID + box index.
+- **Per-section notes**: a `📝 Section Notes` button is injected after the `h2`/`h3` heading of each `<section>`. Click to expand a textarea for chapter-level notes.
+- **Toolbar**: a fixed bottom bar (↓ Export / ✕ Clear all) slides up whenever any note exists.
+- **Export**: downloads all notes as a `.txt` file, section notes first then per-box notes in reading order.
+
+### `textbook-nav.js`
+Enhances the `.toc-back` links already in the HTML — does **not** inject its own links.
+
+- Wires each `.toc-back a` with a click handler that saves the current scroll position, then smooth-scrolls to the `<nav id="toc">`.
+- Injects a `↩ Back to where I was` button inside the TOC nav that returns the user to their saved position.
+
+**CRITICAL — never inject duplicate TOC links.** The `.toc-back` HTML links are the single source of truth. `textbook-nav.js` wires them; it must never create additional `<a>` elements for the same purpose. Past mistake: an earlier version appended `<a href="#">↑ Table of Contents</a>` to every section, creating a visible duplicate alongside the HTML `.toc-back`.
 
 ---
 
@@ -189,3 +216,5 @@ Correct drops append a `.drop-stamp` badge (green, positioned above the zone) re
 - **Large puzzle JSON**: Write chapters 1–5 first, validate, then append chapters 6–10 via Python script rather than one massive Write call.
 - **LaTeX in JSON**: Backslashes double in JSON strings (`\mathbf` → `"\\mathbf"`). Matrix row breaks `\\` become `"\\\\"`. Test in KaTeX playground if unsure.
 - **Push after each major feature**: User expects a `git push` after completing a textbook, puzzle file, or significant game enhancement.
+- **Never use `href="#"` for non-navigation actions**: Use `<button type="button">` instead. `<a href="#">` pollutes the browser status bar with a `#` URL and looks like a navigation link to the user.
+- **Wire existing elements, don't duplicate them**: When a shared JS script needs to enhance links already in the HTML, add event listeners to those elements — never append new elements with the same visible text.
