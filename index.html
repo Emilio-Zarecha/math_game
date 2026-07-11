@@ -284,6 +284,27 @@
       background: rgba(62,207,142,0.10);
       cursor: default;
     }
+    .drop-stamp {
+      position: absolute;
+      bottom: 100%;
+      left: 50%;
+      transform: translateX(-50%);
+      margin-bottom: 4px;
+      font-size: 0.72rem;
+      color: var(--correct);
+      background: rgba(62,207,142,0.18);
+      border: 1px solid rgba(62,207,142,0.55);
+      border-radius: 4px;
+      padding: 2px 7px;
+      white-space: nowrap;
+      pointer-events: none;
+      z-index: 10;
+      animation: fade-in 0.2s ease-out;
+    }
+    @keyframes fade-in {
+      from { opacity: 0; }
+      to   { opacity: 1; }
+    }
 
     @keyframes flash-ok {
       0%   { background: rgba(62,207,142,0.45); }
@@ -1386,6 +1407,16 @@ function handleDrop(dz, dzIdx, paletteId) {
     dz.classList.add('correct-drop');
     G.completedDrops.add(dzIdx);
     dz.classList.add('done');
+
+    // Stamp the operation onto the zone so the user sees it applied to both sides
+    const palItem = G.puzzle.palette.find(p => p.id === paletteId);
+    if (palItem) {
+      const badge = document.createElement('span');
+      badge.className = 'drop-stamp';
+      try { katex.render(palItem.latex, badge, { throwOnError: false, displayMode: false }); }
+      catch(e) { badge.textContent = palItem.latex; }
+      dz.appendChild(badge);
+    }
 
     const remaining = (step.dropTargets || []).length - G.completedDrops.size;
     if (remaining > 0) {
