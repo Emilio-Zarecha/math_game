@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Basic Linear Algebra — Foundations for Neural Models</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
+    onload="renderMathInElement(document.body, {delimiters:[
+      {left:'$$',right:'$$',display:true},
+      {left:'$',right:'$',display:false}
+    ]})"></script>
+  <style>
+    :root {
+      --bg: #1a1a2e; --surface: #16213e; --panel: #0f3460;
+      --border: #e94560; --accent: #e94560; --correct: #4caf50;
+      --hint: #ff9800; --text: #eaeaea; --muted: #9e9e9e;
+      --neural: #a78bfa; --neural-bg: rgba(167,139,250,0.08);
+      --neural-border: rgba(167,139,250,0.5);
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { background: var(--bg); color: var(--text); font-family: 'Segoe UI', sans-serif;
+           line-height: 1.7; padding: 2rem; max-width: 860px; margin: auto; }
+    h1 { color: var(--accent); font-size: 2.2rem; text-align: center; margin-bottom: 0.3rem; }
+    .subtitle { text-align: center; color: var(--muted); margin-bottom: 0.5rem; font-size: 0.95rem; }
+    .tagline { text-align: center; color: var(--neural); font-size: 0.9rem; margin-bottom: 2.5rem; font-style: italic; }
+    .toc { background: var(--surface); border: 1px solid var(--panel);
+           border-radius: 8px; padding: 1.5rem 2rem; margin-bottom: 2.5rem; }
+    .toc h2 { color: var(--accent); margin-bottom: 0.8rem; font-size: 1.1rem; }
+    .toc ol { padding-left: 1.4rem; }
+    .toc li { padding: 0.2rem 0; }
+    .toc a { color: var(--hint); text-decoration: none; }
+    .toc a:hover { text-decoration: underline; }
+    .chapter { background: var(--surface); border-radius: 10px;
+               padding: 2rem; margin-bottom: 2.5rem; }
+    .chapter-num { color: var(--accent); font-size: 0.85rem; font-weight: 700;
+                   text-transform: uppercase; letter-spacing: 1px; margin-bottom: 0.3rem; }
+    .chapter h2 { color: #fff; font-size: 1.6rem; margin-bottom: 1.2rem; }
+    .chapter h3 { color: var(--hint); font-size: 1.15rem; margin: 1.4rem 0 0.5rem; }
+    .chapter p { margin-bottom: 0.9rem; }
+    .formula { background: var(--panel); border-left: 4px solid #4fc3f7;
+               border-radius: 6px; padding: 0.9rem 1.2rem; margin: 1rem 0; }
+    .formula-label { color: #4fc3f7; font-size: 0.8rem; font-weight: 700;
+                     text-transform: uppercase; margin-bottom: 0.3rem; }
+    .example { background: #0d2818; border-left: 4px solid var(--correct);
+               border-radius: 6px; padding: 0.9rem 1.2rem; margin: 1rem 0; }
+    .example-label { color: var(--correct); font-size: 0.8rem; font-weight: 700;
+                     text-transform: uppercase; margin-bottom: 0.4rem; }
+    .definition { background: #1e1e35; border-left: 4px solid var(--hint);
+                  border-radius: 6px; padding: 0.9rem 1.2rem; margin: 1rem 0; }
+    .definition-label { color: var(--hint); font-size: 0.8rem; font-weight: 700;
+                        text-transform: uppercase; margin-bottom: 0.3rem; }
+    /* Neural architecture connection callout */
+    .neural { background: var(--neural-bg); border-left: 4px solid var(--neural-border);
+              border-radius: 6px; padding: 0.9rem 1.2rem; margin: 1.2rem 0; }
+    .neural-label { color: var(--neural); font-size: 0.78rem; font-weight: 700;
+                    text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 0.4rem; }
+    .neural p { color: #d8b4fe; margin-bottom: 0.5rem; font-size: 0.93rem; }
+    .neural p:last-child { margin-bottom: 0; }
+    ul, ol { padding-left: 1.4rem; margin-bottom: 0.9rem; }
+    li { margin-bottom: 0.3rem; }
+    .back-link { display: inline-block; margin-bottom: 1.5rem; color: var(--accent);
+                 text-decoration: none; font-size: 0.9rem; }
+    .back-link:hover { text-decoration: underline; }
+    .attribution { text-align: center; color: var(--muted); font-size: 0.82rem;
+                   margin-top: 3rem; padding-top: 1.5rem; border-top: 1px solid var(--panel); }
+    code { background: rgba(255,255,255,0.08); padding: 1px 5px; border-radius: 3px;
+           font-family: monospace; font-size: 0.92em; }
+  </style>
+</head>
+<body>
+
+<a class="back-link" href="index.html">← Back to Math Game</a>
+<h1>Basic Linear Algebra</h1>
+<p class="subtitle">Foundations of vectors, matrices, and transformations</p>
+<p class="tagline">Every topic is chosen for its direct role in neural networks, LLMs, and World Models</p>
+
+<nav class="toc">
+  <h2>Table of Contents</h2>
+  <ol>
+    <li><a href="#ch1">Vectors</a></li>
+    <li><a href="#ch2">Matrices</a></li>
+    <li><a href="#ch3">Linear Transformations</a></li>
+    <li><a href="#ch4">Systems of Linear Equations</a></li>
+    <li><a href="#ch5">Vector Spaces</a></li>
+    <li><a href="#ch6">Rank, Determinant, Trace, and Inverse</a></li>
+    <li><a href="#ch7">Orthogonality</a></li>
+    <li><a href="#ch8">Eigenvalues and Eigenvectors</a></li>
+    <li><a href="#ch9">Matrix Decompositions</a></li>
+    <li><a href="#ch10">Norms and Distances</a></li>
+  </ol>
+</nav>
+
+<!-- ═══════════════════════════════════════════════════════ CHAPTER 1 -->
+<section class="chapter" id="ch1">
+  <div class="chapter-num">Chapter 1</div>
+  <h2>Vectors</h2>
+
+  <p>A <strong>vector</strong> is an ordered list of numbers. A vector in $\mathbb{R}^n$ has $n$ components and can be written as a column or row:</p>
+
+  $$\mathbf{v} = \begin{bmatrix} v_1 \\ v_2 \\ \vdots \\ v_n \end{bmatrix}$$
+
+  <p>Vectors represent <em>direction and magnitude</em> in $n$-dimensional space. Every idea you need about machine learning embeddings starts here.</p>
+
+  <h3>Vector Operations</h3>
+
+  <div class="definition">
+    <div class="definition-label">Core Operations</div>
+    <ul>
+      <li><strong>Addition:</strong> $\mathbf{a} + \mathbf{b} = [a_1+b_1,\ \ldots,\ a_n+b_n]$ — add component-wise</li>
+      <li><strong>Scalar multiplication:</strong> $c\mathbf{v} = [cv_1,\ \ldots,\ cv_n]$ — scale every component</li>
+      <li><strong>Dot product:</strong> $\mathbf{a} \cdot \mathbf{b} = \sum_{i=1}^n a_i b_i$ — a single number measuring alignment</li>
+    </ul>
+  </div>
+
+  <h3>Norms</h3>
+  <p>The <strong>norm</strong> of a vector measures its length. The most common are:</p>
+  <div class="formula">
+    <div class="formula-label">L2 Norm (Euclidean)</div>
+    $$\|\mathbf{v}\|_2 = \sqrt{v_1^2 + v_2^2 + \cdots + v_n^2}$$
+  </div>
+  <div class="formula">
+    <div class="formula-label">L1 Norm (Manhattan)</div>
+    $$\|\mathbf{v}\|_1 = |v_1| + |v_2| + \cdots + |v_n|$$
+  </div>
+
+  <h3>Unit Vectors and Normalization</h3>
+  <p>A <strong>unit vector</strong> has $\|\hat{\mathbf{v}}\|_2 = 1$. Normalize any vector by dividing by its norm:</p>
+  <div class="formula">
+    <div class="formula-label">Normalization</div>
+    $$\hat{\mathbf{v}} = \frac{\mathbf{v}}{\|\mathbf{v}\|_2}$$
+  </div>
+
+  <h3>Cosine Similarity</h3>
+  <p>The angle $\theta$ between two vectors is captured by cosine similarity — it equals 1 when vectors point the same direction, 0 when perpendicular, and −1 when opposite:</p>
+  <div class="formula">
+    <div class="formula-label">Cosine Similarity</div>
+    $$\cos\theta = \frac{\mathbf{a} \cdot \mathbf{b}}{\|\mathbf{a}\|\,\|\mathbf{b}\|}$$
+  </div>
+
+  <div class="example">
+    <div class="example-label">Example — Dot product</div>
+    <p>$\mathbf{a} = [2, 3]$, $\mathbf{b} = [4, 1]$: $\quad \mathbf{a}\cdot\mathbf{b} = 2(4)+3(1) = 8+3 = 11$</p>
+    <p>$\|\mathbf{a}\|_2 = \sqrt{4+9} = \sqrt{13} \approx 3.61$, $\quad \hat{\mathbf{a}} = \frac{1}{\sqrt{13}}[2,3]$</p>
+  </div>
+
+  <div class="neural">
+    <div class="neural-label">⬡ Neural Architecture Connection</div>
+    <p><strong>Token embeddings</strong> are vectors in $\mathbb{R}^d$ (typically $d = 512$–$4096$). Every word, sub-word, or patch in a transformer is represented as one such vector.</p>
+    <p><strong>Attention scores</strong> are dot products: the score between a query vector $\mathbf{q}$ and a key vector $\mathbf{k}$ is $\mathbf{q} \cdot \mathbf{k}$. A high score means the query "attends strongly" to that key.</p>
+    <p><strong>Cosine similarity</strong> is used to retrieve semantically similar embeddings in RAG (retrieval-augmented generation) and nearest-neighbor search over vector databases.</p>
+    <p><strong>Normalization:</strong> Layer Norm and RMS Norm divide an activation vector by its norm, keeping magnitudes stable across layers.</p>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════ CHAPTER 2 -->
+<section class="chapter" id="ch2">
+  <div class="chapter-num">Chapter 2</div>
+  <h2>Matrices</h2>
+
+  <p>A <strong>matrix</strong> is a rectangular array of numbers arranged in rows and columns. An $m \times n$ matrix has $m$ rows and $n$ columns:</p>
+
+  $$A = \begin{bmatrix} a_{11} & a_{12} & \cdots & a_{1n} \\ a_{21} & a_{22} & \cdots & a_{2n} \\ \vdots & & \ddots & \vdots \\ a_{m1} & a_{m2} & \cdots & a_{mn} \end{bmatrix}$$
+
+  <h3>Matrix Operations</h3>
+  <div class="definition">
+    <div class="definition-label">Core Operations</div>
+    <ul>
+      <li><strong>Addition:</strong> $(A+B)_{ij} = a_{ij} + b_{ij}$ — requires same shape</li>
+      <li><strong>Scalar multiplication:</strong> $(cA)_{ij} = c\,a_{ij}$</li>
+      <li><strong>Transpose:</strong> $(A^T)_{ij} = a_{ji}$ — swap rows and columns</li>
+      <li><strong>Hadamard (element-wise) product:</strong> $(A \odot B)_{ij} = a_{ij}\,b_{ij}$</li>
+    </ul>
+  </div>
+
+  <h3>Matrix Multiplication</h3>
+  <p>The <strong>matrix product</strong> $C = AB$ requires $A$ to be $m\times k$ and $B$ to be $k\times n$; the result $C$ is $m\times n$. Each entry is a dot product:</p>
+  <div class="formula">
+    <div class="formula-label">Matrix Product</div>
+    $$C_{ij} = \sum_{k} a_{ik}\,b_{kj} = (\text{row } i \text{ of } A) \cdot (\text{col } j \text{ of } B)$$
+  </div>
+
+  <p>Matrix multiplication is <em>associative</em> — $(AB)C = A(BC)$ — but <strong>not commutative</strong>: $AB \neq BA$ in general.</p>
+
+  <h3>Special Matrices</h3>
+  <ul>
+    <li><strong>Identity matrix</strong> $I$: 1s on diagonal, 0s elsewhere. $AI = IA = A$.</li>
+    <li><strong>Zero matrix</strong> $0$: all entries zero.</li>
+    <li><strong>Diagonal matrix</strong>: non-zero only on diagonal. Scales each dimension independently.</li>
+    <li><strong>Symmetric matrix</strong>: $A = A^T$. Covariance matrices and Hessians are symmetric.</li>
+  </ul>
+
+  <div class="example">
+    <div class="example-label">Example — 2×2 multiplication</div>
+    $$\begin{bmatrix}1&2\\3&4\end{bmatrix}\begin{bmatrix}2&0\\1&3\end{bmatrix} = \begin{bmatrix}1(2)+2(1) & 1(0)+2(3)\\3(2)+4(1) & 3(0)+4(3)\end{bmatrix} = \begin{bmatrix}4&6\\10&12\end{bmatrix}$$
+  </div>
+
+  <div class="neural">
+    <div class="neural-label">⬡ Neural Architecture Connection</div>
+    <p><strong>Every linear layer</strong> in a neural network is a matrix-vector product: $\mathbf{y} = W\mathbf{x}$. The weight matrix $W$ is the entire knowledge of that layer.</p>
+    <p><strong>Attention</strong> uses three weight matrices $W_Q$, $W_K$, $W_V$ to project the input into query, key, and value spaces. The attention output is $\text{softmax}(QK^T/\sqrt{d_k})\,V$ — pure matrix operations.</p>
+    <p><strong>Batch processing</strong> stacks multiple input vectors as rows of a matrix $X$, so the layer computes $XW^T$ for all inputs at once — a single matrix multiplication instead of many vector multiplications.</p>
+    <p><strong>Hadamard product</strong> appears in gating mechanisms: LSTM gates, GLU (Gated Linear Units), and SwiGLU activations all use element-wise multiplication to control information flow.</p>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════ CHAPTER 3 -->
+<section class="chapter" id="ch3">
+  <div class="chapter-num">Chapter 3</div>
+  <h2>Linear Transformations</h2>
+
+  <p>A function $T: \mathbb{R}^n \to \mathbb{R}^m$ is a <strong>linear transformation</strong> if it satisfies two properties:</p>
+  <div class="definition">
+    <div class="definition-label">Linearity Conditions</div>
+    <ol>
+      <li><strong>Additivity:</strong> $T(\mathbf{u} + \mathbf{v}) = T(\mathbf{u}) + T(\mathbf{v})$</li>
+      <li><strong>Homogeneity:</strong> $T(c\mathbf{v}) = c\,T(\mathbf{v})$ for any scalar $c$</li>
+    </ol>
+    <p style="margin-top:0.5rem">Consequence: $T(\mathbf{0}) = \mathbf{0}$ — a linear map must send the zero vector to zero.</p>
+  </div>
+
+  <h3>Matrices as Linear Transformations</h3>
+  <p>Every linear transformation from $\mathbb{R}^n$ to $\mathbb{R}^m$ is represented by multiplication by an $m\times n$ matrix. Conversely, every matrix defines a linear transformation. The columns of $T$'s matrix are the images of the standard basis vectors:</p>
+  $$T = \begin{bmatrix} | & | & \cdots & | \\ T(\mathbf{e}_1) & T(\mathbf{e}_2) & \cdots & T(\mathbf{e}_n) \\ | & | & \cdots & | \end{bmatrix}$$
+
+  <h3>Geometric Examples</h3>
+  <ul>
+    <li><strong>Scaling:</strong> $\begin{bmatrix}s_x & 0 \\ 0 & s_y\end{bmatrix}$ stretches x by $s_x$ and y by $s_y$</li>
+    <li><strong>Rotation by $\theta$:</strong> $\begin{bmatrix}\cos\theta & -\sin\theta \\ \sin\theta & \cos\theta\end{bmatrix}$</li>
+    <li><strong>Reflection across y-axis:</strong> $\begin{bmatrix}-1 & 0 \\ 0 & 1\end{bmatrix}$</li>
+    <li><strong>Projection onto x-axis:</strong> $\begin{bmatrix}1 & 0 \\ 0 & 0\end{bmatrix}$</li>
+  </ul>
+
+  <h3>Composition</h3>
+  <p>Applying $T_1$ then $T_2$ is equivalent to the single transformation $T_2 T_1$ (note the order). Composing linear transformations = multiplying their matrices.</p>
+
+  <h3>Affine Maps</h3>
+  <p>A function $T(\mathbf{x}) = A\mathbf{x} + \mathbf{b}$ with $\mathbf{b} \neq \mathbf{0}$ is <strong>affine</strong>, not linear, because $T(\mathbf{0}) = \mathbf{b} \neq \mathbf{0}$. Affine maps include a translation component.</p>
+
+  <div class="neural">
+    <div class="neural-label">⬡ Neural Architecture Connection</div>
+    <p><strong>Every neural network layer</strong> $\mathbf{y} = W\mathbf{x} + \mathbf{b}$ is an <em>affine</em> map — not strictly linear because of the bias $\mathbf{b}$. The bias shifts the origin, allowing the decision boundary to not pass through zero.</p>
+    <p><strong>Geometric intuition:</strong> Think of each layer as reshaping the data cloud — stretching, rotating, and shearing it — so that a simple linear boundary (the final layer) can separate classes or predict values.</p>
+    <p><strong>Composition = depth:</strong> Stacking layers composes transformations. A 6-layer transformer block represents a sequence of composed affine + nonlinear maps. The power of depth comes from this composition.</p>
+    <p><strong>RoPE (Rotary Position Embedding)</strong> encodes position information by rotating query and key vectors using 2D rotation matrices applied in pairs of dimensions — directly using the rotation matrix from this chapter.</p>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════ CHAPTER 4 -->
+<section class="chapter" id="ch4">
+  <div class="chapter-num">Chapter 4</div>
+  <h2>Systems of Linear Equations</h2>
+
+  <p>A <strong>system of linear equations</strong> is a collection of equations, each linear in the unknowns $x_1, \ldots, x_n$. In matrix form:</p>
+  $$A\mathbf{x} = \mathbf{b}$$
+  <p>where $A$ is the $m \times n$ coefficient matrix, $\mathbf{x} \in \mathbb{R}^n$ is the unknown vector, and $\mathbf{b} \in \mathbb{R}^m$ is the right-hand side.</p>
+
+  <h3>Gaussian Elimination</h3>
+  <p>The standard algorithm for solving $A\mathbf{x} = \mathbf{b}$ uses <strong>elementary row operations</strong> on the augmented matrix $[A\,|\,\mathbf{b}]$:</p>
+  <ul>
+    <li>Swap two rows</li>
+    <li>Multiply a row by a nonzero scalar</li>
+    <li>Add a multiple of one row to another</li>
+  </ul>
+  <p>The goal is to reach <strong>row echelon form</strong> (upper triangular), then solve by back substitution.</p>
+
+  <h3>Solution Types</h3>
+  <div class="definition">
+    <div class="definition-label">Three Possible Outcomes</div>
+    <ul>
+      <li><strong>Unique solution:</strong> One pivot per column — full column rank, $\mathbf{b}$ is in the column space.</li>
+      <li><strong>Infinitely many solutions:</strong> At least one free variable — column rank is deficient.</li>
+      <li><strong>No solution (inconsistent):</strong> A row $[0\ 0\ \cdots\ 0\ |\ c]$ with $c \neq 0$ appears — $\mathbf{b}$ is outside the column space.</li>
+    </ul>
+  </div>
+
+  <div class="example">
+    <div class="example-label">Example — 2×2 system</div>
+    <p>$x + y = 4$ and $x - y = 2$. Add: $2x = 6 \Rightarrow x = 3$. Then $y = 4 - 3 = 1$. Solution: $(3, 1)$.</p>
+  </div>
+
+  <div class="neural">
+    <div class="neural-label">⬡ Neural Architecture Connection</div>
+    <p><strong>Linear regression</strong> seeks $W$ such that $XW \approx \mathbf{y}$. When $X$ is square and invertible, the exact solution is $W = X^{-1}\mathbf{y}$. For overdetermined systems (more data than parameters), the <em>least-squares</em> solution is given by the normal equations: $X^T X W = X^T \mathbf{y}$, which is itself a square linear system.</p>
+    <p><strong>Why gradient descent instead of solving directly?</strong> Neural network systems are massively overdetermined and nonlinear after activation functions. Gaussian elimination on a billion-parameter model is computationally intractable — iterative gradient descent is the only practical option.</p>
+    <p><strong>Sparse systems</strong> appear in graph neural networks and attention with sparse patterns — specialized sparse solvers exploit the structure, analogous to how Gaussian elimination exploits zero entries.</p>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════ CHAPTER 5 -->
+<section class="chapter" id="ch5">
+  <div class="chapter-num">Chapter 5</div>
+  <h2>Vector Spaces</h2>
+
+  <p>A <strong>vector space</strong> $V$ over $\mathbb{R}$ is a set with two operations (addition and scalar multiplication) satisfying eight axioms — closure, associativity, commutativity, identity, inverse, and distributivity. The most important example is $\mathbb{R}^n$.</p>
+
+  <h3>Span and Linear Independence</h3>
+  <div class="definition">
+    <div class="definition-label">Key Concepts</div>
+    <ul>
+      <li><strong>Span:</strong> $\text{span}\{\mathbf{v}_1, \ldots, \mathbf{v}_k\} = \{c_1\mathbf{v}_1 + \cdots + c_k\mathbf{v}_k : c_i \in \mathbb{R}\}$ — all linear combinations</li>
+      <li><strong>Linearly independent:</strong> $c_1\mathbf{v}_1 + \cdots + c_k\mathbf{v}_k = \mathbf{0}$ only if all $c_i = 0$</li>
+      <li><strong>Basis:</strong> A linearly independent set that spans $V$</li>
+      <li><strong>Dimension:</strong> Number of vectors in any basis of $V$</li>
+    </ul>
+  </div>
+
+  <h3>Fundamental Subspaces of a Matrix</h3>
+  <p>Every matrix $A$ has four fundamental subspaces:</p>
+  <ul>
+    <li><strong>Column space</strong> $\text{Col}(A)$: span of columns of $A$ — the set of all $A\mathbf{x}$</li>
+    <li><strong>Null space</strong> $\text{Null}(A)$: all $\mathbf{x}$ with $A\mathbf{x} = \mathbf{0}$ — directions the map collapses</li>
+    <li><strong>Row space</strong> $\text{Row}(A)$: span of rows = $\text{Col}(A^T)$</li>
+    <li><strong>Left null space</strong> $\text{Null}(A^T)$</li>
+  </ul>
+
+  <div class="formula">
+    <div class="formula-label">Rank-Nullity Theorem</div>
+    $$\text{rank}(A) + \text{nullity}(A) = n \quad (\text{number of columns})$$
+  </div>
+
+  <div class="neural">
+    <div class="neural-label">⬡ Neural Architecture Connection</div>
+    <p><strong>Embedding spaces:</strong> Token embeddings live in a high-dimensional vector space $\mathbb{R}^d$. The famous "king − man + woman ≈ queen" result shows that semantic relationships correspond to directions (linear substructures) in this space.</p>
+    <p><strong>Column space = reachable outputs:</strong> The column space of a weight matrix $W$ is the set of all possible output vectors. If $W$ has low rank, only a low-dimensional subspace of outputs is reachable — the layer is a bottleneck.</p>
+    <p><strong>Null space = wasted capacity:</strong> Vectors in the null space of $W$ produce zero output — the model can't distinguish inputs that differ only in a null-space direction. A large null space wastes representational capacity.</p>
+    <p><strong>Superposition hypothesis:</strong> Recent interpretability research suggests that transformers pack more features than dimensions into their embedding space using near-orthogonal directions — exploiting the geometry of high-dimensional vector spaces.</p>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════ CHAPTER 6 -->
+<section class="chapter" id="ch6">
+  <div class="chapter-num">Chapter 6</div>
+  <h2>Rank, Determinant, Trace, and Inverse</h2>
+
+  <h3>Rank</h3>
+  <p>The <strong>rank</strong> of a matrix is the number of linearly independent rows (= linearly independent columns = number of pivots after row reduction). A matrix is <strong>full rank</strong> if $\text{rank}(A) = \min(m, n)$.</p>
+
+  <h3>Determinant</h3>
+  <p>The <strong>determinant</strong> $\det(A)$ is defined only for square matrices and measures the signed volume scaling factor of the transformation. Key facts:</p>
+  <div class="formula">
+    <div class="formula-label">2×2 Determinant</div>
+    $$\det\begin{bmatrix}a & b \\ c & d\end{bmatrix} = ad - bc$$
+  </div>
+  <ul>
+    <li>$\det(A) \neq 0$ iff $A$ is invertible (full rank)</li>
+    <li>$\det(A) = 0$ iff $A$ is singular (rank-deficient)</li>
+    <li>$\det(AB) = \det(A)\det(B)$</li>
+  </ul>
+
+  <h3>Trace</h3>
+  <p>The <strong>trace</strong> is the sum of diagonal entries:</p>
+  <div class="formula">
+    <div class="formula-label">Trace</div>
+    $$\text{tr}(A) = \sum_i a_{ii} = \lambda_1 + \lambda_2 + \cdots + \lambda_n$$
+  </div>
+  <p>The trace equals the sum of eigenvalues (counted with multiplicity).</p>
+
+  <h3>Matrix Inverse</h3>
+  <p>For a square invertible matrix $A$, the inverse $A^{-1}$ satisfies $AA^{-1} = A^{-1}A = I$. For 2×2:</p>
+  <div class="formula">
+    <div class="formula-label">2×2 Inverse</div>
+    $$\begin{bmatrix}a&b\\c&d\end{bmatrix}^{-1} = \frac{1}{ad-bc}\begin{bmatrix}d&-b\\-c&a\end{bmatrix}$$
+  </div>
+
+  <div class="neural">
+    <div class="neural-label">⬡ Neural Architecture Connection</div>
+    <p><strong>Low rank is the norm, not the exception:</strong> Empirical studies (Aghajanyan et al., 2021) show that large language model weight matrices have low <em>intrinsic rank</em> — the effective dimensionality of the fine-tuning gradient updates is much smaller than the matrix dimensions.</p>
+    <p><strong>LoRA (Low-Rank Adaptation)</strong> freezes the pre-trained weight $W_0$ and adds a trainable low-rank update: $W = W_0 + BA$ where $B \in \mathbb{R}^{m \times r}$ and $A \in \mathbb{R}^{r \times n}$ with $r \ll \min(m, n)$. The rank $r$ is a hyperparameter, typically 4–64.</p>
+    <p><strong>Trace in analysis:</strong> The trace of the attention weight matrix $\text{tr}(\text{softmax}(QK^T/\sqrt{d}))$ equals $n$ (for $n$ tokens) and represents the total "attention budget" spread across all heads. The trace of the Hessian estimates the total curvature of the loss landscape.</p>
+    <p><strong>Pseudo-inverse:</strong> When $W$ is not square or is singular, the Moore-Penrose pseudo-inverse $W^+$ solves the normal equations for least-squares problems — used in understanding the implicit bias of gradient descent.</p>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════ CHAPTER 7 -->
+<section class="chapter" id="ch7">
+  <div class="chapter-num">Chapter 7</div>
+  <h2>Orthogonality</h2>
+
+  <p>Two vectors are <strong>orthogonal</strong> ($\mathbf{u} \perp \mathbf{v}$) if their dot product is zero: $\mathbf{u} \cdot \mathbf{v} = 0$. Orthogonality generalizes perpendicularity to any number of dimensions.</p>
+
+  <h3>Orthogonal and Orthonormal Bases</h3>
+  <div class="definition">
+    <div class="definition-label">Definitions</div>
+    <ul>
+      <li><strong>Orthogonal set:</strong> Every pair of vectors in the set is orthogonal</li>
+      <li><strong>Orthonormal set:</strong> Orthogonal and every vector has unit norm</li>
+      <li><strong>Orthogonal matrix $Q$:</strong> Square matrix with orthonormal columns; $Q^T Q = QQ^T = I$, so $Q^{-1} = Q^T$</li>
+    </ul>
+  </div>
+
+  <h3>Orthogonal Projection</h3>
+  <p>The projection of $\mathbf{u}$ onto $\mathbf{v}$ is:</p>
+  <div class="formula">
+    <div class="formula-label">Projection Formula</div>
+    $$\text{proj}_{\mathbf{v}}(\mathbf{u}) = \frac{\mathbf{u} \cdot \mathbf{v}}{\|\mathbf{v}\|^2}\,\mathbf{v}$$
+  </div>
+  <p>To project onto a subspace spanned by columns of $A$: $\mathbf{p} = A(A^T A)^{-1} A^T \mathbf{b}$.</p>
+
+  <h3>Gram-Schmidt Process</h3>
+  <p>Given a set of linearly independent vectors, Gram-Schmidt produces an orthonormal set spanning the same space:</p>
+  <ol>
+    <li>Set $\mathbf{u}_1 = \mathbf{v}_1$</li>
+    <li>$\mathbf{u}_k = \mathbf{v}_k - \sum_{j=1}^{k-1} \frac{\mathbf{v}_k \cdot \mathbf{u}_j}{\|\mathbf{u}_j\|^2}\mathbf{u}_j$ (subtract projections onto previous vectors)</li>
+    <li>Normalize: $\mathbf{e}_k = \mathbf{u}_k / \|\mathbf{u}_k\|$</li>
+  </ol>
+
+  <div class="neural">
+    <div class="neural-label">⬡ Neural Architecture Connection</div>
+    <p><strong>Attention as projection:</strong> Each attention head projects the input vectors onto learned query and key subspaces using weight matrices $W_Q$ and $W_K$. The attention score $\mathbf{q} \cdot \mathbf{k}$ measures how well a query aligns with a key in this projected space.</p>
+    <p><strong>RoPE uses 2D rotations</strong> (which are orthogonal matrices) to encode relative position. Because orthogonal matrices preserve dot products — $\text{rot}(\mathbf{q}) \cdot \text{rot}(\mathbf{k})$ depends only on the relative angle — RoPE elegantly encodes position without adding extra vectors.</p>
+    <p><strong>Orthogonal weight initialization</strong> (e.g., the Delta rule) initializes weight matrices as orthogonal matrices, ensuring gradients neither vanish nor explode at initialization by preserving the norm of activations exactly.</p>
+    <p><strong>Gram-Schmidt ↔ QR:</strong> The Gram-Schmidt process computes the QR decomposition of a matrix. QR is used in some attention variants and in computing orthogonal bases for gradient subspaces in second-order optimizers.</p>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════ CHAPTER 8 -->
+<section class="chapter" id="ch8">
+  <div class="chapter-num">Chapter 8</div>
+  <h2>Eigenvalues and Eigenvectors</h2>
+
+  <p>An <strong>eigenvector</strong> of a square matrix $A$ is a nonzero vector $\mathbf{v}$ that $A$ maps to a scalar multiple of itself:</p>
+  <div class="formula">
+    <div class="formula-label">Eigenvalue Equation</div>
+    $$A\mathbf{v} = \lambda\mathbf{v}$$
+  </div>
+  <p>The scalar $\lambda$ is the corresponding <strong>eigenvalue</strong>. The eigenvector is unchanged in direction — only scaled by $\lambda$.</p>
+
+  <h3>Finding Eigenvalues: Characteristic Polynomial</h3>
+  <p>Rearranging: $(A - \lambda I)\mathbf{v} = \mathbf{0}$. For a non-trivial solution to exist, the matrix $A - \lambda I$ must be singular:</p>
+  <div class="formula">
+    <div class="formula-label">Characteristic Equation</div>
+    $$\det(A - \lambda I) = 0$$
+  </div>
+  <p>This polynomial in $\lambda$ has degree $n$ for an $n \times n$ matrix. Its roots are the eigenvalues.</p>
+
+  <h3>Diagonalization</h3>
+  <p>If $A$ has $n$ linearly independent eigenvectors, it can be <strong>diagonalized</strong>:</p>
+  $$A = P D P^{-1}$$
+  <p>where the columns of $P$ are eigenvectors and $D = \text{diag}(\lambda_1, \ldots, \lambda_n)$ contains eigenvalues. Symmetric matrices are always diagonalizable with <em>orthogonal</em> $P$: $A = Q D Q^T$.</p>
+
+  <div class="example">
+    <div class="example-label">Example</div>
+    <p>$A = \begin{bmatrix}4&1\\2&3\end{bmatrix}$: $\det(A-\lambda I) = (4-\lambda)(3-\lambda)-2 = \lambda^2-7\lambda+10 = (\lambda-5)(\lambda-2) = 0$. Eigenvalues: $\lambda_1=5$, $\lambda_2=2$.</p>
+  </div>
+
+  <div class="neural">
+    <div class="neural-label">⬡ Neural Architecture Connection</div>
+    <p><strong>PCA (Principal Component Analysis)</strong> finds the eigenvectors of the covariance matrix $\Sigma = X^T X / n$. The top eigenvectors are the "principal directions" of variance in the data — used to reduce dimensionality of activations and understand what features a model has learned.</p>
+    <p><strong>Loss landscape curvature:</strong> The Hessian $H = \nabla^2 \mathcal{L}$ is a symmetric matrix whose eigenvalues measure curvature in each direction. Large eigenvalues → steep directions (require small learning rates). Small eigenvalues → flat directions (slow learning). The ratio of largest to smallest eigenvalue is the <em>condition number</em>, which determines convergence speed.</p>
+    <p><strong>Vanishing/exploding gradients</strong> in deep networks are fundamentally an eigenvalue problem. When weight matrices have eigenvalues with $|\lambda| > 1$, gradients explode as they backpropagate; $|\lambda| < 1$ causes vanishing. This motivates careful initialization (Xavier, He) and normalization layers.</p>
+    <p><strong>Attention head specialization:</strong> Eigenvectors of the attention pattern matrix reveal which "directions" in token-space each head is sensitive to — a lens for mechanistic interpretability.</p>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════ CHAPTER 9 -->
+<section class="chapter" id="ch9">
+  <div class="chapter-num">Chapter 9</div>
+  <h2>Matrix Decompositions</h2>
+
+  <p>Decompositions factor a matrix into structured pieces, revealing geometry and enabling efficient computation.</p>
+
+  <h3>LU Decomposition</h3>
+  <p>Factor $A = LU$ where $L$ is lower triangular (with 1s on diagonal) and $U$ is upper triangular. LU is Gaussian elimination written in matrix form. Efficient for solving $A\mathbf{x} = \mathbf{b}$ for many right-hand sides.</p>
+
+  <h3>QR Decomposition</h3>
+  <p>Any matrix $A$ factors as $A = QR$ where $Q$ has orthonormal columns and $R$ is upper triangular. Computed via Gram-Schmidt. Numerically stable for solving least-squares problems.</p>
+
+  <h3>Singular Value Decomposition (SVD)</h3>
+  <p>The most powerful decomposition — works for <em>any</em> $m \times n$ matrix:</p>
+  <div class="formula">
+    <div class="formula-label">SVD</div>
+    $$A = U \Sigma V^T$$
+  </div>
+  <ul>
+    <li>$U \in \mathbb{R}^{m\times m}$: orthogonal matrix of <strong>left singular vectors</strong></li>
+    <li>$\Sigma \in \mathbb{R}^{m\times n}$: diagonal with <strong>singular values</strong> $\sigma_1 \geq \sigma_2 \geq \cdots \geq 0$</li>
+    <li>$V \in \mathbb{R}^{n\times n}$: orthogonal matrix of <strong>right singular vectors</strong></li>
+  </ul>
+
+  <p>The <strong>rank</strong> of $A$ equals the number of non-zero singular values. The <strong>best rank-$k$ approximation</strong> (in Frobenius and spectral norm) is:</p>
+  <div class="formula">
+    <div class="formula-label">Low-Rank Approximation (Eckart-Young Theorem)</div>
+    $$\hat{A}_k = \sum_{i=1}^k \sigma_i \mathbf{u}_i \mathbf{v}_i^T$$
+  </div>
+  <p>Each term is a rank-1 matrix (outer product). The singular values quantify how much "energy" each rank-1 component carries.</p>
+
+  <div class="example">
+    <div class="example-label">Example — Rank and SVD</div>
+    <p>$A = \begin{bmatrix}3&0\\0&0\end{bmatrix}$: $U=I$, $\Sigma = \begin{bmatrix}3&0\\0&0\end{bmatrix}$, $V^T=I$. One non-zero singular value → rank 1.</p>
+  </div>
+
+  <div class="neural">
+    <div class="neural-label">⬡ Neural Architecture Connection</div>
+    <p><strong>LoRA (Low-Rank Adaptation, Hu et al. 2021)</strong> is directly motivated by the Eckart-Young theorem. Pre-trained weight matrices $W_0 \in \mathbb{R}^{m \times n}$ have low intrinsic rank in the fine-tuning task. LoRA parameterizes the weight update as $\Delta W = BA$ with $B \in \mathbb{R}^{m\times r}$ and $A \in \mathbb{R}^{r\times n}$, $r \ll \min(m,n)$. This is exactly a truncated SVD structure — and reduces trainable parameters from $mn$ to $r(m+n)$.</p>
+    <p><strong>Spectral analysis of weights:</strong> The singular value spectrum of a trained weight matrix reveals its effective rank. Models with heavy-tailed singular value spectra tend to generalize better (the "heavy-tailed self-regularization" hypothesis).</p>
+    <p><strong>Dimensionality reduction:</strong> SVD of the token-context matrix gives LSA (Latent Semantic Analysis) — the precursor to word embeddings. Word2Vec and modern embeddings can be understood as approximating the SVD of a pointwise mutual information (PMI) matrix.</p>
+    <p><strong>QR in training:</strong> Some adaptive optimizers (e.g., Muon) apply QR decomposition to orthogonalize the gradient before applying the update, improving conditioning and convergence speed.</p>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════ CHAPTER 10 -->
+<section class="chapter" id="ch10">
+  <div class="chapter-num">Chapter 10</div>
+  <h2>Norms and Distances</h2>
+
+  <p>A <strong>norm</strong> $\|\cdot\|$ on a vector space assigns a non-negative length to each vector, satisfying: (1) $\|\mathbf{v}\| = 0$ iff $\mathbf{v} = \mathbf{0}$; (2) $\|c\mathbf{v}\| = |c|\|\mathbf{v}\|$; (3) triangle inequality $\|\mathbf{u}+\mathbf{v}\| \leq \|\mathbf{u}\| + \|\mathbf{v}\|$.</p>
+
+  <h3>Vector Norms</h3>
+  <div class="definition">
+    <div class="definition-label">Common Vector Norms</div>
+    <ul>
+      <li><strong>L1 norm:</strong> $\|\mathbf{v}\|_1 = \sum_i |v_i|$ — sum of absolute values</li>
+      <li><strong>L2 norm:</strong> $\|\mathbf{v}\|_2 = \sqrt{\sum_i v_i^2}$ — Euclidean length</li>
+      <li><strong>L∞ norm:</strong> $\|\mathbf{v}\|_\infty = \max_i |v_i|$ — largest absolute value</li>
+      <li><strong>Lp norm:</strong> $\|\mathbf{v}\|_p = \left(\sum_i |v_i|^p\right)^{1/p}$</li>
+    </ul>
+  </div>
+
+  <h3>Matrix Norms</h3>
+  <div class="definition">
+    <div class="definition-label">Common Matrix Norms</div>
+    <ul>
+      <li><strong>Frobenius norm:</strong> $\|A\|_F = \sqrt{\sum_{i,j} a_{ij}^2} = \sqrt{\sum_i \sigma_i^2}$ — treats matrix as a long vector</li>
+      <li><strong>Spectral norm:</strong> $\|A\|_2 = \sigma_{\max}$ — largest singular value; equals the maximum stretching factor</li>
+    </ul>
+  </div>
+
+  <h3>Distance Metrics</h3>
+  <p>The distance between vectors $\mathbf{a}$ and $\mathbf{b}$ is $d(\mathbf{a}, \mathbf{b}) = \|\mathbf{a} - \mathbf{b}\|$. Different norms define different geometries:</p>
+  <ul>
+    <li>L2 distance: Euclidean (straight-line) distance</li>
+    <li>L1 distance: "Manhattan" or "city-block" distance</li>
+  </ul>
+
+  <div class="example">
+    <div class="example-label">Example — Attention Scaling</div>
+    <p>For $d_k = 64$ (key dimension), attention scores $\mathbf{q}\cdot\mathbf{k}$ have variance proportional to $d_k$ if entries are unit-normal. Dividing by $\sqrt{d_k} = 8$ restores unit variance and prevents softmax saturation.</p>
+    $$\text{Attention}(Q,K,V) = \text{softmax}\!\left(\frac{QK^T}{\sqrt{d_k}}\right)V$$
+  </div>
+
+  <div class="neural">
+    <div class="neural-label">⬡ Neural Architecture Connection</div>
+    <p><strong>Gradient clipping:</strong> During training, the gradient norm $\|\nabla \mathcal{L}\|_2$ is computed each step. If it exceeds a threshold $c$, the gradient is rescaled: $\nabla \leftarrow \frac{c}{\|\nabla\|}\nabla$. This prevents a single large-gradient step from destabilizing training — critical for transformers and RNNs.</p>
+    <p><strong>L2 regularization (weight decay):</strong> Adds $\lambda\|W\|_F^2$ to the loss. This penalizes large weights, preventing overfitting. Adam with weight decay (AdamW) decouples this from the adaptive learning rate and is the default optimizer for LLM training.</p>
+    <p><strong>Layer Normalization:</strong> LayerNorm normalizes each token's activation vector to have zero mean and unit L2 norm (then applies learned scale $\gamma$ and shift $\beta$). This stabilizes activations and makes training much less sensitive to learning rate.</p>
+    <p><strong>Attention scaling by $1/\sqrt{d_k}$:</strong> Without this scaling, dot products $\mathbf{q}\cdot\mathbf{k}$ grow with $d_k$ (variance $\approx d_k$ for random unit vectors), pushing the softmax into a near-one-hot distribution with near-zero gradients. Dividing by $\sqrt{d_k}$ restores unit variance.</p>
+    <p><strong>Spectral normalization:</strong> In GANs, the discriminator's weight matrices are normalized by their spectral norm $\sigma_{\max}$ at each step, enforcing a Lipschitz constraint that stabilizes adversarial training.</p>
+  </div>
+</section>
+
+<div class="attribution">
+  <p>Basic Linear Algebra — Foundations for Neural Models</p>
+  <p>Topics selected for their direct relevance to transformer architectures, LLMs, and World Models.</p>
+  <p>Advanced coverage (tensor algebra, Lie groups, information geometry, optimal transport) continues in the Advanced Linear Algebra textbook.</p>
+</div>
+
+</body>
+</html>

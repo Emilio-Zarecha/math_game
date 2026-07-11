@@ -323,12 +323,32 @@
     /* Step meta row */
     #step-meta {
       display: flex;
-      align-items: center;
-      justify-content: space-between;
+      flex-direction: column;
+      gap: 4px;
       font-size: 0.83rem;
     }
-    #step-desc { color: var(--muted); font-style: italic; }
-    #step-progress { color: var(--text); font-weight: 600; }
+    #step-desc {
+      color: var(--correct);
+      background: rgba(62,207,142,0.1);
+      border-left: 3px solid rgba(62,207,142,0.55);
+      border-radius: 0 4px 4px 0;
+      padding: 4px 10px;
+      font-style: italic;
+      font-size: 0.82rem;
+      animation: fade-in 0.3s ease-out;
+    }
+    #step-desc:empty { display: none; }
+    #step-progress { color: var(--text); font-weight: 600; text-align: right; }
+    /* Textbook link bar */
+    #textbook-link-bar {
+      font-size: 0.78rem;
+      text-align: right;
+    }
+    #textbook-link-bar a {
+      color: var(--muted);
+      text-decoration: none;
+    }
+    #textbook-link-bar a:hover { color: var(--accent); }
 
     /* Both-sides message */
     #side-message {
@@ -830,11 +850,13 @@
   <a class="textbook-link" href="textbook_calculus.html">Calculus Textbook</a>
   <a class="textbook-link" href="textbook_algebra2.html">Algebra 2 Textbook</a>
   <a class="textbook-link" href="textbook_statistics.html">Statistics Textbook</a>
+  <a class="textbook-link" href="textbook_linearalgebra.html">Linear Algebra Textbook</a>
 </div>
 
 <div id="score-bar">
   Solved: <b id="sc-solved">0</b>
   &nbsp;|&nbsp; Hints: <b id="sc-hints">0</b>
+  &nbsp;|&nbsp; Streak: <b id="sc-streak">0</b>
   &nbsp;|&nbsp; Problem: <b id="sc-num" style="color:var(--hint)">—</b>
   &nbsp;|&nbsp; ID: <b id="sc-puzzle">—</b>
 </div>
@@ -852,6 +874,7 @@
     <option value="trigonometry.json">Trigonometry</option>
     <option value="calculus.json">Calculus</option>
     <option value="statistics.json">Statistics</option>
+    <option value="linearalgebra.json">Linear Algebra</option>
   </select>
   <select id="concept-select" style="display:none"><option value="">— Select a concept —</option></select>
   <span id="concept-count" style="display:none"></span>
@@ -877,6 +900,8 @@
       <div id="question-plain"></div>
       <div id="puzzle-img"></div>
     </div>
+
+    <div id="textbook-link-bar"></div>
 
     <div id="step-box" class="auto-step">
       <div id="auto-label"></div>
@@ -980,7 +1005,19 @@ const G = {
   draggingId:      null,
   animating:       false, // true while ghost-drag animation is in flight
   stepVer:         0,     // increments on every step change to invalidate stale ghosts
-  score:           { solved: 0, hints: 0 },
+  cleanSolve:      true,  // false once a hint is used for current puzzle
+  score:           { solved: 0, hints: 0, streak: 0, bestStreak: 0 },
+};
+
+const TEXTBOOK_MAP = {
+  'alg':    'textbook_algebra.html',
+  'alg2':   'textbook_algebra2.html',
+  'arith':  'textbook_arithmetic.html',
+  'geo':    'textbook_geometry.html',
+  'trig':   'textbook_trigonometry.html',
+  'calc':   'textbook_calculus.html',
+  'stat':   'textbook_statistics.html',
+  'linalg': 'textbook_linearalgebra.html',
 };
 
 function visibleSteps() {
@@ -1104,10 +1141,11 @@ async function loadConcepts() {
 }
 
 const TOPIC_META = {
-  'trig': { file: 'trigonometry.json', topicIndex: 4 },
-  'calc': { file: 'calculus.json',     topicIndex: 5 },
-  'alg2': { file: 'algebra2.json',     topicIndex: 1 },
-  'stat': { file: 'statistics.json',   topicIndex: 6 },
+  'trig':   { file: 'trigonometry.json',   topicIndex: 4 },
+  'calc':   { file: 'calculus.json',       topicIndex: 5 },
+  'alg2':   { file: 'algebra2.json',       topicIndex: 1 },
+  'stat':   { file: 'statistics.json',     topicIndex: 6 },
+  'linalg': { file: 'linearalgebra.json',  topicIndex: 7 },
 };
 
 
@@ -1162,6 +1200,16 @@ function loadPuzzle() {
   $('sc-num').textContent    = `#${globalNum}`;
   $('sc-puzzle').textContent = G.puzzle.id;
   $('puzzle-num-badge').textContent = `#${globalNum}`;
+
+  G.cleanSolve = true;
+
+  const topicPrefix = G.puzzle.id.split('-')[0];
+  const tbUrl = TEXTBOOK_MAP[topicPrefix];
+  const tbBar = $('textbook-link-bar');
+  const anchor = G.puzzle.chapter ? `#ch${G.puzzle.chapter}` : '';
+  tbBar.innerHTML = tbUrl
+    ? `<a href="${tbUrl}${anchor}" target="_blank">📖 Read about this topic →</a>`
+    : '';
 
   renderAll();
   loadNotes();
@@ -1460,6 +1508,13 @@ function advanceStep() {
     if (G.currentStep >= visibleSteps().length) {
       G.score.solved++;
       $('sc-solved').textContent = G.score.solved;
+      if (G.cleanSolve) {
+        G.score.streak++;
+        if (G.score.streak > G.score.bestStreak) G.score.bestStreak = G.score.streak;
+      } else {
+        G.score.streak = 0;
+      }
+      $('sc-streak').textContent = G.score.streak > 0 ? `🔥${G.score.streak}` : '0';
     }
     renderCurrentStep();
     requestAnimationFrame(() => requestAnimationFrame(() => {
@@ -1476,6 +1531,9 @@ function activateHint() {
 
   G.score.hints++;
   $('sc-hints').textContent = G.score.hints;
+  G.cleanSolve = false;
+  G.score.streak = 0;
+  $('sc-streak').textContent = '0';
 
   // Highlight palette item
   const palItem = $('palette').querySelector(`[data-id="${step.paletteRef}"]`);
@@ -1549,6 +1607,7 @@ $('reset-btn').addEventListener('click', () => {
   if (!G.puzzle) return;
   G.currentStep    = 0;
   G.completedDrops = new Set();
+  G.cleanSolve     = true;
   clearHint();
   completion.style.display = 'none';
   renderAll();

@@ -1,0 +1,2592 @@
+[
+  {
+    "id": "linalg-e-001",
+    "topic": "linearalgebra",
+    "difficulty": "easy",
+    "chapter": 1,
+    "question": {
+      "latex": "\\mathbf{a} = [2,\\ 3],\\quad \\mathbf{b} = [4,\\ 1]",
+      "plain": "Compute the dot product a · b"
+    },
+    "palette": [
+      {
+        "id": "p1",
+        "latex": "2(4) + 3(1)",
+        "description": "Multiply each pair of components and sum"
+      },
+      {
+        "id": "p2",
+        "latex": "11",
+        "description": "The final dot product"
+      }
+    ],
+    "steps": [
+      {
+        "id": "s1",
+        "fromLatex": "\\mathbf{a} \\cdot \\mathbf{b} = 2(4) + 3(1)",
+        "toLatex": "\\mathbf{a} \\cdot \\mathbf{b} = 2(4) + 3(1)",
+        "paletteRef": "p1",
+        "dropTargets": [
+          "2(4) + 3(1)"
+        ],
+        "description": "Dot product: multiply corresponding components and sum them"
+      },
+      {
+        "id": "s2",
+        "fromLatex": "= 8 + 3 = 11",
+        "toLatex": "\\mathbf{a} \\cdot \\mathbf{b} = 11",
+        "paletteRef": "p2",
+        "dropTargets": [
+          "11"
+        ],
+        "description": "8 + 3 = 11  ✓  In attention, this is an attention logit between two token vectors"
+      }
+    ]
+  },
+  {
+    "id": "linalg-e-002",
+    "topic": "linearalgebra",
+    "difficulty": "easy",
+    "chapter": 1,
+    "question": {
+      "latex": "\\mathbf{v} = [3,\\ 4]",
+      "plain": "Compute the L2 norm ‖v‖₂"
+    },
+    "palette": [
+      {
+        "id": "p1",
+        "latex": "3^2 + 4^2",
+        "description": "Sum of squared components"
+      },
+      {
+        "id": "p2",
+        "latex": "5",
+        "description": "Square root of 25"
+      }
+    ],
+    "steps": [
+      {
+        "id": "s1",
+        "fromLatex": "\\|\\mathbf{v}\\|_2 = \\sqrt{3^2 + 4^2}",
+        "toLatex": "\\|\\mathbf{v}\\|_2 = \\sqrt{3^2 + 4^2}",
+        "paletteRef": "p1",
+        "dropTargets": [
+          "3^2 + 4^2"
+        ],
+        "description": "L2 norm: square each component and sum under the radical"
+      },
+      {
+        "id": "s2",
+        "fromLatex": "= \\sqrt{9 + 16} = \\sqrt{25} = 5",
+        "toLatex": "\\|\\mathbf{v}\\|_2 = 5",
+        "paletteRef": "p2",
+        "dropTargets": [
+          "5"
+        ],
+        "description": "‖v‖₂ = 5  — norms measure the 'size' of an embedding vector"
+      }
+    ]
+  },
+  {
+    "id": "linalg-m-001",
+    "topic": "linearalgebra",
+    "difficulty": "medium",
+    "chapter": 1,
+    "question": {
+      "latex": "\\mathbf{v} = [3,\\ 4]",
+      "plain": "Normalize v to a unit vector v̂"
+    },
+    "palette": [
+      {
+        "id": "p1",
+        "latex": "5",
+        "description": "The L2 norm of v — used as the divisor"
+      },
+      {
+        "id": "p2",
+        "latex": "\\tfrac{3}{5}",
+        "description": "First component divided by norm"
+      },
+      {
+        "id": "p3",
+        "latex": "\\tfrac{4}{5}",
+        "description": "Second component divided by norm"
+      }
+    ],
+    "steps": [
+      {
+        "id": "s1",
+        "fromLatex": "\\|\\mathbf{v}\\|_2 = \\sqrt{9+16} = 5",
+        "toLatex": "\\|\\mathbf{v}\\|_2 = 5",
+        "paletteRef": "p1",
+        "dropTargets": [
+          "5"
+        ],
+        "description": "First compute the norm: √(9+16) = √25 = 5"
+      },
+      {
+        "id": "s2",
+        "fromLatex": "\\hat{\\mathbf{v}} = \\tfrac{1}{5}[3,\\ 4] = [\\tfrac{3}{5},\\ \\tfrac{4}{5}]",
+        "toLatex": "\\hat{\\mathbf{v}} = \\left[\\tfrac{3}{5},\\ \\tfrac{4}{5}\\right]",
+        "paletteRef": "p2",
+        "dropTargets": [
+          "\\tfrac{3}{5}"
+        ],
+        "description": "Divide each component by the norm — unit vectors have ‖v̂‖ = 1"
+      }
+    ]
+  },
+  {
+    "id": "linalg-m-002",
+    "topic": "linearalgebra",
+    "difficulty": "medium",
+    "chapter": 1,
+    "question": {
+      "latex": "\\mathbf{u} = [3,\\ 0],\\quad \\mathbf{v} = [0,\\ 5]",
+      "plain": "Are u and v orthogonal? Compute u · v"
+    },
+    "palette": [
+      {
+        "id": "p1",
+        "latex": "3(0) + 0(5)",
+        "description": "Expand the dot product"
+      },
+      {
+        "id": "p2",
+        "latex": "0",
+        "description": "The dot product is zero — vectors are orthogonal"
+      }
+    ],
+    "steps": [
+      {
+        "id": "s1",
+        "fromLatex": "\\mathbf{u} \\cdot \\mathbf{v} = 3(0) + 0(5)",
+        "toLatex": "\\mathbf{u} \\cdot \\mathbf{v} = 3(0) + 0(5)",
+        "paletteRef": "p1",
+        "dropTargets": [
+          "3(0) + 0(5)"
+        ],
+        "description": "Expand: multiply each pair of corresponding components"
+      },
+      {
+        "id": "s2",
+        "fromLatex": "= 0 + 0 = 0",
+        "toLatex": "\\mathbf{u} \\cdot \\mathbf{v} = 0 \\Rightarrow \\text{orthogonal}",
+        "paletteRef": "p2",
+        "dropTargets": [
+          "0"
+        ],
+        "description": "Dot product = 0 means orthogonal — Q and K heads in attention seek this separation"
+      }
+    ]
+  },
+  {
+    "id": "linalg-h-001",
+    "topic": "linearalgebra",
+    "difficulty": "hard",
+    "chapter": 1,
+    "question": {
+      "latex": "\\mathbf{a} = [1,\\ 1],\\quad \\mathbf{b} = [1,\\ 0]",
+      "plain": "Compute cosine similarity cos(θ) = (a·b) / (‖a‖‖b‖)"
+    },
+    "palette": [
+      {
+        "id": "p1",
+        "latex": "1",
+        "description": "a · b = 1(1) + 1(0) = 1"
+      },
+      {
+        "id": "p2",
+        "latex": "\\sqrt{2}",
+        "description": "‖a‖ = √(1²+1²) = √2"
+      },
+      {
+        "id": "p3",
+        "latex": "\\tfrac{1}{\\sqrt{2}}",
+        "description": "cos θ = 1 / (√2 · 1)"
+      }
+    ],
+    "steps": [
+      {
+        "id": "s1",
+        "fromLatex": "\\mathbf{a} \\cdot \\mathbf{b} = 1(1) + 1(0) = 1",
+        "toLatex": "\\mathbf{a} \\cdot \\mathbf{b} = 1",
+        "paletteRef": "p1",
+        "dropTargets": [
+          "1"
+        ],
+        "description": "Numerator: a · b = 1"
+      },
+      {
+        "id": "s2",
+        "fromLatex": "\\|\\mathbf{a}\\| = \\sqrt{2},\\quad \\|\\mathbf{b}\\| = 1",
+        "toLatex": "\\|\\mathbf{a}\\| = \\sqrt{2}",
+        "paletteRef": "p2",
+        "dropTargets": [
+          "\\sqrt{2}"
+        ],
+        "description": "Denominator: ‖a‖ = √2, ‖b‖ = 1"
+      },
+      {
+        "id": "s3",
+        "fromLatex": "\\cos\\theta = \\tfrac{1}{\\sqrt{2} \\cdot 1} = \\tfrac{1}{\\sqrt{2}}",
+        "toLatex": "\\cos\\theta = \\tfrac{1}{\\sqrt{2}} \\approx 0.707",
+        "paletteRef": "p3",
+        "dropTargets": [
+          "\\tfrac{1}{\\sqrt{2}}"
+        ],
+        "description": "Cosine similarity ≈ 0.707 — used to measure semantic closeness of token embeddings"
+      }
+    ]
+  },
+  {
+    "id": "linalg-h-002",
+    "topic": "linearalgebra",
+    "difficulty": "hard",
+    "chapter": 1,
+    "question": {
+      "latex": "\\mathbf{u} = [3,\\ 4],\\quad \\mathbf{v} = [1,\\ 0]",
+      "plain": "Compute the projection of u onto v: proj_v(u)"
+    },
+    "palette": [
+      {
+        "id": "p1",
+        "latex": "3",
+        "description": "u · v = 3(1) + 4(0) = 3"
+      },
+      {
+        "id": "p2",
+        "latex": "1",
+        "description": "‖v‖² = 1² + 0² = 1"
+      },
+      {
+        "id": "p3",
+        "latex": "3\\,\\mathbf{v}",
+        "description": "Scalar multiple (u·v / ‖v‖²) × v = 3v"
+      }
+    ],
+    "steps": [
+      {
+        "id": "s1",
+        "fromLatex": "\\mathbf{u} \\cdot \\mathbf{v} = 3(1) + 4(0) = 3",
+        "toLatex": "\\mathbf{u} \\cdot \\mathbf{v} = 3",
+        "paletteRef": "p1",
+        "dropTargets": [
+          "3"
+        ],
+        "description": "Compute numerator: u · v = 3"
+      },
+      {
+        "id": "s2",
+        "fromLatex": "\\|\\mathbf{v}\\|^2 = 1^2 + 0^2 = 1",
+        "toLatex": "\\|\\mathbf{v}\\|^2 = 1",
+        "paletteRef": "p2",
+        "dropTargets": [
+          "1"
+        ],
+        "description": "Compute denominator: ‖v‖² = 1"
+      },
+      {
+        "id": "s3",
+        "fromLatex": "\\text{proj}_{\\mathbf{v}}(\\mathbf{u}) = \\tfrac{3}{1}\\,\\mathbf{v} = 3\\,\\mathbf{v}",
+        "toLatex": "\\text{proj}_{\\mathbf{v}}(\\mathbf{u}) = [3,\\ 0]",
+        "paletteRef": "p3",
+        "dropTargets": [
+          "3\\,\\mathbf{v}"
+        ],
+        "description": "Projection = (3/1)v = 3v = [3,0] — attention projects queries onto key directions"
+      }
+    ]
+  },
+  {
+    "id": "linalg-e-003",
+    "topic": "linearalgebra",
+    "difficulty": "easy",
+    "chapter": 2,
+    "question": {
+      "latex": "A = \\begin{bmatrix}1 & 2\\\\3 & 4\\end{bmatrix},\\quad B = \\begin{bmatrix}5 & 6\\\\7 & 8\\end{bmatrix}",
+      "plain": "Compute A + B"
+    },
+    "palette": [
+      {
+        "id": "p1",
+        "latex": "6",
+        "description": "1+5 = 6 (top-left entry)"
+      },
+      {
+        "id": "p2",
+        "latex": "\\begin{bmatrix}6 & 8\\\\10 & 12\\end{bmatrix}",
+        "description": "Add element-wise"
+      }
+    ],
+    "steps": [
+      {
+        "id": "s1",
+        "fromLatex": "A + B = \\begin{bmatrix}1+5 & 2+6\\\\3+7 & 4+8\\end{bmatrix}",
+        "toLatex": "A + B = \\begin{bmatrix}1+5 & 2+6\\\\3+7 & 4+8\\end{bmatrix}",
+        "paletteRef": "p2",
+        "dropTargets": [
+          "\\begin{bmatrix}1+5 & 2+6\\\\3+7 & 4+8\\end{bmatrix}"
+        ],
+        "description": "Matrix addition is element-wise: add each corresponding pair"
+      },
+      {
+        "id": "s2",
+        "fromLatex": "= \\begin{bmatrix}6 & 8\\\\10 & 12\\end{bmatrix}",
+        "toLatex": "A + B = \\begin{bmatrix}6 & 8\\\\10 & 12\\end{bmatrix}",
+        "paletteRef": "p1",
+        "dropTargets": [
+          "6"
+        ],
+        "description": "Evaluate each entry — residual connections in transformers use matrix addition"
+      }
+    ]
+  },
+  {
+    "id": "linalg-e-004",
+    "topic": "linearalgebra",
+    "difficulty": "easy",
+    "chapter": 2,
+    "question": {
+      "latex": "A = \\begin{bmatrix}1 & 2\\\\3 & 4\\end{bmatrix}",
+      "plain": "Compute 3A (scalar multiplication)"
+    },
+    "palette": [
+      {
+        "id": "p1",
+        "latex": "3",
+        "description": "Scalar multiplier applied to every entry"
+      },
+      {
+        "id": "p2",
+        "latex": "\\begin{bmatrix}3 & 6\\\\9 & 12\\end{bmatrix}",
+        "description": "Multiply every entry by 3"
+      }
+    ],
+    "steps": [
+      {
+        "id": "s1",
+        "fromLatex": "3A = 3\\begin{bmatrix}1 & 2\\\\3 & 4\\end{bmatrix} = \\begin{bmatrix}3(1) & 3(2)\\\\3(3) & 3(4)\\end{bmatrix}",
+        "toLatex": "3A = \\begin{bmatrix}3(1) & 3(2)\\\\3(3) & 3(4)\\end{bmatrix}",
+        "paletteRef": "p1",
+        "dropTargets": [
+          "3"
+        ],
+        "description": "Scalar multiplication distributes to every entry of the matrix"
+      },
+      {
+        "id": "s2",
+        "fromLatex": "= \\begin{bmatrix}3 & 6\\\\9 & 12\\end{bmatrix}",
+        "toLatex": "3A = \\begin{bmatrix}3 & 6\\\\9 & 12\\end{bmatrix}",
+        "paletteRef": "p2",
+        "dropTargets": [
+          "\\begin{bmatrix}3 & 6\\\\9 & 12\\end{bmatrix}"
+        ],
+        "description": "Result: scaling a weight matrix rescales every linear transformation it performs"
+      }
+    ]
+  },
+  {
+    "id": "linalg-m-003",
+    "topic": "linearalgebra",
+    "difficulty": "medium",
+    "chapter": 2,
+    "question": {
+      "latex": "A = \\begin{bmatrix}1 & 2\\\\3 & 4\\end{bmatrix},\\quad B = \\begin{bmatrix}2 & 0\\\\1 & 3\\end{bmatrix}",
+      "plain": "Compute the matrix product AB"
+    },
+    "palette": [
+      {
+        "id": "p1",
+        "latex": "1(2)+2(1)",
+        "description": "Top-left: row 1 of A dot col 1 of B"
+      },
+      {
+        "id": "p2",
+        "latex": "4",
+        "description": "1(2)+2(1) = 2+2 = 4"
+      },
+      {
+        "id": "p3",
+        "latex": "\\begin{bmatrix}4 & 6\\\\10 & 12\\end{bmatrix}",
+        "description": "Full product AB"
+      }
+    ],
+    "steps": [
+      {
+        "id": "s1",
+        "fromLatex": "AB = \\begin{bmatrix}1(2)+2(1) & 1(0)+2(3)\\\\3(2)+4(1) & 3(0)+4(3)\\end{bmatrix}",
+        "toLatex": "AB = \\begin{bmatrix}1(2)+2(1) & 1(0)+2(3)\\\\3(2)+4(1) & 3(0)+4(3)\\end{bmatrix}",
+        "paletteRef": "p1",
+        "dropTargets": [
+          "1(2)+2(1)"
+        ],
+        "description": "Each entry (i,j) = dot product of row i of A with column j of B"
+      },
+      {
+        "id": "s2",
+        "fromLatex": "= \\begin{bmatrix}4 & 6\\\\10 & 12\\end{bmatrix}",
+        "toLatex": "AB = \\begin{bmatrix}4 & 6\\\\10 & 12\\end{bmatrix}",
+        "paletteRef": "p3",
+        "dropTargets": [
+          "\\begin{bmatrix}4 & 6\\\\10 & 12\\end{bmatrix}"
+        ],
+        "description": "Matrix multiplication = the core computation in every neural network layer"
+      }
+    ]
+  },
+  {
+    "id": "linalg-m-004",
+    "topic": "linearalgebra",
+    "difficulty": "medium",
+    "chapter": 2,
+    "question": {
+      "latex": "W = \\begin{bmatrix}2 & 1\\\\0 & 3\\end{bmatrix},\\quad \\mathbf{x} = \\begin{bmatrix}1\\\\4\\end{bmatrix}",
+      "plain": "Compute the matrix-vector product Wx"
+    },
+    "palette": [
+      {
+        "id": "p1",
+        "latex": "2(1)+1(4)",
+        "description": "First output: row 1 of W dot x"
+      },
+      {
+        "id": "p2",
+        "latex": "6",
+        "description": "2+4 = 6 (first output component)"
+      },
+      {
+        "id": "p3",
+        "latex": "12",
+        "description": "0+12 = 12 (second output component)"
+      }
+    ],
+    "steps": [
+      {
+        "id": "s1",
+        "fromLatex": "W\\mathbf{x} = \\begin{bmatrix}2(1)+1(4)\\\\0(1)+3(4)\\end{bmatrix}",
+        "toLatex": "W\\mathbf{x} = \\begin{bmatrix}2(1)+1(4)\\\\0(1)+3(4)\\end{bmatrix}",
+        "paletteRef": "p1",
+        "dropTargets": [
+          "2(1)+1(4)"
+        ],
+        "description": "Each output component is a dot product of one row of W with x"
+      },
+      {
+        "id": "s2",
+        "fromLatex": "= \\begin{bmatrix}6\\\\12\\end{bmatrix}",
+        "toLatex": "W\\mathbf{x} = \\begin{bmatrix}6\\\\12\\end{bmatrix}",
+        "paletteRef": "p2",
+        "dropTargets": [
+          "6"
+        ],
+        "description": "Wx = [6, 12] — this is exactly what a linear layer computes (before adding bias)"
+      }
+    ]
+  },
+  {
+    "id": "linalg-h-003",
+    "topic": "linearalgebra",
+    "difficulty": "hard",
+    "chapter": 2,
+    "question": {
+      "latex": "A = \\begin{bmatrix}1 & 2\\\\3 & 4\\end{bmatrix},\\quad B = \\begin{bmatrix}0 & 1\\\\1 & 0\\end{bmatrix}",
+      "plain": "Compute BA and confirm BA ≠ AB (non-commutativity)"
+    },
+    "palette": [
+      {
+        "id": "p1",
+        "latex": "0(1)+1(3)",
+        "description": "Top-left of BA: row 1 of B dot col 1 of A"
+      },
+      {
+        "id": "p2",
+        "latex": "\\begin{bmatrix}3 & 4\\\\1 & 2\\end{bmatrix}",
+        "description": "Full product BA"
+      }
+    ],
+    "steps": [
+      {
+        "id": "s1",
+        "fromLatex": "BA = \\begin{bmatrix}0(1)+1(3) & 0(2)+1(4)\\\\1(1)+0(3) & 1(2)+0(4)\\end{bmatrix}",
+        "toLatex": "BA = \\begin{bmatrix}0(1)+1(3) & 0(2)+1(4)\\\\1(1)+0(3) & 1(2)+0(4)\\end{bmatrix}",
+        "paletteRef": "p1",
+        "dropTargets": [
+          "0(1)+1(3)"
+        ],
+        "description": "Compute BA — the order of weight matrices matters in neural networks"
+      },
+      {
+        "id": "s2",
+        "fromLatex": "BA = \\begin{bmatrix}3 & 4\\\\1 & 2\\end{bmatrix}",
+        "toLatex": "BA = \\begin{bmatrix}3 & 4\\\\1 & 2\\end{bmatrix} \\neq AB",
+        "paletteRef": "p2",
+        "dropTargets": [
+          "\\begin{bmatrix}3 & 4\\\\1 & 2\\end{bmatrix}"
+        ],
+        "description": "BA ≠ AB — matrix multiplication is not commutative; layer order changes the model"
+      }
+    ]
+  },
+  {
+    "id": "linalg-h-004",
+    "topic": "linearalgebra",
+    "difficulty": "hard",
+    "chapter": 2,
+    "question": {
+      "latex": "A = \\begin{bmatrix}1 & 0\\\\2 & 1\\end{bmatrix},\\quad B = \\begin{bmatrix}3 & 1\\\\0 & 2\\end{bmatrix},\\quad \\mathbf{v} = \\begin{bmatrix}1\\\\1\\end{bmatrix}",
+      "plain": "Compute (AB)v — first multiply AB, then apply to v"
+    },
+    "palette": [
+      {
+        "id": "p1",
+        "latex": "\\begin{bmatrix}3 & 1\\\\6 & 4\\end{bmatrix}",
+        "description": "AB with entries computed row-by-row"
+      },
+      {
+        "id": "p2",
+        "latex": "\\begin{bmatrix}4\\\\10\\end{bmatrix}",
+        "description": "(AB)v final result"
+      }
+    ],
+    "steps": [
+      {
+        "id": "s1",
+        "fromLatex": "AB = \\begin{bmatrix}1(3)+0(0) & 1(1)+0(2)\\\\2(3)+1(0) & 2(1)+1(2)\\end{bmatrix} = \\begin{bmatrix}3 & 1\\\\6 & 4\\end{bmatrix}",
+        "toLatex": "AB = \\begin{bmatrix}3 & 1\\\\6 & 4\\end{bmatrix}",
+        "paletteRef": "p1",
+        "dropTargets": [
+          "\\begin{bmatrix}3 & 1\\\\6 & 4\\end{bmatrix}"
+        ],
+        "description": "First compute AB — composing two linear layers into one matrix"
+      },
+      {
+        "id": "s2",
+        "fromLatex": "(AB)\\mathbf{v} = \\begin{bmatrix}3(1)+1(1)\\\\6(1)+4(1)\\end{bmatrix} = \\begin{bmatrix}4\\\\10\\end{bmatrix}",
+        "toLatex": "(AB)\\mathbf{v} = \\begin{bmatrix}4\\\\10\\end{bmatrix}",
+        "paletteRef": "p2",
+        "dropTargets": [
+          "\\begin{bmatrix}4\\\\10\\end{bmatrix}"
+        ],
+        "description": "Associativity: (AB)v = A(Bv) — deep networks chain transformations efficiently"
+      }
+    ]
+  },
+  {
+    "id": "linalg-e-005",
+    "topic": "linearalgebra",
+    "difficulty": "easy",
+    "chapter": 3,
+    "question": {
+      "latex": "R = \\begin{bmatrix}0 & -1\\\\1 & 0\\end{bmatrix},\\quad \\mathbf{x} = \\begin{bmatrix}1\\\\0\\end{bmatrix}",
+      "plain": "Apply the 90° rotation matrix R to x"
+    },
+    "palette": [
+      {
+        "id": "p1",
+        "latex": "\\begin{bmatrix}0\\\\1\\end{bmatrix}",
+        "description": "Rotate [1,0] by 90°: goes to [0,1]"
+      }
+    ],
+    "steps": [
+      {
+        "id": "s1",
+        "fromLatex": "R\\mathbf{x} = \\begin{bmatrix}0(1)+(-1)(0)\\\\1(1)+0(0)\\end{bmatrix} = \\begin{bmatrix}0\\\\1\\end{bmatrix}",
+        "toLatex": "R\\mathbf{x} = \\begin{bmatrix}0\\\\1\\end{bmatrix}",
+        "paletteRef": "p1",
+        "dropTargets": [
+          "\\begin{bmatrix}0\\\\1\\end{bmatrix}"
+        ],
+        "description": "90° rotation maps [1,0] → [0,1] — positional encodings use rotations in RoPE"
+      }
+    ]
+  },
+  {
+    "id": "linalg-e-006",
+    "topic": "linearalgebra",
+    "difficulty": "easy",
+    "chapter": 3,
+    "question": {
+      "latex": "S = \\begin{bmatrix}2 & 0\\\\0 & 3\\end{bmatrix},\\quad \\mathbf{v} = \\begin{bmatrix}4\\\\5\\end{bmatrix}",
+      "plain": "Apply the scaling transformation S to v"
+    },
+    "palette": [
+      {
+        "id": "p1",
+        "latex": "8",
+        "description": "2 × 4 = 8 (first component scaled by 2)"
+      },
+      {
+        "id": "p2",
+        "latex": "\\begin{bmatrix}8\\\\15\\end{bmatrix}",
+        "description": "Scale x by 2 and y by 3"
+      }
+    ],
+    "steps": [
+      {
+        "id": "s1",
+        "fromLatex": "S\\mathbf{v} = \\begin{bmatrix}2(4)\\\\3(5)\\end{bmatrix} = \\begin{bmatrix}8\\\\15\\end{bmatrix}",
+        "toLatex": "S\\mathbf{v} = \\begin{bmatrix}8\\\\15\\end{bmatrix}",
+        "paletteRef": "p1",
+        "dropTargets": [
+          "8"
+        ],
+        "description": "Diagonal scaling: each feature dimension scaled independently — like learned gain in normalization"
+      }
+    ]
+  },
+  {
+    "id": "linalg-m-005",
+    "topic": "linearalgebra",
+    "difficulty": "medium",
+    "chapter": 3,
+    "question": {
+      "latex": "T_1 = \\begin{bmatrix}2 & 0\\\\0 & 2\\end{bmatrix},\\quad T_2 = \\begin{bmatrix}0 & -1\\\\1 & 0\\end{bmatrix}",
+      "plain": "Compose: compute T₁T₂ (apply T₂ first, then T₁)"
+    },
+    "palette": [
+      {
+        "id": "p1",
+        "latex": "\\begin{bmatrix}0 & -2\\\\2 & 0\\end{bmatrix}",
+        "description": "Scale-then-rotate composed into one matrix"
+      }
+    ],
+    "steps": [
+      {
+        "id": "s1",
+        "fromLatex": "T_1 T_2 = \\begin{bmatrix}2(0)+0(1) & 2(-1)+0(0)\\\\0(0)+2(1) & 0(-1)+2(0)\\end{bmatrix} = \\begin{bmatrix}0 & -2\\\\2 & 0\\end{bmatrix}",
+        "toLatex": "T_1 T_2 = \\begin{bmatrix}0 & -2\\\\2 & 0\\end{bmatrix}",
+        "paletteRef": "p1",
+        "dropTargets": [
+          "\\begin{bmatrix}0 & -2\\\\2 & 0\\end{bmatrix}"
+        ],
+        "description": "Composition = matrix multiplication — stacking layers composes their transformations"
+      }
+    ]
+  },
+  {
+    "id": "linalg-m-006",
+    "topic": "linearalgebra",
+    "difficulty": "medium",
+    "chapter": 3,
+    "question": {
+      "latex": "T\\begin{bmatrix}1\\\\0\\end{bmatrix} = \\begin{bmatrix}3\\\\1\\end{bmatrix},\\quad T\\begin{bmatrix}0\\\\1\\end{bmatrix} = \\begin{bmatrix}-1\\\\2\\end{bmatrix}",
+      "plain": "Find the matrix T from the images of the standard basis vectors"
+    },
+    "palette": [
+      {
+        "id": "p1",
+        "latex": "\\begin{bmatrix}3 & -1\\\\1 & 2\\end{bmatrix}",
+        "description": "Columns of T are the images of the basis vectors"
+      }
+    ],
+    "steps": [
+      {
+        "id": "s1",
+        "fromLatex": "T = \\begin{bmatrix}| & |\\\\T\\mathbf{e}_1 & T\\mathbf{e}_2\\\\| & |\\end{bmatrix} = \\begin{bmatrix}3 & -1\\\\1 & 2\\end{bmatrix}",
+        "toLatex": "T = \\begin{bmatrix}3 & -1\\\\1 & 2\\end{bmatrix}",
+        "paletteRef": "p1",
+        "dropTargets": [
+          "\\begin{bmatrix}3 & -1\\\\1 & 2\\end{bmatrix}"
+        ],
+        "description": "A linear map is fully determined by where it sends basis vectors — columns of T are the basis images"
+      }
+    ]
+  },
+  {
+    "id": "linalg-h-005",
+    "topic": "linearalgebra",
+    "difficulty": "hard",
+    "chapter": 3,
+    "question": {
+      "latex": "F = \\begin{bmatrix}-1 & 0\\\\0 & 1\\end{bmatrix}",
+      "plain": "What geometric transformation does F represent? Compute F[1,0] and F[0,1]"
+    },
+    "palette": [
+      {
+        "id": "p1",
+        "latex": "\\begin{bmatrix}-1\\\\0\\end{bmatrix}",
+        "description": "F sends e₁=[1,0] to [-1,0] — flips x-axis"
+      },
+      {
+        "id": "p2",
+        "latex": "\\begin{bmatrix}0\\\\1\\end{bmatrix}",
+        "description": "F sends e₂=[0,1] to [0,1] — y unchanged"
+      }
+    ],
+    "steps": [
+      {
+        "id": "s1",
+        "fromLatex": "F\\mathbf{e}_1 = \\begin{bmatrix}-1\\\\0\\end{bmatrix}",
+        "toLatex": "F\\mathbf{e}_1 = \\begin{bmatrix}-1\\\\0\\end{bmatrix}",
+        "paletteRef": "p1",
+        "dropTargets": [
+          "\\begin{bmatrix}-1\\\\0\\end{bmatrix}"
+        ],
+        "description": "x-component negated: F reflects across the y-axis"
+      },
+      {
+        "id": "s2",
+        "fromLatex": "F\\mathbf{e}_2 = \\begin{bmatrix}0\\\\1\\end{bmatrix}",
+        "toLatex": "F \\text{ is a reflection across the y-axis}",
+        "paletteRef": "p2",
+        "dropTargets": [
+          "\\begin{bmatrix}0\\\\1\\end{bmatrix}"
+        ],
+        "description": "y-component unchanged — understanding geometry helps interpret what attention heads learn"
+      }
+    ]
+  },
+  {
+    "id": "linalg-h-006",
+    "topic": "linearalgebra",
+    "difficulty": "hard",
+    "chapter": 3,
+    "question": {
+      "latex": "T(\\mathbf{x}) = A\\mathbf{x} + \\mathbf{b},\\quad A = \\begin{bmatrix}1 & 0\\\\0 & 1\\end{bmatrix},\\quad \\mathbf{b} = \\begin{bmatrix}2\\\\3\\end{bmatrix}",
+      "plain": "Is T a linear transformation? Compute T([0,0]) to check"
+    },
+    "palette": [
+      {
+        "id": "p1",
+        "latex": "\\begin{bmatrix}2\\\\3\\end{bmatrix}",
+        "description": "T(0) = A·0 + b = b ≠ 0"
+      },
+      {
+        "id": "p2",
+        "latex": "\\text{affine, not linear}",
+        "description": "T(0) ≠ 0 so T is not linear — it is affine"
+      }
+    ],
+    "steps": [
+      {
+        "id": "s1",
+        "fromLatex": "T(\\mathbf{0}) = A\\mathbf{0} + \\mathbf{b} = \\mathbf{0} + \\begin{bmatrix}2\\\\3\\end{bmatrix} = \\begin{bmatrix}2\\\\3\\end{bmatrix}",
+        "toLatex": "T(\\mathbf{0}) = \\begin{bmatrix}2\\\\3\\end{bmatrix}",
+        "paletteRef": "p1",
+        "dropTargets": [
+          "\\begin{bmatrix}2\\\\3\\end{bmatrix}"
+        ],
+        "description": "A linear map must send 0 to 0. T(0) = b ≠ 0, so T is not linear"
+      },
+      {
+        "id": "s2",
+        "fromLatex": "T(\\mathbf{0}) \\neq \\mathbf{0} \\Rightarrow T \\text{ is affine, not linear}",
+        "toLatex": "T \\text{ is affine (linear + bias). Neural net layers y = Wx + b are affine maps}",
+        "paletteRef": "p2",
+        "dropTargets": [
+          "\\text{ is affine, not linear}"
+        ],
+        "description": "Every neural network layer y = Wx + b is affine, not strictly linear — the bias shifts the origin"
+      }
+    ]
+  },
+  {
+    "id": "linalg-e-007",
+    "topic": "linearalgebra",
+    "difficulty": "easy",
+    "chapter": 4,
+    "question": {
+      "latex": "2x + y = 5,\\quad x - y = 1",
+      "plain": "Write this system in matrix form Ax = b"
+    },
+    "palette": [
+      {
+        "id": "p1",
+        "latex": "\\begin{bmatrix}2 & 1\\\\1 & -1\\end{bmatrix}",
+        "description": "Coefficient matrix A"
+      },
+      {
+        "id": "p2",
+        "latex": "\\begin{bmatrix}5\\\\1\\end{bmatrix}",
+        "description": "Right-hand side vector b"
+      }
+    ],
+    "steps": [
+      {
+        "id": "s1",
+        "fromLatex": "A = \\begin{bmatrix}2 & 1\\\\1 & -1\\end{bmatrix},\\quad \\mathbf{b} = \\begin{bmatrix}5\\\\1\\end{bmatrix}",
+        "toLatex": "A\\mathbf{x} = \\mathbf{b}",
+        "paletteRef": "p1",
+        "dropTargets": [
+          "\\begin{bmatrix}2 & 1\\\\1 & -1\\end{bmatrix}"
+        ],
+        "description": "Coefficients form matrix A — the normal equations X^T Xw = X^T y follow the same Ax=b form"
+      }
+    ]
+  },
+  {
+    "id": "linalg-e-008",
+    "topic": "linearalgebra",
+    "difficulty": "easy",
+    "chapter": 4,
+    "question": {
+      "latex": "x + y = 4,\\quad x - y = 2",
+      "plain": "Solve by elimination: add the equations"
+    },
+    "palette": [
+      {
+        "id": "p1",
+        "latex": "3",
+        "description": "x = 6/2 = 3"
+      },
+      {
+        "id": "p2",
+        "latex": "1",
+        "description": "y = 4 - x = 4 - 3 = 1"
+      }
+    ],
+    "steps": [
+      {
+        "id": "s1",
+        "fromLatex": "(x+y)+(x-y) = 4+2 \\Rightarrow 2x = 6 \\Rightarrow x = 3",
+        "toLatex": "x = 3",
+        "paletteRef": "p1",
+        "dropTargets": [
+          "3"
+        ],
+        "description": "Adding equations eliminates y — gives x = 3"
+      },
+      {
+        "id": "s2",
+        "fromLatex": "y = 4 - x = 4 - 3 = 1",
+        "toLatex": "x = 3,\\quad y = 1",
+        "paletteRef": "p2",
+        "dropTargets": [
+          "1"
+        ],
+        "description": "Back-substitute x=3 into first equation to get y=1"
+      }
+    ]
+  },
+  {
+    "id": "linalg-m-007",
+    "topic": "linearalgebra",
+    "difficulty": "medium",
+    "chapter": 4,
+    "question": {
+      "latex": "\\begin{bmatrix}2 & 4\\\\1 & 2\\end{bmatrix}\\mathbf{x} = \\begin{bmatrix}6\\\\3\\end{bmatrix}",
+      "plain": "Row-reduce the augmented matrix and identify the solution type"
+    },
+    "palette": [
+      {
+        "id": "p1",
+        "latex": "\\begin{bmatrix}2 & 4 & 6\\\\0 & 0 & 0\\end{bmatrix}",
+        "description": "After R2 → R2 - ½R1: second row becomes all zeros"
+      },
+      {
+        "id": "p2",
+        "latex": "\\text{infinitely many}",
+        "description": "Free variable x₂ → infinitely many solutions"
+      }
+    ],
+    "steps": [
+      {
+        "id": "s1",
+        "fromLatex": "\\left[\\begin{array}{cc|c}2 & 4 & 6\\\\1 & 2 & 3\\end{array}\\right] \\xrightarrow{R_2 - \\frac{1}{2}R_1} \\begin{bmatrix}2 & 4 & 6\\\\0 & 0 & 0\\end{bmatrix}",
+        "toLatex": "\\text{Row 2 becomes } [0\\ 0\\ |\\ 0]",
+        "paletteRef": "p1",
+        "dropTargets": [
+          "\\begin{bmatrix}2 & 4 & 6\\\\0 & 0 & 0\\end{bmatrix}"
+        ],
+        "description": "Row 2 = Row 2 − ½ Row 1 — eliminates the first variable from the second equation"
+      },
+      {
+        "id": "s2",
+        "fromLatex": "\\text{One pivot, one free variable} \\Rightarrow \\text{infinitely many} \\text{ solutions}",
+        "toLatex": "x_1 = 3 - 2t,\\ x_2 = t\\ (t \\in \\mathbb{R})",
+        "paletteRef": "p2",
+        "dropTargets": [
+          "\\text{infinitely many}"
+        ],
+        "description": "A rank-deficient system has a solution space — in ML this means the model is under-determined"
+      }
+    ]
+  },
+  {
+    "id": "linalg-m-008",
+    "topic": "linearalgebra",
+    "difficulty": "medium",
+    "chapter": 4,
+    "question": {
+      "latex": "\\begin{bmatrix}1 & 2\\\\3 & 6\\end{bmatrix}\\mathbf{x} = \\begin{bmatrix}4\\\\13\\end{bmatrix}",
+      "plain": "Row-reduce. Does this system have a solution?"
+    },
+    "palette": [
+      {
+        "id": "p1",
+        "latex": "\\begin{bmatrix}1 & 2 & 4\\\\0 & 0 & 1\\end{bmatrix}",
+        "description": "After R2 − 3R1: row 2 becomes [0 0 | 1] — inconsistency!"
+      },
+      {
+        "id": "p2",
+        "latex": "\\text{no solution}",
+        "description": "Row [0 0 | 1] means 0=1 — impossible"
+      }
+    ],
+    "steps": [
+      {
+        "id": "s1",
+        "fromLatex": "\\left[\\begin{array}{cc|c}1&2&4\\\\3&6&13\\end{array}\\right] \\xrightarrow{R_2-3R_1} \\begin{bmatrix}1 & 2 & 4\\\\0 & 0 & 1\\end{bmatrix}",
+        "toLatex": "\\text{Pivot in augmented column only}",
+        "paletteRef": "p1",
+        "dropTargets": [
+          "\\begin{bmatrix}1 & 2 & 4\\\\0 & 0 & 1\\end{bmatrix}"
+        ],
+        "description": "R2 − 3R1 produces [0 0 | 1] — a pivot in the augmented column signals inconsistency"
+      },
+      {
+        "id": "s2",
+        "fromLatex": "0x_1 + 0x_2 = 1 \\Rightarrow \\text{no solution}",
+        "toLatex": "\\text{System is inconsistent — no solution exists}",
+        "paletteRef": "p2",
+        "dropTargets": [
+          "\\text{no solution}"
+        ],
+        "description": "Inconsistent systems arise when the target vector is outside the column space of A"
+      }
+    ]
+  },
+  {
+    "id": "linalg-h-007",
+    "topic": "linearalgebra",
+    "difficulty": "hard",
+    "chapter": 4,
+    "question": {
+      "latex": "\\begin{bmatrix}2 & 1 & -1\\\\-3 & -1 & 2\\\\-2 & 1 & 2\\end{bmatrix}\\mathbf{x} = \\begin{bmatrix}8\\\\-11\\\\-3\\end{bmatrix}",
+      "plain": "Begin Gaussian elimination: apply R2 ← R2 + (3/2)R1"
+    },
+    "palette": [
+      {
+        "id": "p1",
+        "latex": "\\begin{bmatrix}0 & \\frac{1}{2} & \\frac{1}{2} & 1\\end{bmatrix}",
+        "description": "New R2 after adding 3/2 of R1"
+      }
+    ],
+    "steps": [
+      {
+        "id": "s1",
+        "fromLatex": "R_2 \\leftarrow R_2 + \\tfrac{3}{2}R_1: \\quad \\begin{bmatrix}0 & \\frac{1}{2} & \\frac{1}{2} & 1\\end{bmatrix}",
+        "toLatex": "\\text{Pivot in column 1 cleared from row 2}",
+        "paletteRef": "p1",
+        "dropTargets": [
+          "\\begin{bmatrix}0 & \\frac{1}{2} & \\frac{1}{2} & 1\\end{bmatrix}"
+        ],
+        "description": "Row elimination: add 3/2 of pivot row to zero out the entry below the pivot"
+      }
+    ]
+  },
+  {
+    "id": "linalg-h-008",
+    "topic": "linearalgebra",
+    "difficulty": "hard",
+    "chapter": 4,
+    "question": {
+      "latex": "\\text{Upper triangular:}\\quad \\begin{bmatrix}2 & 1\\\\0 & 3\\end{bmatrix}\\mathbf{x} = \\begin{bmatrix}5\\\\6\\end{bmatrix}",
+      "plain": "Solve by back substitution"
+    },
+    "palette": [
+      {
+        "id": "p1",
+        "latex": "2",
+        "description": "x₂ = 6/3 = 2"
+      },
+      {
+        "id": "p2",
+        "latex": "\\frac{3}{2}",
+        "description": "x₁ = (5 − 1·2)/2 = 3/2"
+      }
+    ],
+    "steps": [
+      {
+        "id": "s1",
+        "fromLatex": "3x_2 = 6 \\Rightarrow x_2 = 2",
+        "toLatex": "x_2 = 2",
+        "paletteRef": "p1",
+        "dropTargets": [
+          "2"
+        ],
+        "description": "Back substitution starts from the last equation: x₂ = 6/3 = 2"
+      },
+      {
+        "id": "s2",
+        "fromLatex": "2x_1 + 1(2) = 5 \\Rightarrow 2x_1 = 3 \\Rightarrow x_1 = \\frac{3}{2}",
+        "toLatex": "x_1 = \\frac{3}{2},\\quad x_2 = 2",
+        "paletteRef": "p2",
+        "dropTargets": [
+          "\\frac{3}{2}"
+        ],
+        "description": "Substitute x₂=2 into row 1: 2x₁ = 5−2 = 3, so x₁ = 3/2"
+      }
+    ]
+  },
+  {
+    "id": "linalg-e-009",
+    "topic": "linearalgebra",
+    "difficulty": "easy",
+    "chapter": 5,
+    "question": {
+      "latex": "\\mathbf{v}_1 = [1,\\ 0],\\quad \\mathbf{v}_2 = [0,\\ 1]",
+      "plain": "Are v₁ and v₂ linearly independent?"
+    },
+    "palette": [
+      {
+        "id": "p1",
+        "latex": "0",
+        "description": "Only trivial solution c₁=c₂=0 satisfies c₁v₁+c₂v₂=0"
+      },
+      {
+        "id": "p2",
+        "latex": "\\text{linearly independent}",
+        "description": "Only the trivial solution exists — they form a basis for ℝ²"
+      }
+    ],
+    "steps": [
+      {
+        "id": "s1",
+        "fromLatex": "c_1[1,0] + c_2[0,1] = [0,0] \\Rightarrow c_1 = 0,\\ c_2 = 0",
+        "toLatex": "c_1 = 0,\\ c_2 = 0",
+        "paletteRef": "p1",
+        "dropTargets": [
+          "0"
+        ],
+        "description": "Set the linear combination equal to zero and solve — only the trivial solution c₁=c₂=0"
+      },
+      {
+        "id": "s2",
+        "fromLatex": "\\text{Only trivial solution} \\Rightarrow \\text{linearly independent}",
+        "toLatex": "\\{\\mathbf{e}_1, \\mathbf{e}_2\\} \\text{ are linearly independent — they form the standard basis of } \\mathbb{R}^2",
+        "paletteRef": "p2",
+        "dropTargets": [
+          "\\text{linearly independent}"
+        ],
+        "description": "Linear independence is key: a basis of independent vectors spans the full embedding space"
+      }
+    ]
+  },
+  {
+    "id": "linalg-e-010",
+    "topic": "linearalgebra",
+    "difficulty": "easy",
+    "chapter": 5,
+    "question": {
+      "latex": "\\mathbf{v}_1 = [1,\\ 0],\\quad \\mathbf{v}_2 = [0,\\ 1]",
+      "plain": "Express w = [3, 5] as a linear combination of v₁ and v₂"
+    },
+    "palette": [
+      {
+        "id": "p1",
+        "latex": "3",
+        "description": "Coefficient of v₁"
+      },
+      {
+        "id": "p2",
+        "latex": "5",
+        "description": "Coefficient of v₂"
+      }
+    ],
+    "steps": [
+      {
+        "id": "s1",
+        "fromLatex": "\\mathbf{w} = c_1[1,0] + c_2[0,1] = [c_1, c_2] = [3, 5]",
+        "toLatex": "c_1 = 3,\\quad c_2 = 5",
+        "paletteRef": "p1",
+        "dropTargets": [
+          "3"
+        ],
+        "description": "Read off the coordinates: c₁=3, c₂=5"
+      }
+    ]
+  },
+  {
+    "id": "linalg-m-009",
+    "topic": "linearalgebra",
+    "difficulty": "medium",
+    "chapter": 5,
+    "question": {
+      "latex": "\\mathbf{v}_1 = [1,\\ 2],\\quad \\mathbf{v}_2 = [2,\\ 4]",
+      "plain": "What is the span of {v₁, v₂}?"
+    },
+    "palette": [
+      {
+        "id": "p1",
+        "latex": "2\\mathbf{v}_1",
+        "description": "v₂ = 2v₁ — linearly dependent, span is a line"
+      },
+      {
+        "id": "p2",
+        "latex": "\\text{a line through the origin}",
+        "description": "Span = {t[1,2] : t ∈ ℝ}"
+      }
+    ],
+    "steps": [
+      {
+        "id": "s1",
+        "fromLatex": "\\mathbf{v}_2 = 2\\mathbf{v}_1 \\Rightarrow \\text{dependent}",
+        "toLatex": "\\mathbf{v}_2 = 2\\mathbf{v}_1",
+        "paletteRef": "p1",
+        "dropTargets": [
+          "2\\mathbf{v}_1"
+        ],
+        "description": "v₂ is a scalar multiple of v₁ — they are linearly dependent"
+      },
+      {
+        "id": "s2",
+        "fromLatex": "\\text{Span}\\{\\mathbf{v}_1, \\mathbf{v}_2\\} = \\text{a line through the origin}",
+        "toLatex": "\\text{Span} = \\{t[1,2]\\ :\\ t \\in \\mathbb{R}\\}",
+        "paletteRef": "p2",
+        "dropTargets": [
+          "\\text{a line through the origin}"
+        ],
+        "description": "Dependent vectors collapse the span — a weight matrix with dependent columns has reduced rank"
+      }
+    ]
+  },
+  {
+    "id": "linalg-m-010",
+    "topic": "linearalgebra",
+    "difficulty": "medium",
+    "chapter": 5,
+    "question": {
+      "latex": "A = \\begin{bmatrix}1 & 2\\\\3 & 4\\end{bmatrix}",
+      "plain": "Find the null space of A: solve Ax = 0"
+    },
+    "palette": [
+      {
+        "id": "p1",
+        "latex": "\\begin{bmatrix}0\\\\0\\end{bmatrix}",
+        "description": "det(A)≠0 so only the trivial solution"
+      },
+      {
+        "id": "p2",
+        "latex": "\\{\\mathbf{0}\\}",
+        "description": "Null space is trivial — A is invertible, full rank"
+      }
+    ],
+    "steps": [
+      {
+        "id": "s1",
+        "fromLatex": "\\det(A) = 1(4)-2(3) = -2 \\neq 0 \\Rightarrow \\text{Null}(A) = \\begin{bmatrix}0\\\\0\\end{bmatrix}",
+        "toLatex": "A \\text{ is invertible}",
+        "paletteRef": "p1",
+        "dropTargets": [
+          "\\begin{bmatrix}0\\\\0\\end{bmatrix}"
+        ],
+        "description": "Non-zero determinant → invertible → only Ax=0 solution is x=0"
+      },
+      {
+        "id": "s2",
+        "fromLatex": "\\text{Null}(A) = \\{\\mathbf{0}\\}",
+        "toLatex": "\\text{Null}(A) = \\{\\mathbf{0}\\} — \\text{full rank, no information lost}",
+        "paletteRef": "p2",
+        "dropTargets": [
+          "\\{\\mathbf{0}\\}"
+        ],
+        "description": "Trivial null space means A is injective — the transformation loses no information"
+      }
+    ]
+  },
+  {
+    "id": "linalg-h-009",
+    "topic": "linearalgebra",
+    "difficulty": "hard",
+    "chapter": 5,
+    "question": {
+      "latex": "A = \\begin{bmatrix}1 & 2 & 3\\\\4 & 5 & 6\\\\7 & 8 & 9\\end{bmatrix}",
+      "plain": "Find the rank of A by identifying how many pivots appear after row reduction"
+    },
+    "palette": [
+      {
+        "id": "p1",
+        "latex": "2",
+        "description": "Two non-zero rows remain — rank = 2"
+      },
+      {
+        "id": "p2",
+        "latex": "\\text{rank} = 2",
+        "description": "Only 2 independent rows/columns"
+      }
+    ],
+    "steps": [
+      {
+        "id": "s1",
+        "fromLatex": "\\text{Row reduce: rows 2 and 3 become multiples of row 1} \\Rightarrow \\text{two zero rows}",
+        "toLatex": "\\text{Two pivots}",
+        "paletteRef": "p1",
+        "dropTargets": [
+          "2"
+        ],
+        "description": "R2−4R1 and R3−7R1 both yield rows proportional to [1 2 3] — only 2 independent rows"
+      },
+      {
+        "id": "s2",
+        "fromLatex": "\\text{rank} = 2",
+        "toLatex": "\\text{rank}(A) = 2 < 3 \\Rightarrow \\text{rank-deficient}",
+        "paletteRef": "p2",
+        "dropTargets": [
+          "\\text{rank} = 2"
+        ],
+        "description": "Rank 2 < 3 means A is rank-deficient — LoRA exploits this in large weight matrices"
+      }
+    ]
+  },
+  {
+    "id": "linalg-h-010",
+    "topic": "linearalgebra",
+    "difficulty": "hard",
+    "chapter": 5,
+    "question": {
+      "latex": "A = \\begin{bmatrix}1 & 2\\\\2 & 4\\end{bmatrix}",
+      "plain": "Find a basis for the null space of A"
+    },
+    "palette": [
+      {
+        "id": "p1",
+        "latex": "\\begin{bmatrix}-2\\\\1\\end{bmatrix}",
+        "description": "The null space direction: x₁ = −2x₂, free variable x₂ = 1"
+      },
+      {
+        "id": "p2",
+        "latex": "\\left\\{\\begin{bmatrix}-2\\\\1\\end{bmatrix}\\right\\}",
+        "description": "Basis for Null(A) — one-dimensional"
+      }
+    ],
+    "steps": [
+      {
+        "id": "s1",
+        "fromLatex": "\\begin{bmatrix}1&2\\\\2&4\\end{bmatrix}\\mathbf{x}=\\mathbf{0} \\Rightarrow x_1 + 2x_2 = 0 \\Rightarrow \\mathbf{x} = t\\begin{bmatrix}-2\\\\1\\end{bmatrix}",
+        "toLatex": "x_1 + 2x_2 = 0 \\Rightarrow x_1 = -2x_2",
+        "paletteRef": "p1",
+        "dropTargets": [
+          "\\begin{bmatrix}-2\\\\1\\end{bmatrix}"
+        ],
+        "description": "Free variable x₂ = t, so x₁ = −2t — basis vector is [−2, 1]"
+      },
+      {
+        "id": "s2",
+        "fromLatex": "\\text{Null}(A) = \\text{span}\\left\\{\\begin{bmatrix}-2\\\\1\\end{bmatrix}\\right\\}",
+        "toLatex": "\\dim(\\text{Null}(A)) = 1",
+        "paletteRef": "p2",
+        "dropTargets": [
+          "\\left\\{\\begin{bmatrix}-2\\\\1\\end{bmatrix}\\right\\}"
+        ],
+        "description": "Null space dimension = #free variables — indicates how many input directions map to zero output"
+      }
+    ]
+  },
+  {
+    "id": "linalg-e-011",
+    "topic": "linearalgebra",
+    "difficulty": "easy",
+    "chapter": 6,
+    "question": {
+      "latex": "A = \\begin{bmatrix}3 & 1\\\\2 & 5\\end{bmatrix}",
+      "plain": "Compute trace(A)"
+    },
+    "palette": [
+      {
+        "id": "p1",
+        "latex": "8",
+        "description": "3 + 5 = 8 (sum of diagonal entries)"
+      }
+    ],
+    "steps": [
+      {
+        "id": "s1",
+        "fromLatex": "\\text{tr}(A) = 3 + 5 = 8",
+        "toLatex": "\\text{tr}(A) = 8",
+        "paletteRef": "p1",
+        "dropTargets": [
+          "8"
+        ],
+        "description": "Trace = sum of diagonal entries = sum of eigenvalues — used in spectral analysis of weight matrices"
+      }
+    ]
+  },
+  {
+    "id": "linalg-e-012",
+    "topic": "linearalgebra",
+    "difficulty": "easy",
+    "chapter": 6,
+    "question": {
+      "latex": "A = \\begin{bmatrix}3 & 1\\\\2 & 5\\end{bmatrix}",
+      "plain": "Compute det(A)"
+    },
+    "palette": [
+      {
+        "id": "p1",
+        "latex": "3(5) - 1(2)",
+        "description": "ad - bc for a 2×2 matrix"
+      },
+      {
+        "id": "p2",
+        "latex": "13",
+        "description": "15 - 2 = 13"
+      }
+    ],
+    "steps": [
+      {
+        "id": "s1",
+        "fromLatex": "\\det(A) = 3(5) - 1(2)",
+        "toLatex": "\\det(A) = 3(5) - 1(2)",
+        "paletteRef": "p1",
+        "dropTargets": [
+          "3(5) - 1(2)"
+        ],
+        "description": "2×2 determinant: det = ad − bc"
+      },
+      {
+        "id": "s2",
+        "fromLatex": "= 15 - 2 = 13",
+        "toLatex": "\\det(A) = 13 \\neq 0 \\Rightarrow A \\text{ is invertible}",
+        "paletteRef": "p2",
+        "dropTargets": [
+          "13"
+        ],
+        "description": "det ≠ 0 means A is invertible — rank is full, no input direction is collapsed to zero"
+      }
+    ]
+  },
+  {
+    "id": "linalg-m-011",
+    "topic": "linearalgebra",
+    "difficulty": "medium",
+    "chapter": 6,
+    "question": {
+      "latex": "A = \\begin{bmatrix}2 & 1\\\\5 & 3\\end{bmatrix}",
+      "plain": "Find A⁻¹ using the 2×2 inverse formula"
+    },
+    "palette": [
+      {
+        "id": "p1",
+        "latex": "1",
+        "description": "det(A) = 2(3)−1(5) = 1"
+      },
+      {
+        "id": "p2",
+        "latex": "\\begin{bmatrix}3 & -1\\\\-5 & 2\\end{bmatrix}",
+        "description": "(1/det)·adj(A) = adj(A) since det=1"
+      }
+    ],
+    "steps": [
+      {
+        "id": "s1",
+        "fromLatex": "\\det(A) = 2(3) - 1(5) = 6 - 5 = 1",
+        "toLatex": "\\det(A) = 1",
+        "paletteRef": "p1",
+        "dropTargets": [
+          "1"
+        ],
+        "description": "Compute det first — det=1 is convenient, inverse = adjugate"
+      },
+      {
+        "id": "s2",
+        "fromLatex": "A^{-1} = \\tfrac{1}{1}\\begin{bmatrix}3 & -1\\\\-5 & 2\\end{bmatrix} = \\begin{bmatrix}3 & -1\\\\-5 & 2\\end{bmatrix}",
+        "toLatex": "A^{-1} = \\begin{bmatrix}3 & -1\\\\-5 & 2\\end{bmatrix}",
+        "paletteRef": "p2",
+        "dropTargets": [
+          "\\begin{bmatrix}3 & -1\\\\-5 & 2\\end{bmatrix}"
+        ],
+        "description": "Swap diagonal, negate off-diagonal, divide by det — used conceptually in the normal equations W=(X^TX)^{-1}X^Ty"
+      }
+    ]
+  },
+  {
+    "id": "linalg-m-012",
+    "topic": "linearalgebra",
+    "difficulty": "medium",
+    "chapter": 6,
+    "question": {
+      "latex": "A = \\begin{bmatrix}1 & 2 & 3\\\\4 & 5 & 6\\\\7 & 8 & 9\\end{bmatrix}",
+      "plain": "What is rank(A)? (Row reduce to find pivots)"
+    },
+    "palette": [
+      {
+        "id": "p1",
+        "latex": "2",
+        "description": "Two pivot positions — rank = 2"
+      },
+      {
+        "id": "p2",
+        "latex": "\\text{rank-deficient}",
+        "description": "rank 2 < 3 — matrix is singular"
+      }
+    ],
+    "steps": [
+      {
+        "id": "s1",
+        "fromLatex": "\\text{Row reduce} \\Rightarrow \\text{2 non-zero rows, 1 zero row} \\Rightarrow \\text{rank} = 2",
+        "toLatex": "\\text{rank}(A) = 2",
+        "paletteRef": "p1",
+        "dropTargets": [
+          "2"
+        ],
+        "description": "Count pivot rows after elimination — row 3 = row1 + row2 (linearly dependent)"
+      },
+      {
+        "id": "s2",
+        "fromLatex": "\\text{rank}(A) = 2 < 3 \\Rightarrow \\text{rank-deficient}",
+        "toLatex": "\\text{det}(A) = 0;\\ A \\text{ has no inverse}",
+        "paletteRef": "p2",
+        "dropTargets": [
+          "\\text{rank-deficient}"
+        ],
+        "description": "Rank-deficient means the column space is a proper subspace — LoRA models this with low-rank updates"
+      }
+    ]
+  },
+  {
+    "id": "linalg-h-011",
+    "topic": "linearalgebra",
+    "difficulty": "hard",
+    "chapter": 6,
+    "question": {
+      "latex": "A = \\begin{bmatrix}1 & 2 & 0\\\\-1 & 1 & 3\\\\0 & 1 & 2\\end{bmatrix}",
+      "plain": "Compute det(A) by cofactor expansion along row 1"
+    },
+    "palette": [
+      {
+        "id": "p1",
+        "latex": "1",
+        "description": "Cofactor of a₁₁: det[[1,3],[1,2]] = 2−3 = −1, times 1·(+1) = −1... recalc"
+      },
+      {
+        "id": "p2",
+        "latex": "-1",
+        "description": "det = 1(2−3) − 2(−2−0) + 0 = −1+4 = 3... let user confirm sign"
+      },
+      {
+        "id": "p3",
+        "latex": "3",
+        "description": "det(A) = 1(−1) − 2(−2) + 0 = −1+4 = 3"
+      }
+    ],
+    "steps": [
+      {
+        "id": "s1",
+        "fromLatex": "\\det(A) = 1\\det\\begin{bmatrix}1&3\\\\1&2\\end{bmatrix} - 2\\det\\begin{bmatrix}-1&3\\\\0&2\\end{bmatrix} + 0",
+        "toLatex": "\\det(A) = 1(2-3) - 2(-2-0) + 0",
+        "paletteRef": "p2",
+        "dropTargets": [
+          "-1"
+        ],
+        "description": "Cofactor expansion: first minor = det[[1,3],[1,2]] = 2−3 = −1"
+      },
+      {
+        "id": "s2",
+        "fromLatex": "= 1(-1) - 2(-2) + 0 = -1 + 4 = 3",
+        "toLatex": "\\det(A) = 3",
+        "paletteRef": "p3",
+        "dropTargets": [
+          "3"
+        ],
+        "description": "det(A) = 3 ≠ 0 — A is invertible, full rank 3"
+      }
+    ]
+  },
+  {
+    "id": "linalg-h-012",
+    "topic": "linearalgebra",
+    "difficulty": "hard",
+    "chapter": 6,
+    "question": {
+      "latex": "A = \\begin{bmatrix}4 & 7\\\\2 & 6\\end{bmatrix}",
+      "plain": "Find A⁻¹ and verify AA⁻¹ = I"
+    },
+    "palette": [
+      {
+        "id": "p1",
+        "latex": "10",
+        "description": "det(A) = 24 − 14 = 10"
+      },
+      {
+        "id": "p2",
+        "latex": "\\begin{bmatrix}0.6 & -0.7\\\\-0.2 & 0.4\\end{bmatrix}",
+        "description": "(1/10)[[6,−7],[−2,4]]"
+      }
+    ],
+    "steps": [
+      {
+        "id": "s1",
+        "fromLatex": "\\det(A) = 4(6) - 7(2) = 24 - 14 = 10",
+        "toLatex": "\\det(A) = 10",
+        "paletteRef": "p1",
+        "dropTargets": [
+          "10"
+        ],
+        "description": "Compute det = 10"
+      },
+      {
+        "id": "s2",
+        "fromLatex": "A^{-1} = \\tfrac{1}{10}\\begin{bmatrix}6 & -7\\\\-2 & 4\\end{bmatrix} = \\begin{bmatrix}0.6 & -0.7\\\\-0.2 & 0.4\\end{bmatrix}",
+        "toLatex": "A^{-1} = \\begin{bmatrix}0.6 & -0.7\\\\-0.2 & 0.4\\end{bmatrix}",
+        "paletteRef": "p2",
+        "dropTargets": [
+          "\\begin{bmatrix}0.6 & -0.7\\\\-0.2 & 0.4\\end{bmatrix}"
+        ],
+        "description": "Divide adjugate by det — matrix inversion underlies the pseudoinverse used in least-squares fitting"
+      }
+    ]
+  },
+  {
+    "id": "linalg-e-013",
+    "topic": "linearalgebra",
+    "difficulty": "easy",
+    "chapter": 7,
+    "question": {
+      "latex": "\\mathbf{u} = [2,\\ 3],\\quad \\mathbf{v} = [-3,\\ 2]",
+      "plain": "Verify that u and v are orthogonal"
+    },
+    "palette": [
+      {
+        "id": "p1",
+        "latex": "2(-3) + 3(2)",
+        "description": "Expand u · v"
+      },
+      {
+        "id": "p2",
+        "latex": "0",
+        "description": "−6 + 6 = 0 → orthogonal"
+      }
+    ],
+    "steps": [
+      {
+        "id": "s1",
+        "fromLatex": "\\mathbf{u} \\cdot \\mathbf{v} = 2(-3) + 3(2) = -6 + 6 = 0",
+        "toLatex": "\\mathbf{u} \\cdot \\mathbf{v} = 0",
+        "paletteRef": "p1",
+        "dropTargets": [
+          "2(-3) + 3(2)"
+        ],
+        "description": "Compute the dot product — if it equals zero, vectors are orthogonal"
+      },
+      {
+        "id": "s2",
+        "fromLatex": "\\mathbf{u} \\cdot \\mathbf{v} = 0 \\Rightarrow \\mathbf{u} \\perp \\mathbf{v}",
+        "toLatex": "\\mathbf{u} \\perp \\mathbf{v} \\text{ (orthogonal)}",
+        "paletteRef": "p2",
+        "dropTargets": [
+          "0"
+        ],
+        "description": "Dot product = 0 → orthogonal — Q/K projections in attention aim for orthogonal feature directions"
+      }
+    ]
+  },
+  {
+    "id": "linalg-e-014",
+    "topic": "linearalgebra",
+    "difficulty": "easy",
+    "chapter": 7,
+    "question": {
+      "latex": "\\mathbf{u} = [4,\\ 3],\\quad \\mathbf{v} = [1,\\ 0]",
+      "plain": "Compute the orthogonal projection of u onto v"
+    },
+    "palette": [
+      {
+        "id": "p1",
+        "latex": "4",
+        "description": "u·v = 4·1 + 3·0 = 4"
+      },
+      {
+        "id": "p2",
+        "latex": "[4,\\ 0]",
+        "description": "(u·v / ‖v‖²) v = (4/1)[1,0] = [4,0]"
+      }
+    ],
+    "steps": [
+      {
+        "id": "s1",
+        "fromLatex": "\\text{proj}_{\\mathbf{v}}(\\mathbf{u}) = \\frac{\\mathbf{u}\\cdot\\mathbf{v}}{\\|\\mathbf{v}\\|^2}\\mathbf{v} = \\frac{4}{1}[1,0]",
+        "toLatex": "\\text{proj}_{\\mathbf{v}}(\\mathbf{u}) = 4\\,[1,0]",
+        "paletteRef": "p1",
+        "dropTargets": [
+          "4"
+        ],
+        "description": "Numerator: u·v = 4·1+3·0 = 4; denominator: ‖v‖²=1"
+      },
+      {
+        "id": "s2",
+        "fromLatex": "= [4,\\ 0]",
+        "toLatex": "\\text{proj}_{\\mathbf{v}}(\\mathbf{u}) = [4,\\ 0]",
+        "paletteRef": "p2",
+        "dropTargets": [
+          "[4,\\ 0]"
+        ],
+        "description": "Projection onto the x-axis = [4,0] — attention computes projections of queries onto key directions"
+      }
+    ]
+  },
+  {
+    "id": "linalg-m-013",
+    "topic": "linearalgebra",
+    "difficulty": "medium",
+    "chapter": 7,
+    "question": {
+      "latex": "\\mathbf{v}_1 = [1,\\ 1],\\quad \\mathbf{v}_2 = [1,\\ -1]",
+      "plain": "Verify these two vectors are orthogonal and compute their norms to normalize them"
+    },
+    "palette": [
+      {
+        "id": "p1",
+        "latex": "0",
+        "description": "v₁·v₂ = 1(1)+1(−1) = 0 → orthogonal"
+      },
+      {
+        "id": "p2",
+        "latex": "\\sqrt{2}",
+        "description": "‖v₁‖ = ‖v₂‖ = √(1²+1²) = √2"
+      },
+      {
+        "id": "p3",
+        "latex": "\\left[\\frac{1}{\\sqrt{2}},\\frac{1}{\\sqrt{2}}\\right]",
+        "description": "Normalized v̂₁ = v₁/√2"
+      }
+    ],
+    "steps": [
+      {
+        "id": "s1",
+        "fromLatex": "\\mathbf{v}_1 \\cdot \\mathbf{v}_2 = 1(1)+1(-1) = 0",
+        "toLatex": "\\mathbf{v}_1 \\perp \\mathbf{v}_2",
+        "paletteRef": "p1",
+        "dropTargets": [
+          "0"
+        ],
+        "description": "Dot product is 0 — the vectors are orthogonal"
+      },
+      {
+        "id": "s2",
+        "fromLatex": "\\|\\mathbf{v}_1\\| = \\sqrt{1^2+1^2} = \\sqrt{2}",
+        "toLatex": "\\|\\mathbf{v}_1\\| = \\sqrt{2}",
+        "paletteRef": "p2",
+        "dropTargets": [
+          "\\sqrt{2}"
+        ],
+        "description": "Compute the norm before normalizing"
+      },
+      {
+        "id": "s3",
+        "fromLatex": "\\hat{\\mathbf{v}}_1 = \\frac{1}{\\sqrt{2}}[1,1] = \\left[\\frac{1}{\\sqrt{2}},\\frac{1}{\\sqrt{2}}\\right]",
+        "toLatex": "\\hat{\\mathbf{v}}_1 = \\left[\\frac{1}{\\sqrt{2}},\\frac{1}{\\sqrt{2}}\\right]",
+        "paletteRef": "p3",
+        "dropTargets": [
+          "\\left[\\frac{1}{\\sqrt{2}},\\frac{1}{\\sqrt{2}}\\right]"
+        ],
+        "description": "Orthonormal basis — QR decomposition and RoPE both rely on orthonormal sets"
+      }
+    ]
+  },
+  {
+    "id": "linalg-m-014",
+    "topic": "linearalgebra",
+    "difficulty": "medium",
+    "chapter": 7,
+    "question": {
+      "latex": "Q = \\begin{bmatrix}0 & -1\\\\1 & 0\\end{bmatrix}",
+      "plain": "Verify Q is orthogonal: check Q^T Q = I"
+    },
+    "palette": [
+      {
+        "id": "p1",
+        "latex": "\\begin{bmatrix}0 & 1\\\\-1 & 0\\end{bmatrix}",
+        "description": "Q^T: transpose Q"
+      },
+      {
+        "id": "p2",
+        "latex": "\\begin{bmatrix}1 & 0\\\\0 & 1\\end{bmatrix}",
+        "description": "Q^T Q = I — orthogonal matrix confirmed"
+      }
+    ],
+    "steps": [
+      {
+        "id": "s1",
+        "fromLatex": "Q^T = \\begin{bmatrix}0 & 1\\\\-1 & 0\\end{bmatrix}",
+        "toLatex": "Q^T = \\begin{bmatrix}0 & 1\\\\-1 & 0\\end{bmatrix}",
+        "paletteRef": "p1",
+        "dropTargets": [
+          "\\begin{bmatrix}0 & 1\\\\-1 & 0\\end{bmatrix}"
+        ],
+        "description": "Transpose: swap rows and columns"
+      },
+      {
+        "id": "s2",
+        "fromLatex": "Q^T Q = \\begin{bmatrix}0(0)+1(1) & 0(-1)+1(0)\\\\-1(0)+0(1) & -1(-1)+0(0)\\end{bmatrix} = \\begin{bmatrix}1 & 0\\\\0 & 1\\end{bmatrix}",
+        "toLatex": "Q^T Q = I \\Rightarrow Q \\text{ is orthogonal}",
+        "paletteRef": "p2",
+        "dropTargets": [
+          "\\begin{bmatrix}1 & 0\\\\0 & 1\\end{bmatrix}"
+        ],
+        "description": "Q^TQ = I confirms orthogonality — rotation matrices preserve inner products and norms"
+      }
+    ]
+  },
+  {
+    "id": "linalg-h-013",
+    "topic": "linearalgebra",
+    "difficulty": "hard",
+    "chapter": 7,
+    "question": {
+      "latex": "\\mathbf{v}_1 = [1,\\ 1,\\ 0],\\quad \\mathbf{v}_2 = [1,\\ 0,\\ 1]",
+      "plain": "Apply one step of Gram-Schmidt to orthogonalize v₂ against v₁"
+    },
+    "palette": [
+      {
+        "id": "p1",
+        "latex": "\\frac{1}{2}",
+        "description": "(v₂·v₁)/‖v₁‖² = 1/2"
+      },
+      {
+        "id": "p2",
+        "latex": "\\left[\\frac{1}{2},\\ -\\frac{1}{2},\\ 1\\right]",
+        "description": "u₂ = v₂ − (1/2)v₁"
+      }
+    ],
+    "steps": [
+      {
+        "id": "s1",
+        "fromLatex": "\\frac{\\mathbf{v}_2 \\cdot \\mathbf{v}_1}{\\|\\mathbf{v}_1\\|^2} = \\frac{1}{2}",
+        "toLatex": "\\text{projection scalar} = \\frac{1}{2}",
+        "paletteRef": "p1",
+        "dropTargets": [
+          "\\frac{1}{2}"
+        ],
+        "description": "Projection scalar: (v₂·v₁)/‖v₁‖² = (1+0+0)/(1+1+0) = 1/2"
+      },
+      {
+        "id": "s2",
+        "fromLatex": "\\mathbf{u}_2 = \\mathbf{v}_2 - \\tfrac{1}{2}\\mathbf{v}_1 = [1,0,1] - [\\tfrac{1}{2},\\tfrac{1}{2},0] = \\left[\\frac{1}{2},\\ -\\frac{1}{2},\\ 1\\right]",
+        "toLatex": "\\mathbf{u}_2 = \\left[\\frac{1}{2},\\ -\\frac{1}{2},\\ 1\\right]",
+        "paletteRef": "p2",
+        "dropTargets": [
+          "\\left[\\frac{1}{2},\\ -\\frac{1}{2},\\ 1\\right]"
+        ],
+        "description": "Subtract the projection — u₂ is now orthogonal to v₁; Gram-Schmidt underlies QR decomposition"
+      }
+    ]
+  },
+  {
+    "id": "linalg-h-014",
+    "topic": "linearalgebra",
+    "difficulty": "hard",
+    "chapter": 7,
+    "question": {
+      "latex": "\\text{Project } \\mathbf{b} = [1,\\ 1,\\ 1] \\text{ onto } \\text{Col}(A),\\quad A = \\begin{bmatrix}1\\\\1\\\\0\\end{bmatrix}",
+      "plain": "Find the orthogonal projection of b onto the column space of A"
+    },
+    "palette": [
+      {
+        "id": "p1",
+        "latex": "\\frac{2}{2}",
+        "description": "(b·a)/(a·a) = (1+1+0)/(1+1+0) = 1"
+      },
+      {
+        "id": "p2",
+        "latex": "[1,\\ 1,\\ 0]",
+        "description": "proj = 1·a = [1,1,0]"
+      }
+    ],
+    "steps": [
+      {
+        "id": "s1",
+        "fromLatex": "\\hat{x} = \\frac{A^T\\mathbf{b}}{A^T A} = \\frac{1+1+0}{1+1+0} = \\frac{2}{2} = 1",
+        "toLatex": "\\hat{x} = 1",
+        "paletteRef": "p1",
+        "dropTargets": [
+          "\\frac{2}{2}"
+        ],
+        "description": "Scalar multiplier = (A^Tb)/(A^TA) = 2/2 = 1"
+      },
+      {
+        "id": "s2",
+        "fromLatex": "\\mathbf{p} = A\\hat{x} = 1 \\cdot [1,1,0]^T = [1,\\ 1,\\ 0]",
+        "toLatex": "\\mathbf{p} = [1,\\ 1,\\ 0]",
+        "paletteRef": "p2",
+        "dropTargets": [
+          "[1,\\ 1,\\ 0]"
+        ],
+        "description": "Projection onto column space — least-squares regression finds this exact projection"
+      }
+    ]
+  },
+  {
+    "id": "linalg-e-015",
+    "topic": "linearalgebra",
+    "difficulty": "easy",
+    "chapter": 8,
+    "question": {
+      "latex": "A = \\begin{bmatrix}3 & 0\\\\0 & 7\\end{bmatrix}",
+      "plain": "Find the eigenvalues of the diagonal matrix A"
+    },
+    "palette": [
+      {
+        "id": "p1",
+        "latex": "3",
+        "description": "First eigenvalue = top-left diagonal entry"
+      },
+      {
+        "id": "p2",
+        "latex": "7",
+        "description": "Second eigenvalue = bottom-right diagonal entry"
+      }
+    ],
+    "steps": [
+      {
+        "id": "s1",
+        "fromLatex": "\\lambda_1 = 3,\\quad \\lambda_2 = 7",
+        "toLatex": "\\lambda_1 = 3,\\quad \\lambda_2 = 7",
+        "paletteRef": "p1",
+        "dropTargets": [
+          "3"
+        ],
+        "description": "For diagonal matrices the eigenvalues are the diagonal entries — no computation needed"
+      },
+      {
+        "id": "s2",
+        "fromLatex": "\\text{Eigenvalues: } 3 \\text{ and } 7",
+        "toLatex": "\\text{Eigenvalues: } \\lambda_1=3,\\ \\lambda_2=7",
+        "paletteRef": "p2",
+        "dropTargets": [
+          "7"
+        ],
+        "description": "Diagonal = already diagonalized — eigenvalues control how much each direction is scaled"
+      }
+    ]
+  },
+  {
+    "id": "linalg-e-016",
+    "topic": "linearalgebra",
+    "difficulty": "easy",
+    "chapter": 8,
+    "question": {
+      "latex": "A = \\begin{bmatrix}2 & 1\\\\0 & 2\\end{bmatrix},\\quad \\mathbf{v} = \\begin{bmatrix}1\\\\0\\end{bmatrix}",
+      "plain": "Verify v is an eigenvector of A and find its eigenvalue"
+    },
+    "palette": [
+      {
+        "id": "p1",
+        "latex": "\\begin{bmatrix}2\\\\0\\end{bmatrix}",
+        "description": "Av = [2·1+1·0, 0·1+2·0] = [2,0]"
+      },
+      {
+        "id": "p2",
+        "latex": "2",
+        "description": "Av = 2v so eigenvalue λ = 2"
+      }
+    ],
+    "steps": [
+      {
+        "id": "s1",
+        "fromLatex": "A\\mathbf{v} = \\begin{bmatrix}2(1)+1(0)\\\\0(1)+2(0)\\end{bmatrix} = \\begin{bmatrix}2\\\\0\\end{bmatrix}",
+        "toLatex": "A\\mathbf{v} = \\begin{bmatrix}2\\\\0\\end{bmatrix}",
+        "paletteRef": "p1",
+        "dropTargets": [
+          "\\begin{bmatrix}2\\\\0\\end{bmatrix}"
+        ],
+        "description": "Apply A to v — result should be a scalar multiple of v"
+      },
+      {
+        "id": "s2",
+        "fromLatex": "\\begin{bmatrix}2\\\\0\\end{bmatrix} = 2\\begin{bmatrix}1\\\\0\\end{bmatrix} = 2\\mathbf{v} \\Rightarrow \\lambda = 2",
+        "toLatex": "\\lambda = 2 \\text{ (eigenvector confirmed)}",
+        "paletteRef": "p2",
+        "dropTargets": [
+          "2"
+        ],
+        "description": "Av = 2v → λ=2. Eigenvectors are the 'principal directions' — unchanged except for scaling"
+      }
+    ]
+  },
+  {
+    "id": "linalg-m-015",
+    "topic": "linearalgebra",
+    "difficulty": "medium",
+    "chapter": 8,
+    "question": {
+      "latex": "A = \\begin{bmatrix}4 & 1\\\\2 & 3\\end{bmatrix}",
+      "plain": "Find eigenvalues by solving det(A − λI) = 0"
+    },
+    "palette": [
+      {
+        "id": "p1",
+        "latex": "(4-\\lambda)(3-\\lambda) - 2",
+        "description": "det(A−λI) expanded"
+      },
+      {
+        "id": "p2",
+        "latex": "5",
+        "description": "λ₁ = 5"
+      },
+      {
+        "id": "p3",
+        "latex": "2",
+        "description": "λ₂ = 2"
+      }
+    ],
+    "steps": [
+      {
+        "id": "s1",
+        "fromLatex": "\\det(A - \\lambda I) = (4-\\lambda)(3-\\lambda) - 2",
+        "toLatex": "\\lambda^2 - 7\\lambda + 10 = 0",
+        "paletteRef": "p1",
+        "dropTargets": [
+          "(4-\\lambda)(3-\\lambda) - 2"
+        ],
+        "description": "Characteristic polynomial: det(A−λI) = (4−λ)(3−λ) − 1·2"
+      },
+      {
+        "id": "s2",
+        "fromLatex": "\\lambda^2 - 7\\lambda + 10 = (\\lambda-5)(\\lambda-2) = 0 \\Rightarrow \\lambda = 5 \\text{ or } \\lambda = 2",
+        "toLatex": "\\lambda_1 = 5,\\quad \\lambda_2 = 2",
+        "paletteRef": "p2",
+        "dropTargets": [
+          "5"
+        ],
+        "description": "Factor: (λ−5)(λ−2)=0 → eigenvalues 5 and 2 — eigenvalues of Hessian determine loss landscape curvature"
+      }
+    ]
+  },
+  {
+    "id": "linalg-m-016",
+    "topic": "linearalgebra",
+    "difficulty": "medium",
+    "chapter": 8,
+    "question": {
+      "latex": "A = \\begin{bmatrix}4 & 1\\\\2 & 3\\end{bmatrix},\\quad \\lambda = 5",
+      "plain": "Find the eigenvector for λ = 5 by solving (A − 5I)v = 0"
+    },
+    "palette": [
+      {
+        "id": "p1",
+        "latex": "\\begin{bmatrix}-1 & 1\\\\2 & -2\\end{bmatrix}",
+        "description": "A − 5I"
+      },
+      {
+        "id": "p2",
+        "latex": "\\begin{bmatrix}1\\\\1\\end{bmatrix}",
+        "description": "Eigenvector: v₂ = v₁ from −v₁+v₂=0"
+      }
+    ],
+    "steps": [
+      {
+        "id": "s1",
+        "fromLatex": "A - 5I = \\begin{bmatrix}-1 & 1\\\\2 & -2\\end{bmatrix}",
+        "toLatex": "A - 5I = \\begin{bmatrix}-1 & 1\\\\2 & -2\\end{bmatrix}",
+        "paletteRef": "p1",
+        "dropTargets": [
+          "\\begin{bmatrix}-1 & 1\\\\2 & -2\\end{bmatrix}"
+        ],
+        "description": "Subtract 5 from diagonal entries to form A − λI"
+      },
+      {
+        "id": "s2",
+        "fromLatex": "-v_1 + v_2 = 0 \\Rightarrow v_2 = v_1 \\Rightarrow \\mathbf{v} = \\begin{bmatrix}1\\\\1\\end{bmatrix}",
+        "toLatex": "\\mathbf{v}_{\\lambda=5} = \\begin{bmatrix}1\\\\1\\end{bmatrix}",
+        "paletteRef": "p2",
+        "dropTargets": [
+          "\\begin{bmatrix}1\\\\1\\end{bmatrix}"
+        ],
+        "description": "Set v₁=1 (free), v₂=1 — eigenvectors define the natural axes of the transformation"
+      }
+    ]
+  },
+  {
+    "id": "linalg-h-015",
+    "topic": "linearalgebra",
+    "difficulty": "hard",
+    "chapter": 8,
+    "question": {
+      "latex": "A = \\begin{bmatrix}4 & 1\\\\2 & 3\\end{bmatrix},\\quad \\lambda_1=5,\\ \\lambda_2=2,\\quad P = \\begin{bmatrix}1&1\\\\1&-2\\end{bmatrix}",
+      "plain": "Diagonalize A: confirm A = PDP⁻¹ by identifying D"
+    },
+    "palette": [
+      {
+        "id": "p1",
+        "latex": "\\begin{bmatrix}5 & 0\\\\0 & 2\\end{bmatrix}",
+        "description": "D = diag(λ₁, λ₂) = diag(5,2)"
+      }
+    ],
+    "steps": [
+      {
+        "id": "s1",
+        "fromLatex": "D = \\begin{bmatrix}5 & 0\\\\0 & 2\\end{bmatrix}",
+        "toLatex": "A = P\\begin{bmatrix}5 & 0\\\\0 & 2\\end{bmatrix}P^{-1}",
+        "paletteRef": "p1",
+        "dropTargets": [
+          "\\begin{bmatrix}5 & 0\\\\0 & 2\\end{bmatrix}"
+        ],
+        "description": "D has eigenvalues on the diagonal — diagonalization reveals the natural coordinate system of A"
+      }
+    ]
+  },
+  {
+    "id": "linalg-h-016",
+    "topic": "linearalgebra",
+    "difficulty": "hard",
+    "chapter": 8,
+    "question": {
+      "latex": "A = \\begin{bmatrix}1 & 1\\\\0 & 1\\end{bmatrix}",
+      "plain": "Find the eigenvalues of A. Is A diagonalizable?"
+    },
+    "palette": [
+      {
+        "id": "p1",
+        "latex": "(1-\\lambda)^2 = 0",
+        "description": "Characteristic polynomial: repeated root"
+      },
+      {
+        "id": "p2",
+        "latex": "1",
+        "description": "λ = 1 (repeated eigenvalue)"
+      },
+      {
+        "id": "p3",
+        "latex": "\\text{not diagonalizable}",
+        "description": "Only one independent eigenvector — defective matrix"
+      }
+    ],
+    "steps": [
+      {
+        "id": "s1",
+        "fromLatex": "\\det(A - \\lambda I) = (1-\\lambda)^2 = 0",
+        "toLatex": "\\lambda = 1 \\text{ (multiplicity 2)}",
+        "paletteRef": "p1",
+        "dropTargets": [
+          "(1-\\lambda)^2 = 0"
+        ],
+        "description": "Characteristic polynomial: (1−λ)² = 0 — repeated eigenvalue"
+      },
+      {
+        "id": "s2",
+        "fromLatex": "(A - I) = \\begin{bmatrix}0&1\\\\0&0\\end{bmatrix} \\Rightarrow \\text{only one eigenvector}",
+        "toLatex": "\\text{Eigenspace dim = 1 < algebraic mult = 2}",
+        "paletteRef": "p2",
+        "dropTargets": [
+          "1"
+        ],
+        "description": "Only one independent eigenvector found — eigenspace dimension < algebraic multiplicity"
+      },
+      {
+        "id": "s3",
+        "fromLatex": "\\text{not diagonalizable} \\Rightarrow \\text{use Jordan form instead}",
+        "toLatex": "A \\text{ is a Jordan block — not diagonalizable}",
+        "paletteRef": "p3",
+        "dropTargets": [
+          "\\text{not diagonalizable}"
+        ],
+        "description": "Defective matrices can't be diagonalized — understanding this avoids pitfalls in spectral methods"
+      }
+    ]
+  },
+  {
+    "id": "linalg-e-017",
+    "topic": "linearalgebra",
+    "difficulty": "easy",
+    "chapter": 9,
+    "question": {
+      "latex": "\\Sigma = \\begin{bmatrix}4 & 0\\\\0 & 1\\\\0 & 0\\end{bmatrix}",
+      "plain": "Given the singular value matrix Σ, what is the rank of the original matrix?"
+    },
+    "palette": [
+      {
+        "id": "p1",
+        "latex": "2",
+        "description": "Two non-zero singular values → rank = 2"
+      }
+    ],
+    "steps": [
+      {
+        "id": "s1",
+        "fromLatex": "\\sigma_1 = 4 > 0,\\quad \\sigma_2 = 1 > 0,\\quad \\sigma_3 = 0 \\Rightarrow \\text{rank} = 2",
+        "toLatex": "\\text{rank}(A) = 2",
+        "paletteRef": "p1",
+        "dropTargets": [
+          "2"
+        ],
+        "description": "Rank = number of non-zero singular values — SVD makes rank transparent"
+      }
+    ]
+  },
+  {
+    "id": "linalg-e-018",
+    "topic": "linearalgebra",
+    "difficulty": "easy",
+    "chapter": 9,
+    "question": {
+      "latex": "A = \\begin{bmatrix}2 & 0\\\\0 & 3\\end{bmatrix}",
+      "plain": "Write the SVD of this diagonal matrix (U, Σ, V^T)"
+    },
+    "palette": [
+      {
+        "id": "p1",
+        "latex": "\\begin{bmatrix}2 & 0\\\\0 & 3\\end{bmatrix}",
+        "description": "Σ = A for a diagonal positive matrix (U=V=I)"
+      }
+    ],
+    "steps": [
+      {
+        "id": "s1",
+        "fromLatex": "A = I \\begin{bmatrix}2 & 0\\\\0 & 3\\end{bmatrix} I^T",
+        "toLatex": "U = I,\\quad \\Sigma = \\begin{bmatrix}2&0\\\\0&3\\end{bmatrix},\\quad V^T = I",
+        "paletteRef": "p1",
+        "dropTargets": [
+          "\\begin{bmatrix}2 & 0\\\\0 & 3\\end{bmatrix}"
+        ],
+        "description": "Diagonal positive matrix: singular values = diagonal entries, U=V=I — simplest possible SVD"
+      }
+    ]
+  },
+  {
+    "id": "linalg-m-017",
+    "topic": "linearalgebra",
+    "difficulty": "medium",
+    "chapter": 9,
+    "question": {
+      "latex": "A = U\\Sigma V^T,\\quad \\sigma_1=5,\\ \\sigma_2=1,\\quad \\mathbf{u}_1=[1,0]^T,\\ \\mathbf{v}_1=[1,0]^T",
+      "plain": "Compute the best rank-1 approximation Â₁ = σ₁ u₁ v₁ᵀ"
+    },
+    "palette": [
+      {
+        "id": "p1",
+        "latex": "5",
+        "description": "σ₁ = 5 is the largest singular value"
+      },
+      {
+        "id": "p2",
+        "latex": "\\begin{bmatrix}5 & 0\\\\0 & 0\\end{bmatrix}",
+        "description": "Outer product σ₁u₁v₁ᵀ = 5·[1;0]·[1,0]"
+      }
+    ],
+    "steps": [
+      {
+        "id": "s1",
+        "fromLatex": "\\hat{A}_1 = \\sigma_1 \\mathbf{u}_1 \\mathbf{v}_1^T = 5 \\cdot \\begin{bmatrix}1\\\\0\\end{bmatrix}[1,\\ 0]",
+        "toLatex": "\\hat{A}_1 = 5 \\cdot \\begin{bmatrix}1\\\\0\\end{bmatrix}[1,0]",
+        "paletteRef": "p1",
+        "dropTargets": [
+          "5"
+        ],
+        "description": "Rank-1 term = σ₁ · (outer product of u₁ and v₁ᵀ)"
+      },
+      {
+        "id": "s2",
+        "fromLatex": "= \\begin{bmatrix}5 & 0\\\\0 & 0\\end{bmatrix}",
+        "toLatex": "\\hat{A}_1 = \\begin{bmatrix}5 & 0\\\\0 & 0\\end{bmatrix}",
+        "paletteRef": "p2",
+        "dropTargets": [
+          "\\begin{bmatrix}5 & 0\\\\0 & 0\\end{bmatrix}"
+        ],
+        "description": "Best rank-1 approximation — LoRA uses exactly this: ΔW = BA is a rank-r outer product sum"
+      }
+    ]
+  },
+  {
+    "id": "linalg-m-018",
+    "topic": "linearalgebra",
+    "difficulty": "medium",
+    "chapter": 9,
+    "question": {
+      "latex": "A = \\begin{bmatrix}1 & 1\\\\0 & 1\\end{bmatrix}",
+      "plain": "Find LU decomposition: write A = LU where L is lower triangular with 1s on diagonal"
+    },
+    "palette": [
+      {
+        "id": "p1",
+        "latex": "\\begin{bmatrix}1 & 0\\\\0 & 1\\end{bmatrix}",
+        "description": "L = I since no row operations needed"
+      },
+      {
+        "id": "p2",
+        "latex": "\\begin{bmatrix}1 & 1\\\\0 & 1\\end{bmatrix}",
+        "description": "U = A itself (already upper triangular)"
+      }
+    ],
+    "steps": [
+      {
+        "id": "s1",
+        "fromLatex": "A \\text{ is already upper triangular} \\Rightarrow L = \\begin{bmatrix}1 & 0\\\\0 & 1\\end{bmatrix}",
+        "toLatex": "L = I",
+        "paletteRef": "p1",
+        "dropTargets": [
+          "\\begin{bmatrix}1 & 0\\\\0 & 1\\end{bmatrix}"
+        ],
+        "description": "No elimination steps needed → L = I"
+      },
+      {
+        "id": "s2",
+        "fromLatex": "U = A = \\begin{bmatrix}1 & 1\\\\0 & 1\\end{bmatrix}",
+        "toLatex": "A = \\begin{bmatrix}1&0\\\\0&1\\end{bmatrix}\\begin{bmatrix}1&1\\\\0&1\\end{bmatrix}",
+        "paletteRef": "p2",
+        "dropTargets": [
+          "\\begin{bmatrix}1 & 1\\\\0 & 1\\end{bmatrix}"
+        ],
+        "description": "LU = I·A = A — LU decomposition enables efficient solving of multiple right-hand sides"
+      }
+    ]
+  },
+  {
+    "id": "linalg-h-017",
+    "topic": "linearalgebra",
+    "difficulty": "hard",
+    "chapter": 9,
+    "question": {
+      "latex": "A = \\begin{bmatrix}3 & 0\\\\0 & 0\\end{bmatrix},\\quad \\text{Full SVD: } A = U\\Sigma V^T",
+      "plain": "Write the full SVD of A (σ₁=3, u₁=[1,0]ᵀ, v₁=[1,0]ᵀ)"
+    },
+    "palette": [
+      {
+        "id": "p1",
+        "latex": "\\begin{bmatrix}3 & 0\\\\0 & 0\\end{bmatrix}",
+        "description": "Σ has σ₁=3 at top-left, all other entries zero"
+      },
+      {
+        "id": "p2",
+        "latex": "3\\begin{bmatrix}1\\\\0\\end{bmatrix}[1,0]",
+        "description": "Rank-1 reconstruction: σ₁u₁v₁ᵀ = 3·e₁·e₁ᵀ"
+      }
+    ],
+    "steps": [
+      {
+        "id": "s1",
+        "fromLatex": "\\Sigma = \\begin{bmatrix}3 & 0\\\\0 & 0\\end{bmatrix},\\quad U = V = I_2",
+        "toLatex": "A = I\\,\\Sigma\\,I^T = \\Sigma",
+        "paletteRef": "p1",
+        "dropTargets": [
+          "\\begin{bmatrix}3 & 0\\\\0 & 0\\end{bmatrix}"
+        ],
+        "description": "For this rank-1 matrix, singular value σ₁=3 captures all the 'energy'"
+      },
+      {
+        "id": "s2",
+        "fromLatex": "A = 3\\begin{bmatrix}1\\\\0\\end{bmatrix}[1,0] + 0 = 3\\begin{bmatrix}1\\\\0\\end{bmatrix}[1,0]",
+        "toLatex": "A = \\sigma_1 \\mathbf{u}_1 \\mathbf{v}_1^T",
+        "paletteRef": "p2",
+        "dropTargets": [
+          "3\\begin{bmatrix}1\\\\0\\end{bmatrix}[1,0]"
+        ],
+        "description": "SVD outer product form — LoRA adapts W by learning low-rank factors B·A with r≪min(m,n)"
+      }
+    ]
+  },
+  {
+    "id": "linalg-h-018",
+    "topic": "linearalgebra",
+    "difficulty": "hard",
+    "chapter": 9,
+    "question": {
+      "latex": "A \\approx \\hat{A}_k = \\sum_{i=1}^k \\sigma_i \\mathbf{u}_i \\mathbf{v}_i^T,\\quad \\sigma = [10, 3, 0.1],\\quad k=1",
+      "plain": "What fraction of the Frobenius norm is captured by the rank-1 approximation?"
+    },
+    "palette": [
+      {
+        "id": "p1",
+        "latex": "\\sqrt{100 + 9 + 0.01}",
+        "description": "‖A‖_F = √(σ₁²+σ₂²+σ₃²)"
+      },
+      {
+        "id": "p2",
+        "latex": "\\approx 95.8\\%",
+        "description": "σ₁/‖Σ‖_F = 10/√109.01 ≈ 0.958"
+      }
+    ],
+    "steps": [
+      {
+        "id": "s1",
+        "fromLatex": "\\|A\\|_F = \\sqrt{\\sigma_1^2+\\sigma_2^2+\\sigma_3^2} = \\sqrt{100 + 9 + 0.01}",
+        "toLatex": "\\|A\\|_F = \\sqrt{109.01} \\approx 10.44",
+        "paletteRef": "p1",
+        "dropTargets": [
+          "\\sqrt{100 + 9 + 0.01}"
+        ],
+        "description": "Frobenius norm = √(sum of squared singular values)"
+      },
+      {
+        "id": "s2",
+        "fromLatex": "\\frac{\\sigma_1}{\\|A\\|_F} = \\frac{10}{10.44} \\approx 95.8\\%",
+        "toLatex": "\\hat{A}_1 \\text{ captures } {\\approx 95.8\\%} \\text{ of } \\|A\\|_F",
+        "paletteRef": "p2",
+        "dropTargets": [
+          "\\approx 95.8\\%"
+        ],
+        "description": "When top singular values dominate, low-rank compression loses little — the insight behind LoRA"
+      }
+    ]
+  },
+  {
+    "id": "linalg-e-019",
+    "topic": "linearalgebra",
+    "difficulty": "easy",
+    "chapter": 10,
+    "question": {
+      "latex": "\\mathbf{v} = [-3,\\ 4]",
+      "plain": "Compute the L2 norm and L1 norm of v"
+    },
+    "palette": [
+      {
+        "id": "p1",
+        "latex": "5",
+        "description": "L2: √(9+16) = √25 = 5"
+      },
+      {
+        "id": "p2",
+        "latex": "7",
+        "description": "L1: |−3|+|4| = 3+4 = 7"
+      }
+    ],
+    "steps": [
+      {
+        "id": "s1",
+        "fromLatex": "\\|\\mathbf{v}\\|_2 = \\sqrt{(-3)^2 + 4^2} = \\sqrt{25} = 5",
+        "toLatex": "\\|\\mathbf{v}\\|_2 = 5",
+        "paletteRef": "p1",
+        "dropTargets": [
+          "5"
+        ],
+        "description": "L2 norm: square-root of sum of squared components"
+      },
+      {
+        "id": "s2",
+        "fromLatex": "\\|\\mathbf{v}\\|_1 = |-3| + |4| = 3 + 4 = 7",
+        "toLatex": "\\|\\mathbf{v}\\|_1 = 7",
+        "paletteRef": "p2",
+        "dropTargets": [
+          "7"
+        ],
+        "description": "L1 norm: sum of absolute values — promotes sparsity (LASSO regularization)"
+      }
+    ]
+  },
+  {
+    "id": "linalg-e-020",
+    "topic": "linearalgebra",
+    "difficulty": "easy",
+    "chapter": 10,
+    "question": {
+      "latex": "A = \\begin{bmatrix}1 & 2\\\\3 & 4\\end{bmatrix}",
+      "plain": "Compute the Frobenius norm ‖A‖_F"
+    },
+    "palette": [
+      {
+        "id": "p1",
+        "latex": "1+4+9+16",
+        "description": "Sum all squared entries: 1²+2²+3²+4²"
+      },
+      {
+        "id": "p2",
+        "latex": "\\sqrt{30}",
+        "description": "‖A‖_F = √30"
+      }
+    ],
+    "steps": [
+      {
+        "id": "s1",
+        "fromLatex": "\\|A\\|_F = \\sqrt{1^2+2^2+3^2+4^2} = \\sqrt{1+4+9+16}",
+        "toLatex": "\\|A\\|_F = \\sqrt{30}",
+        "paletteRef": "p1",
+        "dropTargets": [
+          "1+4+9+16"
+        ],
+        "description": "Frobenius norm: square root of sum of all squared matrix entries"
+      },
+      {
+        "id": "s2",
+        "fromLatex": "= \\sqrt{30}",
+        "toLatex": "\\|A\\|_F = \\sqrt{30} \\approx 5.48",
+        "paletteRef": "p2",
+        "dropTargets": [
+          "\\sqrt{30}"
+        ],
+        "description": "Frobenius norm = L2 norm of vectorized matrix — used in weight decay regularization ‖W‖_F²"
+      }
+    ]
+  },
+  {
+    "id": "linalg-m-019",
+    "topic": "linearalgebra",
+    "difficulty": "medium",
+    "chapter": 10,
+    "question": {
+      "latex": "\\nabla = [3,\\ 4],\\quad \\text{clip threshold } c = 1",
+      "plain": "Apply gradient clipping: if ‖∇‖₂ > c, scale ∇ to have norm c"
+    },
+    "palette": [
+      {
+        "id": "p1",
+        "latex": "5",
+        "description": "‖∇‖₂ = √(9+16) = 5"
+      },
+      {
+        "id": "p2",
+        "latex": "\\left[\\frac{3}{5},\\ \\frac{4}{5}\\right]",
+        "description": "Clipped gradient = (c/‖∇‖)∇ = (1/5)[3,4]"
+      }
+    ],
+    "steps": [
+      {
+        "id": "s1",
+        "fromLatex": "\\|\\nabla\\|_2 = \\sqrt{3^2+4^2} = \\sqrt{25} = 5 > 1",
+        "toLatex": "\\|\\nabla\\|_2 = 5 > c = 1 \\Rightarrow \\text{clip}",
+        "paletteRef": "p1",
+        "dropTargets": [
+          "5"
+        ],
+        "description": "Compute gradient norm: 5 exceeds threshold 1 — must scale down"
+      },
+      {
+        "id": "s2",
+        "fromLatex": "\\nabla_{\\text{clip}} = \\frac{c}{\\|\\nabla\\|}\\nabla = \\frac{1}{5}[3,4] = \\left[\\frac{3}{5},\\ \\frac{4}{5}\\right]",
+        "toLatex": "\\nabla_{\\text{clip}} = \\left[\\frac{3}{5},\\ \\frac{4}{5}\\right]",
+        "paletteRef": "p2",
+        "dropTargets": [
+          "\\left[\\frac{3}{5},\\ \\frac{4}{5}\\right]"
+        ],
+        "description": "Gradient clipping: scale to unit norm — prevents exploding gradients during training"
+      }
+    ]
+  },
+  {
+    "id": "linalg-m-020",
+    "topic": "linearalgebra",
+    "difficulty": "medium",
+    "chapter": 10,
+    "question": {
+      "latex": "\\text{Attention score: } s = \\mathbf{q} \\cdot \\mathbf{k},\\quad d_k = 64",
+      "plain": "Why do we scale by 1/√d_k? Compute the scaling factor for d_k = 64"
+    },
+    "palette": [
+      {
+        "id": "p1",
+        "latex": "8",
+        "description": "√64 = 8"
+      },
+      {
+        "id": "p2",
+        "latex": "\\frac{1}{8}",
+        "description": "Scaling factor 1/√64 = 1/8"
+      }
+    ],
+    "steps": [
+      {
+        "id": "s1",
+        "fromLatex": "\\sqrt{d_k} = \\sqrt{64} = 8",
+        "toLatex": "\\sqrt{d_k} = 8",
+        "paletteRef": "p1",
+        "dropTargets": [
+          "8"
+        ],
+        "description": "√d_k = 8 — without scaling, dot products grow with dimension and softmax saturates"
+      },
+      {
+        "id": "s2",
+        "fromLatex": "\\text{Scaled score} = \\frac{s}{\\sqrt{d_k}} = \\frac{s}{8} = s \\cdot \\frac{1}{8}",
+        "toLatex": "\\text{Scaled attention: } \\text{softmax}\\!\\left(\\frac{QK^T}{\\sqrt{d_k}}\\right)V",
+        "paletteRef": "p2",
+        "dropTargets": [
+          "\\frac{1}{8}"
+        ],
+        "description": "Dividing by √d_k keeps variance of dot products ≈ 1 — prevents softmax from having near-zero gradients"
+      }
+    ]
+  },
+  {
+    "id": "linalg-h-019",
+    "topic": "linearalgebra",
+    "difficulty": "hard",
+    "chapter": 10,
+    "question": {
+      "latex": "\\mathbf{x} = [2,\\ -1,\\ 2],\\quad \\text{LayerNorm: } \\hat{x}_i = \\frac{x_i - \\mu}{\\sigma}",
+      "plain": "Compute mean μ and std σ, then normalize x"
+    },
+    "palette": [
+      {
+        "id": "p1",
+        "latex": "1",
+        "description": "μ = (2+(−1)+2)/3 = 3/3 = 1"
+      },
+      {
+        "id": "p2",
+        "latex": "\\sqrt{2}",
+        "description": "σ = √((1+4+1)/3) = √2"
+      },
+      {
+        "id": "p3",
+        "latex": "\\left[\\frac{1}{\\sqrt{2}},\\ \\frac{-2}{\\sqrt{2}},\\ \\frac{1}{\\sqrt{2}}\\right]",
+        "description": "Normalized: [(2−1)/√2, (−1−1)/√2, (2−1)/√2]"
+      }
+    ],
+    "steps": [
+      {
+        "id": "s1",
+        "fromLatex": "\\mu = \\frac{2+(-1)+2}{3} = \\frac{3}{3} = 1",
+        "toLatex": "\\mu = 1",
+        "paletteRef": "p1",
+        "dropTargets": [
+          "1"
+        ],
+        "description": "Compute the mean of x"
+      },
+      {
+        "id": "s2",
+        "fromLatex": "\\sigma = \\sqrt{\\frac{(2-1)^2+(-1-1)^2+(2-1)^2}{3}} = \\sqrt{\\frac{1+4+1}{3}} = \\sqrt{2}",
+        "toLatex": "\\sigma = \\sqrt{2}",
+        "paletteRef": "p2",
+        "dropTargets": [
+          "\\sqrt{2}"
+        ],
+        "description": "Compute standard deviation — variance of residuals around the mean"
+      },
+      {
+        "id": "s3",
+        "fromLatex": "\\hat{\\mathbf{x}} = \\frac{\\mathbf{x}-\\mu}{\\sigma} = \\left[\\frac{1}{\\sqrt{2}},\\ \\frac{-2}{\\sqrt{2}},\\ \\frac{1}{\\sqrt{2}}\\right]",
+        "toLatex": "\\hat{\\mathbf{x}} = \\left[\\frac{1}{\\sqrt{2}},\\ -\\sqrt{2},\\ \\frac{1}{\\sqrt{2}}\\right]",
+        "paletteRef": "p3",
+        "dropTargets": [
+          "\\left[\\frac{1}{\\sqrt{2}},\\ \\frac{-2}{\\sqrt{2}},\\ \\frac{1}{\\sqrt{2}}\\right]"
+        ],
+        "description": "Layer normalization stabilizes activations — each token vector is centered and scaled before the next layer"
+      }
+    ]
+  },
+  {
+    "id": "linalg-h-020",
+    "topic": "linearalgebra",
+    "difficulty": "hard",
+    "chapter": 10,
+    "question": {
+      "latex": "A = \\begin{bmatrix}3 & 0\\\\0 & 2\\end{bmatrix}",
+      "plain": "Compute the spectral norm ‖A‖₂ (= largest singular value)"
+    },
+    "palette": [
+      {
+        "id": "p1",
+        "latex": "3",
+        "description": "σ₁ = max diagonal entry = 3 (for diagonal matrices)"
+      },
+      {
+        "id": "p2",
+        "latex": "\\|A\\|_2 = 3",
+        "description": "Spectral norm = 3 (largest singular value)"
+      }
+    ],
+    "steps": [
+      {
+        "id": "s1",
+        "fromLatex": "A \\text{ is diagonal} \\Rightarrow \\sigma_1 = 3,\\ \\sigma_2 = 2",
+        "toLatex": "\\text{Singular values: } 3, 2",
+        "paletteRef": "p1",
+        "dropTargets": [
+          "3"
+        ],
+        "description": "For diagonal matrices, singular values = absolute diagonal values in decreasing order"
+      },
+      {
+        "id": "s2",
+        "fromLatex": "\\|A\\|_2 = 3",
+        "toLatex": "\\|A\\|_2 = 3",
+        "paletteRef": "p2",
+        "dropTargets": [
+          "\\|A\\|_2 = 3"
+        ],
+        "description": "Spectral norm = largest singular value — controls Lipschitz constant; used in spectral normalization of GAN discriminators"
+      }
+    ]
+  }
+]
