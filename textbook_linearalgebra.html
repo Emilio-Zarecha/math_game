@@ -67,6 +67,99 @@
                    margin-top: 3rem; padding-top: 1.5rem; border-top: 1px solid var(--panel); }
     code { background: rgba(255,255,255,0.08); padding: 1px 5px; border-radius: 3px;
            font-family: monospace; font-size: 0.92em; }
+
+    /* Glossary button */
+    #glossary-btn {
+      position: fixed;
+      bottom: 2rem;
+      right: 2rem;
+      background: var(--panel);
+      color: var(--neural);
+      border: 1px solid var(--neural-border);
+      border-radius: 8px;
+      padding: 10px 18px;
+      font-size: 0.88rem;
+      font-weight: 600;
+      cursor: pointer;
+      z-index: 100;
+      letter-spacing: 0.04em;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.4);
+      transition: background 0.15s;
+    }
+    #glossary-btn:hover { background: rgba(167,139,250,0.15); }
+
+    /* Glossary modal */
+    #glossary-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.65);
+      z-index: 200;
+      align-items: center;
+      justify-content: center;
+    }
+    #glossary-overlay.open { display: flex; }
+    #glossary-dialog {
+      background: var(--surface);
+      border: 1px solid var(--neural-border);
+      border-radius: 12px;
+      width: min(700px, 92vw);
+      max-height: 82vh;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0 8px 40px rgba(0,0,0,0.6);
+    }
+    #glossary-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1.1rem 1.5rem 0.8rem;
+      border-bottom: 1px solid var(--panel);
+    }
+    #glossary-header h2 {
+      color: var(--neural);
+      font-size: 1.15rem;
+      margin: 0;
+    }
+    #glossary-close {
+      background: none;
+      border: none;
+      color: var(--muted);
+      font-size: 1.3rem;
+      cursor: pointer;
+      line-height: 1;
+      padding: 2px 6px;
+      border-radius: 4px;
+    }
+    #glossary-close:hover { color: var(--text); background: rgba(255,255,255,0.08); }
+    #glossary-body {
+      overflow-y: auto;
+      padding: 1rem 1.5rem 1.5rem;
+    }
+    .gl-letter {
+      color: var(--accent);
+      font-size: 1rem;
+      font-weight: 700;
+      margin: 1.2rem 0 0.4rem;
+      padding-bottom: 0.2rem;
+      border-bottom: 1px solid var(--panel);
+    }
+    .gl-letter:first-child { margin-top: 0.2rem; }
+    .gl-term {
+      margin-bottom: 0.65rem;
+      font-size: 0.9rem;
+      line-height: 1.5;
+    }
+    .gl-term dt {
+      color: var(--hint);
+      font-weight: 700;
+      display: inline;
+    }
+    .gl-term dd {
+      display: inline;
+      margin: 0;
+      color: var(--text);
+    }
   </style>
 </head>
 <body>
@@ -75,6 +168,8 @@
 <h1>Basic Linear Algebra</h1>
 <p class="subtitle">Foundations of vectors, matrices, and transformations</p>
 <p class="tagline">Every topic is chosen for its direct role in neural networks, LLMs, and World Models</p>
+
+<button id="glossary-btn" aria-haspopup="dialog">📘 Glossary</button>
 
 <nav class="toc">
   <h2>Table of Contents</h2>
@@ -549,6 +644,316 @@
     <p><strong>Spectral normalization:</strong> In GANs, the discriminator's weight matrices are normalized by their spectral norm $\sigma_{\max}$ at each step, enforcing a Lipschitz constraint that stabilizes adversarial training.</p>
   </div>
 </section>
+
+<!-- ═══════════════════════════════════════════════════════ GLOSSARY MODAL -->
+<div id="glossary-overlay" role="dialog" aria-modal="true" aria-label="Glossary">
+  <div id="glossary-dialog">
+    <div id="glossary-header">
+      <h2>📘 Glossary — Linear Algebra</h2>
+      <button id="glossary-close" aria-label="Close">✕</button>
+    </div>
+    <div id="glossary-body">
+
+      <div class="gl-letter">A</div>
+
+      <dl class="gl-term">
+        <dt>Adjugate (Adj(A))</dt>
+        <dd> — The transpose of the cofactor matrix of $A$. Used in the inverse formula: $A^{-1} = \text{Adj}(A)/\det(A)$. Each entry is a signed minor of $A$.</dd>
+      </dl>
+      <dl class="gl-term">
+        <dt>Affine map</dt>
+        <dd> — A function $T(\mathbf{x}) = A\mathbf{x} + \mathbf{b}$ that includes a translation $\mathbf{b}$. Unlike a linear map, $T(\mathbf{0}) = \mathbf{b} \neq \mathbf{0}$, so it does not pass through the origin. Every neural network layer $\mathbf{y} = W\mathbf{x} + \mathbf{b}$ is affine.</dd>
+      </dl>
+
+      <div class="gl-letter">B</div>
+
+      <dl class="gl-term">
+        <dt>Back substitution</dt>
+        <dd> — The process of solving a triangular system by starting from the last equation and substituting known values upward. Runs in $O(n^2)$ time after Gaussian elimination.</dd>
+      </dl>
+      <dl class="gl-term">
+        <dt>Basis</dt>
+        <dd> — A set of linearly independent vectors that spans a vector space. Every vector in the space has a unique representation as a linear combination of basis vectors. The number of basis vectors equals the dimension.</dd>
+      </dl>
+
+      <div class="gl-letter">C</div>
+
+      <dl class="gl-term">
+        <dt>Characteristic polynomial</dt>
+        <dd> — The polynomial $\det(A - \lambda I)$, whose roots are the eigenvalues of $A$. For an $n\times n$ matrix it has degree $n$.</dd>
+      </dl>
+      <dl class="gl-term">
+        <dt>Column space (Col(A))</dt>
+        <dd> — The set of all vectors $A\mathbf{x}$ for $\mathbf{x} \in \mathbb{R}^n$; equivalently, the span of the columns of $A$. A system $A\mathbf{x} = \mathbf{b}$ has a solution iff $\mathbf{b}$ is in the column space.</dd>
+      </dl>
+      <dl class="gl-term">
+        <dt>Cosine similarity</dt>
+        <dd> — $\cos\theta = \frac{\mathbf{a}\cdot\mathbf{b}}{\|\mathbf{a}\|\|\mathbf{b}\|}$. Measures the alignment between two vectors, ranging from $-1$ (opposite) through $0$ (orthogonal) to $1$ (identical direction). Used extensively in embedding search and attention.</dd>
+      </dl>
+
+      <div class="gl-letter">D</div>
+
+      <dl class="gl-term">
+        <dt>Determinant</dt>
+        <dd> — A scalar $\det(A)$ defined for square matrices. Non-zero iff $A$ is invertible. Geometrically, $|\det(A)|$ is the volume scaling factor of the linear transformation; a negative sign indicates a reflection.</dd>
+      </dl>
+      <dl class="gl-term">
+        <dt>Diagonalization</dt>
+        <dd> — Writing $A = PDP^{-1}$ where $D$ is diagonal. Requires $A$ to have $n$ linearly independent eigenvectors. Symmetric matrices are always diagonalizable with an orthogonal $P$: $A = QDQ^T$.</dd>
+      </dl>
+      <dl class="gl-term">
+        <dt>Dimension</dt>
+        <dd> — The number of vectors in any basis of a vector space. All bases of a space have the same size. The dimension of $\mathbb{R}^n$ is $n$.</dd>
+      </dl>
+      <dl class="gl-term">
+        <dt>Dot product</dt>
+        <dd> — $\mathbf{a}\cdot\mathbf{b} = \sum_i a_i b_i$. A scalar measuring alignment; equals $\|\mathbf{a}\|\|\mathbf{b}\|\cos\theta$. Negative when the angle exceeds 90°, zero when vectors are orthogonal.</dd>
+      </dl>
+
+      <div class="gl-letter">E</div>
+
+      <dl class="gl-term">
+        <dt>Eigenvalue</dt>
+        <dd> — A scalar $\lambda$ such that $A\mathbf{v} = \lambda\mathbf{v}$ for some nonzero eigenvector $\mathbf{v}$. Eigenvalues describe how much the transformation stretches ($|\lambda|>1$), shrinks ($|\lambda|<1$), or reflects ($\lambda < 0$) in each eigenvector direction.</dd>
+      </dl>
+      <dl class="gl-term">
+        <dt>Eigenvector</dt>
+        <dd> — A nonzero vector $\mathbf{v}$ that is only scaled by $A$, not rotated: $A\mathbf{v} = \lambda\mathbf{v}$. Eigenvectors define the "natural axes" of a transformation and are central to PCA and spectral analysis.</dd>
+      </dl>
+      <dl class="gl-term">
+        <dt>Euclidean norm (L2 norm)</dt>
+        <dd> — $\|\mathbf{v}\|_2 = \sqrt{v_1^2 + v_2^2 + \cdots + v_n^2}$. The straight-line length of a vector. The most common measure of distance in machine learning — used in gradient clipping, layer normalization, and cosine similarity.</dd>
+      </dl>
+
+      <div class="gl-letter">F</div>
+
+      <dl class="gl-term">
+        <dt>Free variable</dt>
+        <dd> — A variable not associated with a pivot after row reduction. Each free variable generates one family of solutions, leading to infinitely many solutions. Its count equals the nullity of the matrix.</dd>
+      </dl>
+      <dl class="gl-term">
+        <dt>Frobenius norm</dt>
+        <dd> — $\|A\|_F = \sqrt{\sum_{i,j} a_{ij}^2} = \sqrt{\sum_i \sigma_i^2}$. Treats a matrix as a long vector and takes its L2 norm. Used in weight decay regularization $\lambda\|W\|_F^2$ and in measuring approximation error in SVD truncation.</dd>
+      </dl>
+
+      <div class="gl-letter">G</div>
+
+      <dl class="gl-term">
+        <dt>Gaussian elimination</dt>
+        <dd> — The standard algorithm for solving $A\mathbf{x} = \mathbf{b}$ by applying elementary row operations to reduce the augmented matrix $[A\,|\,\mathbf{b}]$ to row echelon form, then back-substituting.</dd>
+      </dl>
+      <dl class="gl-term">
+        <dt>Gram-Schmidt process</dt>
+        <dd> — An algorithm that converts a set of linearly independent vectors into an orthonormal set spanning the same space, by iteratively subtracting projections onto already-processed vectors. It computes the QR decomposition of a matrix.</dd>
+      </dl>
+
+      <div class="gl-letter">H</div>
+
+      <dl class="gl-term">
+        <dt>Hadamard product ($\odot$)</dt>
+        <dd> — Element-wise multiplication: $(A \odot B)_{ij} = a_{ij}\,b_{ij}$. Both matrices must have the same shape. Appears in LSTM gates, GLU activations, and SwiGLU — wherever learned gates control information flow.</dd>
+      </dl>
+
+      <div class="gl-letter">I</div>
+
+      <dl class="gl-term">
+        <dt>Identity matrix ($I$)</dt>
+        <dd> — A square diagonal matrix with 1s on the diagonal and 0s elsewhere. Satisfies $AI = IA = A$ for any conformable matrix $A$. Represents the "do nothing" transformation.</dd>
+      </dl>
+      <dl class="gl-term">
+        <dt>Inverse ($A^{-1}$)</dt>
+        <dd> — A matrix satisfying $AA^{-1} = A^{-1}A = I$. Exists iff $A$ is square and $\det(A)\neq 0$. For 2×2: $\begin{bmatrix}a&b\\c&d\end{bmatrix}^{-1} = \frac{1}{ad-bc}\begin{bmatrix}d&-b\\-c&a\end{bmatrix}$.</dd>
+      </dl>
+
+      <div class="gl-letter">L</div>
+
+      <dl class="gl-term">
+        <dt>L1 norm (Manhattan norm)</dt>
+        <dd> — $\|\mathbf{v}\|_1 = \sum_i |v_i|$. The sum of absolute values of all components. Named after Manhattan's grid-street distance. Promotes sparsity when used as a regularizer (LASSO), making it useful for feature selection.</dd>
+      </dl>
+      <dl class="gl-term">
+        <dt>L2 norm</dt>
+        <dd> — See <em>Euclidean norm</em>.</dd>
+      </dl>
+      <dl class="gl-term">
+        <dt>Linear combination</dt>
+        <dd> — A sum $c_1\mathbf{v}_1 + c_2\mathbf{v}_2 + \cdots + c_k\mathbf{v}_k$ of scaled vectors. The span of a set is the collection of all its linear combinations.</dd>
+      </dl>
+      <dl class="gl-term">
+        <dt>Linear independence</dt>
+        <dd> — A set of vectors is linearly independent if no vector is a linear combination of the others; equivalently, $c_1\mathbf{v}_1 + \cdots + c_k\mathbf{v}_k = \mathbf{0}$ implies all $c_i = 0$. Dependent vectors add no new directions to the span.</dd>
+      </dl>
+      <dl class="gl-term">
+        <dt>Linear transformation</dt>
+        <dd> — A function $T: \mathbb{R}^n \to \mathbb{R}^m$ satisfying $T(\mathbf{u}+\mathbf{v}) = T(\mathbf{u})+T(\mathbf{v})$ and $T(c\mathbf{v}) = cT(\mathbf{v})$. Every linear transformation is represented by a matrix, and every matrix defines a linear transformation.</dd>
+      </dl>
+      <dl class="gl-term">
+        <dt>LoRA (Low-Rank Adaptation)</dt>
+        <dd> — A fine-tuning method that parameterizes weight updates as $\Delta W = BA$ with $B\in\mathbb{R}^{m\times r}$, $A\in\mathbb{R}^{r\times n}$, rank $r \ll \min(m,n)$. This is a truncated SVD structure and reduces trainable parameters from $mn$ to $r(m+n)$.</dd>
+      </dl>
+      <dl class="gl-term">
+        <dt>Low-rank approximation</dt>
+        <dd> — The best rank-$k$ approximation of $A$ in Frobenius (and spectral) norm is $\hat{A}_k = \sum_{i=1}^k \sigma_i \mathbf{u}_i \mathbf{v}_i^T$ (Eckart-Young theorem). Captures the dominant structure while discarding noise.</dd>
+      </dl>
+      <dl class="gl-term">
+        <dt>LU decomposition</dt>
+        <dd> — Factoring $A = LU$ with $L$ lower triangular (1s on diagonal) and $U$ upper triangular. Equivalent to Gaussian elimination written in matrix form. Efficient for solving $A\mathbf{x} = \mathbf{b}$ for many right-hand sides.</dd>
+      </dl>
+
+      <div class="gl-letter">M</div>
+
+      <dl class="gl-term">
+        <dt>Manhattan norm (L1 norm)</dt>
+        <dd> — See <em>L1 norm</em>.</dd>
+      </dl>
+      <dl class="gl-term">
+        <dt>Matrix</dt>
+        <dd> — A rectangular array of numbers with $m$ rows and $n$ columns, written as $m\times n$. Matrices represent linear transformations, datasets, and weight parameters in neural networks.</dd>
+      </dl>
+      <dl class="gl-term">
+        <dt>Matrix multiplication</dt>
+        <dd> — $(AB)_{ij} = \sum_k a_{ik}b_{kj}$: each entry is a dot product of a row of $A$ with a column of $B$. Requires the inner dimensions to match ($A$ is $m\times k$, $B$ is $k\times n$). Not commutative: $AB \neq BA$ in general.</dd>
+      </dl>
+
+      <div class="gl-letter">N</div>
+
+      <dl class="gl-term">
+        <dt>Norm</dt>
+        <dd> — A function assigning non-negative "length" $\|\mathbf{v}\|$ to each vector, satisfying: (1) $\|\mathbf{v}\|=0$ iff $\mathbf{v}=\mathbf{0}$; (2) $\|c\mathbf{v}\| = |c|\|\mathbf{v}\|$; (3) triangle inequality $\|\mathbf{u}+\mathbf{v}\| \leq \|\mathbf{u}\|+\|\mathbf{v}\|$. Different norms define different geometries.</dd>
+      </dl>
+      <dl class="gl-term">
+        <dt>Null space (Null(A))</dt>
+        <dd> — All vectors $\mathbf{x}$ satisfying $A\mathbf{x} = \mathbf{0}$. Its dimension (nullity) equals the number of free variables and measures how many input directions the transformation collapses to zero.</dd>
+      </dl>
+
+      <div class="gl-letter">O</div>
+
+      <dl class="gl-term">
+        <dt>Orthogonal</dt>
+        <dd> — Two vectors are orthogonal if $\mathbf{u}\cdot\mathbf{v} = 0$. A square matrix $Q$ is orthogonal if $Q^TQ = I$, meaning its columns are orthonormal. Orthogonal matrices preserve dot products, norms, and angles — they represent rotations and reflections.</dd>
+      </dl>
+      <dl class="gl-term">
+        <dt>Orthonormal</dt>
+        <dd> — A set of vectors that are mutually orthogonal (dot product = 0 for each pair) and each have unit L2 norm. The standard basis $\{\mathbf{e}_1,\ldots,\mathbf{e}_n\}$ is orthonormal.</dd>
+      </dl>
+
+      <div class="gl-letter">P</div>
+
+      <dl class="gl-term">
+        <dt>Pivot</dt>
+        <dd> — The leading non-zero entry in a row after row reduction. The number of pivot positions equals the rank. Columns without pivots correspond to free variables.</dd>
+      </dl>
+      <dl class="gl-term">
+        <dt>Projection</dt>
+        <dd> — $\text{proj}_{\mathbf{v}}(\mathbf{u}) = \frac{\mathbf{u}\cdot\mathbf{v}}{\|\mathbf{v}\|^2}\mathbf{v}$. The "shadow" of $\mathbf{u}$ in the direction of $\mathbf{v}$. Minimizes the distance from $\mathbf{u}$ to the span of $\mathbf{v}$. Attention uses projections via $W_Q$ and $W_K$.</dd>
+      </dl>
+
+      <div class="gl-letter">Q</div>
+
+      <dl class="gl-term">
+        <dt>QR decomposition</dt>
+        <dd> — $A = QR$ with $Q$ having orthonormal columns and $R$ upper triangular. Computed via Gram-Schmidt. Numerically stable for solving least-squares problems; used in some neural network optimizers (e.g., Muon).</dd>
+      </dl>
+
+      <div class="gl-letter">R</div>
+
+      <dl class="gl-term">
+        <dt>Rank</dt>
+        <dd> — The number of linearly independent rows (= columns) of a matrix, equal to the number of pivot positions after row reduction. Rank equals the dimension of the column space and of the row space.</dd>
+      </dl>
+      <dl class="gl-term">
+        <dt>Rank-Nullity theorem</dt>
+        <dd> — $\text{rank}(A) + \text{nullity}(A) = n$ (the number of columns). Encodes a fundamental conservation law: dimensions "used" for output plus dimensions "wasted" to zero must sum to the input dimension.</dd>
+      </dl>
+      <dl class="gl-term">
+        <dt>Row echelon form</dt>
+        <dd> — A matrix form after Gaussian elimination where each row's leading entry lies strictly to the right of the leading entry of the row above, and all-zero rows are at the bottom.</dd>
+      </dl>
+
+      <div class="gl-letter">S</div>
+
+      <dl class="gl-term">
+        <dt>Scalar</dt>
+        <dd> — A single real number, as opposed to a vector or matrix. Scalars appear as entries of vectors and matrices, as eigenvalues, and as norms.</dd>
+      </dl>
+      <dl class="gl-term">
+        <dt>Singular matrix</dt>
+        <dd> — A square matrix with $\det(A) = 0$. It has no inverse, is rank-deficient, and maps some nonzero vector to $\mathbf{0}$ (its null space is non-trivial).</dd>
+      </dl>
+      <dl class="gl-term">
+        <dt>Singular value</dt>
+        <dd> — A non-negative scalar $\sigma_i = \sqrt{\lambda_i(A^T A)}$. Singular values $\sigma_1 \geq \sigma_2 \geq \cdots \geq 0$ measure how much the matrix stretches space in each orthogonal direction. The rank equals the number of non-zero singular values.</dd>
+      </dl>
+      <dl class="gl-term">
+        <dt>Singular Value Decomposition (SVD)</dt>
+        <dd> — $A = U\Sigma V^T$: $U$ and $V$ are orthogonal matrices of left/right singular vectors, $\Sigma$ is diagonal with singular values. Every matrix (rectangular or square) has an SVD. Foundation of LoRA, PCA, and LSA.</dd>
+      </dl>
+      <dl class="gl-term">
+        <dt>Span</dt>
+        <dd> — The set of all linear combinations $\{c_1\mathbf{v}_1 + \cdots + c_k\mathbf{v}_k : c_i \in \mathbb{R}\}$ of a collection of vectors. Adding a vector to a dependent set does not increase the span.</dd>
+      </dl>
+      <dl class="gl-term">
+        <dt>Spectral norm</dt>
+        <dd> — $\|A\|_2 = \sigma_{\max}$, the largest singular value. Equals the maximum factor by which $A$ can stretch any unit vector. Used in spectral normalization of GAN discriminators to enforce Lipschitz continuity.</dd>
+      </dl>
+      <dl class="gl-term">
+        <dt>Subspace</dt>
+        <dd> — A subset of a vector space that is itself a vector space: it contains $\mathbf{0}$, is closed under addition, and is closed under scalar multiplication. The column space and null space of a matrix are both subspaces.</dd>
+      </dl>
+      <dl class="gl-term">
+        <dt>Symmetric matrix</dt>
+        <dd> — A matrix satisfying $A = A^T$. Symmetric matrices have real eigenvalues and mutually orthogonal eigenvectors (spectral theorem). Covariance matrices and Hessians are always symmetric.</dd>
+      </dl>
+
+      <div class="gl-letter">T</div>
+
+      <dl class="gl-term">
+        <dt>Trace</dt>
+        <dd> — $\text{tr}(A) = \sum_i a_{ii}$, the sum of diagonal entries. Equals the sum of eigenvalues (with multiplicity). The trace is cyclic: $\text{tr}(ABC) = \text{tr}(CAB) = \text{tr}(BCA)$.</dd>
+      </dl>
+      <dl class="gl-term">
+        <dt>Transpose ($A^T$)</dt>
+        <dd> — The matrix obtained by swapping rows and columns: $(A^T)_{ij} = a_{ji}$. Key identity: $(AB)^T = B^T A^T$. The transpose of an orthogonal matrix is its inverse.</dd>
+      </dl>
+
+      <div class="gl-letter">U</div>
+
+      <dl class="gl-term">
+        <dt>Unit vector</dt>
+        <dd> — A vector with L2 norm equal to 1: $\|\hat{\mathbf{v}}\|_2 = 1$. Obtained by normalizing: $\hat{\mathbf{v}} = \mathbf{v}/\|\mathbf{v}\|$. Used in cosine similarity, RoPE rotations, and layer normalization.</dd>
+      </dl>
+
+      <div class="gl-letter">V</div>
+
+      <dl class="gl-term">
+        <dt>Vector</dt>
+        <dd> — An ordered list of $n$ real numbers representing a point or direction in $\mathbb{R}^n$. Vectors can be added, scaled, and compared via dot products. In ML, token embeddings and model activations are vectors.</dd>
+      </dl>
+      <dl class="gl-term">
+        <dt>Vector space</dt>
+        <dd> — A set equipped with addition and scalar multiplication satisfying eight axioms (closure, associativity, commutativity, additive identity, additive inverse, and three distributivity laws). $\mathbb{R}^n$ is the canonical example.</dd>
+      </dl>
+
+    </div><!-- /glossary-body -->
+  </div><!-- /glossary-dialog -->
+</div><!-- /glossary-overlay -->
+
+<script>
+  const overlay = document.getElementById('glossary-overlay');
+  document.getElementById('glossary-btn').addEventListener('click', () => {
+    overlay.classList.add('open');
+    document.getElementById('glossary-body').scrollTop = 0;
+  });
+  document.getElementById('glossary-close').addEventListener('click', () => {
+    overlay.classList.remove('open');
+  });
+  overlay.addEventListener('click', e => {
+    if (e.target === overlay) overlay.classList.remove('open');
+  });
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') overlay.classList.remove('open');
+  });
+</script>
 
 <div class="attribution">
   <p>Basic Linear Algebra — Foundations for Neural Models</p>
