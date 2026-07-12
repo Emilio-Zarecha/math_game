@@ -2,7 +2,7 @@
   'use strict';
 
   var LS_KEY     = 'gemini-api-key';
-  var MODEL_URL  = 'https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=';
+  var MODEL_URL  = 'https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=';
 
   // ── CSS ──────────────────────────────────────────────────────────────────
   var style = document.createElement('style');
@@ -301,7 +301,7 @@
     '<button id="ai-send">Send</button>' +
     '</div>' +
     '<div id="ai-footer">' +
-    '<span>Gemini Flash · current chapter as context</span>' +
+    '<span>Gemini 2.5 Flash · current chapter as context</span>' +
     '<span id="ai-change-key">change key</span>' +
     '</div>' +
     '</div>' +
