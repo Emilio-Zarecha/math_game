@@ -202,6 +202,8 @@ SVG rules:
 
 **Interactive Resources appendix** — each textbook's appendix links to free, interactive tools that let readers explore the same concepts dynamically. Keep 2–4 links; prefer tools that closely match the textbook's specific topic arc rather than generic math sites.
 
+**Textbook switcher nav bar** (`textbook-switcher.js`) — injected dynamically after `<header>` in every textbook. Renders as a horizontal carousel (single row, `overflow-x: auto`, hidden scrollbar) constrained to the same `.page` max-width (820px) as the chapter sections. Lists all 8 textbooks in curriculum order; active page marked with `class="current"` and `aria-current="page"`.
+
 ---
 
 ## Light / Dark Theme System
