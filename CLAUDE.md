@@ -192,17 +192,20 @@ SVG rules:
    </section>
    ```
 6. `.attribution` footer
-7. All four shared scripts at the bottom of `<body>`:
+7. All five shared scripts at the bottom of `<body>`:
    ```html
    <script src="textbook-switcher.js"></script>
    <script src="textbook-notes.js"></script>
    <script src="textbook-nav.js"></script>
    <script src="theme-toggle.js"></script>
+   <script src="textbook-ai.js"></script>
    ```
 
 **Interactive Resources appendix** — each textbook's appendix links to free, interactive tools that let readers explore the same concepts dynamically. Keep 2–4 links; prefer tools that closely match the textbook's specific topic arc rather than generic math sites.
 
 **Textbook switcher nav bar** (`textbook-switcher.js`) — injected dynamically after `<header>` in every textbook. Renders as a horizontal carousel (single row, `overflow-x: auto`, hidden scrollbar) constrained to the same `.page` max-width (820px) as the chapter sections. Lists all 8 textbooks in curriculum order; active page marked with `class="current"` and `aria-current="page"`.
+
+**AI tutor modal** (`textbook-ai.js`) — injects an "Ask AI" button into the textbook header. On click, opens a modal that detects the most-visible `section.chapter` on screen, sends its `innerText` (capped at 12 000 chars) as system context to Google Gemini 2.0 Flash, and streams back a plain-text answer. API key stored in `localStorage` under `gemini-api-key`; first-time use shows a key-entry pane with a link to aistudio.google.com/apikey. Multi-turn conversation resets each time the modal is opened. Script must be loaded after `theme-toggle.js` so its button appends to the header after the theme toggle.
 
 ---
 
