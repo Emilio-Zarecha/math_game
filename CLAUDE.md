@@ -192,8 +192,9 @@ SVG rules:
    </section>
    ```
 6. `.attribution` footer
-7. All three shared scripts at the bottom of `<body>`:
+7. All four shared scripts at the bottom of `<body>`:
    ```html
+   <script src="textbook-switcher.js"></script>
    <script src="textbook-notes.js"></script>
    <script src="textbook-nav.js"></script>
    <script src="theme-toggle.js"></script>
