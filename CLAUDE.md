@@ -206,7 +206,11 @@ SVG rules:
 
 ---
 
-## Diagram Viewer (`diagrams.html`)
+## Diagram Pages (`math_<subject>_diagrams.html`)
+
+One diagram page per textbook, named `math_<subject>_diagrams.html` (e.g. `math_calculus_diagrams.html`). Currently only the calculus page exists.
+
+## Diagram Viewer — `math_calculus_diagrams.html`
 
 A standalone page for SVG diagram walkthroughs. Two diagram types coexist:
 
