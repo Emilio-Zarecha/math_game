@@ -206,6 +206,22 @@ SVG rules:
 
 ---
 
+## Diagram Viewer (`diagrams.html`)
+
+A standalone page for SVG diagram walkthroughs. Two diagram types coexist:
+
+**Step-through** (`.step-viewer`): static SVG steps, one visible at a time. Navigation: Prev/Next buttons + progress dots + arrow-key support. Add steps by appending `.step` divs; update `.tot` span and `.step-dots` count. Each step-through has its own IIFE controller at the bottom (`document.querySelectorAll('.step-viewer').forEach(...)`).
+
+**Interactive** (`.interactive-diagram`): live SVG redrawn on slider input. The Riemann sum diagram uses `<g id="r-rects">` for dynamic rectangle injection; JS reads the slider, recomputes the left Riemann sum, sets `innerHTML` on the rect group, and updates the convergence bar. Add new interactive sets with their own slider ids and a separate IIFE.
+
+**SVG coordinate systems:**
+- Derivative diagram: `viewBox="0 0 260 200"`, `sx(x)=40+x*46`, `sy(y)=170-y*7.5` (x∈[0,4.5], y∈[0,16])
+- Riemann diagram: `viewBox="0 0 300 240"`, `sx(x)=40+x*80`, `sy(y)=210-y*21` (x∈[0,3], y∈[0,9])
+
+Always verify coordinate bounds with a Python script before committing new SVG content.
+
+---
+
 ## Light / Dark Theme System
 
 All HTML pages (textbooks, game, manual) share a single theme toggle.
