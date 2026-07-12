@@ -55,7 +55,23 @@
     .toc-back a { color: var(--muted); font-size: 0.82rem; text-decoration: none;
                   letter-spacing: 0.03em; }
     .toc-back a:hover { color: var(--accent); }
-  </style>
+  
+    [data-theme="light"] {
+      --bg:      #f5f0e4;
+      --surface: #faf7ee;
+      --panel:   #ede8d8;
+      --border:  #ccc6b4;
+      --text:    #18140c;
+      --muted:   #3e3c60;
+      --accent:  #2858c8;
+      --correct: #115238;
+      --hint:    #6e4a00;
+      --wrong:   #cc2040;
+    }
+    [data-theme="light"] section h3 { color: #18140c; }
+    [data-theme="light"] .chapter-num { color: #3e3c60; }
+</style>
+  <script>(function(){var t=localStorage.getItem('math-theme')||((window.matchMedia&&window.matchMedia('(prefers-color-scheme:light)').matches)?'light':'dark');document.documentElement.setAttribute('data-theme',t);}());</script>
 </head>
 <body>
 <div class="page">
@@ -91,6 +107,16 @@
   <section id="angles">
     <div class="chapter-num">Chapter 1</div>
     <h3>Angles &amp; Measurement</h3>
+
+    <p>
+      Angles are the language of rotation and oscillation — from the spin of a gyroscope to
+      the phase of an AC current. Two units of measurement exist because they serve different
+      masters: <span class="key">degrees</span> are convenient for human intuition, while
+      <span class="key">radians</span> are natural for mathematics. The derivative of $\sin x$
+      equals $\cos x$ only when $x$ is measured in radians; every formula in calculus and
+      physics that involves circular motion silently assumes radians. Mastering the
+      conversion between the two is the entry ticket to all that follows.
+    </p>
 
     <p>
       An <span class="key">angle</span> is formed by two rays sharing a common endpoint (vertex).
@@ -136,6 +162,16 @@
   <section id="unitcircle">
     <div class="chapter-num">Chapter 2</div>
     <h3>The Unit Circle</h3>
+
+    <p>
+      The right-triangle definitions of sine and cosine break down outside the range 0°–90°
+      — a triangle can't have an angle of 200°. The unit circle fixes this by turning
+      every angle into a point on a circle: as $\theta$ grows beyond 90°, the point simply
+      keeps moving around the circle, and its coordinates continue to define
+      $(\cos\theta, \sin\theta)$ for <em>any</em> angle. This is the move that transforms
+      trig from a tool for solving triangles into the mathematics of waves, oscillations, and
+      anything that repeats — the heartbeat of signal processing and wave mechanics alike.
+    </p>
 
     <p>
       The <span class="key">unit circle</span> has radius 1 and center at the origin.
@@ -210,11 +246,42 @@
     <h3>Right Triangle Trigonometry</h3>
 
     <p>
+      Right triangles appear wherever a measurement is indirect. You can't walk to the top
+      of a cliff to measure its height — but you can stand at a known horizontal distance
+      and measure the angle of elevation. SOH-CAH-TOA converts one measurable quantity
+      (an angle plus one side) into any other. This is the engine behind navigation,
+      architecture, GPS triangulation, and the pixel-to-world coordinate transforms used in
+      computer vision. Mastering these six ratios is mastering the geometry of indirect
+      measurement.
+    </p>
+
+    <p>
       For an acute angle $\theta$ in a right triangle, label the sides relative to $\theta$:
       <span class="key">opposite (opp)</span>, <span class="key">adjacent (adj)</span>,
       and <span class="key">hypotenuse (hyp)</span>.
       The six ratios give the six trig functions (SOH-CAH-TOA).
     </p>
+
+    <div class="formula" style="display:flex;flex-direction:column;align-items:center;gap:0;padding-bottom:8px;">
+      <div class="label" style="align-self:flex-start;">Diagram — right triangle</div>
+      <svg width="260" height="195" viewBox="0 0 260 195" aria-label="Right triangle with labeled sides" style="display:block;">
+        <!-- adj (green) -->
+        <line x1="40" y1="162" x2="210" y2="162" stroke="#3ecf8e" stroke-width="2.5"/>
+        <!-- opp (red) -->
+        <line x1="210" y1="162" x2="210" y2="55" stroke="#ff6b6b" stroke-width="2.5"/>
+        <!-- hyp (muted) -->
+        <line x1="40" y1="162" x2="210" y2="55" stroke="#7070a0" stroke-width="2"/>
+        <!-- Right-angle marker -->
+        <polyline points="196,162 196,148 210,148" fill="none" stroke="#5c8aff" stroke-width="1.5"/>
+        <!-- Angle arc at θ vertex (40,162); terminal side aims at (210,55); arc end ≈ (64,147) -->
+        <path d="M 68,162 A 28,28 0 0,0 64,147" fill="none" stroke="#ffb830" stroke-width="2"/>
+        <!-- Labels -->
+        <text x="125" y="181" text-anchor="middle" fill="#3ecf8e" font-family="system-ui,sans-serif" font-size="13" font-style="italic">adj</text>
+        <text x="227" y="113" text-anchor="start" fill="#ff6b6b" font-family="system-ui,sans-serif" font-size="13" font-style="italic">opp</text>
+        <text x="114" y="93" text-anchor="middle" fill="#7070a0" font-family="system-ui,sans-serif" font-size="13" font-style="italic">hyp</text>
+        <text x="80" y="156" text-anchor="start" fill="#ffb830" font-family="system-ui,sans-serif" font-size="14" font-style="italic">θ</text>
+      </svg>
+    </div>
 
     <div class="formula">
       <div class="label">SOH-CAH-TOA and reciprocals</div>
@@ -242,6 +309,17 @@
     <h3>Trig Functions of Any Angle</h3>
 
     <p>
+      A pendulum swings past vertical. An electric generator rotates full circles. A sound
+      wave oscillates through positive <em>and</em> negative values. None of these are
+      confined to the 0°–90° window of the right-triangle world. This chapter generalizes
+      sine, cosine, and tangent to every angle by anchoring them to a point on the terminal
+      side rather than to a triangle side — allowing the same functions to model any
+      rotation or oscillation, positive or negative, large or small. It is also where the
+      sign patterns (ASTC) that determine whether a value is positive or negative in each
+      quadrant become essential.
+    </p>
+
+    <p>
       For any angle $\theta$ in standard position, let $(x, y)$ be a point on its terminal
       side at distance $r = \sqrt{x^2 + y^2}$ from the origin.
       Then $\sin\theta = y/r$, $\cos\theta = x/r$, $\tan\theta = y/x$.
@@ -258,6 +336,44 @@
       $$\text{Q1: all} + \quad \text{Q2: sin} + \quad \text{Q3: tan} + \quad \text{Q4: cos} +$$
     </div>
 
+    <div class="formula" style="display:flex;flex-direction:column;align-items:center;gap:0;padding-bottom:8px;">
+      <div class="label" style="align-self:flex-start;">ASTC — signs by quadrant (point (x, y) at distance r from origin)</div>
+      <svg width="220" height="220" viewBox="0 0 220 220" aria-label="ASTC quadrant diagram" style="display:block;">
+        <!-- Quadrant backgrounds -->
+        <rect x="112" y="10" width="98" height="98" fill="#3ecf8e" fill-opacity="0.08" rx="2"/>
+        <rect x="10"  y="10" width="98" height="98" fill="#5c8aff" fill-opacity="0.08" rx="2"/>
+        <rect x="10"  y="112" width="98" height="98" fill="#ffb830" fill-opacity="0.08" rx="2"/>
+        <rect x="112" y="112" width="98" height="98" fill="#ff6b6b" fill-opacity="0.08" rx="2"/>
+        <!-- Axes -->
+        <line x1="10" y1="110" x2="210" y2="110" stroke="#2e2e55" stroke-width="2"/>
+        <line x1="110" y1="10" x2="110" y2="210" stroke="#2e2e55" stroke-width="2"/>
+        <polygon points="210,110 200,106 200,114" fill="#2e2e55"/>
+        <polygon points="110,10 106,20 114,20" fill="#2e2e55"/>
+        <text x="214" y="114" fill="#7070a0" font-family="system-ui,sans-serif" font-size="12">x</text>
+        <text x="110" y="7" text-anchor="middle" fill="#7070a0" font-family="system-ui,sans-serif" font-size="12">y</text>
+        <!-- Quadrant labels -->
+        <text x="161" y="55" text-anchor="middle" fill="#3ecf8e" font-family="system-ui,sans-serif" font-size="12" font-weight="600">Q I</text>
+        <text x="161" y="71" text-anchor="middle" fill="#3ecf8e" font-family="system-ui,sans-serif" font-size="11">All +</text>
+        <text x="59"  y="55" text-anchor="middle" fill="#5c8aff" font-family="system-ui,sans-serif" font-size="12" font-weight="600">Q II</text>
+        <text x="59"  y="71" text-anchor="middle" fill="#5c8aff" font-family="system-ui,sans-serif" font-size="11">Sin +</text>
+        <text x="59"  y="157" text-anchor="middle" fill="#ffb830" font-family="system-ui,sans-serif" font-size="12" font-weight="600">Q III</text>
+        <text x="59"  y="173" text-anchor="middle" fill="#ffb830" font-family="system-ui,sans-serif" font-size="11">Tan +</text>
+        <text x="161" y="157" text-anchor="middle" fill="#ff6b6b" font-family="system-ui,sans-serif" font-size="12" font-weight="600">Q IV</text>
+        <text x="161" y="173" text-anchor="middle" fill="#ff6b6b" font-family="system-ui,sans-serif" font-size="11">Cos +</text>
+        <!-- Terminal side to (x,y) in Q1 -->
+        <line x1="110" y1="110" x2="178" y2="52" stroke="#7070a0" stroke-width="1.5"/>
+        <circle cx="178" cy="52" r="4" fill="#3ecf8e"/>
+        <!-- Dashed projections -->
+        <line x1="178" y1="52" x2="178" y2="110" stroke="#ff6b6b" stroke-width="1" stroke-dasharray="3,3"/>
+        <line x1="110" y1="110" x2="178" y2="110" stroke="#3ecf8e" stroke-width="1" stroke-dasharray="3,3"/>
+        <!-- Labels -->
+        <text x="184" y="49" fill="#e0e0f0" font-family="system-ui,sans-serif" font-size="11">(x, y)</text>
+        <text x="182" y="84" fill="#ff6b6b" font-family="system-ui,sans-serif" font-size="11" font-style="italic">y</text>
+        <text x="143" y="124" fill="#3ecf8e" font-family="system-ui,sans-serif" font-size="11" font-style="italic">x</text>
+        <text x="136" y="84" fill="#7070a0" font-family="system-ui,sans-serif" font-size="11" font-style="italic">r</text>
+      </svg>
+    </div>
+
     <div class="example">
       <div class="label">Worked example — find $\sin\theta$ given $\cos\theta = -4/5$ in Q2</div>
       <div class="example-step"><span>$\sin^2\theta = 1 - \cos^2\theta = 1 - 16/25 = 9/25$</span><span class="why">Pythagorean identity</span></div>
@@ -270,6 +386,17 @@
   <section id="graphs">
     <div class="chapter-num">Chapter 5</div>
     <h3>Graphs of Trig Functions</h3>
+
+    <p>
+      Graphing a trig function reveals something the formula obscures: sine and cosine are
+      the shape of every wave in nature. Sound is a sum of sine waves. Light is an
+      electromagnetic sinusoid. AC electricity oscillates at 60 Hz — a sine wave with a
+      fixed amplitude and period. The parameters $A$, $B$, $C$, $D$ give engineers precise
+      control over that wave: how tall, how fast, shifted how far, centered where. Fourier's
+      theorem tells us that <em>any</em> periodic signal — however complex — can be
+      decomposed into sums of these simple curves, which makes this chapter the mathematical
+      foundation of audio engineering, radio transmission, and image compression.
+    </p>
 
     <p>
       For $y = A\sin(Bx - C) + D$ (or cosine):
@@ -322,6 +449,33 @@
       <div class="example-step"><span>Minimum at $x = \pi$, $y = -2$</span><span class="why">three-quarter period after start; $1 - 3 = -2$</span></div>
       <div class="example-step"><span>Cycle ends at $x = 5\pi/4$, $y = 1$</span><span class="why">one full period after start</span></div>
     </div>
+
+    <div class="interactive" style="align-items:stretch;">
+      <div class="int-label">Interactive — y = A·sin(Bx − C) + D</div>
+      <div style="display:flex;gap:20px;flex-wrap:wrap;align-items:flex-start;width:100%;">
+        <canvas id="wave-canvas" width="320" height="200" style="border-radius:8px;flex-shrink:0;display:block;"></canvas>
+        <div style="flex:1;min-width:160px;display:flex;flex-direction:column;gap:10px;">
+          <div>
+            <div style="font-size:0.8rem;color:#ff6b6b;margin-bottom:3px;">Amplitude A = <span id="wave-A-val">1.0</span></div>
+            <input type="range" id="wave-A" min="0.2" max="3" value="1" step="0.1" style="width:100%;accent-color:#ff6b6b;">
+          </div>
+          <div>
+            <div style="font-size:0.8rem;color:#5c8aff;margin-bottom:3px;">Period factor B = <span id="wave-B-val">1.00</span></div>
+            <input type="range" id="wave-B" min="0.25" max="3" value="1" step="0.25" style="width:100%;accent-color:#5c8aff;">
+          </div>
+          <div>
+            <div style="font-size:0.8rem;color:#ffb830;margin-bottom:3px;">Phase C = <span id="wave-C-val">0.00</span></div>
+            <input type="range" id="wave-C" min="-3.14" max="3.14" value="0" step="0.1" style="width:100%;accent-color:#ffb830;">
+          </div>
+          <div>
+            <div style="font-size:0.8rem;color:#3ecf8e;margin-bottom:3px;">Vertical shift D = <span id="wave-D-val">0.0</span></div>
+            <input type="range" id="wave-D" min="-2" max="2" value="0" step="0.1" style="width:100%;accent-color:#3ecf8e;">
+          </div>
+          <div id="wave-info" style="font-size:0.78rem;line-height:1.8;background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:8px 12px;color:var(--muted);"></div>
+        </div>
+      </div>
+    </div>
+
     <p class="toc-back"><a href="#toc">↑ Table of Contents</a></p>
   </section>
 
@@ -329,6 +483,17 @@
   <section id="inverse">
     <div class="chapter-num">Chapter 6</div>
     <h3>Inverse Trig Functions</h3>
+
+    <p>
+      Trig functions answer "given the angle, what is the ratio?" Inverse trig functions
+      answer the reverse: "given the ratio, what is the angle?" That second question is
+      the one that arises in practice. A ramp rises 3 meters over 10 meters of horizontal
+      run — at what angle? A satellite subtends a certain ratio at the horizon — what is its
+      elevation? A robot arm needs its end effector at a specific point — what joint angles
+      produce that? The restricted domains are the price of
+      invertibility: a function with no repeated outputs can be reversed; trig functions
+      repeat endlessly, so we carve out a single clean interval per function.
+    </p>
 
     <p>
       The <span class="key">inverse trig functions</span> return the angle that produces a
@@ -342,6 +507,16 @@
       $$y = \arcsin x \iff \sin y = x, \quad y \in [-\tfrac{\pi}{2}, \tfrac{\pi}{2}]$$
       $$y = \arccos x \iff \cos y = x, \quad y \in [0, \pi]$$
       $$y = \arctan x \iff \tan y = x, \quad y \in (-\tfrac{\pi}{2}, \tfrac{\pi}{2})$$
+    </div>
+
+    <div class="interactive">
+      <div class="int-label">Graphs of arcsin, arccos, arctan with restricted ranges</div>
+      <canvas id="inv-canvas" width="320" height="200" style="border-radius:8px;display:block;"></canvas>
+      <div style="display:flex;gap:18px;font-size:0.8rem;margin-top:2px;">
+        <span style="color:#5c8aff;">— arcsin &nbsp;[−π/2, π/2]</span>
+        <span style="color:#3ecf8e;">— arccos &nbsp;[0, π]</span>
+        <span style="color:#ffb830;">— arctan &nbsp;(−π/2, π/2)</span>
+      </div>
     </div>
 
     <div class="example">
@@ -363,6 +538,18 @@
     <h3>Fundamental Trig Identities</h3>
 
     <p>
+      An identity is a rewriting rule: it lets you replace one form of a trig expression
+      with another that is algebraically equivalent but easier to work with. This matters
+      because calculus often needs a specific form — integrating $\sin^2\theta$ directly is
+      impossible, but rewriting it as $\frac{1 - \cos 2\theta}{2}$ makes it trivial.
+      In signal processing and electrical engineering, identities convert between
+      phase-shifted representations of a wave. You don't need to memorize identities by
+      rote; the Pythagorean identity follows immediately from the unit circle equation
+      $x^2 + y^2 = 1$, and the others cascade from it. The skill to develop is recognizing
+      which identity to reach for when an expression looks stuck.
+    </p>
+
+    <p>
       Identities are equations true for all values of $\theta$ in their domains.
       The three <span class="key">Pythagorean identities</span> follow from $x^2 + y^2 = r^2$.
       <span class="key">Reciprocal</span> and <span class="key">quotient</span> identities
@@ -380,6 +567,37 @@
       <div class="label">Reciprocal and quotient identities</div>
       $$\csc\theta = \frac{1}{\sin\theta} \quad \sec\theta = \frac{1}{\cos\theta} \quad \cot\theta = \frac{1}{\tan\theta}$$
       $$\tan\theta = \frac{\sin\theta}{\cos\theta} \qquad \cot\theta = \frac{\cos\theta}{\sin\theta}$$
+    </div>
+
+    <div class="formula" style="display:flex;flex-direction:column;align-items:center;gap:0;padding-bottom:8px;">
+      <div class="label" style="align-self:flex-start;">sin²θ + cos²θ = 1 — geometric proof on the unit circle</div>
+      <svg width="230" height="235" viewBox="0 0 230 235" aria-label="Unit circle Pythagorean identity" style="display:block;">
+        <!-- Unit circle -->
+        <circle cx="115" cy="115" r="85" fill="none" stroke="#2e2e55" stroke-width="1.5"/>
+        <!-- Axes -->
+        <line x1="18" y1="115" x2="212" y2="115" stroke="#2e2e55" stroke-width="1"/>
+        <line x1="115" y1="18" x2="115" y2="212" stroke="#2e2e55" stroke-width="1"/>
+        <!-- Point P at 40°: (115+85·cos40°, 115−85·sin40°) = (115+65.1, 115−54.7) = (180, 60) -->
+        <!-- cos θ leg (green) -->
+        <line x1="115" y1="115" x2="180" y2="115" stroke="#3ecf8e" stroke-width="2.5"/>
+        <!-- sin θ leg (red) -->
+        <line x1="180" y1="115" x2="180" y2="60" stroke="#ff6b6b" stroke-width="2.5"/>
+        <!-- hypotenuse = 1 (muted) -->
+        <line x1="115" y1="115" x2="180" y2="60" stroke="#7070a0" stroke-width="2"/>
+        <!-- Right-angle marker at (180,115) -->
+        <polyline points="172,115 172,107 180,107" fill="none" stroke="#5c8aff" stroke-width="1.5"/>
+        <!-- Angle arc at origin: from (200,115) arc to point on terminal side at r=20 -->
+        <!-- terminal direction: (65,−55), length≈85; at r=20: (115+20·65/85, 115−20·55/85) = (130,102) -->
+        <path d="M 135,115 A 20,20 0 0,0 131,102" fill="none" stroke="#ffb830" stroke-width="1.5"/>
+        <!-- Point dot -->
+        <circle cx="180" cy="60" r="5" fill="#ffb830"/>
+        <!-- Labels -->
+        <text x="147" y="132" text-anchor="middle" fill="#3ecf8e" font-family="system-ui,sans-serif" font-size="12">cos θ</text>
+        <text x="197" y="90" text-anchor="start" fill="#ff6b6b" font-family="system-ui,sans-serif" font-size="12">sin θ</text>
+        <text x="145" y="79" text-anchor="middle" fill="#7070a0" font-family="system-ui,sans-serif" font-size="12">1</text>
+        <text x="138" y="108" fill="#ffb830" font-family="system-ui,sans-serif" font-size="12" font-style="italic">θ</text>
+        <text x="115" y="228" text-anchor="middle" fill="#7070a0" font-family="system-ui,sans-serif" font-size="11">cos²θ + sin²θ = 1² = 1</text>
+      </svg>
     </div>
 
     <div class="example">
@@ -401,6 +619,17 @@
     <h3>Sum &amp; Difference Formulas</h3>
 
     <p>
+      Most real angles aren't in any standard table: you need 75° or 165°, not just 30° or
+      45°. Sum and difference formulas let you split any angle into a combination of known
+      angles and compute exact values. More deeply, these formulas are the algebraic
+      skeleton of Fourier analysis — the theory that says any periodic signal can be
+      decomposed into a sum of sines and cosines with different phases. The interference
+      patterns of light and sound, the beating effect when two musical notes are close in
+      frequency, the way noise-canceling headphones work — all of these are consequences of
+      the addition formulas applied to waves.
+    </p>
+
+    <p>
       These formulas expand $\sin(A \pm B)$ and $\cos(A \pm B)$ in terms of singleangle
       functions. They allow exact evaluation at non-standard angles like 15° and 75°.
     </p>
@@ -410,6 +639,34 @@
       $$\sin(A \pm B) = \sin A \cos B \pm \cos A \sin B$$
       $$\cos(A \pm B) = \cos A \cos B \mp \sin A \sin B$$
       $$\tan(A \pm B) = \frac{\tan A \pm \tan B}{1 \mp \tan A \tan B}$$
+    </div>
+
+    <div class="formula" style="display:flex;flex-direction:column;align-items:center;gap:0;padding-bottom:8px;">
+      <div class="label" style="align-self:flex-start;">Diagram — angle addition on the unit circle</div>
+      <svg width="220" height="220" viewBox="0 0 220 220" aria-label="Sum formula diagram" style="display:block;">
+        <circle cx="110" cy="110" r="82" fill="none" stroke="#2e2e55" stroke-width="1.5"/>
+        <line x1="18" y1="110" x2="202" y2="110" stroke="#2e2e55" stroke-width="1"/>
+        <line x1="110" y1="18" x2="110" y2="202" stroke="#2e2e55" stroke-width="1"/>
+        <!-- Angle A ≈ 28°: (110+82·cos28°, 110−82·sin28°) = (110+72.4, 110−38.5) = (182, 72) -->
+        <line x1="110" y1="110" x2="182" y2="72" stroke="#5c8aff" stroke-width="2"/>
+        <circle cx="182" cy="72" r="4" fill="#5c8aff"/>
+        <!-- Arc for A: from (192,110) sweep CCW to (182,72) -->
+        <path d="M 192,110 A 82,82 0 0,0 182,72" fill="none" stroke="#5c8aff" stroke-width="1.5" stroke-dasharray="5,3"/>
+        <!-- Angle A+B ≈ 60°: (110+82·cos60°, 110−82·sin60°) = (110+41, 110−71) = (151, 39) -->
+        <line x1="110" y1="110" x2="151" y2="39" stroke="#ffb830" stroke-width="2"/>
+        <circle cx="151" cy="39" r="4" fill="#ffb830"/>
+        <!-- Arc for B (A to A+B): sweep CCW from (182,72) to (151,39) -->
+        <path d="M 182,72 A 82,82 0 0,0 151,39" fill="none" stroke="#3ecf8e" stroke-width="1.5" stroke-dasharray="5,3"/>
+        <!-- Projections for A+B -->
+        <line x1="151" y1="39" x2="151" y2="110" stroke="#ffb830" stroke-width="1" stroke-dasharray="2,3"/>
+        <line x1="110" y1="39" x2="151" y2="39" stroke="#ffb830" stroke-width="1" stroke-dasharray="2,3"/>
+        <!-- Labels -->
+        <text x="192" y="95" text-anchor="start" fill="#5c8aff" font-family="system-ui,sans-serif" font-size="12" font-style="italic">A</text>
+        <text x="175" y="55" text-anchor="start" fill="#3ecf8e" font-family="system-ui,sans-serif" font-size="12" font-style="italic">B</text>
+        <text x="149" y="30" text-anchor="middle" fill="#ffb830" font-family="system-ui,sans-serif" font-size="11">A+B</text>
+        <text x="157" y="78" fill="#ffb830" font-family="system-ui,sans-serif" font-size="9">sin(A+B)</text>
+        <text x="114" y="36" fill="#ffb830" font-family="system-ui,sans-serif" font-size="9">cos(A+B)</text>
+      </svg>
     </div>
 
     <div class="example">
@@ -432,6 +689,17 @@
     <h3>Double &amp; Half-Angle Formulas</h3>
 
     <p>
+      These are not new formulas so much as the most useful specializations of the sum
+      formulas — useful enough to deserve their own chapter. In calculus, integrals of
+      $\sin^2\theta$ and $\cos^2\theta$ arise whenever you compute average power, work done
+      by a varying force, or the expected value of a sinusoidal signal. The power-reduction
+      identities ($\sin^2\theta = \frac{1-\cos 2\theta}{2}$) make these integrals tractable.
+      Half-angle formulas appear in numerical algorithms that need to bisect angles
+      iteratively, and in the derivation of exact trigonometric values for angles like
+      $\pi/8$ and $\pi/12$ that don't appear in standard tables.
+    </p>
+
+    <p>
       Double-angle formulas are special cases of the sum formulas with $A = B = \theta$.
       Half-angle formulas use the double-angle identities solved for $\sin(\theta/2)$ or
       $\cos(\theta/2)$; the sign $\pm$ depends on the quadrant.
@@ -447,6 +715,36 @@
     <div class="formula">
       <div class="label">Half-angle formulas</div>
       $$\sin\!\left(\frac{\theta}{2}\right) = \pm\sqrt{\frac{1 - \cos\theta}{2}} \qquad \cos\!\left(\frac{\theta}{2}\right) = \pm\sqrt{\frac{1 + \cos\theta}{2}}$$
+    </div>
+
+    <div class="formula" style="display:flex;flex-direction:column;align-items:center;gap:0;padding-bottom:8px;">
+      <div class="label" style="align-self:flex-start;">Diagram — θ vs 2θ on the unit circle</div>
+      <svg width="220" height="220" viewBox="0 0 220 220" aria-label="Double angle on unit circle" style="display:block;">
+        <circle cx="110" cy="110" r="82" fill="none" stroke="#2e2e55" stroke-width="1.5"/>
+        <line x1="18" y1="110" x2="202" y2="110" stroke="#2e2e55" stroke-width="1"/>
+        <line x1="110" y1="18" x2="110" y2="202" stroke="#2e2e55" stroke-width="1"/>
+        <!-- θ ≈ 33°: (110+82·cos33°, 110−82·sin33°) = (110+68.8, 110−44.7) = (179, 65) -->
+        <line x1="110" y1="110" x2="179" y2="65" stroke="#5c8aff" stroke-width="2"/>
+        <circle cx="179" cy="65" r="4.5" fill="#5c8aff"/>
+        <!-- 2θ ≈ 66°: (110+82·cos66°, 110−82·sin66°) = (110+33.4, 110−74.9) = (143, 35) -->
+        <line x1="110" y1="110" x2="143" y2="35" stroke="#ffb830" stroke-width="2"/>
+        <circle cx="143" cy="35" r="4.5" fill="#ffb830"/>
+        <!-- Arc for θ -->
+        <path d="M 192,110 A 82,82 0 0,0 179,65" fill="none" stroke="#5c8aff" stroke-width="1.5" stroke-dasharray="5,3"/>
+        <!-- Arc for 2θ -->
+        <path d="M 192,110 A 82,82 0 0,0 143,35" fill="none" stroke="#ffb830" stroke-width="1.5" stroke-dasharray="5,3"/>
+        <!-- sin projections -->
+        <line x1="179" y1="65" x2="179" y2="110" stroke="#5c8aff" stroke-width="1" stroke-dasharray="2,3"/>
+        <line x1="143" y1="35" x2="143" y2="110" stroke="#ffb830" stroke-width="1" stroke-dasharray="2,3"/>
+        <!-- Labels -->
+        <text x="188" y="92" fill="#5c8aff" font-family="system-ui,sans-serif" font-size="12" font-style="italic">θ</text>
+        <text x="162" y="58" fill="#ffb830" font-family="system-ui,sans-serif" font-size="11">2θ</text>
+        <text x="179" y="57" text-anchor="middle" fill="#5c8aff" font-family="system-ui,sans-serif" font-size="9">(cosθ, sinθ)</text>
+        <text x="143" y="26" text-anchor="middle" fill="#ffb830" font-family="system-ui,sans-serif" font-size="9">(cos2θ, sin2θ)</text>
+        <!-- sin labels below circles -->
+        <text x="185" y="90" fill="#5c8aff" font-family="system-ui,sans-serif" font-size="8">sinθ</text>
+        <text x="148" y="76" fill="#ffb830" font-family="system-ui,sans-serif" font-size="8">sin2θ</text>
+      </svg>
     </div>
 
     <div class="example">
@@ -466,6 +764,16 @@
   <section id="equations">
     <div class="chapter-num">Chapter 10</div>
     <h3>Solving Trig Equations</h3>
+
+    <p>
+      Real problems ask "when?" not just "what?" — when does the tide reach a given height?
+      When does the voltage in an AC circuit cross zero? When do two waves interfere
+      destructively? These are trig equations, and because trig functions repeat, each
+      equation typically has infinitely many solutions. The technique of finding a principal
+      value and then adding period multiples captures all of them. This is also the mental
+      model behind phase alignment in signal processing: finding every moment a periodic
+      signal hits a target value is exactly solving a trig equation.
+    </p>
 
     <p>
       Trig equations are solved by isolating the trig function, finding a reference angle,
@@ -506,6 +814,32 @@
       <div class="example-step"><span>Tangent is positive in Q1 and Q3, so $2x = \pi/3 + n\pi$</span><span class="why">period of tangent is $\pi$; add $n\pi$ for all solutions</span></div>
       <div class="example-step"><span>$x = \dfrac{\pi}{6} + \dfrac{n\pi}{2}$ for any integer $n$</span><span class="why">divide both sides by 2</span></div>
     </div>
+
+    <div class="formula" style="display:flex;flex-direction:column;align-items:center;gap:0;padding-bottom:8px;">
+      <div class="label" style="align-self:flex-start;">Unit circle — locating solutions for cos x = √3/2</div>
+      <svg width="220" height="220" viewBox="0 0 220 220" aria-label="Unit circle equation solutions" style="display:block;">
+        <circle cx="110" cy="110" r="82" fill="none" stroke="#2e2e55" stroke-width="1.5"/>
+        <line x1="18" y1="110" x2="202" y2="110" stroke="#2e2e55" stroke-width="1"/>
+        <line x1="110" y1="18" x2="110" y2="202" stroke="#2e2e55" stroke-width="1"/>
+        <!-- cos = √3/2 ≈ 0.866; x on canvas = 110+82·0.866 = 181 -->
+        <line x1="181" y1="22" x2="181" y2="198" stroke="#5c8aff" stroke-width="1.5" stroke-dasharray="4,3"/>
+        <text x="184" y="36" fill="#5c8aff" font-family="system-ui,sans-serif" font-size="10">cos x = √3/2</text>
+        <!-- x = π/6 (30°): (110+82·cos30°, 110−82·sin30°) = (110+71, 110−41) = (181, 69) -->
+        <line x1="110" y1="110" x2="181" y2="69" stroke="#3ecf8e" stroke-width="2"/>
+        <circle cx="181" cy="69" r="5.5" fill="#3ecf8e"/>
+        <text x="188" y="67" fill="#3ecf8e" font-family="system-ui,sans-serif" font-size="11" font-weight="600">π/6</text>
+        <!-- x = 11π/6 (330°): (110+82·cos330°, 110−82·sin330°) = (181, 151) -->
+        <line x1="110" y1="110" x2="181" y2="151" stroke="#ff6b6b" stroke-width="2"/>
+        <circle cx="181" cy="151" r="5.5" fill="#ff6b6b"/>
+        <text x="188" y="155" fill="#ff6b6b" font-family="system-ui,sans-serif" font-size="11" font-weight="600">11π/6</text>
+        <!-- Axis labels -->
+        <text x="196" y="114" fill="#7070a0" font-family="system-ui,sans-serif" font-size="10">0</text>
+        <text x="110" y="16" text-anchor="middle" fill="#7070a0" font-family="system-ui,sans-serif" font-size="10">π/2</text>
+        <text x="24" y="114" fill="#7070a0" font-family="system-ui,sans-serif" font-size="10">π</text>
+        <text x="110" y="212" text-anchor="middle" fill="#7070a0" font-family="system-ui,sans-serif" font-size="10">3π/2</text>
+      </svg>
+    </div>
+
     <p class="toc-back"><a href="#toc">↑ Table of Contents</a></p>
   </section>
 
@@ -515,12 +849,52 @@
     <h3>Law of Sines</h3>
 
     <p>
+      Most triangles in the real world are not right triangles. Surveyors triangulating
+      irregular land, navigators fixing position by measuring angles to two landmarks, and
+      engineers calculating cable tensions in non-orthogonal structures all need to work
+      with arbitrary triangles. The Law of Sines is the key tool when you know two angles
+      and a side (AAS/ASA), extending the indirect-measurement power of SOH-CAH-TOA to
+      any triangle. It is also the principle behind trilateration — the geometric technique
+      that GPS and cell-tower positioning systems use to compute a location from angle or
+      distance ratios.
+    </p>
+
+    <p>
       For any triangle with sides $a, b, c$ opposite to angles $A, B, C$:
     </p>
 
     <div class="formula">
       <div class="label">Law of Sines</div>
       $$\frac{a}{\sin A} = \frac{b}{\sin B} = \frac{c}{\sin C}$$
+    </div>
+
+    <div class="formula" style="display:flex;flex-direction:column;align-items:center;gap:0;padding-bottom:8px;">
+      <div class="label" style="align-self:flex-start;">Diagram — triangle with labeled sides and opposite angles</div>
+      <svg width="260" height="210" viewBox="0 0 260 210" aria-label="Law of Sines triangle" style="display:block;">
+        <!-- Vertices: A(50,170), B(210,170), C(130,48) -->
+        <!-- side a (opposite A) = BC: blue -->
+        <line x1="210" y1="170" x2="130" y2="48" stroke="#5c8aff" stroke-width="2.5"/>
+        <!-- side b (opposite B) = AC: green -->
+        <line x1="50" y1="170" x2="130" y2="48" stroke="#3ecf8e" stroke-width="2.5"/>
+        <!-- side c (opposite C) = AB: amber -->
+        <line x1="50" y1="170" x2="210" y2="170" stroke="#ffb830" stroke-width="2.5"/>
+        <!-- Side labels at midpoints -->
+        <!-- a: midpoint of BC = (170, 109) -->
+        <text x="188" y="113" text-anchor="start" fill="#5c8aff" font-family="system-ui,sans-serif" font-size="15" font-style="italic">a</text>
+        <!-- b: midpoint of AC = (90, 109) -->
+        <text x="70" y="113" text-anchor="end" fill="#3ecf8e" font-family="system-ui,sans-serif" font-size="15" font-style="italic">b</text>
+        <!-- c: midpoint of AB = (130, 188) -->
+        <text x="130" y="192" text-anchor="middle" fill="#ffb830" font-family="system-ui,sans-serif" font-size="15" font-style="italic">c</text>
+        <!-- Vertex labels -->
+        <!-- A at (50,170) -->
+        <text x="34" y="170" text-anchor="end" fill="#5c8aff" font-family="system-ui,sans-serif" font-size="15" font-weight="600" font-style="italic">A</text>
+        <!-- B at (210,170) -->
+        <text x="226" y="170" text-anchor="start" fill="#3ecf8e" font-family="system-ui,sans-serif" font-size="15" font-weight="600" font-style="italic">B</text>
+        <!-- C at (130,48) -->
+        <text x="130" y="36" text-anchor="middle" fill="#ffb830" font-family="system-ui,sans-serif" font-size="15" font-weight="600" font-style="italic">C</text>
+        <!-- Note -->
+        <text x="130" y="208" text-anchor="middle" fill="#7070a0" font-family="system-ui,sans-serif" font-size="10">side a is opposite angle A, b opposite B, c opposite C</text>
+      </svg>
     </div>
 
     <p>
@@ -560,6 +934,15 @@
   <section id="cosines">
     <div class="chapter-num">Chapter 12</div>
     <h3>Law of Cosines</h3>
+
+    <p>
+      The Law of Cosines solves the triangle cases the Law of Sines cannot handle cleanly:
+      two sides and the included angle (SAS), or all three sides and you need an angle
+      (SSS). It shows up in robotics when computing the joint angles that place a robot arm
+      at a desired end-effector position, in 3D graphics when finding the angle between two
+      vectors (dot product is a compact form of this law), and in structural engineering
+      when analyzing forces in trusses where no angles are conveniently right angles.
+    </p>
 
     <p>
       Use the Law of Cosines when you know SAS (two sides and the included angle) or SSS
@@ -859,6 +1242,161 @@ function createAngleExplorer(canvasId, idPrefix) {
 
 createAngleExplorer('angle-canvas', 'readout-');
 createAngleExplorer('angle-canvas-2', 'uc2-');
+
+/* ── Ch5: Sine wave explorer ── */
+(function () {
+  var canvas = document.getElementById('wave-canvas');
+  if (!canvas) return;
+  var ctx = canvas.getContext('2d');
+  var W = canvas.width, H = canvas.height;
+  var COL = { accent: '#5c8aff', hint: '#ffb830', correct: '#3ecf8e', red: '#ff6b6b',
+               muted: '#7070a0', bg: '#0d0d1a', panel: '#1c1c35', border: '#2e2e55' };
+
+  function getVal(id) { return parseFloat(document.getElementById(id).value); }
+  function setEl(id, v) { var el = document.getElementById(id); if (el) el.textContent = v; }
+
+  function draw() {
+    var A = getVal('wave-A'), B = getVal('wave-B');
+    var Cv = getVal('wave-C'), D = getVal('wave-D');
+    setEl('wave-A-val', A.toFixed(1));
+    setEl('wave-B-val', B.toFixed(2));
+    setEl('wave-C-val', Cv.toFixed(2));
+    setEl('wave-D-val', D.toFixed(1));
+
+    var period = 2 * Math.PI / Math.abs(B);
+    var phaseShift = (Cv / B).toFixed(2);
+    var info = document.getElementById('wave-info');
+    if (info) info.innerHTML =
+      'Period = 2π/' + B.toFixed(2) + ' ≈ ' + period.toFixed(2) + '<br>' +
+      'Phase shift C/B = ' + phaseShift + '<br>' +
+      'Midline y = ' + D.toFixed(1) + ' &nbsp; Amplitude = ' + A.toFixed(1);
+
+    ctx.clearRect(0, 0, W, H);
+    ctx.fillStyle = COL.panel;
+    ctx.fillRect(0, 0, W, H);
+
+    var xMin = -Math.PI, xMax = 3 * Math.PI;
+    var yAmp = Math.max(A + Math.abs(D) + 0.4, 1.4);
+    var yMin = -yAmp, yMax = yAmp;
+    var pad = { l: 28, r: 8, t: 12, b: 22 };
+
+    function tX(x) { return pad.l + (x - xMin) / (xMax - xMin) * (W - pad.l - pad.r); }
+    function tY(y) { return (H - pad.b) - (y - yMin) / (yMax - yMin) * (H - pad.t - pad.b); }
+
+    /* grid */
+    ctx.save();
+    ctx.strokeStyle = COL.border;
+    ctx.lineWidth = 1;
+    ctx.setLineDash([2, 4]);
+    [0, Math.PI, 2 * Math.PI].forEach(function (v) {
+      ctx.beginPath(); ctx.moveTo(tX(v), pad.t); ctx.lineTo(tX(v), H - pad.b); ctx.stroke();
+    });
+    ctx.beginPath(); ctx.moveTo(pad.l, tY(0)); ctx.lineTo(W - pad.r, tY(0)); ctx.stroke();
+    if (Math.abs(D) > 0.05) {
+      ctx.strokeStyle = COL.correct; ctx.globalAlpha = 0.3;
+      ctx.beginPath(); ctx.moveTo(pad.l, tY(D)); ctx.lineTo(W - pad.r, tY(D)); ctx.stroke();
+      ctx.globalAlpha = 1;
+    }
+    ctx.restore();
+
+    /* axis labels */
+    ctx.fillStyle = COL.muted;
+    ctx.font = '9px system-ui,sans-serif';
+    ctx.textAlign = 'center'; ctx.textBaseline = 'top';
+    ctx.fillText('0', tX(0), tY(0) + 2);
+    ctx.fillText('π', tX(Math.PI), tY(0) + 2);
+    ctx.fillText('2π', tX(2 * Math.PI), tY(0) + 2);
+
+    /* amplitude lines */
+    ctx.save();
+    ctx.strokeStyle = COL.red; ctx.lineWidth = 1; ctx.setLineDash([2, 3]);
+    ctx.beginPath();
+    ctx.moveTo(pad.l, tY(D + A)); ctx.lineTo(W - pad.r, tY(D + A));
+    ctx.moveTo(pad.l, tY(D - A)); ctx.lineTo(W - pad.r, tY(D - A));
+    ctx.stroke();
+    ctx.fillStyle = COL.red; ctx.textAlign = 'right'; ctx.textBaseline = 'middle';
+    ctx.fillText('+' + (D + A).toFixed(1), W - pad.r - 2, tY(D + A));
+    ctx.fillText((D - A).toFixed(1), W - pad.r - 2, tY(D - A));
+    ctx.restore();
+
+    /* wave */
+    ctx.strokeStyle = COL.accent; ctx.lineWidth = 2.5;
+    ctx.setLineDash([]);
+    ctx.beginPath();
+    var first = true;
+    for (var px = pad.l; px <= W - pad.r; px++) {
+      var x = xMin + (px - pad.l) / (W - pad.l - pad.r) * (xMax - xMin);
+      var y = A * Math.sin(B * x - Cv) + D;
+      if (first) { ctx.moveTo(px, tY(y)); first = false; } else { ctx.lineTo(px, tY(y)); }
+    }
+    ctx.stroke();
+  }
+
+  ['wave-A', 'wave-B', 'wave-C', 'wave-D'].forEach(function (id) {
+    document.getElementById(id).addEventListener('input', draw);
+  });
+  draw();
+}());
+
+/* ── Ch6: Inverse trig graphs ── */
+(function () {
+  var canvas = document.getElementById('inv-canvas');
+  if (!canvas) return;
+  var ctx = canvas.getContext('2d');
+  var W = canvas.width, H = canvas.height;
+
+  var xMin = -2.5, xMax = 2.5, yMin = -2, yMax = 3.4;
+  var pad = { l: 34, r: 8, t: 12, b: 22 };
+
+  function cx(x) { return pad.l + (x - xMin) / (xMax - xMin) * (W - pad.l - pad.r); }
+  function cy(y) { return (H - pad.b) - (y - yMin) / (yMax - yMin) * (H - pad.t - pad.b); }
+
+  ctx.fillStyle = '#1c1c35'; ctx.fillRect(0, 0, W, H);
+
+  /* grid */
+  ctx.strokeStyle = '#2e2e55'; ctx.lineWidth = 1; ctx.setLineDash([2, 4]);
+  [-Math.PI / 2, 0, Math.PI / 2, Math.PI].forEach(function (y) {
+    ctx.beginPath(); ctx.moveTo(pad.l, cy(y)); ctx.lineTo(W - pad.r, cy(y)); ctx.stroke();
+  });
+  [-1, 0, 1].forEach(function (x) {
+    ctx.beginPath(); ctx.moveTo(cx(x), pad.t); ctx.lineTo(cx(x), H - pad.b); ctx.stroke();
+  });
+  ctx.setLineDash([]);
+
+  /* axis labels */
+  ctx.fillStyle = '#7070a0'; ctx.font = '9px system-ui,sans-serif';
+  ctx.textBaseline = 'middle'; ctx.textAlign = 'right';
+  [['−π/2', -Math.PI / 2], ['0', 0], ['π/2', Math.PI / 2], ['π', Math.PI]].forEach(function (p) {
+    ctx.fillText(p[0], pad.l - 2, cy(p[1]));
+  });
+  ctx.textBaseline = 'top'; ctx.textAlign = 'center';
+  [-1, 1].forEach(function (x) { ctx.fillText(x, cx(x), H - pad.b + 2); });
+
+  function plotCurve(fn, x0, x1, color) {
+    ctx.strokeStyle = color; ctx.lineWidth = 2.5; ctx.setLineDash([]);
+    ctx.beginPath();
+    var steps = 300, first = true;
+    for (var i = 0; i <= steps; i++) {
+      var x = x0 + (x1 - x0) * i / steps;
+      var y = fn(x);
+      if (!isFinite(y) || y < yMin - 0.1 || y > yMax + 0.1) { first = true; continue; }
+      if (first) { ctx.moveTo(cx(x), cy(y)); first = false; } else { ctx.lineTo(cx(x), cy(y)); }
+    }
+    ctx.stroke();
+  }
+
+  plotCurve(Math.asin, -1, 1, '#5c8aff');
+  plotCurve(Math.acos, -1, 1, '#3ecf8e');
+  plotCurve(Math.atan, -2.4, 2.4, '#ffb830');
+
+  /* asymptote hints for arctan */
+  ctx.strokeStyle = '#ffb830'; ctx.lineWidth = 1; ctx.setLineDash([3, 4]);
+  ctx.beginPath();
+  ctx.moveTo(pad.l, cy(Math.PI / 2)); ctx.lineTo(W - pad.r, cy(Math.PI / 2)); ctx.stroke();
+  ctx.beginPath();
+  ctx.moveTo(pad.l, cy(-Math.PI / 2)); ctx.lineTo(W - pad.r, cy(-Math.PI / 2)); ctx.stroke();
+  ctx.setLineDash([]);
+}());
 </script>
 
 <script>
@@ -990,5 +1528,6 @@ createAngleExplorer('angle-canvas-2', 'uc2-');
 
 <script src="textbook-notes.js"></script>
 <script src="textbook-nav.js"></script>
+<script src="theme-toggle.js"></script>
 </body>
 </html>

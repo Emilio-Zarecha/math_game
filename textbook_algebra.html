@@ -207,7 +207,23 @@
     .toc-back a { color: var(--muted); font-size: 0.82rem; text-decoration: none;
                   letter-spacing: 0.03em; }
     .toc-back a:hover { color: var(--accent); }
-  </style>
+  
+    [data-theme="light"] {
+      --bg:      #f5f0e4;
+      --surface: #faf7ee;
+      --panel:   #ede8d8;
+      --border:  #ccc6b4;
+      --text:    #18140c;
+      --muted:   #3e3c60;
+      --accent:  #2858c8;
+      --correct: #115238;
+      --hint:    #6e4a00;
+      --wrong:   #cc2040;
+    }
+    [data-theme="light"] section h3 { color: #18140c; }
+    [data-theme="light"] .chapter-num { color: #3e3c60; }
+</style>
+  <script>(function(){var t=localStorage.getItem('math-theme')||((window.matchMedia&&window.matchMedia('(prefers-color-scheme:light)').matches)?'light':'dark');document.documentElement.setAttribute('data-theme',t);}());</script>
 </head>
 <body>
 <div class="page">
@@ -225,27 +241,58 @@
   <nav id="toc">
     <h2>Contents</h2>
     <ol>
-      <li><a href="#realnumbers">Real Numbers &amp; Properties</a></li>
-      <li><a href="#expressions">Variables &amp; Expressions</a></li>
-      <li><a href="#linear">Linear Equations</a></li>
-      <li><a href="#inequalities">Linear Inequalities</a></li>
-      <li><a href="#graphing">Graphing Linear Equations</a></li>
-      <li><a href="#systems">Systems of Equations</a></li>
-      <li><a href="#polynomials">Polynomials</a></li>
-      <li><a href="#factoring">Factoring</a></li>
-      <li><a href="#quadratics">Quadratic Equations</a></li>
-      <li><a href="#rational">Rational Expressions &amp; Equations</a></li>
-      <li><a href="#radicals">Radicals &amp; Rational Exponents</a></li>
-      <li><a href="#absolute">Absolute Value</a></li>
-      <li><a href="#explog">Exponentials &amp; Logarithms</a></li>
-      <li><a href="#functions">Functions &amp; Inverses</a></li>
+      <li><a href="#ch1">Real Numbers &amp; Properties</a></li>
+      <li><a href="#ch2">Variables &amp; Expressions</a></li>
+      <li><a href="#ch3">Linear Equations</a></li>
+      <li><a href="#ch4">Linear Inequalities</a></li>
+      <li><a href="#ch5">Graphing Linear Equations</a></li>
+      <li><a href="#ch6">Systems of Equations</a></li>
+      <li><a href="#ch7">Polynomials</a></li>
+      <li><a href="#ch8">Factoring</a></li>
+      <li><a href="#ch9">Quadratic Equations</a></li>
+      <li><a href="#ch10">Rational Expressions &amp; Equations</a></li>
+      <li><a href="#ch11">Radicals &amp; Rational Exponents</a></li>
+      <li><a href="#ch12">Absolute Value</a></li>
+      <li><a href="#ch13">Exponentials &amp; Logarithms</a></li>
+      <li><a href="#ch14">Functions &amp; Inverses</a></li>
     </ol>
   </nav>
 
   <!-- ── 1. Real Numbers & Properties ──────────────────────────────── -->
-  <section id="realnumbers">
+  <section id="ch1">
     <div class="chapter-num">Chapter 1</div>
     <h3>Real Numbers &amp; Properties</h3>
+
+    <p>
+      Before you can manipulate numbers, you need to know which kinds exist and what rules
+      they obey. Natural numbers count discrete objects; integers handle debts and
+      temperatures; rationals cover any measured ratio; reals fill in the rest — every
+      physical measurement (voltage, distance, probability) lives somewhere on the real
+      number line. The properties below (commutative, associative, distributive) are the
+      rules a calculator applies millions of times per second; knowing them lets you
+      rearrange expressions confidently rather than guessing.
+    </p>
+
+    <div class="formula" style="display:flex;flex-direction:column;align-items:center;gap:0;padding-bottom:8px;">
+      <div class="label" style="align-self:flex-start;">Diagram — real number system</div>
+      <svg width="260" height="165" viewBox="0 0 260 165" aria-label="Nested sets: Natural inside Whole inside Integer inside Rational inside Real">
+        <rect x="4" y="4" width="252" height="157" rx="8" fill="none" stroke="#7070a0" stroke-width="1.5" stroke-dasharray="5,3"/>
+        <text x="10" y="18" fill="#7070a0" font-size="10" font-family="system-ui">Real</text>
+        <text x="195" y="155" fill="#7070a0" font-size="9" font-family="system-ui">π, √2 …</text>
+        <rect x="14" y="23" width="175" height="128" rx="6" fill="none" stroke="#5c8aff" stroke-width="1.5" stroke-dasharray="4,2"/>
+        <text x="20" y="36" fill="#5c8aff" font-size="10" font-family="system-ui">Rational</text>
+        <text x="16" y="144" fill="#5c8aff" font-size="9" font-family="system-ui">½, 0.3̄ …</text>
+        <rect x="24" y="43" width="130" height="95" rx="5" fill="none" stroke="#3ecf8e" stroke-width="1.5"/>
+        <text x="30" y="56" fill="#3ecf8e" font-size="10" font-family="system-ui">Integer</text>
+        <text x="26" y="131" fill="#3ecf8e" font-size="9" font-family="system-ui">−3, −1 …</text>
+        <rect x="34" y="62" width="95" height="64" rx="4" fill="none" stroke="#ffb830" stroke-width="1.5"/>
+        <text x="40" y="75" fill="#ffb830" font-size="10" font-family="system-ui">Whole</text>
+        <text x="36" y="120" fill="#ffb830" font-size="9" font-family="system-ui">0 …</text>
+        <rect x="44" y="80" width="65" height="34" rx="3" fill="rgba(255,107,107,0.08)" stroke="#ff6b6b" stroke-width="1.5"/>
+        <text x="76" y="95" text-anchor="middle" fill="#ff6b6b" font-size="10" font-family="system-ui">Natural</text>
+        <text x="76" y="107" text-anchor="middle" fill="#ff6b6b" font-size="9" font-family="system-ui">1, 2, 3 …</text>
+      </svg>
+    </div>
 
     <p>
       Numbers are organized into sets. <span class="key">Natural numbers</span>
@@ -296,9 +343,39 @@
   </section>
 
   <!-- ── 2. Variables & Expressions ─────────────────────────────────── -->
-  <section id="expressions">
+  <section id="ch2">
     <div class="chapter-num">Chapter 2</div>
     <h3>Variables &amp; Expressions</h3>
+
+    <p>
+      Variables are the move that transforms arithmetic into algebra. Instead of computing
+      $3 \times 4 + 5 = 17$ and $3 \times 7 + 5 = 26$ separately, you write
+      $f(x) = 3x + 5$ once and cover every possible input. Every engineering formula —
+      Ohm's law $V = IR$, Newton's $F = ma$, compound interest $A = P(1+r)^n$ — is an
+      algebraic expression where variables hold the place of quantities you measure or
+      control. The distributive property and combining like terms are the two moves that
+      let you simplify any such expression into its most compact form.
+    </p>
+
+    <div class="formula" style="display:flex;flex-direction:column;align-items:center;gap:0;padding-bottom:8px;">
+      <div class="label" style="align-self:flex-start;">Diagram — function machine</div>
+      <svg width="260" height="95" viewBox="0 0 260 95" aria-label="Input x feeds into function box to produce output y">
+        <rect x="10" y="32" width="50" height="30" rx="6" fill="rgba(62,207,142,0.12)" stroke="#3ecf8e" stroke-width="1.5"/>
+        <text x="35" y="52" text-anchor="middle" fill="#3ecf8e" font-size="14" font-family="system-ui" font-weight="600">x</text>
+        <line x1="62" y1="47" x2="88" y2="47" stroke="#7070a0" stroke-width="1.5"/>
+        <polygon points="85,43 93,47 85,51" fill="#7070a0"/>
+        <rect x="93" y="20" width="96" height="54" rx="8" fill="rgba(92,138,255,0.12)" stroke="#5c8aff" stroke-width="2"/>
+        <text x="141" y="41" text-anchor="middle" fill="#5c8aff" font-size="9.5" font-family="system-ui">f (x)</text>
+        <text x="141" y="60" text-anchor="middle" fill="#5c8aff" font-size="12" font-family="system-ui">3x + 5</text>
+        <line x1="191" y1="47" x2="198" y2="47" stroke="#7070a0" stroke-width="1.5"/>
+        <polygon points="196,43 204,47 196,51" fill="#7070a0"/>
+        <rect x="205" y="32" width="46" height="30" rx="6" fill="rgba(255,184,48,0.12)" stroke="#ffb830" stroke-width="1.5"/>
+        <text x="228" y="52" text-anchor="middle" fill="#ffb830" font-size="14" font-family="system-ui" font-weight="600">y</text>
+        <text x="35" y="85" text-anchor="middle" fill="#3ecf8e" font-size="9" font-family="system-ui">input</text>
+        <text x="141" y="85" text-anchor="middle" fill="#7070a0" font-size="9" font-family="system-ui">rule</text>
+        <text x="228" y="85" text-anchor="middle" fill="#ffb830" font-size="9" font-family="system-ui">output</text>
+      </svg>
+    </div>
 
     <p>
       A <span class="key">variable</span> is a letter that stands for an unknown number.
@@ -340,9 +417,37 @@
   </section>
 
   <!-- ── 3. Linear Equations ────────────────────────────────────────── -->
-  <section id="linear">
+  <section id="ch3">
     <div class="chapter-num">Chapter 3</div>
     <h3>Linear Equations</h3>
+
+    <p>
+      The most common question in applied mathematics is: find the value that satisfies
+      this constraint. How long until two trains meet? What price balances a budget? What
+      current flows in this circuit? Every one of these reduces to a linear equation. The
+      strategy — perform the same operation on both sides — mirrors the physical intuition
+      of a balance scale: whatever you add to one pan, you must add to the other to keep
+      the scale level.
+    </p>
+
+    <div class="formula" style="display:flex;flex-direction:column;align-items:center;gap:0;padding-bottom:8px;">
+      <div class="label" style="align-self:flex-start;">Diagram — equation as balance</div>
+      <svg width="260" height="148" viewBox="0 0 260 148" aria-label="Balance scale with 3x+5 on left and 20 on right">
+        <text x="130" y="14" text-anchor="middle" fill="#7070a0" font-size="8.5" font-family="system-ui" letter-spacing="0.08em">SAME OPERATION — BOTH SIDES</text>
+        <line x1="35" y1="82" x2="225" y2="82" stroke="#7070a0" stroke-width="3" stroke-linecap="round"/>
+        <circle cx="130" cy="82" r="4" fill="#7070a0"/>
+        <polygon points="130,128 116,145 144,145" fill="#7070a0"/>
+        <line x1="68" y1="82" x2="53" y2="108" stroke="#7070a0" stroke-width="1.5"/>
+        <line x1="68" y1="82" x2="83" y2="108" stroke="#7070a0" stroke-width="1.5"/>
+        <rect x="30" y="108" width="96" height="26" rx="4" fill="rgba(92,138,255,0.12)" stroke="#5c8aff" stroke-width="1.5"/>
+        <text x="78" y="126" text-anchor="middle" fill="#5c8aff" font-size="14" font-family="system-ui">3x + 5</text>
+        <line x1="192" y1="82" x2="177" y2="108" stroke="#7070a0" stroke-width="1.5"/>
+        <line x1="192" y1="82" x2="207" y2="108" stroke="#7070a0" stroke-width="1.5"/>
+        <rect x="152" y="108" width="74" height="26" rx="4" fill="rgba(62,207,142,0.12)" stroke="#3ecf8e" stroke-width="1.5"/>
+        <text x="189" y="126" text-anchor="middle" fill="#3ecf8e" font-size="14" font-family="system-ui">20</text>
+        <text x="130" y="70" text-anchor="middle" fill="#ffb830" font-size="18" font-family="system-ui" font-weight="700">=</text>
+      </svg>
+    </div>
 
     <p>
       A <span class="key">linear equation</span> in one variable has the form $ax + b = c$
@@ -378,9 +483,35 @@
   </section>
 
   <!-- ── 4. Linear Inequalities ─────────────────────────────────────── -->
-  <section id="inequalities">
+  <section id="ch4">
     <div class="chapter-num">Chapter 4</div>
     <h3>Linear Inequalities</h3>
+
+    <p>
+      Not every constraint is an equality. A bridge holds <em>up to</em> 10,000 kg.
+      A drug is safe <em>below</em> a certain blood concentration. A production line runs
+      <em>at most</em> 500 units per hour. Inequalities model feasibility — the set of
+      conditions under which something works, rather than the single point where it is
+      exactly right. Knowing how to solve and graph them is the basis of optimization:
+      finding the best solution within a set of real-world constraints.
+    </p>
+
+    <div class="formula" style="display:flex;flex-direction:column;align-items:center;gap:0;padding-bottom:8px;">
+      <div class="label" style="align-self:flex-start;">Diagram — number line solution x &gt; 5</div>
+      <svg width="260" height="80" viewBox="0 0 260 80" aria-label="Number line showing x greater than 5 as open circle with ray to infinity">
+        <line x1="20" y1="38" x2="244" y2="38" stroke="#7070a0" stroke-width="1.5"/>
+        <polygon points="241,34 249,38 241,42" fill="#7070a0"/>
+        <line x1="82" y1="33" x2="82" y2="43" stroke="#7070a0" stroke-width="1.5"/>
+        <text x="82" y="58" text-anchor="middle" fill="#7070a0" font-size="11" font-family="system-ui">0</text>
+        <line x1="152" y1="33" x2="152" y2="43" stroke="#7070a0" stroke-width="1.5"/>
+        <text x="152" y="58" text-anchor="middle" fill="#7070a0" font-size="11" font-family="system-ui">5</text>
+        <circle cx="152" cy="38" r="6" fill="#0d0d1a" stroke="#5c8aff" stroke-width="2.5"/>
+        <line x1="152" y1="38" x2="238" y2="38" stroke="#5c8aff" stroke-width="3.5" stroke-linecap="round"/>
+        <polygon points="235,34 243,38 235,42" fill="#5c8aff"/>
+        <text x="196" y="26" text-anchor="middle" fill="#5c8aff" font-size="11" font-family="system-ui">x &gt; 5, i.e. (5, ∞)</text>
+        <text x="152" y="75" text-anchor="middle" fill="#5c8aff" font-size="9" font-family="system-ui">open — 5 excluded</text>
+      </svg>
+    </div>
 
     <p>
       Solve a <span class="key">linear inequality</span> the same way as a linear equation,
@@ -432,9 +563,51 @@
   </section>
 
   <!-- ── 5. Graphing Linear Equations ──────────────────────────────── -->
-  <section id="graphing">
+  <section id="ch5">
     <div class="chapter-num">Chapter 5</div>
     <h3>Graphing Linear Equations</h3>
+
+    <p>
+      Algebra gives you exact answers; a graph gives you understanding. When you draw
+      $y = mx + b$, slope $m$ becomes visually obvious as steepness — you immediately
+      see that slope 5 is far steeper than 0.5, and a negative slope means "descending
+      left to right." Graphs let you spot intersections (where two relationships agree),
+      x-intercepts (where something hits zero), and trends at a glance. Navigation,
+      economics, and data analysis all depend on being able to read and draw these
+      pictures quickly.
+    </p>
+
+    <div class="formula" style="display:flex;flex-direction:column;align-items:center;gap:0;padding-bottom:8px;">
+      <div class="label" style="align-self:flex-start;">Diagram — y = 2x + 1 with slope triangle</div>
+      <svg width="260" height="195" viewBox="0 0 260 195" aria-label="Line y equals 2x plus 1 on coordinate axes with slope triangle">
+        <line x1="18" y1="118" x2="244" y2="118" stroke="#2e2e55" stroke-width="1"/>
+        <polygon points="241,114 249,118 241,122" fill="#7070a0"/>
+        <text x="246" y="131" fill="#7070a0" font-size="10" font-family="system-ui">x</text>
+        <line x1="82" y1="185" x2="82" y2="12" stroke="#2e2e55" stroke-width="1"/>
+        <polygon points="78,14 82,6 86,14" fill="#7070a0"/>
+        <text x="70" y="12" fill="#7070a0" font-size="10" font-family="system-ui">y</text>
+        <line x1="122" y1="115" x2="122" y2="121" stroke="#7070a0" stroke-width="1"/>
+        <text x="122" y="133" text-anchor="middle" fill="#7070a0" font-size="9" font-family="system-ui">1</text>
+        <line x1="162" y1="115" x2="162" y2="121" stroke="#7070a0" stroke-width="1"/>
+        <text x="162" y="133" text-anchor="middle" fill="#7070a0" font-size="9" font-family="system-ui">2</text>
+        <line x1="79" y1="78" x2="85" y2="78" stroke="#7070a0" stroke-width="1"/>
+        <text x="68" y="82" text-anchor="end" fill="#7070a0" font-size="9" font-family="system-ui">1</text>
+        <line x1="79" y1="38" x2="85" y2="38" stroke="#7070a0" stroke-width="1"/>
+        <text x="68" y="42" text-anchor="end" fill="#7070a0" font-size="9" font-family="system-ui">3</text>
+        <!-- y = 2x+1: origin (82,118), scale 40px/unit -->
+        <!-- y-int (0,1) → (82,78); at x=1, y=3 → (122,38); at x=-0.9,y=-0.8 → (46,150) -->
+        <line x1="30" y1="186" x2="122" y2="14" stroke="#5c8aff" stroke-width="2.5"/>
+        <!-- y-intercept dot (0,1) → (82,78) -->
+        <circle cx="82" cy="78" r="5" fill="#ffb830"/>
+        <text x="92" y="76" fill="#ffb830" font-size="9.5" font-family="system-ui">b = 1</text>
+        <!-- slope triangle: run 1 right, rise 2 up from y-int -->
+        <line x1="82" y1="78" x2="122" y2="78" stroke="#3ecf8e" stroke-width="1.5" stroke-dasharray="3,2"/>
+        <line x1="122" y1="78" x2="122" y2="38" stroke="#ff6b6b" stroke-width="1.5" stroke-dasharray="3,2"/>
+        <text x="102" y="92" text-anchor="middle" fill="#3ecf8e" font-size="9" font-family="system-ui">run = 1</text>
+        <text x="136" y="60" fill="#ff6b6b" font-size="9" font-family="system-ui">rise = 2</text>
+        <text x="148" y="170" fill="#5c8aff" font-size="10" font-family="system-ui">y = 2x + 1, slope m = 2</text>
+      </svg>
+    </div>
 
     <p>
       Every point in the plane is given by an ordered pair $(x, y)$. The
@@ -487,9 +660,52 @@
   </section>
 
   <!-- ── 6. Systems of Equations ────────────────────────────────────── -->
-  <section id="systems">
+  <section id="ch6">
     <div class="chapter-num">Chapter 6</div>
     <h3>Systems of Equations</h3>
+
+    <p>
+      Most real problems have more than one unknown. A supplier sells two products; you
+      know total units sold and total revenue — what quantity of each? A chemist needs a
+      target mixture from two solutions of different concentrations — how much of each?
+      The two constraints become two equations, and their solution is the single point
+      where both are satisfied simultaneously. Systems appear in every discipline where
+      multiple quantities must balance at once — from circuit analysis to supply-chain
+      logistics.
+    </p>
+
+    <div class="formula" style="display:flex;flex-direction:column;align-items:center;gap:0;padding-bottom:8px;">
+      <div class="label" style="align-self:flex-start;">Diagram — two lines intersecting at their solution</div>
+      <svg width="260" height="195" viewBox="0 0 260 195" aria-label="Two lines crossing at the solution point">
+        <line x1="15" y1="108" x2="244" y2="108" stroke="#2e2e55" stroke-width="1"/>
+        <polygon points="241,104 249,108 241,112" fill="#7070a0"/>
+        <line x1="118" y1="183" x2="118" y2="12" stroke="#2e2e55" stroke-width="1"/>
+        <polygon points="114,14 118,6 122,14" fill="#7070a0"/>
+        <!-- scale: 28px/unit, origin (118,108) -->
+        <!-- Line 1: y = x (blue) — passes through origin slope 1 -->
+        <!-- at x=-3: (34,192); at x=3.5: (216,10) -->
+        <line x1="34" y1="192" x2="214" y2="12" stroke="#5c8aff" stroke-width="2"/>
+        <text x="34" y="188" fill="#5c8aff" font-size="9" font-family="system-ui">y = x</text>
+        <!-- Line 2: y = −x + 4 (green) — intersects y=x at (2,2) -->
+        <!-- at x=-0.5: y=4.5 → (104,-18) off top; clip at y=3.5 → x=0.5 → (132,10) -->
+        <!-- at x=5: y=-1 → (258,136) clipped -->
+        <!-- from (132,10) to (242,122) roughly -->
+        <line x1="136" y1="10" x2="244" y2="122" stroke="#3ecf8e" stroke-width="2"/>
+        <text x="195" y="10" fill="#3ecf8e" font-size="9" font-family="system-ui">y = −x + 4</text>
+        <!-- Intersection (2,2): x_svg=118+56=174, y_svg=108-56=52 -->
+        <circle cx="174" cy="52" r="5.5" fill="#ff6b6b"/>
+        <text x="182" y="48" fill="#ff6b6b" font-size="9.5" font-family="system-ui">(2, 2) solution</text>
+        <!-- Tick marks -->
+        <line x1="146" y1="105" x2="146" y2="111" stroke="#7070a0" stroke-width="1"/>
+        <text x="146" y="123" text-anchor="middle" fill="#7070a0" font-size="9" font-family="system-ui">1</text>
+        <line x1="174" y1="105" x2="174" y2="111" stroke="#7070a0" stroke-width="1"/>
+        <text x="174" y="123" text-anchor="middle" fill="#7070a0" font-size="9" font-family="system-ui">2</text>
+        <line x1="115" y1="80" x2="121" y2="80" stroke="#7070a0" stroke-width="1"/>
+        <text x="108" y="84" text-anchor="end" fill="#7070a0" font-size="9" font-family="system-ui">1</text>
+        <line x1="115" y1="52" x2="121" y2="52" stroke="#7070a0" stroke-width="1"/>
+        <text x="108" y="56" text-anchor="end" fill="#7070a0" font-size="9" font-family="system-ui">2</text>
+      </svg>
+    </div>
 
     <p>
       A <span class="key">system of linear equations</span> is two or more equations sharing
@@ -539,9 +755,51 @@
   </section>
 
   <!-- ── 7. Polynomials ─────────────────────────────────────────────── -->
-  <section id="polynomials">
+  <section id="ch7">
     <div class="chapter-num">Chapter 7</div>
     <h3>Polynomials</h3>
+
+    <p>
+      Addition and multiplication of numbers generalize immediately to addition and
+      multiplication of expressions. Polynomials are the result: the simplest functions
+      you can build from those two operations. They model physical processes that curve —
+      the trajectory of a ball, the volume of a box, the power dissipated in a resistor —
+      and they are the building blocks for approximating more complicated functions.
+      Mastering polynomial arithmetic is mastering the grammar of higher mathematics.
+    </p>
+
+    <div class="formula" style="display:flex;flex-direction:column;align-items:center;gap:0;padding-bottom:8px;">
+      <div class="label" style="align-self:flex-start;">Diagram — degree 1, 2, and 3 polynomial curves</div>
+      <svg width="260" height="175" viewBox="0 0 260 175" aria-label="Three polynomial curves of increasing degree on the same axes">
+        <!-- axes -->
+        <line x1="18" y1="88" x2="244" y2="88" stroke="#2e2e55" stroke-width="1"/>
+        <polygon points="241,84 249,88 241,92" fill="#7070a0"/>
+        <line x1="130" y1="168" x2="130" y2="10" stroke="#2e2e55" stroke-width="1"/>
+        <polygon points="126,12 130,4 134,12" fill="#7070a0"/>
+        <!-- scale: 30px/unit, origin (130,88) -->
+        <!-- y=x (line, green): (-3,-3)→(40,178)clip, (2.6,2.6)→(208,10) -->
+        <line x1="62" y1="168" x2="208" y2="10" stroke="#3ecf8e" stroke-width="1.5"/>
+        <!-- y=x²-2 (parabola, blue): vertex (0,-2)→(130,148) -->
+        <!-- points: x=-3,y=7→(40,-122)clip; x=-2,y=2→(70,28); x=-1,y=-1→(100,118); x=0,y=-2→(130,148) -->
+        <!-- x=1,y=-1→(160,118); x=2,y=2→(190,28); x=2.5,y=4.25→(205,-39)clip -->
+        <polyline points="58,18 70,28 100,118 130,148 160,118 190,28 202,18"
+          fill="none" stroke="#5c8aff" stroke-width="1.5" stroke-linejoin="round"/>
+        <!-- y=x³-3x (cubic, amber): passes through (0,0),(√3,0),(-√3,0) -->
+        <!-- x=-2,y=-8+6=-2→(70,148)clip actually y=-2→(70,148) -->
+        <!-- Let's use y=0.1x³-x (scaled down) -->
+        <!-- points sampled: x=-3: -2.7+3=0.3→88-9=79; x=-2: -0.8+2=1.2→88-36=52; x=-1:-.1+1=.9→88-27=61 -->
+        <!-- x=0: 0→88; x=1: .1-1=-.9→88+27=115; x=2: .8-2=-1.2→88+36=124; x=3: 2.7-3=-.3→88+9=97 -->
+        <!-- So scaled: x_svg=130+x*30 -->
+        <!-- x=-3→40,y_svg=88-0.3*30=79; x=-2→70,y_svg=88-1.2*30=52; x=-1→100,y_svg=88-0.9*30=61 -->
+        <!-- x=0→130,88; x=1→160,115; x=2→190,124; x=3→220,97 -->
+        <polyline points="40,79 70,52 100,61 130,88 160,115 190,124 220,97"
+          fill="none" stroke="#ffb830" stroke-width="1.5" stroke-linejoin="round"/>
+        <!-- Labels -->
+        <text x="210" y="8" fill="#3ecf8e" font-size="9" font-family="system-ui">degree 1</text>
+        <text x="45" y="45" fill="#5c8aff" font-size="9" font-family="system-ui">degree 2</text>
+        <text x="194" y="128" fill="#ffb830" font-size="9" font-family="system-ui">degree 3</text>
+      </svg>
+    </div>
 
     <p>
       A <span class="key">polynomial</span> is a sum of terms of the form $ax^n$ where $n$
@@ -600,9 +858,49 @@
   </section>
 
   <!-- ── 8. Factoring ───────────────────────────────────────────────── -->
-  <section id="factoring">
+  <section id="ch8">
     <div class="chapter-num">Chapter 8</div>
     <h3>Factoring</h3>
+
+    <p>
+      Factoring is the reverse of expansion, but its power goes further: once a
+      polynomial is factored, you can find its roots, simplify fractions, and analyze
+      structure. The zero-product property — if a product equals zero, at least one factor
+      is zero — is the key that converts a factored polynomial directly into its solutions.
+      In structural engineering, the roots of a polynomial reveal the natural frequencies
+      at which a bridge or building will resonate dangerously.
+    </p>
+
+    <div class="formula" style="display:flex;flex-direction:column;align-items:center;gap:0;padding-bottom:8px;">
+      <div class="label" style="align-self:flex-start;">Diagram — area model for (x + 2)(x + 3)</div>
+      <svg width="260" height="185" viewBox="0 0 260 185" aria-label="Rectangle divided into four areas showing expansion of (x+2)(x+3)">
+        <text x="130" y="16" text-anchor="middle" fill="#7070a0" font-size="9.5" font-family="system-ui">(x + 2)(x + 3)  =  x² + 5x + 6</text>
+        <!-- outer rect -->
+        <rect x="50" y="28" width="190" height="145" rx="4" fill="none" stroke="#7070a0" stroke-width="1.5"/>
+        <!-- col divider at x=180 -->
+        <line x1="180" y1="28" x2="180" y2="173" stroke="#7070a0" stroke-width="1"/>
+        <!-- row divider at y=108 -->
+        <line x1="50" y1="108" x2="240" y2="108" stroke="#7070a0" stroke-width="1"/>
+        <!-- col headers -->
+        <text x="115" y="24" text-anchor="middle" fill="#7070a0" font-size="12" font-family="system-ui">x</text>
+        <text x="210" y="24" text-anchor="middle" fill="#7070a0" font-size="12" font-family="system-ui">3</text>
+        <!-- row headers -->
+        <text x="38" y="72" text-anchor="middle" fill="#7070a0" font-size="12" font-family="system-ui">x</text>
+        <text x="38" y="144" text-anchor="middle" fill="#7070a0" font-size="12" font-family="system-ui">2</text>
+        <!-- top-left: x² -->
+        <rect x="51" y="29" width="128" height="78" rx="3" fill="rgba(92,138,255,0.12)"/>
+        <text x="115" y="74" text-anchor="middle" fill="#5c8aff" font-size="17" font-family="system-ui" font-weight="600">x²</text>
+        <!-- top-right: 3x -->
+        <rect x="181" y="29" width="58" height="78" rx="3" fill="rgba(62,207,142,0.12)"/>
+        <text x="210" y="74" text-anchor="middle" fill="#3ecf8e" font-size="15" font-family="system-ui" font-weight="600">3x</text>
+        <!-- bottom-left: 2x -->
+        <rect x="51" y="109" width="128" height="63" rx="3" fill="rgba(255,184,48,0.12)"/>
+        <text x="115" y="146" text-anchor="middle" fill="#ffb830" font-size="15" font-family="system-ui" font-weight="600">2x</text>
+        <!-- bottom-right: 6 -->
+        <rect x="181" y="109" width="58" height="63" rx="3" fill="rgba(255,107,107,0.12)"/>
+        <text x="210" y="146" text-anchor="middle" fill="#ff6b6b" font-size="17" font-family="system-ui" font-weight="600">6</text>
+      </svg>
+    </div>
 
     <p>
       <span class="key">Factoring</span> rewrites a polynomial as a product of simpler
@@ -641,9 +939,59 @@
   </section>
 
   <!-- ── 9. Quadratic Equations ─────────────────────────────────────── -->
-  <section id="quadratics">
+  <section id="ch9">
     <div class="chapter-num">Chapter 9</div>
     <h3>Quadratic Equations</h3>
+
+    <p>
+      Any problem involving area, acceleration, or projectile motion produces a quadratic
+      equation. A ball thrown upward, a profit function that peaks then falls, the area of
+      a rectangle with a fixed perimeter — all are quadratics. The four solution methods
+      each have strengths, and the discriminant $b^2 - 4ac$ is a quick check before you
+      solve: it tells you whether to expect two real answers, one repeated answer, or no
+      real solutions at all.
+    </p>
+
+    <div class="formula" style="display:flex;flex-direction:column;align-items:center;gap:0;padding-bottom:8px;">
+      <div class="label" style="align-self:flex-start;">Diagram — parabola with vertex, roots, axis of symmetry</div>
+      <svg width="260" height="185" viewBox="0 0 260 185" aria-label="Parabola y equals x squared minus 6x plus 8 with labeled roots vertex and axis">
+        <!-- axes; origin at (30,100), scale 36px/unit -->
+        <line x1="18" y1="100" x2="244" y2="100" stroke="#2e2e55" stroke-width="1"/>
+        <polygon points="241,96 249,100 241,104" fill="#7070a0"/>
+        <text x="246" y="113" fill="#7070a0" font-size="10" font-family="system-ui">x</text>
+        <line x1="30" y1="178" x2="30" y2="10" stroke="#2e2e55" stroke-width="1"/>
+        <polygon points="26,12 30,4 34,12" fill="#7070a0"/>
+        <!-- y = x²-6x+8 = (x-2)(x-4), vertex (3,-1) -->
+        <!-- x_svg = 30 + x*36; y_svg = 100 - y*36 -->
+        <!-- points: x=1→(66,64); x=1.5→(84,82); x=2→(102,100); x=2.5→(120,109); x=3→(138,136)-->
+        <!-- wait vertex (3,-1): y_svg=100-(-1)*36=136 ✓ -->
+        <!-- x=3.5→(156,109); x=4→(174,100); x=4.5→(192,82); x=5→(210,64) -->
+        <!-- Axis of symmetry x=3 → x_svg=138 -->
+        <line x1="138" y1="18" x2="138" y2="178" stroke="#7070a0" stroke-width="1" stroke-dasharray="4,3"/>
+        <text x="143" y="28" fill="#7070a0" font-size="8.5" font-family="system-ui">x = 3</text>
+        <!-- Parabola -->
+        <polyline points="66,64 84,82 102,100 120,109 138,136 156,109 174,100 192,82 210,64"
+          fill="none" stroke="#5c8aff" stroke-width="2.5" stroke-linejoin="round"/>
+        <!-- Roots at x=2 (102,100) and x=4 (174,100) -->
+        <circle cx="102" cy="100" r="5" fill="#ffb830"/>
+        <text x="95" y="94" text-anchor="middle" fill="#ffb830" font-size="9" font-family="system-ui">x=2</text>
+        <circle cx="174" cy="100" r="5" fill="#ffb830"/>
+        <text x="181" y="94" text-anchor="middle" fill="#ffb830" font-size="9" font-family="system-ui">x=4</text>
+        <!-- Vertex at (3,-1) → (138,136) -->
+        <circle cx="138" cy="136" r="5" fill="#ff6b6b"/>
+        <text x="150" y="150" fill="#ff6b6b" font-size="9" font-family="system-ui">vertex (3, −1)</text>
+        <!-- Tick marks -->
+        <line x1="66" y1="97" x2="66" y2="103" stroke="#7070a0" stroke-width="1"/>
+        <text x="66" y="115" text-anchor="middle" fill="#7070a0" font-size="9" font-family="system-ui">1</text>
+        <line x1="102" y1="97" x2="102" y2="103" stroke="#7070a0" stroke-width="1"/>
+        <text x="102" y="115" text-anchor="middle" fill="#7070a0" font-size="9" font-family="system-ui">2</text>
+        <line x1="174" y1="97" x2="174" y2="103" stroke="#7070a0" stroke-width="1"/>
+        <text x="174" y="115" text-anchor="middle" fill="#7070a0" font-size="9" font-family="system-ui">4</text>
+        <line x1="210" y1="97" x2="210" y2="103" stroke="#7070a0" stroke-width="1"/>
+        <text x="210" y="115" text-anchor="middle" fill="#7070a0" font-size="9" font-family="system-ui">5</text>
+        <text x="50" y="14" fill="#5c8aff" font-size="9" font-family="system-ui">y = x²−6x+8</text>
+      </svg>
+    </div>
 
     <p>
       A <span class="key">quadratic equation</span> has the form $ax^2 + bx + c = 0$ with
@@ -721,9 +1069,41 @@
   </section>
 
   <!-- ── 10. Rational Expressions & Equations ──────────────────────── -->
-  <section id="rational">
+  <section id="ch10">
     <div class="chapter-num">Chapter 10</div>
     <h3>Rational Expressions &amp; Equations</h3>
+
+    <p>
+      Fractions of polynomials appear wherever rates and ratios do. If one pipe fills a
+      tank in 3 hours and another in 5 hours, the combined rate is $\tfrac{1}{3} +
+      \tfrac{1}{5}$ — a sum of rational expressions. Electrical resistors in parallel,
+      lens equations in optics, and work-rate problems all produce rational equations.
+      Clearing the denominator converts them back into polynomial equations you already
+      know how to solve, while domain restrictions track the values that would make the
+      physics or geometry undefined.
+    </p>
+
+    <div class="formula" style="display:flex;flex-direction:column;align-items:center;gap:0;padding-bottom:8px;">
+      <div class="label" style="align-self:flex-start;">Diagram — simplifying a rational expression</div>
+      <svg width="260" height="110" viewBox="0 0 260 110" aria-label="Fraction (x+3)(x-3) over (x+3) simplifies to x-3 with domain restriction x not equal to -3">
+        <!-- Left fraction -->
+        <text x="66" y="45" text-anchor="middle" fill="#5c8aff" font-size="13" font-family="system-ui">(x+3)(x−3)</text>
+        <line x1="16" y1="52" x2="116" y2="52" stroke="#5c8aff" stroke-width="1.5"/>
+        <text x="66" y="70" text-anchor="middle" fill="#5c8aff" font-size="13" font-family="system-ui">(x+3)</text>
+        <!-- Strike through (x+3) in numerator and denominator -->
+        <line x1="22" y1="38" x2="66" y2="50" stroke="#ff6b6b" stroke-width="1.5" opacity="0.7"/>
+        <line x1="34" y1="62" x2="100" y2="76" stroke="#ff6b6b" stroke-width="1.5" opacity="0.7"/>
+        <!-- Arrow -->
+        <line x1="126" y1="57" x2="148" y2="57" stroke="#7070a0" stroke-width="1.5"/>
+        <polygon points="145,53 153,57 145,61" fill="#7070a0"/>
+        <!-- Right side: result -->
+        <text x="185" y="52" text-anchor="middle" fill="#3ecf8e" font-size="16" font-family="system-ui" font-weight="600">x − 3</text>
+        <line x1="155" y1="60" x2="215" y2="60" stroke="#3ecf8e" stroke-width="1.5"/>
+        <text x="185" y="76" text-anchor="middle" fill="#3ecf8e" font-size="13" font-family="system-ui">1</text>
+        <!-- Domain restriction -->
+        <text x="130" y="98" text-anchor="middle" fill="#ffb830" font-size="10" font-family="system-ui">x ≠ −3  (denominator would be zero)</text>
+      </svg>
+    </div>
 
     <p>
       A <span class="key">rational expression</span> is a fraction with polynomial numerator
@@ -759,9 +1139,44 @@
   </section>
 
   <!-- ── 11. Radicals & Rational Exponents ─────────────────────────── -->
-  <section id="radicals">
+  <section id="ch11">
     <div class="chapter-num">Chapter 11</div>
     <h3>Radicals &amp; Rational Exponents</h3>
+
+    <p>
+      The Pythagorean theorem gives $c = \sqrt{a^2 + b^2}$, so every time you compute a
+      straight-line distance — GPS triangulation, signal timing, structural diagonal
+      bracing — you use a square root. Standard deviation in statistics, RMS voltage in
+      electrical engineering, and escape velocity in orbital mechanics all involve
+      radicals. Rational exponents are simply compact notation for the same operations:
+      $8^{1/3}$ is the cube root of 8, and connecting roots to exponent rules lets you
+      apply all the familiar exponent laws to radical expressions.
+    </p>
+
+    <div class="formula" style="display:flex;flex-direction:column;align-items:center;gap:0;padding-bottom:8px;">
+      <div class="label" style="align-self:flex-start;">Diagram — right triangle with c = √(a² + b²)</div>
+      <svg width="260" height="185" viewBox="0 0 260 185" aria-label="Right triangle with legs a and b and hypotenuse c labeled">
+        <!-- Triangle vertices: A(40,155), B(210,155), C(210,55) -->
+        <line x1="40" y1="155" x2="210" y2="155" stroke="#3ecf8e" stroke-width="2.5"/>
+        <line x1="210" y1="155" x2="210" y2="55" stroke="#ff6b6b" stroke-width="2.5"/>
+        <line x1="40" y1="155" x2="210" y2="55" stroke="#5c8aff" stroke-width="2.5"/>
+        <!-- Right angle mark at B(210,155) -->
+        <polyline points="196,155 196,141 210,141" fill="none" stroke="#7070a0" stroke-width="1.5"/>
+        <!-- Side labels -->
+        <text x="125" y="173" text-anchor="middle" fill="#3ecf8e" font-size="13" font-family="system-ui" font-weight="600">a</text>
+        <text x="225" y="110" text-anchor="start" fill="#ff6b6b" font-size="13" font-family="system-ui" font-weight="600">b</text>
+        <text x="110" y="90" text-anchor="middle" fill="#5c8aff" font-size="13" font-family="system-ui" font-weight="600">c</text>
+        <!-- Formula label -->
+        <text x="20" y="30" fill="#5c8aff" font-size="12" font-family="system-ui">c = √(a² + b²)</text>
+        <!-- Vertex dots -->
+        <circle cx="40" cy="155" r="3" fill="#7070a0"/>
+        <circle cx="210" cy="155" r="3" fill="#7070a0"/>
+        <circle cx="210" cy="55" r="3" fill="#7070a0"/>
+        <!-- Angle arc at A -->
+        <path d="M 66,155 A 26,26 0 0,0 56,138" fill="none" stroke="#ffb830" stroke-width="1.8"/>
+        <text x="72" y="148" fill="#ffb830" font-size="11" font-family="system-ui">θ</text>
+      </svg>
+    </div>
 
     <p>
       The <span class="key">principal square root</span> $\sqrt{a}$ is the non-negative number
@@ -801,9 +1216,46 @@
   </section>
 
   <!-- ── 12. Absolute Value ─────────────────────────────────────────── -->
-  <section id="absolute">
+  <section id="ch12">
     <div class="chapter-num">Chapter 12</div>
     <h3>Absolute Value</h3>
+
+    <p>
+      Absolute value measures distance, and distance is always non-negative. When a GPS
+      reports you are 50 meters from a point, it does not matter whether you are 50 meters
+      east or west — the distance is 50 either way. In quality control, a part that is
+      ±0.1 mm off-tolerance is rejected whether it is too large or too small. Absolute
+      value equations split into two cases precisely because the same distance can be
+      reached from two directions; inequalities define a tolerance band — all values within
+      a certain range of a target.
+    </p>
+
+    <div class="formula" style="display:flex;flex-direction:column;align-items:center;gap:0;padding-bottom:8px;">
+      <div class="label" style="align-self:flex-start;">Diagram — |−3| = |3| = 3 (distance from zero)</div>
+      <svg width="260" height="88" viewBox="0 0 260 88" aria-label="Number line showing absolute value as distance from zero for both -3 and 3">
+        <!-- Number line -->
+        <line x1="18" y1="44" x2="242" y2="44" stroke="#7070a0" stroke-width="1.5"/>
+        <polygon points="239,40 247,44 239,48" fill="#7070a0"/>
+        <!-- Ticks and labels -->
+        <line x1="68" y1="39" x2="68" y2="49" stroke="#7070a0" stroke-width="1.5"/>
+        <text x="68" y="63" text-anchor="middle" fill="#7070a0" font-size="11" font-family="system-ui">−3</text>
+        <line x1="130" y1="39" x2="130" y2="49" stroke="#7070a0" stroke-width="1.5"/>
+        <text x="130" y="63" text-anchor="middle" fill="#7070a0" font-size="11" font-family="system-ui">0</text>
+        <line x1="192" y1="39" x2="192" y2="49" stroke="#7070a0" stroke-width="1.5"/>
+        <text x="192" y="63" text-anchor="middle" fill="#7070a0" font-size="11" font-family="system-ui">3</text>
+        <!-- Dots -->
+        <circle cx="68" cy="44" r="5" fill="#5c8aff"/>
+        <circle cx="192" cy="44" r="5" fill="#3ecf8e"/>
+        <!-- Distance arrows to 0 -->
+        <line x1="74" y1="28" x2="124" y2="28" stroke="#5c8aff" stroke-width="2"/>
+        <polygon points="122,24 130,28 122,32" fill="#5c8aff"/>
+        <text x="99" y="22" text-anchor="middle" fill="#5c8aff" font-size="10" font-family="system-ui">3</text>
+        <line x1="186" y1="28" x2="136" y2="28" stroke="#3ecf8e" stroke-width="2"/>
+        <polygon points="138,24 130,28 138,32" fill="#3ecf8e"/>
+        <text x="161" y="22" text-anchor="middle" fill="#3ecf8e" font-size="10" font-family="system-ui">3</text>
+        <text x="130" y="84" text-anchor="middle" fill="#ffb830" font-size="10" font-family="system-ui">|−3| = 3   and   |3| = 3</text>
+      </svg>
+    </div>
 
     <p>
       $|a|$ gives the distance from $a$ to zero. An <span class="key">absolute value
@@ -838,9 +1290,57 @@
   </section>
 
   <!-- ── 13. Exponentials & Logarithms ─────────────────────────────── -->
-  <section id="explog">
+  <section id="ch13">
     <div class="chapter-num">Chapter 13</div>
     <h3>Exponentials &amp; Logarithms</h3>
+
+    <p>
+      Exponential growth and decay are everywhere: populations double at a fixed rate,
+      radioactive materials decay by half-lives, and compound interest multiplies by a
+      fixed factor each period. The natural base $e \approx 2.718$ emerges in continuous
+      processes — continuous compounding, continuous decay, the shape of a hanging chain.
+      Logarithms are the inverse: they answer "what exponent do I need?" Earthquake
+      magnitude (Richter), sound intensity (decibels), and acidity (pH) are all logarithmic
+      scales, because the underlying quantities span such vast ranges that only compressing
+      by a log makes them usable.
+    </p>
+
+    <div class="formula" style="display:flex;flex-direction:column;align-items:center;gap:0;padding-bottom:8px;">
+      <div class="label" style="align-self:flex-start;">Diagram — y = 2ˣ and y = log₂(x) as inverse reflections</div>
+      <svg width="260" height="192" viewBox="0 0 260 192" aria-label="Exponential curve y equals 2 to the x and its inverse logarithm curve as reflections across y equals x">
+        <!-- axes; origin (96,116), scale 26px/unit -->
+        <line x1="14" y1="116" x2="242" y2="116" stroke="#2e2e55" stroke-width="1"/>
+        <polygon points="239,112 247,116 239,120" fill="#7070a0"/>
+        <text x="244" y="129" fill="#7070a0" font-size="10" font-family="system-ui">x</text>
+        <line x1="96" y1="182" x2="96" y2="12" stroke="#2e2e55" stroke-width="1"/>
+        <polygon points="92,14 96,6 100,14" fill="#7070a0"/>
+        <text x="84" y="12" fill="#7070a0" font-size="10" font-family="system-ui">y</text>
+        <!-- y=x dashed reference line; through (-3,-3)→(18,194) and (3,3)→(174,38) -->
+        <line x1="18" y1="194" x2="174" y2="38" stroke="#2e2e55" stroke-width="1" stroke-dasharray="4,3"/>
+        <text x="176" y="35" fill="#7070a0" font-size="8.5" font-family="system-ui">y = x</text>
+        <!-- y=2^x: x_svg=96+x*26, y_svg=116-y*26 -->
+        <!-- x=-3,y=.125→(18,113); x=-2,y=.25→(44,110); x=-1,y=.5→(70,103); x=0,y=1→(96,90) -->
+        <!-- x=1,y=2→(122,64); x=1.5,y=2.83→(135,43); x=2,y=4→(148,12) -->
+        <polyline points="18,113 44,110 70,103 96,90 122,64 135,43 148,12"
+          fill="none" stroke="#ffb830" stroke-width="2" stroke-linejoin="round"/>
+        <text x="150" y="10" fill="#ffb830" font-size="9" font-family="system-ui">y = 2ˣ</text>
+        <!-- y=log₂(x): symmetric to y=2^x across y=x; swap x and y coords -->
+        <!-- (18,113)→(113,18); (44,110)→(110,44); (70,103)→(103,70); (96,90)→(90,96) -->
+        <!-- (122,64)→(64,122); (135,43)→(43,135); (148,12)→(12,148) -->
+        <polyline points="113,18 110,44 103,70 90,96 64,122 43,135 12,148"
+          fill="none" stroke="#5c8aff" stroke-width="2" stroke-linejoin="round"/>
+        <text x="10" y="162" fill="#5c8aff" font-size="9" font-family="system-ui">y = log₂(x)</text>
+        <!-- Tick marks -->
+        <line x1="122" y1="113" x2="122" y2="119" stroke="#7070a0" stroke-width="1"/>
+        <text x="122" y="131" text-anchor="middle" fill="#7070a0" font-size="9" font-family="system-ui">1</text>
+        <line x1="148" y1="113" x2="148" y2="119" stroke="#7070a0" stroke-width="1"/>
+        <text x="148" y="131" text-anchor="middle" fill="#7070a0" font-size="9" font-family="system-ui">2</text>
+        <line x1="93" y1="90" x2="99" y2="90" stroke="#7070a0" stroke-width="1"/>
+        <text x="82" y="94" text-anchor="end" fill="#7070a0" font-size="9" font-family="system-ui">1</text>
+        <line x1="93" y1="64" x2="99" y2="64" stroke="#7070a0" stroke-width="1"/>
+        <text x="82" y="68" text-anchor="end" fill="#7070a0" font-size="9" font-family="system-ui">2</text>
+      </svg>
+    </div>
 
     <p>
       An <span class="key">exponential equation</span> has the variable in the exponent.
@@ -910,9 +1410,58 @@
   </section>
 
   <!-- ── 14. Functions & Inverses ──────────────────────────────────── -->
-  <section id="functions">
+  <section id="ch14">
     <div class="chapter-num">Chapter 14</div>
     <h3>Functions &amp; Inverses</h3>
+
+    <p>
+      Functions are the mathematical model of any process that reliably maps inputs to
+      outputs: a recipe maps ingredients to a dish, a formula maps Celsius to Fahrenheit.
+      Composition chains two processes — first convert Celsius to Kelvin, then Kelvin to
+      Fahrenheit. Inverses undo a process: a cipher encodes a message (function); the
+      decryption key decodes it (inverse). Understanding domain restrictions — the inputs
+      for which the function is one-to-one — is what separates "theoretically invertible"
+      from "actually decodable."
+    </p>
+
+    <div class="formula" style="display:flex;flex-direction:column;align-items:center;gap:0;padding-bottom:8px;">
+      <div class="label" style="align-self:flex-start;">Diagram — function and inverse as two-way mapping</div>
+      <svg width="260" height="155" viewBox="0 0 260 155" aria-label="Two ovals labeled Domain and Range with arrows for f and f-inverse">
+        <!-- Domain oval -->
+        <ellipse cx="68" cy="80" rx="44" ry="62" fill="rgba(92,138,255,0.07)" stroke="#5c8aff" stroke-width="1.5"/>
+        <text x="68" y="22" text-anchor="middle" fill="#5c8aff" font-size="10" font-family="system-ui" letter-spacing="0.04em">Domain</text>
+        <!-- Range oval -->
+        <ellipse cx="192" cy="80" rx="44" ry="62" fill="rgba(62,207,142,0.07)" stroke="#3ecf8e" stroke-width="1.5"/>
+        <text x="192" y="22" text-anchor="middle" fill="#3ecf8e" font-size="10" font-family="system-ui" letter-spacing="0.04em">Range</text>
+        <!-- Domain points -->
+        <circle cx="68" cy="52" r="4" fill="#5c8aff"/>
+        <text x="54" y="56" text-anchor="end" fill="#5c8aff" font-size="11" font-family="system-ui">a</text>
+        <circle cx="68" cy="82" r="4" fill="#5c8aff"/>
+        <text x="54" y="86" text-anchor="end" fill="#5c8aff" font-size="11" font-family="system-ui">b</text>
+        <circle cx="68" cy="112" r="4" fill="#5c8aff"/>
+        <text x="54" y="116" text-anchor="end" fill="#5c8aff" font-size="11" font-family="system-ui">c</text>
+        <!-- Range points -->
+        <circle cx="192" cy="52" r="4" fill="#3ecf8e"/>
+        <text x="202" y="56" fill="#3ecf8e" font-size="11" font-family="system-ui">1</text>
+        <circle cx="192" cy="82" r="4" fill="#3ecf8e"/>
+        <text x="202" y="86" fill="#3ecf8e" font-size="11" font-family="system-ui">2</text>
+        <circle cx="192" cy="112" r="4" fill="#3ecf8e"/>
+        <text x="202" y="116" fill="#3ecf8e" font-size="11" font-family="system-ui">3</text>
+        <!-- f arrows (blue, solid, left→right) -->
+        <line x1="74" y1="50" x2="186" y2="50" stroke="#5c8aff" stroke-width="1.5"/>
+        <polygon points="183,46 191,50 183,54" fill="#5c8aff"/>
+        <line x1="74" y1="80" x2="186" y2="80" stroke="#5c8aff" stroke-width="1.5"/>
+        <polygon points="183,76 191,80 183,84" fill="#5c8aff"/>
+        <line x1="74" y1="110" x2="186" y2="110" stroke="#5c8aff" stroke-width="1.5"/>
+        <polygon points="183,106 191,110 183,114" fill="#5c8aff"/>
+        <!-- f label -->
+        <text x="130" y="44" text-anchor="middle" fill="#5c8aff" font-size="10" font-family="system-ui" font-weight="600">f</text>
+        <!-- f⁻¹ arrow (amber, dashed, right→left) at the top -->
+        <line x1="186" y1="68" x2="74" y2="68" stroke="#ffb830" stroke-width="1.5" stroke-dasharray="4,3"/>
+        <polygon points="77,64 69,68 77,72" fill="#ffb830"/>
+        <text x="130" y="64" text-anchor="middle" fill="#ffb830" font-size="10" font-family="system-ui" font-weight="600">f ⁻¹</text>
+      </svg>
+    </div>
 
     <p>
       A <span class="key">function</span> $f$ assigns exactly one output to each input.
@@ -976,5 +1525,6 @@
 </div>
 <script src="textbook-notes.js"></script>
 <script src="textbook-nav.js"></script>
+<script src="theme-toggle.js"></script>
 </body>
 </html>

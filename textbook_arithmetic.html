@@ -49,7 +49,23 @@
     .toc-back a { color: var(--muted); font-size: 0.82rem; text-decoration: none;
                   letter-spacing: 0.03em; }
     .toc-back a:hover { color: var(--accent); }
-  </style>
+  
+    [data-theme="light"] {
+      --bg:      #f5f0e4;
+      --surface: #faf7ee;
+      --panel:   #ede8d8;
+      --border:  #ccc6b4;
+      --text:    #18140c;
+      --muted:   #3e3c60;
+      --accent:  #2858c8;
+      --correct: #115238;
+      --hint:    #6e4a00;
+      --wrong:   #cc2040;
+    }
+    [data-theme="light"] section h3 { color: #18140c; }
+    [data-theme="light"] .chapter-num { color: #3e3c60; }
+</style>
+  <script>(function(){var t=localStorage.getItem('math-theme')||((window.matchMedia&&window.matchMedia('(prefers-color-scheme:light)').matches)?'light':'dark');document.documentElement.setAttribute('data-theme',t);}());</script>
 </head>
 <body>
 <div class="page">
@@ -83,6 +99,41 @@
   <section id="whole">
     <div class="chapter-num">Chapter 1</div>
     <h3>Whole Numbers &amp; Place Value</h3>
+
+    <p>
+      Every number you have ever written relies on an idea invented independently in India and
+      later adopted by Arabic mathematicians: position determines value. Before positional
+      notation, Romans had to write VIII for 8 and MMMDCCXLIX for 3,749 — multiplication was
+      nearly impossible. The place-value system with a zero makes arithmetic computable.
+      Computers use the same idea in binary (base 2), where each bit position is a power of 2
+      instead of a power of 10. Understanding place value is understanding how all numeric
+      computation — human or machine — represents quantity.
+    </p>
+
+    <div class="formula" style="display:flex;flex-direction:column;align-items:center;gap:0;padding-bottom:8px;">
+      <div class="label" style="align-self:flex-start;">Place value — the number 4,367</div>
+      <svg width="340" height="90" viewBox="0 0 340 90" style="display:block;">
+        <!-- Column boxes -->
+        <rect x="10"  y="10" width="70" height="36" rx="4" fill="#1c1c35" stroke="#2e2e55" stroke-width="1.5"/>
+        <rect x="90"  y="10" width="70" height="36" rx="4" fill="#1c1c35" stroke="#2e2e55" stroke-width="1.5"/>
+        <rect x="170" y="10" width="70" height="36" rx="4" fill="#1c1c35" stroke="#2e2e55" stroke-width="1.5"/>
+        <rect x="250" y="10" width="70" height="36" rx="4" fill="#1c1c35" stroke="#2e2e55" stroke-width="1.5"/>
+        <!-- Digits -->
+        <text x="45"  y="35" text-anchor="middle" fill="#ffb830" font-family="system-ui,sans-serif" font-size="20" font-weight="700">4</text>
+        <text x="125" y="35" text-anchor="middle" fill="#5c8aff" font-family="system-ui,sans-serif" font-size="20" font-weight="700">3</text>
+        <text x="205" y="35" text-anchor="middle" fill="#3ecf8e" font-family="system-ui,sans-serif" font-size="20" font-weight="700">6</text>
+        <text x="285" y="35" text-anchor="middle" fill="#ff6b6b" font-family="system-ui,sans-serif" font-size="20" font-weight="700">7</text>
+        <!-- Place labels -->
+        <text x="45"  y="65" text-anchor="middle" fill="#ffb830" font-family="system-ui,sans-serif" font-size="11">Thousands</text>
+        <text x="45"  y="80" text-anchor="middle" fill="#7070a0" font-family="system-ui,sans-serif" font-size="10">× 1,000</text>
+        <text x="125" y="65" text-anchor="middle" fill="#5c8aff" font-family="system-ui,sans-serif" font-size="11">Hundreds</text>
+        <text x="125" y="80" text-anchor="middle" fill="#7070a0" font-family="system-ui,sans-serif" font-size="10">× 100</text>
+        <text x="205" y="65" text-anchor="middle" fill="#3ecf8e" font-family="system-ui,sans-serif" font-size="11">Tens</text>
+        <text x="205" y="80" text-anchor="middle" fill="#7070a0" font-family="system-ui,sans-serif" font-size="10">× 10</text>
+        <text x="285" y="65" text-anchor="middle" fill="#ff6b6b" font-family="system-ui,sans-serif" font-size="11">Ones</text>
+        <text x="285" y="80" text-anchor="middle" fill="#7070a0" font-family="system-ui,sans-serif" font-size="10">× 1</text>
+      </svg>
+    </div>
 
     <p>
       <span class="key">Place value</span> determines a digit's worth by its position.
@@ -146,6 +197,7 @@
       <div class="example-step"><span>$= 3 + 2$</span><span class="why">divide: $12 \div 6=2$</span></div>
       <div class="example-step"><span>$= 5$</span><span class="why">add</span></div>
     </div>
+
     <p class="toc-back"><a href="#toc">↑ Table of Contents</a></p>
   </section>
 
@@ -153,6 +205,56 @@
   <section id="integers">
     <div class="chapter-num">Chapter 2</div>
     <h3>Integers &amp; Absolute Value</h3>
+
+    <p>
+      For most of human history, negative numbers were considered nonsense — how can you have
+      fewer than nothing? Yet equations like "I owe you 5" describe a real state, and for
+      centuries mathematicians called such solutions "absurd." Accepting negatives unlocked
+      algebra, made the number line symmetric, and gave us a single system where subtraction
+      always works. Absolute value captures what is intuitively obvious: distance is never
+      negative, regardless of direction. These two ideas — signed values and unsigned
+      magnitude — appear in everything from temperature and debt to voltage and elevation.
+    </p>
+
+    <div class="formula" style="display:flex;flex-direction:column;align-items:center;gap:0;padding-bottom:8px;">
+      <div class="label" style="align-self:flex-start;">Number line — integers and absolute value</div>
+      <svg width="340" height="72" viewBox="0 0 340 72" style="display:block;">
+        <!-- Number line -->
+        <line x1="20" y1="36" x2="320" y2="36" stroke="#2e2e55" stroke-width="2"/>
+        <polygon points="320,36 310,31 310,41" fill="#2e2e55"/>
+        <!-- Tick marks and labels at -5 to +5 (cx=170, spacing=28) -->
+        <line x1="30"  y1="30" x2="30"  y2="42" stroke="#7070a0" stroke-width="1.5"/>
+        <line x1="58"  y1="30" x2="58"  y2="42" stroke="#7070a0" stroke-width="1.5"/>
+        <line x1="86"  y1="30" x2="86"  y2="42" stroke="#7070a0" stroke-width="1.5"/>
+        <line x1="114" y1="30" x2="114" y2="42" stroke="#7070a0" stroke-width="1.5"/>
+        <line x1="142" y1="30" x2="142" y2="42" stroke="#7070a0" stroke-width="1.5"/>
+        <line x1="170" y1="26" x2="170" y2="46" stroke="#e0e0f0" stroke-width="2"/>
+        <line x1="198" y1="30" x2="198" y2="42" stroke="#7070a0" stroke-width="1.5"/>
+        <line x1="226" y1="30" x2="226" y2="42" stroke="#7070a0" stroke-width="1.5"/>
+        <line x1="254" y1="30" x2="254" y2="42" stroke="#7070a0" stroke-width="1.5"/>
+        <line x1="282" y1="30" x2="282" y2="42" stroke="#7070a0" stroke-width="1.5"/>
+        <line x1="310" y1="30" x2="310" y2="42" stroke="#7070a0" stroke-width="1.5"/>
+        <!-- Tick labels -->
+        <text x="30"  y="56" text-anchor="middle" fill="#5c8aff" font-family="system-ui,sans-serif" font-size="11">−5</text>
+        <text x="58"  y="56" text-anchor="middle" fill="#5c8aff" font-family="system-ui,sans-serif" font-size="11">−4</text>
+        <text x="86"  y="56" text-anchor="middle" fill="#5c8aff" font-family="system-ui,sans-serif" font-size="11">−3</text>
+        <text x="114" y="56" text-anchor="middle" fill="#5c8aff" font-family="system-ui,sans-serif" font-size="11">−2</text>
+        <text x="142" y="56" text-anchor="middle" fill="#5c8aff" font-family="system-ui,sans-serif" font-size="11">−1</text>
+        <text x="170" y="60" text-anchor="middle" fill="#e0e0f0" font-family="system-ui,sans-serif" font-size="11" font-weight="700">0</text>
+        <text x="198" y="56" text-anchor="middle" fill="#3ecf8e" font-family="system-ui,sans-serif" font-size="11">1</text>
+        <text x="226" y="56" text-anchor="middle" fill="#3ecf8e" font-family="system-ui,sans-serif" font-size="11">2</text>
+        <text x="254" y="56" text-anchor="middle" fill="#3ecf8e" font-family="system-ui,sans-serif" font-size="11">3</text>
+        <text x="282" y="56" text-anchor="middle" fill="#3ecf8e" font-family="system-ui,sans-serif" font-size="11">4</text>
+        <text x="310" y="56" text-anchor="middle" fill="#3ecf8e" font-family="system-ui,sans-serif" font-size="11">5</text>
+        <!-- |−3| = 3 distance arrow -->
+        <line x1="86" y1="18" x2="170" y2="18" stroke="#ffb830" stroke-width="1.5" marker-end="url(#arr-r)" marker-start="url(#arr-l)"/>
+        <defs>
+          <marker id="arr-r" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#ffb830"/></marker>
+          <marker id="arr-l" markerWidth="6" markerHeight="6" refX="1" refY="3" orient="auto-start-reverse"><path d="M0,0 L6,3 L0,6 Z" fill="#ffb830"/></marker>
+        </defs>
+        <text x="128" y="14" text-anchor="middle" fill="#ffb830" font-family="system-ui,sans-serif" font-size="10">|−3| = 3</text>
+      </svg>
+    </div>
 
     <p>
       <span class="key">Integers</span> extend the whole numbers to include negatives:
@@ -207,6 +309,7 @@
       <div class="example-step"><span>$24 \times (-1) = -24$</span><span class="why">positive $\times$ negative $=$ negative</span></div>
       <div class="example-step"><span>Three negative factors (odd count) $\Rightarrow$ negative result</span><span class="why">odd number of negatives $\to$ $-$; even $\to$ $+$</span></div>
     </div>
+
     <p class="toc-back"><a href="#toc">↑ Table of Contents</a></p>
   </section>
 
@@ -214,6 +317,36 @@
   <section id="fractions">
     <div class="chapter-num">Chapter 3</div>
     <h3>Fractions</h3>
+
+    <p>
+      Fractions arise whenever something must be divided — land among heirs, a recipe among
+      portions, probability among outcomes. They are the mathematical language of parts and
+      wholes: any ratio, any probability, any percentage is ultimately a fraction.
+      The rules for fraction arithmetic aren't arbitrary procedures to memorize; they follow
+      directly from the meaning of "equal-sized parts." Once you see why they work, they
+      become unforgettable.
+    </p>
+
+    <div class="formula" style="display:flex;flex-direction:column;align-items:center;gap:0;padding-bottom:8px;">
+      <div class="label" style="align-self:flex-start;">Diagram — fraction bars: 3/4 and 1/4 sum to 4/4 = 1</div>
+      <svg width="320" height="88" viewBox="0 0 320 88" style="display:block;">
+        <!-- Row 1: 3/4 bar -->
+        <text x="8" y="22" fill="#7070a0" font-family="system-ui,sans-serif" font-size="11">3/4</text>
+        <rect x="48" y="8"  width="180" height="22" rx="3" fill="#5c8aff" fill-opacity="0.7" stroke="#5c8aff" stroke-width="1"/>
+        <rect x="228" y="8"  width="60" height="22" rx="3" fill="#1c1c35" stroke="#2e2e55" stroke-width="1"/>
+        <line x1="108" y1="8" x2="108" y2="30" stroke="#0d0d1a" stroke-width="1"/>
+        <line x1="168" y1="8" x2="168" y2="30" stroke="#0d0d1a" stroke-width="1"/>
+        <text x="168" y="23" text-anchor="middle" fill="#e0e0f0" font-family="system-ui,sans-serif" font-size="10">3 parts</text>
+        <!-- Row 2: 1/4 bar -->
+        <text x="8" y="56" fill="#7070a0" font-family="system-ui,sans-serif" font-size="11">1/4</text>
+        <rect x="48" y="42" width="60"  height="22" rx="3" fill="#ffb830" fill-opacity="0.7" stroke="#ffb830" stroke-width="1"/>
+        <rect x="108" y="42" width="180" height="22" rx="3" fill="#1c1c35" stroke="#2e2e55" stroke-width="1"/>
+        <line x1="168" y1="42" x2="168" y2="64" stroke="#0d0d1a" stroke-width="1"/>
+        <line x1="228" y1="42" x2="228" y2="64" stroke="#0d0d1a" stroke-width="1"/>
+        <!-- = 1 label -->
+        <text x="48" y="82" fill="#3ecf8e" font-family="system-ui,sans-serif" font-size="11">3/4 + 1/4 = 4/4 = 1 whole &nbsp;(shared denominator = same slice size)</text>
+      </svg>
+    </div>
 
     <p>
       A <span class="key">fraction</span> $\dfrac{a}{b}$ represents $a$ parts of a whole
@@ -280,6 +413,7 @@
       <div class="example-step"><span>$\dfrac{11}{12} \div \dfrac{5}{12} = \dfrac{11}{12} \times \dfrac{12}{5} = \dfrac{11}{5}$</span><span class="why">KCF: flip $\dfrac{5}{12}$; the 12s cancel</span></div>
       <div class="example-step"><span>$= 2\dfrac{1}{5}$</span><span class="why">$11 = 2 \times 5 + 1$</span></div>
     </div>
+
     <p class="toc-back"><a href="#toc">↑ Table of Contents</a></p>
   </section>
 
@@ -287,6 +421,43 @@
   <section id="decimals">
     <div class="chapter-num">Chapter 4</div>
     <h3>Decimals</h3>
+
+    <p>
+      Decimals are the natural extension of place value to fractions — instead of stopping at
+      ones, you keep going: tenths, hundredths, thousandths. They let us express measurements
+      with any degree of precision we need, using the same positional notation we already
+      know. In computing, floating-point numbers are essentially decimals in base 2 with a
+      fixed number of digits — understanding decimal precision directly prepares you to reason
+      about numerical error, rounding, and the limits of what a computer can represent exactly.
+    </p>
+
+    <div class="formula" style="display:flex;flex-direction:column;align-items:center;gap:0;padding-bottom:8px;">
+      <div class="label" style="align-self:flex-start;">Diagram — extended place value for 3.142</div>
+      <svg width="340" height="90" viewBox="0 0 340 90" style="display:block;">
+        <rect x="10"  y="10" width="60" height="36" rx="4" fill="#1c1c35" stroke="#2e2e55" stroke-width="1.5"/>
+        <!-- Decimal point column (not a box, just a dot) -->
+        <rect x="80"  y="10" width="60" height="36" rx="4" fill="#1c1c35" stroke="#2e2e55" stroke-width="1.5"/>
+        <rect x="150" y="10" width="60" height="36" rx="4" fill="#1c1c35" stroke="#2e2e55" stroke-width="1.5"/>
+        <rect x="220" y="10" width="60" height="36" rx="4" fill="#1c1c35" stroke="#2e2e55" stroke-width="1.5"/>
+        <rect x="290" y="10" width="40" height="36" rx="4" fill="#1c1c35" stroke="#2e2e55" stroke-width="1.5"/>
+        <!-- Digits -->
+        <text x="40"  y="35" text-anchor="middle" fill="#ffb830" font-family="system-ui,sans-serif" font-size="20" font-weight="700">3</text>
+        <text x="73"  y="38" text-anchor="middle" fill="#e0e0f0" font-family="system-ui,sans-serif" font-size="22" font-weight="700">.</text>
+        <text x="110" y="35" text-anchor="middle" fill="#5c8aff" font-family="system-ui,sans-serif" font-size="20" font-weight="700">1</text>
+        <text x="180" y="35" text-anchor="middle" fill="#3ecf8e" font-family="system-ui,sans-serif" font-size="20" font-weight="700">4</text>
+        <text x="250" y="35" text-anchor="middle" fill="#ff6b6b" font-family="system-ui,sans-serif" font-size="20" font-weight="700">2</text>
+        <text x="310" y="35" text-anchor="middle" fill="#7070a0" font-family="system-ui,sans-serif" font-size="20" font-weight="700">…</text>
+        <!-- Place labels -->
+        <text x="40"  y="65" text-anchor="middle" fill="#ffb830" font-family="system-ui,sans-serif" font-size="11">Ones</text>
+        <text x="40"  y="80" text-anchor="middle" fill="#7070a0" font-family="system-ui,sans-serif" font-size="10">× 1</text>
+        <text x="110" y="65" text-anchor="middle" fill="#5c8aff" font-family="system-ui,sans-serif" font-size="11">Tenths</text>
+        <text x="110" y="80" text-anchor="middle" fill="#7070a0" font-family="system-ui,sans-serif" font-size="10">× 1/10</text>
+        <text x="180" y="65" text-anchor="middle" fill="#3ecf8e" font-family="system-ui,sans-serif" font-size="11">Hundredths</text>
+        <text x="180" y="80" text-anchor="middle" fill="#7070a0" font-family="system-ui,sans-serif" font-size="10">× 1/100</text>
+        <text x="250" y="65" text-anchor="middle" fill="#ff6b6b" font-family="system-ui,sans-serif" font-size="11">Thousandths</text>
+        <text x="250" y="80" text-anchor="middle" fill="#7070a0" font-family="system-ui,sans-serif" font-size="10">× 1/1000</text>
+      </svg>
+    </div>
 
     <p>
       <span class="key">Decimals</span> extend place value to the right of the decimal point:
@@ -319,6 +490,7 @@
       <div class="example-step"><span>let $x = 0.\overline{3}$; then $10x = 3.\overline{3}$</span><span class="why">multiply by 10 to shift one cycle</span></div>
       <div class="example-step"><span>$10x - x = 3 \Rightarrow 9x = 3 \Rightarrow x = \dfrac{1}{3}$</span><span class="why">subtract; solve</span></div>
     </div>
+
     <p class="toc-back"><a href="#toc">↑ Table of Contents</a></p>
   </section>
 
@@ -326,6 +498,44 @@
   <section id="ratios">
     <div class="chapter-num">Chapter 5</div>
     <h3>Ratios &amp; Proportions</h3>
+
+    <p>
+      Proportional reasoning is among the most practically useful mathematical skills: scaling
+      a recipe, converting units, reading a map, splitting a bill, mixing paint to a desired
+      shade — all are proportion problems. Two quantities are proportional when they grow and
+      shrink together at a constant rate. This constant rate is a ratio, and equality of
+      ratios is a proportion. Cross-multiplication is the arithmetic workhorse behind unit
+      conversion, map scaling, and any engineering calculation that involves keeping two
+      quantities in balance.
+    </p>
+
+    <div class="formula" style="display:flex;flex-direction:column;align-items:center;gap:0;padding-bottom:8px;">
+      <div class="label" style="align-self:flex-start;">Diagram — equivalent ratios: 3:4 = 6:8</div>
+      <svg width="300" height="70" viewBox="0 0 300 70" style="display:block;">
+        <!-- 3:4 bar -->
+        <rect x="10"  y="10" width="60" height="20" rx="3" fill="#5c8aff" fill-opacity="0.7" stroke="#5c8aff" stroke-width="1"/>
+        <rect x="70"  y="10" width="20" height="20" rx="3" fill="#1c1c35" stroke="#2e2e55" stroke-width="1"/>
+        <rect x="90"  y="10" width="20" height="20" rx="3" fill="#1c1c35" stroke="#2e2e55" stroke-width="1"/>
+        <rect x="110" y="10" width="20" height="20" rx="3" fill="#1c1c35" stroke="#2e2e55" stroke-width="1"/>
+        <text x="70" y="22" text-anchor="middle" fill="#5c8aff" font-family="system-ui,sans-serif" font-size="11">3</text>
+        <text x="130" y="22" text-anchor="middle" fill="#7070a0" font-family="system-ui,sans-serif" font-size="11">4</text>
+        <text x="70" y="45" text-anchor="middle" fill="#7070a0" font-family="system-ui,sans-serif" font-size="10">ratio 3:4</text>
+        <!-- 6:8 bar (scaled ×2) -->
+        <rect x="150" y="10" width="120" height="20" rx="3" fill="#5c8aff" fill-opacity="0.7" stroke="#5c8aff" stroke-width="1"/>
+        <line x1="170" y1="10" x2="170" y2="30" stroke="#0d0d1a" stroke-width="1"/>
+        <line x1="190" y1="10" x2="190" y2="30" stroke="#0d0d1a" stroke-width="1"/>
+        <line x1="210" y1="10" x2="210" y2="30" stroke="#0d0d1a" stroke-width="1"/>
+        <line x1="230" y1="10" x2="230" y2="30" stroke="#0d0d1a" stroke-width="1"/>
+        <line x1="250" y1="10" x2="250" y2="30" stroke="#0d0d1a" stroke-width="1"/>
+        <rect x="270" y="10" width="20" height="20" rx="3" fill="#1c1c35" stroke="#2e2e55" stroke-width="1"/>
+        <rect x="290" y="10" width="0"  height="20" rx="3" fill="#1c1c35" stroke="#2e2e55" stroke-width="1"/>
+        <text x="210" y="22" text-anchor="middle" fill="#e0e0f0" font-family="system-ui,sans-serif" font-size="10">6 parts</text>
+        <text x="280" y="22" text-anchor="middle" fill="#7070a0" font-family="system-ui,sans-serif" font-size="10">8</text>
+        <text x="210" y="45" text-anchor="middle" fill="#7070a0" font-family="system-ui,sans-serif" font-size="10">ratio 6:8 (×2, same proportion)</text>
+        <!-- = sign -->
+        <text x="137" y="24" text-anchor="middle" fill="#3ecf8e" font-family="system-ui,sans-serif" font-size="14" font-weight="700">=</text>
+      </svg>
+    </div>
 
     <p>
       A <span class="key">ratio</span> compares two quantities: $a : b$ or $\dfrac{a}{b}$.
@@ -361,6 +571,7 @@
       <div class="example-step"><span>$\$2.50 \div 5 = \$0.50$ per apple</span><span class="why">divide total cost by quantity</span></div>
       <div class="example-step"><span>$8 \text{ apples} = 8 \times \$0.50 = \$4.00$</span><span class="why">multiply unit rate by quantity</span></div>
     </div>
+
     <p class="toc-back"><a href="#toc">↑ Table of Contents</a></p>
   </section>
 
@@ -368,6 +579,38 @@
   <section id="percents">
     <div class="chapter-num">Chapter 6</div>
     <h3>Percents</h3>
+
+    <p>
+      Percent is the universal language of comparison — it normalizes everything to a common
+      scale of 100, making diverse quantities directly comparable. Sales tax, interest rates,
+      inflation, voter turnout, nutrient content, and battery levels are all expressed as
+      percentages precisely because this normalization makes them intuitive at a glance.
+      Percent change answers the fundamental question: "how much did this improve relative to
+      what we had?" — whether you are measuring a price, a yield, or a test score.
+    </p>
+
+    <div class="formula" style="display:flex;flex-direction:column;align-items:center;gap:0;padding-bottom:8px;">
+      <div class="label" style="align-self:flex-start;">Diagram — 75% of a whole</div>
+      <svg width="300" height="54" viewBox="0 0 300 54" style="display:block;">
+        <!-- Full bar outline -->
+        <rect x="10" y="10" width="280" height="28" rx="4" fill="#1c1c35" stroke="#2e2e55" stroke-width="1.5"/>
+        <!-- 75% fill -->
+        <rect x="10" y="10" width="210" height="28" rx="4" fill="#5c8aff" fill-opacity="0.75"/>
+        <!-- 25% fill (remainder) -->
+        <!-- Tick at 0%, 25%, 50%, 75%, 100% -->
+        <line x1="80"  y1="10" x2="80"  y2="38" stroke="#0d0d1a" stroke-width="1"/>
+        <line x1="150" y1="10" x2="150" y2="38" stroke="#0d0d1a" stroke-width="1"/>
+        <line x1="220" y1="10" x2="220" y2="38" stroke="#0d0d1a" stroke-width="1"/>
+        <!-- Labels -->
+        <text x="10"  y="50" text-anchor="middle" fill="#7070a0" font-family="system-ui,sans-serif" font-size="10">0%</text>
+        <text x="80"  y="50" text-anchor="middle" fill="#7070a0" font-family="system-ui,sans-serif" font-size="10">25%</text>
+        <text x="150" y="50" text-anchor="middle" fill="#7070a0" font-family="system-ui,sans-serif" font-size="10">50%</text>
+        <text x="220" y="50" text-anchor="middle" fill="#ffb830" font-family="system-ui,sans-serif" font-size="10">75%</text>
+        <text x="290" y="50" text-anchor="middle" fill="#7070a0" font-family="system-ui,sans-serif" font-size="10">100%</text>
+        <text x="113" y="29" text-anchor="middle" fill="#fff" font-family="system-ui,sans-serif" font-size="12" font-weight="600">75%</text>
+        <text x="255" y="29" text-anchor="middle" fill="#7070a0" font-family="system-ui,sans-serif" font-size="11">25%</text>
+      </svg>
+    </div>
 
     <p>
       <span class="key">Percent</span> means "per hundred": $p\% = \dfrac{p}{100}$.
@@ -397,6 +640,7 @@
       <div class="example-step"><span>discount $= 0.20 \times 85 = 17$</span><span class="why">find the discount amount</span></div>
       <div class="example-step"><span>price $= 85 - 17 = \$68$</span><span class="why">subtract discount from original</span></div>
     </div>
+
     <p class="toc-back"><a href="#toc">↑ Table of Contents</a></p>
   </section>
 
@@ -404,6 +648,54 @@
   <section id="exponents">
     <div class="chapter-num">Chapter 7</div>
     <h3>Exponents &amp; Roots</h3>
+
+    <p>
+      Exponents describe repeated multiplication — which is the mechanism of explosive growth.
+      Linear growth adds a fixed amount each step; exponential growth multiplies by a fixed
+      factor, and the difference becomes catastrophic at scale. A bacterial colony doubling
+      every hour, compound interest accumulating annually, the energy released in a nuclear
+      chain reaction — all are exponential processes. Roots undo exponents, which makes them
+      essential wherever you need to reverse a squaring: calculating distances, finding
+      standard deviations, and solving quadratic equations.
+    </p>
+
+    <div class="formula" style="display:flex;flex-direction:column;align-items:center;gap:0;padding-bottom:8px;">
+      <div class="label" style="align-self:flex-start;">Linear vs. exponential growth (base 2)</div>
+      <svg width="300" height="120" viewBox="0 0 300 120" style="display:block;">
+        <!-- Axes -->
+        <line x1="30" y1="100" x2="285" y2="100" stroke="#2e2e55" stroke-width="1.5"/>
+        <line x1="30" y1="100" x2="30" y2="10" stroke="#2e2e55" stroke-width="1.5"/>
+        <polygon points="285,100 276,96 276,104" fill="#2e2e55"/>
+        <polygon points="30,10 26,19 34,19" fill="#2e2e55"/>
+        <!-- Axis labels -->
+        <text x="290" y="104" fill="#7070a0" font-family="system-ui,sans-serif" font-size="10">n</text>
+        <text x="32" y="9" fill="#7070a0" font-family="system-ui,sans-serif" font-size="10">y</text>
+        <!-- n=0..7, x spacing = 36, map: x(n)=30+n*36, y=100-val*scale -->
+        <!-- Linear: 2n → [0,2,4,6,8,10,12,14] scale so 14→90px: scale=90/14≈6.4 -->
+        <!-- Exponential: 2^n → [1,2,4,8,16,32,64,128] scale so 128→90px: scale=90/128≈0.703 -->
+        <!-- Actually let's use n=0..5 so linear max=10, exp max=32, scale to 90px height -->
+        <!-- linear: 2n, n=0..5: [0,2,4,6,8,10], scale=90/10=9px per unit -->
+        <!-- exp: 2^n, n=0..5: [1,2,4,8,16,32], scale=90/32=2.8125px per unit -->
+        <!-- x spacing = 44 for n=0..5: x(n)=30+n*44 = [30,74,118,162,206,250] -->
+        <!-- Linear line (blue) -->
+        <polyline points="30,100 74,82 118,64 162,46 206,28 250,10" fill="none" stroke="#5c8aff" stroke-width="2"/>
+        <!-- Exp curve (orange) - approximate smooth curve through points -->
+        <!-- y_exp(n) = 100 - 2^n * 2.8125 → [97.2, 94.4, 88.9, 77.5, 55, 10] -->
+        <polyline points="30,97 74,94 118,89 162,78 206,55 250,10" fill="none" stroke="#ffb830" stroke-width="2"/>
+        <!-- Legend -->
+        <line x1="36" y1="112" x2="56" y2="112" stroke="#5c8aff" stroke-width="2"/>
+        <text x="60" y="116" fill="#5c8aff" font-family="system-ui,sans-serif" font-size="10">2n (linear)</text>
+        <line x1="140" y1="112" x2="160" y2="112" stroke="#ffb830" stroke-width="2"/>
+        <text x="164" y="116" fill="#ffb830" font-family="system-ui,sans-serif" font-size="10">2ⁿ (exponential)</text>
+        <!-- x-axis tick labels n=0..5 -->
+        <text x="30"  y="112" text-anchor="middle" fill="#7070a0" font-family="system-ui,sans-serif" font-size="9">0</text>
+        <text x="74"  y="112" text-anchor="middle" fill="#7070a0" font-family="system-ui,sans-serif" font-size="9">1</text>
+        <text x="118" y="112" text-anchor="middle" fill="#7070a0" font-family="system-ui,sans-serif" font-size="9">2</text>
+        <text x="162" y="112" text-anchor="middle" fill="#7070a0" font-family="system-ui,sans-serif" font-size="9">3</text>
+        <text x="206" y="112" text-anchor="middle" fill="#7070a0" font-family="system-ui,sans-serif" font-size="9">4</text>
+        <text x="250" y="112" text-anchor="middle" fill="#7070a0" font-family="system-ui,sans-serif" font-size="9">5</text>
+      </svg>
+    </div>
 
     <p>
       $a^n$ means $a$ multiplied by itself $n$ times. A <span class="key">negative
@@ -472,6 +764,7 @@
       <div class="example-step"><span>$= \dfrac{16}{4} \cdot x^{12-2} \cdot y^{-8-3} = 4x^{10}y^{-11}$</span><span class="why">quotient rule: subtract exponents; simplify coefficient</span></div>
       <div class="example-step"><span>$= \dfrac{4x^{10}}{y^{11}}$</span><span class="why">move negative exponent to denominator: $y^{-11} = \dfrac{1}{y^{11}}$</span></div>
     </div>
+
     <p class="toc-back"><a href="#toc">↑ Table of Contents</a></p>
   </section>
 
@@ -479,6 +772,46 @@
   <section id="numtheory">
     <div class="chapter-num">Chapter 8</div>
     <h3>Number Theory</h3>
+
+    <p>
+      Prime numbers look abstract until you learn that they are the mathematical foundation
+      of all modern secure communication. RSA encryption — which protects HTTPS, online
+      banking, and private messaging — relies on the fact that multiplying two large primes
+      together is easy, but factoring their product is computationally infeasible. Every time
+      you see a padlock in your browser, you are relying on a number theory result. GCF and
+      LCM are the practical tools that make fraction arithmetic efficient, and they reappear
+      whenever you need to synchronize two periodic processes — including signal sampling
+      rates and scheduling.
+    </p>
+
+    <div class="formula" style="display:flex;flex-direction:column;align-items:center;gap:0;padding-bottom:8px;">
+      <div class="label" style="align-self:flex-start;">Factor tree — 60 = 2² × 3 × 5</div>
+      <svg width="240" height="150" viewBox="0 0 240 150" style="display:block;">
+        <!-- Root -->
+        <text x="120" y="22" text-anchor="middle" fill="#ffb830" font-family="system-ui,sans-serif" font-size="15" font-weight="700">60</text>
+        <!-- Level 1 branches: 2 × 30 -->
+        <line x1="120" y1="25" x2="80" y2="55" stroke="#2e2e55" stroke-width="1.5"/>
+        <line x1="120" y1="25" x2="160" y2="55" stroke="#2e2e55" stroke-width="1.5"/>
+        <circle cx="80"  cy="60" r="14" fill="#1c1c35" stroke="#3ecf8e" stroke-width="1.5"/>
+        <text x="80"  y="65" text-anchor="middle" fill="#3ecf8e" font-family="system-ui,sans-serif" font-size="13" font-weight="700">2</text>
+        <text x="160" y="65" text-anchor="middle" fill="#ffb830" font-family="system-ui,sans-serif" font-size="13" font-weight="700">30</text>
+        <!-- Level 2: 30 → 2 × 15 -->
+        <line x1="160" y1="72" x2="130" y2="100" stroke="#2e2e55" stroke-width="1.5"/>
+        <line x1="160" y1="72" x2="190" y2="100" stroke="#2e2e55" stroke-width="1.5"/>
+        <circle cx="130" cy="105" r="14" fill="#1c1c35" stroke="#3ecf8e" stroke-width="1.5"/>
+        <text x="130" y="110" text-anchor="middle" fill="#3ecf8e" font-family="system-ui,sans-serif" font-size="13" font-weight="700">2</text>
+        <text x="190" y="110" text-anchor="middle" fill="#ffb830" font-family="system-ui,sans-serif" font-size="13" font-weight="700">15</text>
+        <!-- Level 3: 15 → 3 × 5 -->
+        <line x1="190" y1="117" x2="165" y2="138" stroke="#2e2e55" stroke-width="1.5"/>
+        <line x1="190" y1="117" x2="215" y2="138" stroke="#2e2e55" stroke-width="1.5"/>
+        <circle cx="165" cy="143" r="12" fill="#1c1c35" stroke="#3ecf8e" stroke-width="1.5"/>
+        <circle cx="215" cy="143" r="12" fill="#1c1c35" stroke="#3ecf8e" stroke-width="1.5"/>
+        <text x="165" y="148" text-anchor="middle" fill="#3ecf8e" font-family="system-ui,sans-serif" font-size="13" font-weight="700">3</text>
+        <text x="215" y="148" text-anchor="middle" fill="#3ecf8e" font-family="system-ui,sans-serif" font-size="13" font-weight="700">5</text>
+        <!-- Result label -->
+        <text x="10" y="148" fill="#7070a0" font-family="system-ui,sans-serif" font-size="10">primes circled</text>
+      </svg>
+    </div>
 
     <p>
       A <span class="key">prime number</span> has exactly two factors: 1 and itself.
@@ -511,6 +844,7 @@
       <div class="example-step"><span>$\text{GCF} = 2^2 \times 3 = 12$</span><span class="why">lowest powers of common primes</span></div>
       <div class="example-step"><span>$\text{LCM} = 2^3 \times 3^2 = 72$</span><span class="why">highest powers of all primes</span></div>
     </div>
+
     <p class="toc-back"><a href="#toc">↑ Table of Contents</a></p>
   </section>
 
@@ -518,6 +852,41 @@
   <section id="scientific">
     <div class="chapter-num">Chapter 9</div>
     <h3>Scientific Notation</h3>
+
+    <p>
+      The universe operates at scales that destroy ordinary intuition. A hydrogen atom is
+      $10^{-10}$ meters across; the observable universe is $10^{26}$ meters across — a range
+      of 36 orders of magnitude. The mass of an electron is $9.1 \times 10^{-31}$ kg; the
+      mass of the sun is $2 \times 10^{30}$ kg. Without scientific notation, writing and
+      comparing these numbers would require counting strings of zeros. Scientific notation
+      also makes immediately visible when two quantities differ by an order of magnitude —
+      a conceptually critical distinction that raw digits bury in length.
+    </p>
+
+    <div class="formula" style="display:flex;flex-direction:column;align-items:center;gap:0;padding-bottom:8px;">
+      <div class="label" style="align-self:flex-start;">Diagram — shifting the decimal point</div>
+      <svg width="320" height="80" viewBox="0 0 320 80" style="display:block;">
+        <!-- Large number conversion -->
+        <text x="10" y="24" fill="#7070a0" font-family="system-ui,sans-serif" font-size="12">Large:</text>
+        <text x="60" y="24" fill="#ffb830" font-family="system-ui,sans-serif" font-size="14" font-weight="600">4 5 0 0 0</text>
+        <!-- decimal after last digit implied -->
+        <text x="150" y="24" fill="#e0e0f0" font-family="system-ui,sans-serif" font-size="14">.</text>
+        <!-- arrows showing decimal moving 4 places left -->
+        <path d="M 148,30 Q 120,44 82,30" fill="none" stroke="#5c8aff" stroke-width="1.5" marker-end="url(#sarr)"/>
+        <text x="112" y="48" text-anchor="middle" fill="#5c8aff" font-family="system-ui,sans-serif" font-size="10">4 places left → ×10⁴</text>
+        <text x="200" y="24" fill="#7070a0" font-family="system-ui,sans-serif" font-size="12">= 4.5 × 10⁴</text>
+        <!-- Small number conversion -->
+        <text x="10" y="72" fill="#7070a0" font-family="system-ui,sans-serif" font-size="12">Small:</text>
+        <text x="60" y="72" fill="#3ecf8e" font-family="system-ui,sans-serif" font-size="14" font-weight="600">0 . 0 0 0 5 2</text>
+        <path d="M 72,62 Q 108,48 132,62" fill="none" stroke="#3ecf8e" stroke-width="1.5" marker-end="url(#sarr2)"/>
+        <text x="102" y="48" text-anchor="middle" fill="#3ecf8e" font-family="system-ui,sans-serif" font-size="10">4 places right → ×10⁻⁴</text>
+        <text x="200" y="72" fill="#7070a0" font-family="system-ui,sans-serif" font-size="12">= 5.2 × 10⁻⁴</text>
+        <defs>
+          <marker id="sarr"  markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#5c8aff"/></marker>
+          <marker id="sarr2" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#3ecf8e"/></marker>
+        </defs>
+      </svg>
+    </div>
 
     <p>
       <span class="key">Scientific notation</span> writes a number as $a \times 10^n$ where
@@ -552,6 +921,7 @@
       <div class="label">Worked example — write $0.00052$ in scientific notation</div>
       <div class="example-step"><span>$= 5.2 \times 10^{-4}$</span><span class="why">move decimal 4 places right; exponent $= -4$</span></div>
     </div>
+
     <p class="toc-back"><a href="#toc">↑ Table of Contents</a></p>
   </section>
 
@@ -559,6 +929,45 @@
   <section id="factorials">
     <div class="chapter-num">Chapter 10</div>
     <h3>Factorials &amp; Counting</h3>
+
+    <p>
+      The number of ways to arrange or choose things grows faster than most people expect.
+      A deck of 52 cards can be arranged in $52! \approx 8 \times 10^{67}$ orders — more
+      than the number of atoms in the observable universe. This combinatorial explosion is
+      why so many practical problems require clever algorithms rather than brute force: the
+      number of possible routes for a delivery truck visiting 20 cities is $20! \approx 2.4
+      \times 10^{18}$, so checking every route is impossible. Counting principles tell you
+      how large a search space is before you commit to searching it.
+    </p>
+
+    <div class="formula" style="display:flex;flex-direction:column;align-items:center;gap:0;padding-bottom:8px;">
+      <div class="label" style="align-self:flex-start;">Permutations of 3 items (A, B, C) — 3! = 6 arrangements</div>
+      <svg width="320" height="100" viewBox="0 0 320 100" style="display:block;">
+        <!-- Root -->
+        <circle cx="160" cy="14" r="12" fill="#1c1c35" stroke="#5c8aff" stroke-width="1.5"/>
+        <text x="160" y="19" text-anchor="middle" fill="#5c8aff" font-family="system-ui,sans-serif" font-size="11" font-weight="700">3</text>
+        <!-- First choice: A, B, C branches -->
+        <line x1="153" y1="24" x2="54"  y2="46" stroke="#2e2e55" stroke-width="1"/>
+        <line x1="160" y1="26" x2="160" y2="46" stroke="#2e2e55" stroke-width="1"/>
+        <line x1="167" y1="24" x2="266" y2="46" stroke="#2e2e55" stroke-width="1"/>
+        <text x="54"  y="58" text-anchor="middle" fill="#ffb830" font-family="system-ui,sans-serif" font-size="12" font-weight="600">A</text>
+        <text x="160" y="58" text-anchor="middle" fill="#ffb830" font-family="system-ui,sans-serif" font-size="12" font-weight="600">B</text>
+        <text x="266" y="58" text-anchor="middle" fill="#ffb830" font-family="system-ui,sans-serif" font-size="12" font-weight="600">C</text>
+        <!-- Second choice: 2 remaining for each first choice -->
+        <line x1="48"  y1="64" x2="20"  y2="82" stroke="#2e2e55" stroke-width="1"/>
+        <line x1="60"  y1="64" x2="88"  y2="82" stroke="#2e2e55" stroke-width="1"/>
+        <line x1="154" y1="64" x2="132" y2="82" stroke="#2e2e55" stroke-width="1"/>
+        <line x1="166" y1="64" x2="188" y2="82" stroke="#2e2e55" stroke-width="1"/>
+        <line x1="260" y1="64" x2="242" y2="82" stroke="#2e2e55" stroke-width="1"/>
+        <line x1="272" y1="64" x2="300" y2="82" stroke="#2e2e55" stroke-width="1"/>
+        <text x="20"  y="96" text-anchor="middle" fill="#3ecf8e" font-family="system-ui,sans-serif" font-size="10">ABC</text>
+        <text x="88"  y="96" text-anchor="middle" fill="#3ecf8e" font-family="system-ui,sans-serif" font-size="10">ACB</text>
+        <text x="132" y="96" text-anchor="middle" fill="#3ecf8e" font-family="system-ui,sans-serif" font-size="10">BAC</text>
+        <text x="188" y="96" text-anchor="middle" fill="#3ecf8e" font-family="system-ui,sans-serif" font-size="10">BCA</text>
+        <text x="242" y="96" text-anchor="middle" fill="#3ecf8e" font-family="system-ui,sans-serif" font-size="10">CAB</text>
+        <text x="300" y="96" text-anchor="middle" fill="#3ecf8e" font-family="system-ui,sans-serif" font-size="10">CBA</text>
+      </svg>
+    </div>
 
     <p>
       The <span class="key">factorial</span> $n!$ is the product of all positive integers up
@@ -593,6 +1002,7 @@
       <div class="label">Worked example — $4! + 3!$</div>
       <div class="example-step"><span>$24 + 6 = 30$</span><span class="why">$4!=24$, $3!=6$; add</span></div>
     </div>
+
     <p class="toc-back"><a href="#toc">↑ Table of Contents</a></p>
   </section>
 
@@ -601,5 +1011,6 @@
 </div>
 <script src="textbook-notes.js"></script>
 <script src="textbook-nav.js"></script>
+<script src="theme-toggle.js"></script>
 </body>
 </html>

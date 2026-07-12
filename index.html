@@ -836,7 +836,23 @@
     }
     .sigma-nav-btn:hover:not(:disabled) { border-color: var(--accent); color: var(--accent); }
     .sigma-nav-btn:disabled { opacity: 0.35; cursor: default; }
-  </style>
+  
+    [data-theme="light"] {
+      --bg:      #f5f0e4;
+      --surface: #faf7ee;
+      --panel:   #ede8d8;
+      --border:  #ccc6b4;
+      --text:    #18140c;
+      --muted:   #3e3c60;
+      --accent:  #2858c8;
+      --correct: #115238;
+      --hint:    #6e4a00;
+      --wrong:   #cc2040;
+    }
+    [data-theme="light"] section h3 { color: #18140c; }
+    [data-theme="light"] .chapter-num { color: #3e3c60; }
+</style>
+  <script>(function(){var t=localStorage.getItem('math-theme')||((window.matchMedia&&window.matchMedia('(prefers-color-scheme:light)').matches)?'light':'dark');document.documentElement.setAttribute('data-theme',t);}());</script>
 </head>
 <body>
 
@@ -2056,5 +2072,6 @@ document.addEventListener('keydown', e => {
   await Promise.all([preloadTopicCache(), loadConcepts()]);
 })();
 </script>
+<script src="theme-toggle.js"></script>
 </body>
 </html>

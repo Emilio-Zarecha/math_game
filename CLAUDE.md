@@ -155,19 +155,95 @@ assert body.count('</section>') == body.count('toc-back'), "sections/links misma
 | `.example` | Green-bordered worked example |
 | `.neural` | Purple-bordered neural architecture connection callout |
 
-**The `.neural` callout** (added in Linear Algebra textbook) must appear in every chapter of every new textbook. It shows how the chapter's math connects to neural networks, LLMs, or World Models.
+**The `.neural` callout** appears **only in Linear Algebra** and any advanced topics that branch from it (e.g., future advanced linear algebra, numerical methods). All other textbooks — Arithmetic, Algebra, Geometry, Trigonometry, Statistics, Calculus — must **not** include `.neural` boxes or neural-network-specific content. General technology or computing references (binary, floating-point, cryptography) are acceptable in motivation paragraphs for those textbooks; explicit AI/ML/neural network framing is not.
+
+**Motivation paragraph** — every chapter must open with a paragraph explaining *why* the concept matters before any definitions or formulas appear. The paragraph should answer at least one of: what problem does this solve, what would break without it, or how does it connect to something the reader already cares about. Real-world anchors (navigation, signal processing, robotics, ML) are preferred over abstract justification. This paragraph goes after `<h3>` and before the first technical `<p>`. (Exception: Linear Algebra uses `<h2>` for chapter titles and `<h3>` for sub-sections — insert after `<h2>` in that file.)
+
+**SVG diagram** — every chapter must include exactly one diagram, placed in a `.formula` div immediately after the motivation paragraph:
+```html
+<div class="formula" style="display:flex;flex-direction:column;align-items:center;gap:0;padding-bottom:8px;">
+  <div class="label" style="align-self:flex-start;">Diagram — [description]</div>
+  <svg width="260" height="N" viewBox="0 0 260 N" aria-label="[full description for screen readers]">
+    ...
+  </svg>
+</div>
+```
+SVG rules:
+- All coordinate points must fall within the declared `viewBox`; verify with a script after writing (see Lessons)
+- Polygons labeled as "squares" must have all four sides equal — compute distances explicitly before committing
+- Use the project palette: `#5c8aff` blue, `#3ecf8e` green, `#ffb830` amber, `#ff6b6b` red, `#7070a0` muted
+- Always include `aria-label` on the `<svg>` element
 
 **Required structure per textbook:**
 1. `<a class="back-link" href="index.html">← Back to Math Game</a>`
 2. `<h1>`, `.subtitle`, optional `.tagline`
 3. `<nav class="toc">` with ordered list linking to `#ch1` ... `#chN`
 4. One `<section class="chapter" id="chN">` per chapter
-5. `.attribution` footer
-6. Both shared scripts at the bottom of `<body>`:
+5. Appendix section (after the last chapter, before any footer):
+   ```html
+   <section class="chapter" id="appendix-resources">
+     <div class="chapter-num">Appendix</div>
+     <h3>Interactive Resources</h3>
+     <p>...</p>
+     <ul>
+       <li><a href="URL" target="_blank" rel="noopener">Name</a> — description</li>
+     </ul>
+     <p class="toc-back"><a href="#toc">↑ Table of Contents</a></p>
+   </section>
+   ```
+6. `.attribution` footer
+7. All three shared scripts at the bottom of `<body>`:
    ```html
    <script src="textbook-notes.js"></script>
    <script src="textbook-nav.js"></script>
+   <script src="theme-toggle.js"></script>
    ```
+
+**Interactive Resources appendix** — each textbook's appendix links to free, interactive tools that let readers explore the same concepts dynamically. Keep 2–4 links; prefer tools that closely match the textbook's specific topic arc rather than generic math sites.
+
+---
+
+## Light / Dark Theme System
+
+All HTML pages (textbooks, game, manual) share a single theme toggle.
+
+**Files involved:**
+- `theme-toggle.js` — injects the toggle button, light-theme CSS override, and localStorage persistence
+- Anti-FOUC inline script in every `<head>` — applies saved theme before first paint to prevent flash
+
+**Adding theme support to a new page** — add both of these:
+
+1. Anti-FOUC script (inside `<head>`, after `<style>`):
+```html
+<script>(function(){var t=localStorage.getItem('math-theme')||((window.matchMedia&&window.matchMedia('(prefers-color-scheme:light)').matches)?'light':'dark');document.documentElement.setAttribute('data-theme',t);}());</script>
+```
+
+2. Light-theme CSS override (inside `<style>`, at the end):
+```css
+[data-theme="light"] {
+  --bg:      #f5f0e4;
+  --surface: #faf7ee;
+  --panel:   #ede8d8;
+  --border:  #ccc6b4;
+  --text:    #18140c;
+  --muted:   #3e3c60;
+  --accent:  #2858c8;
+  --correct: #115238;
+  --hint:    #6e4a00;
+  --wrong:   #cc2040;
+}
+[data-theme="light"] section h3 { color: #18140c; }
+[data-theme="light"] .chapter-num { color: #3e3c60; }
+```
+
+3. Script tag at the bottom of `<body>` (after other shared scripts):
+```html
+<script src="theme-toggle.js"></script>
+```
+
+**Button placement:** `theme-toggle.js` looks for a `<header>` element and appends the button there (textbooks). If none is found (game, manual), it falls back to a fixed position at top-right.
+
+**Storage key:** `localStorage` key is `math-theme`, values `'light'` or `'dark'`.
 
 ---
 
@@ -218,3 +294,14 @@ Correct drops append a `.drop-stamp` badge (green, positioned above the zone) re
 - **Push after each major feature**: User expects a `git push` after completing a textbook, puzzle file, or significant game enhancement.
 - **Never use `href="#"` for non-navigation actions**: Use `<button type="button">` instead. `<a href="#">` pollutes the browser status bar with a `#` URL and looks like a navigation link to the user.
 - **Wire existing elements, don't duplicate them**: When a shared JS script needs to enhance links already in the HTML, add event listeners to those elements — never append new elements with the same visible text.
+- **SVG coordinate verification**: After writing SVG diagrams, audit with:
+  ```python
+  import re
+  with open('textbook_TOPIC.html') as f: src = f.read()
+  for m in re.finditer(r'viewBox="0 0 (\d+) (\d+)"[^>]*>(.*?)</svg>', src, re.S):
+      W, H = int(m.group(1)), int(m.group(2))
+      for pt in re.findall(r'[\d.]+,[\d.]+', m.group(3)):
+          x, y = map(float, pt.split(','))
+          if x > W+5 or y > H+5: print(f'OOB ({x},{y}) in {W}×{H}')
+  ```
+  Past bugs caught this way: Pythagorean theorem polygons were rectangles (not squares), a discriminant Δ=0 parabola was a W-shape (two roots instead of one), and a critical-points curve clipped 14px below its viewBox.

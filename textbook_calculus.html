@@ -55,7 +55,23 @@
     .toc-back a { color: var(--muted); font-size: 0.82rem; text-decoration: none;
                   letter-spacing: 0.03em; }
     .toc-back a:hover { color: var(--accent); }
-  </style>
+  
+    [data-theme="light"] {
+      --bg:      #f5f0e4;
+      --surface: #faf7ee;
+      --panel:   #ede8d8;
+      --border:  #ccc6b4;
+      --text:    #18140c;
+      --muted:   #3e3c60;
+      --accent:  #2858c8;
+      --correct: #115238;
+      --hint:    #6e4a00;
+      --wrong:   #cc2040;
+    }
+    [data-theme="light"] section h3 { color: #18140c; }
+    [data-theme="light"] .chapter-num { color: #3e3c60; }
+</style>
+  <script>(function(){var t=localStorage.getItem('math-theme')||((window.matchMedia&&window.matchMedia('(prefers-color-scheme:light)').matches)?'light':'dark');document.documentElement.setAttribute('data-theme',t);}());</script>
 </head>
 <body>
 <div class="page">
@@ -72,25 +88,68 @@
   <nav id="toc">
     <h2>Contents</h2>
     <ol>
-      <li><a href="#limits">Limits &amp; Continuity</a></li>
-      <li><a href="#defn">The Derivative — Definition</a></li>
-      <li><a href="#rules">Basic Differentiation Rules</a></li>
-      <li><a href="#chain">Product, Quotient &amp; Chain Rules</a></li>
-      <li><a href="#implicit">Implicit Differentiation</a></li>
-      <li><a href="#related">Related Rates</a></li>
-      <li><a href="#apps">Applications of Derivatives</a></li>
-      <li><a href="#integrals">The Definite Integral</a></li>
-      <li><a href="#ftc">Fundamental Theorem of Calculus</a></li>
-      <li><a href="#techniques">Integration Techniques</a></li>
-      <li><a href="#appint">Applications of Integration</a></li>
-      <li><a href="#series">Sequences, Series &amp; Sigma Notation</a></li>
+      <li><a href="#ch1">Limits &amp; Continuity</a></li>
+      <li><a href="#ch2">The Derivative — Definition</a></li>
+      <li><a href="#ch3">Basic Differentiation Rules</a></li>
+      <li><a href="#ch4">Product, Quotient &amp; Chain Rules</a></li>
+      <li><a href="#ch5">Implicit Differentiation</a></li>
+      <li><a href="#ch6">Related Rates</a></li>
+      <li><a href="#ch7">Applications of Derivatives</a></li>
+      <li><a href="#ch8">The Definite Integral</a></li>
+      <li><a href="#ch9">Fundamental Theorem of Calculus</a></li>
+      <li><a href="#ch10">Integration Techniques</a></li>
+      <li><a href="#ch11">Applications of Integration</a></li>
+      <li><a href="#ch12">Sequences, Series &amp; Sigma Notation</a></li>
     </ol>
   </nav>
 
   <!-- ── 1. Limits & Continuity ─────────────────────────────────────── -->
-  <section id="limits">
+  <section id="ch1">
     <div class="chapter-num">Chapter 1</div>
     <h3>Limits &amp; Continuity</h3>
+
+    <p>
+      A limit answers the question: what value does a function <em>approach</em> as the
+      input gets arbitrarily close to some point? This idea is the foundation of all of
+      calculus — without it, derivatives and integrals have no rigorous meaning. In
+      engineering, limits describe what happens to a signal as frequency goes to infinity.
+      In physics, they capture what a particle's position approaches as time steps shrink
+      to zero. Continuity is the minimum requirement for a function to be physically
+      reasonable: no teleportation, no sudden jumps.
+    </p>
+    <div class="formula" style="display:flex;flex-direction:column;align-items:center;gap:0;padding-bottom:8px;">
+      <div class="label" style="align-self:flex-start;">Diagram — secant lines approach tangent as h → 0</div>
+      <svg width="260" height="148" viewBox="0 0 260 148" aria-label="Curve with secant lines converging to the tangent line as the second point approaches the first">
+        <line x1="18" y1="118" x2="242" y2="118" stroke="#2e2e55" stroke-width="1"/>
+        <polygon points="239,114 247,118 239,122" fill="#7070a0"/>
+        <line x1="48" y1="140" x2="48" y2="14" stroke="#2e2e55" stroke-width="1"/>
+        <polygon points="44,16 48,8 52,16" fill="#7070a0"/>
+        <!-- curve: y = -(x-3)^2 + 4, origin (48,118), scale 30px/unit -->
+        <!-- points: x=0→(48,118); x=1→(78,88); x=2→(108,88)... let me use parabola opening down -->
+        <!-- f(x) = -(x-4)^2/2 + 5; origin (48,118) scale 22px/unit -->
+        <!-- x=0: y=-(−4)^2/2+5=−8+5=−3→y_svg=118+3*22=184 off screen, let me reposition -->
+        <!-- Use f(x)=−x^2/8+3x/2; at x=0:0; x=4:−2+6=4; x=8:−8+12=4... -->
+        <!-- Simpler: f(x)=(x(8-x))/10, origin(48,90), scale 22px/unit -->
+        <!-- f(0)=0; f(2)=1.2; f(4)=1.6; f(6)=1.2; f(8)=0 -->
+        <!-- origin at (48,90), scale 22px/unit, up = negative y -->
+        <!-- x=0→(48,90); x=2→(92,63.6); x=4→(136,54.8); x=6→(180,63.6); x=8→(224,90) -->
+        <polyline points="48,90 70,75 92,63 114,56 136,54 158,56 180,63 202,75 224,90"
+          fill="none" stroke="#5c8aff" stroke-width="2" stroke-linejoin="round"/>
+        <!-- Point P at x=2: (92,63) -->
+        <circle cx="92" cy="63" r="4" fill="#ffb830"/>
+        <text x="97" y="60" fill="#ffb830" font-size="9" font-family="system-ui">P</text>
+        <!-- Secant 1: P to (180,63) — wide -->
+        <line x1="50" y1="84" x2="225" y2="60" stroke="#7070a0" stroke-width="1" stroke-dasharray="4,3" opacity="0.6"/>
+        <!-- Secant 2: P to (136,54) — medium -->
+        <line x1="50" y1="72" x2="200" y2="44" stroke="#7070a0" stroke-width="1" stroke-dasharray="3,2" opacity="0.5"/>
+        <!-- Tangent at P: slope = f'(2) -->
+        <line x1="30" y1="76" x2="160" y2="44" stroke="#3ecf8e" stroke-width="2"/>
+        <text x="163" y="40" fill="#3ecf8e" font-size="9" font-family="system-ui">tangent</text>
+        <text x="185" y="80" fill="#7070a0" font-size="9" font-family="system-ui">secants → tangent</text>
+        <text x="185" y="92" fill="#7070a0" font-size="9" font-family="system-ui">as h → 0</text>
+      </svg>
+    </div>
+
 
     <p>
       <strong>What a limit is.</strong> The <span class="key">limit</span>
@@ -157,9 +216,49 @@
   </section>
 
   <!-- ── 2. The Derivative — Definition ─────────────────────────────── -->
-  <section id="defn">
+  <section id="ch2">
     <div class="chapter-num">Chapter 2</div>
     <h3>The Derivative — Definition</h3>
+
+    <p>
+      The derivative is the instantaneous rate of change — the slope of the curve at a
+      single point. Speed is the derivative of position; current is the derivative of
+      charge; marginal cost is the derivative of total cost. Every optimization problem
+      (maximizing profit, minimizing drag, finding the fastest route) requires finding
+      where the derivative equals zero. Without the derivative, calculus cannot analyze
+      anything that changes.
+    </p>
+    <div class="formula" style="display:flex;flex-direction:column;align-items:center;gap:0;padding-bottom:8px;">
+      <div class="label" style="align-self:flex-start;">Diagram — tangent line at a point defines the derivative</div>
+      <svg width="260" height="148" viewBox="0 0 260 148" aria-label="Parabola with tangent line drawn at a point, illustrating the derivative as the slope of the tangent">
+        <line x1="18" y1="120" x2="242" y2="120" stroke="#2e2e55" stroke-width="1"/>
+        <polygon points="239,116 247,120 239,124" fill="#7070a0"/>
+        <text x="243" y="132" fill="#7070a0" font-size="9" font-family="system-ui">x</text>
+        <line x1="130" y1="142" x2="130" y2="12" stroke="#2e2e55" stroke-width="1"/>
+        <polygon points="126,14 130,6 134,14" fill="#7070a0"/>
+        <text x="118" y="14" fill="#7070a0" font-size="9" font-family="system-ui">y</text>
+        <!-- f(x)=x^2/2; origin(130,120), scale=22px/unit -->
+        <!-- x=-3→(64,21); x=-2→(86,76); x=-1→(108,109); x=0→(130,120); x=1→(152,109); x=2→(174,76); x=3→(196,21) -->
+        <polyline points="64,21 86,76 108,109 130,120 152,109 174,76 196,21"
+          fill="none" stroke="#5c8aff" stroke-width="2" stroke-linejoin="round"/>
+        <!-- Point at x=2: (174,76) -->
+        <circle cx="174" cy="76" r="5" fill="#ffb830"/>
+        <text x="180" y="72" fill="#ffb830" font-size="9" font-family="system-ui">f′(a) = slope</text>
+        <!-- Tangent at x=2: slope=2; y-y0=2(x-2); y=2x-2; in svg: y_svg=120-scale*(2x-2) -->
+        <!-- x=0: y_svg=120-22*(-2)=164; x=4: y_svg=120-22*6=−12 (clip at 12); use x=0.5..4 -->
+        <!-- Let's use x_svg values: x_svg=130+22*x_val; y_svg=120-22*(2*x_val-2) -->
+        <!-- x_val=0: x_svg=130, y_svg=164; x_val=4: x_svg=218, y_svg=-12 -->
+        <!-- clip: when y_svg=12, 120-22*(2x-2)=12 → 22*(2x-2)=108 → 2x-2=4.9 → x=3.45, x_svg=130+76=206 -->
+        <line x1="130" y1="164" x2="206" y2="12" stroke="#3ecf8e" stroke-width="1.8"/>
+        <!-- Slope triangle -->
+        <line x1="174" y1="76" x2="196" y2="76" stroke="#7070a0" stroke-width="1" stroke-dasharray="2,2"/>
+        <line x1="196" y1="76" x2="196" y2="32" stroke="#7070a0" stroke-width="1" stroke-dasharray="2,2"/>
+        <text x="198" y="62" fill="#7070a0" font-size="8" font-family="system-ui">rise</text>
+        <text x="178" y="88" fill="#7070a0" font-size="8" font-family="system-ui">run</text>
+        <text x="60" y="40" fill="#5c8aff" font-size="10" font-family="system-ui">y = x²/2</text>
+      </svg>
+    </div>
+
 
     <p>
       <strong>What it measures.</strong> The <span class="key">derivative</span> of $f$ at $x$
@@ -217,9 +316,42 @@
   </section>
 
   <!-- ── 3. Basic Differentiation Rules ────────────────────────────── -->
-  <section id="rules">
+  <section id="ch3">
     <div class="chapter-num">Chapter 3</div>
     <h3>Basic Differentiation Rules</h3>
+
+    <p>
+      Computing a derivative from the limit definition every time would make calculus
+      unusable in practice. The differentiation rules — power rule, sum rule, constant
+      multiple — turn that limit process into a mechanical procedure. With them, you can
+      differentiate any polynomial in seconds. Every physics simulation, every control
+      system, every financial model uses these rules thousands of times per calculation
+      without thinking about the limit definition.
+    </p>
+    <div class="formula" style="display:flex;flex-direction:column;align-items:center;gap:0;padding-bottom:8px;">
+      <div class="label" style="align-self:flex-start;">Diagram — f(x) and f′(x) on the same axes</div>
+      <svg width="260" height="148" viewBox="0 0 260 148" aria-label="Cubic function and its derivative parabola plotted on the same axes">
+        <line x1="18" y1="88" x2="242" y2="88" stroke="#2e2e55" stroke-width="1"/>
+        <polygon points="239,84 247,88 239,92" fill="#7070a0"/>
+        <line x1="130" y1="142" x2="130" y2="12" stroke="#2e2e55" stroke-width="1"/>
+        <polygon points="126,14 130,6 134,14" fill="#7070a0"/>
+        <!-- f(x)=x^3/30; scale 28px/unit; origin(130,88) -->
+        <!-- x=-3→(46,115.4); x=-2→(74,96.1); x=-1→(102,89.9); x=0→(130,88); x=1→(158,86.1); x=2→(186,82.7); x=3→(214,79.4) -->
+        <!-- That's too flat. Use f(x)=x^3/12 -->
+        <!-- x=-3: -27/12=-2.25→y_svg=88+63=151; x=-2: -8/12=-0.67→y_svg=88+18.6=106.6; x=-1: -1/12→y_svg=88+2.3=90.3; x=0→88; x=1→86; x=2→y_svg=88-18.6=69.4; x=3→y_svg=88-63=25 -->
+        <polyline points="46,151 74,107 102,90 130,88 158,70 186,51 214,25"
+          fill="none" stroke="#5c8aff" stroke-width="2" stroke-linejoin="round"/>
+        <text x="218" y="22" fill="#5c8aff" font-size="9" font-family="system-ui">f(x)=x³/12</text>
+        <!-- f'(x)=3x^2/12=x^2/4; scale 28px/unit -->
+        <!-- x=-3: 9/4=2.25→y_svg=88-63=25; x=-2: 4/4=1→y_svg=88-28=60; x=-1: 1/4=0.25→y_svg=88-7=81; x=0→88; x=1→81; x=2→60; x=3→25 -->
+        <polyline points="46,25 74,60 102,81 130,88 158,81 186,60 214,25"
+          fill="none" stroke="#ffb830" stroke-width="2" stroke-linejoin="round"/>
+        <text x="218" y="70" fill="#ffb830" font-size="9" font-family="system-ui">f′(x)=x²/4</text>
+        <text x="30" y="104" fill="#7070a0" font-size="8.5" font-family="system-ui">f′ = 0 at min</text>
+        <circle cx="130" cy="88" r="4" fill="#3ecf8e"/>
+      </svg>
+    </div>
+
 
     <p>
       The limit definition works, but computing it from scratch every time would be tedious.
@@ -416,9 +548,45 @@
   </section>
 
   <!-- ── 4. Product, Quotient & Chain Rules ─────────────────────────── -->
-  <section id="chain">
+  <section id="ch4">
     <div class="chapter-num">Chapter 4</div>
     <h3>Product, Quotient &amp; Chain Rules</h3>
+
+    <p>
+      Real functions are built by combining simpler ones — multiplied, divided, or composed.
+      The product rule handles $f(x) \cdot g(x)$; the quotient rule handles $f(x)/g(x)$;
+      the chain rule handles $f(g(x))$. Without the chain rule, you could not differentiate
+      $\sin(x^2)$ or $e^{-x^2}$ — but those are exactly the forms that appear in signal
+      processing, the Gaussian distribution, and wave equations. Together these three rules
+      unlock differentiation of virtually every function you will encounter.
+    </p>
+    <div class="formula" style="display:flex;flex-direction:column;align-items:center;gap:0;padding-bottom:8px;">
+      <div class="label" style="align-self:flex-start;">Diagram — chain rule as function composition f∘g</div>
+      <svg width="260" height="80" viewBox="0 0 260 80" aria-label="Chain rule illustrated as two function machines in series, input x goes through g then f to produce output">
+        <!-- Machine 1: g -->
+        <rect x="10" y="22" width="70" height="36" rx="6" fill="rgba(92,138,255,0.12)" stroke="#5c8aff" stroke-width="1.5"/>
+        <text x="45" y="38" text-anchor="middle" fill="#5c8aff" font-size="13" font-family="system-ui" font-weight="700">g(x)</text>
+        <text x="45" y="53" text-anchor="middle" fill="#7070a0" font-size="9" font-family="system-ui">inner</text>
+        <!-- Machine 2: f -->
+        <rect x="148" y="22" width="70" height="36" rx="6" fill="rgba(255,184,48,0.12)" stroke="#ffb830" stroke-width="1.5"/>
+        <text x="183" y="38" text-anchor="middle" fill="#ffb830" font-size="13" font-family="system-ui" font-weight="700">f(u)</text>
+        <text x="183" y="53" text-anchor="middle" fill="#7070a0" font-size="9" font-family="system-ui">outer</text>
+        <!-- Input arrow -->
+        <line x1="0" y1="40" x2="10" y2="40" stroke="#7070a0" stroke-width="1.5"/>
+        <text x="0" y="36" fill="#3ecf8e" font-size="11" font-family="system-ui" font-weight="600">x</text>
+        <!-- Middle arrow: g(x) = u -->
+        <line x1="80" y1="40" x2="148" y2="40" stroke="#7070a0" stroke-width="1.5"/>
+        <polygon points="144,36 152,40 144,44" fill="#7070a0"/>
+        <text x="114" y="35" text-anchor="middle" fill="#7070a0" font-size="9" font-family="system-ui">u=g(x)</text>
+        <!-- Output arrow -->
+        <line x1="218" y1="40" x2="252" y2="40" stroke="#7070a0" stroke-width="1.5"/>
+        <polygon points="248,36 256,40 248,44" fill="#7070a0"/>
+        <text x="252" y="34" fill="#3ecf8e" font-size="9" font-family="system-ui">f(g(x))</text>
+        <!-- Chain rule formula -->
+        <text x="130" y="72" text-anchor="middle" fill="#ff6b6b" font-size="9.5" font-family="system-ui">(f∘g)′ = f′(g(x)) · g′(x)</text>
+      </svg>
+    </div>
+
 
     <p>
       The basic power, sum, and constant rules handle simple expressions, but most real-world
@@ -615,9 +783,52 @@
   </section>
 
   <!-- ── 5. Implicit Differentiation ───────────────────────────────── -->
-  <section id="implicit">
+  <section id="ch5">
     <div class="chapter-num">Chapter 5</div>
     <h3>Implicit Differentiation</h3>
+
+    <p>
+      Not every curve can be written as $y = f(x)$. A circle like $x^2 + y^2 = 25$ gives
+      two values of $y$ for most $x$; a folium or a lemniscate has even more complex
+      branching. Implicit differentiation lets you find the slope at any point on such
+      curves without solving for $y$ explicitly — which is often impossible. In economics,
+      budget constraints and production functions are typically given implicitly, and
+      implicit differentiation gives marginal rates of substitution without needing an
+      explicit solution.
+    </p>
+    <div class="formula" style="display:flex;flex-direction:column;align-items:center;gap:0;padding-bottom:8px;">
+      <div class="label" style="align-self:flex-start;">Diagram — tangent to a circle (implicit curve x²+y²=r²)</div>
+      <svg width="260" height="170" viewBox="0 0 260 170" aria-label="Circle x squared plus y squared equals 625 with tangent line drawn at the point (3,4) scaled">
+        <line x1="18" y1="88" x2="242" y2="88" stroke="#2e2e55" stroke-width="1"/>
+        <polygon points="239,84 247,88 239,92" fill="#7070a0"/>
+        <line x1="130" y1="162" x2="130" y2="14" stroke="#2e2e55" stroke-width="1"/>
+        <polygon points="126,16 130,8 134,16" fill="#7070a0"/>
+        <!-- Circle r=5, scale 16px/unit, origin (130,88) -->
+        <circle cx="130" cy="88" r="80" fill="none" stroke="#5c8aff" stroke-width="2"/>
+        <text x="18" y="85" fill="#5c8aff" font-size="9" font-family="system-ui">x²+y²=25</text>
+        <!-- Point at (3,4): x_svg=130+48=178, y_svg=88-64=24 -->
+        <circle cx="178" cy="24" r="5" fill="#ffb830"/>
+        <text x="183" y="20" fill="#ffb830" font-size="9" font-family="system-ui">(3,4)</text>
+        <!-- Tangent slope = -x/y = -3/4; in svg y is flipped so slope_svg = 3/4 * (16/16) = 3/4 -->
+        <!-- y - 24 = (3/4)(x - 178) ... wait: slope_svg = -(-3/4) = 3/4 wait -->
+        <!-- screen coords: dy/dx = -(x0/y0) in math = -(3/4). In screen: Δy_screen = -(3/4)*Δx_screen -->
+        <!-- tangent: y_svg = 24 + (3/4)*(x_svg - 178) — nope that's wrong -->
+        <!-- math slope = -3/4 → for every +1 unit right, y decreases 3/4 unit → in screen y increases 3/4 pixel per pixel right -->
+        <!-- wait: math y increases = screen y decreases. math slope =-3/4 → dy_math/dx = -3/4 → dy_screen/dx_screen = +3/4 -->
+        <!-- through (178,24): y=24+(3/4)(x-178) -->
+        <!-- x=50: y=24+(3/4)(50-178)=24+(-96)=-72 clip; x=240: y=24+(3/4)(240-178)=24+46.5=70.5 -->
+        <!-- x when y=160: 160=24+(3/4)(x-178) → 136=(3/4)(x-178) → x=178+181=359 clip -->
+        <!-- x when y=14: 14=24+(3/4)(x-178) → -10=(3/4)(x-178) → x=178-13.3=164.7 -->
+        <line x1="50" y1="120" x2="240" y2="70" stroke="#3ecf8e" stroke-width="2"/>
+        <text x="240" y="66" fill="#3ecf8e" font-size="9" font-family="system-ui">tangent</text>
+        <!-- Radius from center to point -->
+        <line x1="130" y1="88" x2="178" y2="24" stroke="#7070a0" stroke-width="1" stroke-dasharray="3,2"/>
+        <text x="148" y="68" fill="#7070a0" font-size="9" font-family="system-ui">r ⊥ tangent</text>
+        <!-- Right angle mark at (178,24) - simplified -->
+        <rect x="168" y="24" width="8" height="8" fill="none" stroke="#7070a0" stroke-width="1" transform="rotate(-37,178,24)"/>
+      </svg>
+    </div>
+
 
     <p>
       <strong>Why we need it.</strong> The rules in Chapters 3 and 4 work when $y$ is
@@ -672,9 +883,47 @@
   </section>
 
   <!-- ── 6. Related Rates ───────────────────────────────────────────── -->
-  <section id="related">
+  <section id="ch6">
     <div class="chapter-num">Chapter 6</div>
     <h3>Related Rates</h3>
+
+    <p>
+      Two quantities change over time, linked by a geometric or physical relationship. You
+      know how fast one changes; you need the rate of the other. This is the problem of
+      related rates: a ladder sliding down a wall, water draining from a cone-shaped tank,
+      the shadow of a streetlamp growing as you walk away. In radar tracking, the
+      measured range rate (how fast the distance changes) must be converted to the angular
+      rate (how fast the antenna must rotate) — a classic related-rates problem.
+    </p>
+    <div class="formula" style="display:flex;flex-direction:column;align-items:center;gap:0;padding-bottom:8px;">
+      <div class="label" style="align-self:flex-start;">Diagram — ladder sliding down a wall</div>
+      <svg width="260" height="170" viewBox="0 0 260 170" aria-label="Ladder leaning against a wall, with x measuring horizontal distance from wall and y measuring height, both changing with time">
+        <!-- Wall (vertical) -->
+        <line x1="80" y1="10" x2="80" y2="160" stroke="#5c8aff" stroke-width="3"/>
+        <!-- Floor (horizontal) -->
+        <line x1="80" y1="160" x2="230" y2="160" stroke="#5c8aff" stroke-width="3"/>
+        <!-- Ladder -->
+        <line x1="80" y1="40" x2="188" y2="160" stroke="#ffb830" stroke-width="3"/>
+        <text x="120" y="90" fill="#ffb830" font-size="10" font-family="system-ui" font-weight="600" transform="rotate(44,120,90)">ladder (L)</text>
+        <!-- x label -->
+        <line x1="80" y1="168" x2="188" y2="168" stroke="#3ecf8e" stroke-width="1.5"/>
+        <polygon points="184,164 192,168 184,172" fill="#3ecf8e"/>
+        <polygon points="84,164 76,168 84,172" fill="#3ecf8e"/>
+        <text x="134" y="165" text-anchor="middle" fill="#3ecf8e" font-size="10" font-family="system-ui">x(t)</text>
+        <!-- y label -->
+        <line x1="68" y1="40" x2="68" y2="160" stroke="#ff6b6b" stroke-width="1.5"/>
+        <polygon points="64,44 68,36 72,44" fill="#ff6b6b"/>
+        <polygon points="64,156 68,164 72,156" fill="#ff6b6b"/>
+        <text x="52" y="104" fill="#ff6b6b" font-size="10" font-family="system-ui">y(t)</text>
+        <!-- Constraint: x^2+y^2=L^2 -->
+        <text x="100" y="130" fill="#7070a0" font-size="9.5" font-family="system-ui">x² + y² = L²</text>
+        <text x="100" y="148" fill="#7070a0" font-size="9.5" font-family="system-ui">2x·ẋ + 2y·ẏ = 0</text>
+        <!-- dx/dt arrow (foot moving right) -->
+        <text x="162" y="156" fill="#3ecf8e" font-size="9" font-family="system-ui">dx/dt &gt; 0</text>
+        <text x="62" y="28" fill="#ff6b6b" font-size="9" font-family="system-ui">dy/dt &lt; 0</text>
+      </svg>
+    </div>
+
 
     <p>
       <strong>What they are.</strong> <span class="key">Related rates</span> problems ask:
@@ -714,9 +963,46 @@
   </section>
 
   <!-- ── 7. Applications of Derivatives ────────────────────────────── -->
-  <section id="apps">
+  <section id="ch7">
     <div class="chapter-num">Chapter 7</div>
     <h3>Applications of Derivatives</h3>
+
+    <p>
+      The derivative answers three of the most important practical questions in mathematics:
+      where is a function increasing or decreasing, where does it reach its maximum or
+      minimum, and when does it change its curvature (concavity)? Optimization is
+      everywhere — engineers minimize material costs subject to constraints, economists
+      maximize utility or profit, pharmacologists find the dose that maximizes therapeutic
+      effect while staying below toxicity. Every such problem reduces to finding where a
+      derivative is zero.
+    </p>
+    <div class="formula" style="display:flex;flex-direction:column;align-items:center;gap:0;padding-bottom:8px;">
+      <div class="label" style="align-self:flex-start;">Diagram — critical points: local max, min, and inflection</div>
+      <svg width="260" height="160" viewBox="0 0 260 160" aria-label="Cubic-like curve with local maximum, local minimum, and inflection point labeled">
+        <line x1="18" y1="98" x2="242" y2="98" stroke="#2e2e55" stroke-width="1"/>
+        <polygon points="239,94 247,98 239,102" fill="#7070a0"/>
+        <line x1="130" y1="150" x2="130" y2="12" stroke="#2e2e55" stroke-width="1"/>
+        <polygon points="126,14 130,6 134,14" fill="#7070a0"/>
+        <!-- f(x)=x^3/8 − 3x/2; f'=3x^2/8 − 3/2 = 0 → x=±2; f(±2)=±(1−3)=∓2 -->
+        <!-- scale 22px/unit, origin (130,98) -->
+        <!-- x=-4: y=-8+6=-2 → (42,140); x=-2: y=2 → (86,54); x=0: y=0 → (130,98); x=2: y=-2 → (174,142); x=4: y=2 → (218,54) -->
+        <polyline points="42,140 64,100 86,54 108,80 130,98 152,116 174,142 196,114 218,54"
+          fill="none" stroke="#5c8aff" stroke-width="2.5" stroke-linejoin="round"/>
+        <!-- Local max at x=-2, f=-2: svg (86,54) -->
+        <circle cx="86" cy="54" r="5" fill="#3ecf8e"/>
+        <text x="50" y="42" fill="#3ecf8e" font-size="9" font-family="system-ui">local max</text>
+        <text x="58" y="53" fill="#3ecf8e" font-size="9" font-family="system-ui">f′=0</text>
+        <!-- Local min at x=2, f=-2: svg (174,142) -->
+        <circle cx="174" cy="142" r="5" fill="#ff6b6b"/>
+        <text x="180" y="138" fill="#ff6b6b" font-size="9" font-family="system-ui">local min</text>
+        <text x="180" y="150" fill="#ff6b6b" font-size="9" font-family="system-ui">f′=0</text>
+        <!-- Inflection at x=0, f=0: svg (130,98) -->
+        <circle cx="130" cy="98" r="4" fill="#ffb830"/>
+        <text x="138" y="95" fill="#ffb830" font-size="9" font-family="system-ui">inflection</text>
+        <text x="138" y="106" fill="#ffb830" font-size="9" font-family="system-ui">f″=0</text>
+      </svg>
+    </div>
+
 
     <p>
       <span class="key">Critical points</span> occur where $f'(x) = 0$ or $f'$ is undefined.
@@ -750,9 +1036,45 @@
   </section>
 
   <!-- ── 8. The Definite Integral ───────────────────────────────────── -->
-  <section id="integrals">
+  <section id="ch8">
     <div class="chapter-num">Chapter 8</div>
     <h3>The Definite Integral</h3>
+
+    <p>
+      Area under a curve is one of the oldest problems in mathematics — ancient Egyptians
+      approximated areas using rectangles. The definite integral formalizes this: it is
+      the exact limit of ever-finer rectangle approximations. In physics, the area under a
+      force-displacement curve is work; under a velocity-time curve is displacement; under
+      a power-time curve is energy. In probability, it gives the probability that a random
+      variable falls in an interval. The integral is the mathematical meaning of
+      "accumulated total."
+    </p>
+    <div class="formula" style="display:flex;flex-direction:column;align-items:center;gap:0;padding-bottom:8px;">
+      <div class="label" style="align-self:flex-start;">Diagram — Riemann sum rectangles approach the exact area</div>
+      <svg width="260" height="148" viewBox="0 0 260 148" aria-label="Parabola with Riemann sum rectangles shaded underneath, showing approximation of area under the curve">
+        <line x1="18" y1="120" x2="242" y2="120" stroke="#2e2e55" stroke-width="1"/>
+        <polygon points="239,116 247,120 239,124" fill="#7070a0"/>
+        <line x1="48" y1="136" x2="48" y2="14" stroke="#2e2e55" stroke-width="1"/>
+        <polygon points="44,16 48,8 52,16" fill="#7070a0"/>
+        <!-- f(x)=x(8-x)/8, origin(48,120), scale 24px/unit, max at x=4,y=2 → y_svg=120-48=72 -->
+        <!-- x=0→(48,120); x=1→(72,87); x=2→(96,84); x=3→(120,79.5); x=4→(144,72); x=5→(168,79.5); x=6→(192,84); x=7→(216,87); x=8→(240,120) -->
+        <!-- 4 rectangles from x=0 to x=8, width 2 each -->
+        <!-- Rect 1: x=0..2, height=f(1)=7/8=0.875 → h_svg=21; base y=120, rect from y=99 to 120, x=48 to 96 -->
+        <rect x="48" y="99" width="48" height="21" fill="rgba(92,138,255,0.25)" stroke="#5c8aff" stroke-width="1"/>
+        <!-- Rect 2: x=2..4, height=f(3)=15/8=1.875 → h_svg=45; y=75 to 120 -->
+        <rect x="96" y="75" width="48" height="45" fill="rgba(92,138,255,0.25)" stroke="#5c8aff" stroke-width="1"/>
+        <!-- Rect 3: x=4..6, height=f(5)=15/8=1.875 → h_svg=45; y=75 to 120 -->
+        <rect x="144" y="75" width="48" height="45" fill="rgba(92,138,255,0.25)" stroke="#5c8aff" stroke-width="1"/>
+        <!-- Rect 4: x=6..8, height=f(7)=7/8=0.875 → h_svg=21; y=99 to 120 -->
+        <rect x="192" y="99" width="48" height="21" fill="rgba(92,138,255,0.25)" stroke="#5c8aff" stroke-width="1"/>
+        <!-- The actual curve on top -->
+        <polyline points="48,120 72,99 96,96 120,91.5 144,72 168,91.5 192,96 216,99 240,120"
+          fill="none" stroke="#3ecf8e" stroke-width="2.5" stroke-linejoin="round"/>
+        <text x="144" y="60" fill="#3ecf8e" font-size="10" font-family="system-ui">f(x)</text>
+        <text x="120" y="136" text-anchor="middle" fill="#5c8aff" font-size="9.5" font-family="system-ui">∫f dx = lim(Σ f·Δx)</text>
+      </svg>
+    </div>
+
 
     <p>
       The <span class="key">definite integral</span> $\displaystyle\int_a^b f(x)\,dx$
@@ -775,9 +1097,64 @@
   </section>
 
   <!-- ── 9. Fundamental Theorem of Calculus ─────────────────────────── -->
-  <section id="ftc">
+  <section id="ch9">
     <div class="chapter-num">Chapter 9</div>
     <h3>Fundamental Theorem of Calculus</h3>
+
+    <p>
+      The Fundamental Theorem reveals that differentiation and integration are inverse
+      operations — one of the most profound discoveries in mathematics. Without it,
+      computing definite integrals would require building and summing rectangles every
+      time. With it, $\int_a^b f(x)\,dx = F(b) - F(a)$ reduces a limit of infinite sums
+      to two function evaluations. This connection between the derivative (local) and the
+      integral (global) is what makes calculus the right language for physics: forces
+      integrate to impulse, accelerations integrate to velocity, velocities integrate to
+      displacement.
+    </p>
+    <div class="formula" style="display:flex;flex-direction:column;align-items:center;gap:0;padding-bottom:8px;">
+      <div class="label" style="align-self:flex-start;">Diagram — antiderivative F(x) with ∫ₐᵇf = F(b) − F(a)</div>
+      <svg width="260" height="130" viewBox="0 0 260 130" aria-label="Two curves showing f of x and its antiderivative F of x with the evaluation at endpoints a and b">
+        <!-- Left panel: f(x) with shaded area a to b -->
+        <line x1="14" y1="90" x2="114" y2="90" stroke="#2e2e55" stroke-width="1"/>
+        <line x1="34" y1="118" x2="34" y2="14" stroke="#2e2e55" stroke-width="1"/>
+        <!-- f(x): simple arch from a=1 to b=3 -->
+        <!-- origin(34,90), scale 25px/unit -->
+        <!-- f(x)=−(x-2)^2/2+1: f(1)=−0.5+1=0.5; f(2)=1; f(3)=0.5 -->
+        <!-- x=1→(59,77.5); x=1.5→(71.5,73.4); x=2→(84,65); x=2.5→(96.5,73.4); x=3→(109,77.5) -->
+        <path d="M59,90 L59,77.5 Q84,55 109,77.5 L109,90 Z" fill="rgba(92,138,255,0.2)" stroke="none"/>
+        <polyline points="34,88 59,77 72,73 84,65 97,73 109,77 114,88"
+          fill="none" stroke="#5c8aff" stroke-width="2" stroke-linejoin="round"/>
+        <line x1="59" y1="90" x2="59" y2="77" stroke="#ffb830" stroke-width="1.5" stroke-dasharray="3,2"/>
+        <line x1="109" y1="90" x2="109" y2="77" stroke="#ffb830" stroke-width="1.5" stroke-dasharray="3,2"/>
+        <text x="59" y="102" text-anchor="middle" fill="#ffb830" font-size="9" font-family="system-ui">a</text>
+        <text x="109" y="102" text-anchor="middle" fill="#ffb830" font-size="9" font-family="system-ui">b</text>
+        <text x="84" y="120" text-anchor="middle" fill="#5c8aff" font-size="9" font-family="system-ui">area = ∫ₐᵇ f dx</text>
+        <text x="65" y="46" fill="#5c8aff" font-size="9" font-family="system-ui">f(x)</text>
+        <!-- Arrow between panels -->
+        <text x="128" y="68" fill="#7070a0" font-size="18" font-family="system-ui">=</text>
+        <!-- Right panel: F(b) - F(a) -->
+        <line x1="148" y1="90" x2="248" y2="90" stroke="#2e2e55" stroke-width="1"/>
+        <line x1="168" y1="118" x2="168" y2="14" stroke="#2e2e55" stroke-width="1"/>
+        <!-- F(x): monotone increasing curve -->
+        <!-- origin(168,90), scale 25px/unit -->
+        <!-- F(x)=x^3/12-x; F(1)=1/12-1≈-0.92; F(2)=8/12-2≈-1.33; F(3)=27/12-3=2.25-3=-0.75 -->
+        <!-- That goes down then up. Let me just draw a simple S-shape for F -->
+        <polyline points="168,88 193,78 206,60 218,50 230,46 243,42"
+          fill="none" stroke="#3ecf8e" stroke-width="2" stroke-linejoin="round"/>
+        <!-- vertical dashes at a=1 and b=3 -->
+        <line x1="193" y1="78" x2="193" y2="90" stroke="#ffb830" stroke-width="1.5" stroke-dasharray="3,2"/>
+        <line x1="243" y1="42" x2="243" y2="90" stroke="#ffb830" stroke-width="1.5" stroke-dasharray="3,2"/>
+        <text x="193" y="102" text-anchor="middle" fill="#ffb830" font-size="9" font-family="system-ui">a</text>
+        <text x="243" y="102" text-anchor="middle" fill="#ffb830" font-size="9" font-family="system-ui">b</text>
+        <!-- F(b)-F(a) bracket -->
+        <line x1="250" y1="42" x2="256" y2="42" stroke="#ff6b6b" stroke-width="1.5"/>
+        <line x1="250" y1="78" x2="256" y2="78" stroke="#ff6b6b" stroke-width="1.5"/>
+        <line x1="253" y1="42" x2="253" y2="78" stroke="#ff6b6b" stroke-width="1.5"/>
+        <text x="207" y="120" text-anchor="middle" fill="#3ecf8e" font-size="9" font-family="system-ui">F(b) − F(a)</text>
+        <text x="195" y="50" fill="#3ecf8e" font-size="9" font-family="system-ui">F(x)</text>
+      </svg>
+    </div>
+
 
     <p>
       <strong>Why it's fundamental.</strong> The FTC reveals that differentiation and
@@ -839,9 +1216,35 @@
   </section>
 
   <!-- ── 10. Integration Techniques ────────────────────────────────── -->
-  <section id="techniques">
+  <section id="ch10">
     <div class="chapter-num">Chapter 10</div>
     <h3>Integration Techniques</h3>
+
+    <p>
+      Most real-world integrals don't match the basic power-rule antiderivatives — a
+      substitution, an integration by parts, or a partial-fraction decomposition is needed
+      first. These techniques transform unfamiliar integrands into recognizable forms.
+      Substitution ($u = g(x)$) is the inverse of the chain rule; integration by parts is
+      the inverse of the product rule. In signal processing, convolution integrals require
+      these techniques; in probability theory, expectation values are often integrals that
+      need reduction before evaluation.
+    </p>
+    <div class="formula" style="display:flex;flex-direction:column;align-items:center;gap:0;padding-bottom:8px;">
+      <div class="label" style="align-self:flex-start;">Diagram — u-substitution transforms the integrand</div>
+      <svg width="260" height="78" viewBox="0 0 260 78" aria-label="Arrow diagram showing u-substitution step: integral of f of g of x times g prime of x d x becomes integral of f of u d u">
+        <rect x="8" y="14" width="100" height="44" rx="6" fill="rgba(92,138,255,0.08)" stroke="#5c8aff" stroke-width="1.5"/>
+        <text x="58" y="30" text-anchor="middle" fill="#5c8aff" font-size="10" font-family="system-ui">∫ f(g(x))·g′(x) dx</text>
+        <text x="58" y="50" text-anchor="middle" fill="#7070a0" font-size="9" font-family="system-ui">hard form</text>
+        <line x1="108" y1="36" x2="148" y2="36" stroke="#ffb830" stroke-width="1.5"/>
+        <polygon points="144,32 152,36 144,40" fill="#ffb830"/>
+        <text x="128" y="28" text-anchor="middle" fill="#ffb830" font-size="8.5" font-family="system-ui">u=g(x)</text>
+        <text x="128" y="56" text-anchor="middle" fill="#ffb830" font-size="8.5" font-family="system-ui">du=g′(x)dx</text>
+        <rect x="152" y="14" width="100" height="44" rx="6" fill="rgba(62,207,142,0.08)" stroke="#3ecf8e" stroke-width="1.5"/>
+        <text x="202" y="30" text-anchor="middle" fill="#3ecf8e" font-size="12" font-family="system-ui">∫ f(u) du</text>
+        <text x="202" y="50" text-anchor="middle" fill="#7070a0" font-size="9" font-family="system-ui">recognizable form</text>
+      </svg>
+    </div>
+
 
     <p>
       <span class="key">Substitution ($u$-sub):</span> let $u = g(x)$, $du = g'(x)\,dx$.
@@ -880,9 +1283,46 @@
   </section>
 
   <!-- ── 11. Applications of Integration ───────────────────────────── -->
-  <section id="appint">
+  <section id="ch11">
     <div class="chapter-num">Chapter 11</div>
     <h3>Applications of Integration</h3>
+
+    <p>
+      Integration computes more than area: it computes volumes of revolution, arc lengths
+      of curves, the work done by a variable force, the average value of a function, and
+      the center of mass of a solid. The same definite integral $\int_a^b$ appears in
+      fluid pressure calculations (force from hydrostatic pressure on a dam face), in
+      population models (total organisms born over a period), and in economics (consumer
+      and producer surplus in supply-demand models).
+    </p>
+    <div class="formula" style="display:flex;flex-direction:column;align-items:center;gap:0;padding-bottom:8px;">
+      <div class="label" style="align-self:flex-start;">Diagram — area between two curves</div>
+      <svg width="260" height="148" viewBox="0 0 260 148" aria-label="Two curves f of x and g of x with the region between them shaded to show area computed by integration">
+        <line x1="18" y1="118" x2="242" y2="118" stroke="#2e2e55" stroke-width="1"/>
+        <polygon points="239,114 247,118 239,122" fill="#7070a0"/>
+        <line x1="60" y1="140" x2="60" y2="14" stroke="#2e2e55" stroke-width="1"/>
+        <polygon points="56,16 60,8 64,16" fill="#7070a0"/>
+        <!-- f(x) top curve: parabola opening down, f(x)=-x^2/3+4 type -->
+        <!-- origin(60,118), scale 24px/unit -->
+        <!-- f(x)=-(x-3)^2/4+4: f(0)=-9/4+4=1.75; f(1)=-1+4=3; f(2)=-1/4+4=3.75; f(3)=4; f(4)=3.75; f(5)=3; f(6)=1.75 -->
+        <!-- y_svg=118-h*24 -->
+        <!-- f(0)→(60,76); f(1)→(84,46); f(2)→(108,28); f(3)→(132,22); f(4)→(156,28); f(5)→(180,46); f(6)→(204,76) -->
+        <!-- g(x) bottom curve: line or shallow parabola, g(x)=x/2 -->
+        <!-- g(0)=0→(60,118); g(1)=0.5→(84,106); g(2)=1→(108,94); g(3)=1.5→(132,82); g(4)=2→(156,70); g(5)=2.5→(180,58); g(6)=3→(204,46) -->
+        <!-- Shaded region between curves from x=? to x=? -->
+        <!-- Intersect: -(x-3)^2/4+4 = x/2 → -(x^2-6x+9)/4+4=x/2 → -x^2+6x-9+16=2x → -x^2+4x+7=0 → x^2-4x-7=0 → too complex, just draw from 0 to 6 and shade -->
+        <path d="M60,76 Q84,46 108,28 Q132,22 156,28 Q180,46 204,76 L204,46 L180,58 L156,70 L132,82 L108,94 L84,106 L60,118 Z"
+          fill="rgba(92,138,255,0.2)" stroke="none"/>
+        <polyline points="60,76 84,46 108,28 132,22 156,28 180,46 204,76"
+          fill="none" stroke="#ffb830" stroke-width="2.5" stroke-linejoin="round"/>
+        <polyline points="60,118 84,106 108,94 132,82 156,70 180,58 204,46"
+          fill="none" stroke="#3ecf8e" stroke-width="2.5" stroke-linejoin="round"/>
+        <text x="220" y="72" fill="#ffb830" font-size="9.5" font-family="system-ui">f(x) (top)</text>
+        <text x="220" y="44" fill="#3ecf8e" font-size="9.5" font-family="system-ui">g(x) (bot)</text>
+        <text x="132" y="112" text-anchor="middle" fill="#5c8aff" font-size="9.5" font-family="system-ui">Area = ∫[f(x)−g(x)]dx</text>
+      </svg>
+    </div>
+
 
     <p>
       Integration measures <em>accumulated</em> quantities: area, volume, arc length,
@@ -965,9 +1405,55 @@
   </section>
 
   <!-- ── 12. Sequences, Series & Sigma Notation ─────────────────────── -->
-  <section id="series">
+  <section id="ch12">
     <div class="chapter-num">Chapter 12</div>
     <h3>Sequences, Series &amp; Sigma Notation</h3>
+
+    <p>
+      Many functions that have no elementary closed form can still be computed to any
+      desired precision using power series. The Taylor series $\sum a_n(x-c)^n$
+      expresses functions like $e^x$, $\sin x$, and $\ln(1+x)$ as infinite polynomials
+      — which is exactly how calculators and computers evaluate them. Convergence tests
+      determine whether a series settles to a finite sum or diverges to infinity. In
+      numerical analysis and signal compression, series are truncated to a finite number
+      of terms that approximate the function to the required accuracy.
+    </p>
+    <div class="formula" style="display:flex;flex-direction:column;align-items:center;gap:0;padding-bottom:8px;">
+      <div class="label" style="align-self:flex-start;">Diagram — partial sums converging to the series limit S</div>
+      <svg width="260" height="130" viewBox="0 0 260 130" aria-label="Step plot of partial sums S sub n approaching the series limit S as n increases">
+        <line x1="28" y1="105" x2="242" y2="105" stroke="#2e2e55" stroke-width="1"/>
+        <polygon points="239,101 247,105 239,109" fill="#7070a0"/>
+        <text x="244" y="117" fill="#7070a0" font-size="9" font-family="system-ui">n</text>
+        <line x1="48" y1="118" x2="48" y2="14" stroke="#2e2e55" stroke-width="1"/>
+        <polygon points="44,16 48,8 52,16" fill="#7070a0"/>
+        <text x="36" y="14" fill="#7070a0" font-size="9" font-family="system-ui">Sₙ</text>
+        <!-- Limit line S -->
+        <line x1="28" y1="30" x2="242" y2="30" stroke="#ff6b6b" stroke-width="1.5" stroke-dasharray="5,3"/>
+        <text x="244" y="27" fill="#ff6b6b" font-size="10" font-family="system-ui">S</text>
+        <!-- Partial sums (geometric series 1/2+1/4+1/8+...→1) approach S from below -->
+        <!-- S1=0.5→y_svg=105-37.5=67.5; S2=0.75→y_svg=48.75; S3=0.875→y_svg=39.4; S4=0.9375→y_svg=34.7; S5=0.969→y_svg=32.3; S6=0.984→y_svg=31.1; S7=0.992→y_svg=30.5 -->
+        <!-- n=1 at x_svg=68; spacing 28px -->
+        <circle cx="68" cy="67" r="4" fill="#5c8aff"/>
+        <circle cx="96" cy="49" r="4" fill="#5c8aff"/>
+        <circle cx="124" cy="39" r="4" fill="#5c8aff"/>
+        <circle cx="152" cy="35" r="4" fill="#5c8aff"/>
+        <circle cx="180" cy="32" r="4" fill="#5c8aff"/>
+        <circle cx="208" cy="31" r="4" fill="#5c8aff"/>
+        <circle cx="236" cy="30" r="4" fill="#5c8aff"/>
+        <!-- connecting lines -->
+        <polyline points="68,67 96,49 124,39 152,35 180,32 208,31 236,30"
+          fill="none" stroke="#5c8aff" stroke-width="1.5" stroke-dasharray="2,2"/>
+        <!-- x axis labels -->
+        <text x="68" y="117" text-anchor="middle" fill="#7070a0" font-size="9" font-family="system-ui">1</text>
+        <text x="96" y="117" text-anchor="middle" fill="#7070a0" font-size="9" font-family="system-ui">2</text>
+        <text x="124" y="117" text-anchor="middle" fill="#7070a0" font-size="9" font-family="system-ui">3</text>
+        <text x="152" y="117" text-anchor="middle" fill="#7070a0" font-size="9" font-family="system-ui">4</text>
+        <text x="180" y="117" text-anchor="middle" fill="#7070a0" font-size="9" font-family="system-ui">5</text>
+        <text x="208" y="117" text-anchor="middle" fill="#7070a0" font-size="9" font-family="system-ui">6</text>
+        <text x="236" y="117" text-anchor="middle" fill="#7070a0" font-size="9" font-family="system-ui">7</text>
+      </svg>
+    </div>
+
 
     <p>
       A <span class="key">sequence</span> is an ordered list of numbers $\{a_n\}$.
@@ -1000,6 +1486,25 @@
     </div>
     <p class="toc-back"><a href="#toc">↑ Table of Contents</a></p>
   </section>
+  <section class="chapter" id="appendix-resources">
+    <div class="chapter-num">Appendix</div>
+    <h3>Interactive Resources</h3>
+
+    <p>
+      The diagrams in this textbook are static. The tools below let you manipulate the
+      same concepts dynamically — drag parameters, change values, and see results update
+      in real time. Each link opens in a new tab.
+    </p>
+
+    <ul style="line-height:2.1;margin-left:1.2rem;">
+      <li><a href="http://webspace.ship.edu/msrenault/GeoGebraCalculus/GeoGebraCalculusApplets.html" target="_blank" rel="noopener">GeoGebra Calculus Applets — Renault</a> — limits, secant/tangent lines, Riemann sums, integration techniques, and series convergence</li>
+      <li><a href="https://www.geogebra.org/m/xGHCVBcU" target="_blank" rel="noopener">AP Calculus Applet Collection — GeoGebra</a> — Tim Brzezinski's comprehensive set covering every major topic from limits through series</li>
+      <li><a href="https://www.desmos.com/calculator" target="_blank" rel="noopener">Desmos Graphing Calculator</a> — plot f(x) alongside f′(x) and f″(x); visualize Riemann sums with adjustable <em>n</em></li>
+    </ul>
+
+    <p class="toc-back"><a href="#toc">↑ Table of Contents</a></p>
+  </section>
+
 
   <a class="back" href="index.html">Play Now →</a>
 
@@ -1052,5 +1557,6 @@ createAngleExplorer('angle-canvas', 'readout-');
 
 <script src="textbook-notes.js"></script>
 <script src="textbook-nav.js"></script>
+<script src="theme-toggle.js"></script>
 </body>
 </html>

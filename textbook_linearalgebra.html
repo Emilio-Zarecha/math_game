@@ -165,7 +165,23 @@
     .toc-back a { color: var(--muted); font-size: 0.82rem; text-decoration: none;
                   letter-spacing: 0.03em; }
     .toc-back a:hover { color: var(--accent); }
-  </style>
+  
+    [data-theme="light"] {
+      --bg:      #f5f0e4;
+      --surface: #faf7ee;
+      --panel:   #ede8d8;
+      --border:  #ccc6b4;
+      --text:    #18140c;
+      --muted:   #3e3c60;
+      --accent:  #2858c8;
+      --correct: #115238;
+      --hint:    #6e4a00;
+      --wrong:   #cc2040;
+    }
+    [data-theme="light"] section h3 { color: #18140c; }
+    [data-theme="light"] .chapter-num { color: #3e3c60; }
+</style>
+  <script>(function(){var t=localStorage.getItem('math-theme')||((window.matchMedia&&window.matchMedia('(prefers-color-scheme:light)').matches)?'light':'dark');document.documentElement.setAttribute('data-theme',t);}());</script>
 </head>
 <body>
 
@@ -196,6 +212,16 @@
 <section class="chapter" id="ch1">
   <div class="chapter-num">Chapter 1</div>
   <h2>Vectors</h2>
+
+    <p>
+      Vectors are the native data structure of any problem involving direction and
+      magnitude simultaneously: velocity, force, electric field, color in RGB space, a
+      word embedding in natural language processing. In machine learning every training
+      example, every weight vector, every learned feature is a vector. The operations
+      defined here — addition, scalar multiplication, dot product — are computed billions
+      of times per second inside every neural network forward pass and gradient update.
+    </p>
+
 
   <p>A <strong>vector</strong> is an ordered list of numbers. A vector in $\mathbb{R}^n$ has $n$ components and can be written as a column or row:</p>
 
@@ -353,6 +379,41 @@
   <div class="chapter-num">Chapter 2</div>
   <h2>Matrices</h2>
 
+    <p>
+      A matrix is a compact representation of a linear transformation: it maps one vector
+      space to another in one multiplication. In deep learning, each layer of a neural
+      network is a matrix multiplication followed by a nonlinearity — the weight matrix
+      $W$ transforms the input feature vector $\mathbf{x}$ into an output $W\mathbf{x}$.
+      In graphics, 4×4 matrices encode rotations, translations, and perspective projections.
+      Every linear system of $m$ equations in $n$ unknowns is just one matrix equation
+      $A\mathbf{x} = \mathbf{b}$.
+    </p>
+    <div class="formula" style="display:flex;flex-direction:column;align-items:center;gap:0;padding-bottom:8px;">
+      <div class="label" style="align-self:flex-start;">Diagram — matrix multiplication Ax maps vector x to a new vector</div>
+      <svg width="260" height="90" viewBox="0 0 260 90" aria-label="Matrix A multiplied by column vector x produces output vector Ax, shown as labeled boxes connected by arrows">
+        <!-- A matrix box -->
+        <rect x="14" y="20" width="64" height="50" rx="5" fill="rgba(92,138,255,0.1)" stroke="#5c8aff" stroke-width="1.5"/>
+        <text x="46" y="42" text-anchor="middle" fill="#5c8aff" font-size="15" font-family="system-ui" font-weight="700">A</text>
+        <text x="46" y="60" text-anchor="middle" fill="#7070a0" font-size="9" font-family="system-ui">m × n</text>
+        <!-- x vector box -->
+        <rect x="94" y="25" width="44" height="40" rx="5" fill="rgba(255,184,48,0.1)" stroke="#ffb830" stroke-width="1.5"/>
+        <text x="116" y="43" text-anchor="middle" fill="#ffb830" font-size="15" font-family="system-ui" font-weight="700">x</text>
+        <text x="116" y="57" text-anchor="middle" fill="#7070a0" font-size="9" font-family="system-ui">n × 1</text>
+        <!-- = -->
+        <text x="154" y="50" fill="#7070a0" font-size="18" font-family="system-ui">=</text>
+        <!-- Ax output box -->
+        <rect x="170" y="25" width="52" height="40" rx="5" fill="rgba(62,207,142,0.1)" stroke="#3ecf8e" stroke-width="1.5"/>
+        <text x="196" y="43" text-anchor="middle" fill="#3ecf8e" font-size="14" font-family="system-ui" font-weight="700">Ax</text>
+        <text x="196" y="57" text-anchor="middle" fill="#7070a0" font-size="9" font-family="system-ui">m × 1</text>
+        <!-- Arrows -->
+        <line x1="78" y1="45" x2="94" y2="45" stroke="#7070a0" stroke-width="1.5"/>
+        <polygon points="90,41 98,45 90,49" fill="#7070a0"/>
+        <!-- Label -->
+        <text x="130" y="80" text-anchor="middle" fill="#7070a0" font-size="9" font-family="system-ui">linear transformation: ℝⁿ → ℝᵐ</text>
+      </svg>
+    </div>
+
+
   <p>A <strong>matrix</strong> is a rectangular array of numbers arranged in rows and columns. An $m \times n$ matrix has $m$ rows and $n$ columns:</p>
 
   $$A = \begin{bmatrix} a_{11} & a_{12} & \cdots & a_{1n} \\ a_{21} & a_{22} & \cdots & a_{2n} \\ \vdots & & \ddots & \vdots \\ a_{m1} & a_{m2} & \cdots & a_{mn} \end{bmatrix}$$
@@ -405,6 +466,43 @@
   <div class="chapter-num">Chapter 3</div>
   <h2>Linear Transformations</h2>
 
+    <p>
+      Linear transformations are the functions of linear algebra: they map vectors to
+      vectors while preserving addition and scalar multiplication. Every matrix is a
+      linear transformation, and every linear transformation on finite-dimensional spaces
+      is a matrix. In neural networks, each fully-connected layer applies a linear
+      transformation (the weight matrix) followed by a nonlinear activation. Understanding
+      what a transformation does geometrically — does it rotate, stretch, project, reflect?
+      — is what allows you to design and debug linear models.
+    </p>
+    <div class="formula" style="display:flex;flex-direction:column;align-items:center;gap:0;padding-bottom:8px;">
+      <div class="label" style="align-self:flex-start;">Diagram — unit square mapped to a parallelogram by a 2×2 matrix</div>
+      <svg width="260" height="130" viewBox="0 0 260 130" aria-label="Unit square on the left transformed into a parallelogram on the right by a 2 by 2 matrix, with a labeled arrow between them">
+        <!-- Unit square (left) — origin (40,90), scale 40px/unit -->
+        <!-- (0,0)→(40,90); (1,0)→(80,90); (1,1)→(80,50); (0,1)→(40,50) -->
+        <polygon points="40,90 80,90 80,50 40,50" fill="rgba(92,138,255,0.12)" stroke="#5c8aff" stroke-width="2"/>
+        <text x="60" y="78" text-anchor="middle" fill="#5c8aff" font-size="9" font-family="system-ui">unit</text>
+        <text x="60" y="90" text-anchor="middle" fill="#5c8aff" font-size="9" font-family="system-ui">square</text>
+        <!-- Basis vectors -->
+        <line x1="40" y1="90" x2="80" y2="90" stroke="#5c8aff" stroke-width="2"/>
+        <polygon points="76,86 84,90 76,94" fill="#5c8aff"/>
+        <line x1="40" y1="90" x2="40" y2="50" stroke="#5c8aff" stroke-width="2"/>
+        <polygon points="36,54 40,46 44,54" fill="#5c8aff"/>
+        <!-- Transform arrow -->
+        <text x="128" y="72" text-anchor="middle" fill="#ffb830" font-size="18" font-family="system-ui">→</text>
+        <text x="128" y="88" text-anchor="middle" fill="#ffb830" font-size="8.5" font-family="system-ui">T(x)=Ax</text>
+        <!-- Parallelogram (right) — transformed by [[2,1],[0.5,1.5]] -->
+        <!-- origin (165,90); col1=(2,0.5)→(80,110); col2=(1,1.5)→(40,60) scaled 30px -->
+        <!-- (0,0)→(165,90); (1,0): dx=2*30=60,dy=-0.5*30=−15→(225,75) -->
+        <!-- (0,1): dx=1*30=30,dy=-1.5*30=−45→(195,45) -->
+        <!-- (1,1): dx=90,dy=-60→(255,30) -->
+        <polygon points="165,90 225,75 255,30 195,45" fill="rgba(255,184,48,0.12)" stroke="#ffb830" stroke-width="2"/>
+        <text x="210" y="72" text-anchor="middle" fill="#ffb830" font-size="9" font-family="system-ui">parallelogram</text>
+        <text x="210" y="83" text-anchor="middle" fill="#ffb830" font-size="9" font-family="system-ui">(area = |det A|)</text>
+      </svg>
+    </div>
+
+
   <p>A function $T: \mathbb{R}^n \to \mathbb{R}^m$ is a <strong>linear transformation</strong> if it satisfies two properties:</p>
   <div class="definition">
     <div class="definition-label">Linearity Conditions</div>
@@ -448,6 +546,41 @@
   <div class="chapter-num">Chapter 4</div>
   <h2>Systems of Linear Equations</h2>
 
+    <p>
+      Gaussian elimination is one of the most practically important algorithms in all of
+      mathematics: it solves any system of linear equations in $O(n^3)$ time. Every
+      numerical simulation — finite element analysis, computational fluid dynamics,
+      circuit simulation — ultimately reduces to solving a large linear system. In machine
+      learning, normal equations for linear regression are solved by exactly this procedure,
+      and the LU decomposition used for efficient repeated solution is derived directly from
+      Gaussian elimination.
+    </p>
+    <div class="formula" style="display:flex;flex-direction:column;align-items:center;gap:0;padding-bottom:8px;">
+      <div class="label" style="align-self:flex-start;">Diagram — augmented matrix before and after row reduction</div>
+      <svg width="260" height="100" viewBox="0 0 260 100" aria-label="Augmented matrix shown in original form on the left and reduced row echelon form on the right with arrow between them">
+        <!-- Original augmented matrix -->
+        <text x="20" y="14" fill="#7070a0" font-size="9" font-family="system-ui">before:</text>
+        <text x="28" y="38" fill="#7070a0" font-size="26" font-family="system-ui" font-weight="200">[</text>
+        <text x="44" y="33" fill="#5c8aff" font-size="10" font-family="system-ui">2  1  −1 |  8</text>
+        <text x="44" y="49" fill="#5c8aff" font-size="10" font-family="system-ui">−3 −1   2 | −11</text>
+        <text x="44" y="65" fill="#5c8aff" font-size="10" font-family="system-ui">−2  1   2 | −3</text>
+        <text x="110" y="38" fill="#7070a0" font-size="26" font-family="system-ui" font-weight="200">]</text>
+        <!-- Arrow -->
+        <line x1="118" y1="48" x2="148" y2="48" stroke="#ffb830" stroke-width="2"/>
+        <polygon points="144,44 152,48 144,52" fill="#ffb830"/>
+        <text x="133" y="42" text-anchor="middle" fill="#ffb830" font-size="8.5" font-family="system-ui">row ops</text>
+        <!-- RREF -->
+        <text x="154" y="14" fill="#7070a0" font-size="9" font-family="system-ui">RREF:</text>
+        <text x="158" y="38" fill="#7070a0" font-size="26" font-family="system-ui" font-weight="200">[</text>
+        <text x="174" y="33" fill="#3ecf8e" font-size="10" font-family="system-ui">1  0  0 |  2</text>
+        <text x="174" y="49" fill="#3ecf8e" font-size="10" font-family="system-ui">0  1  0 |  3</text>
+        <text x="174" y="65" fill="#3ecf8e" font-size="10" font-family="system-ui">0  0  1 | −1</text>
+        <text x="236" y="38" fill="#7070a0" font-size="26" font-family="system-ui" font-weight="200">]</text>
+        <text x="130" y="88" text-anchor="middle" fill="#7070a0" font-size="8.5" font-family="system-ui">pivot columns (1s on diagonal) → solution</text>
+      </svg>
+    </div>
+
+
   <p>A <strong>system of linear equations</strong> is a collection of equations, each linear in the unknowns $x_1, \ldots, x_n$. In matrix form:</p>
   $$A\mathbf{x} = \mathbf{b}$$
   <p>where $A$ is the $m \times n$ coefficient matrix, $\mathbf{x} \in \mathbb{R}^n$ is the unknown vector, and $\mathbf{b} \in \mathbb{R}^m$ is the right-hand side.</p>
@@ -490,6 +623,46 @@
   <div class="chapter-num">Chapter 5</div>
   <h2>Vector Spaces</h2>
 
+    <p>
+      Span and linear independence answer two fundamental questions: which vectors can
+      be reached by linear combinations of a given set, and is every vector in the span
+      reachable in exactly one way? In signal processing, a signal is a vector in a
+      high-dimensional space; a basis spans that space and each basis vector corresponds
+      to a frequency. In neural networks, the row space of a weight matrix is the set of
+      all possible outputs — if the rows are linearly dependent, the network's
+      representational capacity is lower than its size suggests.
+    </p>
+    <div class="formula" style="display:flex;flex-direction:column;align-items:center;gap:0;padding-bottom:8px;">
+      <div class="label" style="align-self:flex-start;">Diagram — two independent vectors span a plane; three dependent vectors do not</div>
+      <svg width="260" height="120" viewBox="0 0 260 120" aria-label="Left shows two non-collinear vectors spanning a shaded plane region labeled independent; right shows three collinear vectors labeled dependent">
+        <!-- Independent: two vectors spanning a parallelogram in 2D -->
+        <text x="60" y="12" text-anchor="middle" fill="#3ecf8e" font-size="9.5" font-family="system-ui" font-weight="600">Independent</text>
+        <!-- Origin at (60,90) -->
+        <line x1="60" y1="90" x2="100" y2="55" stroke="#5c8aff" stroke-width="2.5"/>
+        <polygon points="96,51 104,57 98,62" fill="#5c8aff"/>
+        <text x="106" y="52" fill="#5c8aff" font-size="10" font-family="system-ui">v₁</text>
+        <line x1="60" y1="90" x2="28" y2="56" stroke="#ffb830" stroke-width="2.5"/>
+        <polygon points="24,60 30,52 36,58" fill="#ffb830"/>
+        <text x="14" y="52" fill="#ffb830" font-size="10" font-family="system-ui">v₂</text>
+        <!-- Parallelogram fill -->
+        <polygon points="60,90 100,55 68,21 28,56" fill="rgba(62,207,142,0.15)" stroke="#3ecf8e" stroke-width="1" stroke-dasharray="3,2"/>
+        <text x="68" y="60" fill="#3ecf8e" font-size="8.5" font-family="system-ui">span(v₁,v₂)</text>
+        <!-- Divider -->
+        <line x1="128" y1="10" x2="128" y2="112" stroke="#2e2e55" stroke-width="0.8" opacity="0.3"/>
+        <!-- Dependent: three collinear vectors -->
+        <text x="196" y="12" text-anchor="middle" fill="#ff6b6b" font-size="9.5" font-family="system-ui" font-weight="600">Dependent</text>
+        <!-- Origin at (196,90), all along same line -->
+        <line x1="196" y1="90" x2="228" y2="50" stroke="#5c8aff" stroke-width="2"/>
+        <polygon points="224,46 232,52 226,57" fill="#5c8aff"/>
+        <line x1="196" y1="90" x2="212" y2="70" stroke="#ffb830" stroke-width="2"/>
+        <polygon points="208,66 216,72 210,77" fill="#ffb830"/>
+        <line x1="196" y1="90" x2="244" y2="30" stroke="#7070a0" stroke-width="2" stroke-dasharray="3,2"/>
+        <polygon points="240,26 248,32 242,37" fill="#7070a0"/>
+        <text x="196" y="106" text-anchor="middle" fill="#ff6b6b" font-size="8" font-family="system-ui">v₃ = 2v₁ (collinear)</text>
+      </svg>
+    </div>
+
+
   <p>A <strong>vector space</strong> $V$ over $\mathbb{R}$ is a set with two operations (addition and scalar multiplication) satisfying eight axioms — closure, associativity, commutativity, identity, inverse, and distributivity. The most important example is $\mathbb{R}^n$.</p>
 
   <h3>Span and Linear Independence</h3>
@@ -531,6 +704,43 @@
 <section class="chapter" id="ch6">
   <div class="chapter-num">Chapter 6</div>
   <h2>Rank, Determinant, Trace, and Inverse</h2>
+
+    <p>
+      The rank of a matrix is the dimension of its column space — how many independent
+      directions it can map to. A square matrix is invertible if and only if its
+      determinant is nonzero, equivalently if its rank equals its size. In machine
+      learning, the rank of a weight matrix determines the maximum number of independent
+      features a layer can represent. The determinant appears in change-of-variables for
+      multivariate distributions, and the trace equals the sum of eigenvalues — used in
+      nuclear norm regularization and trace optimization.
+    </p>
+    <div class="formula" style="display:flex;flex-direction:column;align-items:center;gap:0;padding-bottom:8px;">
+      <div class="label" style="align-self:flex-start;">Diagram — determinant as signed area of parallelogram from columns</div>
+      <svg width="260" height="128" viewBox="0 0 260 128" aria-label="Two column vectors of a 2 by 2 matrix forming a parallelogram whose signed area equals the determinant">
+        <line x1="20" y1="98" x2="220" y2="98" stroke="#2e2e55" stroke-width="1"/>
+        <polygon points="217,94 225,98 217,102" fill="#7070a0"/>
+        <line x1="60" y1="118" x2="60" y2="14" stroke="#2e2e55" stroke-width="1"/>
+        <polygon points="56,16 60,8 64,16" fill="#7070a0"/>
+        <!-- Matrix A = [[a,b],[c,d]] = [[2,1],[1,2]] -->
+        <!-- col1 = (2,1): x_svg=60+2*30=120, y_svg=98-1*30=68 -->
+        <!-- col2 = (1,2): x_svg=60+1*30=90, y_svg=98-2*30=38 -->
+        <!-- Parallelogram: (0,0),(2,1),(3,3),(1,2) scaled -->
+        <!-- (0,0)→(60,98); (2,1)→(120,68); (3,3)→(150,8); (1,2)→(90,38) -->
+        <polygon points="60,98 120,68 150,8 90,38" fill="rgba(92,138,255,0.15)" stroke="#5c8aff" stroke-width="1.5" stroke-dasharray="3,2"/>
+        <!-- Column vectors -->
+        <line x1="60" y1="98" x2="120" y2="68" stroke="#ffb830" stroke-width="2.5"/>
+        <polygon points="116,64 124,70 118,75" fill="#ffb830"/>
+        <text x="126" y="72" fill="#ffb830" font-size="10" font-family="system-ui">col₁=(a,c)</text>
+        <line x1="60" y1="98" x2="90" y2="38" stroke="#3ecf8e" stroke-width="2.5"/>
+        <polygon points="86,34 94,40 88,45" fill="#3ecf8e"/>
+        <text x="94" y="35" fill="#3ecf8e" font-size="10" font-family="system-ui">col₂=(b,d)</text>
+        <!-- Area label -->
+        <text x="107" y="62" fill="#5c8aff" font-size="9" font-family="system-ui">area</text>
+        <text x="107" y="74" fill="#5c8aff" font-size="9" font-family="system-ui">= |det A|</text>
+        <text x="130" y="115" text-anchor="middle" fill="#7070a0" font-size="9.5" font-family="system-ui">det A = ad − bc</text>
+      </svg>
+    </div>
+
 
   <h3>Rank</h3>
   <p>The <strong>rank</strong> of a matrix is the number of linearly independent rows (= linearly independent columns = number of pivots after row reduction). A matrix is <strong>full rank</strong> if $\text{rank}(A) = \min(m, n)$.</p>
@@ -577,6 +787,46 @@
   <div class="chapter-num">Chapter 7</div>
   <h2>Orthogonality</h2>
 
+    <p>
+      Orthogonal bases make computations maximally simple: projections reduce to dot
+      products, the Gram-Schmidt process extracts the independent directions, and the
+      QR decomposition enables numerically stable least-squares solving. In signal
+      processing, the Fourier basis is orthogonal — decomposing a signal into sine and
+      cosine components involves nothing but dot products. In machine learning, orthogonal
+      weight initialization prevents gradient vanishing/exploding at the start of training,
+      and PCA (principal component analysis) finds the orthogonal directions of maximum
+      variance.
+    </p>
+    <div class="formula" style="display:flex;flex-direction:column;align-items:center;gap:0;padding-bottom:8px;">
+      <div class="label" style="align-self:flex-start;">Diagram — two orthogonal vectors and projection of v onto u</div>
+      <svg width="260" height="148" viewBox="0 0 260 148" aria-label="Two perpendicular basis vectors u1 and u2 with projection of vector v onto u1 shown">
+        <line x1="18" y1="108" x2="242" y2="108" stroke="#2e2e55" stroke-width="1"/>
+        <polygon points="239,104 247,108 239,112" fill="#7070a0"/>
+        <line x1="100" y1="138" x2="100" y2="14" stroke="#2e2e55" stroke-width="1"/>
+        <polygon points="96,16 100,8 104,16" fill="#7070a0"/>
+        <!-- u1 horizontal -->
+        <line x1="100" y1="108" x2="200" y2="108" stroke="#5c8aff" stroke-width="2.5"/>
+        <polygon points="196,104 204,108 196,112" fill="#5c8aff"/>
+        <text x="206" y="112" fill="#5c8aff" font-size="10" font-family="system-ui">u₁</text>
+        <!-- u2 vertical -->
+        <line x1="100" y1="108" x2="100" y2="28" stroke="#ffb830" stroke-width="2.5"/>
+        <polygon points="96,32 100,24 104,32" fill="#ffb830"/>
+        <text x="104" y="24" fill="#ffb830" font-size="10" font-family="system-ui">u₂</text>
+        <!-- Right angle mark -->
+        <rect x="100" y="98" width="10" height="10" fill="none" stroke="#3ecf8e" stroke-width="1.5"/>
+        <text x="118" y="90" fill="#3ecf8e" font-size="9" font-family="system-ui">u₁·u₂ = 0</text>
+        <!-- Vector v -->
+        <line x1="100" y1="108" x2="186" y2="48" stroke="#3ecf8e" stroke-width="2"/>
+        <polygon points="182,44 190,50 184,55" fill="#3ecf8e"/>
+        <text x="192" y="46" fill="#3ecf8e" font-size="10" font-family="system-ui">v</text>
+        <!-- Projection onto u1 -->
+        <line x1="186" y1="48" x2="186" y2="108" stroke="#7070a0" stroke-width="1.5" stroke-dasharray="3,2"/>
+        <line x1="100" y1="108" x2="186" y2="108" stroke="#7070a0" stroke-width="2.5"/>
+        <text x="143" y="128" text-anchor="middle" fill="#7070a0" font-size="9.5" font-family="system-ui">proj = (v·u₁/‖u₁‖²)u₁</text>
+      </svg>
+    </div>
+
+
   <p>Two vectors are <strong>orthogonal</strong> ($\mathbf{u} \perp \mathbf{v}$) if their dot product is zero: $\mathbf{u} \cdot \mathbf{v} = 0$. Orthogonality generalizes perpendicularity to any number of dimensions.</p>
 
   <h3>Orthogonal and Orthonormal Bases</h3>
@@ -620,6 +870,43 @@
   <div class="chapter-num">Chapter 8</div>
   <h2>Eigenvalues and Eigenvectors</h2>
 
+    <p>
+      An eigenvector is a direction that a matrix transformation doesn't rotate — it only
+      scales. The scaling factor is the eigenvalue. This makes eigendecomposition the
+      most powerful structural analysis tool in linear algebra. In principal component
+      analysis (PCA), eigenvectors of the covariance matrix give the directions of maximum
+      variance; in Google's PageRank, the dominant eigenvector of the link matrix gives
+      page rankings; in quantum mechanics, eigenvalues are the measurable quantities.
+      Stability analysis of any linear system reduces to checking the sign of eigenvalues.
+    </p>
+    <div class="formula" style="display:flex;flex-direction:column;align-items:center;gap:0;padding-bottom:8px;">
+      <div class="label" style="align-self:flex-start;">Diagram — eigenvector v scaled by λ but not rotated</div>
+      <svg width="260" height="140" viewBox="0 0 260 140" aria-label="A vector v before and after multiplication by matrix A, showing that Av points in the same direction but is scaled by eigenvalue lambda">
+        <line x1="20" y1="90" x2="240" y2="90" stroke="#2e2e55" stroke-width="1"/>
+        <polygon points="237,86 245,90 237,94" fill="#7070a0"/>
+        <line x1="106" y1="128" x2="106" y2="14" stroke="#2e2e55" stroke-width="1"/>
+        <polygon points="102,16 106,8 110,16" fill="#7070a0"/>
+        <!-- Eigenvector v (before) -->
+        <line x1="106" y1="90" x2="156" y2="50" stroke="#5c8aff" stroke-width="2.5"/>
+        <polygon points="152,46 160,52 154,57" fill="#5c8aff"/>
+        <text x="162" y="48" fill="#5c8aff" font-size="11" font-family="system-ui" font-weight="600">v</text>
+        <!-- Av = λv (scaled eigenvector) -->
+        <line x1="106" y1="90" x2="206" y2="10" stroke="#ffb830" stroke-width="2.5"/>
+        <polygon points="202,6 210,12 204,17" fill="#ffb830"/>
+        <text x="212" y="8" fill="#ffb830" font-size="11" font-family="system-ui" font-weight="600">Av = λv</text>
+        <!-- Label showing same direction -->
+        <text x="130" y="80" fill="#7070a0" font-size="9" font-family="system-ui">same</text>
+        <text x="130" y="91" fill="#7070a0" font-size="9" font-family="system-ui">direction</text>
+        <!-- Non-eigenvector for contrast (dashed) -->
+        <line x1="106" y1="90" x2="64" y2="40" stroke="#7070a0" stroke-width="1.5" stroke-dasharray="4,2"/>
+        <line x1="64" y1="40" x2="25" y2="66" stroke="#ff6b6b" stroke-width="1.5" stroke-dasharray="4,2"/>
+        <polygon points="21,62 29,68 23,73" fill="#ff6b6b"/>
+        <text x="18" y="36" fill="#7070a0" font-size="8.5" font-family="system-ui">w (rotated)</text>
+        <text x="106" y="118" text-anchor="middle" fill="#ffb830" font-size="9.5" font-family="system-ui">det(A − λI) = 0 → eigenvalues</text>
+      </svg>
+    </div>
+
+
   <p>An <strong>eigenvector</strong> of a square matrix $A$ is a nonzero vector $\mathbf{v}$ that $A$ maps to a scalar multiple of itself:</p>
   <div class="formula">
     <div class="formula-label">Eigenvalue Equation</div>
@@ -659,6 +946,46 @@
 <section class="chapter" id="ch9">
   <div class="chapter-num">Chapter 9</div>
   <h2>Matrix Decompositions</h2>
+
+    <p>
+      Matrix decompositions factor a complicated matrix into structured, simpler pieces.
+      LU makes solving linear systems $O(n^2)$ after an $O(n^3)$ one-time factorization
+      — essential when solving the same system many times. The SVD (singular value
+      decomposition) is the most informative decomposition: it reveals the effective rank,
+      the best low-rank approximation (used in image compression and collaborative
+      filtering), and the principal directions of a transformation. Every recommender
+      system, every data compression algorithm, and every pseudoinverse computation uses
+      the SVD.
+    </p>
+    <div class="formula" style="display:flex;flex-direction:column;align-items:center;gap:0;padding-bottom:8px;">
+      <div class="label" style="align-self:flex-start;">Diagram — LU decomposition A = LU with lower and upper triangular factors</div>
+      <svg width="260" height="88" viewBox="0 0 260 88" aria-label="Matrix A shown equal to L times U where L is lower triangular and U is upper triangular">
+        <!-- A = LU -->
+        <text x="22" y="48" fill="#7070a0" font-size="26" font-family="system-ui" font-weight="200">[</text>
+        <text x="36" y="38" fill="#5c8aff" font-size="9" font-family="system-ui">a  b  c</text>
+        <text x="36" y="52" fill="#5c8aff" font-size="9" font-family="system-ui">d  e  f</text>
+        <text x="36" y="66" fill="#5c8aff" font-size="9" font-family="system-ui">g  h  i</text>
+        <text x="74" y="48" fill="#7070a0" font-size="26" font-family="system-ui" font-weight="200">]</text>
+        <text x="86" y="52" fill="#7070a0" font-size="15" font-family="system-ui">=</text>
+        <!-- L (lower triangular) -->
+        <text x="100" y="48" fill="#7070a0" font-size="26" font-family="system-ui" font-weight="200">[</text>
+        <text x="114" y="38" fill="#ff6b6b" font-size="9" font-family="system-ui">1  0  0</text>
+        <text x="114" y="52" fill="#ff6b6b" font-size="9" font-family="system-ui">l₂₁ 1  0</text>
+        <text x="114" y="66" fill="#ff6b6b" font-size="9" font-family="system-ui">l₃₁ l₃₂ 1</text>
+        <text x="156" y="48" fill="#7070a0" font-size="26" font-family="system-ui" font-weight="200">]</text>
+        <text x="170" y="52" fill="#7070a0" font-size="14" font-family="system-ui">·</text>
+        <!-- U (upper triangular) -->
+        <text x="176" y="48" fill="#7070a0" font-size="26" font-family="system-ui" font-weight="200">[</text>
+        <text x="190" y="38" fill="#3ecf8e" font-size="9" font-family="system-ui">u₁₁ u₁₂ u₁₃</text>
+        <text x="190" y="52" fill="#3ecf8e" font-size="9" font-family="system-ui">0  u₂₂ u₂₃</text>
+        <text x="190" y="66" fill="#3ecf8e" font-size="9" font-family="system-ui">0   0  u₃₃</text>
+        <text x="240" y="48" fill="#7070a0" font-size="26" font-family="system-ui" font-weight="200">]</text>
+        <text x="35" y="82" text-anchor="left" fill="#7070a0" font-size="8.5" font-family="system-ui">A</text>
+        <text x="120" y="82" text-anchor="middle" fill="#ff6b6b" font-size="8.5" font-family="system-ui">L (lower)</text>
+        <text x="208" y="82" text-anchor="middle" fill="#3ecf8e" font-size="8.5" font-family="system-ui">U (upper)</text>
+      </svg>
+    </div>
+
 
   <p>Decompositions factor a matrix into structured pieces, revealing geometry and enabling efficient computation.</p>
 
@@ -707,6 +1034,38 @@
   <div class="chapter-num">Chapter 10</div>
   <h2>Norms and Distances</h2>
 
+    <p>
+      A norm is a function that assigns a size or length to a vector. The choice of norm
+      determines what "close" means — and different applications demand different norms.
+      The $\ell_2$ norm ($\|\mathbf{x}\|_2 = \sqrt{\sum x_i^2}$) gives Euclidean
+      distance and appears in least-squares regression. The $\ell_1$ norm
+      ($\|\mathbf{x}\|_1 = \sum |x_i|$) promotes sparsity and is used in LASSO
+      regularization and compressed sensing. The $\ell_\infty$ norm (max component)
+      bounds the worst-case error. In deep learning, weight regularization is either
+      $\ell_1$ (sparse weights) or $\ell_2$ (weight decay).
+    </p>
+    <div class="formula" style="display:flex;flex-direction:column;align-items:center;gap:0;padding-bottom:8px;">
+      <div class="label" style="align-self:flex-start;">Diagram — unit balls for ℓ1, ℓ2, and ℓ∞ norms</div>
+      <svg width="260" height="118" viewBox="0 0 260 118" aria-label="Three unit norm balls in two dimensions shown side by side: a diamond for ell-1, a circle for ell-2, and a square for ell-infinity">
+        <!-- ℓ1 unit ball: diamond -->
+        <text x="38" y="12" text-anchor="middle" fill="#5c8aff" font-size="9.5" font-family="system-ui" font-weight="600">ℓ₁ ball</text>
+        <polygon points="38,25 62,48 38,71 14,48" fill="rgba(92,138,255,0.15)" stroke="#5c8aff" stroke-width="2"/>
+        <text x="38" y="90" text-anchor="middle" fill="#5c8aff" font-size="8.5" font-family="system-ui">‖x‖₁ ≤ 1</text>
+        <text x="38" y="102" text-anchor="middle" fill="#7070a0" font-size="8" font-family="system-ui">(diamond)</text>
+        <!-- ℓ2 unit ball: circle -->
+        <text x="130" y="12" text-anchor="middle" fill="#3ecf8e" font-size="9.5" font-family="system-ui" font-weight="600">ℓ₂ ball</text>
+        <circle cx="130" cy="48" r="26" fill="rgba(62,207,142,0.12)" stroke="#3ecf8e" stroke-width="2"/>
+        <text x="130" y="90" text-anchor="middle" fill="#3ecf8e" font-size="8.5" font-family="system-ui">‖x‖₂ ≤ 1</text>
+        <text x="130" y="102" text-anchor="middle" fill="#7070a0" font-size="8" font-family="system-ui">(circle)</text>
+        <!-- ℓ∞ unit ball: square -->
+        <text x="222" y="12" text-anchor="middle" fill="#ffb830" font-size="9.5" font-family="system-ui" font-weight="600">ℓ∞ ball</text>
+        <rect x="196" y="22" width="52" height="52" fill="rgba(255,184,48,0.12)" stroke="#ffb830" stroke-width="2"/>
+        <text x="222" y="90" text-anchor="middle" fill="#ffb830" font-size="8.5" font-family="system-ui">‖x‖∞ ≤ 1</text>
+        <text x="222" y="102" text-anchor="middle" fill="#7070a0" font-size="8" font-family="system-ui">(square)</text>
+      </svg>
+    </div>
+
+
   <p>A <strong>norm</strong> $\|\cdot\|$ on a vector space assigns a non-negative length to each vector, satisfying: (1) $\|\mathbf{v}\| = 0$ iff $\mathbf{v} = \mathbf{0}$; (2) $\|c\mathbf{v}\| = |c|\|\mathbf{v}\|$; (3) triangle inequality $\|\mathbf{u}+\mathbf{v}\| \leq \|\mathbf{u}\| + \|\mathbf{v}\|$.</p>
 
   <h3>Vector Norms</h3>
@@ -752,6 +1111,26 @@
   </div>
 <p class="toc-back"><a href="#toc">↑ Table of Contents</a></p>
 </section>
+  <section class="chapter" id="appendix-resources">
+    <div class="chapter-num">Appendix</div>
+    <h3>Interactive Resources</h3>
+
+    <p>
+      The diagrams in this textbook are static. The tools below let you manipulate the
+      same concepts dynamically — drag parameters, change values, and see results update
+      in real time. Each link opens in a new tab.
+    </p>
+
+    <ul style="line-height:2.1;margin-left:1.2rem;">
+      <li><a href="https://www.geogebra.org/m/mdvN0HTt" target="_blank" rel="noopener">Linear Transformations 2D — GeoGebra</a> — enter any 2×2 matrix and drag vectors to see the entire plane transform; watch the unit circle become an ellipse</li>
+      <li><a href="https://www.geogebra.org/m/KuMAuEnd" target="_blank" rel="noopener">Eigenvalue-Eigenvector Visualisation — GeoGebra</a> — drag the input vector and observe which directions are only scaled (not rotated) by the matrix</li>
+      <li><a href="https://www.geogebra.org/m/XnfUWvvp" target="_blank" rel="noopener">Transforming Linear Algebra Education — GeoGebra</a> — NSF-funded interactive book covering span, independence, rank, orthogonality, and decompositions</li>
+      <li><a href="https://eater.net/quaternions" target="_blank" rel="noopener">Eater.net — Explorable Quaternions</a> — Ben Eater &amp; Grant Sanderson's interactive explorable video on 3D rotation (advanced extension of Ch7–Ch8)</li>
+    </ul>
+
+    <p class="toc-back"><a href="#toc">↑ Table of Contents</a></p>
+  </section>
+
 
 <!-- ═══════════════════════════════════════════════════════ GLOSSARY MODAL -->
 <div id="glossary-overlay" role="dialog" aria-modal="true" aria-label="Glossary">
@@ -1070,5 +1449,6 @@
 </div>
 
 <script src="textbook-notes.js"></script>
+<script src="theme-toggle.js"></script>
 </body>
 </html>
