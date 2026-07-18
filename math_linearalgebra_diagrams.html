@@ -554,6 +554,165 @@
     </div><!-- .step-viewer -->
   </section>
 
+  <!-- ══════════════════════════════════════════════════════════════════
+       Diagram 4: Gaussian Elimination — Solving a 2×2 System (4-step click-through)
+       viewBox 0 0 340 300
+       System: x + y = 5, 2x + 3y = 13  →  x = 2, y = 3
+       Augmented matrix: bracket 90–98 / 262–270, cols x=125,170(|195 divider),225, rows y=80,130
+       Subtraction panel (steps 2–3 only): box 50,155–288,250; label x=60,
+       value cols x=180,218,258; rows y=178 (source row), y=200 (±k×pivot row,
+       pivot's highlight color), rule y=210, y=233 (result, target's highlight color)
+       ══════════════════════════════════════════════════════════════════ -->
+  <section class="diagram-set" id="gaussian-elimination" style="margin-top:48px">
+    <h2>Gaussian Elimination — Solving a 2×2 System</h2>
+    <p class="subtitle">Turn a system of equations into an augmented matrix, then use row operations to reduce it until the solution can be read straight off — for <strong>x + y = 5</strong> and <strong>2x + 3y = 13</strong>.</p>
+
+    <div class="step-viewer">
+      <div class="step-counter">Step <span class="cur">1</span> of <span class="tot">4</span></div>
+
+      <div class="steps">
+
+        <!-- Step 1: Setup -->
+        <div class="step active">
+          <svg viewBox="0 0 340 300" aria-label="System of two equations written as an augmented matrix, unreduced">
+            <text x="180" y="20" text-anchor="middle" fill="var(--text)" font-size="13" font-family="system-ui">x + y = 5</text>
+            <text x="180" y="40" text-anchor="middle" fill="var(--text)" font-size="13" font-family="system-ui">2x + 3y = 13</text>
+
+            <path d="M98,55 L90,55 L90,145 L98,145" fill="none" stroke="#7070a0" stroke-width="1.5"/>
+            <path d="M262,55 L270,55 L270,145 L262,145" fill="none" stroke="#7070a0" stroke-width="1.5"/>
+            <line x1="195" y1="60" x2="195" y2="140" stroke="#7070a0" stroke-width="1" stroke-dasharray="4,3" opacity="0.6"/>
+
+            <text x="125" y="80"  text-anchor="middle" fill="var(--text)" font-size="16" font-family="system-ui">1</text>
+            <text x="170" y="80"  text-anchor="middle" fill="var(--text)" font-size="16" font-family="system-ui">1</text>
+            <text x="225" y="80"  text-anchor="middle" fill="var(--text)" font-size="16" font-family="system-ui">5</text>
+            <text x="125" y="130" text-anchor="middle" fill="var(--text)" font-size="16" font-family="system-ui">2</text>
+            <text x="170" y="130" text-anchor="middle" fill="var(--text)" font-size="16" font-family="system-ui">3</text>
+            <text x="225" y="130" text-anchor="middle" fill="var(--text)" font-size="16" font-family="system-ui">13</text>
+          </svg>
+          <p class="step-caption">Each equation becomes one row of an <strong>augmented matrix [A | b]</strong>: the coefficients of x and y, then a bar, then the constant. Solving the system means using row operations to simplify this matrix.</p>
+        </div>
+
+        <!-- Step 2: Eliminate x from Row 2 -->
+        <div class="step">
+          <svg viewBox="0 0 340 300" aria-label="Column-aligned subtraction: Row 2 (2, 3, 13) minus 2 times Row 1 (2, 2, 10) equals new Row 2 (0, 1, 3), eliminating x from the second row">
+            <text x="180" y="20" text-anchor="middle" fill="var(--text)" font-size="13" font-family="system-ui" opacity="0.4">x + y = 5</text>
+            <text x="180" y="40" text-anchor="middle" fill="var(--text)" font-size="13" font-family="system-ui" opacity="0.4">2x + 3y = 13</text>
+
+            <rect x="85" y="65"  width="190" height="30" rx="6" fill="rgba(92,138,255,0.12)" stroke="#5c8aff" stroke-width="1" stroke-dasharray="3,3"/>
+            <rect x="85" y="115" width="190" height="30" rx="6" fill="rgba(62,207,142,0.12)" stroke="#3ecf8e" stroke-width="1" stroke-dasharray="3,3"/>
+
+            <path d="M98,55 L90,55 L90,145 L98,145" fill="none" stroke="#7070a0" stroke-width="1.5"/>
+            <path d="M262,55 L270,55 L270,145 L262,145" fill="none" stroke="#7070a0" stroke-width="1.5"/>
+            <line x1="195" y1="60" x2="195" y2="140" stroke="#7070a0" stroke-width="1" stroke-dasharray="4,3" opacity="0.6"/>
+
+            <text x="125" y="80"  text-anchor="middle" fill="#5c8aff" font-size="16" font-family="system-ui" font-weight="700">1</text>
+            <text x="170" y="80"  text-anchor="middle" fill="#5c8aff" font-size="16" font-family="system-ui" font-weight="700">1</text>
+            <text x="225" y="80"  text-anchor="middle" fill="#5c8aff" font-size="16" font-family="system-ui" font-weight="700">5</text>
+            <text x="125" y="130" text-anchor="middle" fill="#3ecf8e" font-size="16" font-family="system-ui" font-weight="700">2</text>
+            <text x="170" y="130" text-anchor="middle" fill="#3ecf8e" font-size="16" font-family="system-ui" font-weight="700">3</text>
+            <text x="225" y="130" text-anchor="middle" fill="#3ecf8e" font-size="16" font-family="system-ui" font-weight="700">13</text>
+
+            <!-- column-aligned subtraction: Row2, −2×Row1, rule, new Row2 -->
+            <rect x="50" y="155" width="238" height="95" rx="8" fill="var(--surface)" stroke="var(--border)" stroke-width="1.5"/>
+            <text x="60" y="178" fill="var(--text)" font-size="12" font-family="system-ui">Row 2</text>
+            <text x="180" y="178" text-anchor="middle" fill="var(--text)" font-size="13" font-family="system-ui">2</text>
+            <text x="218" y="178" text-anchor="middle" fill="var(--text)" font-size="13" font-family="system-ui">3</text>
+            <text x="258" y="178" text-anchor="middle" fill="var(--text)" font-size="13" font-family="system-ui">13</text>
+
+            <text x="60" y="200" fill="#5c8aff" font-size="12" font-family="system-ui" font-weight="700">−2×Row 1</text>
+            <text x="180" y="200" text-anchor="middle" fill="#5c8aff" font-size="13" font-family="system-ui" font-weight="700">2</text>
+            <text x="218" y="200" text-anchor="middle" fill="#5c8aff" font-size="13" font-family="system-ui" font-weight="700">2</text>
+            <text x="258" y="200" text-anchor="middle" fill="#5c8aff" font-size="13" font-family="system-ui" font-weight="700">10</text>
+
+            <line x1="58" y1="210" x2="278" y2="210" stroke="var(--border)" stroke-width="1.2"/>
+
+            <text x="60" y="233" fill="#3ecf8e" font-size="12" font-family="system-ui" font-weight="700">= new Row 2</text>
+            <text x="180" y="233" text-anchor="middle" fill="#3ecf8e" font-size="14" font-family="system-ui" font-weight="700">0</text>
+            <text x="218" y="233" text-anchor="middle" fill="#3ecf8e" font-size="14" font-family="system-ui" font-weight="700">1</text>
+            <text x="258" y="233" text-anchor="middle" fill="#3ecf8e" font-size="14" font-family="system-ui" font-weight="700">3</text>
+          </svg>
+          <p class="step-caption">Use <strong>Row 1</strong> (blue) as the pivot: multiply it by <strong>2</strong> — enough to match Row 2's x-coefficient — then subtract it from <strong>Row 2</strong> (green), column by column. <strong>2−2=0, 3−2=1, 13−10=3</strong>: Row 2 becomes <strong>[0, 1 | 3]</strong>, which no longer has an x-term.</p>
+        </div>
+
+        <!-- Step 3: Eliminate y from Row 1 -->
+        <div class="step">
+          <svg viewBox="0 0 340 300" aria-label="Column-aligned subtraction: Row 1 (1, 1, 5) minus 1 times Row 2 (0, 1, 3) equals new Row 1 (1, 0, 2), eliminating y from the first row">
+            <text x="180" y="20" text-anchor="middle" fill="var(--text)" font-size="13" font-family="system-ui" opacity="0.4">x + y = 5</text>
+            <text x="180" y="40" text-anchor="middle" fill="var(--text)" font-size="13" font-family="system-ui" opacity="0.4">2x + 3y = 13</text>
+
+            <rect x="85" y="115" width="190" height="30" rx="6" fill="rgba(92,138,255,0.12)" stroke="#5c8aff" stroke-width="1" stroke-dasharray="3,3"/>
+            <rect x="85" y="65"  width="190" height="30" rx="6" fill="rgba(62,207,142,0.12)" stroke="#3ecf8e" stroke-width="1" stroke-dasharray="3,3"/>
+
+            <path d="M98,55 L90,55 L90,145 L98,145" fill="none" stroke="#7070a0" stroke-width="1.5"/>
+            <path d="M262,55 L270,55 L270,145 L262,145" fill="none" stroke="#7070a0" stroke-width="1.5"/>
+            <line x1="195" y1="60" x2="195" y2="140" stroke="#7070a0" stroke-width="1" stroke-dasharray="4,3" opacity="0.6"/>
+
+            <text x="125" y="80"  text-anchor="middle" fill="#3ecf8e" font-size="16" font-family="system-ui" font-weight="700">1</text>
+            <text x="170" y="80"  text-anchor="middle" fill="#3ecf8e" font-size="16" font-family="system-ui" font-weight="700">1</text>
+            <text x="225" y="80"  text-anchor="middle" fill="#3ecf8e" font-size="16" font-family="system-ui" font-weight="700">5</text>
+            <text x="125" y="130" text-anchor="middle" fill="#5c8aff" font-size="16" font-family="system-ui" font-weight="700">0</text>
+            <text x="170" y="130" text-anchor="middle" fill="#5c8aff" font-size="16" font-family="system-ui" font-weight="700">1</text>
+            <text x="225" y="130" text-anchor="middle" fill="#5c8aff" font-size="16" font-family="system-ui" font-weight="700">3</text>
+
+            <!-- column-aligned subtraction: Row1, −1×Row2, rule, new Row1 -->
+            <rect x="50" y="155" width="238" height="95" rx="8" fill="var(--surface)" stroke="var(--border)" stroke-width="1.5"/>
+            <text x="60" y="178" fill="var(--text)" font-size="12" font-family="system-ui">Row 1</text>
+            <text x="180" y="178" text-anchor="middle" fill="var(--text)" font-size="13" font-family="system-ui">1</text>
+            <text x="218" y="178" text-anchor="middle" fill="var(--text)" font-size="13" font-family="system-ui">1</text>
+            <text x="258" y="178" text-anchor="middle" fill="var(--text)" font-size="13" font-family="system-ui">5</text>
+
+            <text x="60" y="200" fill="#5c8aff" font-size="12" font-family="system-ui" font-weight="700">−1×Row 2</text>
+            <text x="180" y="200" text-anchor="middle" fill="#5c8aff" font-size="13" font-family="system-ui" font-weight="700">0</text>
+            <text x="218" y="200" text-anchor="middle" fill="#5c8aff" font-size="13" font-family="system-ui" font-weight="700">1</text>
+            <text x="258" y="200" text-anchor="middle" fill="#5c8aff" font-size="13" font-family="system-ui" font-weight="700">3</text>
+
+            <line x1="58" y1="210" x2="278" y2="210" stroke="var(--border)" stroke-width="1.2"/>
+
+            <text x="60" y="233" fill="#3ecf8e" font-size="12" font-family="system-ui" font-weight="700">= new Row 1</text>
+            <text x="180" y="233" text-anchor="middle" fill="#3ecf8e" font-size="14" font-family="system-ui" font-weight="700">1</text>
+            <text x="218" y="233" text-anchor="middle" fill="#3ecf8e" font-size="14" font-family="system-ui" font-weight="700">0</text>
+            <text x="258" y="233" text-anchor="middle" fill="#3ecf8e" font-size="14" font-family="system-ui" font-weight="700">2</text>
+          </svg>
+          <p class="step-caption">Now use <strong>Row 2</strong> (blue) as the pivot: its multiplier is just <strong>1</strong> this time, since Row 1's y-coefficient is already 1. Subtract it from <strong>Row 1</strong> (green), column by column. <strong>1−0=1, 1−1=0, 5−3=2</strong>: Row 1 becomes <strong>[1, 0 | 2]</strong>, which no longer has a y-term.</p>
+        </div>
+
+        <!-- Step 4: Solution -->
+        <div class="step">
+          <svg viewBox="0 0 340 300" aria-label="Fully reduced matrix reading off the solution x equals 2, y equals 3">
+            <text x="180" y="20" text-anchor="middle" fill="var(--text)" font-size="13" font-family="system-ui">x + y = 5</text>
+            <text x="180" y="40" text-anchor="middle" fill="var(--text)" font-size="13" font-family="system-ui">2x + 3y = 13</text>
+
+            <path d="M98,55 L90,55 L90,145 L98,145" fill="none" stroke="#5c8aff" stroke-width="1.5"/>
+            <path d="M262,55 L270,55 L270,145 L262,145" fill="none" stroke="#5c8aff" stroke-width="1.5"/>
+            <line x1="195" y1="60" x2="195" y2="140" stroke="#7070a0" stroke-width="1" stroke-dasharray="4,3" opacity="0.6"/>
+
+            <text x="125" y="80"  text-anchor="middle" fill="var(--text)" font-size="16" font-family="system-ui">1</text>
+            <text x="170" y="80"  text-anchor="middle" fill="var(--text)" font-size="16" font-family="system-ui">0</text>
+            <text x="225" y="80"  text-anchor="middle" fill="#5c8aff" font-size="18" font-family="system-ui" font-weight="700">2</text>
+            <text x="125" y="130" text-anchor="middle" fill="var(--text)" font-size="16" font-family="system-ui">0</text>
+            <text x="170" y="130" text-anchor="middle" fill="var(--text)" font-size="16" font-family="system-ui">1</text>
+            <text x="225" y="130" text-anchor="middle" fill="#5c8aff" font-size="18" font-family="system-ui" font-weight="700">3</text>
+
+            <rect x="60" y="150" width="220" height="82" rx="7" fill="var(--surface)" stroke="#5c8aff" stroke-width="1.5"/>
+            <text x="170" y="176" text-anchor="middle" fill="#5c8aff" font-size="17" font-family="system-ui" font-weight="700">x = 2,  y = 3</text>
+            <text x="170" y="198" text-anchor="middle" fill="#7070a0" font-size="11" font-family="system-ui">Check: 2 + 3 = 5 ✓</text>
+            <text x="170" y="216" text-anchor="middle" fill="#7070a0" font-size="11" font-family="system-ui">2(2) + 3(3) = 4 + 9 = 13 ✓</text>
+          </svg>
+          <p class="step-caption">The matrix is now in <strong>reduced row echelon form</strong> — an identity matrix on the left — so the solution reads straight off the right column: <strong>x = 2</strong> and <strong>y = 3</strong>. Both original equations check out.</p>
+        </div>
+
+      </div><!-- .steps -->
+
+      <div class="step-nav">
+        <button class="prev" disabled>← Prev</button>
+        <div class="step-dots">
+          <span class="active"></span><span></span><span></span><span></span>
+        </div>
+        <button class="next">Next →</button>
+      </div>
+    </div><!-- .step-viewer -->
+  </section>
+
 </div><!-- .page -->
 
 <script src="textbook-switcher.js"></script>
