@@ -202,13 +202,18 @@ SVG rules:
    </section>
    ```
 6. `.attribution` footer
-7. All five shared scripts at the bottom of `<body>`:
+7. All five shared scripts at the bottom of `<body>`, plus the glossary data + script
+   if this textbook has `.key` terms (see **Glossary tooltips** below):
    ```html
    <script src="textbook-switcher.js"></script>
    <script src="textbook-notes.js"></script>
    <script src="textbook-nav.js"></script>
    <script src="theme-toggle.js"></script>
    <script src="textbook-ai.js"></script>
+   <script>
+   var GLOSSARY = { 'term': 'one-sentence definition', ... };
+   </script>
+   <script src="textbook-glossary.js"></script>
    ```
 
 **Interactive Resources appendix** — each textbook's appendix links to free, interactive tools that let readers explore the same concepts dynamically. Keep 2–4 links; prefer tools that closely match the textbook's specific topic arc rather than generic math sites.
@@ -300,6 +305,15 @@ Enhances the `.toc-back` links already in the HTML — does **not** inject its o
 - Injects a `↩ Back to where I was` button inside the TOC nav that returns the user to their saved position.
 
 **CRITICAL — never inject duplicate TOC links.** The `.toc-back` HTML links are the single source of truth. `textbook-nav.js` wires them; it must never create additional `<a>` elements for the same purpose. Past mistake: an earlier version appended `<a href="#">↑ Table of Contents</a>` to every section, creating a visible duplicate alongside the HTML `.toc-back`.
+
+### `textbook-glossary.js`
+Optional — only activates if the page defines a global `GLOSSARY` object before this script loads (`{ 'term': 'definition', ... }`, keyed by the exact trimmed `.textContent` of each `.key` span). No-ops harmlessly if `GLOSSARY` is undefined, so it's safe to include in every textbook's script list even before that textbook has any glossary content.
+
+- Injects its own CSS (`.key` gets `cursor: help` + dotted underline; `#glossary-tip` floating box) and the `#glossary-tip` div — no manual HTML/CSS needed per textbook beyond the `GLOSSARY` object itself.
+- **Desktop** (`hover: hover` media query true at load): standard `mouseenter`/`mousemove`/`mouseleave`, tooltip follows the cursor.
+- **Touch** (`hover: none`, e.g. iPad): tap-to-toggle via `touchend` — tap a term to open it, tap it again or tap anywhere else on the page to close. Deliberately does **not** use `click`: WebKit only synthesizes a click event reliably for elements that already look interactive (own listener / `cursor: pointer`), so a tap on a plain paragraph elsewhere on the page never produced one, leaving the tooltip stuck open with the old mouseenter/mouseleave-only approach. `touchend` fires unconditionally regardless of element type. `hover: hover` is checked once at load, not tracked live — not worth handling a mouse/trackpad being attached mid-session on a hybrid device.
+- **Coverage**: every unique `.key` term in a textbook must have a matching `GLOSSARY` entry. Validate with a script comparing `re.findall(r'<span class="key">([^<]*)</span>', html)` (unique, trimmed) against the `GLOSSARY` object's keys — mismatches in either direction are bugs (missing = silently no tooltip; extra = dead entry, usually means the term's wording changed in the prose).
+- **Line-wrap trap**: if a `<span class="key">` gets wrapped across multiple source lines during editing, its `.textContent` includes the embedded newline/indentation, so it will never match a clean `GLOSSARY` key. Keep every `.key` span on one line, or verify with the coverage script above (it will surface these as "missing").
 
 ---
 

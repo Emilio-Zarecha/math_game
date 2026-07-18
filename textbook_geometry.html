@@ -930,8 +930,8 @@
     <p>
       Key circle theorems: (1) <span class="key">Angle in a semicircle</span> — any
       inscribed angle that subtends a diameter equals $90°$, because the central angle is
-      $180°$ and the inscribed angle is half of that. (2) <span class="key">Angles in the
-      same segment</span> — all inscribed angles subtending the same arc are equal.
+      $180°$ and the inscribed angle is half of that. (2) <span class="key">Angles in the same segment</span>
+      — all inscribed angles subtending the same arc are equal.
       (3) <span class="key">Cyclic quadrilateral</span> — opposite angles of a quadrilateral
       inscribed in a circle sum to $180°$.
     </p>
@@ -1241,5 +1241,76 @@ createAngleExplorer('angle-canvas', 'readout-');
 <script src="textbook-nav.js"></script>
 <script src="theme-toggle.js"></script>
 <script src="textbook-ai.js"></script>
+<script>
+var GLOSSARY = {
+  'AA criterion': 'Two triangles are similar if two angles of one match two angles of the other.',
+  'AAS': 'Angle-Angle-Side — a congruence criterion: two triangles are congruent if two angles and a non-included side match.',
+  'ASA': 'Angle-Side-Angle — a congruence criterion: two triangles are congruent if two angles and the included side match.',
+  'Angle in a semicircle': 'An inscribed angle that subtends a diameter always measures 90°.',
+  'Angles in the same segment': 'All inscribed angles that subtend the same arc are equal to each other.',
+  'Area': 'The amount of two-dimensional space enclosed by a shape.',
+  "Cavalieri's Theorem": 'If two solids have equal cross-sectional areas at every height, they have equal volumes.',
+  'Central Angle Theorem': 'A central angle is always twice the measure of an inscribed angle that subtends the same arc.',
+  'Cyclic quadrilateral': 'A quadrilateral whose four vertices all lie on a single circle; its opposite angles are always supplementary.',
+  'Exterior Angle Theorem': 'An exterior angle of a triangle equals the sum of the two non-adjacent interior angles.',
+  'HL': 'Hypotenuse-Leg — a congruence criterion for right triangles: congruent if the hypotenuse and one leg match.',
+  'Isosceles Triangle Theorem': 'If two sides of a triangle are congruent, the angles opposite those sides are also congruent.',
+  'Law of Cosines': 'Generalizes the Pythagorean theorem to any triangle: c² = a² + b² − 2ab·cos(C).',
+  'Law of Sines': 'In any triangle, the ratio of a side\'s length to the sine of its opposite angle is the same for all three sides.',
+  'Perimeter': 'The total distance around the outside of a two-dimensional shape.',
+  'Rigid motions': 'Transformations — translations, rotations, and reflections — that preserve distances and angles.',
+  'SAS': 'Side-Angle-Side — a congruence criterion: two triangles are congruent if two sides and the included angle match.',
+  'SSA does not prove congruence': 'Knowing two sides and a non-included angle does not guarantee a unique triangle, so SSA is not a valid congruence criterion.',
+  'SSS': 'Side-Side-Side — a congruence criterion: two triangles are congruent if all three sides match.',
+  'Special right triangles': '45-45-90 and 30-60-90 triangles, whose side ratios follow fixed, memorable patterns.',
+  'Surface area': 'The total area of all the faces or surfaces of a three-dimensional solid.',
+  'Vertical angles': 'The pair of opposite angles formed when two lines cross; vertical angles are always equal.',
+  'Volume': 'The amount of three-dimensional space enclosed by a solid.',
+  'acute': 'Describes an angle measuring less than 90°.',
+  'angle': 'The measure of rotation between two rays sharing a common endpoint.',
+  'base angles': 'In an isosceles triangle, the two angles adjacent to the base (opposite the two equal sides), which are congruent.',
+  'central angle': 'An angle whose vertex is at the center of a circle.',
+  'chord': 'A line segment connecting two points on a circle.',
+  'circle': 'The set of all points equidistant from a fixed center point.',
+  'complementary': 'Describes two angles whose measures add up to 90°.',
+  'composite shapes': 'Shapes made by combining two or more simpler shapes, whose area or volume is found by adding or subtracting the pieces.',
+  'congruent': 'Describes figures that have exactly the same size and shape.',
+  'converse': 'A statement formed by swapping the hypothesis and conclusion of another statement — not automatically true just because the original is.',
+  'coordinate plane': 'A two-dimensional plane defined by a horizontal x-axis and vertical y-axis, used to locate points with ordered pairs.',
+  'diameter': 'A chord passing through a circle\'s center; twice the radius.',
+  'distance formula': 'Finds the distance between two points: d = √((x₂−x₁)² + (y₂−y₁)²), derived from the Pythagorean theorem.',
+  'equilateral': 'Describes a triangle with all three sides (and angles) equal.',
+  'exterior angle theorem': 'An exterior angle of a triangle equals the sum of the two non-adjacent interior angles.',
+  'inscribed angle': 'An angle formed by two chords sharing an endpoint on a circle.',
+  'isosceles': 'Describes a triangle with at least two sides (and their opposite angles) equal.',
+  'line': 'A straight, one-dimensional figure extending infinitely in both directions.',
+  'line segment': 'A part of a line bounded by two distinct endpoints.',
+  'midpoint formula': 'Finds the point exactly halfway between two points: ((x₁+x₂)/2, (y₁+y₂)/2).',
+  'obtuse': 'Describes an angle measuring more than 90° but less than 180°.',
+  'parallel': 'Describes lines that never intersect and remain the same distance apart.',
+  'parallelogram': 'A quadrilateral with two pairs of parallel sides.',
+  'point': 'An exact location in space with no size or dimension.',
+  'polygon': 'A closed two-dimensional shape made of straight line segments.',
+  'quadrilaterals': 'Polygons with exactly four sides.',
+  'radius': 'The distance from a circle\'s center to any point on the circle.',
+  'ray': 'A part of a line that starts at one endpoint and extends infinitely in one direction.',
+  'rectangle': 'A quadrilateral with four right angles.',
+  'regular polygon': 'A polygon with all sides and all angles equal.',
+  'right': 'Describes an angle measuring exactly 90°.',
+  'right triangle': 'A triangle containing one 90° angle.',
+  'scale factor': 'The ratio by which a figure is enlarged or reduced to create a similar figure.',
+  'scalene': 'Describes a triangle with all three sides (and angles) of different measures.',
+  'similar': 'Describes figures with the same shape but not necessarily the same size — corresponding angles equal, corresponding sides proportional.',
+  'similar triangles': 'Triangles with the same shape but not necessarily the same size — corresponding angles equal, corresponding sides proportional.',
+  'straight': 'Describes an angle measuring exactly 180°.',
+  'supplementary': 'Describes two angles whose measures add up to 180°.',
+  'tangent': 'A line that touches a circle at exactly one point without crossing into it.',
+  'transformation': 'An operation — translation, rotation, reflection, or dilation — that moves or resizes a figure.',
+  'transversal': 'A line that crosses two or more other lines, creating pairs of related angles.',
+  'triangle': 'A polygon with exactly three sides and three angles.',
+  'triangle inequality': 'The sum of the lengths of any two sides of a triangle must exceed the length of the third side.',
+};
+</script>
+<script src="textbook-glossary.js"></script>
 </body>
 </html>

@@ -1258,8 +1258,8 @@
     </div>
 
     <p>
-      $|a|$ gives the distance from $a$ to zero. An <span class="key">absolute value
-      equation</span> $|A| = b$ ($b \geq 0$) splits into two cases: $A = b$ or $A = -b$.
+      $|a|$ gives the distance from $a$ to zero. An <span class="key">absolute value equation</span>
+      $|A| = b$ ($b \geq 0$) splits into two cases: $A = b$ or $A = -b$.
     </p>
 
     <p>
@@ -1528,5 +1528,69 @@
 <script src="textbook-nav.js"></script>
 <script src="theme-toggle.js"></script>
 <script src="textbook-ai.js"></script>
+<script>
+var GLOSSARY = {
+  '$n$th root': 'The value that, when raised to the nth power, gives the original number — the inverse of an nth power.',
+  'AC method': 'A factoring technique for ax²+bx+c: find two numbers multiplying to a×c and summing to b, then split and group.',
+  'Domain restrictions:': 'Values that must be excluded from a function\'s input, such as those making a denominator zero or a radicand negative.',
+  'Exponential equations with mismatched bases:': 'Solved by rewriting both sides with a common base, or by taking a logarithm of both sides when that\'s not possible.',
+  'FOIL': 'A mnemonic for multiplying two binomials: First, Outer, Inner, Last terms.',
+  'Factoring': 'Rewriting an expression as a product of simpler factors.',
+  'Function composition': 'Applying one function to the output of another, written (f∘g)(x) = f(g(x)).',
+  'Integers': 'Whole numbers and their negatives: …, −2, −1, 0, 1, 2, … — no fractions or decimals.',
+  'Irrational numbers': 'Real numbers that cannot be written as a ratio of two integers, like π or √2.',
+  'LCD': 'Least Common Denominator — the smallest number that all the denominators in a set of fractions divide into evenly.',
+  'Like terms': 'Terms with the exact same variable(s) raised to the same power(s), which can be combined by adding their coefficients.',
+  'Logarithmic equations:': 'Solved by rewriting in exponential form, or by applying the same logarithm to both sides of the equation.',
+  'Natural numbers': 'The counting numbers: 1, 2, 3, 4, … (sometimes including 0 depending on convention).',
+  'Order of operations (PEMDAS)': 'The agreed-upon sequence for evaluating an expression: Parentheses, Exponents, Multiplication/Division, Addition/Subtraction.',
+  'Rational exponents': 'Exponents written as fractions, where the denominator indicates a root: a^(m/n) = ⁿ√(aᵐ).',
+  'Rational numbers': 'Numbers that can be written as a ratio of two integers, a/b with b≠0.',
+  'Slope': 'The steepness of a line, measured as rise over run between two points.',
+  'Slope-intercept form': 'A linear equation written as y = mx + b, where m is the slope and b is the y-intercept.',
+  'Special products': 'Recognizable patterns for expanding certain binomial products, like (a+b)² or (a+b)(a−b).',
+  'Standard form': 'A polynomial or equation written with terms in a conventional order, such as Ax + By = C for a line.',
+  'Verifying inverses with composition:': 'Two functions f and g are true inverses only if f(g(x)) = x and g(f(x)) = x for all valid x.',
+  'Vertex form': 'A quadratic written as f(x) = a(x−h)² + k, directly revealing the vertex (h, k).',
+  'Whole numbers': 'The natural numbers together with zero: 0, 1, 2, 3, …',
+  'absolute value': 'A number\'s distance from zero on the number line, always non-negative — written |x|.',
+  'absolute value equation': 'An equation containing an absolute value expression, which splits into two cases when solved.',
+  'absolute value inequality': 'An inequality containing an absolute value expression, which splits into a compound inequality when solved.',
+  'algebraic expression': 'A combination of variables, numbers, and operations without an equals sign.',
+  'binomial': 'A polynomial with exactly two terms.',
+  'coefficients': 'The numerical factors multiplying the variable(s) in a term.',
+  'compound inequality': 'Two inequalities joined by "and" or "or," describing a combined range of values.',
+  'degree': 'For a polynomial, the highest exponent on its variable.',
+  'discriminant': 'The expression b²−4ac from the quadratic formula, whose sign reveals how many real roots a quadratic has.',
+  'distributive property': 'a(b+c) = ab + ac — multiplication distributes over addition.',
+  'domain': 'The set of all valid input values for a function.',
+  'evaluate': 'To calculate the numerical value of an expression by substituting given values for its variables.',
+  'exponential equation': 'An equation in which the variable appears in an exponent.',
+  'function': 'A rule that assigns exactly one output to each input.',
+  'greatest common factor (GCF)': 'The largest number (or expression) that divides evenly into two or more numbers (or terms).',
+  'horizontal line test': 'A graphical check: if any horizontal line crosses a function\'s graph more than once, the function has no inverse function.',
+  'interval notation': 'A way of writing a range of numbers using brackets and parentheses, e.g. [2, 5) means 2 ≤ x < 5.',
+  'inverse function': 'A function that reverses another function\'s mapping, undoing its effect: f⁻¹(f(x)) = x.',
+  'linear equation': 'An equation whose graph is a straight line, with variables raised only to the first power.',
+  'linear inequality': 'An inequality whose graph is a region bounded by a straight line, with variables raised only to the first power.',
+  'logarithm': 'The inverse of exponentiation: logₐb = c means aᶜ = b.',
+  'monomial': 'A polynomial with exactly one term.',
+  'parallel': 'Describes lines that never intersect and have the same slope.',
+  'perpendicular': 'Describes lines that intersect at a right angle; their slopes are negative reciprocals of each other.',
+  'polynomial': 'An expression built from variables raised to whole-number powers, combined with addition, subtraction, and multiplication.',
+  'principal square root': 'The non-negative square root of a number — the one meant by the √ symbol.',
+  'quadratic equation': 'An equation of the form ax² + bx + c = 0, where a ≠ 0.',
+  'range': 'The set of all possible output values of a function.',
+  'rational equation': 'An equation containing one or more rational expressions.',
+  'rational expression': 'A fraction whose numerator and denominator are both polynomials.',
+  'real numbers': 'All rational and irrational numbers — every point on the number line.',
+  'system of linear equations': 'A set of two or more linear equations considered together, solved by finding values that satisfy all of them at once.',
+  'trinomial': 'A polynomial with exactly three terms.',
+  'variable': 'A symbol, usually a letter, representing an unknown or changing quantity.',
+  'x-intercept': 'The point where a graph crosses the x-axis, where y = 0.',
+  'y-intercept': 'The point where a graph crosses the y-axis, where x = 0.',
+};
+</script>
+<script src="textbook-glossary.js"></script>
 </body>
 </html>

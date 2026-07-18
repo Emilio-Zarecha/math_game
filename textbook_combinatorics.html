@@ -435,8 +435,8 @@
     </p>
 
     <p>
-      A separate but related scenario is ordered selection <span class="key">with
-      repetition</span>: choosing $r$ items from $n$ types where each type can be chosen
+      A separate but related scenario is ordered selection <span class="key">with repetition</span>:
+      choosing $r$ items from $n$ types where each type can be chosen
       multiple times (like digits in a PIN). Here there is no depletion of choices — each
       position independently has $n$ options — giving $n^r$ total sequences. This is the
       exponential count from the FCP with repetition allowed, in contrast to the $n!/(n-r)!$
@@ -873,8 +873,8 @@
       satisfies $D(n) = n!\,\sum_{k=0}^{n} \frac{(-1)^k}{k!}$, which converges to $n!/e$
       as $n$ grows. $D(4) = 9$: out of $4! = 24$ permutations of four objects, only 9 leave
       none in place. Derangements model problems like hat-check mix-ups, secret Santa
-      assignments, and certain card-trick analyses. <span class="key">Stirling numbers of the
-      second kind</span> $S(n,k)$ count the ways to partition $n$ objects into exactly $k$
+      assignments, and certain card-trick analyses. <span class="key">Stirling numbers of the second kind</span>
+      $S(n,k)$ count the ways to partition $n$ objects into exactly $k$
       non-empty unlabeled subsets — a more advanced topic that extends the combinatorics
       toolkit beyond this chapter.
     </p>
@@ -953,5 +953,32 @@
 <script src="textbook-nav.js"></script>
 <script src="theme-toggle.js"></script>
 <script src="textbook-ai.js"></script>
+<script>
+var GLOSSARY = {
+  'Binomial Theorem': 'A formula expanding (x+y)ⁿ as a sum of terms C(n,k)xⁿ⁻ᵏyᵏ, using the coefficients from Pascal\'s triangle.',
+  'Circular permutations': 'Arrangements of items around a circle, where rotations of the same arrangement are considered identical — counted as (n−1)! for n items.',
+  'Complementary counting': 'Counting everything that does NOT satisfy a condition, then subtracting from the total — often easier than counting directly.',
+  'Complementary probability': 'The probability that an event does not happen: 1 minus the probability that it does.',
+  'Fundamental Counting Principle (FCP)': 'If one choice can be made in m ways and a second independent choice in n ways, both together can be made in m×n ways.',
+  'Hockey Stick Identity': 'The sum of a diagonal run of entries in Pascal\'s triangle equals a single entry one row lower and one column over.',
+  "Pascal's identity": 'C(n,k) = C(n−1,k−1) + C(n−1,k) — each entry in Pascal\'s triangle is the sum of the two entries above it.',
+  "Pascal's triangle": 'A triangular array of binomial coefficients, where each entry is the sum of the two entries directly above it.',
+  'Pigeonhole Principle': 'If more than n items are placed into n containers, at least one container must hold more than one item.',
+  'Principle of Inclusion-Exclusion (PIE)': 'A method for counting the union of overlapping sets by adding individual sizes, then subtracting overlaps to avoid double-counting.',
+  'Stars and bars': 'A technique for counting the ways to split n identical items into k groups, using n stars and k−1 dividing bars in a row.',
+  'Stirling numbers of the second kind': 'S(n,k) counts the number of ways to partition n distinct objects into exactly k non-empty, unlabeled groups.',
+  'addition rule': 'For mutually exclusive events, the total number of outcomes is the sum of the outcomes for each individual event.',
+  'combination': 'A selection of items where order does not matter, written C(n,r).',
+  'derangement': 'A permutation of a set in which no element appears in its original position.',
+  'factorial': 'The product of all positive integers up to n, written n! — e.g. 4! = 4×3×2×1 = 24.',
+  'generalized pigeonhole principle': 'If N items are placed into k containers, at least one container holds at least ⌈N/k⌉ items.',
+  'multinomial coefficient': 'Counts the ways to arrange items into multiple labeled groups of specified sizes, generalizing the binomial coefficient.',
+  'mutually exclusive': 'Describes events that cannot both happen at the same time.',
+  'permutation': 'An arrangement of items where order matters, written P(n,r).',
+  'sample space': 'The set of all possible outcomes of an experiment or random process.',
+  'with repetition': 'Describes a selection where the same item or type can be chosen more than once.',
+};
+</script>
+<script src="textbook-glossary.js"></script>
 </body>
 </html>

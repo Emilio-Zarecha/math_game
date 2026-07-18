@@ -1127,5 +1127,53 @@ createAngleExplorer('angle-canvas', 'readout-');
 <script src="textbook-nav.js"></script>
 <script src="theme-toggle.js"></script>
 <script src="textbook-ai.js"></script>
+<script>
+var GLOSSARY = {
+  'Domain restrictions:': 'Values that must be excluded from a function\'s input, such as those making a denominator zero or a radicand negative.',
+  'End behavior': 'How a function\'s output behaves as x approaches positive or negative infinity.',
+  'Factor Theorem': 'A polynomial p(x) has (x−a) as a factor if and only if p(a) = 0.',
+  'Fundamental Counting Principle': 'If one choice can be made in m ways and a second independent choice in n ways, both together can be made in m×n ways.',
+  'Fundamental Theorem of Algebra': 'Every non-constant polynomial of degree n has exactly n complex roots, counted with multiplicity.',
+  'Matrix multiplication': 'Combining two matrices by taking dot products of rows from the first with columns of the second.',
+  'Probability': 'A number between 0 and 1 measuring how likely an event is to occur.',
+  'Rational Root Theorem:': 'Any rational root of a polynomial with integer coefficients must be a factor of the constant term divided by a factor of the leading coefficient.',
+  'Remainder Theorem': 'Dividing a polynomial p(x) by (x−a) leaves a remainder equal to p(a).',
+  'Vertex form': 'A quadratic written as f(x) = a(x−h)² + k, directly revealing the vertex (h, k).',
+  'Vertex form:': 'A quadratic written as f(x) = a(x−h)² + k, directly revealing the vertex (h, k).',
+  'add or subtract rational expressions': 'To combine rational expressions, first rewrite them with a common denominator, then add or subtract the numerators.',
+  'arithmetic sequence': 'A sequence where each term differs from the previous one by a constant amount.',
+  'axis of symmetry': 'The vertical line through a parabola\'s vertex, about which the two halves of the graph mirror each other.',
+  'binomial probability formula': 'Gives the probability of exactly k successes in n independent trials, each with success probability p: C(n,k)pᵏ(1−p)ⁿ⁻ᵏ.',
+  'check for extraneous solutions': 'Substituting each solution back into the original equation, since operations like squaring or clearing denominators can introduce values that don\'t actually satisfy it.',
+  'combination': 'A selection of items where order does not matter, written C(n,r).',
+  'complex conjugate': 'For a complex number a+bi, its conjugate a−bi — multiplying the two eliminates the imaginary part.',
+  'complex number': 'A number of the form a+bi, combining a real part a and an imaginary part bi.',
+  'dependent': 'Describes a system of equations with infinitely many solutions, where one equation is a multiple of another.',
+  'discriminant': 'The expression b²−4ac from the quadratic formula, whose sign reveals how many real roots a quadratic has.',
+  'diverges': 'Describes a sequence or series that does not approach a finite limit.',
+  'downward': 'Describes a parabola that opens downward, occurring when its leading coefficient a is negative — its vertex is a maximum.',
+  'even': 'Describes a polynomial whose degree is an even number, which makes both ends of its graph point in the same direction.',
+  'exponential function': 'A function of the form f(x) = a·bˣ, where the variable appears in the exponent.',
+  'extraneous': 'A solution produced algebraically that does not actually satisfy the original equation.',
+  'geometric intersections': 'The points where the graphs of two or more equations meet, corresponding to the solutions of the system.',
+  'geometric sequence': 'A sequence where each term is a constant multiple (ratio) of the previous term.',
+  'imaginary unit': 'The number i, defined so that i² = −1.',
+  'independent': 'Describes a system of equations with exactly one solution.',
+  'least common denominator (LCD)': 'The smallest number that all the denominators in a set of fractions divide into evenly.',
+  'matrix': 'A rectangular array of numbers arranged in rows and columns.',
+  'nonlinear system': 'A system of equations in which at least one equation is not linear, such as a quadratic or circle.',
+  'odd': 'Describes a polynomial whose degree is an odd number, which makes the two ends of its graph point in opposite directions.',
+  'permutation': 'An arrangement of items where order matters, written P(n,r).',
+  'polynomial': 'An expression built from variables raised to whole-number powers, combined with addition, subtraction, and multiplication.',
+  'quadratic function': 'A function of the form f(x) = ax² + bx + c, whose graph is a parabola.',
+  'rational expression': 'A fraction whose numerator and denominator are both polynomials.',
+  'solve a rational equation': 'To solve an equation containing rational expressions, multiply every term by the least common denominator to clear the fractions.',
+  'substitution': 'Solving a system of equations by expressing one variable in terms of another and plugging that expression into the other equation.',
+  'tangent to the $x$-axis': 'Describes a parabola that touches the x-axis at exactly one point without crossing it, which happens when the discriminant equals zero.',
+  'upward': 'Describes a parabola that opens upward, occurring when its leading coefficient a is positive — its vertex is a minimum.',
+  'vertex': 'The turning point of a parabola — its minimum if the parabola opens upward, or maximum if it opens downward.',
+};
+</script>
+<script src="textbook-glossary.js"></script>
 </body>
 </html>

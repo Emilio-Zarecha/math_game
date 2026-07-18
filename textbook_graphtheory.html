@@ -48,23 +48,7 @@
     .ai-note { background:rgba(45,212,191,0.08); border:1px solid var(--border); border-left:3px solid var(--ai); border-radius:8px; padding:14px 20px; margin:16px 0; }
     .ai-note .label { font-size:0.7rem; letter-spacing:.14em; text-transform:uppercase; color:var(--ai); margin-bottom:8px; }
     .ai-note p { margin-bottom:0; font-size:0.9rem; line-height:1.9; }
-    .key { color:var(--hint); font-weight:600; cursor:help; border-bottom:1px dotted var(--muted); }
-    #glossary-tip {
-      position: fixed;
-      background: var(--panel);
-      border: 1px solid var(--border);
-      border-radius: 6px;
-      padding: 8px 12px;
-      font-size: 0.8rem;
-      color: var(--text);
-      z-index: 300;
-      pointer-events: none;
-      white-space: normal;
-      max-width: 280px;
-      line-height: 1.5;
-      box-shadow: 0 4px 16px rgba(0,0,0,0.5);
-      display: none;
-    }
+    .key { color:var(--hint); font-weight:600; }
     .attribution { text-align:center; color:var(--muted); font-size:0.82rem; margin-top:36px; padding-top:20px; border-top:1px solid var(--border); }
     @media (max-width:600px) { nav ol { grid-template-columns:1fr; } section { padding:24px 20px; } .example-step { flex-direction:column; gap:2px; } }
     .toc-back { text-align: right; margin-top: 1.5rem; padding-top: 0.9rem;
@@ -1128,17 +1112,13 @@
 
 </div><!-- .page -->
 
-<div id="glossary-tip"></div>
-
 <script src="textbook-switcher.js"></script>
 <script src="textbook-notes.js"></script>
 <script src="textbook-nav.js"></script>
 <script src="theme-toggle.js"></script>
 <script src="textbook-ai.js"></script>
 <script>
-// ── Glossary hover tooltips for .key terms ──────────────────────
-(function(){
-  var GLOSSARY = {
+var GLOSSARY = {
     'graph': 'A set of vertices together with a set of edges connecting pairs of them.',
     'vertices': 'The points (also called nodes) in a graph — the "things" being connected.',
     'edges': 'The connections between pairs of vertices in a graph.',
@@ -1183,72 +1163,7 @@
     'Knowledge graphs': 'Graphs where vertices are real-world entities and edges are explicit relations between them.',
     'PageRank': "Google's original ranking algorithm, which scores a web page's importance from a random walk over the web's link graph.",
   };
-
-  var tip = document.getElementById('glossary-tip');
-
-  function moveTip(e){
-    tip.style.left = (e.clientX + 14) + 'px';
-    tip.style.top  = (e.clientY - 10) + 'px';
-  }
-
-  // Devices with no real hover (touch, e.g. iPad) get synthesized mouseenter on
-  // tap but never a reliable mouseleave — the tooltip would get stuck open.
-  // Checked once at load: good enough for this site, not worth tracking a
-  // live mouse/trackpad being attached mid-session on a hybrid device.
-  var HOVER_CAPABLE = window.matchMedia('(hover: hover)').matches;
-
-  if (HOVER_CAPABLE) {
-    document.querySelectorAll('.key').forEach(function(el){
-      var term = el.textContent.trim();
-      var def = GLOSSARY[term];
-      if(!def) return;
-      el.addEventListener('mouseenter', function(ev){
-        tip.textContent = def;
-        tip.style.display = 'block';
-        moveTip(ev);
-        el.addEventListener('mousemove', moveTip);
-      });
-      el.addEventListener('mouseleave', function(){
-        tip.style.display = 'none';
-        el.removeEventListener('mousemove', moveTip);
-      });
-    });
-  } else {
-    // Tap-to-toggle: tap a term to open it (closing any other open term),
-    // tap it again or tap anywhere else to close. Uses touchend directly
-    // rather than 'click' — WebKit only synthesizes a click reliably for
-    // elements that already look interactive (own listener / cursor:pointer),
-    // so a tap on a plain paragraph elsewhere on the page never produced a
-    // click event at all, leaving the tooltip stuck open.
-    var openEl = null;
-    document.querySelectorAll('.key').forEach(function(el){
-      var term = el.textContent.trim();
-      var def = GLOSSARY[term];
-      if(!def) return;
-      el.addEventListener('touchend', function(ev){
-        ev.preventDefault();
-        ev.stopPropagation();
-        if (openEl === el) {
-          tip.style.display = 'none';
-          openEl = null;
-        } else {
-          var touch = ev.changedTouches[0];
-          tip.textContent = def;
-          tip.style.display = 'block';
-          tip.style.left = (touch.clientX + 14) + 'px';
-          tip.style.top  = (touch.clientY - 10) + 'px';
-          openEl = el;
-        }
-      }, { passive: false });
-    });
-    document.addEventListener('touchend', function(){
-      if (openEl) {
-        tip.style.display = 'none';
-        openEl = null;
-      }
-    });
-  }
-})();
 </script>
+<script src="textbook-glossary.js"></script>
 </body>
 </html>
