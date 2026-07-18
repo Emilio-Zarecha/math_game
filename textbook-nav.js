@@ -37,7 +37,7 @@
   }
 
   function init() {
-    var nav = document.querySelector('nav');
+    var nav = document.querySelector('#toc');
     if (!nav) return;
 
     /* "Back to where I was" button lives inside the nav */

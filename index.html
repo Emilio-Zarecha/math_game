@@ -1559,16 +1559,20 @@ function advanceStep() {
 }
 
 // ── Hint / Give Up ─────────────────────────────────────────────
-function activateHint() {
-  if (!G.puzzle) return;
-  const step = visibleSteps()[G.currentStep];
-  if (!step || !step.paletteRef) return;
-
+function markHintUsed() {
   G.score.hints++;
   $('sc-hints').textContent = G.score.hints;
   G.cleanSolve = false;
   G.score.streak = 0;
   $('sc-streak').textContent = '0';
+}
+
+function activateHint() {
+  if (!G.puzzle) return;
+  const step = visibleSteps()[G.currentStep];
+  if (!step || !step.paletteRef) return;
+
+  markHintUsed();
 
   // Highlight palette item
   const palItem = $('palette').querySelector(`[data-id="${step.paletteRef}"]`);
@@ -1712,6 +1716,8 @@ function animatedSolve() {
   const dropZones = Array.from(stepEq.querySelectorAll('.drop-zone:not(.done)'));
   if (!dropZones.length) return;
 
+  markHintUsed();
+
   G.animating = true;
   const ver = G.stepVer;
 
@@ -1752,6 +1758,7 @@ function playNextStep() {
 // ── Keyboard ───────────────────────────────────────────────────
 document.addEventListener('keydown', e => {
   if (sigmaModal.classList.contains('open')) return;
+  if (notesModal.classList.contains('open')) return;
   if (e.key === 'ArrowRight') playNextStep();
   if (e.key === 'ArrowLeft')  goPrev();
 });
