@@ -38,18 +38,25 @@ When adding a new topic (e.g., Linear Algebra), update **all four** locations in
    ```
 
 ### Current topicIndex assignments
+`topicIndex` for the main "By Topic" browse flow is computed live as `topicSel.selectedIndex` — i.e. the option's position in `#topic-select`, not a hardcoded constant. **New topics must be appended as the last `<option>`**, never inserted mid-list, or every topic after the insertion point silently gets a new topicIndex and a different "global puzzle number."
+
 | topicIndex | Topic | Puzzle prefix |
 |---|---|---|
 | 0 | algebra | alg |
 | 1 | algebra2 | alg2 |
 | 2 | arithmetic | arith |
-| 3 | geometry | geo |
-| 4 | trigonometry | trig |
-| 5 | calculus | calc |
-| 6 | statistics | stat |
-| 7 | linearalgebra | linalg |
+| 3 | arithmetic2 | arith2 |
+| 4 | combinatorics | comb |
+| 5 | geometry | geo |
+| 6 | trigonometry | trig |
+| 7 | calculus | calc |
+| 8 | statistics | stat |
+| 9 | linearalgebra | linalg |
+| 10 | graphtheory | graph |
 
 **Global puzzle number formula:** `topicIndex * 30 + idxInTopic + 1`
+
+Note: `TOPIC_META` (used only by concept-search, a separate lookup from the main browse flow) currently only covers 5 of 11 topics, and its topicIndex values for trig/calc/stat/linalg are stale relative to the table above — a known pre-existing gap, not yet fixed.
 
 ---
 
@@ -153,9 +160,12 @@ assert body.count('</section>') == body.count('toc-back'), "sections/links misma
 | `.definition` | Orange-bordered definition box |
 | `.formula` | Blue-bordered formula box |
 | `.example` | Green-bordered worked example |
-| `.neural` | Purple-bordered neural architecture connection callout |
+| `.neural` | Purple-bordered neural architecture connection callout (Linear Algebra only) |
+| `.ai-note` | Teal-bordered AI/ML-relevance sidebar (Graph Theory only) |
 
-**The `.neural` callout** appears **only in Linear Algebra** and any advanced topics that branch from it (e.g., future advanced linear algebra, numerical methods). All other textbooks — Arithmetic, Algebra, Geometry, Trigonometry, Statistics, Calculus — must **not** include `.neural` boxes or neural-network-specific content. General technology or computing references (binary, floating-point, cryptography) are acceptable in motivation paragraphs for those textbooks; explicit AI/ML/neural network framing is not.
+**The `.neural` callout** appears **only in Linear Algebra** and any advanced topics that branch from it (e.g., future advanced linear algebra, numerical methods). All other textbooks except Graph Theory — Arithmetic, Algebra, Geometry, Trigonometry, Statistics, Calculus — must **not** include `.neural` boxes or neural-network-specific content. General technology or computing references (binary, floating-point, cryptography) are acceptable in motivation paragraphs for those textbooks; explicit AI/ML/neural network framing is not.
+
+**The `.ai-note` callout** appears **only in Graph Theory**, by explicit design: the chapters are standard, comprehensive graph theory (not an AI course), but each chapter carries one short sidebar connecting the concept to its use in neural nets/AI (computational graphs, GNNs, attention-as-graph, etc.). Visually distinct from `.neural` (own color, teal) so it doesn't read as a re-skin of the Linear Algebra callout. Do not use `.ai-note` in any other textbook — same containment principle as `.neural`.
 
 **Motivation paragraph** — every chapter must open with a paragraph explaining *why* the concept matters before any definitions or formulas appear. The paragraph should answer at least one of: what problem does this solve, what would break without it, or how does it connect to something the reader already cares about. Real-world anchors (navigation, signal processing, robotics, ML) are preferred over abstract justification. This paragraph goes after `<h3>` and before the first technical `<p>`. (Exception: Linear Algebra uses `<h2>` for chapter titles and `<h3>` for sub-sections — insert after `<h2>` in that file.)
 
@@ -203,7 +213,7 @@ SVG rules:
 
 **Interactive Resources appendix** — each textbook's appendix links to free, interactive tools that let readers explore the same concepts dynamically. Keep 2–4 links; prefer tools that closely match the textbook's specific topic arc rather than generic math sites.
 
-**Textbook switcher nav bar** (`textbook-switcher.js`) — injected dynamically after `<header>` in every textbook. Renders as a horizontal carousel (single row, `overflow-x: auto`, hidden scrollbar) constrained to the same `.page` max-width (820px) as the chapter sections. Lists all 8 textbooks in curriculum order; active page marked with `class="current"` and `aria-current="page"`.
+**Textbook switcher nav bar** (`textbook-switcher.js`) — injected dynamically after `<header>` in every textbook. Renders as a horizontal carousel (single row, `overflow-x: auto`, hidden scrollbar) constrained to the same `.page` max-width (820px) as the chapter sections. Lists all textbooks; active page marked with `class="current"` and `aria-current="page"`.
 
 **AI tutor modal** (`textbook-ai.js`) — injects an "Ask AI" button into the textbook header. On click, opens a modal that detects the most-visible `section.chapter` on screen, sends its `innerText` (capped at 12 000 chars) as system context to Google Gemini 2.0 Flash, and streams back a plain-text answer. API key stored in `localStorage` under `gemini-api-key`; first-time use shows a key-entry pane with a link to aistudio.google.com/apikey. Multi-turn conversation resets each time the modal is opened. Script must be loaded after `theme-toggle.js` so its button appends to the header after the theme toggle.
 
@@ -211,7 +221,7 @@ SVG rules:
 
 ## Diagram Pages (`math_<subject>_diagrams.html`)
 
-One diagram page per textbook, named `math_<subject>_diagrams.html` (e.g. `math_calculus_diagrams.html`). Currently only the calculus page exists.
+One diagram page per textbook, named `math_<subject>_diagrams.html` (e.g. `math_calculus_diagrams.html`).
 
 ## Diagram Viewer — `math_calculus_diagrams.html`
 

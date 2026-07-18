@@ -1,0 +1,957 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Combinatorics — Math Game Textbook</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css" />
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
+          onload="renderMathInElement(document.body, {
+            delimiters: [{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}]
+          })"></script>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root { --bg:#0d0d1a; --surface:#151528; --panel:#1c1c35; --border:#2e2e55; --accent:#5c8aff; --correct:#3ecf8e; --hint:#ffb830; --text:#e0e0f0; --muted:#7070a0; }
+    body { background:var(--bg); color:var(--text); font-family:system-ui,sans-serif; min-height:100vh; padding:48px 24px 80px; display:flex; flex-direction:column; align-items:center; }
+    .page { width:100%; max-width:820px; }
+    header { display:flex; align-items:baseline; gap:16px; margin-bottom:12px; }
+    header h1 { font-size:1.5rem; font-weight:700; letter-spacing:.12em; text-transform:uppercase; color:var(--accent); }
+    header a { font-size:0.85rem; color:var(--muted); text-decoration:none; }
+    header a:hover { color:var(--accent); }
+    .subtitle { font-size:0.75rem; color:var(--muted); margin-bottom:36px; }
+    .subtitle a { color:var(--muted); }
+    .subtitle a:hover { color:var(--accent); }
+    nav { background:var(--surface); border:1px solid var(--border); border-radius:12px; padding:24px 32px; margin-bottom:32px; }
+    nav h2 { font-size:0.7rem; letter-spacing:.18em; text-transform:uppercase; color:var(--hint); margin-bottom:16px; }
+    nav ol { padding-left:20px; display:grid; grid-template-columns:1fr 1fr; gap:6px 32px; }
+    nav li { font-size:0.9rem; }
+    nav a { color:var(--accent); text-decoration:none; }
+    nav a:hover { text-decoration:underline; }
+    section { background:var(--surface); border:1px solid var(--border); border-radius:12px; padding:32px 36px; margin-bottom:24px; scroll-margin-top:24px; }
+    section h3 { font-size:1.05rem; font-weight:700; color:var(--accent); margin-bottom:6px; }
+    .chapter-num { font-size:0.7rem; letter-spacing:.14em; text-transform:uppercase; color:var(--muted); margin-bottom:14px; }
+    p { line-height:1.8; color:var(--text); font-size:0.95rem; margin-bottom:14px; }
+    p:last-child { margin-bottom:0; }
+    .formula { background:var(--panel); border:1px solid var(--border); border-left:3px solid var(--accent); border-radius:8px; padding:14px 20px; margin:16px 0; }
+    .formula .label { font-size:0.7rem; letter-spacing:.14em; text-transform:uppercase; color:var(--hint); margin-bottom:8px; }
+    .formula p { margin-bottom:0; font-size:0.9rem; line-height:1.9; }
+    .example { background:var(--panel); border:1px solid var(--border); border-left:3px solid var(--correct); border-radius:8px; padding:14px 20px; margin:16px 0; }
+    .example .label { font-size:0.7rem; letter-spacing:.14em; text-transform:uppercase; color:var(--correct); margin-bottom:10px; }
+    .example-step { display:flex; align-items:baseline; gap:12px; padding:4px 0; font-size:0.92rem; line-height:1.7; }
+    .example-step .why { color:var(--muted); font-size:0.82rem; min-width:200px; }
+    .key { color:var(--hint); font-weight:600; }
+    .back { display:inline-block; margin-top:36px; padding:10px 24px; background:var(--accent); color:#fff; border-radius:8px; text-decoration:none; font-size:0.9rem; font-weight:600; }
+    .back:hover { opacity:0.85; }
+    @media (max-width:600px) { nav ol { grid-template-columns:1fr; } section { padding:24px 20px; } .example-step { flex-direction:column; gap:2px; } }
+    .toc-back { text-align: right; margin-top: 1.5rem; padding-top: 0.9rem;
+                border-top: 1px solid var(--panel, var(--border)); }
+    .toc-back a { color: var(--muted); font-size: 0.82rem; text-decoration: none;
+                  letter-spacing: 0.03em; }
+    .toc-back a:hover { color: var(--accent); }
+
+    [data-theme="light"] {
+      --bg:      #f5f0e4;
+      --surface: #faf7ee;
+      --panel:   #ede8d8;
+      --border:  #ccc6b4;
+      --text:    #18140c;
+      --muted:   #3e3c60;
+      --accent:  #2858c8;
+      --correct: #115238;
+      --hint:    #6e4a00;
+      --wrong:   #cc2040;
+    }
+    [data-theme="light"] section h3 { color: #18140c; }
+    [data-theme="light"] .chapter-num { color: #3e3c60; }
+  </style>
+  <script>(function(){var t=localStorage.getItem('math-theme')||((window.matchMedia&&window.matchMedia('(prefers-color-scheme:light)').matches)?'light':'dark');document.documentElement.setAttribute('data-theme',t);}());</script>
+</head>
+<body>
+<div class="page">
+
+  <header>
+    <h1>Combinatorics</h1>
+    <a href="index.html">← Back to game</a>
+  </header>
+  <p class="subtitle">Counting, arrangements, and selections — the mathematics of how many</p>
+
+  <nav id="toc">
+    <h2>Contents</h2>
+    <ol>
+      <li><a href="#ch-1">The Fundamental Counting Principle</a></li>
+      <li><a href="#ch-2">Factorials</a></li>
+      <li><a href="#ch-3">Permutations</a></li>
+      <li><a href="#ch-4">Combinations</a></li>
+      <li><a href="#ch-5">Arrangements with Repeated Elements</a></li>
+      <li><a href="#ch-6">Pascal's Triangle &amp; the Binomial Theorem</a></li>
+      <li><a href="#ch-7">The Pigeonhole Principle</a></li>
+      <li><a href="#ch-8">Inclusion-Exclusion</a></li>
+      <li><a href="#ch-9">Probability via Counting</a></li>
+      <li><a href="#ch-10">Advanced Counting Techniques</a></li>
+    </ol>
+  </nav>
+
+  <!-- ── 1. The Fundamental Counting Principle ──────────────────────── -->
+  <section class="chapter" id="ch-1">
+    <div class="chapter-num">Chapter 1</div>
+    <h3>The Fundamental Counting Principle</h3>
+
+    <p>
+      The <span class="key">Fundamental Counting Principle (FCP)</span> — also called the
+      multiplication rule — states that if one event can occur in $m$ ways and a second
+      independent event can occur in $n$ ways, then both events together can occur in
+      $m \times n$ ways. This extends to any number of stages: multiply the number of choices
+      at each stage. The key requirement is that the choices at each stage are independent —
+      what happens at one stage does not restrict the choices available at the next.
+    </p>
+
+    <p>
+      When events are <span class="key">mutually exclusive</span> — meaning only one of them
+      can happen at a time — we use the <span class="key">addition rule</span> instead: the
+      total number of outcomes is the sum of the outcomes for each event. The distinction is
+      crucial: multiply when you are doing both things sequentially (picking a shirt AND pants),
+      add when you are doing exactly one (choosing between a hat OR a cap). Tree diagrams make
+      this visual: each branch represents one choice, and counting all leaf nodes gives the
+      total number of outcomes.
+    </p>
+
+    <p>
+      Tree diagrams are especially useful for small problems: draw a branch for each option
+      at the first stage, then sub-branches for each second-stage option, and so on. The
+      total count of complete paths (root to leaf) equals the product of branch counts at
+      each level. For large problems, drawing the tree is impractical, but the multiplication
+      principle still applies. License plates, passwords, and menu selections are classic
+      applications where the FCP produces answers that would be impossible to enumerate by hand.
+    </p>
+
+    <div class="formula">
+      <div class="label">Fundamental Counting Principle</div>
+      <p>
+        $\text{Total outcomes} = n_1 \times n_2 \times \cdots \times n_k$<br>
+        where $n_i$ is the number of choices at stage $i$, all stages independent.<br>
+        Addition rule (mutually exclusive events): $\text{Total} = n_1 + n_2 + \cdots + n_k$
+      </p>
+    </div>
+
+    <div class="example">
+      <div class="label">Example 1 — Outfit Combinations: 3 shirts and 4 pants</div>
+      <div class="example-step">
+        <span>Shirts: 3 choices; Pants: 4 choices</span>
+        <span class="why">Two independent stages — multiply</span>
+      </div>
+      <div class="example-step">
+        <span>$3 \times 4 = 12$ outfits</span>
+        <span class="why">Every shirt pairs with every pair of pants</span>
+      </div>
+    </div>
+
+    <div class="example">
+      <div class="label">Example 2 — 3-Course Menu: 4 starters, 6 mains, 3 desserts</div>
+      <div class="example-step">
+        <span>$4 \times 6 \times 3$</span>
+        <span class="why">Three independent choices — multiply all three</span>
+      </div>
+      <div class="example-step">
+        <span>$= 72$ distinct meals</span>
+        <span class="why">$4 \times 6 = 24$; $24 \times 3 = 72$</span>
+      </div>
+    </div>
+
+    <div class="example">
+      <div class="label">Example 3 — License Plates: 3 letters then 4 digits (repetition allowed)</div>
+      <div class="example-step">
+        <span>Letters: $26$ choices each (3 positions); Digits: $10$ choices each (4 positions)</span>
+        <span class="why">Each position is independent</span>
+      </div>
+      <div class="example-step">
+        <span>$26^3 \times 10^4$</span>
+        <span class="why">Apply FCP across all 7 positions</span>
+      </div>
+      <div class="example-step">
+        <span>$= 17{,}576 \times 10{,}000 = 175{,}760{,}000$ plates</span>
+        <span class="why">$26^3 = 17{,}576$; over 175 million distinct plates</span>
+      </div>
+    </div>
+
+    <p class="toc-back"><a href="#toc">↑ Back to contents</a></p>
+  </section>
+
+  <!-- ── 2. Factorials ─────────────────────────────────────────────── -->
+  <section class="chapter" id="ch-2">
+    <div class="chapter-num">Chapter 2</div>
+    <h3>Factorials</h3>
+
+    <p>
+      The <span class="key">factorial</span> of a non-negative integer $n$, written $n!$, is
+      the product of all positive integers from 1 up to $n$. Factorials arise naturally whenever
+      we count arrangements of distinct objects, because placing the first object offers $n$
+      choices, the second offers $n-1$ choices, and so on down to 1. Factorials grow
+      extraordinarily fast: $10! = 3{,}628{,}800$ and $20!$ exceeds two quintillion.
+    </p>
+
+    <p>
+      The special case $0! = 1$ is a convention, not an accident. Defining $0!$ as 1 makes
+      the recursive formula $n! = n \times (n-1)!$ work at $n=1$ (since $1! = 1 \times 0! = 1$),
+      and it ensures that combination and permutation formulas give correct results when all
+      objects are selected ($r = n$). Think of it as: there is exactly one way to arrange
+      zero objects — do nothing.
+    </p>
+
+    <p>
+      Simplifying expressions with factorials is an essential algebraic skill. Because
+      $n! = n \times (n-1) \times \cdots$, a ratio of two factorials with a common "tail"
+      telescopes neatly: $\frac{7!}{5!} = 7 \times 6 = 42$. Recognizing and cancelling
+      factorial tails before computing prevents arithmetic with very large numbers and is the
+      foundation of permutation and combination calculations.
+    </p>
+
+    <div class="formula">
+      <div class="label">Factorial Definition and Recursion</div>
+      <p>
+        $n! = n \times (n-1) \times \cdots \times 2 \times 1$ for $n \ge 1$<br>
+        $0! = 1$ (by convention)<br>
+        Recursive form: $n! = n \times (n-1)!$<br>
+        Ratio shortcut: $\dfrac{n!}{k!} = n \times (n-1) \times \cdots \times (k+1)$ for $n > k$
+      </p>
+    </div>
+
+    <div class="example">
+      <div class="label">Example 1 — Factorial Table: $n = 0$ to $10$</div>
+      <div class="example-step">
+        <span>$0!=1,\; 1!=1,\; 2!=2,\; 3!=6,\; 4!=24$</span>
+        <span class="why">Small factorials worth memorizing</span>
+      </div>
+      <div class="example-step">
+        <span>$5!=120,\; 6!=720,\; 7!=5040,\; 8!=40320$</span>
+        <span class="why">Growth accelerates rapidly</span>
+      </div>
+      <div class="example-step">
+        <span>$9!=362880,\; 10!=3{,}628{,}800$</span>
+        <span class="why">10! exceeds three million</span>
+      </div>
+    </div>
+
+    <div class="example">
+      <div class="label">Example 2 — Arranging 4 Books on a Shelf</div>
+      <div class="example-step">
+        <span>Position 1: 4 choices</span>
+        <span class="why">Any of the 4 books can go first</span>
+      </div>
+      <div class="example-step">
+        <span>Position 2: 3 choices; Position 3: 2; Position 4: 1</span>
+        <span class="why">Each placed book reduces the remaining options</span>
+      </div>
+      <div class="example-step">
+        <span>$4! = 4 \times 3 \times 2 \times 1 = 24$ arrangements</span>
+        <span class="why">FCP applied across all 4 positions</span>
+      </div>
+    </div>
+
+    <div class="example">
+      <div class="label">Example 3 — Simplifying $\dfrac{7!}{5!}$</div>
+      <div class="example-step">
+        <span>$\dfrac{7!}{5!} = \dfrac{7 \times 6 \times 5!}{5!}$</span>
+        <span class="why">Expand 7! only until the common tail $5!$ appears</span>
+      </div>
+      <div class="example-step">
+        <span>$= 7 \times 6 = 42$</span>
+        <span class="why">$5!$ cancels; multiply the remaining factors</span>
+      </div>
+    </div>
+
+    <p class="toc-back"><a href="#toc">↑ Back to contents</a></p>
+  </section>
+
+  <!-- ── 3. Permutations ───────────────────────────────────────────── -->
+  <section class="chapter" id="ch-3">
+    <div class="chapter-num">Chapter 3</div>
+    <h3>Permutations</h3>
+
+    <p>
+      A <span class="key">permutation</span> is an ordered arrangement of objects. Order
+      matters: choosing Alice as president and Bob as vice-president is different from choosing
+      Bob as president and Alice as vice-president, even though the same two people are
+      involved. When selecting $r$ objects from $n$ distinct objects and the order of selection
+      matters, the number of permutations is written $P(n,r)$ or ${}_{n}P_{r}$.
+    </p>
+
+    <p>
+      The derivation follows directly from the FCP. The first position can be filled in $n$
+      ways, the second in $n-1$ ways (one object is already placed), and so on until the
+      $r$-th position, which can be filled in $n-r+1$ ways. Writing this product using
+      factorials gives the compact formula $P(n,r) = \frac{n!}{(n-r)!}$. When $r = n$, we
+      are arranging all objects, and $(n-n)! = 0! = 1$, so $P(n,n) = n!$ — consistent with
+      what we found in Chapter 2.
+    </p>
+
+    <p>
+      It is important to distinguish permutations from mere counting with repetition. In a
+      permutation, each object can appear at most once (no repetition). If repetition were
+      allowed, the count would be $n^r$ instead (covered in Chapter 5). The phrase "without
+      replacement" signals that a permutation formula applies; "with replacement" signals the
+      exponential formula.
+    </p>
+
+    <div class="formula">
+      <div class="label">Permutation Formula</div>
+      <p>
+        $P(n,r) = \dfrac{n!}{(n-r)!} = n \times (n-1) \times \cdots \times (n-r+1)$<br>
+        Special case: $P(n,n) = n!$ (arrange all $n$ objects)<br>
+        Read "$P(n,r)$" as "permutations of $n$ things taken $r$ at a time"
+      </p>
+    </div>
+
+    <div class="example">
+      <div class="label">Example 1 — Electing Officers: president, VP, treasurer from 8 candidates</div>
+      <div class="example-step">
+        <span>$P(8,3) = \dfrac{8!}{(8-3)!} = \dfrac{8!}{5!}$</span>
+        <span class="why">Order matters — president vs. VP vs. treasurer are distinct roles</span>
+      </div>
+      <div class="example-step">
+        <span>$= 8 \times 7 \times 6 = 336$</span>
+        <span class="why">Cancel the $5!$ tail; multiply the remaining three factors</span>
+      </div>
+    </div>
+
+    <div class="example">
+      <div class="label">Example 2 — Arrange 3 Letters from ABCDE</div>
+      <div class="example-step">
+        <span>$n = 5$ letters; $r = 3$ positions</span>
+        <span class="why">Order of letters matters (ABC $\ne$ BAC)</span>
+      </div>
+      <div class="example-step">
+        <span>$P(5,3) = \dfrac{5!}{2!} = \dfrac{120}{2} = 60$</span>
+        <span class="why">$5 \times 4 \times 3 = 60$ three-letter sequences</span>
+      </div>
+    </div>
+
+    <div class="example">
+      <div class="label">Example 3 — Arrange All 6 Contestants in a Race</div>
+      <div class="example-step">
+        <span>$P(6,6) = 6! = 720$</span>
+        <span class="why">All objects placed; $(6-6)! = 0! = 1$</span>
+      </div>
+      <div class="example-step">
+        <span>$= 6 \times 5 \times 4 \times 3 \times 2 \times 1 = 720$ finish orders</span>
+        <span class="why">Every distinct ordering of 6 runners is a different race outcome</span>
+      </div>
+    </div>
+
+    <p class="toc-back"><a href="#toc">↑ Back to contents</a></p>
+  </section>
+
+  <!-- ── 4. Combinations ───────────────────────────────────────────── -->
+  <section class="chapter" id="ch-4">
+    <div class="chapter-num">Chapter 4</div>
+    <h3>Combinations</h3>
+
+    <p>
+      A <span class="key">combination</span> is a selection of objects in which order does
+      not matter. Choosing Alice, Bob, and Carol for a committee is the same as choosing Carol,
+      Bob, and Alice — it is the same group of three people. Whenever we want to count groups,
+      subsets, or selections where arrangement is irrelevant, we use combinations.
+    </p>
+
+    <p>
+      The combination count $C(n,r)$ relates to the permutation count by dividing out the
+      $r!$ orderings that correspond to each distinct group. Every group of $r$ objects can
+      be arranged in $r!$ ways, all of which are counted as distinct by $P(n,r)$ but should
+      be counted as one by $C(n,r)$. Hence $C(n,r) = P(n,r)/r! = \frac{n!}{r!(n-r)!}$.
+      The notation $\binom{n}{r}$ (read "n choose r") is standard in mathematics and
+      probability.
+    </p>
+
+    <p>
+      A key symmetry is $C(n,r) = C(n,n-r)$: choosing $r$ items to include is equivalent
+      to choosing $n-r$ items to exclude. This halves computation for large $r$: to find
+      $C(10,8)$, compute $C(10,2) = 45$ instead. The symmetry also explains why Pascal's
+      triangle (Chapter 6) is symmetric about its central axis.
+    </p>
+
+    <div class="formula">
+      <div class="label">Combination Formula</div>
+      <p>
+        $C(n,r) = \dbinom{n}{r} = \dfrac{n!}{r!\,(n-r)!}$<br>
+        Relationship to permutations: $C(n,r) = \dfrac{P(n,r)}{r!}$<br>
+        Symmetry: $\dbinom{n}{r} = \dbinom{n}{n-r}$
+      </p>
+    </div>
+
+    <div class="example">
+      <div class="label">Example 1 — Committee of 3 from 8 People</div>
+      <div class="example-step">
+        <span>$C(8,3) = \dfrac{8!}{3!\,5!}$</span>
+        <span class="why">Order doesn't matter — use combination formula</span>
+      </div>
+      <div class="example-step">
+        <span>$= \dfrac{8 \times 7 \times 6}{3 \times 2 \times 1}$</span>
+        <span class="why">Cancel the $5!$ tail from numerator; denominator is $3! = 6$</span>
+      </div>
+      <div class="example-step">
+        <span>$= \dfrac{336}{6} = 56$ committees</span>
+        <span class="why">336 ordered triples map to just 56 unordered groups</span>
+      </div>
+    </div>
+
+    <div class="example">
+      <div class="label">Example 2 — Pizza Toppings: choose 3 from 10</div>
+      <div class="example-step">
+        <span>$C(10,3) = \dfrac{10!}{3!\,7!} = \dfrac{10 \times 9 \times 8}{6}$</span>
+        <span class="why">The same three toppings in any order is one pizza</span>
+      </div>
+      <div class="example-step">
+        <span>$= \dfrac{720}{6} = 120$ distinct pizzas</span>
+        <span class="why">10-topping menu offers 120 three-topping combinations</span>
+      </div>
+    </div>
+
+    <div class="example">
+      <div class="label">Example 3 — Using Symmetry: $C(12,10)$</div>
+      <div class="example-step">
+        <span>$C(12,10) = C(12,2)$</span>
+        <span class="why">Symmetry: choosing 10 to include = choosing 2 to exclude</span>
+      </div>
+      <div class="example-step">
+        <span>$C(12,2) = \dfrac{12 \times 11}{2} = 66$</span>
+        <span class="why">Much easier to compute than $\frac{12!}{10!\,2!}$ directly</span>
+      </div>
+    </div>
+
+    <p class="toc-back"><a href="#toc">↑ Back to contents</a></p>
+  </section>
+
+  <!-- ── 5. Arrangements with Repeated Elements ─────────────────────── -->
+  <section class="chapter" id="ch-5">
+    <div class="chapter-num">Chapter 5</div>
+    <h3>Arrangements with Repeated Elements</h3>
+
+    <p>
+      When objects are not all distinct — some are identical to each other — the naive
+      factorial count overcounts. Swapping two identical letters produces the same word, so
+      those swaps must be divided away. The <span class="key">multinomial coefficient</span>
+      counts distinct arrangements of $n$ items where $n_1$ are of type 1, $n_2$ of type 2,
+      and so on: divide $n!$ by the product of all the within-group factorials.
+    </p>
+
+    <p>
+      A separate but related scenario is ordered selection <span class="key">with
+      repetition</span>: choosing $r$ items from $n$ types where each type can be chosen
+      multiple times (like digits in a PIN). Here there is no depletion of choices — each
+      position independently has $n$ options — giving $n^r$ total sequences. This is the
+      exponential count from the FCP with repetition allowed, in contrast to the $n!/(n-r)!$
+      permutation count where each item can only be used once.
+    </p>
+
+    <p>
+      The multinomial formula generalizes the binomial and is written
+      $\binom{n}{n_1,n_2,\ldots,n_k} = \frac{n!}{n_1!\,n_2!\cdots n_k!}$. It counts not
+      only letter arrangements but also the number of ways to distribute labeled items into
+      labeled groups of fixed sizes, or the number of distinct paths on a grid that make a
+      specific total of right and up moves.
+    </p>
+
+    <div class="formula">
+      <div class="label">Multinomial Coefficient and Repetition</div>
+      <p>
+        Distinct arrangements of $n$ items with repeats:
+        $\dfrac{n!}{n_1!\,n_2!\cdots n_k!}$ where $n_1+n_2+\cdots+n_k = n$<br>
+        Ordered selection with repetition: $n^r$ (PIN codes, passwords with repetition allowed)
+      </p>
+    </div>
+
+    <div class="example">
+      <div class="label">Example 1 — Arrange the Letters of MISSISSIPPI</div>
+      <div class="example-step">
+        <span>Letters: M$\times$1, I$\times$4, S$\times$4, P$\times$2; total $n = 11$</span>
+        <span class="why">Count each distinct letter and its frequency</span>
+      </div>
+      <div class="example-step">
+        <span>$\dfrac{11!}{1!\,4!\,4!\,2!}$</span>
+        <span class="why">Divide $n!$ by each group's factorial to remove duplicates</span>
+      </div>
+      <div class="example-step">
+        <span>$= \dfrac{39{,}916{,}800}{1 \times 24 \times 24 \times 2} = \dfrac{39{,}916{,}800}{1152} = 34{,}650$</span>
+        <span class="why">Despite 11 letters, only 34,650 distinct arrangements exist</span>
+      </div>
+    </div>
+
+    <div class="example">
+      <div class="label">Example 2 — Arrange LEVEL and NOON</div>
+      <div class="example-step">
+        <span>LEVEL: L$\times$2, E$\times$2, V$\times$1; total 5 letters</span>
+        <span class="why">Identify repeats in each word</span>
+      </div>
+      <div class="example-step">
+        <span>$\dfrac{5!}{2!\,2!\,1!} = \dfrac{120}{4} = 30$ arrangements of LEVEL</span>
+        <span class="why">Two L's and two E's each divide out a $2!$</span>
+      </div>
+      <div class="example-step">
+        <span>NOON: N$\times$2, O$\times$2; $\dfrac{4!}{2!\,2!} = \dfrac{24}{4} = 6$ arrangements</span>
+        <span class="why">NOON, NONO, NONO... only 6 distinct 4-letter sequences</span>
+      </div>
+    </div>
+
+    <div class="example">
+      <div class="label">Example 3 — 4-Digit PIN with Repetition Allowed</div>
+      <div class="example-step">
+        <span>Each digit: 10 choices (0–9); 4 positions</span>
+        <span class="why">Repetition allowed — same digit can reappear</span>
+      </div>
+      <div class="example-step">
+        <span>$10^4 = 10{,}000$ possible PINs</span>
+        <span class="why">From 0000 to 9999 inclusive</span>
+      </div>
+    </div>
+
+    <p class="toc-back"><a href="#toc">↑ Back to contents</a></p>
+  </section>
+
+  <!-- ── 6. Pascal's Triangle and the Binomial Theorem ─────────────── -->
+  <section class="chapter" id="ch-6">
+    <div class="chapter-num">Chapter 6</div>
+    <h3>Pascal's Triangle and the Binomial Theorem</h3>
+
+    <p>
+      <span class="key">Pascal's triangle</span> is an infinite triangular array where each
+      entry is the sum of the two entries directly above it. Row $n$ (counting from row 0 at
+      the top) contains exactly the values $\binom{n}{0}, \binom{n}{1}, \ldots, \binom{n}{n}$.
+      This is not coincidence: the <span class="key">Pascal's identity</span>
+      $\binom{n}{k} = \binom{n-1}{k-1} + \binom{n-1}{k}$ is the algebraic statement of the
+      triangle's construction rule. It also provides a fast recursive way to build the whole
+      table without computing any factorials.
+    </p>
+
+    <p>
+      The sum of all entries in row $n$ equals $2^n$, because each entry $\binom{n}{k}$
+      counts the $k$-element subsets of an $n$-element set, and the total number of all
+      subsets (of any size) of an $n$-element set is $2^n$. The
+      <span class="key">Binomial Theorem</span> generalizes this: it gives the expansion of
+      $(x+y)^n$ as a sum of terms, where the coefficient of $x^k y^{n-k}$ is precisely
+      $\binom{n}{k}$.
+    </p>
+
+    <p>
+      The <span class="key">Hockey Stick Identity</span> states that the sum of a diagonal
+      strip of entries in Pascal's triangle equals the entry one step "below and inward":
+      $\sum_{i=0}^{r} \binom{n+i}{i} = \binom{n+r+1}{r}$. This identity has elegant
+      combinatorial proofs and is useful for summing sequences involving binomial coefficients.
+      Pascal's triangle also encodes the Fibonacci sequence (along shallow diagonals) and
+      powers of 11.
+    </p>
+
+    <div class="formula">
+      <div class="label">Pascal's Identity and Binomial Theorem</div>
+      <p>
+        Pascal's identity: $\dbinom{n}{k} = \dbinom{n-1}{k-1} + \dbinom{n-1}{k}$<br>
+        Row sum: $\displaystyle\sum_{k=0}^{n} \binom{n}{k} = 2^n$<br>
+        Binomial Theorem: $(x+y)^n = \displaystyle\sum_{k=0}^{n} \binom{n}{k} x^k y^{n-k}$
+      </p>
+    </div>
+
+    <div class="example">
+      <div class="label">Example 1 — Pascal's Triangle Rows 0–5</div>
+      <div class="example-step">
+        <span>Row 0: $1$</span>
+        <span class="why">$\binom{0}{0} = 1$</span>
+      </div>
+      <div class="example-step">
+        <span>Row 1: $1\quad 1$; Row 2: $1\quad 2\quad 1$; Row 3: $1\quad 3\quad 3\quad 1$</span>
+        <span class="why">Each entry = sum of two entries above</span>
+      </div>
+      <div class="example-step">
+        <span>Row 4: $1\;4\;6\;4\;1$; Row 5: $1\;5\;10\;10\;5\;1$</span>
+        <span class="why">Row sums: $1,2,4,8,16,32 = 2^n$</span>
+      </div>
+    </div>
+
+    <div class="example">
+      <div class="label">Example 2 — Expand $(x+y)^3$</div>
+      <div class="example-step">
+        <span>Coefficients from Row 3: $1,\,3,\,3,\,1$</span>
+        <span class="why">Read $\binom{3}{0},\binom{3}{1},\binom{3}{2},\binom{3}{3}$ from Pascal's triangle</span>
+      </div>
+      <div class="example-step">
+        <span>$(x+y)^3 = x^3 + 3x^2y + 3xy^2 + y^3$</span>
+        <span class="why">Attach $x^k y^{3-k}$ to each coefficient</span>
+      </div>
+    </div>
+
+    <div class="example">
+      <div class="label">Example 3 — Coefficient of $x^2y^3$ in $(x+y)^5$</div>
+      <div class="example-step">
+        <span>Term with $x^2 y^3$: $k=2$, $n=5$</span>
+        <span class="why">Match the exponents to the binomial theorem template</span>
+      </div>
+      <div class="example-step">
+        <span>Coefficient $= \dbinom{5}{2} = 10$</span>
+        <span class="why">From Row 5 of Pascal's triangle: $1\;5\;10\;10\;5\;1$</span>
+      </div>
+    </div>
+
+    <p class="toc-back"><a href="#toc">↑ Back to contents</a></p>
+  </section>
+
+  <!-- ── 7. The Pigeonhole Principle ───────────────────────────────── -->
+  <section class="chapter" id="ch-7">
+    <div class="chapter-num">Chapter 7</div>
+    <h3>The Pigeonhole Principle</h3>
+
+    <p>
+      The <span class="key">Pigeonhole Principle</span> states: if $n+1$ or more objects
+      (pigeons) are placed into $n$ containers (pigeonholes), then at least one container
+      must hold two or more objects. The proof is immediate — if every container held at most
+      one pigeon, the total would be at most $n$, contradicting the assumption of $n+1$
+      pigeons. Despite its simplicity, the principle yields surprisingly powerful non-constructive
+      existence proofs: it guarantees that a repetition exists without identifying which one.
+    </p>
+
+    <p>
+      The <span class="key">generalized pigeonhole principle</span> extends this: if $n$
+      objects are placed into $k$ containers, at least one container must hold at least
+      $\lceil n/k \rceil$ objects (where $\lceil \cdot \rceil$ denotes the ceiling function,
+      rounding up to the nearest integer). For example, with 25 students in 12 months, at
+      least $\lceil 25/12 \rceil = 3$ students must share a birth month — no matter how
+      birthdays happen to fall.
+    </p>
+
+    <p>
+      The power of the Pigeonhole Principle comes from its application to abstract
+      "pigeonholes" that need not be physical containers. Any time a discrete quantity must
+      take one of finitely many values, the principle applies. Results include: among any 5
+      integers, two must have the same remainder when divided by 4; any sequence of
+      $n^2+1$ distinct real numbers must contain either an increasing subsequence of length
+      $n+1$ or a decreasing one of length $n+1$ (Erdős–Szekeres theorem).
+    </p>
+
+    <div class="formula">
+      <div class="label">Pigeonhole Principle</div>
+      <p>
+        Basic: $n+1$ objects in $n$ boxes $\Rightarrow$ some box has $\ge 2$ objects.<br>
+        Generalized: $n$ objects in $k$ boxes $\Rightarrow$ some box has $\ge \lceil n/k \rceil$ objects.<br>
+        Minimum to guarantee $m$ sharing: need $k(m-1)+1$ objects in $k$ boxes.
+      </p>
+    </div>
+
+    <div class="example">
+      <div class="label">Example 1 — Shared Birth Month: 13 people, 12 months</div>
+      <div class="example-step">
+        <span>Pigeons: 13 people; Holes: 12 months</span>
+        <span class="why">$13 > 12$ — pigeonhole principle applies immediately</span>
+      </div>
+      <div class="example-step">
+        <span>At least $\lceil 13/12 \rceil = 2$ people share a birth month</span>
+        <span class="why">Guaranteed regardless of how the birthdays are distributed</span>
+      </div>
+    </div>
+
+    <div class="example">
+      <div class="label">Example 2 — Matching Socks: 2 colors, guarantee a pair</div>
+      <div class="example-step">
+        <span>Colors (holes): 2; Need matching pair (2 in same hole)</span>
+        <span class="why">Two colors, so two pigeonholes</span>
+      </div>
+      <div class="example-step">
+        <span>Draw $2 + 1 = 3$ socks to guarantee a pair</span>
+        <span class="why">$k(m-1)+1 = 2(2-1)+1 = 3$; worst case: 1 of each color, then forced match</span>
+      </div>
+    </div>
+
+    <div class="example">
+      <div class="label">Example 3 — Minimum Students for 3 Sharing a Month</div>
+      <div class="example-step">
+        <span>Months: $k = 12$; want $m = 3$ in one month</span>
+        <span class="why">Apply the formula for guaranteed $m$-sharing</span>
+      </div>
+      <div class="example-step">
+        <span>Minimum $= k(m-1)+1 = 12(2)+1 = 25$ students</span>
+        <span class="why">With 24, it's possible each month has at most 2; at 25, impossible to avoid a triple</span>
+      </div>
+    </div>
+
+    <p class="toc-back"><a href="#toc">↑ Back to contents</a></p>
+  </section>
+
+  <!-- ── 8. Inclusion-Exclusion ────────────────────────────────────── -->
+  <section class="chapter" id="ch-8">
+    <div class="chapter-num">Chapter 8</div>
+    <h3>Inclusion-Exclusion</h3>
+
+    <p>
+      When counting the elements of a union of sets, simply adding the sizes of each set
+      overcounts: elements that belong to more than one set are counted multiple times. The
+      <span class="key">Principle of Inclusion-Exclusion (PIE)</span> corrects for this by
+      systematically adding and subtracting intersection sizes. For two sets:
+      $|A \cup B| = |A| + |B| - |A \cap B|$. We add both sets, then subtract their overlap
+      because it was counted twice.
+    </p>
+
+    <p>
+      For three sets, the pattern extends: add all three individual sizes, subtract all three
+      pairwise intersections (each double-counted), then add back the triple intersection
+      (which was subtracted once too many). The general PIE formula for $n$ sets alternates
+      signs — add singletons, subtract pairs, add triples, and so on — creating a telescoping
+      correction that results in an exact count. This alternating-sign structure appears in
+      many advanced topics, including the formula for derangements (Chapter 10).
+    </p>
+
+    <p>
+      <span class="key">Complementary counting</span> is a related strategy: instead of
+      counting the desired outcomes directly, count the total outcomes and subtract the
+      undesired ones. This is often easier when the "bad" cases are simpler to describe. For
+      example, counting passwords with at least one digit is harder than counting all passwords
+      minus those with no digits at all.
+    </p>
+
+    <div class="formula">
+      <div class="label">Inclusion-Exclusion Formulas</div>
+      <p>
+        Two sets: $|A \cup B| = |A| + |B| - |A \cap B|$<br>
+        Three sets: $|A \cup B \cup C| = |A|+|B|+|C| - |A\cap B| - |A\cap C| - |B\cap C| + |A\cap B\cap C|$<br>
+        Complementary: $|\overline{A}| = |\text{Total}| - |A|$
+      </p>
+    </div>
+
+    <div class="example">
+      <div class="label">Example 1 — Students Taking Math or Science</div>
+      <div class="example-step">
+        <span>$|M| = 30$, $|S| = 25$, $|M \cap S| = 10$</span>
+        <span class="why">10 students take both — they'd be double-counted without PIE</span>
+      </div>
+      <div class="example-step">
+        <span>$|M \cup S| = 30 + 25 - 10 = 45$ students</span>
+        <span class="why">Subtract the overlap once to get the correct union size</span>
+      </div>
+    </div>
+
+    <div class="example">
+      <div class="label">Example 2 — Letters in ALGEBRA vs GEOMETRY (shared letters)</div>
+      <div class="example-step">
+        <span>ALGEBRA: $\{A,L,G,E,B,R\}$ (6 distinct); GEOMETRY: $\{G,E,O,M,T,R,Y\}$ (7 distinct)</span>
+        <span class="why">List distinct letters in each word</span>
+      </div>
+      <div class="example-step">
+        <span>$|A \cap B| = \{G, E, R\}$ — 3 shared letters</span>
+        <span class="why">G, E, R appear in both words</span>
+      </div>
+      <div class="example-step">
+        <span>$|A \cup B| = 6 + 7 - 3 = 10$ distinct letters total</span>
+        <span class="why">PIE gives the count of letters appearing in either word</span>
+      </div>
+    </div>
+
+    <div class="example">
+      <div class="label">Example 3 — Complementary Counting: Passwords with at Least One Digit</div>
+      <div class="example-step">
+        <span>Total 4-char passwords (letters a–z + digits 0–9): $36^4 = 1{,}679{,}616$</span>
+        <span class="why">36 choices per position, 4 positions</span>
+      </div>
+      <div class="example-step">
+        <span>All-letter passwords (no digits): $26^4 = 456{,}976$</span>
+        <span class="why">Only 26 choices per position when digits excluded</span>
+      </div>
+      <div class="example-step">
+        <span>At least one digit: $1{,}679{,}616 - 456{,}976 = 1{,}222{,}640$</span>
+        <span class="why">Subtract the "bad" cases from the total</span>
+      </div>
+    </div>
+
+    <p class="toc-back"><a href="#toc">↑ Back to contents</a></p>
+  </section>
+
+  <!-- ── 9. Probability via Counting ───────────────────────────────── -->
+  <section class="chapter" id="ch-9">
+    <div class="chapter-num">Chapter 9</div>
+    <h3>Probability via Counting</h3>
+
+    <p>
+      When all outcomes in a <span class="key">sample space</span> are equally likely, the
+      probability of an event equals the number of favorable outcomes divided by the total
+      number of outcomes. Counting techniques — especially combinations — let us compute
+      these probabilities exactly without listing every possibility. The connection between
+      combinatorics and probability is one of the most practical in all of mathematics.
+    </p>
+
+    <p>
+      The key insight is identifying what to count. The denominator is the total number of
+      equally-likely outcomes (often the total ways to choose a hand, a committee, or a
+      sample); the numerator counts only those outcomes that satisfy the event's condition.
+      Both counts should use consistent counting methods — if the denominator counts unordered
+      groups, the numerator must also count unordered groups.
+    </p>
+
+    <p>
+      <span class="key">Complementary probability</span> mirrors complementary counting:
+      $P(\text{event}) = 1 - P(\text{not event})$. This is powerful when the complement
+      is easy to compute but the event itself is complex. For instance, the probability that
+      at least two people in a room share a birthday is hard to count directly but becomes
+      tractable by computing the probability that all birthdays are distinct and subtracting
+      from 1.
+    </p>
+
+    <div class="formula">
+      <div class="label">Probability via Counting</div>
+      <p>
+        $P(\text{event}) = \dfrac{\text{favorable outcomes}}{\text{total outcomes}}$ (equally likely case)<br>
+        Complementary: $P(A) = 1 - P(\overline{A})$<br>
+        Using combinations: $P = \dfrac{C(\text{favorable draws})}{C(\text{total draws})}$
+      </p>
+    </div>
+
+    <div class="example">
+      <div class="label">Example 1 — Drawing 2 Red from a Bag of 5 Red + 3 Blue</div>
+      <div class="example-step">
+        <span>Total ways to draw 2 from 8: $C(8,2) = 28$</span>
+        <span class="why">Order of draw doesn't matter; use combinations for the denominator</span>
+      </div>
+      <div class="example-step">
+        <span>Ways to draw 2 red from 5 red: $C(5,2) = 10$</span>
+        <span class="why">Choose 2 of the 5 red marbles for the numerator</span>
+      </div>
+      <div class="example-step">
+        <span>$P(\text{2 red}) = \dfrac{10}{28} = \dfrac{5}{14} \approx 35.7\%$</span>
+        <span class="why">Reduce the fraction by dividing numerator and denominator by 2</span>
+      </div>
+    </div>
+
+    <div class="example">
+      <div class="label">Example 2 — Probability of a 5-Card Hand with All Hearts</div>
+      <div class="example-step">
+        <span>Total 5-card hands from 52: $C(52,5) = 2{,}598{,}960$</span>
+        <span class="why">Standard poker hand denominator</span>
+      </div>
+      <div class="example-step">
+        <span>All-heart hands: $C(13,5) = 1287$</span>
+        <span class="why">Choose 5 from the 13 hearts in the deck</span>
+      </div>
+      <div class="example-step">
+        <span>$P(\text{flush in hearts}) = \dfrac{1287}{2{,}598{,}960} \approx 0.000495$</span>
+        <span class="why">Roughly 1 in 2000 — a rare but not impossible hand</span>
+      </div>
+    </div>
+
+    <div class="example">
+      <div class="label">Example 3 — Complementary: At Least One Head in 4 Coin Flips</div>
+      <div class="example-step">
+        <span>$P(\text{no heads}) = \left(\tfrac{1}{2}\right)^4 = \dfrac{1}{16}$</span>
+        <span class="why">All 4 flips must land tails; each flip is independent</span>
+      </div>
+      <div class="example-step">
+        <span>$P(\text{at least one head}) = 1 - \dfrac{1}{16} = \dfrac{15}{16}$</span>
+        <span class="why">Complementary probability; much easier than summing P(1H)+P(2H)+P(3H)+P(4H)</span>
+      </div>
+    </div>
+
+    <p class="toc-back"><a href="#toc">↑ Back to contents</a></p>
+  </section>
+
+  <!-- ── 10. Advanced Counting Techniques ─────────────────────────── -->
+  <section class="chapter" id="ch-10">
+    <div class="chapter-num">Chapter 10</div>
+    <h3>Advanced Counting Techniques</h3>
+
+    <p>
+      <span class="key">Circular permutations</span> count distinct arrangements of $n$
+      objects around a circle, where rotations of the same arrangement are considered
+      identical. Because any one position can serve as the "reference" point, we fix one
+      object and arrange the remaining $n-1$, giving $(n-1)!$ distinct circular arrangements.
+      For example, 5 people seated around a round table can be arranged in $4! = 24$ ways,
+      not $5! = 120$.
+    </p>
+
+    <p>
+      <span class="key">Stars and bars</span> counts the number of ways to distribute $n$
+      identical objects into $k$ distinct bins (bins may be empty). Imagine writing $n$ stars
+      in a row and placing $k-1$ dividers among them; the number of ways to place the dividers
+      gives $C(n+k-1,\,k-1)$. This technique handles problems like "how many non-negative
+      integer solutions does $x_1+x_2+x_3 = 10$ have?" — the answer is $C(12,2) = 66$.
+    </p>
+
+    <p>
+      A <span class="key">derangement</span> of $n$ objects is a permutation in which no
+      object appears in its original position — a complete displacement. The count $D(n)$
+      satisfies $D(n) = n!\,\sum_{k=0}^{n} \frac{(-1)^k}{k!}$, which converges to $n!/e$
+      as $n$ grows. $D(4) = 9$: out of $4! = 24$ permutations of four objects, only 9 leave
+      none in place. Derangements model problems like hat-check mix-ups, secret Santa
+      assignments, and certain card-trick analyses. <span class="key">Stirling numbers of the
+      second kind</span> $S(n,k)$ count the ways to partition $n$ objects into exactly $k$
+      non-empty unlabeled subsets — a more advanced topic that extends the combinatorics
+      toolkit beyond this chapter.
+    </p>
+
+    <div class="formula">
+      <div class="label">Advanced Counting Formulas</div>
+      <p>
+        Circular permutations: $(n-1)!$<br>
+        Stars and bars (identical items, distinct bins): $\dbinom{n+k-1}{k-1}$<br>
+        Derangements: $D(n) = n!\displaystyle\sum_{k=0}^{n}\dfrac{(-1)^k}{k!} \approx \dfrac{n!}{e}$<br>
+        Distinguishable distributions ($n$ distinct items to $k$ distinct bins): $k^n$
+      </p>
+    </div>
+
+    <div class="example">
+      <div class="label">Example 1 — Circular Seating: 6 People at a Round Table</div>
+      <div class="example-step">
+        <span>Fix one person as reference; arrange the other 5</span>
+        <span class="why">Rotations are identical, so fix one seat to remove that symmetry</span>
+      </div>
+      <div class="example-step">
+        <span>$(6-1)! = 5! = 120$ distinct seatings</span>
+        <span class="why">Compare: $6! = 720$ overcounts by a factor of 6 (six rotations each)</span>
+      </div>
+    </div>
+
+    <div class="example">
+      <div class="label">Example 2 — Stars and Bars: $x_1+x_2+x_3 = 8$, non-negative integers</div>
+      <div class="example-step">
+        <span>$n = 8$ stars, $k = 3$ bins $\Rightarrow$ $k-1 = 2$ dividers</span>
+        <span class="why">Place 2 dividers among 8 stars to partition them into 3 groups</span>
+      </div>
+      <div class="example-step">
+        <span>$C(8+3-1,\,3-1) = C(10,2) = 45$ solutions</span>
+        <span class="why">Choose 2 positions out of 10 for the dividers</span>
+      </div>
+    </div>
+
+    <div class="example">
+      <div class="label">Example 3 — Derangements of 4 Objects</div>
+      <div class="example-step">
+        <span>$D(4) = 4!\left(\dfrac{1}{0!} - \dfrac{1}{1!} + \dfrac{1}{2!} - \dfrac{1}{3!} + \dfrac{1}{4!}\right)$</span>
+        <span class="why">Apply the derangement formula with alternating-sign sum</span>
+      </div>
+      <div class="example-step">
+        <span>$= 24\left(1 - 1 + \tfrac{1}{2} - \tfrac{1}{6} + \tfrac{1}{24}\right) = 24 \times \tfrac{3}{8} = 9$</span>
+        <span class="why">$1 - 1 + 0.5 - 0.1\overline{6} + 0.041\overline{6} = 0.375 = \frac{3}{8}$; $24 \times \frac{3}{8} = 9$</span>
+      </div>
+      <div class="example-step">
+        <span>Out of 24 permutations, exactly 9 are derangements of 4 elements</span>
+        <span class="why">Roughly $1/e \approx 36.8\%$ of permutations are derangements for large $n$</span>
+      </div>
+    </div>
+
+    <p class="toc-back"><a href="#toc">↑ Back to contents</a></p>
+  </section>
+
+  <!-- ── Appendix ───────────────────────────────────────────────────── -->
+  <section class="chapter" id="appendix-resources">
+    <div class="chapter-num">Appendix</div>
+    <h3>Interactive Resources</h3>
+    <p>
+      The diagrams below let you explore combinatorics concepts dynamically — manipulate
+      inputs and see counts, trees, and triangle rows update in real time.
+    </p>
+    <ul style="line-height:2.1;margin-left:1.2rem;">
+      <li><a href="math_combinatorics_diagrams.html">Combinatorics Diagrams</a> — interactive counting tree, permutation/combination visualiser, Pascal's triangle, and inclusion-exclusion Venn diagram</li>
+    </ul>
+  </section>
+
+  <a class="back" href="index.html">Play Now →</a>
+
+</div>
+<script src="textbook-switcher.js"></script>
+<script src="textbook-notes.js"></script>
+<script src="textbook-nav.js"></script>
+<script src="theme-toggle.js"></script>
+<script src="textbook-ai.js"></script>
+</body>
+</html>

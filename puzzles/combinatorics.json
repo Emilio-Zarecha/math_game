@@ -1,0 +1,3320 @@
+[
+  {
+    "id": "comb-e-001",
+    "topic": "combinatorics",
+    "difficulty": "easy",
+    "question": {
+      "latex": "3 \\text{ shirts} \\times 4 \\text{ pants} = ? \\text{ outfits}",
+      "plain": "You have 3 shirts and 4 pants. How many outfits can you make?"
+    },
+    "symbols": {},
+    "palette": [
+      {
+        "id": "p1",
+        "latex": "3 \\times 4",
+        "description": "Fundamental Counting Principle: multiply independent choices"
+      },
+      {
+        "id": "p2",
+        "latex": "12",
+        "description": "3 × 4 = 12 outfits"
+      }
+    ],
+    "steps": [
+      {
+        "id": "s0a",
+        "fromLatex": "\\text{3 shirt choices, 4 pant choices — independent}",
+        "toLatex": "\\text{3 shirt choices, 4 pant choices — independent}",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "Choices are independent: any shirt pairs with any pants"
+      },
+      {
+        "id": "s1",
+        "fromLatex": "\\text{Total}",
+        "toLatex": "3 \\times 4",
+        "paletteRef": "p1",
+        "dropTargets": [],
+        "description": "FCP: multiply the number of choices at each step"
+      },
+      {
+        "id": "s2",
+        "fromLatex": "3 \\times 4",
+        "toLatex": "12",
+        "paletteRef": "p2",
+        "dropTargets": [
+          "3 \\times 4"
+        ],
+        "description": "12 distinct outfits"
+      }
+    ]
+  },
+  {
+    "id": "comb-e-002",
+    "topic": "combinatorics",
+    "difficulty": "easy",
+    "question": {
+      "latex": "5! = ?",
+      "plain": "What is 5 factorial?"
+    },
+    "symbols": {
+      "!": "Factorial — product of all positive integers up to n"
+    },
+    "palette": [
+      {
+        "id": "p1",
+        "latex": "5 \\times 4 \\times 3 \\times 2 \\times 1",
+        "description": "Expand the factorial"
+      },
+      {
+        "id": "p2",
+        "latex": "120",
+        "description": "5×4×3×2×1 = 120"
+      }
+    ],
+    "steps": [
+      {
+        "id": "s1",
+        "fromLatex": "5!",
+        "toLatex": "5 \\times 4 \\times 3 \\times 2 \\times 1",
+        "paletteRef": "p1",
+        "dropTargets": [
+          "5!"
+        ],
+        "description": "n! = n × (n−1) × ⋯ × 1"
+      },
+      {
+        "id": "s0a",
+        "fromLatex": "5\\times4=20,\\;20\\times3=60,\\;60\\times2=120,\\;120\\times1=120",
+        "toLatex": "120",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "Multiply left to right"
+      },
+      {
+        "id": "s2",
+        "fromLatex": "5 \\times 4 \\times 3 \\times 2 \\times 1",
+        "toLatex": "120",
+        "paletteRef": "p2",
+        "dropTargets": [
+          "5 \\times 4 \\times 3 \\times 2 \\times 1"
+        ],
+        "description": "5! = 120"
+      }
+    ]
+  },
+  {
+    "id": "comb-e-003",
+    "topic": "combinatorics",
+    "difficulty": "easy",
+    "question": {
+      "latex": "P(5,2) = ?",
+      "plain": "Find P(5,2) — ordered arrangements of 2 from 5"
+    },
+    "symbols": {
+      "P": "Permutation: P(n,r) = n!/(n−r)!"
+    },
+    "palette": [
+      {
+        "id": "p1",
+        "latex": "\\frac{5!}{(5-2)!}",
+        "description": "P(n,r) = n!/(n−r)!"
+      },
+      {
+        "id": "p2",
+        "latex": "5 \\times 4",
+        "description": "5!/(3!) = 5×4 (cancel the 3! below)"
+      },
+      {
+        "id": "p3",
+        "latex": "20",
+        "description": "5×4=20"
+      }
+    ],
+    "steps": [
+      {
+        "id": "s1",
+        "fromLatex": "P(5,2)",
+        "toLatex": "\\frac{5!}{(5-2)!}",
+        "paletteRef": "p1",
+        "dropTargets": [
+          "P(5,2)"
+        ],
+        "description": "Apply P(n,r) = n!/(n−r)!"
+      },
+      {
+        "id": "s2",
+        "fromLatex": "\\frac{5!}{3!}",
+        "toLatex": "5 \\times 4",
+        "paletteRef": "p2",
+        "dropTargets": [
+          "\\frac{5!}{3!}"
+        ],
+        "description": "5!/3! = 5×4 (cancel matching factors)"
+      },
+      {
+        "id": "s3",
+        "fromLatex": "5 \\times 4",
+        "toLatex": "20",
+        "paletteRef": "p3",
+        "dropTargets": [
+          "5 \\times 4"
+        ],
+        "description": "5×4 = 20"
+      }
+    ]
+  },
+  {
+    "id": "comb-e-004",
+    "topic": "combinatorics",
+    "difficulty": "easy",
+    "question": {
+      "latex": "C(5,2) = ?",
+      "plain": "Find C(5,2) — ways to choose 2 from 5 (order doesn't matter)"
+    },
+    "symbols": {
+      "C": "Combination: C(n,r) = n!/(r!(n−r)!)"
+    },
+    "palette": [
+      {
+        "id": "p1",
+        "latex": "\\frac{5!}{2!\\,3!}",
+        "description": "C(n,r) = n!/(r!(n−r)!)"
+      },
+      {
+        "id": "p2",
+        "latex": "\\frac{20}{2}",
+        "description": "5×4=20 in numerator; 2!=2"
+      },
+      {
+        "id": "p3",
+        "latex": "10",
+        "description": "20/2 = 10"
+      }
+    ],
+    "steps": [
+      {
+        "id": "s1",
+        "fromLatex": "C(5,2)",
+        "toLatex": "\\frac{5!}{2!\\,3!}",
+        "paletteRef": "p1",
+        "dropTargets": [
+          "C(5,2)"
+        ],
+        "description": "C(n,r) = n! / (r! × (n−r)!)"
+      },
+      {
+        "id": "s2",
+        "fromLatex": "\\frac{5!}{2!\\,3!}",
+        "toLatex": "\\frac{5 \\times 4}{2!}",
+        "paletteRef": "p2",
+        "dropTargets": [
+          "\\frac{5!}{2!\\,3!}"
+        ],
+        "description": "Cancel 3! from numerator: 5×4 / 2!"
+      },
+      {
+        "id": "s3",
+        "fromLatex": "\\frac{5 \\times 4}{2}",
+        "toLatex": "10",
+        "paletteRef": "p3",
+        "dropTargets": [
+          "\\frac{5 \\times 4}{2}"
+        ],
+        "description": "20/2 = 10"
+      }
+    ]
+  },
+  {
+    "id": "comb-e-005",
+    "topic": "combinatorics",
+    "difficulty": "easy",
+    "question": {
+      "latex": "0! = ?",
+      "plain": "What is 0 factorial?"
+    },
+    "symbols": {
+      "!": "Factorial"
+    },
+    "palette": [
+      {
+        "id": "p1",
+        "latex": "1",
+        "description": "By convention (and consistency with n!/n! = 1), 0! = 1"
+      }
+    ],
+    "steps": [
+      {
+        "id": "s0a",
+        "fromLatex": "n! = n \\times (n-1)! \\Rightarrow 1! = 1 \\times 0!",
+        "toLatex": "1 = 1 \\times 0!",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "Use the recursive rule: 1! = 1 × 0!"
+      },
+      {
+        "id": "s1",
+        "fromLatex": "0!",
+        "toLatex": "1",
+        "paletteRef": "p1",
+        "dropTargets": [
+          "0!"
+        ],
+        "description": "Dividing both sides: 0! = 1/1 = 1"
+      }
+    ]
+  },
+  {
+    "id": "comb-e-006",
+    "topic": "combinatorics",
+    "difficulty": "easy",
+    "question": {
+      "latex": "P(5,3) = ?",
+      "plain": "Find P(5,3)"
+    },
+    "symbols": {
+      "P": "Permutation"
+    },
+    "palette": [
+      {
+        "id": "p1",
+        "latex": "5 \\times 4 \\times 3",
+        "description": "Three slots: 5 choices, then 4, then 3"
+      },
+      {
+        "id": "p2",
+        "latex": "60",
+        "description": "5×4×3 = 60"
+      }
+    ],
+    "steps": [
+      {
+        "id": "s0a",
+        "fromLatex": "P(5,3)=\\frac{5!}{2!}=5\\times4\\times3",
+        "toLatex": "5 \\times 4 \\times 3",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "FCP on 3 slots: 5 for 1st, 4 for 2nd (used one), 3 for 3rd"
+      },
+      {
+        "id": "s1",
+        "fromLatex": "P(5,3)",
+        "toLatex": "5 \\times 4 \\times 3",
+        "paletteRef": "p1",
+        "dropTargets": [
+          "P(5,3)"
+        ],
+        "description": "Fill 3 ordered slots from 5 options"
+      },
+      {
+        "id": "s2",
+        "fromLatex": "5 \\times 4 \\times 3",
+        "toLatex": "60",
+        "paletteRef": "p2",
+        "dropTargets": [
+          "5 \\times 4 \\times 3"
+        ],
+        "description": "5×4×3 = 60"
+      }
+    ]
+  },
+  {
+    "id": "comb-e-007",
+    "topic": "combinatorics",
+    "difficulty": "easy",
+    "question": {
+      "latex": "C(6,0) = ?",
+      "plain": "What is C(6,0)?"
+    },
+    "symbols": {
+      "C": "Combination"
+    },
+    "palette": [
+      {
+        "id": "p1",
+        "latex": "1",
+        "description": "C(n,0)=1: there is exactly one way to choose nothing"
+      }
+    ],
+    "steps": [
+      {
+        "id": "s0a",
+        "fromLatex": "C(6,0)=\\frac{6!}{0!\\cdot6!}=\\frac{1}{1}",
+        "toLatex": "C(6,0)=\\frac{6!}{0!\\cdot6!}",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "Apply formula: C(6,0)=6!/(0!×6!)"
+      },
+      {
+        "id": "s1",
+        "fromLatex": "C(6,0)",
+        "toLatex": "1",
+        "paletteRef": "p1",
+        "dropTargets": [
+          "C(6,0)"
+        ],
+        "description": "6!/(1×6!) = 1 — only one way to choose nothing"
+      }
+    ]
+  },
+  {
+    "id": "comb-e-008",
+    "topic": "combinatorics",
+    "difficulty": "easy",
+    "question": {
+      "latex": "\\text{Arrange the letters C, A, T. How many ways?}",
+      "plain": "How many ways can you arrange the letters C, A, T?"
+    },
+    "symbols": {
+      "!": "Factorial"
+    },
+    "palette": [
+      {
+        "id": "p1",
+        "latex": "3!",
+        "description": "3 distinct letters, all positions filled: 3!"
+      },
+      {
+        "id": "p2",
+        "latex": "6",
+        "description": "3! = 6"
+      }
+    ],
+    "steps": [
+      {
+        "id": "s0a",
+        "fromLatex": "3\\text{ choices for 1st},\\;2\\text{ for 2nd},\\;1\\text{ for 3rd}",
+        "toLatex": "3 \\times 2 \\times 1",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "FCP: 3 choices then 2 then 1"
+      },
+      {
+        "id": "s1",
+        "fromLatex": "\\text{Arrangements}",
+        "toLatex": "3!",
+        "paletteRef": "p1",
+        "dropTargets": [],
+        "description": "P(3,3) = 3! for all 3 distinct objects"
+      },
+      {
+        "id": "s2",
+        "fromLatex": "3!",
+        "toLatex": "6",
+        "paletteRef": "p2",
+        "dropTargets": [
+          "3!"
+        ],
+        "description": "3! = 3×2×1 = 6"
+      }
+    ]
+  },
+  {
+    "id": "comb-e-009",
+    "topic": "combinatorics",
+    "difficulty": "easy",
+    "question": {
+      "latex": "C(4,2) = ?",
+      "plain": "Find C(4,2)"
+    },
+    "symbols": {
+      "C": "Combination"
+    },
+    "palette": [
+      {
+        "id": "p1",
+        "latex": "\\frac{4 \\times 3}{2 \\times 1}",
+        "description": "C(4,2) = 4!/(2!2!) = (4×3)/(2×1)"
+      },
+      {
+        "id": "p2",
+        "latex": "6",
+        "description": "12/2 = 6"
+      }
+    ],
+    "steps": [
+      {
+        "id": "s1",
+        "fromLatex": "C(4,2)",
+        "toLatex": "\\frac{4 \\times 3}{2 \\times 1}",
+        "paletteRef": "p1",
+        "dropTargets": [
+          "C(4,2)"
+        ],
+        "description": "C(4,2)=4!/(2!2!): top is 4×3, bottom is 2×1"
+      },
+      {
+        "id": "s2",
+        "fromLatex": "\\frac{12}{2}",
+        "toLatex": "6",
+        "paletteRef": "p2",
+        "dropTargets": [
+          "\\frac{12}{2}"
+        ],
+        "description": "12/2 = 6"
+      }
+    ]
+  },
+  {
+    "id": "comb-e-010",
+    "topic": "combinatorics",
+    "difficulty": "easy",
+    "question": {
+      "latex": "\\text{3-digit codes from }\\{1,2,3,4\\}\\text{ with repetition}",
+      "plain": "How many 3-digit codes can be made from {1,2,3,4} if repetition is allowed?"
+    },
+    "symbols": {},
+    "palette": [
+      {
+        "id": "p1",
+        "latex": "4 \\times 4 \\times 4",
+        "description": "4 choices for each of 3 positions independently"
+      },
+      {
+        "id": "p2",
+        "latex": "64",
+        "description": "4³ = 64"
+      }
+    ],
+    "steps": [
+      {
+        "id": "s0a",
+        "fromLatex": "\\text{Repetition allowed: each digit chosen from 4 independently}",
+        "toLatex": "\\text{Repetition allowed: each digit chosen from 4 independently}",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "Repetition means the same digit can appear in multiple positions"
+      },
+      {
+        "id": "s1",
+        "fromLatex": "\\text{Total}",
+        "toLatex": "4 \\times 4 \\times 4",
+        "paletteRef": "p1",
+        "dropTargets": [],
+        "description": "4 choices per position × 3 positions = 4³"
+      },
+      {
+        "id": "s2",
+        "fromLatex": "4^3",
+        "toLatex": "64",
+        "paletteRef": "p2",
+        "dropTargets": [
+          "4^3"
+        ],
+        "description": "4³ = 64 codes"
+      }
+    ]
+  },
+  {
+    "id": "comb-e-011",
+    "topic": "combinatorics",
+    "difficulty": "easy",
+    "question": {
+      "latex": "P(4,4) = ?",
+      "plain": "Find P(4,4) — arrange all 4 of 4 objects"
+    },
+    "symbols": {
+      "P": "Permutation"
+    },
+    "palette": [
+      {
+        "id": "p1",
+        "latex": "4!",
+        "description": "P(n,n) = n! — arrange all n objects"
+      },
+      {
+        "id": "p2",
+        "latex": "24",
+        "description": "4! = 24"
+      }
+    ],
+    "steps": [
+      {
+        "id": "s1",
+        "fromLatex": "P(4,4)",
+        "toLatex": "4!",
+        "paletteRef": "p1",
+        "dropTargets": [
+          "P(4,4)"
+        ],
+        "description": "P(n,n) = n!/(n−n)! = n!/0! = n!"
+      },
+      {
+        "id": "s2",
+        "fromLatex": "4!",
+        "toLatex": "24",
+        "paletteRef": "p2",
+        "dropTargets": [
+          "4!"
+        ],
+        "description": "4! = 4×3×2×1 = 24"
+      }
+    ]
+  },
+  {
+    "id": "comb-e-012",
+    "topic": "combinatorics",
+    "difficulty": "easy",
+    "question": {
+      "latex": "3\\text{ juices} \\times 4\\text{ cereals} \\times 2\\text{ fruits} = ?",
+      "plain": "Breakfast has 3 juice, 4 cereal, and 2 fruit options. How many breakfasts?"
+    },
+    "symbols": {},
+    "palette": [
+      {
+        "id": "p1",
+        "latex": "3 \\times 4 \\times 2",
+        "description": "FCP: multiply all independent choices"
+      },
+      {
+        "id": "p2",
+        "latex": "24",
+        "description": "3×4×2 = 24"
+      }
+    ],
+    "steps": [
+      {
+        "id": "s1",
+        "fromLatex": "\\text{Total}",
+        "toLatex": "3 \\times 4 \\times 2",
+        "paletteRef": "p1",
+        "dropTargets": [],
+        "description": "FCP with 3 independent decisions"
+      },
+      {
+        "id": "s2",
+        "fromLatex": "3 \\times 4 \\times 2",
+        "toLatex": "24",
+        "paletteRef": "p2",
+        "dropTargets": [
+          "3 \\times 4 \\times 2"
+        ],
+        "description": "3×4=12; 12×2=24"
+      }
+    ]
+  },
+  {
+    "id": "comb-e-013",
+    "topic": "combinatorics",
+    "difficulty": "easy",
+    "question": {
+      "latex": "C(5,3) = ?",
+      "plain": "Find C(5,3)"
+    },
+    "symbols": {
+      "C": "Combination"
+    },
+    "palette": [
+      {
+        "id": "p1",
+        "latex": "C(5,2)",
+        "description": "C(n,r)=C(n,n−r): C(5,3)=C(5,2) since 3+2=5"
+      },
+      {
+        "id": "p2",
+        "latex": "10",
+        "description": "C(5,2)=10"
+      }
+    ],
+    "steps": [
+      {
+        "id": "s0a",
+        "fromLatex": "C(5,3)=C(5,5-3)=C(5,2)",
+        "toLatex": "C(5,3)=C(5,2)",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "Symmetry: C(n,r)=C(n,n−r)"
+      },
+      {
+        "id": "s1",
+        "fromLatex": "C(5,3)",
+        "toLatex": "C(5,2)",
+        "paletteRef": "p1",
+        "dropTargets": [
+          "C(5,3)"
+        ],
+        "description": "Use symmetry: choose 3 to include ≡ choose 2 to exclude"
+      },
+      {
+        "id": "s2",
+        "fromLatex": "C(5,2)",
+        "toLatex": "10",
+        "paletteRef": "p2",
+        "dropTargets": [
+          "C(5,2)"
+        ],
+        "description": "(5×4)/(2×1) = 10"
+      }
+    ]
+  },
+  {
+    "id": "comb-e-014",
+    "topic": "combinatorics",
+    "difficulty": "easy",
+    "question": {
+      "latex": "\\text{4 people in a line — how many orders?}",
+      "plain": "In how many ways can 4 people stand in a line?"
+    },
+    "symbols": {
+      "!": "Factorial"
+    },
+    "palette": [
+      {
+        "id": "p1",
+        "latex": "4!",
+        "description": "First position: 4 choices, then 3, then 2, then 1"
+      },
+      {
+        "id": "p2",
+        "latex": "24",
+        "description": "4! = 24"
+      }
+    ],
+    "steps": [
+      {
+        "id": "s0a",
+        "fromLatex": "4\\times3\\times2\\times1",
+        "toLatex": "4!",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "FCP: 4 positions, each with one fewer choice"
+      },
+      {
+        "id": "s1",
+        "fromLatex": "\\text{Orders}",
+        "toLatex": "4!",
+        "paletteRef": "p1",
+        "dropTargets": [],
+        "description": "Permutation of all 4 distinct people"
+      },
+      {
+        "id": "s2",
+        "fromLatex": "4!",
+        "toLatex": "24",
+        "paletteRef": "p2",
+        "dropTargets": [
+          "4!"
+        ],
+        "description": "24 orderings"
+      }
+    ]
+  },
+  {
+    "id": "comb-e-015",
+    "topic": "combinatorics",
+    "difficulty": "easy",
+    "question": {
+      "latex": "C(7,1) = ?",
+      "plain": "What is C(7,1)?"
+    },
+    "symbols": {
+      "C": "Combination"
+    },
+    "palette": [
+      {
+        "id": "p1",
+        "latex": "7",
+        "description": "C(n,1)=n: there are n ways to pick 1 item from n"
+      }
+    ],
+    "steps": [
+      {
+        "id": "s0a",
+        "fromLatex": "C(7,1)=\\frac{7!}{1!\\cdot6!}=\\frac{7}{1}",
+        "toLatex": "C(7,1)=\\frac{7}{1}",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "Formula: 7!/(1!×6!) = 7"
+      },
+      {
+        "id": "s1",
+        "fromLatex": "C(7,1)",
+        "toLatex": "7",
+        "paletteRef": "p1",
+        "dropTargets": [
+          "C(7,1)"
+        ],
+        "description": "C(n,1) = n — exactly n ways to pick one item"
+      }
+    ]
+  },
+  {
+    "id": "comb-e-016",
+    "topic": "combinatorics",
+    "difficulty": "easy",
+    "question": {
+      "latex": "\\text{3-digit lock, each digit 0–9, repetition allowed}",
+      "plain": "How many combinations does a 3-digit lock have (digits 0–9, repetition allowed)?"
+    },
+    "symbols": {},
+    "palette": [
+      {
+        "id": "p1",
+        "latex": "10^3",
+        "description": "10 choices per digit, 3 digits: 10³"
+      },
+      {
+        "id": "p2",
+        "latex": "1000",
+        "description": "10³ = 1000"
+      }
+    ],
+    "steps": [
+      {
+        "id": "s1",
+        "fromLatex": "10 \\times 10 \\times 10",
+        "toLatex": "10^3",
+        "paletteRef": "p1",
+        "dropTargets": [
+          "10 \\times 10 \\times 10"
+        ],
+        "description": "Each digit independent: 10 choices × 10 × 10"
+      },
+      {
+        "id": "s2",
+        "fromLatex": "10^3",
+        "toLatex": "1000",
+        "paletteRef": "p2",
+        "dropTargets": [
+          "10^3"
+        ],
+        "description": "1000 possible combinations"
+      }
+    ]
+  },
+  {
+    "id": "comb-e-017",
+    "topic": "combinatorics",
+    "difficulty": "easy",
+    "question": {
+      "latex": "C(6,2) = ?",
+      "plain": "Find C(6,2)"
+    },
+    "symbols": {
+      "C": "Combination"
+    },
+    "palette": [
+      {
+        "id": "p1",
+        "latex": "\\frac{6 \\times 5}{2}",
+        "description": "C(6,2) = (6×5)/(2×1)"
+      },
+      {
+        "id": "p2",
+        "latex": "15",
+        "description": "30/2 = 15"
+      }
+    ],
+    "steps": [
+      {
+        "id": "s1",
+        "fromLatex": "C(6,2)",
+        "toLatex": "\\frac{6 \\times 5}{2}",
+        "paletteRef": "p1",
+        "dropTargets": [
+          "C(6,2)"
+        ],
+        "description": "Top: 6×5=30; bottom: 2!=2"
+      },
+      {
+        "id": "s2",
+        "fromLatex": "\\frac{30}{2}",
+        "toLatex": "15",
+        "paletteRef": "p2",
+        "dropTargets": [
+          "\\frac{30}{2}"
+        ],
+        "description": "30/2 = 15"
+      }
+    ]
+  },
+  {
+    "id": "comb-e-018",
+    "topic": "combinatorics",
+    "difficulty": "easy",
+    "question": {
+      "latex": "P(6,2) = ?",
+      "plain": "Find P(6,2)"
+    },
+    "symbols": {
+      "P": "Permutation"
+    },
+    "palette": [
+      {
+        "id": "p1",
+        "latex": "6 \\times 5",
+        "description": "P(6,2): 6 choices for 1st, 5 for 2nd"
+      },
+      {
+        "id": "p2",
+        "latex": "30",
+        "description": "6×5 = 30"
+      }
+    ],
+    "steps": [
+      {
+        "id": "s1",
+        "fromLatex": "P(6,2)",
+        "toLatex": "6 \\times 5",
+        "paletteRef": "p1",
+        "dropTargets": [
+          "P(6,2)"
+        ],
+        "description": "First position: 6 choices; second position: 5 remaining"
+      },
+      {
+        "id": "s2",
+        "fromLatex": "6 \\times 5",
+        "toLatex": "30",
+        "paletteRef": "p2",
+        "dropTargets": [
+          "6 \\times 5"
+        ],
+        "description": "6×5 = 30"
+      }
+    ]
+  },
+  {
+    "id": "comb-e-019",
+    "topic": "combinatorics",
+    "difficulty": "easy",
+    "question": {
+      "latex": "C(8,1) = ?",
+      "plain": "What is C(8,1)?"
+    },
+    "symbols": {
+      "C": "Combination"
+    },
+    "palette": [
+      {
+        "id": "p1",
+        "latex": "8",
+        "description": "C(n,1) = n — one way to pick each item"
+      }
+    ],
+    "steps": [
+      {
+        "id": "s0a",
+        "fromLatex": "C(8,1)=\\frac{8!}{1!\\cdot7!}=8",
+        "toLatex": "8",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "C(n,1)=n always"
+      },
+      {
+        "id": "s1",
+        "fromLatex": "C(8,1)",
+        "toLatex": "8",
+        "paletteRef": "p1",
+        "dropTargets": [
+          "C(8,1)"
+        ],
+        "description": "8 ways to pick 1 item from 8"
+      }
+    ]
+  },
+  {
+    "id": "comb-e-020",
+    "topic": "combinatorics",
+    "difficulty": "easy",
+    "question": {
+      "latex": "\\text{How many subsets does }\\{A,B,C\\}\\text{ have?}",
+      "plain": "How many subsets (including ∅ and the set itself) does {A, B, C} have?"
+    },
+    "symbols": {},
+    "palette": [
+      {
+        "id": "p1",
+        "latex": "2^3",
+        "description": "Each element is independently in or out: 2 choices per element"
+      },
+      {
+        "id": "p2",
+        "latex": "8",
+        "description": "2³ = 8 subsets"
+      }
+    ],
+    "steps": [
+      {
+        "id": "s0a",
+        "fromLatex": "\\text{Each element: 2 choices (include or exclude)}",
+        "toLatex": "2 \\times 2 \\times 2 = 2^3",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "For n elements, each either in or out → 2^n total subsets"
+      },
+      {
+        "id": "s1",
+        "fromLatex": "\\text{Subsets}",
+        "toLatex": "2^3",
+        "paletteRef": "p1",
+        "dropTargets": [],
+        "description": "2 choices per element, 3 elements"
+      },
+      {
+        "id": "s2",
+        "fromLatex": "2^3",
+        "toLatex": "8",
+        "paletteRef": "p2",
+        "dropTargets": [
+          "2^3"
+        ],
+        "description": "∅,{A},{B},{C},{A,B},{A,C},{B,C},{A,B,C} — 8 subsets"
+      }
+    ]
+  },
+  {
+    "id": "comb-m-001",
+    "topic": "combinatorics",
+    "difficulty": "medium",
+    "question": {
+      "latex": "P(7,3) = ?",
+      "plain": "Find P(7,3)"
+    },
+    "symbols": {
+      "P": "Permutation: P(n,r) = n!/(n−r)!"
+    },
+    "palette": [
+      {
+        "id": "p1",
+        "latex": "\\frac{7!}{4!}",
+        "description": "P(7,3)=7!/(7−3)!=7!/4!"
+      },
+      {
+        "id": "p2",
+        "latex": "7 \\times 6 \\times 5",
+        "description": "7!/4! = 7×6×5"
+      },
+      {
+        "id": "p3",
+        "latex": "210",
+        "description": "7×6×5 = 210"
+      }
+    ],
+    "steps": [
+      {
+        "id": "s1",
+        "fromLatex": "P(7,3)",
+        "toLatex": "\\frac{7!}{4!}",
+        "paletteRef": "p1",
+        "dropTargets": [
+          "P(7,3)"
+        ],
+        "description": "P(n,r) = n!/(n−r)! = 7!/4!"
+      },
+      {
+        "id": "s2",
+        "fromLatex": "\\frac{7!}{4!}",
+        "toLatex": "7 \\times 6 \\times 5",
+        "paletteRef": "p2",
+        "dropTargets": [
+          "\\frac{7!}{4!}"
+        ],
+        "description": "Cancel 4! from both: keep top 3 factors"
+      },
+      {
+        "id": "s3",
+        "fromLatex": "7 \\times 6 \\times 5",
+        "toLatex": "210",
+        "paletteRef": "p3",
+        "dropTargets": [
+          "7 \\times 6 \\times 5"
+        ],
+        "description": "7×6=42; 42×5=210"
+      }
+    ]
+  },
+  {
+    "id": "comb-m-002",
+    "topic": "combinatorics",
+    "difficulty": "medium",
+    "question": {
+      "latex": "C(8,3) = ?",
+      "plain": "Find C(8,3)"
+    },
+    "symbols": {
+      "C": "Combination"
+    },
+    "palette": [
+      {
+        "id": "p1",
+        "latex": "\\frac{8 \\times 7 \\times 6}{3!}",
+        "description": "Top: 8×7×6; bottom: 3!=6"
+      },
+      {
+        "id": "p2",
+        "latex": "\\frac{336}{6}",
+        "description": "8×7×6=336; divide by 6"
+      },
+      {
+        "id": "p3",
+        "latex": "56",
+        "description": "336/6 = 56"
+      }
+    ],
+    "steps": [
+      {
+        "id": "s1",
+        "fromLatex": "C(8,3)",
+        "toLatex": "\\frac{8 \\times 7 \\times 6}{3!}",
+        "paletteRef": "p1",
+        "dropTargets": [
+          "C(8,3)"
+        ],
+        "description": "C(8,3)=8!/(3!×5!): top 3 factors / 3!"
+      },
+      {
+        "id": "s2",
+        "fromLatex": "\\frac{8 \\times 7 \\times 6}{6}",
+        "toLatex": "56",
+        "paletteRef": "p3",
+        "dropTargets": [
+          "\\frac{8 \\times 7 \\times 6}{6}"
+        ],
+        "description": "336÷6 = 56"
+      }
+    ]
+  },
+  {
+    "id": "comb-m-003",
+    "topic": "combinatorics",
+    "difficulty": "medium",
+    "question": {
+      "latex": "\\text{Distinct arrangements of \"NOON\"}",
+      "plain": "How many distinct arrangements of the letters in NOON?"
+    },
+    "symbols": {
+      "!": "Factorial"
+    },
+    "palette": [
+      {
+        "id": "p1",
+        "latex": "\\frac{4!}{2!\\,2!}",
+        "description": "4 letters total; N repeats 2×, O repeats 2×"
+      },
+      {
+        "id": "p2",
+        "latex": "\\frac{24}{4}",
+        "description": "4!=24, 2!×2!=4"
+      },
+      {
+        "id": "p3",
+        "latex": "6",
+        "description": "24/4 = 6"
+      }
+    ],
+    "steps": [
+      {
+        "id": "s0a",
+        "fromLatex": "\\text{N appears 2×, O appears 2×, total 4 letters}",
+        "toLatex": "\\frac{4!}{2!\\times2!}",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "Multinomial: divide out repeated-letter overcounts"
+      },
+      {
+        "id": "s1",
+        "fromLatex": "\\text{Arrangements}",
+        "toLatex": "\\frac{4!}{2!\\,2!}",
+        "paletteRef": "p1",
+        "dropTargets": [],
+        "description": "4! total / (2! for N's) / (2! for O's)"
+      },
+      {
+        "id": "s2",
+        "fromLatex": "\\frac{4!}{2!\\,2!}",
+        "toLatex": "6",
+        "paletteRef": "p3",
+        "dropTargets": [
+          "\\frac{4!}{2!\\,2!}"
+        ],
+        "description": "24/4 = 6 distinct arrangements"
+      }
+    ]
+  },
+  {
+    "id": "comb-m-004",
+    "topic": "combinatorics",
+    "difficulty": "medium",
+    "question": {
+      "latex": "C(10,3) = ?",
+      "plain": "A committee of 3 is chosen from 10 people. How many ways?"
+    },
+    "symbols": {
+      "C": "Combination"
+    },
+    "palette": [
+      {
+        "id": "p1",
+        "latex": "\\frac{10 \\times 9 \\times 8}{3!}",
+        "description": "C(10,3): top 3 factors / 3!"
+      },
+      {
+        "id": "p2",
+        "latex": "\\frac{720}{6}",
+        "description": "10×9×8=720; 3!=6"
+      },
+      {
+        "id": "p3",
+        "latex": "120",
+        "description": "720/6 = 120"
+      }
+    ],
+    "steps": [
+      {
+        "id": "s0a",
+        "fromLatex": "\\text{Order doesn't matter → combination}",
+        "toLatex": "C(10,3)",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "Committee: order of selection doesn't matter"
+      },
+      {
+        "id": "s1",
+        "fromLatex": "C(10,3)",
+        "toLatex": "\\frac{10 \\times 9 \\times 8}{3!}",
+        "paletteRef": "p1",
+        "dropTargets": [
+          "C(10,3)"
+        ],
+        "description": "Top: 10×9×8; bottom: 3!=6"
+      },
+      {
+        "id": "s2",
+        "fromLatex": "\\frac{720}{6}",
+        "toLatex": "120",
+        "paletteRef": "p3",
+        "dropTargets": [
+          "\\frac{720}{6}"
+        ],
+        "description": "720/6 = 120 committees"
+      }
+    ]
+  },
+  {
+    "id": "comb-m-005",
+    "topic": "combinatorics",
+    "difficulty": "medium",
+    "question": {
+      "latex": "\\text{5 people seated at a round table — how many arrangements?}",
+      "plain": "In how many ways can 5 people be seated at a round table?"
+    },
+    "symbols": {
+      "!": "Factorial"
+    },
+    "palette": [
+      {
+        "id": "p1",
+        "latex": "(5-1)!",
+        "description": "Circular permutation: fix one person, arrange the other n−1"
+      },
+      {
+        "id": "p2",
+        "latex": "4!",
+        "description": "(5−1)! = 4!"
+      },
+      {
+        "id": "p3",
+        "latex": "24",
+        "description": "4! = 24"
+      }
+    ],
+    "steps": [
+      {
+        "id": "s0a",
+        "fromLatex": "\\text{In a circle, rotations of same arrangement are identical}",
+        "toLatex": "(n-1)!",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "Fix one person as reference — only arrange the remaining n−1"
+      },
+      {
+        "id": "s1",
+        "fromLatex": "\\text{Circular arrangements}",
+        "toLatex": "(5-1)!",
+        "paletteRef": "p1",
+        "dropTargets": [],
+        "description": "Formula: (n−1)! for circular permutations"
+      },
+      {
+        "id": "s2",
+        "fromLatex": "(5-1)!",
+        "toLatex": "4!",
+        "paletteRef": "p2",
+        "dropTargets": [
+          "(5-1)!"
+        ],
+        "description": "(5−1)! = 4!"
+      },
+      {
+        "id": "s3",
+        "fromLatex": "4!",
+        "toLatex": "24",
+        "paletteRef": "p3",
+        "dropTargets": [
+          "4!"
+        ],
+        "description": "4! = 24 distinct seatings"
+      }
+    ]
+  },
+  {
+    "id": "comb-m-006",
+    "topic": "combinatorics",
+    "difficulty": "medium",
+    "question": {
+      "latex": "C(9,4) = ?",
+      "plain": "Find C(9,4)"
+    },
+    "symbols": {
+      "C": "Combination"
+    },
+    "palette": [
+      {
+        "id": "p1",
+        "latex": "\\frac{9 \\times 8 \\times 7 \\times 6}{4!}",
+        "description": "C(9,4): top 4 factors divided by 4!"
+      },
+      {
+        "id": "p2",
+        "latex": "\\frac{3024}{24}",
+        "description": "9×8×7×6=3024; 4!=24"
+      },
+      {
+        "id": "p3",
+        "latex": "126",
+        "description": "3024/24 = 126"
+      }
+    ],
+    "steps": [
+      {
+        "id": "s1",
+        "fromLatex": "C(9,4)",
+        "toLatex": "\\frac{9 \\times 8 \\times 7 \\times 6}{4!}",
+        "paletteRef": "p1",
+        "dropTargets": [
+          "C(9,4)"
+        ],
+        "description": "C(n,r): descending product of r terms / r!"
+      },
+      {
+        "id": "s0a",
+        "fromLatex": "9\\times8=72,\\;72\\times7=504,\\;504\\times6=3024",
+        "toLatex": "9\\times8\\times7\\times6=3024",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "Compute numerator"
+      },
+      {
+        "id": "s2",
+        "fromLatex": "\\frac{3024}{24}",
+        "toLatex": "126",
+        "paletteRef": "p3",
+        "dropTargets": [
+          "\\frac{3024}{24}"
+        ],
+        "description": "3024÷24 = 126"
+      }
+    ]
+  },
+  {
+    "id": "comb-m-007",
+    "topic": "combinatorics",
+    "difficulty": "medium",
+    "question": {
+      "latex": "\\text{5 books on shelf, books A and B must stay adjacent}",
+      "plain": "5 books are placed on a shelf. Books A and B must always be next to each other. How many arrangements?"
+    },
+    "symbols": {
+      "!": "Factorial"
+    },
+    "palette": [
+      {
+        "id": "p1",
+        "latex": "\\text{Treat A+B as one block}",
+        "description": "Glue A and B: now you have 4 objects to arrange"
+      },
+      {
+        "id": "p2",
+        "latex": "4! \\times 2",
+        "description": "4! arrangements of the block + 3 others; ×2 for internal AB or BA order"
+      },
+      {
+        "id": "p3",
+        "latex": "48",
+        "description": "4! = 24; 24×2 = 48"
+      }
+    ],
+    "steps": [
+      {
+        "id": "s1",
+        "fromLatex": "\\text{5 books, A and B adjacent}",
+        "toLatex": "\\text{Treat A+B as one block}",
+        "paletteRef": "p1",
+        "dropTargets": [],
+        "description": "Merge A and B into one unit → 4 objects total"
+      },
+      {
+        "id": "s0a",
+        "fromLatex": "\\text{4 objects can be arranged in }4!=24\\text{ ways}",
+        "toLatex": "4!=24",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "Permute the 4 units"
+      },
+      {
+        "id": "s2",
+        "fromLatex": "4! \\times 2",
+        "toLatex": "48",
+        "paletteRef": "p3",
+        "dropTargets": [
+          "4! \\times 2"
+        ],
+        "description": "Within the block, A or B can be first: ×2. 24×2=48"
+      }
+    ]
+  },
+  {
+    "id": "comb-m-008",
+    "topic": "combinatorics",
+    "difficulty": "medium",
+    "question": {
+      "latex": "\\text{Bag: 5 red, 3 blue. Pick 2 randomly. } P(\\text{both red})?",
+      "plain": "A bag has 5 red and 3 blue balls. 2 are drawn randomly. What is P(both red)?"
+    },
+    "symbols": {
+      "C": "Combination"
+    },
+    "palette": [
+      {
+        "id": "p1",
+        "latex": "C(5,2)",
+        "description": "Favorable: choose 2 from 5 red = C(5,2)=10"
+      },
+      {
+        "id": "p2",
+        "latex": "C(8,2)",
+        "description": "Total: choose 2 from 8 = C(8,2)=28"
+      },
+      {
+        "id": "p3",
+        "latex": "\\frac{5}{14}",
+        "description": "P = 10/28 = 5/14"
+      }
+    ],
+    "steps": [
+      {
+        "id": "s0a",
+        "fromLatex": "P=\\frac{\\text{favorable}}{\\text{total}}",
+        "toLatex": "P=\\frac{C(5,2)}{C(8,2)}",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "Use equally likely outcomes from combinations"
+      },
+      {
+        "id": "s1",
+        "fromLatex": "\\text{Favorable}",
+        "toLatex": "C(5,2)",
+        "paletteRef": "p1",
+        "dropTargets": [],
+        "description": "Choose 2 red from 5 red = C(5,2) = 10"
+      },
+      {
+        "id": "s2",
+        "fromLatex": "\\text{Total}",
+        "toLatex": "C(8,2)",
+        "paletteRef": "p2",
+        "dropTargets": [],
+        "description": "Choose any 2 from 8 total = C(8,2) = 28"
+      },
+      {
+        "id": "s3",
+        "fromLatex": "\\frac{C(5,2)}{C(8,2)}=\\frac{10}{28}",
+        "toLatex": "\\frac{5}{14}",
+        "paletteRef": "p3",
+        "dropTargets": [
+          "\\frac{10}{28}"
+        ],
+        "description": "Simplify: 10/28 = 5/14"
+      }
+    ]
+  },
+  {
+    "id": "comb-m-009",
+    "topic": "combinatorics",
+    "difficulty": "medium",
+    "question": {
+      "latex": "C(7,3) + C(7,4) = ?",
+      "plain": "Use Pascal's identity to find C(7,3) + C(7,4)"
+    },
+    "symbols": {
+      "C": "Combination"
+    },
+    "palette": [
+      {
+        "id": "p1",
+        "latex": "C(8,4)",
+        "description": "Pascal's identity: C(n,k)+C(n,k+1)=C(n+1,k+1), so C(7,3)+C(7,4)=C(8,4)"
+      },
+      {
+        "id": "p2",
+        "latex": "70",
+        "description": "C(8,4) = 8!/(4!4!) = 70"
+      }
+    ],
+    "steps": [
+      {
+        "id": "s0a",
+        "fromLatex": "C(n,k)+C(n,k+1)=C(n+1,k+1)",
+        "toLatex": "C(n,k)+C(n,k+1)=C(n+1,k+1)",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "Pascal's identity: adjacent entries in a row sum to next row"
+      },
+      {
+        "id": "s1",
+        "fromLatex": "C(7,3)+C(7,4)",
+        "toLatex": "C(8,4)",
+        "paletteRef": "p1",
+        "dropTargets": [
+          "C(7,3)+C(7,4)"
+        ],
+        "description": "n=7, k=3 → C(7,3)+C(7,4)=C(8,4)"
+      },
+      {
+        "id": "s0b",
+        "fromLatex": "C(8,4)=\\frac{8\\times7\\times6\\times5}{4!}=\\frac{1680}{24}",
+        "toLatex": "C(8,4)=70",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "Compute: 8×7×6×5=1680; 1680/24=70"
+      },
+      {
+        "id": "s2",
+        "fromLatex": "C(8,4)",
+        "toLatex": "70",
+        "paletteRef": "p2",
+        "dropTargets": [
+          "C(8,4)"
+        ],
+        "description": "C(8,4) = 70"
+      }
+    ]
+  },
+  {
+    "id": "comb-m-010",
+    "topic": "combinatorics",
+    "difficulty": "medium",
+    "question": {
+      "latex": "\\text{Distinct arrangements of \"LEVEL\"}",
+      "plain": "How many distinct arrangements of the letters in LEVEL?"
+    },
+    "symbols": {
+      "!": "Factorial"
+    },
+    "palette": [
+      {
+        "id": "p1",
+        "latex": "\\frac{5!}{2!\\,2!}",
+        "description": "5 letters: L appears 2×, E appears 2×"
+      },
+      {
+        "id": "p2",
+        "latex": "\\frac{120}{4}",
+        "description": "5!=120; 2!×2!=4"
+      },
+      {
+        "id": "p3",
+        "latex": "30",
+        "description": "120/4 = 30"
+      }
+    ],
+    "steps": [
+      {
+        "id": "s0a",
+        "fromLatex": "\\text{L:2, E:2, V:1 — total 5 letters}",
+        "toLatex": "\\frac{5!}{2!\\times2!\\times1!}",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "Multinomial: divide by factorial of each repeated count"
+      },
+      {
+        "id": "s1",
+        "fromLatex": "\\text{Arrangements}",
+        "toLatex": "\\frac{5!}{2!\\,2!}",
+        "paletteRef": "p1",
+        "dropTargets": [],
+        "description": "Divide out L overcounts (2!) and E overcounts (2!)"
+      },
+      {
+        "id": "s2",
+        "fromLatex": "\\frac{5!}{2!\\,2!}",
+        "toLatex": "30",
+        "paletteRef": "p3",
+        "dropTargets": [
+          "\\frac{5!}{2!\\,2!}"
+        ],
+        "description": "120/4 = 30 distinct words"
+      }
+    ]
+  },
+  {
+    "id": "comb-m-011",
+    "topic": "combinatorics",
+    "difficulty": "medium",
+    "question": {
+      "latex": "\\text{3-letter codes, A–Z, no repeats: how many?}",
+      "plain": "How many 3-letter codes can be made from A–Z with no repeated letters?"
+    },
+    "symbols": {
+      "P": "Permutation"
+    },
+    "palette": [
+      {
+        "id": "p1",
+        "latex": "P(26,3)",
+        "description": "26 letters, choose 3 ordered = P(26,3)"
+      },
+      {
+        "id": "p2",
+        "latex": "26 \\times 25 \\times 24",
+        "description": "26 choices for 1st, 25 for 2nd, 24 for 3rd"
+      },
+      {
+        "id": "p3",
+        "latex": "15600",
+        "description": "26×25×24 = 15 600"
+      }
+    ],
+    "steps": [
+      {
+        "id": "s1",
+        "fromLatex": "\\text{3 ordered slots from 26, no repeat}",
+        "toLatex": "P(26,3)",
+        "paletteRef": "p1",
+        "dropTargets": [],
+        "description": "Ordered selection without replacement → P(26,3)"
+      },
+      {
+        "id": "s2",
+        "fromLatex": "P(26,3)",
+        "toLatex": "26 \\times 25 \\times 24",
+        "paletteRef": "p2",
+        "dropTargets": [
+          "P(26,3)"
+        ],
+        "description": "26 for 1st letter, 25 for 2nd, 24 for 3rd"
+      },
+      {
+        "id": "s0a",
+        "fromLatex": "26\\times25=650,\\;650\\times24=15600",
+        "toLatex": "15600",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "Multiply out"
+      },
+      {
+        "id": "s3",
+        "fromLatex": "26 \\times 25 \\times 24",
+        "toLatex": "15600",
+        "paletteRef": "p3",
+        "dropTargets": [
+          "26 \\times 25 \\times 24"
+        ],
+        "description": "15 600 codes"
+      }
+    ]
+  },
+  {
+    "id": "comb-m-012",
+    "topic": "combinatorics",
+    "difficulty": "medium",
+    "question": {
+      "latex": "\\text{How many subsets does a 4-element set have?}",
+      "plain": "A set has 4 elements. How many subsets does it have (including ∅ and itself)?"
+    },
+    "symbols": {},
+    "palette": [
+      {
+        "id": "p1",
+        "latex": "2^4",
+        "description": "Each element independently included or excluded: 2⁴"
+      },
+      {
+        "id": "p2",
+        "latex": "16",
+        "description": "2⁴ = 16"
+      }
+    ],
+    "steps": [
+      {
+        "id": "s0a",
+        "fromLatex": "\\text{Each element: in or out — 2 binary choices per element}",
+        "toLatex": "2 \\times 2 \\times 2 \\times 2",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "FCP with 2 choices per element"
+      },
+      {
+        "id": "s1",
+        "fromLatex": "\\text{Subsets}",
+        "toLatex": "2^4",
+        "paletteRef": "p1",
+        "dropTargets": [],
+        "description": "2 choices for each of 4 elements"
+      },
+      {
+        "id": "s2",
+        "fromLatex": "2^4",
+        "toLatex": "16",
+        "paletteRef": "p2",
+        "dropTargets": [
+          "2^4"
+        ],
+        "description": "16 subsets total"
+      }
+    ]
+  },
+  {
+    "id": "comb-m-013",
+    "topic": "combinatorics",
+    "difficulty": "medium",
+    "question": {
+      "latex": "C(10,5) = ?",
+      "plain": "Find C(10,5)"
+    },
+    "symbols": {
+      "C": "Combination"
+    },
+    "palette": [
+      {
+        "id": "p1",
+        "latex": "\\frac{10 \\times 9 \\times 8 \\times 7 \\times 6}{5!}",
+        "description": "C(10,5): top 5 descending factors / 5!"
+      },
+      {
+        "id": "p2",
+        "latex": "\\frac{30240}{120}",
+        "description": "10×9×8×7×6=30240; 5!=120"
+      },
+      {
+        "id": "p3",
+        "latex": "252",
+        "description": "30240/120 = 252"
+      }
+    ],
+    "steps": [
+      {
+        "id": "s1",
+        "fromLatex": "C(10,5)",
+        "toLatex": "\\frac{10 \\times 9 \\times 8 \\times 7 \\times 6}{5!}",
+        "paletteRef": "p1",
+        "dropTargets": [
+          "C(10,5)"
+        ],
+        "description": "C(n,r) = descending r-term product / r!"
+      },
+      {
+        "id": "s0a",
+        "fromLatex": "10\\times9\\times8\\times7\\times6=30240",
+        "toLatex": "30240",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "Compute numerator"
+      },
+      {
+        "id": "s2",
+        "fromLatex": "\\frac{30240}{120}",
+        "toLatex": "252",
+        "paletteRef": "p3",
+        "dropTargets": [
+          "\\frac{30240}{120}"
+        ],
+        "description": "30240/120 = 252"
+      }
+    ]
+  },
+  {
+    "id": "comb-m-014",
+    "topic": "combinatorics",
+    "difficulty": "medium",
+    "question": {
+      "latex": "\\text{How many diagonals does a hexagon have?}",
+      "plain": "How many diagonals does a hexagon (6 sides) have?"
+    },
+    "symbols": {
+      "C": "Combination"
+    },
+    "palette": [
+      {
+        "id": "p1",
+        "latex": "C(6,2)",
+        "description": "Total line segments between any 2 of 6 vertices"
+      },
+      {
+        "id": "p2",
+        "latex": "C(6,2) - 6",
+        "description": "Subtract the 6 sides to keep only diagonals"
+      },
+      {
+        "id": "p3",
+        "latex": "9",
+        "description": "15 − 6 = 9 diagonals"
+      }
+    ],
+    "steps": [
+      {
+        "id": "s0a",
+        "fromLatex": "\\text{Diagonal connects 2 non-adjacent vertices}",
+        "toLatex": "\\text{Diagonal = segment between vertices that is not a side}",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "A diagonal joins two vertices that are not already connected by a side"
+      },
+      {
+        "id": "s1",
+        "fromLatex": "\\text{All segments}",
+        "toLatex": "C(6,2)",
+        "paletteRef": "p1",
+        "dropTargets": [],
+        "description": "C(6,2)=15: every pair of 6 vertices gives a segment"
+      },
+      {
+        "id": "s2",
+        "fromLatex": "C(6,2) - 6",
+        "toLatex": "9",
+        "paletteRef": "p3",
+        "dropTargets": [
+          "C(6,2) - 6"
+        ],
+        "description": "15 − 6 sides = 9 diagonals"
+      }
+    ]
+  },
+  {
+    "id": "comb-m-015",
+    "topic": "combinatorics",
+    "difficulty": "medium",
+    "question": {
+      "latex": "P(n,2) = 42. \\text{ Find }n.",
+      "plain": "If P(n,2) = 42, find n"
+    },
+    "symbols": {
+      "P": "Permutation"
+    },
+    "palette": [
+      {
+        "id": "p1",
+        "latex": "n(n-1) = 42",
+        "description": "P(n,2) = n!/(n−2)! = n(n−1)"
+      },
+      {
+        "id": "p2",
+        "latex": "n = 7",
+        "description": "7×6 = 42, so n=7"
+      }
+    ],
+    "steps": [
+      {
+        "id": "s0a",
+        "fromLatex": "P(n,2)=\\frac{n!}{(n-2)!}=n(n-1)",
+        "toLatex": "n(n-1)=42",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "Simplify P(n,2) to n(n−1)"
+      },
+      {
+        "id": "s1",
+        "fromLatex": "P(n,2)=42",
+        "toLatex": "n(n-1) = 42",
+        "paletteRef": "p1",
+        "dropTargets": [
+          "P(n,2)=42"
+        ],
+        "description": "Set n(n−1) = 42 and factor"
+      },
+      {
+        "id": "s0b",
+        "fromLatex": "7\\times6=42",
+        "toLatex": "n=7",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "Try n=7: 7×6=42 ✓"
+      },
+      {
+        "id": "s2",
+        "fromLatex": "n(n-1)=42",
+        "toLatex": "n=7",
+        "paletteRef": "p2",
+        "dropTargets": [
+          "n(n-1)=42"
+        ],
+        "description": "n=7"
+      }
+    ]
+  },
+  {
+    "id": "comb-m-016",
+    "topic": "combinatorics",
+    "difficulty": "medium",
+    "question": {
+      "latex": "\\text{8 in a row, A and B must be together — how many ways?}",
+      "plain": "8 people in a row, but A and B must sit adjacent. How many arrangements?"
+    },
+    "symbols": {
+      "!": "Factorial"
+    },
+    "palette": [
+      {
+        "id": "p1",
+        "latex": "7! \\times 2",
+        "description": "Treat A+B as 1 unit → 7 objects; ×2 for AB or BA"
+      },
+      {
+        "id": "p2",
+        "latex": "10080",
+        "description": "7!=5040; 5040×2=10080"
+      }
+    ],
+    "steps": [
+      {
+        "id": "s0a",
+        "fromLatex": "\\text{Merge A and B into one block: 7 objects total}",
+        "toLatex": "7 \\text{ objects}",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "Block trick: 8 people − 2 + 1 block = 7 objects"
+      },
+      {
+        "id": "s1",
+        "fromLatex": "\\text{Arrangements}",
+        "toLatex": "7! \\times 2",
+        "paletteRef": "p1",
+        "dropTargets": [],
+        "description": "7! for the 7-object line; ×2 for AB or BA within block"
+      },
+      {
+        "id": "s0b",
+        "fromLatex": "7!=5040",
+        "toLatex": "5040",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "7!=5040"
+      },
+      {
+        "id": "s2",
+        "fromLatex": "7! \\times 2",
+        "toLatex": "10080",
+        "paletteRef": "p2",
+        "dropTargets": [
+          "7! \\times 2"
+        ],
+        "description": "5040×2 = 10 080"
+      }
+    ]
+  },
+  {
+    "id": "comb-m-017",
+    "topic": "combinatorics",
+    "difficulty": "medium",
+    "question": {
+      "latex": "\\text{Lattice paths from }(0,0)\\text{ to }(3,2)",
+      "plain": "How many shortest lattice paths go from (0,0) to (3,2) moving only right (R) or up (U)?"
+    },
+    "symbols": {
+      "C": "Combination"
+    },
+    "palette": [
+      {
+        "id": "p1",
+        "latex": "C(5,2)",
+        "description": "5 total steps (3R+2U); choose which 2 are U"
+      },
+      {
+        "id": "p2",
+        "latex": "10",
+        "description": "C(5,2) = 10"
+      }
+    ],
+    "steps": [
+      {
+        "id": "s0a",
+        "fromLatex": "\\text{Every path = 3 R's + 2 U's in some order: 5 steps total}",
+        "toLatex": "\\text{5 steps: choose 2 positions for U's}",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "Each path is an arrangement of RRRUU"
+      },
+      {
+        "id": "s1",
+        "fromLatex": "\\text{Paths}",
+        "toLatex": "C(5,2)",
+        "paletteRef": "p1",
+        "dropTargets": [],
+        "description": "Choose which 2 of the 5 steps are U (rest are R)"
+      },
+      {
+        "id": "s2",
+        "fromLatex": "C(5,2)",
+        "toLatex": "10",
+        "paletteRef": "p2",
+        "dropTargets": [
+          "C(5,2)"
+        ],
+        "description": "C(5,2) = 10 lattice paths"
+      }
+    ]
+  },
+  {
+    "id": "comb-m-018",
+    "topic": "combinatorics",
+    "difficulty": "medium",
+    "question": {
+      "latex": "\\text{Coefficient of }x^2 y^3\\text{ in }(x+y)^5",
+      "plain": "What is the coefficient of x²y³ in the expansion of (x+y)⁵?"
+    },
+    "symbols": {
+      "C": "Combination"
+    },
+    "palette": [
+      {
+        "id": "p1",
+        "latex": "C(5,2)",
+        "description": "Binomial theorem: coeff of x^r·y^(n−r) in (x+y)^n is C(n,r)"
+      },
+      {
+        "id": "p2",
+        "latex": "10",
+        "description": "C(5,2) = 10"
+      }
+    ],
+    "steps": [
+      {
+        "id": "s0a",
+        "fromLatex": "(x+y)^5 = \\sum_{k=0}^{5} C(5,k)\\,x^k y^{5-k}",
+        "toLatex": "\\text{Term with } x^2 y^3: k=2",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "Binomial theorem: expand (x+y)^n as sum of C(n,k)x^k y^(n-k)"
+      },
+      {
+        "id": "s1",
+        "fromLatex": "\\text{Coefficient of }x^2 y^3",
+        "toLatex": "C(5,2)",
+        "paletteRef": "p1",
+        "dropTargets": [],
+        "description": "Set k=2 (power of x): coefficient = C(5,2)"
+      },
+      {
+        "id": "s2",
+        "fromLatex": "C(5,2)",
+        "toLatex": "10",
+        "paletteRef": "p2",
+        "dropTargets": [
+          "C(5,2)"
+        ],
+        "description": "Coefficient = 10"
+      }
+    ]
+  },
+  {
+    "id": "comb-m-019",
+    "topic": "combinatorics",
+    "difficulty": "medium",
+    "question": {
+      "latex": "\\text{Distribute 6 identical balls into 3 distinct boxes (0 allowed)}",
+      "plain": "In how many ways can 6 identical balls be put into 3 distinct boxes (a box can be empty)?"
+    },
+    "symbols": {
+      "C": "Combination"
+    },
+    "palette": [
+      {
+        "id": "p1",
+        "latex": "C(6+3-1,\\,3-1)",
+        "description": "Stars and bars: C(n+k−1, k−1) where n=6 balls, k=3 boxes"
+      },
+      {
+        "id": "p2",
+        "latex": "C(8,2)",
+        "description": "C(6+3−1, 3−1) = C(8,2)"
+      },
+      {
+        "id": "p3",
+        "latex": "28",
+        "description": "C(8,2) = 28"
+      }
+    ],
+    "steps": [
+      {
+        "id": "s0a",
+        "fromLatex": "\\text{Stars and bars: identical items to distinct bins}",
+        "toLatex": "C(n+k-1,\\,k-1)",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "Formula: C(n+k−1, k−1) — picture bars separating groups of stars"
+      },
+      {
+        "id": "s1",
+        "fromLatex": "\\text{n=6, k=3}",
+        "toLatex": "C(8,2)",
+        "paletteRef": "p2",
+        "dropTargets": [],
+        "description": "C(6+3−1, 3−1) = C(8,2)"
+      },
+      {
+        "id": "s2",
+        "fromLatex": "C(8,2)",
+        "toLatex": "28",
+        "paletteRef": "p3",
+        "dropTargets": [
+          "C(8,2)"
+        ],
+        "description": "(8×7)/2 = 28 ways"
+      }
+    ]
+  },
+  {
+    "id": "comb-m-020",
+    "topic": "combinatorics",
+    "difficulty": "medium",
+    "question": {
+      "latex": "C(12,4) = ?",
+      "plain": "Find C(12,4)"
+    },
+    "symbols": {
+      "C": "Combination"
+    },
+    "palette": [
+      {
+        "id": "p1",
+        "latex": "\\frac{12 \\times 11 \\times 10 \\times 9}{4!}",
+        "description": "Top: 4 descending factors from 12; bottom: 4!=24"
+      },
+      {
+        "id": "p2",
+        "latex": "\\frac{11880}{24}",
+        "description": "12×11×10×9=11880"
+      },
+      {
+        "id": "p3",
+        "latex": "495",
+        "description": "11880/24 = 495"
+      }
+    ],
+    "steps": [
+      {
+        "id": "s1",
+        "fromLatex": "C(12,4)",
+        "toLatex": "\\frac{12 \\times 11 \\times 10 \\times 9}{4!}",
+        "paletteRef": "p1",
+        "dropTargets": [
+          "C(12,4)"
+        ],
+        "description": "C(12,4): 4 descending terms / 4!"
+      },
+      {
+        "id": "s0a",
+        "fromLatex": "12\\times11\\times10\\times9=11880",
+        "toLatex": "11880",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "Compute numerator step by step"
+      },
+      {
+        "id": "s2",
+        "fromLatex": "\\frac{11880}{24}",
+        "toLatex": "495",
+        "paletteRef": "p3",
+        "dropTargets": [
+          "\\frac{11880}{24}"
+        ],
+        "description": "11880/24 = 495"
+      }
+    ]
+  },
+  {
+    "id": "comb-h-001",
+    "topic": "combinatorics",
+    "difficulty": "hard",
+    "question": {
+      "latex": "\\text{30 students: 18 like math, 15 science, 10 both. Like at least one?}",
+      "plain": "30 students: 18 like math, 15 like science, 10 like both. How many like at least one?"
+    },
+    "symbols": {},
+    "palette": [
+      {
+        "id": "p1",
+        "latex": "|M \\cup S| = |M|+|S|-|M \\cap S|",
+        "description": "Inclusion-Exclusion for two sets"
+      },
+      {
+        "id": "p2",
+        "latex": "18+15-10",
+        "description": "Substitute: 18+15−10"
+      },
+      {
+        "id": "p3",
+        "latex": "23",
+        "description": "18+15−10 = 23"
+      }
+    ],
+    "steps": [
+      {
+        "id": "s1",
+        "fromLatex": "\\text{At least one}",
+        "toLatex": "|M \\cup S| = |M|+|S|-|M \\cap S|",
+        "paletteRef": "p1",
+        "dropTargets": [],
+        "description": "Inclusion-exclusion: add both sets, subtract the overlap counted twice"
+      },
+      {
+        "id": "s2",
+        "fromLatex": "|M|+|S|-|M \\cap S|",
+        "toLatex": "18+15-10",
+        "paletteRef": "p2",
+        "dropTargets": [
+          "|M|+|S|-|M \\cap S|"
+        ],
+        "description": "Substitute known values"
+      },
+      {
+        "id": "s3",
+        "fromLatex": "18+15-10",
+        "toLatex": "23",
+        "paletteRef": "p3",
+        "dropTargets": [
+          "18+15-10"
+        ],
+        "description": "33−10 = 23 students"
+      }
+    ]
+  },
+  {
+    "id": "comb-h-002",
+    "topic": "combinatorics",
+    "difficulty": "hard",
+    "question": {
+      "latex": "\\text{Distinct arrangements of MATHEMATICS}",
+      "plain": "How many distinct arrangements does MATHEMATICS have? (M×2, A×2, T×2, rest ×1)"
+    },
+    "symbols": {
+      "!": "Factorial"
+    },
+    "palette": [
+      {
+        "id": "p1",
+        "latex": "\\frac{11!}{2!\\,2!\\,2!}",
+        "description": "11 letters; M, A, T each appear twice"
+      },
+      {
+        "id": "p2",
+        "latex": "\\frac{39916800}{8}",
+        "description": "11! = 39916800; 2!×2!×2! = 8"
+      },
+      {
+        "id": "p3",
+        "latex": "4989600",
+        "description": "39916800/8 = 4989600"
+      }
+    ],
+    "steps": [
+      {
+        "id": "s0a",
+        "fromLatex": "\\text{M:2, A:2, T:2, H:1, E:1, I:1, C:1, S:1 → 11 letters}",
+        "toLatex": "\\frac{11!}{2!\\cdot2!\\cdot2!}",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "Multinomial formula: total! / (each repeated count)!"
+      },
+      {
+        "id": "s1",
+        "fromLatex": "\\text{Arrangements}",
+        "toLatex": "\\frac{11!}{2!\\,2!\\,2!}",
+        "paletteRef": "p1",
+        "dropTargets": [],
+        "description": "Divide out overcounts from the 3 pairs of repeated letters"
+      },
+      {
+        "id": "s0b",
+        "fromLatex": "11!=39916800,\\;2!\\times2!\\times2!=8",
+        "toLatex": "39916800\\div8",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "11! = 39916800; denominatior = 8"
+      },
+      {
+        "id": "s2",
+        "fromLatex": "\\frac{39916800}{8}",
+        "toLatex": "4\\,989\\,600",
+        "paletteRef": "p3",
+        "dropTargets": [
+          "\\frac{39916800}{8}"
+        ],
+        "description": "4 989 600 distinct arrangements"
+      }
+    ]
+  },
+  {
+    "id": "comb-h-003",
+    "topic": "combinatorics",
+    "difficulty": "hard",
+    "question": {
+      "latex": "x+y+z=7,\\quad x,y,z \\geq 1 \\text{ (integers). How many solutions?}",
+      "plain": "How many positive integer solutions does x+y+z=7 have (x,y,z ≥ 1)?"
+    },
+    "symbols": {
+      "C": "Combination"
+    },
+    "palette": [
+      {
+        "id": "p1",
+        "latex": "x' = x-1,\\;y'=y-1,\\;z'=z-1",
+        "description": "Substitute to remove minimum: x'+y'+z'=4, where x',y',z'≥0"
+      },
+      {
+        "id": "p2",
+        "latex": "C(4+3-1,\\,3-1)",
+        "description": "Stars and bars: C(n+k−1, k−1) with n=4, k=3"
+      },
+      {
+        "id": "p3",
+        "latex": "C(6,2) = 15",
+        "description": "C(6,2)=15 solutions"
+      }
+    ],
+    "steps": [
+      {
+        "id": "s1",
+        "fromLatex": "x+y+z=7,\\;x,y,z\\geq1",
+        "toLatex": "x'+y'+z'=4,\\;x',y',z'\\geq0",
+        "paletteRef": "p1",
+        "dropTargets": [],
+        "description": "Let x'=x−1 etc: new equation has non-negative solutions"
+      },
+      {
+        "id": "s2",
+        "fromLatex": "x'+y'+z'=4,\\;x',y',z'\\geq0",
+        "toLatex": "C(4+3-1,\\,3-1)",
+        "paletteRef": "p2",
+        "dropTargets": [
+          "x'+y'+z'=4,\\;x',y',z'\\geq0"
+        ],
+        "description": "Stars and bars: C(n+k−1, k−1) = C(6,2)"
+      },
+      {
+        "id": "s3",
+        "fromLatex": "C(6,2)",
+        "toLatex": "15",
+        "paletteRef": "p3",
+        "dropTargets": [
+          "C(6,2)"
+        ],
+        "description": "(6×5)/2 = 15 positive integer solutions"
+      }
+    ]
+  },
+  {
+    "id": "comb-h-004",
+    "topic": "combinatorics",
+    "difficulty": "hard",
+    "question": {
+      "latex": "D(4) = ? \\text{ (derangements of 4 objects)}",
+      "plain": "How many derangements of 4 objects exist (no element in its original position)?"
+    },
+    "symbols": {
+      "!": "Factorial"
+    },
+    "palette": [
+      {
+        "id": "p1",
+        "latex": "4!\\left(1 - 1 + \\frac{1}{2!} - \\frac{1}{3!} + \\frac{1}{4!}\\right)",
+        "description": "D(n) = n!(1−1+1/2!−1/3!+1/4!…)"
+      },
+      {
+        "id": "p2",
+        "latex": "24\\left(\\frac{1}{2} - \\frac{1}{6} + \\frac{1}{24}\\right)",
+        "description": "Evaluate the bracket: 1/2−1/6+1/24=12/24−4/24+1/24=9/24"
+      },
+      {
+        "id": "p3",
+        "latex": "9",
+        "description": "24×(9/24) = 9"
+      }
+    ],
+    "steps": [
+      {
+        "id": "s0a",
+        "fromLatex": "D(n)=n!\\sum_{k=0}^n\\frac{(-1)^k}{k!}",
+        "toLatex": "D(4)=4!\\!\\left(\\frac{1}{0!}-\\frac{1}{1!}+\\frac{1}{2!}-\\frac{1}{3!}+\\frac{1}{4!}\\right)",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "Derangement formula: alternating sum"
+      },
+      {
+        "id": "s1",
+        "fromLatex": "D(4)",
+        "toLatex": "4!\\left(1 - 1 + \\frac{1}{2!} - \\frac{1}{3!} + \\frac{1}{4!}\\right)",
+        "paletteRef": "p1",
+        "dropTargets": [
+          "D(4)"
+        ],
+        "description": "Expand the alternating sum"
+      },
+      {
+        "id": "s0b",
+        "fromLatex": "1-1+\\tfrac{1}{2}-\\tfrac{1}{6}+\\tfrac{1}{24}=\\tfrac{9}{24}",
+        "toLatex": "\\frac{9}{24}",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "Simplify: 12/24−4/24+1/24=9/24"
+      },
+      {
+        "id": "s2",
+        "fromLatex": "24 \\times \\frac{9}{24}",
+        "toLatex": "9",
+        "paletteRef": "p3",
+        "dropTargets": [
+          "24 \\times \\frac{9}{24}"
+        ],
+        "description": "D(4) = 9"
+      }
+    ]
+  },
+  {
+    "id": "comb-h-005",
+    "topic": "combinatorics",
+    "difficulty": "hard",
+    "question": {
+      "latex": "\\text{Coefficient of }x^3\\text{ in }(1+x)^7",
+      "plain": "Find the coefficient of x³ in the expansion of (1+x)⁷"
+    },
+    "symbols": {
+      "C": "Combination"
+    },
+    "palette": [
+      {
+        "id": "p1",
+        "latex": "C(7,3)",
+        "description": "Binomial theorem: coeff of x^k in (1+x)^n is C(n,k)"
+      },
+      {
+        "id": "p2",
+        "latex": "35",
+        "description": "C(7,3) = 7!/(3!4!) = 35"
+      }
+    ],
+    "steps": [
+      {
+        "id": "s0a",
+        "fromLatex": "(1+x)^7=\\sum_{k=0}^7 C(7,k)\\cdot1^{7-k}\\cdot x^k",
+        "toLatex": "\\text{Term with }x^3: \\;C(7,3)\\cdot x^3",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "Binomial theorem: general term is C(n,k)x^k"
+      },
+      {
+        "id": "s1",
+        "fromLatex": "\\text{Coefficient of }x^3",
+        "toLatex": "C(7,3)",
+        "paletteRef": "p1",
+        "dropTargets": [],
+        "description": "Set k=3 in C(7,k)"
+      },
+      {
+        "id": "s0b",
+        "fromLatex": "C(7,3)=\\frac{7\\times6\\times5}{3!}=\\frac{210}{6}",
+        "toLatex": "35",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "210/6 = 35"
+      },
+      {
+        "id": "s2",
+        "fromLatex": "C(7,3)",
+        "toLatex": "35",
+        "paletteRef": "p2",
+        "dropTargets": [
+          "C(7,3)"
+        ],
+        "description": "Coefficient = 35"
+      }
+    ]
+  },
+  {
+    "id": "comb-h-006",
+    "topic": "combinatorics",
+    "difficulty": "hard",
+    "question": {
+      "latex": "\\text{Min. people to guarantee 2 share a birth month?}",
+      "plain": "What is the minimum number of people needed to guarantee that at least 2 share a birth month?"
+    },
+    "symbols": {},
+    "palette": [
+      {
+        "id": "p1",
+        "latex": "13",
+        "description": "Pigeonhole: n+1 people for n months. 12 months → 13 people"
+      }
+    ],
+    "steps": [
+      {
+        "id": "s0a",
+        "fromLatex": "\\text{12 possible birth months (pigeonholes)}",
+        "toLatex": "\\text{12 months = 12 pigeonholes}",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "Identify the 'holes': one for each month"
+      },
+      {
+        "id": "s0b",
+        "fromLatex": "\\text{With 12 people, each could have a different month}",
+        "toLatex": "\\text{12 people: possible no match}",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "12 people could occupy 12 distinct months — worst case"
+      },
+      {
+        "id": "s0c",
+        "fromLatex": "\\text{Person 13 must share a month with someone}",
+        "toLatex": "\\text{13th person → guaranteed match}",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "Pigeonhole principle: 13 people into 12 months → at least one month has 2"
+      },
+      {
+        "id": "s1",
+        "fromLatex": "\\text{Minimum}",
+        "toLatex": "13",
+        "paletteRef": "p1",
+        "dropTargets": [],
+        "description": "n+1 = 12+1 = 13 people"
+      }
+    ]
+  },
+  {
+    "id": "comb-h-007",
+    "topic": "combinatorics",
+    "difficulty": "hard",
+    "question": {
+      "latex": "|A|=20,|B|=18,|C|=15,|A\\cap B|=8,|A\\cap C|=6,|B\\cap C|=5,|A\\cap B\\cap C|=3",
+      "plain": "Find |A∪B∪C|. Given |A|=20, |B|=18, |C|=15, |A∩B|=8, |A∩C|=6, |B∩C|=5, |A∩B∩C|=3"
+    },
+    "symbols": {},
+    "palette": [
+      {
+        "id": "p1",
+        "latex": "|A|+|B|+|C|-|A\\cap B|-|A\\cap C|-|B\\cap C|+|A\\cap B\\cap C|",
+        "description": "Three-set inclusion-exclusion formula"
+      },
+      {
+        "id": "p2",
+        "latex": "20+18+15-8-6-5+3",
+        "description": "Substitute all values"
+      },
+      {
+        "id": "p3",
+        "latex": "37",
+        "description": "53−19+3=37"
+      }
+    ],
+    "steps": [
+      {
+        "id": "s1",
+        "fromLatex": "|A\\cup B\\cup C|",
+        "toLatex": "|A|+|B|+|C|-|A\\cap B|-|A\\cap C|-|B\\cap C|+|A\\cap B\\cap C|",
+        "paletteRef": "p1",
+        "dropTargets": [
+          "|A\\cup B\\cup C|"
+        ],
+        "description": "3-set inclusion-exclusion: add singles, subtract pairs, add triple"
+      },
+      {
+        "id": "s2",
+        "fromLatex": "\\text{Substitute}",
+        "toLatex": "20+18+15-8-6-5+3",
+        "paletteRef": "p2",
+        "dropTargets": [],
+        "description": "Fill in each value"
+      },
+      {
+        "id": "s0a",
+        "fromLatex": "20+18+15=53,\\;8+6+5=19,\\;53-19+3=37",
+        "toLatex": "37",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "Compute: 53−19=34; 34+3=37"
+      },
+      {
+        "id": "s3",
+        "fromLatex": "20+18+15-8-6-5+3",
+        "toLatex": "37",
+        "paletteRef": "p3",
+        "dropTargets": [
+          "20+18+15-8-6-5+3"
+        ],
+        "description": "|A∪B∪C| = 37"
+      }
+    ]
+  },
+  {
+    "id": "comb-h-008",
+    "topic": "combinatorics",
+    "difficulty": "hard",
+    "question": {
+      "latex": "\\text{Coefficient of }a^2 b^2 c^2\\text{ in }(a+b+c)^6",
+      "plain": "Find the coefficient of a²b²c² in the expansion of (a+b+c)⁶"
+    },
+    "symbols": {
+      "!": "Factorial"
+    },
+    "palette": [
+      {
+        "id": "p1",
+        "latex": "\\frac{6!}{2!\\,2!\\,2!}",
+        "description": "Multinomial coefficient: 6!/(2!·2!·2!)"
+      },
+      {
+        "id": "p2",
+        "latex": "\\frac{720}{8}",
+        "description": "6!=720; 2!·2!·2!=8"
+      },
+      {
+        "id": "p3",
+        "latex": "90",
+        "description": "720/8 = 90"
+      }
+    ],
+    "steps": [
+      {
+        "id": "s0a",
+        "fromLatex": "\\text{Multinomial theorem: coeff of }a^{n_1}b^{n_2}c^{n_3}\\text{ in }(a+b+c)^n=\\frac{n!}{n_1!n_2!n_3!}",
+        "toLatex": "\\text{Here }n=6,\\;n_1=n_2=n_3=2",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "Multinomial coefficient with three variables"
+      },
+      {
+        "id": "s1",
+        "fromLatex": "\\text{Coefficient}",
+        "toLatex": "\\frac{6!}{2!\\,2!\\,2!}",
+        "paletteRef": "p1",
+        "dropTargets": [],
+        "description": "Apply multinomial formula: 6!/(2!2!2!)"
+      },
+      {
+        "id": "s2",
+        "fromLatex": "\\frac{720}{8}",
+        "toLatex": "90",
+        "paletteRef": "p3",
+        "dropTargets": [
+          "\\frac{720}{8}"
+        ],
+        "description": "720/8 = 90"
+      }
+    ]
+  },
+  {
+    "id": "comb-h-009",
+    "topic": "combinatorics",
+    "difficulty": "hard",
+    "question": {
+      "latex": "\\text{5 in a circle, A and B must NOT be adjacent}",
+      "plain": "5 people are seated in a circle. A and B must not sit adjacent. How many arrangements?"
+    },
+    "symbols": {
+      "!": "Factorial"
+    },
+    "palette": [
+      {
+        "id": "p1",
+        "latex": "(5-1)! = 24",
+        "description": "Total circular arrangements of 5 people"
+      },
+      {
+        "id": "p2",
+        "latex": "2 \\times (4-1)! = 12",
+        "description": "A and B adjacent: treat as block → (4−1)!=6 circular arrangements; ×2 for AB or BA"
+      },
+      {
+        "id": "p3",
+        "latex": "24 - 12 = 12",
+        "description": "Subtract adjacent cases"
+      }
+    ],
+    "steps": [
+      {
+        "id": "s1",
+        "fromLatex": "\\text{Total circular arrangements}",
+        "toLatex": "(5-1)!=24",
+        "paletteRef": "p1",
+        "dropTargets": [],
+        "description": "(5−1)! = 4! = 24 total circular arrangements"
+      },
+      {
+        "id": "s2",
+        "fromLatex": "\\text{A and B adjacent (treat as block): 4 objects in circle}",
+        "toLatex": "2 \\times (4-1)! = 12",
+        "paletteRef": "p2",
+        "dropTargets": [],
+        "description": "Block AB in a circle of 4: (4−1)!=6; ×2 for AB/BA = 12"
+      },
+      {
+        "id": "s3",
+        "fromLatex": "24 - 12",
+        "toLatex": "12",
+        "paletteRef": "p3",
+        "dropTargets": [
+          "24 - 12"
+        ],
+        "description": "Complement: 24−12 = 12 valid arrangements"
+      }
+    ]
+  },
+  {
+    "id": "comb-h-010",
+    "topic": "combinatorics",
+    "difficulty": "hard",
+    "question": {
+      "latex": "\\text{Committee of 4 from 5M+5F with exactly 2 male and 2 female}",
+      "plain": "Choose a committee of 4 from 5 men and 5 women with exactly 2 of each. How many ways?"
+    },
+    "symbols": {
+      "C": "Combination"
+    },
+    "palette": [
+      {
+        "id": "p1",
+        "latex": "C(5,2) \\times C(5,2)",
+        "description": "Choose 2 men from 5 AND 2 women from 5 — independent choices"
+      },
+      {
+        "id": "p2",
+        "latex": "10 \\times 10",
+        "description": "C(5,2)=10 for men; C(5,2)=10 for women"
+      },
+      {
+        "id": "p3",
+        "latex": "100",
+        "description": "10×10 = 100"
+      }
+    ],
+    "steps": [
+      {
+        "id": "s1",
+        "fromLatex": "\\text{2 men from 5 AND 2 women from 5}",
+        "toLatex": "C(5,2) \\times C(5,2)",
+        "paletteRef": "p1",
+        "dropTargets": [],
+        "description": "Independent choices: FCP applies — multiply"
+      },
+      {
+        "id": "s2",
+        "fromLatex": "C(5,2) \\times C(5,2)",
+        "toLatex": "10 \\times 10",
+        "paletteRef": "p2",
+        "dropTargets": [
+          "C(5,2) \\times C(5,2)"
+        ],
+        "description": "C(5,2)=10"
+      },
+      {
+        "id": "s3",
+        "fromLatex": "10 \\times 10",
+        "toLatex": "100",
+        "paletteRef": "p3",
+        "dropTargets": [
+          "10 \\times 10"
+        ],
+        "description": "100 such committees"
+      }
+    ]
+  },
+  {
+    "id": "comb-h-011",
+    "topic": "combinatorics",
+    "difficulty": "hard",
+    "question": {
+      "latex": "\\text{3-char strings from }\\{A,B,C,1,2,3\\}\\text{ with at least one digit}",
+      "plain": "3-character strings from {A,B,C,1,2,3} — how many contain at least one digit?"
+    },
+    "symbols": {},
+    "palette": [
+      {
+        "id": "p1",
+        "latex": "6^3",
+        "description": "Total: 6 choices per position, 3 positions = 6³=216"
+      },
+      {
+        "id": "p2",
+        "latex": "3^3",
+        "description": "No digits: 3 letter choices per position = 3³=27"
+      },
+      {
+        "id": "p3",
+        "latex": "216 - 27 = 189",
+        "description": "Complement: 216−27=189"
+      }
+    ],
+    "steps": [
+      {
+        "id": "s0a",
+        "fromLatex": "\\text{Complement: } \\text{at least 1 digit} = \\text{total} - \\text{no digits}",
+        "toLatex": "\\text{at least 1 digit} = 6^3 - 3^3",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "Complementary counting: total minus 'none'"
+      },
+      {
+        "id": "s1",
+        "fromLatex": "\\text{Total strings}",
+        "toLatex": "6^3",
+        "paletteRef": "p1",
+        "dropTargets": [],
+        "description": "6 choices per position, repetition allowed: 6³=216"
+      },
+      {
+        "id": "s2",
+        "fromLatex": "\\text{No digits (only A,B,C)}",
+        "toLatex": "3^3",
+        "paletteRef": "p2",
+        "dropTargets": [],
+        "description": "3 letter choices per position: 3³=27"
+      },
+      {
+        "id": "s3",
+        "fromLatex": "216 - 27",
+        "toLatex": "189",
+        "paletteRef": "p3",
+        "dropTargets": [
+          "216 - 27"
+        ],
+        "description": "189 strings with at least one digit"
+      }
+    ]
+  },
+  {
+    "id": "comb-h-012",
+    "topic": "combinatorics",
+    "difficulty": "hard",
+    "question": {
+      "latex": "P(n,3) = 6 \\cdot P(n,2). \\text{ Find }n.",
+      "plain": "If P(n,3) = 6·P(n,2), find n"
+    },
+    "symbols": {
+      "P": "Permutation"
+    },
+    "palette": [
+      {
+        "id": "p1",
+        "latex": "n(n-1)(n-2) = 6 \\cdot n(n-1)",
+        "description": "Expand both sides: P(n,3)=n(n-1)(n-2), P(n,2)=n(n-1)"
+      },
+      {
+        "id": "p2",
+        "latex": "n-2 = 6",
+        "description": "Cancel n(n−1) from both sides"
+      },
+      {
+        "id": "p3",
+        "latex": "n = 8",
+        "description": "n−2=6 → n=8"
+      }
+    ],
+    "steps": [
+      {
+        "id": "s1",
+        "fromLatex": "P(n,3)=6P(n,2)",
+        "toLatex": "n(n-1)(n-2) = 6 \\cdot n(n-1)",
+        "paletteRef": "p1",
+        "dropTargets": [
+          "P(n,3)=6P(n,2)"
+        ],
+        "description": "Expand P(n,3) and P(n,2) using formula"
+      },
+      {
+        "id": "s2",
+        "fromLatex": "n(n-1)(n-2) = 6 \\cdot n(n-1)",
+        "toLatex": "n-2 = 6",
+        "paletteRef": "p2",
+        "dropTargets": [
+          "n(n-1)(n-2) = 6 \\cdot n(n-1)"
+        ],
+        "description": "Both sides have n(n−1) ≠ 0 — divide both sides"
+      },
+      {
+        "id": "s3",
+        "fromLatex": "n - 2 = 6",
+        "toLatex": "n = 8",
+        "paletteRef": "p3",
+        "dropTargets": [
+          "n - 2 = 6"
+        ],
+        "description": "n = 8"
+      }
+    ]
+  },
+  {
+    "id": "comb-h-013",
+    "topic": "combinatorics",
+    "difficulty": "hard",
+    "question": {
+      "latex": "\\text{Choose 5 from 12, but A and B must NOT both be chosen}",
+      "plain": "How many ways to choose 5 from 12 people if two specific people (A and B) cannot both be selected?"
+    },
+    "symbols": {
+      "C": "Combination"
+    },
+    "palette": [
+      {
+        "id": "p1",
+        "latex": "C(12,5)",
+        "description": "Total ways to choose 5 from 12 = 792"
+      },
+      {
+        "id": "p2",
+        "latex": "C(10,3)",
+        "description": "Cases with both A and B: 2 spots taken, choose 3 from remaining 10"
+      },
+      {
+        "id": "p3",
+        "latex": "792 - 120 = 672",
+        "description": "C(12,5)=792; C(10,3)=120; 792−120=672"
+      }
+    ],
+    "steps": [
+      {
+        "id": "s1",
+        "fromLatex": "\\text{Total unrestricted}",
+        "toLatex": "C(12,5)",
+        "paletteRef": "p1",
+        "dropTargets": [],
+        "description": "Choose any 5 from 12 = C(12,5) = 792"
+      },
+      {
+        "id": "s2",
+        "fromLatex": "\\text{Bad cases (A and B both in): choose 3 more from remaining 10}",
+        "toLatex": "C(10,3)",
+        "paletteRef": "p2",
+        "dropTargets": [],
+        "description": "Fix A and B, choose 3 from 10 remaining = C(10,3) = 120"
+      },
+      {
+        "id": "s3",
+        "fromLatex": "792 - 120",
+        "toLatex": "672",
+        "paletteRef": "p3",
+        "dropTargets": [
+          "792 - 120"
+        ],
+        "description": "Valid committees: 792−120 = 672"
+      }
+    ]
+  },
+  {
+    "id": "comb-h-014",
+    "topic": "combinatorics",
+    "difficulty": "hard",
+    "question": {
+      "latex": "\\text{Divide 6 students into 2 unlabeled groups of 3}",
+      "plain": "In how many ways can 6 students be divided into 2 equal groups of 3 (the groups have no label/order)?"
+    },
+    "symbols": {
+      "C": "Combination"
+    },
+    "palette": [
+      {
+        "id": "p1",
+        "latex": "C(6,3)",
+        "description": "Choose 3 for first group; other 3 form second group automatically"
+      },
+      {
+        "id": "p2",
+        "latex": "\\frac{C(6,3)}{2}",
+        "description": "Divide by 2! since the groups are unlabeled — swapping gives the same partition"
+      },
+      {
+        "id": "p3",
+        "latex": "10",
+        "description": "C(6,3)/2 = 20/2 = 10"
+      }
+    ],
+    "steps": [
+      {
+        "id": "s1",
+        "fromLatex": "\\text{Label the groups A and B temporarily}",
+        "toLatex": "C(6,3)",
+        "paletteRef": "p1",
+        "dropTargets": [],
+        "description": "C(6,3)=20: ways to put 3 specific people into group A"
+      },
+      {
+        "id": "s2",
+        "fromLatex": "C(6,3) = 20",
+        "toLatex": "\\frac{C(6,3)}{2}",
+        "paletteRef": "p2",
+        "dropTargets": [
+          "C(6,3) = 20"
+        ],
+        "description": "Groups are unlabeled: every partition counted twice (A,B is same as B,A)"
+      },
+      {
+        "id": "s3",
+        "fromLatex": "\\frac{20}{2}",
+        "toLatex": "10",
+        "paletteRef": "p3",
+        "dropTargets": [
+          "\\frac{20}{2}"
+        ],
+        "description": "10 distinct ways to split into 2 groups of 3"
+      }
+    ]
+  },
+  {
+    "id": "comb-h-015",
+    "topic": "combinatorics",
+    "difficulty": "hard",
+    "question": {
+      "latex": "C(2,2)+C(3,2)+C(4,2)+C(5,2)+C(6,2) = ?",
+      "plain": "Evaluate C(2,2)+C(3,2)+C(4,2)+C(5,2)+C(6,2) using the hockey stick identity"
+    },
+    "symbols": {
+      "C": "Combination"
+    },
+    "palette": [
+      {
+        "id": "p1",
+        "latex": "C(7,3)",
+        "description": "Hockey stick: Σ C(r,k) for r=k..n equals C(n+1,k+1). Here k=2, n=6 → C(7,3)"
+      },
+      {
+        "id": "p2",
+        "latex": "35",
+        "description": "C(7,3) = 35"
+      }
+    ],
+    "steps": [
+      {
+        "id": "s0a",
+        "fromLatex": "\\text{Hockey stick: }\\sum_{r=k}^{n}C(r,k)=C(n+1,k+1)",
+        "toLatex": "\\text{k=2, terms from r=2 to r=6: }C(7,3)",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "Pattern: each C(r,2) on the diagonal; sum = C(7,3)"
+      },
+      {
+        "id": "s1",
+        "fromLatex": "C(2,2)+C(3,2)+C(4,2)+C(5,2)+C(6,2)",
+        "toLatex": "C(7,3)",
+        "paletteRef": "p1",
+        "dropTargets": [
+          "C(2,2)+C(3,2)+C(4,2)+C(5,2)+C(6,2)"
+        ],
+        "description": "Hockey stick identity: sum of diagonal = one cell lower-right"
+      },
+      {
+        "id": "s2",
+        "fromLatex": "C(7,3)",
+        "toLatex": "35",
+        "paletteRef": "p2",
+        "dropTargets": [
+          "C(7,3)"
+        ],
+        "description": "C(7,3) = 35"
+      }
+    ]
+  },
+  {
+    "id": "comb-h-016",
+    "topic": "combinatorics",
+    "difficulty": "hard",
+    "question": {
+      "latex": "\\text{4 distinct balls into 3 distinct boxes — how many ways?}",
+      "plain": "How many ways can 4 distinct balls be placed into 3 distinct boxes?"
+    },
+    "symbols": {},
+    "palette": [
+      {
+        "id": "p1",
+        "latex": "3^4",
+        "description": "Each of 4 balls independently goes into any of 3 boxes: 3 choices per ball"
+      },
+      {
+        "id": "p2",
+        "latex": "81",
+        "description": "3⁴ = 81"
+      }
+    ],
+    "steps": [
+      {
+        "id": "s0a",
+        "fromLatex": "\\text{Each ball: 3 independent choices of box}",
+        "toLatex": "3 \\times 3 \\times 3 \\times 3",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "FCP: 3 choices for ball 1, 3 for ball 2, etc."
+      },
+      {
+        "id": "s1",
+        "fromLatex": "\\text{Ways}",
+        "toLatex": "3^4",
+        "paletteRef": "p1",
+        "dropTargets": [],
+        "description": "3 choices per ball, 4 balls: 3⁴"
+      },
+      {
+        "id": "s2",
+        "fromLatex": "3^4",
+        "toLatex": "81",
+        "paletteRef": "p2",
+        "dropTargets": [
+          "3^4"
+        ],
+        "description": "81 ways"
+      }
+    ]
+  },
+  {
+    "id": "comb-h-017",
+    "topic": "combinatorics",
+    "difficulty": "hard",
+    "question": {
+      "latex": "\\text{4 items into 2 boxes, both boxes non-empty — how many ways?}",
+      "plain": "How many ways can 4 distinct items be placed into 2 distinct boxes so that neither box is empty?"
+    },
+    "symbols": {},
+    "palette": [
+      {
+        "id": "p1",
+        "latex": "2^4",
+        "description": "Total unrestricted: 2 choices per item = 2⁴=16"
+      },
+      {
+        "id": "p2",
+        "latex": "2",
+        "description": "Bad cases: all 4 in box 1 or all 4 in box 2 — 2 ways"
+      },
+      {
+        "id": "p3",
+        "latex": "14",
+        "description": "16−2 = 14"
+      }
+    ],
+    "steps": [
+      {
+        "id": "s1",
+        "fromLatex": "\\text{Total unrestricted}",
+        "toLatex": "2^4",
+        "paletteRef": "p1",
+        "dropTargets": [],
+        "description": "Each item: 2 choices → 2⁴=16 total"
+      },
+      {
+        "id": "s2",
+        "fromLatex": "\\text{Bad cases (one box empty)}",
+        "toLatex": "2",
+        "paletteRef": "p2",
+        "dropTargets": [],
+        "description": "All in box 1 or all in box 2 — exactly 2 bad cases"
+      },
+      {
+        "id": "s3",
+        "fromLatex": "16 - 2",
+        "toLatex": "14",
+        "paletteRef": "p3",
+        "dropTargets": [
+          "16 - 2"
+        ],
+        "description": "14 surjective distributions"
+      }
+    ]
+  },
+  {
+    "id": "comb-h-018",
+    "topic": "combinatorics",
+    "difficulty": "hard",
+    "question": {
+      "latex": "\\text{Min. people to guarantee 3 share a birth month?}",
+      "plain": "How many people must be in a room to guarantee that at least 3 share the same birth month?"
+    },
+    "symbols": {},
+    "palette": [
+      {
+        "id": "p1",
+        "latex": "2 \\times 12 + 1 = 25",
+        "description": "Generalized pigeonhole: ⌈n/k⌉ ≥ 3 requires n ≥ 2×12+1"
+      },
+      {
+        "id": "p2",
+        "latex": "25",
+        "description": "25 people guarantee at least one month with ≥ 3 people"
+      }
+    ],
+    "steps": [
+      {
+        "id": "s0a",
+        "fromLatex": "\\text{Worst case: spread people as evenly as possible}",
+        "toLatex": "\\text{12 months: at most 2 per month with 24 people}",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "With 24 people, you could have exactly 2 per month — no guarantee of 3"
+      },
+      {
+        "id": "s0b",
+        "fromLatex": "\\text{25th person must go into a month that already has 2}",
+        "toLatex": "\\text{Person 25 → some month gets its 3rd}",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "Generalized pigeonhole: with 2×12+1=25 people, some hole has ≥3"
+      },
+      {
+        "id": "s1",
+        "fromLatex": "\\text{Minimum}",
+        "toLatex": "25",
+        "paletteRef": "p2",
+        "dropTargets": [],
+        "description": "2×12+1 = 25 people"
+      }
+    ]
+  },
+  {
+    "id": "comb-h-019",
+    "topic": "combinatorics",
+    "difficulty": "hard",
+    "question": {
+      "latex": "\\text{Arrange A,B,C,D,E: A not first, E not last — how many?}",
+      "plain": "Arrangements of A,B,C,D,E where A is NOT in position 1 AND E is NOT in position 5"
+    },
+    "symbols": {
+      "!": "Factorial"
+    },
+    "palette": [
+      {
+        "id": "p1",
+        "latex": "5! = 120",
+        "description": "Total arrangements"
+      },
+      {
+        "id": "p2",
+        "latex": "|A_1|=4!,\\;|E_5|=4!,\\;|A_1\\cap E_5|=3!",
+        "description": "A first=4!=24; E last=4!=24; both=3!=6"
+      },
+      {
+        "id": "p3",
+        "latex": "120 - 42 = 78",
+        "description": "By inclusion-exclusion: 24+24−6=42 bad; 120−42=78"
+      }
+    ],
+    "steps": [
+      {
+        "id": "s1",
+        "fromLatex": "\\text{Total}",
+        "toLatex": "5!",
+        "paletteRef": "p1",
+        "dropTargets": [],
+        "description": "5!=120 total arrangements of 5 distinct letters"
+      },
+      {
+        "id": "s2",
+        "fromLatex": "\\text{Bad: A first or E last}",
+        "toLatex": "|A_1|=4!,\\;|E_5|=4!,\\;|A_1\\cap E_5|=3!",
+        "paletteRef": "p2",
+        "dropTargets": [],
+        "description": "A in pos 1: fix A, arrange rest=4!=24. E in pos 5: 4!=24. Both: fix A+E, arrange 3=3!=6"
+      },
+      {
+        "id": "s0a",
+        "fromLatex": "|A_1 \\cup E_5|=24+24-6=42",
+        "toLatex": "42 \\text{ bad arrangements}",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "Inclusion-exclusion: 24+24−6=42"
+      },
+      {
+        "id": "s3",
+        "fromLatex": "120 - 42",
+        "toLatex": "78",
+        "paletteRef": "p3",
+        "dropTargets": [
+          "120 - 42"
+        ],
+        "description": "120−42 = 78 valid arrangements"
+      }
+    ]
+  },
+  {
+    "id": "comb-h-020",
+    "topic": "combinatorics",
+    "difficulty": "hard",
+    "question": {
+      "latex": "\\text{Coefficient of }x^2 y^3\\text{ in }(x+2y)^5",
+      "plain": "Find the coefficient of x²y³ in the expansion of (x+2y)⁵"
+    },
+    "symbols": {
+      "C": "Combination"
+    },
+    "palette": [
+      {
+        "id": "p1",
+        "latex": "C(5,2)\\cdot(2)^3",
+        "description": "Binomial theorem: C(5,2)·x²·(2y)³ = C(5,2)·2³·x²y³"
+      },
+      {
+        "id": "p2",
+        "latex": "10 \\times 8",
+        "description": "C(5,2)=10; 2³=8"
+      },
+      {
+        "id": "p3",
+        "latex": "80",
+        "description": "10×8 = 80"
+      }
+    ],
+    "steps": [
+      {
+        "id": "s0a",
+        "fromLatex": "(x+2y)^5=\\sum_{k=0}^5 C(5,k)\\,x^k\\,(2y)^{5-k}",
+        "toLatex": "\\text{Term with }x^2y^3: k=2",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "Binomial theorem with a=x, b=2y. Set k=2 for x²"
+      },
+      {
+        "id": "s0b",
+        "fromLatex": "C(5,2)\\cdot x^2 \\cdot (2y)^3 = C(5,2)\\cdot2^3\\cdot x^2y^3",
+        "toLatex": "C(5,2)\\cdot(2)^3 \\cdot x^2y^3",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "The (2y)³ contributes a factor of 2³=8"
+      },
+      {
+        "id": "s1",
+        "fromLatex": "\\text{Coefficient}",
+        "toLatex": "C(5,2)\\cdot(2)^3",
+        "paletteRef": "p1",
+        "dropTargets": [],
+        "description": "Coefficient = C(5,2) × 2³"
+      },
+      {
+        "id": "s2",
+        "fromLatex": "C(5,2) \\times 8",
+        "toLatex": "10 \\times 8",
+        "paletteRef": "p2",
+        "dropTargets": [
+          "C(5,2) \\times 8"
+        ],
+        "description": "C(5,2)=10"
+      },
+      {
+        "id": "s3",
+        "fromLatex": "10 \\times 8",
+        "toLatex": "80",
+        "paletteRef": "p3",
+        "dropTargets": [
+          "10 \\times 8"
+        ],
+        "description": "Coefficient = 80"
+      }
+    ]
+  }
+]

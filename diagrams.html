@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Diagrams — Math Game</title>
+  <script>(function(){var t=localStorage.getItem('math-theme')||((window.matchMedia&&window.matchMedia('(prefers-color-scheme:light)').matches)?'light':'dark');document.documentElement.setAttribute('data-theme',t);}());</script>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root { --bg:#0d0d1a; --surface:#151528; --panel:#1c1c35; --border:#2e2e55; --accent:#5c8aff; --correct:#3ecf8e; --hint:#ffb830; --text:#e0e0f0; --muted:#7070a0; }
+    [data-theme="light"] {
+      --bg:#f5f0e4; --surface:#faf7ee; --panel:#ede8d8; --border:#ccc6b4;
+      --text:#18140c; --muted:#3e3c60; --accent:#2858c8; --correct:#115238;
+      --hint:#6e4a00;
+    }
+    body { background:var(--bg); color:var(--text); font-family:system-ui,sans-serif; min-height:100vh; padding:48px 24px 80px; display:flex; flex-direction:column; align-items:center; }
+    .page { width:100%; max-width:820px; }
+
+    header { display:flex; align-items:baseline; gap:16px; margin-bottom:6px; }
+    header h1 { font-size:1.5rem; font-weight:700; letter-spacing:.12em; text-transform:uppercase; color:var(--accent); }
+    header a { font-size:0.85rem; color:var(--muted); text-decoration:none; }
+    header a:hover { color:var(--accent); }
+    .page-subtitle { font-size:0.88rem; color:var(--muted); margin-bottom:36px; line-height:1.6; }
+
+    .subject-section { margin-bottom:32px; }
+    .subject-label {
+      font-size:0.72rem; font-weight:700; letter-spacing:.1em; text-transform:uppercase;
+      color:var(--muted); margin-bottom:10px;
+    }
+
+    .diagram-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 18px 22px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      text-decoration: none;
+      color: inherit;
+      transition: border-color .15s;
+      margin-bottom: 10px;
+    }
+    .diagram-card:hover { border-color: var(--accent); }
+    .diagram-card-info h3 { font-size:0.95rem; font-weight:700; color:var(--text); margin-bottom:5px; }
+    .diagram-card-info ul {
+      list-style: none;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+    }
+    .diagram-card-info ul li {
+      font-size:0.8rem; color:var(--muted); padding-left: 10px; position: relative;
+    }
+    .diagram-card-info ul li::before { content:'·'; position:absolute; left:0; }
+    .diagram-card-arrow { font-size:1.2rem; color:var(--accent); flex-shrink:0; }
+
+    .diagram-card.soon { opacity: 0.45; pointer-events: none; cursor: default; }
+    .soon-badge {
+      font-size: 0.7rem; background: var(--panel); border: 1px solid var(--border);
+      color: var(--muted); padding: 3px 9px; border-radius: 12px; flex-shrink:0;
+    }
+
+    @media (max-width:500px) {
+      .diagram-card { flex-wrap:wrap; }
+    }
+  </style>
+</head>
+<body>
+<div class="page">
+
+  <header>
+    <h1>Diagrams</h1>
+    <a href="index.html">← Back to game</a>
+  </header>
+  <p class="page-subtitle">Step-by-step and interactive SVG diagrams, one page per subject. Each page builds visual intuition alongside the matching textbook chapter.</p>
+
+  <div class="subject-section">
+    <div class="subject-label">Calculus</div>
+    <a class="diagram-card" href="math_calculus_diagrams.html">
+      <div class="diagram-card-info">
+        <h3>Calculus Diagrams</h3>
+        <ul>
+          <li>Derivative as a Limit — 5-step click-through for f(x) = x² at x = 2</li>
+          <li>Riemann Sum → Definite Integral — interactive slider, n = 1–200 rectangles</li>
+        </ul>
+      </div>
+      <span class="diagram-card-arrow">→</span>
+    </a>
+  </div>
+
+  <div class="subject-section">
+    <div class="subject-label">Linear Algebra</div>
+    <a class="diagram-card" href="math_linearalgebra_diagrams.html">
+      <div class="diagram-card-info">
+        <h3>Linear Algebra Diagrams</h3>
+        <ul>
+          <li>Dot Product — Component Method — 5-step click-through</li>
+          <li>Dot Product — Projection &amp; Angle — interactive angle slider</li>
+        </ul>
+      </div>
+      <span class="diagram-card-arrow">→</span>
+    </a>
+  </div>
+
+  <div class="subject-section">
+    <div class="subject-label">Arithmetic</div>
+    <a class="diagram-card" href="math_arithmetic_diagrams.html">
+      <div class="diagram-card-info">
+        <h3>Arithmetic Diagrams</h3>
+        <ul>
+          <li>Multiplication Array — interactive dot grid, rows × columns, up to 12 × 12</li>
+          <li>Fraction Bar — shaded bar + number line, numerator and denominator sliders</li>
+          <li>Place Value Blocks — base-ten blocks for any number 0–999</li>
+        </ul>
+      </div>
+      <span class="diagram-card-arrow">→</span>
+    </a>
+  </div>
+
+  <div class="subject-section">
+    <div class="subject-label">Combinatorics</div>
+    <a class="diagram-card" href="math_combinatorics_diagrams.html">
+      <div class="diagram-card-info">
+        <h3>Combinatorics Diagrams</h3>
+        <ul>
+          <li>Counting Tree — interactive FCP tree, up to 3 steps</li>
+          <li>P vs C Visualiser — toggle ordered/unordered, see all arrangements</li>
+          <li>Pascal's Triangle — clickable cells, hockey stick, row sums</li>
+          <li>Inclusion-Exclusion — live Venn diagram, 2-set and 3-set modes</li>
+          <li>Stars and Bars — n identical items into k bins, visualised as a star/bar row</li>
+        </ul>
+      </div>
+      <span class="diagram-card-arrow">→</span>
+    </a>
+  </div>
+
+  <div class="subject-section">
+    <div class="subject-label">Graph Theory</div>
+    <a class="diagram-card" href="math_graphtheory_diagrams.html">
+      <div class="diagram-card-info">
+        <h3>Graph Theory Diagrams</h3>
+        <ul>
+          <li>Graph Traversal — toggle BFS vs DFS, pick any start vertex</li>
+          <li>Kruskal's Algorithm — step through building a minimum spanning tree</li>
+        </ul>
+      </div>
+      <span class="diagram-card-arrow">→</span>
+    </a>
+  </div>
+
+  <div class="subject-section">
+    <div class="subject-label">Intermediate Arithmetic</div>
+    <a class="diagram-card" href="math_arithmetic2_diagrams.html">
+      <div class="diagram-card-info">
+        <h3>Intermediate Arithmetic Diagrams</h3>
+        <ul>
+          <li>Order of Operations — step-by-step PEMDAS click-through</li>
+          <li>Fraction Addition — area model showing common denominator</li>
+          <li>Percent Change — before/after bar diagram</li>
+        </ul>
+      </div>
+      <span class="diagram-card-arrow">→</span>
+    </a>
+  </div>
+
+  <div class="subject-section">
+    <div class="subject-label">Coming Soon</div>
+    <div class="diagram-card soon">
+      <div class="diagram-card-info">
+        <h3>Algebra</h3>
+        <ul><li>Planned</li></ul>
+      </div>
+      <span class="soon-badge">soon</span>
+    </div>
+    <div class="diagram-card soon">
+      <div class="diagram-card-info">
+        <h3>Trigonometry</h3>
+        <ul><li>Planned</li></ul>
+      </div>
+      <span class="soon-badge">soon</span>
+    </div>
+  </div>
+
+  <div class="subject-section">
+    <div class="subject-label">Statistics</div>
+    <a class="diagram-card" href="math_statistics_diagrams.html">
+      <div class="diagram-card-info">
+        <h3>Statistics Diagrams</h3>
+        <ul>
+          <li>Binomial PMF — adjust n, p, k; watch bars accumulate into P(X ≤ k)</li>
+        </ul>
+      </div>
+      <span class="diagram-card-arrow">→</span>
+    </a>
+  </div>
+
+</div>
+
+<script src="textbook-switcher.js"></script>
+<script src="theme-toggle.js"></script>
+</body>
+</html>

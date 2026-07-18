@@ -3,6 +3,7 @@
 
   var BOOKS = [
     { file: 'textbook_arithmetic.html',    label: 'Arithmetic' },
+    { file: 'textbook_arithmetic2.html',   label: 'Intermediate Arithmetic' },
     { file: 'textbook_algebra.html',       label: 'Algebra' },
     { file: 'textbook_algebra2.html',      label: 'Algebra 2' },
     { file: 'textbook_geometry.html',      label: 'Geometry' },
@@ -10,6 +11,8 @@
     { file: 'textbook_calculus.html',      label: 'Calculus' },
     { file: 'textbook_statistics.html',    label: 'Statistics' },
     { file: 'textbook_linearalgebra.html', label: 'Linear Algebra' },
+    { file: 'textbook_combinatorics.html', label: 'Combinatorics' },
+    { file: 'textbook_graphtheory.html',   label: 'Graph Theory' },
   ];
 
   var style = document.createElement('style');

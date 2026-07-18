@@ -613,7 +613,7 @@
     /* Symbol tooltip (floating) */
     #sym-tip {
       position: fixed;
-      background: #22223f;
+      background: var(--panel);
       border: 1px solid var(--border);
       border-radius: 6px;
       padding: 6px 10px;
@@ -625,6 +625,12 @@
       max-width: 300px;
       line-height: 1.45;
       box-shadow: 0 4px 16px rgba(0,0,0,0.5);
+    }
+
+    /* Suppress the "help" cursor on hoverable terms when hints are off */
+    body.hints-off [data-tip-bound="1"],
+    body.hints-off .int-sym[data-int-bound="1"] {
+      cursor: auto !important;
     }
 
     /* ── Touch / Mobile ────────────────────────────────────────── */
@@ -859,14 +865,18 @@
 <h1>Math Game</h1>
 <div class="header-links">
   <a id="manual-link" href="manual.html">Player Manual</a>
+  <a class="textbook-link" href="diagrams.html">Diagrams</a>
   <a class="textbook-link" href="textbook_algebra.html">Algebra Textbook</a>
   <a class="textbook-link" href="textbook_geometry.html">Geometry Textbook</a>
   <a class="textbook-link" href="textbook_arithmetic.html">Arithmetic Textbook</a>
+  <a class="textbook-link" href="textbook_arithmetic2.html">Intermediate Arithmetic Textbook</a>
   <a class="textbook-link" href="textbook_trigonometry.html">Trigonometry Textbook</a>
   <a class="textbook-link" href="textbook_calculus.html">Calculus Textbook</a>
   <a class="textbook-link" href="textbook_algebra2.html">Algebra 2 Textbook</a>
   <a class="textbook-link" href="textbook_statistics.html">Statistics Textbook</a>
   <a class="textbook-link" href="textbook_linearalgebra.html">Linear Algebra Textbook</a>
+  <a class="textbook-link" href="textbook_combinatorics.html">Combinatorics Textbook</a>
+  <a class="textbook-link" href="textbook_graphtheory.html">Graph Theory Textbook</a>
 </div>
 
 <div id="score-bar">
@@ -886,11 +896,14 @@
     <option value="algebra.json">Algebra</option>
     <option value="algebra2.json">Algebra 2</option>
     <option value="arithmetic.json">Arithmetic</option>
+    <option value="arithmetic2.json">Intermediate Arithmetic</option>
+    <option value="combinatorics.json">Combinatorics</option>
     <option value="geometry.json">Geometry</option>
     <option value="trigonometry.json">Trigonometry</option>
     <option value="calculus.json">Calculus</option>
     <option value="statistics.json">Statistics</option>
     <option value="linearalgebra.json">Linear Algebra</option>
+    <option value="graphtheory.json">Graph Theory</option>
   </select>
   <select id="concept-select" style="display:none"><option value="">— Select a concept —</option></select>
   <span id="concept-count" style="display:none"></span>
@@ -941,6 +954,7 @@
       <button class="ctrl-btn primary" id="final-btn">Final Answer</button>
       <button class="ctrl-btn" id="notes-btn">📝 Notes<span class="badge"></span></button>
       <button class="ctrl-btn" id="sigma-btn" style="display:none">∑ Expand</button>
+      <button class="ctrl-btn" id="hover-toggle-btn">💡 Hints: On</button>
     </div>
 
   </div>
@@ -1029,11 +1043,14 @@ const TEXTBOOK_MAP = {
   'alg':    'textbook_algebra.html',
   'alg2':   'textbook_algebra2.html',
   'arith':  'textbook_arithmetic.html',
+  'arith2': 'textbook_arithmetic2.html',
+  'comb':   'textbook_combinatorics.html',
   'geo':    'textbook_geometry.html',
   'trig':   'textbook_trigonometry.html',
   'calc':   'textbook_calculus.html',
   'stat':   'textbook_statistics.html',
   'linalg': 'textbook_linearalgebra.html',
+  'graph':  'textbook_graphtheory.html',
 };
 
 function visibleSteps() {
@@ -1058,6 +1075,7 @@ const prevBtn    = $('prev-btn');
 const nextBtn    = $('next-btn');
 const hintBtn    = $('hint-btn');
 const sigmaBtn   = $('sigma-btn');
+const hoverToggleBtn = $('hover-toggle-btn');
 
 // ── KaTeX ──────────────────────────────────────────────────────
 function annotateIntegrals(latex) {
@@ -1162,6 +1180,7 @@ const TOPIC_META = {
   'alg2':   { file: 'algebra2.json',       topicIndex: 1 },
   'stat':   { file: 'statistics.json',     topicIndex: 6 },
   'linalg': { file: 'linearalgebra.json',  topicIndex: 7 },
+  'graph':  { file: 'graphtheory.json',    topicIndex: 10 },
 };
 
 
@@ -1738,18 +1757,36 @@ document.addEventListener('keydown', e => {
 });
 
 // ── Symbol hover tooltips ──────────────────────────────────────
+let hoverTipsOn = localStorage.getItem('math-hovertips') !== 'off';
+
+function applyHoverTipsUI() {
+  hoverToggleBtn.textContent = hoverTipsOn ? '💡 Hints: On' : '💡 Hints: Off';
+  hoverToggleBtn.classList.toggle('primary', hoverTipsOn);
+  document.body.classList.toggle('hints-off', !hoverTipsOn);
+  if (!hoverTipsOn) symTip.style.display = 'none';
+}
+
+hoverToggleBtn.addEventListener('click', () => {
+  hoverTipsOn = !hoverTipsOn;
+  localStorage.setItem('math-hovertips', hoverTipsOn ? 'on' : 'off');
+  applyHoverTipsUI();
+});
+
+applyHoverTipsUI();
+
 function attachSymbolHovers() {
   const syms = G.mergedSyms;
   if (!Object.keys(syms).length) return;
 
   const areas = [stepEq, qRender];
   for (const area of areas) {
-    area.querySelectorAll('.katex-html .mord, .katex-html .mbin, .katex-html .mrel').forEach(el => {
+    area.querySelectorAll('.katex-html .mord, .katex-html .mbin, .katex-html .mrel, .katex-html .mop').forEach(el => {
       const t = el.textContent.trim();
       if (syms[t] && !el.dataset.tipBound) {
         el.dataset.tipBound = '1';
         el.style.cursor = 'help';
         el.addEventListener('mouseenter', ev => {
+          if (!hoverTipsOn) return;
           symTip.textContent = syms[t];
           symTip.style.display = 'block';
           moveTip(ev);
@@ -1780,6 +1817,7 @@ function attachIntegralTooltip(container) {
     el.dataset.intBound = '1';
     el.style.cursor = 'help';
     el.addEventListener('mouseenter', ev => {
+      if (!hoverTipsOn) return;
       symTip.textContent = INTEGRAL_TIP;
       symTip.style.display = 'block';
       moveTip(ev);

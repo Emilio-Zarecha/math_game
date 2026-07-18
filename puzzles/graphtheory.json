@@ -1,0 +1,2282 @@
+[
+  {
+    "id": "graph-e-001",
+    "topic": "graphtheory",
+    "difficulty": "easy",
+    "chapter": 1,
+    "question": {
+      "latex": "\\deg(v_1)=2,\\ \\deg(v_2)=3,\\ \\deg(v_3)=1",
+      "plain": "A graph has three vertices with degrees 2, 3, and 1. Find the number of edges."
+    },
+    "symbols": {},
+    "palette": [
+      {
+        "id": "p1",
+        "latex": "3",
+        "description": "3 edges"
+      }
+    ],
+    "steps": [
+      {
+        "id": "s1",
+        "fromLatex": "|E| = (2+3+1)/2",
+        "toLatex": "3",
+        "paletteRef": "p1",
+        "dropTargets": [
+          "(2+3+1)/2"
+        ],
+        "description": "Handshake theorem: sum of degrees = 2|E|, so 2+3+1=6, and |E|=6/2=3."
+      }
+    ]
+  },
+  {
+    "id": "graph-e-002",
+    "topic": "graphtheory",
+    "difficulty": "easy",
+    "chapter": 1,
+    "question": {
+      "latex": "\\deg(v_1)=4,\\ \\deg(v_2)=2,\\ \\deg(v_3)=2,\\ \\deg(v_4)=4",
+      "plain": "A graph has four vertices with degrees 4, 2, 2, and 4. Find the number of edges."
+    },
+    "symbols": {},
+    "palette": [
+      {
+        "id": "p1",
+        "latex": "6",
+        "description": "6 edges"
+      }
+    ],
+    "steps": [
+      {
+        "id": "s1",
+        "fromLatex": "|E| = (4+2+2+4)/2",
+        "toLatex": "6",
+        "paletteRef": "p1",
+        "dropTargets": [
+          "(4+2+2+4)/2"
+        ],
+        "description": "Sum of degrees = 4+2+2+4=12, so |E|=12/2=6."
+      }
+    ]
+  },
+  {
+    "id": "graph-m-001",
+    "topic": "graphtheory",
+    "difficulty": "medium",
+    "chapter": 1,
+    "question": {
+      "latex": "|E| = 5",
+      "plain": "A connected graph has 5 edges. What is the sum of all vertex degrees?"
+    },
+    "symbols": {},
+    "palette": [
+      {
+        "id": "p1",
+        "latex": "10",
+        "description": "10"
+      }
+    ],
+    "steps": [
+      {
+        "id": "s1",
+        "fromLatex": "\\sum \\deg(v) = 2 \\times 5",
+        "toLatex": "10",
+        "paletteRef": "p1",
+        "dropTargets": [
+          "2 \\times 5"
+        ],
+        "description": "Handshake theorem: the sum of degrees is always twice the edge count, 2×5=10."
+      }
+    ]
+  },
+  {
+    "id": "graph-m-002",
+    "topic": "graphtheory",
+    "difficulty": "medium",
+    "chapter": 1,
+    "question": {
+      "latex": "\\deg(A)=3,\\ \\deg(B)=2,\\ \\deg(C)=3,\\ \\text{and}\\ |E|=6",
+      "plain": "A graph has vertices A (degree 3), B (degree 2), C (degree 3), and one more vertex D. It has 6 edges total. Find deg(D)."
+    },
+    "symbols": {},
+    "palette": [
+      {
+        "id": "p1",
+        "latex": "4",
+        "description": "4"
+      }
+    ],
+    "steps": [
+      {
+        "id": "s1",
+        "fromLatex": "\\deg(D) = 2 \\times 6 - (3+2+3)",
+        "toLatex": "4",
+        "paletteRef": "p1",
+        "dropTargets": [
+          "2 \\times 6 - (3+2+3)"
+        ],
+        "description": "Total degree sum is 2|E|=12. Subtracting the known degrees 3+2+3=8 leaves deg(D)=12-8=4."
+      }
+    ]
+  },
+  {
+    "id": "graph-h-001",
+    "topic": "graphtheory",
+    "difficulty": "hard",
+    "chapter": 1,
+    "question": {
+      "latex": "\\deg(v_1)=3,\\ \\deg(v_2)=3,\\ \\deg(v_3)=2,\\ \\deg(v_4)=2,\\ \\deg(v_5)=2",
+      "plain": "A graph has five vertices with degrees 3, 3, 2, 2, 2. Find the number of edges."
+    },
+    "symbols": {},
+    "palette": [
+      {
+        "id": "p1",
+        "latex": "12",
+        "description": "sum of degrees is 12"
+      },
+      {
+        "id": "p2",
+        "latex": "6",
+        "description": "6 edges"
+      }
+    ],
+    "steps": [
+      {
+        "id": "s1",
+        "fromLatex": "\\text{sum} = 3+3+2+2+2",
+        "toLatex": "12",
+        "paletteRef": "p1",
+        "dropTargets": [
+          "3+3+2+2+2"
+        ],
+        "description": "First add all degrees: 3+3+2+2+2=12."
+      },
+      {
+        "id": "s2",
+        "fromLatex": "|E| = 12/2",
+        "toLatex": "6",
+        "paletteRef": "p2",
+        "dropTargets": [
+          "12/2"
+        ],
+        "description": "Then divide by 2 (handshake theorem): |E|=12/2=6."
+      }
+    ]
+  },
+  {
+    "id": "graph-h-002",
+    "topic": "graphtheory",
+    "difficulty": "hard",
+    "chapter": 1,
+    "question": {
+      "latex": "\\text{Graph } K_5 \\text{: every pair of 5 vertices is connected}",
+      "plain": "In the complete graph K5, every one of the 5 vertices connects to every other vertex. Find the total number of edges."
+    },
+    "symbols": {},
+    "palette": [
+      {
+        "id": "p1",
+        "latex": "4",
+        "description": "each vertex has degree 4"
+      },
+      {
+        "id": "p2",
+        "latex": "10",
+        "description": "10 edges"
+      }
+    ],
+    "steps": [
+      {
+        "id": "s1",
+        "fromLatex": "\\deg(v) = 5-1 \\text{ for each of 5 vertices}",
+        "toLatex": "4",
+        "paletteRef": "p1",
+        "dropTargets": [
+          "5-1"
+        ],
+        "description": "In K5 every vertex connects to all 4 others, so each has degree 4."
+      },
+      {
+        "id": "s2",
+        "fromLatex": "|E| = (5 \\times 4)/2",
+        "toLatex": "10",
+        "paletteRef": "p2",
+        "dropTargets": [
+          "(5 \\times 4)/2"
+        ],
+        "description": "Sum of degrees = 5×4=20, so |E|=20/2=10."
+      }
+    ]
+  },
+  {
+    "id": "graph-e-003",
+    "topic": "graphtheory",
+    "difficulty": "easy",
+    "chapter": 2,
+    "question": {
+      "latex": "\\text{Row } A \\text{ of the adjacency matrix: } [0,1,0,1,1]",
+      "plain": "In an adjacency matrix, vertex A's row is [0,1,0,1,1]. How many neighbors does A have?"
+    },
+    "symbols": {},
+    "palette": [
+      {
+        "id": "p1",
+        "latex": "3",
+        "description": "3 neighbors"
+      }
+    ],
+    "steps": [
+      {
+        "id": "s1",
+        "fromLatex": "\\deg(A) = 0+1+0+1+1",
+        "toLatex": "3",
+        "paletteRef": "p1",
+        "dropTargets": [
+          "0+1+0+1+1"
+        ],
+        "description": "The degree of a vertex equals the number of 1's in its adjacency matrix row."
+      }
+    ]
+  },
+  {
+    "id": "graph-e-004",
+    "topic": "graphtheory",
+    "difficulty": "easy",
+    "chapter": 2,
+    "question": {
+      "latex": "\\text{Adjacency list: } A\\!:\\![B,C,D]",
+      "plain": "Vertex A's adjacency list is [B, C, D]. What is deg(A)?"
+    },
+    "symbols": {},
+    "palette": [
+      {
+        "id": "p1",
+        "latex": "3",
+        "description": "3"
+      }
+    ],
+    "steps": [
+      {
+        "id": "s1",
+        "fromLatex": "\\deg(A) = |[B,C,D]|",
+        "toLatex": "3",
+        "paletteRef": "p1",
+        "dropTargets": [
+          "|[B,C,D]|"
+        ],
+        "description": "The length of a vertex's adjacency list is exactly its degree."
+      }
+    ]
+  },
+  {
+    "id": "graph-m-003",
+    "topic": "graphtheory",
+    "difficulty": "medium",
+    "chapter": 2,
+    "question": {
+      "latex": "6\\times 6 \\text{ adjacency matrix, } 14 \\text{ ones total}",
+      "plain": "A graph's 6×6 adjacency matrix has 14 total entries equal to 1. Find the number of edges."
+    },
+    "symbols": {},
+    "palette": [
+      {
+        "id": "p1",
+        "latex": "7",
+        "description": "7 edges"
+      }
+    ],
+    "steps": [
+      {
+        "id": "s1",
+        "fromLatex": "|E| = 14/2",
+        "toLatex": "7",
+        "paletteRef": "p1",
+        "dropTargets": [
+          "14/2"
+        ],
+        "description": "Each undirected edge contributes two 1's to the matrix (one for each direction), so |E| = 14/2 = 7."
+      }
+    ]
+  },
+  {
+    "id": "graph-m-004",
+    "topic": "graphtheory",
+    "difficulty": "medium",
+    "chapter": 2,
+    "question": {
+      "latex": "n = 8 \\text{ vertices, adjacency matrix}",
+      "plain": "How many cells does the adjacency matrix of an 8-vertex graph have?"
+    },
+    "symbols": {},
+    "palette": [
+      {
+        "id": "p1",
+        "latex": "64",
+        "description": "64 cells"
+      }
+    ],
+    "steps": [
+      {
+        "id": "s1",
+        "fromLatex": "n^2 = 8 \\times 8",
+        "toLatex": "64",
+        "paletteRef": "p1",
+        "dropTargets": [
+          "8 \\times 8"
+        ],
+        "description": "An adjacency matrix for n vertices always has n² cells, regardless of how many edges exist."
+      }
+    ]
+  },
+  {
+    "id": "graph-h-003",
+    "topic": "graphtheory",
+    "difficulty": "hard",
+    "chapter": 2,
+    "question": {
+      "latex": "\\text{Adjacency lists: } A\\!:\\![B,C],\\ B\\!:\\![A,C,D],\\ C\\!:\\![A,B],\\ D\\!:\\![B]",
+      "plain": "Four vertices have adjacency lists A:[B,C], B:[A,C,D], C:[A,B], D:[B]. Find the sum of all list lengths, then the number of edges."
+    },
+    "symbols": {},
+    "palette": [
+      {
+        "id": "p1",
+        "latex": "8",
+        "description": "8"
+      },
+      {
+        "id": "p2",
+        "latex": "4",
+        "description": "4 edges"
+      }
+    ],
+    "steps": [
+      {
+        "id": "s1",
+        "fromLatex": "\\text{sum} = 2+3+2+1",
+        "toLatex": "8",
+        "paletteRef": "p1",
+        "dropTargets": [
+          "2+3+2+1"
+        ],
+        "description": "Add the lengths of every adjacency list: 2+3+2+1=8 (this equals the sum of degrees)."
+      },
+      {
+        "id": "s2",
+        "fromLatex": "|E| = 8/2",
+        "toLatex": "4",
+        "paletteRef": "p2",
+        "dropTargets": [
+          "8/2"
+        ],
+        "description": "Sum of degrees = 8, so |E| = 8/2 = 4."
+      }
+    ]
+  },
+  {
+    "id": "graph-h-004",
+    "topic": "graphtheory",
+    "difficulty": "hard",
+    "chapter": 2,
+    "question": {
+      "latex": "\\text{Sparse graph: } n=100,\\ |E|=150",
+      "plain": "A sparse graph has 100 vertices and 150 edges. An adjacency list needs O(n+|E|) space; an adjacency matrix needs O(n^2). Find n^2 - (n+|E|), the matrix's space disadvantage."
+    },
+    "symbols": {},
+    "palette": [
+      {
+        "id": "p1",
+        "latex": "9650",
+        "description": "9650"
+      }
+    ],
+    "steps": [
+      {
+        "id": "s1",
+        "fromLatex": "100^2 - (100+150)",
+        "toLatex": "9650",
+        "paletteRef": "p1",
+        "dropTargets": [
+          "100^2 - (100+150)"
+        ],
+        "description": "Matrix space = 100²=10000. List space = n+|E|=100+150=250. Difference = 10000-250=9650 wasted cells."
+      }
+    ]
+  },
+  {
+    "id": "graph-e-005",
+    "topic": "graphtheory",
+    "difficulty": "easy",
+    "chapter": 3,
+    "question": {
+      "latex": "\\text{Path: } A \\to B \\to C \\to D",
+      "plain": "A path visits vertices A, B, C, D in order. How many edges does the path use?"
+    },
+    "symbols": {},
+    "palette": [
+      {
+        "id": "p1",
+        "latex": "3",
+        "description": "3 edges"
+      }
+    ],
+    "steps": [
+      {
+        "id": "s1",
+        "fromLatex": "\\text{edges} = 4-1",
+        "toLatex": "3",
+        "paletteRef": "p1",
+        "dropTargets": [
+          "4-1"
+        ],
+        "description": "A path through n vertices always uses exactly n-1 edges."
+      }
+    ]
+  },
+  {
+    "id": "graph-e-006",
+    "topic": "graphtheory",
+    "difficulty": "easy",
+    "chapter": 3,
+    "question": {
+      "latex": "\\text{Graph has 2 connected components}",
+      "plain": "A graph splits into a component of 5 vertices and a component of 3 vertices. How many vertices total?"
+    },
+    "symbols": {},
+    "palette": [
+      {
+        "id": "p1",
+        "latex": "8",
+        "description": "8 vertices"
+      }
+    ],
+    "steps": [
+      {
+        "id": "s1",
+        "fromLatex": "n = 5+3",
+        "toLatex": "8",
+        "paletteRef": "p1",
+        "dropTargets": [
+          "5+3"
+        ],
+        "description": "Total vertices is the sum of the sizes of all connected components: 5+3=8."
+      }
+    ]
+  },
+  {
+    "id": "graph-m-005",
+    "topic": "graphtheory",
+    "difficulty": "medium",
+    "chapter": 3,
+    "question": {
+      "latex": "\\text{Path: } v_1 \\to v_2 \\to \\cdots \\to v_7",
+      "plain": "A path visits 7 distinct vertices. How many edges does it contain?"
+    },
+    "symbols": {},
+    "palette": [
+      {
+        "id": "p1",
+        "latex": "6",
+        "description": "6 edges"
+      }
+    ],
+    "steps": [
+      {
+        "id": "s1",
+        "fromLatex": "\\text{edges} = 7-1",
+        "toLatex": "6",
+        "paletteRef": "p1",
+        "dropTargets": [
+          "7-1"
+        ],
+        "description": "A path visiting n vertices uses n-1 edges, one between each consecutive pair."
+      }
+    ]
+  },
+  {
+    "id": "graph-m-006",
+    "topic": "graphtheory",
+    "difficulty": "medium",
+    "chapter": 3,
+    "question": {
+      "latex": "\\text{Graph: } 12 \\text{ vertices in 3 equal components}",
+      "plain": "A graph has 12 vertices split evenly into 3 connected components. How many vertices are in each component?"
+    },
+    "symbols": {},
+    "palette": [
+      {
+        "id": "p1",
+        "latex": "4",
+        "description": "4 vertices"
+      }
+    ],
+    "steps": [
+      {
+        "id": "s1",
+        "fromLatex": "12/3",
+        "toLatex": "4",
+        "paletteRef": "p1",
+        "dropTargets": [
+          "12/3"
+        ],
+        "description": "Split evenly across 3 components: 12÷3=4 vertices per component."
+      }
+    ]
+  },
+  {
+    "id": "graph-h-005",
+    "topic": "graphtheory",
+    "difficulty": "hard",
+    "chapter": 3,
+    "question": {
+      "latex": "\\text{Components of sizes } 4, 3, 3, 2",
+      "plain": "A disconnected graph has four connected components of sizes 4, 3, 3, and 2. Find the total vertex count, then the number of components."
+    },
+    "symbols": {},
+    "palette": [
+      {
+        "id": "p1",
+        "latex": "12",
+        "description": "12"
+      },
+      {
+        "id": "p2",
+        "latex": "4",
+        "description": "4 components"
+      }
+    ],
+    "steps": [
+      {
+        "id": "s1",
+        "fromLatex": "n = 4+3+3+2",
+        "toLatex": "12",
+        "paletteRef": "p1",
+        "dropTargets": [
+          "4+3+3+2"
+        ],
+        "description": "Add up every component's size: 4+3+3+2=12 total vertices."
+      },
+      {
+        "id": "s2",
+        "fromLatex": "\\text{components} = 1+1+1+1",
+        "toLatex": "4",
+        "paletteRef": "p2",
+        "dropTargets": [
+          "1+1+1+1"
+        ],
+        "description": "There are 4 separate components listed."
+      }
+    ]
+  },
+  {
+    "id": "graph-h-006",
+    "topic": "graphtheory",
+    "difficulty": "hard",
+    "chapter": 3,
+    "question": {
+      "latex": "\\text{Cut vertex removed: graph splits into parts of size } 5 \\text{ and } 6, \\text{ plus the cut vertex itself}",
+      "plain": "Removing a cut vertex splits a graph into two pieces of size 5 and 6 (not counting the cut vertex). Find the original number of vertices."
+    },
+    "symbols": {},
+    "palette": [
+      {
+        "id": "p1",
+        "latex": "12",
+        "description": "12 vertices"
+      }
+    ],
+    "steps": [
+      {
+        "id": "s1",
+        "fromLatex": "n = 5+6+1",
+        "toLatex": "12",
+        "paletteRef": "p1",
+        "dropTargets": [
+          "5+6+1"
+        ],
+        "description": "Original graph = both pieces plus the cut vertex itself: 5+6+1=12."
+      }
+    ]
+  },
+  {
+    "id": "graph-e-007",
+    "topic": "graphtheory",
+    "difficulty": "easy",
+    "chapter": 4,
+    "question": {
+      "latex": "\\text{BFS from A reaches B at distance 1, D at distance 2}",
+      "plain": "BFS from A reaches B at distance 1 and D at distance 2 (via B). What is the total path length A to D?"
+    },
+    "symbols": {},
+    "palette": [
+      {
+        "id": "p1",
+        "latex": "2",
+        "description": "distance 2"
+      }
+    ],
+    "steps": [
+      {
+        "id": "s1",
+        "fromLatex": "\\text{dist}(A,D) = 1+1",
+        "toLatex": "2",
+        "paletteRef": "p1",
+        "dropTargets": [
+          "1+1"
+        ],
+        "description": "Each BFS layer adds one hop; distance to D is 1 (A to B) + 1 (B to D) = 2."
+      }
+    ]
+  },
+  {
+    "id": "graph-e-008",
+    "topic": "graphtheory",
+    "difficulty": "easy",
+    "chapter": 4,
+    "question": {
+      "latex": "\\text{BFS queue holds } 3 \\text{ then } 2 \\text{ more vertices are enqueued}",
+      "plain": "A BFS queue starts with 3 vertices, then 2 more get enqueued. How many vertices are now in the queue?"
+    },
+    "symbols": {},
+    "palette": [
+      {
+        "id": "p1",
+        "latex": "5",
+        "description": "5 vertices"
+      }
+    ],
+    "steps": [
+      {
+        "id": "s1",
+        "fromLatex": "3+2",
+        "toLatex": "5",
+        "paletteRef": "p1",
+        "dropTargets": [
+          "3+2"
+        ],
+        "description": "The queue simply accumulates: 3 initial + 2 newly enqueued = 5."
+      }
+    ]
+  },
+  {
+    "id": "graph-m-007",
+    "topic": "graphtheory",
+    "difficulty": "medium",
+    "chapter": 4,
+    "question": {
+      "latex": "\\text{BFS levels: } 1 \\text{ vertex at distance 0}, 3 \\text{ at distance 1}, 2 \\text{ at distance 2}",
+      "plain": "A BFS tree from A has 1 vertex at distance 0, 3 vertices at distance 1, and 2 vertices at distance 2. Find the total number of vertices visited."
+    },
+    "symbols": {},
+    "palette": [
+      {
+        "id": "p1",
+        "latex": "6",
+        "description": "6 vertices"
+      }
+    ],
+    "steps": [
+      {
+        "id": "s1",
+        "fromLatex": "1+3+2",
+        "toLatex": "6",
+        "paletteRef": "p1",
+        "dropTargets": [
+          "1+3+2"
+        ],
+        "description": "Sum every BFS layer's vertex count: 1+3+2=6 vertices reached in total."
+      }
+    ]
+  },
+  {
+    "id": "graph-m-008",
+    "topic": "graphtheory",
+    "difficulty": "medium",
+    "chapter": 4,
+    "question": {
+      "latex": "\\text{DFS visits all 9 vertices, backtracking 4 times}",
+      "plain": "A DFS explores a connected graph of 9 vertices, using 8 tree edges and backtracking (revisiting via non-tree edges) 4 times. How many total edge traversals occur?"
+    },
+    "symbols": {},
+    "palette": [
+      {
+        "id": "p1",
+        "latex": "12",
+        "description": "12"
+      }
+    ],
+    "steps": [
+      {
+        "id": "s1",
+        "fromLatex": "8+4",
+        "toLatex": "12",
+        "paletteRef": "p1",
+        "dropTargets": [
+          "8+4"
+        ],
+        "description": "DFS uses n-1=8 tree edges to reach all 9 vertices, plus 4 extra backtracking traversals: 8+4=12."
+      }
+    ]
+  },
+  {
+    "id": "graph-h-007",
+    "topic": "graphtheory",
+    "difficulty": "hard",
+    "chapter": 4,
+    "question": {
+      "latex": "\\text{BFS layers of sizes } 1,2,4,3 \\text{ from source } A",
+      "plain": "BFS from A produces layers of size 1, 2, 4, 3 (distances 0 through 3). Find the total vertices, then the vertices NOT at distance 0 or 1."
+    },
+    "symbols": {},
+    "palette": [
+      {
+        "id": "p1",
+        "latex": "10",
+        "description": "10"
+      },
+      {
+        "id": "p2",
+        "latex": "7",
+        "description": "7 vertices"
+      }
+    ],
+    "steps": [
+      {
+        "id": "s1",
+        "fromLatex": "1+2+4+3",
+        "toLatex": "10",
+        "paletteRef": "p1",
+        "dropTargets": [
+          "1+2+4+3"
+        ],
+        "description": "Add all layer sizes: 1+2+4+3=10 total vertices in the BFS tree."
+      },
+      {
+        "id": "s2",
+        "fromLatex": "10 - (1+2)",
+        "toLatex": "7",
+        "paletteRef": "p2",
+        "dropTargets": [
+          "10 - (1+2)"
+        ],
+        "description": "Vertices at distance 2 or 3 = total minus distance 0 and 1 layers: 10-(1+2)=7."
+      }
+    ]
+  },
+  {
+    "id": "graph-h-008",
+    "topic": "graphtheory",
+    "difficulty": "hard",
+    "chapter": 4,
+    "question": {
+      "latex": "\\text{DFS on a graph: } 15 \\text{ vertices}, 20 \\text{ edges}",
+      "plain": "A connected graph has 15 vertices and 20 edges. DFS uses exactly n-1 tree edges; the rest are back edges. Find the number of back edges."
+    },
+    "symbols": {},
+    "palette": [
+      {
+        "id": "p1",
+        "latex": "14",
+        "description": "14 tree edges"
+      },
+      {
+        "id": "p2",
+        "latex": "6",
+        "description": "6 back edges"
+      }
+    ],
+    "steps": [
+      {
+        "id": "s1",
+        "fromLatex": "\\text{tree edges} = 15-1",
+        "toLatex": "14",
+        "paletteRef": "p1",
+        "dropTargets": [
+          "15-1"
+        ],
+        "description": "DFS always uses exactly n-1=14 tree edges to reach all vertices of a connected graph."
+      },
+      {
+        "id": "s2",
+        "fromLatex": "\\text{back edges} = 20-14",
+        "toLatex": "6",
+        "paletteRef": "p2",
+        "dropTargets": [
+          "20-14"
+        ],
+        "description": "The remaining edges are back edges: 20-14=6."
+      }
+    ]
+  },
+  {
+    "id": "graph-e-009",
+    "topic": "graphtheory",
+    "difficulty": "easy",
+    "chapter": 5,
+    "question": {
+      "latex": "n = 10 \\text{ vertices, spanning tree}",
+      "plain": "How many edges does a spanning tree of a 10-vertex graph have?"
+    },
+    "symbols": {},
+    "palette": [
+      {
+        "id": "p1",
+        "latex": "9",
+        "description": "9 edges"
+      }
+    ],
+    "steps": [
+      {
+        "id": "s1",
+        "fromLatex": "|E| = 10-1",
+        "toLatex": "9",
+        "paletteRef": "p1",
+        "dropTargets": [
+          "10-1"
+        ],
+        "description": "Every tree spanning n vertices has exactly n-1 edges — no more, no less."
+      }
+    ]
+  },
+  {
+    "id": "graph-e-010",
+    "topic": "graphtheory",
+    "difficulty": "easy",
+    "chapter": 5,
+    "question": {
+      "latex": "\\text{MST edges: weights } 2, 3, 4",
+      "plain": "A minimum spanning tree uses edges of weight 2, 3, and 4. Find the total MST weight."
+    },
+    "symbols": {},
+    "palette": [
+      {
+        "id": "p1",
+        "latex": "9",
+        "description": "weight 9"
+      }
+    ],
+    "steps": [
+      {
+        "id": "s1",
+        "fromLatex": "2+3+4",
+        "toLatex": "9",
+        "paletteRef": "p1",
+        "dropTargets": [
+          "2+3+4"
+        ],
+        "description": "Total MST weight is just the sum of its edge weights: 2+3+4=9."
+      }
+    ]
+  },
+  {
+    "id": "graph-m-009",
+    "topic": "graphtheory",
+    "difficulty": "medium",
+    "chapter": 5,
+    "question": {
+      "latex": "n = 25 \\text{ vertices, spanning tree}",
+      "plain": "A network of 25 servers needs a spanning tree of cables to connect them all with no redundant links. How many cables are needed?"
+    },
+    "symbols": {},
+    "palette": [
+      {
+        "id": "p1",
+        "latex": "24",
+        "description": "24 cables"
+      }
+    ],
+    "steps": [
+      {
+        "id": "s1",
+        "fromLatex": "25-1",
+        "toLatex": "24",
+        "paletteRef": "p1",
+        "dropTargets": [
+          "25-1"
+        ],
+        "description": "A spanning tree over n=25 vertices always needs exactly n-1=24 edges."
+      }
+    ]
+  },
+  {
+    "id": "graph-m-010",
+    "topic": "graphtheory",
+    "difficulty": "medium",
+    "chapter": 5,
+    "question": {
+      "latex": "\\text{Kruskal selects edges of weight } 1, 2, 2, 5, 6",
+      "plain": "Kruskal's algorithm builds an MST by selecting edges of weight 1, 2, 2, 5, 6 (in order, none rejected). Find the total MST weight."
+    },
+    "symbols": {},
+    "palette": [
+      {
+        "id": "p1",
+        "latex": "16",
+        "description": "weight 16"
+      }
+    ],
+    "steps": [
+      {
+        "id": "s1",
+        "fromLatex": "1+2+2+5+6",
+        "toLatex": "16",
+        "paletteRef": "p1",
+        "dropTargets": [
+          "1+2+2+5+6"
+        ],
+        "description": "Sum the selected edge weights in the order Kruskal added them: 1+2+2+5+6=16."
+      }
+    ]
+  },
+  {
+    "id": "graph-h-009",
+    "topic": "graphtheory",
+    "difficulty": "hard",
+    "chapter": 5,
+    "question": {
+      "latex": "\\text{Graph: } n=8 \\text{ vertices}, |E|=13 \\text{ edges}",
+      "plain": "A connected graph has 8 vertices and 13 edges. Find the number of edges in any spanning tree, then how many edges must be removed to reach it."
+    },
+    "symbols": {},
+    "palette": [
+      {
+        "id": "p1",
+        "latex": "7",
+        "description": "7"
+      },
+      {
+        "id": "p2",
+        "latex": "6",
+        "description": "6 edges removed"
+      }
+    ],
+    "steps": [
+      {
+        "id": "s1",
+        "fromLatex": "|E_{tree}| = 8-1",
+        "toLatex": "7",
+        "paletteRef": "p1",
+        "dropTargets": [
+          "8-1"
+        ],
+        "description": "Any spanning tree of 8 vertices has 8-1=7 edges."
+      },
+      {
+        "id": "s2",
+        "fromLatex": "\\text{removed} = 13-7",
+        "toLatex": "6",
+        "paletteRef": "p2",
+        "dropTargets": [
+          "13-7"
+        ],
+        "description": "Edges to remove = total edges minus tree edges: 13-7=6 non-tree edges."
+      }
+    ]
+  },
+  {
+    "id": "graph-h-010",
+    "topic": "graphtheory",
+    "difficulty": "hard",
+    "chapter": 5,
+    "question": {
+      "latex": "\\text{Prim's algorithm: MST edge weights } 3,3,4,7,7,9",
+      "plain": "Prim's algorithm builds an MST with edge weights 3, 3, 4, 7, 7, 9 for a 7-vertex graph. Verify the edge count matches n-1, then find the total weight."
+    },
+    "symbols": {},
+    "palette": [
+      {
+        "id": "p1",
+        "latex": "6",
+        "description": "6 edges"
+      },
+      {
+        "id": "p2",
+        "latex": "33",
+        "description": "total weight 33"
+      }
+    ],
+    "steps": [
+      {
+        "id": "s1",
+        "fromLatex": "\\text{edges used} = 7-1",
+        "toLatex": "6",
+        "paletteRef": "p1",
+        "dropTargets": [
+          "7-1"
+        ],
+        "description": "A 7-vertex MST needs 7-1=6 edges — matching the 6 weights given."
+      },
+      {
+        "id": "s2",
+        "fromLatex": "3+3+4+7+7+9",
+        "toLatex": "33",
+        "paletteRef": "p2",
+        "dropTargets": [
+          "3+3+4+7+7+9"
+        ],
+        "description": "Sum all MST edge weights: 3+3+4+7+7+9=33."
+      }
+    ]
+  },
+  {
+    "id": "graph-e-011",
+    "topic": "graphtheory",
+    "difficulty": "easy",
+    "chapter": 6,
+    "question": {
+      "latex": "A \\to F: \\text{weight } 1,\\quad F \\to E: \\text{weight } 2",
+      "plain": "A shortest path goes A to F (weight 1) then F to E (weight 2). Find the total path weight."
+    },
+    "symbols": {},
+    "palette": [
+      {
+        "id": "p1",
+        "latex": "3",
+        "description": "weight 3"
+      }
+    ],
+    "steps": [
+      {
+        "id": "s1",
+        "fromLatex": "1+2",
+        "toLatex": "3",
+        "paletteRef": "p1",
+        "dropTargets": [
+          "1+2"
+        ],
+        "description": "Total path weight is the sum of each edge on the path: 1+2=3."
+      }
+    ]
+  },
+  {
+    "id": "graph-e-012",
+    "topic": "graphtheory",
+    "difficulty": "easy",
+    "chapter": 6,
+    "question": {
+      "latex": "\\text{Path uses edges of weight } 4, 3, 2",
+      "plain": "A path from A to D uses three edges of weight 4, 3, and 2. Find the total path weight."
+    },
+    "symbols": {},
+    "palette": [
+      {
+        "id": "p1",
+        "latex": "9",
+        "description": "weight 9"
+      }
+    ],
+    "steps": [
+      {
+        "id": "s1",
+        "fromLatex": "4+3+2",
+        "toLatex": "9",
+        "paletteRef": "p1",
+        "dropTargets": [
+          "4+3+2"
+        ],
+        "description": "Sum every edge weight along the path: 4+3+2=9."
+      }
+    ]
+  },
+  {
+    "id": "graph-m-011",
+    "topic": "graphtheory",
+    "difficulty": "medium",
+    "chapter": 6,
+    "question": {
+      "latex": "\\text{Route 1: weight } 11. \\quad \\text{Route 2: weight } 8",
+      "plain": "Two routes from A to D have total weights 11 and 8. Which is shorter, and by how much?"
+    },
+    "symbols": {},
+    "palette": [
+      {
+        "id": "p1",
+        "latex": "3",
+        "description": "Route 2 is shorter by 3"
+      }
+    ],
+    "steps": [
+      {
+        "id": "s1",
+        "fromLatex": "11 - 8",
+        "toLatex": "3",
+        "paletteRef": "p1",
+        "dropTargets": [
+          "11 - 8"
+        ],
+        "description": "Dijkstra always keeps the cheaper route; the difference is 11-8=3."
+      }
+    ]
+  },
+  {
+    "id": "graph-m-012",
+    "topic": "graphtheory",
+    "difficulty": "medium",
+    "chapter": 6,
+    "question": {
+      "latex": "\\text{Relax edge: current dist}(v)=9,\\ \\text{new via } u: 4+3",
+      "plain": "Vertex v's current best distance is 9. Relaxing an edge from u (distance 4) with edge weight 3 offers a new distance. Find the new candidate distance."
+    },
+    "symbols": {},
+    "palette": [
+      {
+        "id": "p1",
+        "latex": "7",
+        "description": "7"
+      }
+    ],
+    "steps": [
+      {
+        "id": "s1",
+        "fromLatex": "4+3",
+        "toLatex": "7",
+        "paletteRef": "p1",
+        "dropTargets": [
+          "4+3"
+        ],
+        "description": "New candidate = dist(u) + edge weight = 4+3=7, which is less than 9, so v's distance updates to 7."
+      }
+    ]
+  },
+  {
+    "id": "graph-h-011",
+    "topic": "graphtheory",
+    "difficulty": "hard",
+    "chapter": 6,
+    "question": {
+      "latex": "\\text{Path A: } 3+4+2. \\quad \\text{Path B: } 6+1",
+      "plain": "Two candidate paths from A to E have edges (3,4,2) and (6,1). Find each path's total weight, then the shortest."
+    },
+    "symbols": {},
+    "palette": [
+      {
+        "id": "p1",
+        "latex": "9",
+        "description": "Path A weight 9"
+      },
+      {
+        "id": "p2",
+        "latex": "7",
+        "description": "Path B weight 7 (shortest)"
+      }
+    ],
+    "steps": [
+      {
+        "id": "s1",
+        "fromLatex": "3+4+2",
+        "toLatex": "9",
+        "paletteRef": "p1",
+        "dropTargets": [
+          "3+4+2"
+        ],
+        "description": "Path A's total weight: 3+4+2=9."
+      },
+      {
+        "id": "s2",
+        "fromLatex": "6+1",
+        "toLatex": "7",
+        "paletteRef": "p2",
+        "dropTargets": [
+          "6+1"
+        ],
+        "description": "Path B's total weight: 6+1=7, which is less than Path A's 9 — Path B is the shortest path."
+      }
+    ]
+  },
+  {
+    "id": "graph-h-012",
+    "topic": "graphtheory",
+    "difficulty": "hard",
+    "chapter": 6,
+    "question": {
+      "latex": "\\text{Dijkstra distances: dist}(A){=}0,\\ \\text{dist}(F){=}1,\\ \\text{dist}(E)\\text{ via }F = 1+2",
+      "plain": "Dijkstra has finalized dist(A)=0 and dist(F)=1 (edge A-F weight 1). Relaxing edge F-E (weight 2) gives a candidate distance for E. Compute it, then compare to the direct edge A-E weight 6."
+    },
+    "symbols": {},
+    "palette": [
+      {
+        "id": "p1",
+        "latex": "3",
+        "description": "candidate distance 3"
+      },
+      {
+        "id": "p2",
+        "latex": "3",
+        "description": "final dist(E) = 3"
+      }
+    ],
+    "steps": [
+      {
+        "id": "s1",
+        "fromLatex": "1+2",
+        "toLatex": "3",
+        "paletteRef": "p1",
+        "dropTargets": [
+          "1+2"
+        ],
+        "description": "Candidate dist(E) via F = dist(F) + weight(F,E) = 1+2=3."
+      },
+      {
+        "id": "s2",
+        "fromLatex": "\\min(3, 6)",
+        "toLatex": "3",
+        "paletteRef": "p2",
+        "dropTargets": [
+          "\\min(3, 6)"
+        ],
+        "description": "Compare to the direct A-E edge (weight 6): min(3,6)=3, so the path through F wins."
+      }
+    ]
+  },
+  {
+    "id": "graph-e-013",
+    "topic": "graphtheory",
+    "difficulty": "easy",
+    "chapter": 7,
+    "question": {
+      "latex": "\\text{In-degrees: } 0, 1, 1, 2, 1",
+      "plain": "A DAG's five vertices have in-degrees 0, 1, 1, 2, 1. Find the total number of edges."
+    },
+    "symbols": {},
+    "palette": [
+      {
+        "id": "p1",
+        "latex": "5",
+        "description": "5 edges"
+      }
+    ],
+    "steps": [
+      {
+        "id": "s1",
+        "fromLatex": "|E| = 0+1+1+2+1",
+        "toLatex": "5",
+        "paletteRef": "p1",
+        "dropTargets": [
+          "0+1+1+2+1"
+        ],
+        "description": "In a directed graph, the sum of all in-degrees equals the number of edges (the directed handshake fact)."
+      }
+    ]
+  },
+  {
+    "id": "graph-e-014",
+    "topic": "graphtheory",
+    "difficulty": "easy",
+    "chapter": 7,
+    "question": {
+      "latex": "\\text{Topological order has 6 positions}",
+      "plain": "A DAG with 6 vertices has a topological order. If the source vertex is placed first (position 1), how many positions remain for the other vertices?"
+    },
+    "symbols": {},
+    "palette": [
+      {
+        "id": "p1",
+        "latex": "5",
+        "description": "5 positions"
+      }
+    ],
+    "steps": [
+      {
+        "id": "s1",
+        "fromLatex": "6-1",
+        "toLatex": "5",
+        "paletteRef": "p1",
+        "dropTargets": [
+          "6-1"
+        ],
+        "description": "One position is used by the source vertex, leaving 6-1=5 for the rest."
+      }
+    ]
+  },
+  {
+    "id": "graph-m-013",
+    "topic": "graphtheory",
+    "difficulty": "medium",
+    "chapter": 7,
+    "question": {
+      "latex": "\\text{Out-degrees: } 2, 0, 1, 0, 1",
+      "plain": "A DAG's five vertices have out-degrees 2, 0, 1, 0, 1. Find the total number of edges."
+    },
+    "symbols": {},
+    "palette": [
+      {
+        "id": "p1",
+        "latex": "4",
+        "description": "4 edges"
+      }
+    ],
+    "steps": [
+      {
+        "id": "s1",
+        "fromLatex": "|E| = 2+0+1+0+1",
+        "toLatex": "4",
+        "paletteRef": "p1",
+        "dropTargets": [
+          "2+0+1+0+1"
+        ],
+        "description": "Sum of out-degrees also equals |E|, since every edge leaves exactly one vertex: 2+0+1+0+1=4."
+      }
+    ]
+  },
+  {
+    "id": "graph-m-014",
+    "topic": "graphtheory",
+    "difficulty": "medium",
+    "chapter": 7,
+    "question": {
+      "latex": "\\text{Two independent branches, each can go first}",
+      "plain": "A DAG has two independent branches (like Q and R, neither depending on the other) that can be ordered either way. How many valid relative orderings exist for just these two?"
+    },
+    "symbols": {},
+    "palette": [
+      {
+        "id": "p1",
+        "latex": "2",
+        "description": "2 orderings"
+      }
+    ],
+    "steps": [
+      {
+        "id": "s1",
+        "fromLatex": "2!",
+        "toLatex": "2",
+        "paletteRef": "p1",
+        "dropTargets": [
+          "2!"
+        ],
+        "description": "Two independent vertices with no edge between them can appear in either order: 2!=2 valid orderings."
+      }
+    ]
+  },
+  {
+    "id": "graph-h-013",
+    "topic": "graphtheory",
+    "difficulty": "hard",
+    "chapter": 7,
+    "question": {
+      "latex": "\\text{In-degrees of 7 vertices: } 0,0,1,1,2,1,2",
+      "plain": "A DAG has 7 vertices with in-degrees 0,0,1,1,2,1,2. Find the total edges, then the number of source vertices (in-degree 0)."
+    },
+    "symbols": {},
+    "palette": [
+      {
+        "id": "p1",
+        "latex": "7",
+        "description": "7 edges"
+      },
+      {
+        "id": "p2",
+        "latex": "2",
+        "description": "2 sources"
+      }
+    ],
+    "steps": [
+      {
+        "id": "s1",
+        "fromLatex": "0+0+1+1+2+1+2",
+        "toLatex": "7",
+        "paletteRef": "p1",
+        "dropTargets": [
+          "0+0+1+1+2+1+2"
+        ],
+        "description": "Sum all in-degrees: 0+0+1+1+2+1+2=7 total edges."
+      },
+      {
+        "id": "s2",
+        "fromLatex": "\\text{sources} = 1+1",
+        "toLatex": "2",
+        "paletteRef": "p2",
+        "dropTargets": [
+          "1+1"
+        ],
+        "description": "Count the vertices with in-degree 0: there are two of them, so 2 source vertices."
+      }
+    ]
+  },
+  {
+    "id": "graph-h-014",
+    "topic": "graphtheory",
+    "difficulty": "hard",
+    "chapter": 7,
+    "question": {
+      "latex": "\\text{Longest path: 3 edges from P, then 2 more edges to reach T}",
+      "plain": "The longest path in a DAG from source P goes through 3 edges to reach a midpoint, then 2 more edges to reach sink T. Find the total path length in edges, then the number of vertices on this path."
+    },
+    "symbols": {},
+    "palette": [
+      {
+        "id": "p1",
+        "latex": "5",
+        "description": "5 edges"
+      },
+      {
+        "id": "p2",
+        "latex": "6",
+        "description": "6 vertices"
+      }
+    ],
+    "steps": [
+      {
+        "id": "s1",
+        "fromLatex": "3+2",
+        "toLatex": "5",
+        "paletteRef": "p1",
+        "dropTargets": [
+          "3+2"
+        ],
+        "description": "Total edges on the longest path: 3+2=5."
+      },
+      {
+        "id": "s2",
+        "fromLatex": "5+1",
+        "toLatex": "6",
+        "paletteRef": "p2",
+        "dropTargets": [
+          "5+1"
+        ],
+        "description": "A path with 5 edges visits 5+1=6 vertices."
+      }
+    ]
+  },
+  {
+    "id": "graph-e-015",
+    "topic": "graphtheory",
+    "difficulty": "easy",
+    "chapter": 8,
+    "question": {
+      "latex": "K_{3,4}: \\text{complete bipartite graph}",
+      "plain": "In the complete bipartite graph K(3,4), every one of 3 left vertices connects to every one of 4 right vertices. Find the total number of edges."
+    },
+    "symbols": {},
+    "palette": [
+      {
+        "id": "p1",
+        "latex": "12",
+        "description": "12 edges"
+      }
+    ],
+    "steps": [
+      {
+        "id": "s1",
+        "fromLatex": "3 \\times 4",
+        "toLatex": "12",
+        "paletteRef": "p1",
+        "dropTargets": [
+          "3 \\times 4"
+        ],
+        "description": "Every left vertex pairs with every right vertex: 3×4=12 edges."
+      }
+    ]
+  },
+  {
+    "id": "graph-e-016",
+    "topic": "graphtheory",
+    "difficulty": "easy",
+    "chapter": 8,
+    "question": {
+      "latex": "\\text{Bipartite graph, chromatic number}",
+      "plain": "A bipartite graph with at least one edge always has chromatic number 2. If it were colored with 5 colors, how many colors would be unused?"
+    },
+    "symbols": {},
+    "palette": [
+      {
+        "id": "p1",
+        "latex": "3",
+        "description": "3 unused"
+      }
+    ],
+    "steps": [
+      {
+        "id": "s1",
+        "fromLatex": "5-2",
+        "toLatex": "3",
+        "paletteRef": "p1",
+        "dropTargets": [
+          "5-2"
+        ],
+        "description": "Only 2 colors are ever needed for a bipartite graph, so 5-2=3 colors would go unused."
+      }
+    ]
+  },
+  {
+    "id": "graph-m-015",
+    "topic": "graphtheory",
+    "difficulty": "medium",
+    "chapter": 8,
+    "question": {
+      "latex": "K_{5,2}: \\text{complete bipartite graph}",
+      "plain": "The complete bipartite graph K(5,2) connects every one of 5 vertices on one side to every one of 2 vertices on the other. Find the total edges."
+    },
+    "symbols": {},
+    "palette": [
+      {
+        "id": "p1",
+        "latex": "10",
+        "description": "10 edges"
+      }
+    ],
+    "steps": [
+      {
+        "id": "s1",
+        "fromLatex": "5 \\times 2",
+        "toLatex": "10",
+        "paletteRef": "p1",
+        "dropTargets": [
+          "5 \\times 2"
+        ],
+        "description": "5×2=10 edges connect every pair across the two sides."
+      }
+    ]
+  },
+  {
+    "id": "graph-m-016",
+    "topic": "graphtheory",
+    "difficulty": "medium",
+    "chapter": 8,
+    "question": {
+      "latex": "\\text{Odd cycle of length 5: chromatic number}",
+      "plain": "A 5-cycle (odd length) needs 3 colors, unlike bipartite graphs which need only 2. Find the difference in colors needed."
+    },
+    "symbols": {},
+    "palette": [
+      {
+        "id": "p1",
+        "latex": "1",
+        "description": "1 more color"
+      }
+    ],
+    "steps": [
+      {
+        "id": "s1",
+        "fromLatex": "3-2",
+        "toLatex": "1",
+        "paletteRef": "p1",
+        "dropTargets": [
+          "3-2"
+        ],
+        "description": "Odd cycles are never bipartite, so they need 3 colors instead of 2: a difference of 3-2=1."
+      }
+    ]
+  },
+  {
+    "id": "graph-h-015",
+    "topic": "graphtheory",
+    "difficulty": "hard",
+    "chapter": 8,
+    "question": {
+      "latex": "K_{4,3} \\text{ plus } K_{2,6}: \\text{two separate bipartite components}",
+      "plain": "A graph has two separate bipartite components: K(4,3) and K(2,6). Find each component's edge count, then the total."
+    },
+    "symbols": {},
+    "palette": [
+      {
+        "id": "p1",
+        "latex": "12",
+        "description": "K(4,3) has 12 edges"
+      },
+      {
+        "id": "p2",
+        "latex": "24",
+        "description": "24 total edges"
+      }
+    ],
+    "steps": [
+      {
+        "id": "s1",
+        "fromLatex": "4 \\times 3",
+        "toLatex": "12",
+        "paletteRef": "p1",
+        "dropTargets": [
+          "4 \\times 3"
+        ],
+        "description": "First component K(4,3): 4×3=12 edges."
+      },
+      {
+        "id": "s2",
+        "fromLatex": "12 + (2 \\times 6)",
+        "toLatex": "24",
+        "paletteRef": "p2",
+        "dropTargets": [
+          "12 + (2 \\times 6)"
+        ],
+        "description": "Second component K(2,6) adds 2×6=12 more edges: 12+12=24 total."
+      }
+    ]
+  },
+  {
+    "id": "graph-h-016",
+    "topic": "graphtheory",
+    "difficulty": "hard",
+    "chapter": 8,
+    "question": {
+      "latex": "\\text{Matching in } K_{4,4}: \\text{ every vertex matched once}",
+      "plain": "A perfect matching in K(4,4) pairs every one of the 4 left vertices with a distinct right vertex, using one edge each. Find the number of matching edges, then the number of unmatched possible edges (out of all 16 in K(4,4))."
+    },
+    "symbols": {},
+    "palette": [
+      {
+        "id": "p1",
+        "latex": "4",
+        "description": "4 matching edges"
+      },
+      {
+        "id": "p2",
+        "latex": "12",
+        "description": "12 unused edges"
+      }
+    ],
+    "steps": [
+      {
+        "id": "s1",
+        "fromLatex": "\\min(4,4)",
+        "toLatex": "4",
+        "paletteRef": "p1",
+        "dropTargets": [
+          "\\min(4,4)"
+        ],
+        "description": "A perfect matching uses exactly min(4,4)=4 edges, one per vertex on the smaller (here equal) side."
+      },
+      {
+        "id": "s2",
+        "fromLatex": "(4 \\times 4) - 4",
+        "toLatex": "12",
+        "paletteRef": "p2",
+        "dropTargets": [
+          "(4 \\times 4) - 4"
+        ],
+        "description": "K(4,4) has 4×4=16 total edges; 16-4=12 are not part of the matching."
+      }
+    ]
+  },
+  {
+    "id": "graph-e-017",
+    "topic": "graphtheory",
+    "difficulty": "easy",
+    "chapter": 9,
+    "question": {
+      "latex": "\\text{All 6 vertices have even degree 2}",
+      "plain": "A graph has 6 vertices, each with degree 2 (a single cycle) — an Eulerian circuit exists. Find the number of edges."
+    },
+    "symbols": {},
+    "palette": [
+      {
+        "id": "p1",
+        "latex": "6",
+        "description": "6 edges"
+      }
+    ],
+    "steps": [
+      {
+        "id": "s1",
+        "fromLatex": "(2 \\times 6)/2",
+        "toLatex": "6",
+        "paletteRef": "p1",
+        "dropTargets": [
+          "(2 \\times 6)/2"
+        ],
+        "description": "Sum of degrees = 2×6=12, so |E|=12/2=6 — matching a 6-vertex cycle exactly."
+      }
+    ]
+  },
+  {
+    "id": "graph-e-018",
+    "topic": "graphtheory",
+    "difficulty": "easy",
+    "chapter": 9,
+    "question": {
+      "latex": "\\text{Hamiltonian path through 7 vertices}",
+      "plain": "A Hamiltonian path visits all 7 vertices of a graph exactly once. How many edges does it use?"
+    },
+    "symbols": {},
+    "palette": [
+      {
+        "id": "p1",
+        "latex": "6",
+        "description": "6 edges"
+      }
+    ],
+    "steps": [
+      {
+        "id": "s1",
+        "fromLatex": "7-1",
+        "toLatex": "6",
+        "paletteRef": "p1",
+        "dropTargets": [
+          "7-1"
+        ],
+        "description": "Like any path, a Hamiltonian path through n vertices uses n-1 edges: 7-1=6."
+      }
+    ]
+  },
+  {
+    "id": "graph-m-017",
+    "topic": "graphtheory",
+    "difficulty": "medium",
+    "chapter": 9,
+    "question": {
+      "latex": "\\text{Degrees: } 3,2,3,2,2 \\text{ — count odd-degree vertices}",
+      "plain": "A graph has vertex degrees 3, 2, 3, 2, 2. By Euler's theorem, exactly how many vertices have odd degree, telling us an Eulerian path (not circuit) exists?"
+    },
+    "symbols": {},
+    "palette": [
+      {
+        "id": "p1",
+        "latex": "2",
+        "description": "2 odd-degree vertices"
+      }
+    ],
+    "steps": [
+      {
+        "id": "s1",
+        "fromLatex": "1+1",
+        "toLatex": "2",
+        "paletteRef": "p1",
+        "dropTargets": [
+          "1+1"
+        ],
+        "description": "Only the two degree-3 vertices are odd; exactly 2 odd-degree vertices means an Eulerian path exists (starting and ending at them), but not a circuit."
+      }
+    ]
+  },
+  {
+    "id": "graph-m-018",
+    "topic": "graphtheory",
+    "difficulty": "medium",
+    "chapter": 9,
+    "question": {
+      "latex": "\\text{Königsberg bridges: } 4 \\text{ landmasses}, 7 \\text{ bridges, all degrees odd}",
+      "plain": "In the original Königsberg problem, all 4 landmasses have odd degree. Since an Eulerian path allows at most 2 odd-degree vertices, find how many too many there are."
+    },
+    "symbols": {},
+    "palette": [
+      {
+        "id": "p1",
+        "latex": "2",
+        "description": "2 too many"
+      }
+    ],
+    "steps": [
+      {
+        "id": "s1",
+        "fromLatex": "4-2",
+        "toLatex": "2",
+        "paletteRef": "p1",
+        "dropTargets": [
+          "4-2"
+        ],
+        "description": "4 odd-degree vertices exceeds the allowed maximum of 2 by 4-2=2 — proving no Eulerian path or circuit exists."
+      }
+    ]
+  },
+  {
+    "id": "graph-h-017",
+    "topic": "graphtheory",
+    "difficulty": "hard",
+    "chapter": 9,
+    "question": {
+      "latex": "\\text{Graph: } n{=}9 \\text{ vertices, all even degree } 4",
+      "plain": "A graph has 9 vertices, each of degree 4 (all even, so an Eulerian circuit exists). Find the total edges, then verify: does a Hamiltonian path (using n-1 edges) use fewer edges than the Eulerian circuit?"
+    },
+    "symbols": {},
+    "palette": [
+      {
+        "id": "p1",
+        "latex": "18",
+        "description": "18 edges"
+      },
+      {
+        "id": "p2",
+        "latex": "10",
+        "description": "10 more edges"
+      }
+    ],
+    "steps": [
+      {
+        "id": "s1",
+        "fromLatex": "(4 \\times 9)/2",
+        "toLatex": "18",
+        "paletteRef": "p1",
+        "dropTargets": [
+          "(4 \\times 9)/2"
+        ],
+        "description": "Sum of degrees = 4×9=36, so |E| = 36/2 = 18 — every edge is used once in the Eulerian circuit."
+      },
+      {
+        "id": "s2",
+        "fromLatex": "18 - (9-1)",
+        "toLatex": "10",
+        "paletteRef": "p2",
+        "dropTargets": [
+          "18 - (9-1)"
+        ],
+        "description": "A Hamiltonian path would use only 9-1=8 edges; the Eulerian circuit uses 18-8=10 more edges than that."
+      }
+    ]
+  },
+  {
+    "id": "graph-h-018",
+    "topic": "graphtheory",
+    "difficulty": "hard",
+    "chapter": 9,
+    "question": {
+      "latex": "\\text{Eulerian path uses all 7 edges of graph G; verify against handshake}",
+      "plain": "Graph G (from Chapter 1) has degree sequence 3,2,2,3,2,2 and an Eulerian path using every edge exactly once. Find the edge count from the degree sum, then confirm it matches the 7-step path length."
+    },
+    "symbols": {},
+    "palette": [
+      {
+        "id": "p1",
+        "latex": "14",
+        "description": "sum of degrees is 14"
+      },
+      {
+        "id": "p2",
+        "latex": "7",
+        "description": "7 edges"
+      }
+    ],
+    "steps": [
+      {
+        "id": "s1",
+        "fromLatex": "3+2+2+3+2+2",
+        "toLatex": "14",
+        "paletteRef": "p1",
+        "dropTargets": [
+          "3+2+2+3+2+2"
+        ],
+        "description": "Sum all six degrees: 3+2+2+3+2+2=14."
+      },
+      {
+        "id": "s2",
+        "fromLatex": "14/2",
+        "toLatex": "7",
+        "paletteRef": "p2",
+        "dropTargets": [
+          "14/2"
+        ],
+        "description": "Divide by 2: |E|=14/2=7, matching the 7-edge Eulerian path exactly."
+      }
+    ]
+  },
+  {
+    "id": "graph-e-019",
+    "topic": "graphtheory",
+    "difficulty": "easy",
+    "chapter": 10,
+    "question": {
+      "latex": "\\text{Edge } S\\to A: \\text{cap } 10. \\quad A \\to T: \\text{cap } 8",
+      "plain": "A path S to A to T has capacities 10 and 8. Find the bottleneck (maximum flow through this path)."
+    },
+    "symbols": {},
+    "palette": [
+      {
+        "id": "p1",
+        "latex": "8",
+        "description": "bottleneck 8"
+      }
+    ],
+    "steps": [
+      {
+        "id": "s1",
+        "fromLatex": "\\min(10, 8)",
+        "toLatex": "8",
+        "paletteRef": "p1",
+        "dropTargets": [
+          "\\min(10, 8)"
+        ],
+        "description": "A path's max flow is limited by its smallest-capacity edge: min(10,8)=8."
+      }
+    ]
+  },
+  {
+    "id": "graph-e-020",
+    "topic": "graphtheory",
+    "difficulty": "easy",
+    "chapter": 10,
+    "question": {
+      "latex": "\\text{Two independent paths: flow } 8 \\text{ and } 5",
+      "plain": "Two edge-disjoint paths from S to T carry flow 8 and 5 respectively. Find the total maximum flow."
+    },
+    "symbols": {},
+    "palette": [
+      {
+        "id": "p1",
+        "latex": "13",
+        "description": "max flow 13"
+      }
+    ],
+    "steps": [
+      {
+        "id": "s1",
+        "fromLatex": "8+5",
+        "toLatex": "13",
+        "paletteRef": "p1",
+        "dropTargets": [
+          "8+5"
+        ],
+        "description": "Since the paths share no edges, their flows simply add: 8+5=13."
+      }
+    ]
+  },
+  {
+    "id": "graph-m-019",
+    "topic": "graphtheory",
+    "difficulty": "medium",
+    "chapter": 10,
+    "question": {
+      "latex": "\\text{Path capacities: } 10, 5, 12",
+      "plain": "A single S-to-T path passes through three edges with capacities 10, 5, and 12. Find the bottleneck."
+    },
+    "symbols": {},
+    "palette": [
+      {
+        "id": "p1",
+        "latex": "5",
+        "description": "bottleneck 5"
+      }
+    ],
+    "steps": [
+      {
+        "id": "s1",
+        "fromLatex": "\\min(10,5,12)",
+        "toLatex": "5",
+        "paletteRef": "p1",
+        "dropTargets": [
+          "\\min(10,5,12)"
+        ],
+        "description": "The path's capacity is limited by its weakest edge: min(10,5,12)=5."
+      }
+    ]
+  },
+  {
+    "id": "graph-m-020",
+    "topic": "graphtheory",
+    "difficulty": "medium",
+    "chapter": 10,
+    "question": {
+      "latex": "\\text{Cut capacity: edges of capacity } 8 \\text{ and } 5 \\text{ cross the cut}",
+      "plain": "A cut separating S from T is crossed by two edges of capacity 8 and 5. Find the cut's total capacity."
+    },
+    "symbols": {},
+    "palette": [
+      {
+        "id": "p1",
+        "latex": "13",
+        "description": "cut capacity 13"
+      }
+    ],
+    "steps": [
+      {
+        "id": "s1",
+        "fromLatex": "8+5",
+        "toLatex": "13",
+        "paletteRef": "p1",
+        "dropTargets": [
+          "8+5"
+        ],
+        "description": "A cut's capacity is the sum of the capacities of every edge crossing it: 8+5=13."
+      }
+    ]
+  },
+  {
+    "id": "graph-h-019",
+    "topic": "graphtheory",
+    "difficulty": "hard",
+    "chapter": 10,
+    "question": {
+      "latex": "\\text{Routes: } S{\\to}A{\\to}T \\text{ cap } \\min(10,8); \\quad S{\\to}B{\\to}T \\text{ cap } \\min(5,7)",
+      "plain": "A flow network has two edge-disjoint routes: S-A-T with capacities 10 and 8, and S-B-T with capacities 5 and 7. Find each route's bottleneck, then the total max flow."
+    },
+    "symbols": {},
+    "palette": [
+      {
+        "id": "p1",
+        "latex": "8",
+        "description": "route 1 bottleneck 8"
+      },
+      {
+        "id": "p2",
+        "latex": "13",
+        "description": "max flow 13"
+      }
+    ],
+    "steps": [
+      {
+        "id": "s1",
+        "fromLatex": "\\min(10,8)",
+        "toLatex": "8",
+        "paletteRef": "p1",
+        "dropTargets": [
+          "\\min(10,8)"
+        ],
+        "description": "Route S-A-T bottleneck: min(10,8)=8."
+      },
+      {
+        "id": "s2",
+        "fromLatex": "8 + \\min(5,7)",
+        "toLatex": "13",
+        "paletteRef": "p2",
+        "dropTargets": [
+          "8 + \\min(5,7)"
+        ],
+        "description": "Route S-B-T bottleneck is min(5,7)=5; total max flow = 8+5=13, matching Max-Flow Min-Cut."
+      }
+    ]
+  },
+  {
+    "id": "graph-h-020",
+    "topic": "graphtheory",
+    "difficulty": "hard",
+    "chapter": 10,
+    "question": {
+      "latex": "\\text{Min cut candidates: } 8{+}5=13 \\text{ vs } 10{+}7=17",
+      "plain": "Two candidate cuts separating S from T have total capacities 8+5=13 and 10+7=17. By the Max-Flow Min-Cut theorem, find the actual max flow (the smaller cut)."
+    },
+    "symbols": {},
+    "palette": [
+      {
+        "id": "p1",
+        "latex": "13",
+        "description": "13"
+      },
+      {
+        "id": "p2",
+        "latex": "4",
+        "description": "difference 4"
+      }
+    ],
+    "steps": [
+      {
+        "id": "s1",
+        "fromLatex": "\\min(13, 17)",
+        "toLatex": "13",
+        "paletteRef": "p1",
+        "dropTargets": [
+          "\\min(13, 17)"
+        ],
+        "description": "Max flow equals the minimum cut capacity: min(13,17)=13 — the smaller cut is the true bottleneck."
+      },
+      {
+        "id": "s2",
+        "fromLatex": "17-13",
+        "toLatex": "4",
+        "paletteRef": "p2",
+        "dropTargets": [
+          "17-13"
+        ],
+        "description": "The larger cut exceeds the true min cut by 17-13=4, confirming it isn't the bottleneck."
+      }
+    ]
+  },
+  {
+    "id": "graph-e-021",
+    "topic": "graphtheory",
+    "difficulty": "easy",
+    "chapter": 11,
+    "question": {
+      "latex": "\\text{Input layer: 4 nodes. Hidden layer: 6 nodes, fully connected}",
+      "plain": "A fully connected layer has 4 input nodes and 6 hidden nodes, every input wired to every hidden node. Find the number of edges."
+    },
+    "symbols": {},
+    "palette": [
+      {
+        "id": "p1",
+        "latex": "24",
+        "description": "24 edges"
+      }
+    ],
+    "steps": [
+      {
+        "id": "s1",
+        "fromLatex": "4 \\times 6",
+        "toLatex": "24",
+        "paletteRef": "p1",
+        "dropTargets": [
+          "4 \\times 6"
+        ],
+        "description": "A fully connected layer has one edge per (input, hidden) pair: 4×6=24."
+      }
+    ]
+  },
+  {
+    "id": "graph-e-022",
+    "topic": "graphtheory",
+    "difficulty": "easy",
+    "chapter": 11,
+    "question": {
+      "latex": "\\text{Hidden layer: 6 nodes. Output layer: 1 node}",
+      "plain": "A fully connected hidden-to-output layer has 6 hidden nodes and 1 output node. Find the number of edges."
+    },
+    "symbols": {},
+    "palette": [
+      {
+        "id": "p1",
+        "latex": "6",
+        "description": "6 edges"
+      }
+    ],
+    "steps": [
+      {
+        "id": "s1",
+        "fromLatex": "6 \\times 1",
+        "toLatex": "6",
+        "paletteRef": "p1",
+        "dropTargets": [
+          "6 \\times 1"
+        ],
+        "description": "Every hidden node connects to the single output: 6×1=6 edges."
+      }
+    ]
+  },
+  {
+    "id": "graph-m-021",
+    "topic": "graphtheory",
+    "difficulty": "medium",
+    "chapter": 11,
+    "question": {
+      "latex": "\\text{2-layer network: } 4{\\times}6 \\text{ then } 6{\\times}1 \\text{ edges}",
+      "plain": "A small feedforward network has an input-to-hidden layer with 24 edges and a hidden-to-output layer with 6 edges. Find the total edge count in its computation graph."
+    },
+    "symbols": {},
+    "palette": [
+      {
+        "id": "p1",
+        "latex": "30",
+        "description": "30 edges"
+      }
+    ],
+    "steps": [
+      {
+        "id": "s1",
+        "fromLatex": "24+6",
+        "toLatex": "30",
+        "paletteRef": "p1",
+        "dropTargets": [
+          "24+6"
+        ],
+        "description": "Total edges in the computation graph = sum across all fully connected layers: 24+6=30."
+      }
+    ]
+  },
+  {
+    "id": "graph-m-022",
+    "topic": "graphtheory",
+    "difficulty": "medium",
+    "chapter": 11,
+    "question": {
+      "latex": "\\text{GNN: 2-hop neighborhood, each node has 3 neighbors}",
+      "plain": "In a GNN, each node has 3 direct neighbors. After 2 rounds of message passing, information can reach neighbors of neighbors. Estimate the 2-hop reachable count (allowing overlap) as neighbors-of-neighbors per node."
+    },
+    "symbols": {},
+    "palette": [
+      {
+        "id": "p1",
+        "latex": "9",
+        "description": "9"
+      }
+    ],
+    "steps": [
+      {
+        "id": "s1",
+        "fromLatex": "3 \\times 3",
+        "toLatex": "9",
+        "paletteRef": "p1",
+        "dropTargets": [
+          "3 \\times 3"
+        ],
+        "description": "Each of the 3 one-hop neighbors contributes up to 3 more, giving an upper bound of 3×3=9 two-hop paths (some vertices may repeat)."
+      }
+    ]
+  },
+  {
+    "id": "graph-h-021",
+    "topic": "graphtheory",
+    "difficulty": "hard",
+    "chapter": 11,
+    "question": {
+      "latex": "\\text{3-layer network: } 4{\\times}6, \\text{ then } 6{\\times}5, \\text{ then } 5{\\times}1",
+      "plain": "A 3-layer feedforward network has layer sizes 4, 6, 5, 1. Find the edges between the first two layers, then the total edges across all three fully connected layers."
+    },
+    "symbols": {},
+    "palette": [
+      {
+        "id": "p1",
+        "latex": "24",
+        "description": "24 edges (layer 1-2)"
+      },
+      {
+        "id": "p2",
+        "latex": "59",
+        "description": "59 total edges"
+      }
+    ],
+    "steps": [
+      {
+        "id": "s1",
+        "fromLatex": "4 \\times 6",
+        "toLatex": "24",
+        "paletteRef": "p1",
+        "dropTargets": [
+          "4 \\times 6"
+        ],
+        "description": "Input-to-hidden1: 4×6=24 edges."
+      },
+      {
+        "id": "s2",
+        "fromLatex": "24 + (6 \\times 5) + (5 \\times 1)",
+        "toLatex": "59",
+        "paletteRef": "p2",
+        "dropTargets": [
+          "24 + (6 \\times 5) + (5 \\times 1)"
+        ],
+        "description": "Add hidden1-to-hidden2 (6×5=30) and hidden2-to-output (5×1=5): 24+30+5=59 total edges."
+      }
+    ]
+  },
+  {
+    "id": "graph-h-022",
+    "topic": "graphtheory",
+    "difficulty": "hard",
+    "chapter": 11,
+    "question": {
+      "latex": "\\text{Transformer: 8 tokens, full attention graph (complete graph)}",
+      "plain": "A Transformer's attention mechanism connects every one of 8 tokens to every other token — a complete graph K8. Find the number of attention edges, then compare to a GNN using only 2 neighbors per token (16 edges, directed)."
+    },
+    "symbols": {},
+    "palette": [
+      {
+        "id": "p1",
+        "latex": "28",
+        "description": "28 edges"
+      },
+      {
+        "id": "p2",
+        "latex": "12",
+        "description": "12 more edges"
+      }
+    ],
+    "steps": [
+      {
+        "id": "s1",
+        "fromLatex": "(8 \\times 7)/2",
+        "toLatex": "28",
+        "paletteRef": "p1",
+        "dropTargets": [
+          "(8 \\times 7)/2"
+        ],
+        "description": "K8 has (8×7)/2=28 undirected edges — every pair of the 8 tokens attends to each other."
+      },
+      {
+        "id": "s2",
+        "fromLatex": "28 - 16",
+        "toLatex": "12",
+        "paletteRef": "p2",
+        "dropTargets": [
+          "28 - 16"
+        ],
+        "description": "Full attention (28 edges) has 28-16=12 more connections than the sparser 2-neighbor GNN graph (16 directed edges) — full attention scales quadratically, sparse GNNs don't."
+      }
+    ]
+  }
+]

@@ -1783,7 +1783,15 @@
       "latex": "X \\perp Y. \\quad E(X)=3,\\; E(Y)=5,\\; Var(X)=4,\\; Var(Y)=9.",
       "plain": "X and Y are independent. Find E(X+Y) and Var(X+Y)."
     },
-    "symbols": {},
+    "symbols": {
+      "X": "Random variable X",
+      "Y": "Random variable Y",
+      "E": "Expected value operator — the long-run average outcome",
+      "+": "Addition — sums directly here because expectation is linear (and variance adds too, since X and Y are independent)",
+      "(": "Open parenthesis — groups the random variable that E(...) or Var(...) is being applied to",
+      ")": "Close parenthesis — closes the grouped random variable for E(...) or Var(...)",
+      "⊥": "Independent — knowing one variable gives no information about the other"
+    },
     "palette": [
       {
         "id": "p1",

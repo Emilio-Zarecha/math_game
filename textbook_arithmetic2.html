@@ -1,0 +1,1078 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Intermediate Arithmetic — Math Game Textbook</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css" />
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
+          onload="renderMathInElement(document.body, {
+            delimiters: [{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}]
+          })"></script>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root { --bg:#0d0d1a; --surface:#151528; --panel:#1c1c35; --border:#2e2e55; --accent:#5c8aff; --correct:#3ecf8e; --hint:#ffb830; --text:#e0e0f0; --muted:#7070a0; }
+    body { background:var(--bg); color:var(--text); font-family:system-ui,sans-serif; min-height:100vh; padding:48px 24px 80px; display:flex; flex-direction:column; align-items:center; }
+    .page { width:100%; max-width:820px; }
+    header { display:flex; align-items:baseline; gap:16px; margin-bottom:12px; }
+    header h1 { font-size:1.5rem; font-weight:700; letter-spacing:.12em; text-transform:uppercase; color:var(--accent); }
+    header a { font-size:0.85rem; color:var(--muted); text-decoration:none; }
+    header a:hover { color:var(--accent); }
+    .subtitle { font-size:0.75rem; color:var(--muted); margin-bottom:36px; }
+    .subtitle a { color:var(--muted); }
+    .subtitle a:hover { color:var(--accent); }
+    nav { background:var(--surface); border:1px solid var(--border); border-radius:12px; padding:24px 32px; margin-bottom:32px; }
+    nav h2 { font-size:0.7rem; letter-spacing:.18em; text-transform:uppercase; color:var(--hint); margin-bottom:16px; }
+    nav ol { padding-left:20px; display:grid; grid-template-columns:1fr 1fr; gap:6px 32px; }
+    nav li { font-size:0.9rem; }
+    nav a { color:var(--accent); text-decoration:none; }
+    nav a:hover { text-decoration:underline; }
+    section { background:var(--surface); border:1px solid var(--border); border-radius:12px; padding:32px 36px; margin-bottom:24px; scroll-margin-top:24px; }
+    section h3 { font-size:1.05rem; font-weight:700; color:var(--accent); margin-bottom:6px; }
+    .chapter-num { font-size:0.7rem; letter-spacing:.14em; text-transform:uppercase; color:var(--muted); margin-bottom:14px; }
+    p { line-height:1.8; color:var(--text); font-size:0.95rem; margin-bottom:14px; }
+    p:last-child { margin-bottom:0; }
+    .formula { background:var(--panel); border:1px solid var(--border); border-left:3px solid var(--accent); border-radius:8px; padding:14px 20px; margin:16px 0; }
+    .formula .label { font-size:0.7rem; letter-spacing:.14em; text-transform:uppercase; color:var(--hint); margin-bottom:8px; }
+    .formula p { margin-bottom:0; font-size:0.9rem; line-height:1.9; }
+    .example { background:var(--panel); border:1px solid var(--border); border-left:3px solid var(--correct); border-radius:8px; padding:14px 20px; margin:16px 0; }
+    .example .label { font-size:0.7rem; letter-spacing:.14em; text-transform:uppercase; color:var(--correct); margin-bottom:10px; }
+    .example-step { display:flex; align-items:baseline; gap:12px; padding:4px 0; font-size:0.92rem; line-height:1.7; }
+    .example-step .why { color:var(--muted); font-size:0.82rem; min-width:200px; }
+    .key { color:var(--hint); font-weight:600; }
+    .back { display:inline-block; margin-top:36px; padding:10px 24px; background:var(--accent); color:#fff; border-radius:8px; text-decoration:none; font-size:0.9rem; font-weight:600; }
+    .back:hover { opacity:0.85; }
+    @media (max-width:600px) { nav ol { grid-template-columns:1fr; } section { padding:24px 20px; } .example-step { flex-direction:column; gap:2px; } }
+    .toc-back { text-align: right; margin-top: 1.5rem; padding-top: 0.9rem;
+                border-top: 1px solid var(--panel, var(--border)); }
+    .toc-back a { color: var(--muted); font-size: 0.82rem; text-decoration: none;
+                  letter-spacing: 0.03em; }
+    .toc-back a:hover { color: var(--accent); }
+
+    [data-theme="light"] {
+      --bg:      #f5f0e4;
+      --surface: #faf7ee;
+      --panel:   #ede8d8;
+      --border:  #ccc6b4;
+      --text:    #18140c;
+      --muted:   #3e3c60;
+      --accent:  #2858c8;
+      --correct: #115238;
+      --hint:    #6e4a00;
+      --wrong:   #cc2040;
+    }
+    [data-theme="light"] section h3 { color: #18140c; }
+    [data-theme="light"] .chapter-num { color: #3e3c60; }
+  </style>
+  <script>(function(){var t=localStorage.getItem('math-theme')||((window.matchMedia&&window.matchMedia('(prefers-color-scheme:light)').matches)?'light':'dark');document.documentElement.setAttribute('data-theme',t);}());</script>
+</head>
+<body>
+<div class="page">
+
+  <header>
+    <h1>Intermediate Arithmetic</h1>
+    <a href="index.html">← Back to game</a>
+  </header>
+  <p class="subtitle">
+    Adapted from <a href="https://openstax.org/details/books/prealgebra-2e" target="_blank">OpenStax Prealgebra 2e</a>
+    (CC BY 4.0).
+  </p>
+
+  <nav id="toc">
+    <h2>Contents</h2>
+    <ol>
+      <li><a href="#frac-ops">Fraction Operations</a></li>
+      <li><a href="#mixed">Mixed Numbers</a></li>
+      <li><a href="#rates">Ratios, Rates &amp; Proportions</a></li>
+      <li><a href="#percent-apps">Percent Applications</a></li>
+      <li><a href="#integer-ops">Integer Operations</a></li>
+      <li><a href="#order-ops">Order of Operations</a></li>
+      <li><a href="#divisibility">Divisibility Rules &amp; Factors</a></li>
+      <li><a href="#estimation">Estimation &amp; Rounding</a></li>
+      <li><a href="#averages">Mean, Median, Mode, Range</a></li>
+      <li><a href="#conversion">Unit Conversion</a></li>
+    </ol>
+  </nav>
+
+  <!-- ── 1. Fraction Operations ──────────────────────────────────────── -->
+  <section class="chapter" id="frac-ops">
+    <div class="chapter-num">Chapter 1</div>
+    <h3>Fraction Operations</h3>
+
+    <p>
+      A fraction represents a part of a whole. The <span class="key">numerator</span> (top)
+      counts the parts you have, and the <span class="key">denominator</span> (bottom) tells
+      how many equal parts make one whole. Adding or subtracting fractions requires a
+      <span class="key">least common denominator (LCD)</span> — the smallest number that
+      every denominator divides into evenly. Once fractions share the same denominator,
+      add or subtract numerators directly and keep the denominator unchanged. Always reduce
+      the result to lowest terms by dividing numerator and denominator by their GCF.
+    </p>
+
+    <p>
+      Multiplying fractions is more forgiving than addition: simply multiply numerators
+      together and denominators together. You can often <span class="key">cross-cancel</span>
+      shared factors before multiplying to keep the numbers small. Dividing by a fraction
+      means multiplying by its <span class="key">reciprocal</span> — flip the divisor and
+      proceed as multiplication. A <span class="key">complex fraction</span> is one whose
+      numerator or denominator (or both) contains a fraction; treat the main bar as division
+      and simplify each part before combining.
+    </p>
+
+    <p>
+      A key skill is finding the LCD quickly. The LCD equals the LCM of all denominators.
+      For small denominators, listing multiples works; for larger ones, use prime
+      factorization and take each prime at its highest power. Fraction fluency built here
+      pays dividends throughout algebra, since every rational expression obeys the same rules.
+    </p>
+
+    <div class="formula">
+      <div class="label">Key Formulas — Fraction Operations</div>
+      <p>
+        Same denominator: $\dfrac{a}{c} \pm \dfrac{b}{c} = \dfrac{a \pm b}{c}$<br>
+        Different denominators: convert to LCD first, then add/subtract numerators.<br>
+        Multiply: $\dfrac{a}{b} \times \dfrac{c}{d} = \dfrac{ac}{bd}$<br>
+        Divide: $\dfrac{a}{b} \div \dfrac{c}{d} = \dfrac{a}{b} \times \dfrac{d}{c} = \dfrac{ad}{bc}$
+      </p>
+    </div>
+
+    <div class="example">
+      <div class="label">Example 1 — Adding Like Fractions: $\tfrac{3}{8}+\tfrac{5}{8}$</div>
+      <div class="example-step">
+        <span>$\dfrac{3}{8} + \dfrac{5}{8}$</span>
+        <span class="why">Same denominator — add numerators directly</span>
+      </div>
+      <div class="example-step">
+        <span>$= \dfrac{3+5}{8} = \dfrac{8}{8}$</span>
+        <span class="why">Sum the numerators; keep denominator 8</span>
+      </div>
+      <div class="example-step">
+        <span>$= 1$</span>
+        <span class="why">$\frac{8}{8} = 1$; result is a whole number</span>
+      </div>
+    </div>
+
+    <div class="example">
+      <div class="label">Example 2 — Adding Unlike Fractions (LCD): $\tfrac{2}{3}+\tfrac{1}{4}$</div>
+      <div class="example-step">
+        <span>$\dfrac{2}{3} + \dfrac{1}{4}$</span>
+        <span class="why">Denominators differ — must find LCD first</span>
+      </div>
+      <div class="example-step">
+        <span>Multiples of 3: $3,6,9,12,\ldots$; multiples of 4: $4,8,12,\ldots$</span>
+        <span class="why">List multiples until you find a common one</span>
+      </div>
+      <div class="example-step">
+        <span>$\text{LCD}(3,4) = 12$</span>
+        <span class="why">12 is the smallest shared multiple</span>
+      </div>
+      <div class="example-step">
+        <span>$\dfrac{2}{3} = \dfrac{8}{12}$, $\quad \dfrac{1}{4} = \dfrac{3}{12}$</span>
+        <span class="why">Multiply top and bottom of each fraction by the same factor</span>
+      </div>
+      <div class="example-step">
+        <span>$\dfrac{8}{12} + \dfrac{3}{12} = \dfrac{11}{12}$</span>
+        <span class="why">Add numerators; denominator stays 12. Cannot reduce further.</span>
+      </div>
+    </div>
+
+    <div class="example">
+      <div class="label">Example 3 — Dividing Fractions: $\tfrac{5}{6} \div \tfrac{5}{9}$</div>
+      <div class="example-step">
+        <span>$\dfrac{5}{6} \div \dfrac{5}{9}$</span>
+        <span class="why">Division: multiply by the reciprocal of the divisor</span>
+      </div>
+      <div class="example-step">
+        <span>$= \dfrac{5}{6} \times \dfrac{9}{5}$</span>
+        <span class="why">Flip $\frac{5}{9}$ to get reciprocal $\frac{9}{5}$</span>
+      </div>
+      <div class="example-step">
+        <span>$= \dfrac{\cancel{5}}{6} \times \dfrac{9}{\cancel{5}} = \dfrac{9}{6}$</span>
+        <span class="why">Cross-cancel the 5s before multiplying</span>
+      </div>
+      <div class="example-step">
+        <span>$= \dfrac{3}{2}$</span>
+        <span class="why">Reduce $\frac{9}{6}$ by dividing numerator and denominator by GCF 3</span>
+      </div>
+    </div>
+
+    <p class="toc-back"><a href="#toc">↑ Back to contents</a></p>
+  </section>
+
+  <!-- ── 2. Mixed Numbers ───────────────────────────────────────────── -->
+  <section class="chapter" id="mixed">
+    <div class="chapter-num">Chapter 2</div>
+    <h3>Mixed Numbers</h3>
+
+    <p>
+      A <span class="key">mixed number</span> combines a whole-number part and a proper
+      fraction part, written together: $2\tfrac{3}{4}$ means two wholes plus three-quarters.
+      Mixed numbers arise naturally whenever a quantity doesn't fit into neat whole units —
+      $1\tfrac{1}{2}$ cups of flour, $3\tfrac{3}{8}$ inches. They are entirely equivalent
+      to <span class="key">improper fractions</span> (where the numerator is greater than or
+      equal to the denominator), and converting between the two forms is a foundational skill.
+    </p>
+
+    <p>
+      To add or subtract mixed numbers, work with the whole parts and fraction parts
+      separately, then combine. When the fraction being subtracted is larger than the fraction
+      you're subtracting from, you must <span class="key">borrow</span> 1 from the whole-number
+      part: rewrite that 1 as $\frac{d}{d}$ (where $d$ is the common denominator) and add it
+      to the existing fraction numerator before subtracting. This is analogous to regrouping
+      in whole-number subtraction.
+    </p>
+
+    <p>
+      For multiplication and division, always convert mixed numbers to improper fractions
+      first. To convert: multiply the whole number by the denominator, add the numerator,
+      place that sum over the original denominator. After computing, convert back to a mixed
+      number if appropriate: divide numerator by denominator, the quotient is the whole part,
+      and the remainder becomes the new numerator. Fully simplify the fraction part.
+    </p>
+
+    <div class="formula">
+      <div class="label">Key Formulas — Mixed Numbers</div>
+      <p>
+        To improper fraction: $a\dfrac{b}{c} = \dfrac{a \cdot c + b}{c}$<br>
+        Back to mixed number: $\dfrac{n}{d} \;\Rightarrow\; \left\lfloor \dfrac{n}{d} \right\rfloor \dfrac{n \bmod d}{d}$<br>
+        Borrowing: $n\dfrac{p}{d} = (n-1)\dfrac{p+d}{d}$ (when $p &lt; $ the fraction being subtracted)
+      </p>
+    </div>
+
+    <div class="example">
+      <div class="label">Example 1 — Adding Mixed Numbers: $2\tfrac{3}{4}+1\tfrac{5}{8}$</div>
+      <div class="example-step">
+        <span>$2\tfrac{3}{4} + 1\tfrac{5}{8}$</span>
+        <span class="why">Add whole parts and fraction parts separately</span>
+      </div>
+      <div class="example-step">
+        <span>$\text{LCD}(4,8)=8$; $\;\tfrac{3}{4} = \tfrac{6}{8}$</span>
+        <span class="why">Convert $\frac{3}{4}$ to eighths so denominators match</span>
+      </div>
+      <div class="example-step">
+        <span>$(2+1)+\!\left(\tfrac{6}{8}+\tfrac{5}{8}\right) = 3+\tfrac{11}{8}$</span>
+        <span class="why">Fraction sum exceeds 1 — need to carry over</span>
+      </div>
+      <div class="example-step">
+        <span>$= 3 + 1\tfrac{3}{8} = 4\tfrac{3}{8}$</span>
+        <span class="why">$\frac{11}{8} = 1\frac{3}{8}$; add the 1 to the whole part</span>
+      </div>
+    </div>
+
+    <div class="example">
+      <div class="label">Example 2 — Subtracting with Borrowing: $5\tfrac{1}{3}-2\tfrac{3}{4}$</div>
+      <div class="example-step">
+        <span>$5\tfrac{1}{3} - 2\tfrac{3}{4}$</span>
+        <span class="why">Find LCD$(3,4)=12$ and convert fractions</span>
+      </div>
+      <div class="example-step">
+        <span>$5\tfrac{4}{12} - 2\tfrac{9}{12}$</span>
+        <span class="why">$\frac{1}{3}=\frac{4}{12}$; $\frac{3}{4}=\frac{9}{12}$</span>
+      </div>
+      <div class="example-step">
+        <span>$\tfrac{4}{12} &lt; \tfrac{9}{12}$ — must borrow</span>
+        <span class="why">Can't subtract a larger fraction from a smaller one</span>
+      </div>
+      <div class="example-step">
+        <span>$= 4\tfrac{16}{12} - 2\tfrac{9}{12}$</span>
+        <span class="why">Borrow 1 from 5: $5\frac{4}{12} = 4\frac{4+12}{12} = 4\frac{16}{12}$</span>
+      </div>
+      <div class="example-step">
+        <span>$= 2\tfrac{7}{12}$</span>
+        <span class="why">Subtract whole parts $(4-2=2)$ and fractions $(\frac{16}{12}-\frac{9}{12}=\frac{7}{12})$</span>
+      </div>
+    </div>
+
+    <div class="example">
+      <div class="label">Example 3 — Dividing Mixed Numbers: $4\tfrac{2}{5} \div 1\tfrac{1}{3}$</div>
+      <div class="example-step">
+        <span>$4\tfrac{2}{5} \div 1\tfrac{1}{3}$</span>
+        <span class="why">Convert both to improper fractions before dividing</span>
+      </div>
+      <div class="example-step">
+        <span>$4\tfrac{2}{5} = \tfrac{4 \cdot 5+2}{5} = \tfrac{22}{5}$</span>
+        <span class="why">$(4 \times 5)+2 = 22$; place over 5</span>
+      </div>
+      <div class="example-step">
+        <span>$1\tfrac{1}{3} = \tfrac{1 \cdot 3+1}{3} = \tfrac{4}{3}$</span>
+        <span class="why">$(1 \times 3)+1 = 4$; place over 3</span>
+      </div>
+      <div class="example-step">
+        <span>$\tfrac{22}{5} \div \tfrac{4}{3} = \tfrac{22}{5} \times \tfrac{3}{4} = \tfrac{66}{20}$</span>
+        <span class="why">Multiply by reciprocal $\frac{3}{4}$</span>
+      </div>
+      <div class="example-step">
+        <span>$= \tfrac{33}{10} = 3\tfrac{3}{10}$</span>
+        <span class="why">Reduce by GCF 2; $33 \div 10 = 3$ remainder $3$</span>
+      </div>
+    </div>
+
+    <p class="toc-back"><a href="#toc">↑ Back to contents</a></p>
+  </section>
+
+  <!-- ── 3. Ratios, Rates & Proportions ────────────────────────────── -->
+  <section class="chapter" id="rates">
+    <div class="chapter-num">Chapter 3</div>
+    <h3>Ratios, Rates &amp; Proportions</h3>
+
+    <p>
+      A <span class="key">ratio</span> compares two quantities of the same kind and can be
+      written as a fraction, with a colon ($a{:}b$), or with the word "to." Ratios are
+      dimensionless — they describe relative size, not absolute size. A <span class="key">rate</span>
+      compares two quantities of different kinds, such as miles per hour, dollars per pound,
+      or calories per serving. When the denominator of a rate simplifies to 1, it is called
+      a <span class="key">unit rate</span>, which is the most convenient form for comparisons.
+    </p>
+
+    <p>
+      A <span class="key">proportion</span> asserts that two ratios are equal:
+      $\frac{a}{b} = \frac{c}{d}$. When one of the four values is unknown, you can find it
+      by <span class="key">cross-multiplying</span>: set the product of the means equal to
+      the product of the extremes ($ad = bc$), then solve for the variable. Before accepting
+      an answer, verify that it satisfies the original proportion and makes sense in context.
+    </p>
+
+    <p>
+      The <span class="key">distance formula</span> $d = rt$ is a proportion disguised as a
+      formula. Any two of the three quantities determine the third: $r = d/t$ and $t = d/r$.
+      Temperature conversion between Celsius and Fahrenheit uses a linear formula that
+      combines a ratio (the $\frac{9}{5}$ scaling) with a shift ($+32$). Memorizing
+      $25°\text{C} = 77°\text{F}$ and $0°\text{C} = 32°\text{F}$ provides useful anchors.
+    </p>
+
+    <div class="formula">
+      <div class="label">Key Formulas — Rates &amp; Proportions</div>
+      <p>
+        Unit rate: simplify ratio so the denominator equals 1.<br>
+        Cross-multiply: $\dfrac{a}{b} = \dfrac{c}{d} \;\Rightarrow\; ad = bc$<br>
+        Distance: $d = r \cdot t$ &nbsp; ($r = d/t$; $t = d/r$)<br>
+        Fahrenheit: $F = \dfrac{9}{5}C + 32$ &nbsp;·&nbsp; Celsius: $C = \dfrac{5}{9}(F - 32)$
+      </p>
+    </div>
+
+    <div class="example">
+      <div class="label">Example 1 — Unit Rate: 240 miles in 4 hours</div>
+      <div class="example-step">
+        <span>$r = \dfrac{d}{t} = \dfrac{240\text{ mi}}{4\text{ hr}}$</span>
+        <span class="why">Set up the distance formula solved for rate</span>
+      </div>
+      <div class="example-step">
+        <span>$= 60\text{ mph}$</span>
+        <span class="why">$240 \div 4 = 60$; the unit rate is 60 miles per hour</span>
+      </div>
+    </div>
+
+    <div class="example">
+      <div class="label">Example 2 — Solving a Proportion: $\tfrac{3}{5}=\tfrac{x}{40}$</div>
+      <div class="example-step">
+        <span>$\dfrac{3}{5} = \dfrac{x}{40}$</span>
+        <span class="why">One unknown — cross-multiply to solve</span>
+      </div>
+      <div class="example-step">
+        <span>$3 \times 40 = 5 \times x$</span>
+        <span class="why">Extremes $\times$ means: $ad = bc$</span>
+      </div>
+      <div class="example-step">
+        <span>$120 = 5x$</span>
+        <span class="why">Left side: $3 \times 40 = 120$</span>
+      </div>
+      <div class="example-step">
+        <span>$x = \dfrac{120}{5} = 24$</span>
+        <span class="why">Divide both sides by 5. Check: $\frac{3}{5} = \frac{24}{40}$ ✓</span>
+      </div>
+    </div>
+
+    <div class="example">
+      <div class="label">Example 3 — Temperature Conversion: $25°\text{C} \to °\text{F}$</div>
+      <div class="example-step">
+        <span>$F = \dfrac{9}{5}C + 32$</span>
+        <span class="why">Use the Celsius-to-Fahrenheit formula</span>
+      </div>
+      <div class="example-step">
+        <span>$= \dfrac{9}{5}(25) + 32$</span>
+        <span class="why">Substitute $C = 25$</span>
+      </div>
+      <div class="example-step">
+        <span>$= 45 + 32$</span>
+        <span class="why">$\frac{9}{5} \times 25 = \frac{225}{5} = 45$</span>
+      </div>
+      <div class="example-step">
+        <span>$= 77°\text{F}$</span>
+        <span class="why">25°C is a warm day at 77°F — a useful anchor to memorize</span>
+      </div>
+    </div>
+
+    <p class="toc-back"><a href="#toc">↑ Back to contents</a></p>
+  </section>
+
+  <!-- ── 4. Percent Applications ───────────────────────────────────── -->
+  <section class="chapter" id="percent-apps">
+    <div class="chapter-num">Chapter 4</div>
+    <h3>Percent Applications</h3>
+
+    <p>
+      <span class="key">Percent</span> means "per hundred" and is a ratio with an implied
+      denominator of 100. Converting a percent to a decimal: divide by 100 (shift the decimal
+      two places left). Converting a decimal to percent: multiply by 100. To find a percent
+      of a number, convert the percent to a decimal and multiply: $25\%$ of $80 = 0.25 \times 80 = 20$.
+      <span class="key">Percent change</span> expresses how much a quantity has grown or shrunk
+      relative to where it started — positive for an increase, negative for a decrease.
+    </p>
+
+    <p>
+      Retail math uses two direct applications. A <span class="key">markup</span> adds a
+      percentage of cost to the cost itself, giving the selling price:
+      selling price $= \text{cost} \times (1 + r)$.
+      A <span class="key">discount</span> reduces the original price by a percentage:
+      sale price $= \text{original} \times (1 - r)$.
+      <span class="key">Simple interest</span> calculates interest earned on a principal at
+      a fixed annual rate over time with the formula $I = Prt$, where $r$ is expressed as a
+      decimal and $t$ is in years.
+    </p>
+
+    <p>
+      The most common mistake in percent problems is confusing the original and the new value.
+      A <span class="key">reverse percent</span> problem gives you the final amount and asks
+      for the original. If a value after a 25% increase is $\$150$, divide by $1.25$, not
+      by $1.75$ or some other number. The structure is always: final $=$ original $\times$
+      factor, so original $=$ final $\div$ factor. Setting up the equation carefully before
+      computing prevents this error.
+    </p>
+
+    <div class="formula">
+      <div class="label">Key Formulas — Percent Applications</div>
+      <p>
+        Percent change: $\%\text{ change} = \dfrac{\text{new} - \text{original}}{\text{original}} \times 100$<br>
+        Markup: $\text{price} = \text{cost} \times (1 + r)$ &nbsp;·&nbsp;
+        Discount: $\text{price} = \text{original} \times (1 - r)$<br>
+        Simple interest: $I = P \cdot r \cdot t$ &nbsp;·&nbsp; Total: $A = P(1 + rt)$
+      </p>
+    </div>
+
+    <div class="example">
+      <div class="label">Example 1 — Percent Decrease: $80 \to 60$</div>
+      <div class="example-step">
+        <span>Original $= 80$; New $= 60$</span>
+        <span class="why">Price dropped — calculate the percent change</span>
+      </div>
+      <div class="example-step">
+        <span>$\%\text{ change} = \dfrac{60 - 80}{80} \times 100$</span>
+        <span class="why">Apply percent change formula; change = new $-$ original</span>
+      </div>
+      <div class="example-step">
+        <span>$= \dfrac{-20}{80} \times 100 = -25\%$</span>
+        <span class="why">Negative sign confirms a decrease; it dropped 25%</span>
+      </div>
+    </div>
+
+    <div class="example">
+      <div class="label">Example 2 — Markup: $\$120$ cost at $25\%$ markup</div>
+      <div class="example-step">
+        <span>$\text{Selling price} = 120 \times (1 + 0.25)$</span>
+        <span class="why">Multiply cost by $(1 + \text{markup rate})$</span>
+      </div>
+      <div class="example-step">
+        <span>$= 120 \times 1.25 = \$150$</span>
+        <span class="why">25% of $120 is $30; $120 + $30 = $150</span>
+      </div>
+    </div>
+
+    <div class="example">
+      <div class="label">Example 3 — Simple Interest: $P=\$500$, $r=4\%$, $t=3$ yr</div>
+      <div class="example-step">
+        <span>$I = P \cdot r \cdot t = 500 \times 0.04 \times 3$</span>
+        <span class="why">Convert rate to decimal: $4\% = 0.04$; apply $I = Prt$</span>
+      </div>
+      <div class="example-step">
+        <span>$= \$60$</span>
+        <span class="why">$500 \times 0.04 = \$20$ per year; $\$20 \times 3 = \$60$ total interest</span>
+      </div>
+      <div class="example-step">
+        <span>$A = P + I = 500 + 60 = \$560$</span>
+        <span class="why">Total amount = principal plus all interest earned</span>
+      </div>
+    </div>
+
+    <p class="toc-back"><a href="#toc">↑ Back to contents</a></p>
+  </section>
+
+  <!-- ── 5. Integer Operations ─────────────────────────────────────── -->
+  <section class="chapter" id="integer-ops">
+    <div class="chapter-num">Chapter 5</div>
+    <h3>Integer Operations</h3>
+
+    <p>
+      Integers extend the natural numbers to include negatives and zero:
+      $\ldots, -3, -2, -1, 0, 1, 2, 3, \ldots$. On the number line, positive integers lie
+      to the right of zero and negative integers lie to the left. The <span class="key">sign
+      rules</span> for multiplication and division are symmetric and easy to remember: same
+      signs yield a positive result, different signs yield a negative result. These rules
+      extend naturally to fractions and decimals.
+    </p>
+
+    <p>
+      Addition and subtraction of integers are most clearly understood on the number line.
+      Adding a positive number moves right; adding a negative number moves left. Subtracting
+      is always equivalent to adding the opposite: $a - b = a + (-b)$. This identity
+      eliminates subtraction as a separate operation — everything reduces to signed addition.
+      Multi-step problems benefit from explicit rewriting with this rule before computing.
+    </p>
+
+    <p>
+      <span class="key">Absolute value</span> $|a|$ gives the magnitude of $a$ — its
+      distance from zero — always a non-negative result. The expression $|a - b|$ represents
+      the distance between the points $a$ and $b$ on the number line, making it useful for
+      error bounds, differences in elevation or temperature, and any context where direction
+      doesn't matter and only the gap between two values counts.
+    </p>
+
+    <div class="formula">
+      <div class="label">Key Rules — Integer Operations</div>
+      <p>
+        Sign rules: $(+)(+)=+$; $(-)(-)=+$; $(+)(-)=-$; $(-)(+)=-$<br>
+        Subtraction: $a - b = a + (-b)$<br>
+        Absolute value: $|a| = a$ if $a \ge 0$; $|a| = -a$ if $a &lt; 0$<br>
+        Distance on number line: $|a - b|$ (always $\ge 0$)
+      </p>
+    </div>
+
+    <div class="example">
+      <div class="label">Example 1 — Multiplication: $(-3)\times(-4)$</div>
+      <div class="example-step">
+        <span>$(-3) \times (-4)$</span>
+        <span class="why">Two negative factors — apply sign rule</span>
+      </div>
+      <div class="example-step">
+        <span>Same signs $\Rightarrow$ positive</span>
+        <span class="why">Negative $\times$ negative always gives positive</span>
+      </div>
+      <div class="example-step">
+        <span>$= +12$</span>
+        <span class="why">$3 \times 4 = 12$; result is positive 12</span>
+      </div>
+    </div>
+
+    <div class="example">
+      <div class="label">Example 2 — Absolute Value as Distance: $|3-8|+|2-(-1)|$</div>
+      <div class="example-step">
+        <span>$|3 - 8| + |2 - (-1)|$</span>
+        <span class="why">Evaluate each absolute value separately</span>
+      </div>
+      <div class="example-step">
+        <span>$|3 - 8| = |-5| = 5$</span>
+        <span class="why">$3 - 8 = -5$; absolute value removes the sign</span>
+      </div>
+      <div class="example-step">
+        <span>$|2 - (-1)| = |2 + 1| = |3| = 3$</span>
+        <span class="why">Subtracting a negative: $2 - (-1) = 2 + 1 = 3$</span>
+      </div>
+      <div class="example-step">
+        <span>$5 + 3 = 8$</span>
+        <span class="why">Add the two distances</span>
+      </div>
+    </div>
+
+    <div class="example">
+      <div class="label">Example 3 — Adding Negative Fractions: $-\tfrac{3}{4}+(-1\tfrac{1}{2})$</div>
+      <div class="example-step">
+        <span>$-\dfrac{3}{4} + \left(-1\dfrac{1}{2}\right)$</span>
+        <span class="why">Both terms are negative; convert the mixed number first</span>
+      </div>
+      <div class="example-step">
+        <span>$-1\tfrac{1}{2} = -\tfrac{3}{2}$</span>
+        <span class="why">$(1 \times 2) + 1 = 3$; place over 2 and keep the negative</span>
+      </div>
+      <div class="example-step">
+        <span>$\text{LCD}(4,2) = 4$; $\;-\tfrac{3}{2} = -\tfrac{6}{4}$</span>
+        <span class="why">Convert $\frac{3}{2}$ to fourths</span>
+      </div>
+      <div class="example-step">
+        <span>$-\tfrac{3}{4} + \left(-\tfrac{6}{4}\right) = -\tfrac{9}{4} = -2\tfrac{1}{4}$</span>
+        <span class="why">Add numerators (both negative); convert to mixed number</span>
+      </div>
+    </div>
+
+    <p class="toc-back"><a href="#toc">↑ Back to contents</a></p>
+  </section>
+
+  <!-- ── 6. Order of Operations ────────────────────────────────────── -->
+  <section class="chapter" id="order-ops">
+    <div class="chapter-num">Chapter 6</div>
+    <h3>Order of Operations</h3>
+
+    <p>
+      <span class="key">PEMDAS</span> (Parentheses, Exponents, Multiplication/Division,
+      Addition/Subtraction) is the universal convention that ensures every arithmetic
+      expression has exactly one correct value. Without this agreement, $2 + 3 \times 4$
+      could equal either $20$ (add first) or $14$ (multiply first) depending on the reader.
+      With PEMDAS, multiplication wins and the answer is always $14$. Every calculator,
+      spreadsheet, and programming language follows the same rules.
+    </p>
+
+    <p>
+      Multiplication and division are at the same priority level and are evaluated strictly
+      left to right as they appear. Addition and subtraction share the lowest priority and
+      are also evaluated left to right. Nested parentheses are processed from the innermost
+      pair outward. Fraction bars act as grouping symbols — fully simplify numerator and
+      denominator independently before dividing. Exponents apply only to the base they are
+      directly written on; a negative sign without parentheses is not part of the base:
+      $-3^2 = -(3^2) = -9$, whereas $(-3)^2 = 9$.
+    </p>
+
+    <p>
+      The most frequent errors involve skipping exponents or evaluating left-to-right without
+      respecting priority. A reliable strategy: scan the entire expression for parentheses and
+      exponents, resolve those completely, then scan for multiplication and division, and
+      finally handle addition and subtraction. Writing out each step explicitly catches almost
+      every mistake.
+    </p>
+
+    <div class="formula">
+      <div class="label">Order of Operations — PEMDAS</div>
+      <p>
+        1. <strong>P</strong>arentheses — innermost first, work outward<br>
+        2. <strong>E</strong>xponents — left to right (stacked exponents right to left)<br>
+        3. <strong>M</strong>ultiplication &amp; <strong>D</strong>ivision — equal priority, left to right<br>
+        4. <strong>A</strong>ddition &amp; <strong>S</strong>ubtraction — equal priority, left to right
+      </p>
+    </div>
+
+    <div class="example">
+      <div class="label">Example 1 — Mixed Expression: $3\times(4+2^2)-5$</div>
+      <div class="example-step">
+        <span>$3 \times (4 + 2^2) - 5$</span>
+        <span class="why">Start inside parentheses; exponent before addition</span>
+      </div>
+      <div class="example-step">
+        <span>$= 3 \times (4 + 4) - 5$</span>
+        <span class="why">$2^2 = 4$ — exponent evaluated first inside parens</span>
+      </div>
+      <div class="example-step">
+        <span>$= 3 \times 8 - 5$</span>
+        <span class="why">$4 + 4 = 8$; parentheses resolved</span>
+      </div>
+      <div class="example-step">
+        <span>$= 24 - 5 = 19$</span>
+        <span class="why">Multiply before subtract: $3 \times 8 = 24$</span>
+      </div>
+    </div>
+
+    <div class="example">
+      <div class="label">Example 2 — Nested Expression: $(2^3+4)\times(6-2^2)\div 6$</div>
+      <div class="example-step">
+        <span>$(2^3 + 4) \times (6 - 2^2) \div 6$</span>
+        <span class="why">Two separate parenthesized groups — resolve each first</span>
+      </div>
+      <div class="example-step">
+        <span>$= (8 + 4) \times (6 - 4) \div 6$</span>
+        <span class="why">$2^3 = 8$; $2^2 = 4$ — exponents inside each group</span>
+      </div>
+      <div class="example-step">
+        <span>$= 12 \times 2 \div 6$</span>
+        <span class="why">$8+4=12$; $6-4=2$ — arithmetic inside each group</span>
+      </div>
+      <div class="example-step">
+        <span>$= 24 \div 6 = 4$</span>
+        <span class="why">Left to right: $12 \times 2 = 24$; then $24 \div 6 = 4$</span>
+      </div>
+    </div>
+
+    <p class="toc-back"><a href="#toc">↑ Back to contents</a></p>
+  </section>
+
+  <!-- ── 7. Divisibility Rules & Factors ───────────────────────────── -->
+  <section class="chapter" id="divisibility">
+    <div class="chapter-num">Chapter 7</div>
+    <h3>Divisibility Rules &amp; Factors</h3>
+
+    <p>
+      Divisibility rules are shortcuts that tell you — without performing long division —
+      whether a whole number is divisible by a small number. For example, to test for
+      divisibility by 3, add all the digits of the number; if that digit sum is divisible
+      by 3, so is the original. These shortcuts speed up fraction reduction, LCD finding,
+      and mental factoring of large numbers considerably.
+    </p>
+
+    <p>
+      Every whole number greater than 1 factors into primes in exactly one way (ignoring
+      order) — this is the <span class="key">Fundamental Theorem of Arithmetic</span>. The
+      <span class="key">Greatest Common Factor (GCF)</span> of two or more numbers is the
+      product of the prime factors they share, each taken at the lowest power it appears.
+      The <span class="key">Least Common Multiple (LCM)</span> uses the highest power of
+      every prime that appears across all the numbers. GCF is used to reduce fractions;
+      LCM gives the LCD needed to add or subtract them.
+    </p>
+
+    <p>
+      The identity $\text{GCF}(a,b) \times \text{LCM}(a,b) = a \times b$ links the two
+      concepts and provides a calculation shortcut. For three or more numbers, this identity
+      doesn't extend as simply, so it is best to use prime factorization directly. With
+      practice, prime factorization of numbers up to a few hundred can be done mentally.
+    </p>
+
+    <div class="formula">
+      <div class="label">Divisibility Rules and Factor Formulas</div>
+      <p>
+        <strong>÷2:</strong> last digit even &nbsp;·&nbsp;
+        <strong>÷3:</strong> digit sum $\div 3$ &nbsp;·&nbsp;
+        <strong>÷4:</strong> last two digits $\div 4$ &nbsp;·&nbsp;
+        <strong>÷5:</strong> ends in 0 or 5<br>
+        <strong>÷6:</strong> passes both ÷2 and ÷3 tests &nbsp;·&nbsp;
+        <strong>÷8:</strong> last three digits $\div 8$ &nbsp;·&nbsp;
+        <strong>÷9:</strong> digit sum $\div 9$ &nbsp;·&nbsp;
+        <strong>÷10:</strong> ends in 0<br>
+        GCF $\times$ LCM $= a \times b$ (two numbers)
+      </p>
+    </div>
+
+    <div class="example">
+      <div class="label">Example 1 — GCF by Prime Factorization: GCF(36, 48)</div>
+      <div class="example-step">
+        <span>$36 = 2^2 \times 3^2$</span>
+        <span class="why">$36 = 4 \times 9$; factor each completely</span>
+      </div>
+      <div class="example-step">
+        <span>$48 = 2^4 \times 3^1$</span>
+        <span class="why">$48 = 16 \times 3$</span>
+      </div>
+      <div class="example-step">
+        <span>Shared primes: $2$ and $3$; lowest powers: $2^2$ and $3^1$</span>
+        <span class="why">GCF takes the minimum exponent for each shared prime</span>
+      </div>
+      <div class="example-step">
+        <span>$\text{GCF}(36,48) = 4 \times 3 = 12$</span>
+        <span class="why">Both 36 and 48 are divisible by 12, and 12 is the largest such number</span>
+      </div>
+    </div>
+
+    <div class="example">
+      <div class="label">Example 2 — LCM of Three Numbers: LCM(6, 10, 15)</div>
+      <div class="example-step">
+        <span>$6 = 2 \cdot 3$; $\quad 10 = 2 \cdot 5$; $\quad 15 = 3 \cdot 5$</span>
+        <span class="why">Prime factorize each number</span>
+      </div>
+      <div class="example-step">
+        <span>Primes appearing: $2^1, 3^1, 5^1$</span>
+        <span class="why">Take each prime at its highest power across all three numbers</span>
+      </div>
+      <div class="example-step">
+        <span>$\text{LCM}(6,10,15) = 2 \times 3 \times 5 = 30$</span>
+        <span class="why">30 is the smallest number divisible by 6, 10, and 15</span>
+      </div>
+    </div>
+
+    <div class="example">
+      <div class="label">Example 3 — LCM(12, 18, 24)</div>
+      <div class="example-step">
+        <span>$12 = 2^2 \cdot 3$; $\quad 18 = 2 \cdot 3^2$; $\quad 24 = 2^3 \cdot 3$</span>
+        <span class="why">Prime factorize all three</span>
+      </div>
+      <div class="example-step">
+        <span>Highest powers: $2^3$ (from 24) and $3^2$ (from 18)</span>
+        <span class="why">LCM takes the maximum exponent for each prime</span>
+      </div>
+      <div class="example-step">
+        <span>$\text{LCM}(12,18,24) = 8 \times 9 = 72$</span>
+        <span class="why">72 is divisible by 12, 18, and 24 — and is the smallest such number</span>
+      </div>
+    </div>
+
+    <p class="toc-back"><a href="#toc">↑ Back to contents</a></p>
+  </section>
+
+  <!-- ── 8. Estimation & Rounding ──────────────────────────────────── -->
+  <section class="chapter" id="estimation">
+    <div class="chapter-num">Chapter 8</div>
+    <h3>Estimation &amp; Rounding</h3>
+
+    <p>
+      <span class="key">Rounding</span> replaces a number with a nearby value at a specified
+      level of precision. Identify the target place value, then inspect the digit one position
+      to the right: if that digit is 5 or greater, increase the target digit by 1 (round up);
+      if it is 4 or less, leave the target digit unchanged (round down). Replace all digits
+      to the right of the target with zeros (for integers) or drop them (after the decimal
+      point). Rounding is used constantly in measurements, finance, and scientific reporting.
+    </p>
+
+    <p>
+      <span class="key">Significant figures (sig figs)</span> express the precision of a
+      measurement. The rules: every non-zero digit is significant; zeros sandwiched between
+      non-zero digits are significant; trailing zeros after the decimal point are significant;
+      leading zeros are never significant. To round to $n$ significant figures, count from
+      the first non-zero digit and apply the standard rounding rule at the $n$-th position.
+      For example, $4.8763$ rounded to 3 sig figs: count $4$ (1st), $8$ (2nd), $7$ (3rd);
+      the next digit is $6 \ge 5$, so round up: $4.88$.
+    </p>
+
+    <p>
+      <span class="key">Front-end estimation</span> retains only the leading digit of each
+      number (treating the rest as zero) and adds those simplified values. This gives a rough
+      lower bound and is fast for checking order of magnitude. <span class="key">Compatible
+      numbers</span> adjusts each operand to a nearby number that is convenient to compute
+      mentally — for instance, rounding $382$ to $400$ and $519$ to $500$ to quickly estimate
+      a sum of $900$, which is very close to the exact answer of $901$.
+    </p>
+
+    <div class="formula">
+      <div class="label">Key Rounding Rules</div>
+      <p>
+        Round to place $p$: examine the digit at position $p+1$.<br>
+        If $\ge 5$: add 1 to position $p$. If $\le 4$: keep position $p$ unchanged.<br>
+        Sig figs: count from first non-zero digit; apply rounding at position $n$.<br>
+        Compatible numbers: adjust to nearby round values; compute mentally; compare.
+      </p>
+    </div>
+
+    <div class="example">
+      <div class="label">Example 1 — Rounding to 3 Significant Figures: $4.8763$</div>
+      <div class="example-step">
+        <span>$4.8763$ — round to 3 sig figs</span>
+        <span class="why">Count sig figs from the leftmost non-zero digit</span>
+      </div>
+      <div class="example-step">
+        <span>1st: $4$; 2nd: $8$; 3rd: $7$</span>
+        <span class="why">The 3rd significant figure is 7</span>
+      </div>
+      <div class="example-step">
+        <span>4th sig fig is $6 \ge 5$</span>
+        <span class="why">Round the 7 up to 8</span>
+      </div>
+      <div class="example-step">
+        <span>$4.8763 \approx 4.88$</span>
+        <span class="why">Drop all digits after the 3rd sig fig</span>
+      </div>
+    </div>
+
+    <div class="example">
+      <div class="label">Example 2 — Compatible Numbers Estimation: $382 + 519$</div>
+      <div class="example-step">
+        <span>$382 \approx 400$; $\quad 519 \approx 500$</span>
+        <span class="why">Round each to the nearest hundred for easy mental math</span>
+      </div>
+      <div class="example-step">
+        <span>$400 + 500 = 900$</span>
+        <span class="why">Quick mental addition</span>
+      </div>
+      <div class="example-step">
+        <span>Actual: $382 + 519 = 901$ — estimate is accurate to within 0.1%</span>
+        <span class="why">Compatible numbers gave an excellent estimate here</span>
+      </div>
+    </div>
+
+    <p class="toc-back"><a href="#toc">↑ Back to contents</a></p>
+  </section>
+
+  <!-- ── 9. Mean, Median, Mode, Range ──────────────────────────────── -->
+  <section class="chapter" id="averages">
+    <div class="chapter-num">Chapter 9</div>
+    <h3>Mean, Median, Mode, Range</h3>
+
+    <p>
+      Descriptive statistics summarize a set of numbers with a small number of representative
+      values. The <span class="key">mean</span> (arithmetic average) is the sum of all values
+      divided by the count. It accounts for every data point and is the most commonly reported
+      average, but it is sensitive to extreme outliers — a single very large value can pull the
+      mean far above what most data points suggest as "typical." The mean is best used when
+      data is roughly symmetric and has no extreme outliers.
+    </p>
+
+    <p>
+      The <span class="key">median</span> is the middle value of the sorted data set. With an
+      odd number of values, it is the value at the exact center position. With an even number,
+      it is the mean of the two central values. The median is resistant to outliers and is
+      preferred for reporting incomes, housing prices, and other skewed distributions. The
+      <span class="key">mode</span> is the most frequently occurring value; a set may have no
+      mode, one mode, or several modes. The <span class="key">range</span> (max $-$ min) is the
+      simplest measure of spread.
+    </p>
+
+    <p>
+      A <span class="key">weighted mean</span> assigns different importance (weights) to
+      different data values. Multiply each value by its weight, sum those products, then
+      divide by the sum of all weights. GPA calculations use credit hours as weights; graded
+      course assessments weight each category by its percentage of the total grade. When
+      all weights are equal, the weighted mean reduces to the ordinary arithmetic mean.
+    </p>
+
+    <div class="formula">
+      <div class="label">Key Formulas — Descriptive Statistics</div>
+      <p>
+        Mean: $\bar{x} = \dfrac{\sum x_i}{n}$<br>
+        Median: middle value of sorted data; if $n$ even, average the two center values<br>
+        Range: $\max - \min$<br>
+        Weighted mean: $\bar{x}_w = \dfrac{\sum w_i x_i}{\sum w_i}$
+      </p>
+    </div>
+
+    <div class="example">
+      <div class="label">Example 1 — Mean: $\{8, 12, 15, 9, 11\}$</div>
+      <div class="example-step">
+        <span>$\bar{x} = \dfrac{8+12+15+9+11}{5}$</span>
+        <span class="why">Sum all values; divide by the count (5)</span>
+      </div>
+      <div class="example-step">
+        <span>$= \dfrac{55}{5} = 11$</span>
+        <span class="why">The mean of the data set is 11</span>
+      </div>
+      <div class="example-step">
+        <span>Sorted: $8, 9, \mathbf{11}, 12, 15$ → Median $= 11$</span>
+        <span class="why">Middle value of 5 items is the 3rd: 11</span>
+      </div>
+      <div class="example-step">
+        <span>Range $= 15 - 8 = 7$</span>
+        <span class="why">Spread from lowest (8) to highest (15)</span>
+      </div>
+    </div>
+
+    <div class="example">
+      <div class="label">Example 2 — Median (Even Count): $\{5, 8, 11, 14, 17, 22\}$</div>
+      <div class="example-step">
+        <span>Data already sorted; $n = 6$ (even)</span>
+        <span class="why">With an even count, average the two middle values</span>
+      </div>
+      <div class="example-step">
+        <span>3rd value: $11$; 4th value: $14$</span>
+        <span class="why">Positions 3 and 4 are the central pair in a 6-item list</span>
+      </div>
+      <div class="example-step">
+        <span>Median $= \dfrac{11+14}{2} = \dfrac{25}{2} = 12.5$</span>
+        <span class="why">Average the two middle values</span>
+      </div>
+    </div>
+
+    <div class="example">
+      <div class="label">Example 3 — Weighted Mean: scores 70, 80, 90 with weights 1, 2, 3</div>
+      <div class="example-step">
+        <span>$\sum w_i x_i = 70(1) + 80(2) + 90(3)$</span>
+        <span class="why">Multiply each score by its weight</span>
+      </div>
+      <div class="example-step">
+        <span>$= 70 + 160 + 270 = 500$</span>
+        <span class="why">Sum the weighted values</span>
+      </div>
+      <div class="example-step">
+        <span>$\sum w_i = 1 + 2 + 3 = 6$</span>
+        <span class="why">Total weight</span>
+      </div>
+      <div class="example-step">
+        <span>$\bar{x}_w = \dfrac{500}{6} \approx 83.3$</span>
+        <span class="why">Higher-weighted high scores pull the mean above 80</span>
+      </div>
+    </div>
+
+    <p class="toc-back"><a href="#toc">↑ Back to contents</a></p>
+  </section>
+
+  <!-- ── 10. Unit Conversion ───────────────────────────────────────── -->
+  <section class="chapter" id="conversion">
+    <div class="chapter-num">Chapter 10</div>
+    <h3>Unit Conversion</h3>
+
+    <p>
+      <span class="key">Dimensional analysis</span> (also called the factor-label method)
+      converts between units by multiplying by conversion factors written as fractions equal
+      to 1. Because the numerator and denominator of a conversion factor represent the same
+      physical quantity in different units, multiplying does not change the underlying value —
+      only the label changes. Units cancel the same way common factors cancel in fractions.
+      Setting up the chain of conversion fractions before computing prevents errors.
+    </p>
+
+    <p>
+      The <span class="key">metric system</span> (SI) is built on powers of 10, making
+      conversions a matter of moving the decimal point. Key prefixes to memorize:
+      kilo- ($\times 10^3$), hecto- ($\times 10^2$), centi- ($\div 10^2$), milli-
+      ($\div 10^3$), micro- ($\div 10^6$). The U.S. customary (imperial) system requires
+      memorized conversion facts: $12\text{ in} = 1\text{ ft}$; $3\text{ ft} = 1\text{ yd}$;
+      $5280\text{ ft} = 1\text{ mi}$; $16\text{ oz} = 1\text{ lb}$; $4\text{ qt} = 1\text{ gal}$.
+    </p>
+
+    <p>
+      Speed conversions between miles per hour and feet per second are a common multi-step
+      application. Since $1\text{ mi} = 5280\text{ ft}$ and $1\text{ hr} = 3600\text{ s}$,
+      the multiplicative factor is $\frac{5280}{3600} = \frac{22}{15}$, so
+      $60\text{ mph} \times \frac{22}{15} = 88\text{ ft/s}$ exactly. Temperature conversion
+      uses the formula $F = \frac{9}{5}C + 32$, combining both a ratio and an offset —
+      dimensional analysis alone does not apply to temperature because of that additive shift.
+    </p>
+
+    <div class="formula">
+      <div class="label">Key Conversion Facts</div>
+      <p>
+        Metric: $1\text{ km} = 1000\text{ m}$; $1\text{ m} = 100\text{ cm}$; $1\text{ cm} = 10\text{ mm}$<br>
+        Imperial length: $12\text{ in} = 1\text{ ft}$; $5280\text{ ft} = 1\text{ mi}$<br>
+        Time: $60\text{ min} = 1\text{ hr}$; $1\text{ hr} = 3600\text{ s}$<br>
+        Speed: $1\text{ mph} = \dfrac{22}{15}\text{ ft/s}$ &nbsp;·&nbsp;
+        Temp: $F = \dfrac{9}{5}C + 32$; $\;C = \dfrac{5}{9}(F-32)$
+      </p>
+    </div>
+
+    <div class="example">
+      <div class="label">Example 1 — Metric Length: $3.2\text{ km} \to \text{m}$</div>
+      <div class="example-step">
+        <span>$3.2\text{ km} \times \dfrac{1000\text{ m}}{1\text{ km}}$</span>
+        <span class="why">Write the conversion factor so "km" labels cancel</span>
+      </div>
+      <div class="example-step">
+        <span>$= 3200\text{ m}$</span>
+        <span class="why">$3.2 \times 1000 = 3200$; move decimal 3 places right</span>
+      </div>
+    </div>
+
+    <div class="example">
+      <div class="label">Example 2 — Temperature: $25°\text{C} \to °\text{F}$</div>
+      <div class="example-step">
+        <span>$F = \dfrac{9}{5}(25) + 32$</span>
+        <span class="why">Apply $F = \frac{9}{5}C + 32$ with $C = 25$</span>
+      </div>
+      <div class="example-step">
+        <span>$= 45 + 32 = 77°\text{F}$</span>
+        <span class="why">$\frac{9 \times 25}{5} = \frac{225}{5} = 45$; add 32</span>
+      </div>
+    </div>
+
+    <div class="example">
+      <div class="label">Example 3 — Speed: $60\text{ mph} \to \text{ft/s}$</div>
+      <div class="example-step">
+        <span>$60\,\dfrac{\text{mi}}{\text{hr}} \times \dfrac{5280\text{ ft}}{1\text{ mi}} \times \dfrac{1\text{ hr}}{3600\text{ s}}$</span>
+        <span class="why">Chain two conversion factors; miles and hours cancel</span>
+      </div>
+      <div class="example-step">
+        <span>$= \dfrac{60 \times 5280}{3600}\,\dfrac{\text{ft}}{\text{s}} = \dfrac{316{,}800}{3600}$</span>
+        <span class="why">Only ft/s units remain after cancellation</span>
+      </div>
+      <div class="example-step">
+        <span>$= 88\text{ ft/s}$</span>
+        <span class="why">60 mph is exactly 88 feet per second — a useful fact for physics problems</span>
+      </div>
+    </div>
+
+    <p class="toc-back"><a href="#toc">↑ Back to contents</a></p>
+  </section>
+
+  <!-- ── Appendix ───────────────────────────────────────────────────── -->
+  <section class="chapter" id="appendix-resources">
+    <div class="chapter-num">Appendix</div>
+    <h3>Interactive Resources</h3>
+    <p>
+      The diagrams below let you manipulate intermediate arithmetic concepts dynamically —
+      adjust values and see results update in real time.
+    </p>
+    <ul style="line-height:2.1;margin-left:1.2rem;">
+      <li>
+        <a href="math_arithmetic2_diagrams.html">Intermediate Arithmetic Diagrams</a> —
+        interactive fraction operation builder, proportion solver, and percent change visualizer
+      </li>
+    </ul>
+  </section>
+
+  <a class="back" href="index.html">Play Now →</a>
+
+</div>
+<script src="textbook-switcher.js"></script>
+<script src="textbook-notes.js"></script>
+<script src="textbook-nav.js"></script>
+<script src="theme-toggle.js"></script>
+<script src="textbook-ai.js"></script>
+</body>
+</html>

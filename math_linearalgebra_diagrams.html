@@ -1,0 +1,738 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Linear Algebra Diagrams — Math Game</title>
+  <script>(function(){var t=localStorage.getItem('math-theme')||((window.matchMedia&&window.matchMedia('(prefers-color-scheme:light)').matches)?'light':'dark');document.documentElement.setAttribute('data-theme',t);}());</script>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root { --bg:#0d0d1a; --surface:#151528; --panel:#1c1c35; --border:#2e2e55; --accent:#5c8aff; --correct:#3ecf8e; --hint:#ffb830; --text:#e0e0f0; --muted:#7070a0; }
+    [data-theme="light"] {
+      --bg:#f5f0e4; --surface:#faf7ee; --panel:#ede8d8; --border:#ccc6b4;
+      --text:#18140c; --muted:#3e3c60; --accent:#2858c8; --correct:#115238;
+      --hint:#6e4a00; --wrong:#cc2040;
+    }
+    body { background:var(--bg); color:var(--text); font-family:system-ui,sans-serif; min-height:100vh; padding:48px 24px 80px; display:flex; flex-direction:column; align-items:center; }
+    .page { width:100%; max-width:820px; }
+    header { display:flex; align-items:baseline; gap:16px; margin-bottom:12px; }
+    header h1 { font-size:1.5rem; font-weight:700; letter-spacing:.12em; text-transform:uppercase; color:var(--accent); }
+    header a { font-size:0.85rem; color:var(--muted); text-decoration:none; }
+    header a:hover { color:var(--accent); }
+
+    /* ── step-through ── */
+    .diagram-set { margin-top:36px; }
+    .diagram-set > h2 { font-size:1.1rem; font-weight:700; color:var(--text); margin-bottom:4px; }
+    .diagram-set > .subtitle { font-size:0.85rem; color:var(--muted); margin-bottom:20px; }
+
+    .step-viewer { background:var(--surface); border:1px solid var(--border); border-radius:10px; padding:24px; }
+    .step-counter { font-size:0.78rem; color:var(--muted); text-transform:uppercase; letter-spacing:.08em; margin-bottom:16px; }
+    .step { display:none; }
+    .step.active { display:block; }
+    .step svg { display:block; width:100%; max-width:520px; margin:0 auto; }
+    .step-caption { font-size:0.9rem; color:var(--muted); margin-top:16px; line-height:1.6; text-align:center; max-width:480px; margin-left:auto; margin-right:auto; }
+    .step-caption strong { color:var(--text); }
+
+    .step-nav { display:flex; align-items:center; justify-content:space-between; margin-top:22px; }
+    .step-nav button { background:var(--panel); border:1px solid var(--border); color:var(--text); font-size:0.85rem; padding:8px 20px; border-radius:6px; cursor:pointer; transition:border-color .15s, color .15s; }
+    .step-nav button:hover:not(:disabled) { border-color:var(--accent); color:var(--accent); }
+    .step-nav button:disabled { opacity:0.35; cursor:default; }
+    .step-dots { display:flex; gap:6px; align-items:center; }
+    .step-dots span { width:8px; height:8px; border-radius:50%; background:var(--border); transition:background .2s; }
+    .step-dots span.active { background:var(--accent); }
+
+    /* ── interactive ── */
+    .interactive-diagram { background:var(--surface); border:1px solid var(--border); border-radius:10px; padding:24px; }
+    .interactive-diagram svg { display:block; width:100%; max-width:520px; margin:0 auto; }
+
+    .ctrl-row { display:flex; align-items:center; gap:10px; margin-top:18px; flex-wrap:wrap; }
+    .ctrl-label { font-size:0.85rem; color:var(--muted); white-space:nowrap; }
+    .ctrl-val { font-size:1rem; font-weight:700; color:var(--accent); min-width:44px; display:inline-block; }
+    input[type="range"] { flex:1; min-width:140px; accent-color:var(--accent); cursor:pointer; }
+
+    .dp-result-row { display:flex; align-items:baseline; gap:12px; margin-top:18px; flex-wrap:wrap; }
+    .dp-result-label { font-size:1rem; color:var(--muted); }
+    .dp-result-val { font-size:2.4rem; font-weight:700; color:var(--accent); line-height:1; transition:color .2s; min-width:68px; }
+    .sum-stats { display:flex; gap:22px; margin-top:10px; font-size:0.82rem; color:var(--muted); flex-wrap:wrap; row-gap:4px; }
+    .sum-stats strong { color:var(--text); }
+    .dp-sign { font-size:0.82rem; color:var(--muted); margin-top:8px; font-style:italic; }
+
+    .dp-presets { display:flex; gap:8px; flex-wrap:wrap; margin-top:16px; }
+    .dp-preset {
+      background:var(--panel); border:1px solid var(--border); color:var(--muted);
+      font-size:0.78rem; padding:5px 16px; border-radius:20px; cursor:pointer;
+      transition:border-color .15s, color .15s;
+    }
+    .dp-preset:hover { border-color:var(--accent); color:var(--accent); }
+
+    /* ── matrix-vector step diagram ── */
+    @keyframes mv-slide { from { transform:translate(0,0); } to { transform:translate(var(--tx),var(--ty)); } }
+    .mv-badge { animation: mv-slide 0.9s cubic-bezier(.25,.7,.3,1) forwards; }
+    .mv-badge circle { filter: drop-shadow(0 1px 2px rgba(0,0,0,0.35)); }
+    @keyframes mv-fade { from { opacity:0; } to { opacity:1; } }
+    .mv-fade      { opacity:0; animation: mv-fade 0.35s ease-out forwards; animation-delay: 0.85s; }
+    .mv-fade-late { opacity:0; animation: mv-fade 0.35s ease-out forwards; animation-delay: 1.45s; }
+
+    @media (max-width:600px) {
+      .step-nav button { padding:8px 12px; font-size:0.8rem; }
+    }
+  </style>
+</head>
+<body>
+<div class="page">
+
+  <header>
+    <h1>Linear Algebra Diagrams</h1>
+    <a href="diagrams.html">← All diagrams</a>
+  </header>
+
+  <!-- ══════════════════════════════════════════════════════════════════
+       Diagram 1: Dot Product — Component Method (5-step click-through)
+       viewBox 0 0 300 220  —  O=(60,160), scale=42
+       a=(3,2): svg tip=(186,76)   b=(1,3): svg tip=(102,34)
+       ══════════════════════════════════════════════════════════════════ -->
+  <section class="diagram-set">
+    <h2>Dot Product — Component Method</h2>
+    <p class="subtitle">How to calculate <strong>a · b</strong> for vectors <strong>a = (3, 2)</strong> and <strong>b = (1, 3)</strong>, step by step.</p>
+
+    <div class="step-viewer">
+      <div class="step-counter">Step <span class="cur">1</span> of <span class="tot">5</span></div>
+
+      <div class="steps">
+
+        <!-- Step 1: Plot the vectors -->
+        <div class="step active">
+          <svg viewBox="0 0 300 220" aria-label="Two vectors a=(3,2) and b=(1,3) from the origin">
+            <!-- axes -->
+            <line x1="8" y1="160" x2="285" y2="160" stroke="#7070a0" stroke-width="1"/>
+            <line x1="60" y1="215" x2="60" y2="8" stroke="#7070a0" stroke-width="1"/>
+            <polygon points="288,160 280,156 280,164" fill="#7070a0"/>
+            <polygon points="60,5 56,13 64,13" fill="#7070a0"/>
+            <text x="290" y="164" fill="#7070a0" font-size="10" font-family="system-ui">x</text>
+            <text x="63" y="9" fill="#7070a0" font-size="10" font-family="system-ui">y</text>
+            <text x="50" y="172" fill="#7070a0" font-size="10" font-family="system-ui">O</text>
+            <!-- x ticks: 1(102), 2(144), 3(186) -->
+            <line x1="102" y1="157" x2="102" y2="163" stroke="#7070a0" stroke-width="1"/><text x="99" y="173" fill="#7070a0" font-size="9" font-family="system-ui">1</text>
+            <line x1="144" y1="157" x2="144" y2="163" stroke="#7070a0" stroke-width="1"/><text x="141" y="173" fill="#7070a0" font-size="9" font-family="system-ui">2</text>
+            <line x1="186" y1="157" x2="186" y2="163" stroke="#7070a0" stroke-width="1"/><text x="183" y="173" fill="#7070a0" font-size="9" font-family="system-ui">3</text>
+            <!-- y ticks: 1(118), 2(76), 3(34) -->
+            <line x1="57" y1="118" x2="63" y2="118" stroke="#7070a0" stroke-width="1"/><text x="48" y="121" fill="#7070a0" font-size="9" font-family="system-ui">1</text>
+            <line x1="57" y1="76"  x2="63" y2="76"  stroke="#7070a0" stroke-width="1"/><text x="48" y="79"  fill="#7070a0" font-size="9" font-family="system-ui">2</text>
+            <line x1="57" y1="34"  x2="63" y2="34"  stroke="#7070a0" stroke-width="1"/><text x="48" y="37"  fill="#7070a0" font-size="9" font-family="system-ui">3</text>
+            <!-- vector a (blue): shaft (60,160)→(178,82), head tip (186,76) -->
+            <line x1="60" y1="160" x2="178" y2="82" stroke="#5c8aff" stroke-width="2.5"/>
+            <polygon points="186,76 180,85 175,78" fill="#5c8aff"/>
+            <text x="191" y="73" fill="#5c8aff" font-size="13" font-family="system-ui" font-weight="700">a</text>
+            <text x="191" y="86" fill="#5c8aff" font-size="10" font-family="system-ui">(3, 2)</text>
+            <!-- vector b (green): shaft (60,160)→(99,44), head tip (102,34) -->
+            <line x1="60" y1="160" x2="99" y2="44" stroke="#3ecf8e" stroke-width="2.5"/>
+            <polygon points="102,34 103,45 95,42" fill="#3ecf8e"/>
+            <text x="107" y="28" fill="#3ecf8e" font-size="13" font-family="system-ui" font-weight="700">b</text>
+            <text x="62" y="20" fill="#3ecf8e" font-size="10" font-family="system-ui">(1, 3)</text>
+          </svg>
+          <p class="step-caption">Two vectors <strong>a = (3, 2)</strong> (blue) and <strong>b = (1, 3)</strong> (green) drawn from the origin. The dot product <strong>a · b</strong> produces a single number.</p>
+        </div>
+
+        <!-- Step 2: Multiply x-components -->
+        <div class="step">
+          <svg viewBox="0 0 300 220" aria-label="x-components of a and b highlighted, product 3 times 1 equals 3">
+            <line x1="8" y1="160" x2="285" y2="160" stroke="#7070a0" stroke-width="1"/>
+            <line x1="60" y1="215" x2="60" y2="8" stroke="#7070a0" stroke-width="1"/>
+            <polygon points="288,160 280,156 280,164" fill="#7070a0"/>
+            <polygon points="60,5 56,13 64,13" fill="#7070a0"/>
+            <text x="290" y="164" fill="#7070a0" font-size="10" font-family="system-ui">x</text>
+            <text x="63" y="9" fill="#7070a0" font-size="10" font-family="system-ui">y</text>
+            <text x="50" y="172" fill="#7070a0" font-size="10" font-family="system-ui">O</text>
+            <line x1="102" y1="157" x2="102" y2="163" stroke="#7070a0" stroke-width="1"/>
+            <line x1="144" y1="157" x2="144" y2="163" stroke="#7070a0" stroke-width="1"/>
+            <line x1="186" y1="157" x2="186" y2="163" stroke="#7070a0" stroke-width="1"/>
+            <line x1="57" y1="118" x2="63" y2="118" stroke="#7070a0" stroke-width="1"/>
+            <line x1="57" y1="76"  x2="63" y2="76"  stroke="#7070a0" stroke-width="1"/>
+            <line x1="57" y1="34"  x2="63" y2="34"  stroke="#7070a0" stroke-width="1"/>
+            <!-- vectors, dimmed -->
+            <line x1="60" y1="160" x2="178" y2="82" stroke="#5c8aff" stroke-width="1.5" opacity="0.3"/>
+            <polygon points="186,76 180,85 175,78" fill="#5c8aff" opacity="0.3"/>
+            <line x1="60" y1="160" x2="99" y2="44" stroke="#3ecf8e" stroke-width="1.5" opacity="0.3"/>
+            <polygon points="102,34 103,45 95,42" fill="#3ecf8e" opacity="0.3"/>
+            <!-- dashed verticals from tips to x-axis -->
+            <line x1="186" y1="76"  x2="186" y2="160" stroke="#5c8aff" stroke-width="1.5" stroke-dasharray="5,3" opacity="0.7"/>
+            <line x1="102" y1="34"  x2="102" y2="160" stroke="#3ecf8e" stroke-width="1.5" stroke-dasharray="5,3" opacity="0.7"/>
+            <!-- highlight dots on x-axis -->
+            <circle cx="186" cy="160" r="5" fill="#5c8aff"/>
+            <circle cx="102" cy="160" r="5" fill="#3ecf8e"/>
+            <!-- labels -->
+            <text x="190" y="156" fill="#5c8aff" font-size="11" font-family="system-ui" font-weight="700">a₁ = 3</text>
+            <text x="58" y="178" fill="#3ecf8e" font-size="11" font-family="system-ui" font-weight="700">b₁ = 1</text>
+            <!-- formula box -->
+            <rect x="10" y="8" width="155" height="60" rx="6" fill="var(--surface)" stroke="var(--border)" stroke-width="1"/>
+            <text x="18" y="28" fill="#7070a0" font-size="11" font-family="system-ui">x-components:</text>
+            <text x="18" y="44" fill="#7070a0" font-size="11" font-family="system-ui">a₁ × b₁ = 3 × 1 =</text>
+            <text x="162" y="44" fill="#5c8aff" font-size="13" font-family="system-ui" font-weight="700">3</text>
+          </svg>
+          <p class="step-caption">Drop perpendiculars to the x-axis to read off the x-components: <strong>a₁ = 3</strong> and <strong>b₁ = 1</strong>. Multiply: <strong>3 × 1 = 3</strong>. This is the first partial product.</p>
+        </div>
+
+        <!-- Step 3: Multiply y-components -->
+        <div class="step">
+          <svg viewBox="0 0 300 220" aria-label="y-components of a and b highlighted, product 2 times 3 equals 6">
+            <line x1="8" y1="160" x2="285" y2="160" stroke="#7070a0" stroke-width="1"/>
+            <line x1="60" y1="215" x2="60" y2="8" stroke="#7070a0" stroke-width="1"/>
+            <polygon points="288,160 280,156 280,164" fill="#7070a0"/>
+            <polygon points="60,5 56,13 64,13" fill="#7070a0"/>
+            <text x="290" y="164" fill="#7070a0" font-size="10" font-family="system-ui">x</text>
+            <text x="63" y="9" fill="#7070a0" font-size="10" font-family="system-ui">y</text>
+            <text x="50" y="172" fill="#7070a0" font-size="10" font-family="system-ui">O</text>
+            <line x1="102" y1="157" x2="102" y2="163" stroke="#7070a0" stroke-width="1"/>
+            <line x1="144" y1="157" x2="144" y2="163" stroke="#7070a0" stroke-width="1"/>
+            <line x1="186" y1="157" x2="186" y2="163" stroke="#7070a0" stroke-width="1"/>
+            <line x1="57" y1="118" x2="63" y2="118" stroke="#7070a0" stroke-width="1"/>
+            <line x1="57" y1="76"  x2="63" y2="76"  stroke="#7070a0" stroke-width="1"/>
+            <line x1="57" y1="34"  x2="63" y2="34"  stroke="#7070a0" stroke-width="1"/>
+            <!-- vectors, dimmed -->
+            <line x1="60" y1="160" x2="178" y2="82" stroke="#5c8aff" stroke-width="1.5" opacity="0.3"/>
+            <polygon points="186,76 180,85 175,78" fill="#5c8aff" opacity="0.3"/>
+            <line x1="60" y1="160" x2="99" y2="44" stroke="#3ecf8e" stroke-width="1.5" opacity="0.3"/>
+            <polygon points="102,34 103,45 95,42" fill="#3ecf8e" opacity="0.3"/>
+            <!-- dashed horizontals from tips to y-axis -->
+            <line x1="60" y1="76" x2="186" y2="76"  stroke="#5c8aff" stroke-width="1.5" stroke-dasharray="5,3" opacity="0.7"/>
+            <line x1="60" y1="34" x2="102" y2="34"  stroke="#3ecf8e" stroke-width="1.5" stroke-dasharray="5,3" opacity="0.7"/>
+            <!-- highlight dots on y-axis -->
+            <circle cx="60" cy="76" r="5" fill="#5c8aff"/>
+            <circle cx="60" cy="34" r="5" fill="#3ecf8e"/>
+            <!-- labels -->
+            <text x="65" y="73" fill="#5c8aff" font-size="11" font-family="system-ui" font-weight="700">a₂ = 2</text>
+            <text x="65" y="31" fill="#3ecf8e" font-size="11" font-family="system-ui" font-weight="700">b₂ = 3</text>
+            <!-- formula box -->
+            <rect x="148" y="8" width="144" height="60" rx="6" fill="var(--surface)" stroke="var(--border)" stroke-width="1"/>
+            <text x="156" y="28" fill="#7070a0" font-size="11" font-family="system-ui">y-components:</text>
+            <text x="156" y="44" fill="#7070a0" font-size="11" font-family="system-ui">a₂ × b₂ = 2 × 3 =</text>
+            <text x="275" y="44" fill="#5c8aff" font-size="13" font-family="system-ui" font-weight="700">6</text>
+          </svg>
+          <p class="step-caption">Draw horizontals to the y-axis: <strong>a₂ = 2</strong> and <strong>b₂ = 3</strong>. Multiply: <strong>2 × 3 = 6</strong>. This is the second partial product.</p>
+        </div>
+
+        <!-- Step 4: Sum the products -->
+        <div class="step">
+          <svg viewBox="0 0 300 220" aria-label="Dot product calculation summing 3 plus 6 equals 9">
+            <line x1="8" y1="160" x2="285" y2="160" stroke="#7070a0" stroke-width="1"/>
+            <line x1="60" y1="215" x2="60" y2="8" stroke="#7070a0" stroke-width="1"/>
+            <polygon points="288,160 280,156 280,164" fill="#7070a0"/>
+            <polygon points="60,5 56,13 64,13" fill="#7070a0"/>
+            <text x="290" y="164" fill="#7070a0" font-size="10" font-family="system-ui">x</text>
+            <text x="63" y="9" fill="#7070a0" font-size="10" font-family="system-ui">y</text>
+            <!-- vectors, full color -->
+            <line x1="60" y1="160" x2="178" y2="82" stroke="#5c8aff" stroke-width="2.5"/>
+            <polygon points="186,76 180,85 175,78" fill="#5c8aff"/>
+            <text x="191" y="73" fill="#5c8aff" font-size="13" font-family="system-ui" font-weight="700">a</text>
+            <line x1="60" y1="160" x2="99" y2="44" stroke="#3ecf8e" stroke-width="2.5"/>
+            <polygon points="102,34 103,45 95,42" fill="#3ecf8e"/>
+            <text x="107" y="28" fill="#3ecf8e" font-size="13" font-family="system-ui" font-weight="700">b</text>
+            <!-- calculation box -->
+            <rect x="112" y="14" width="174" height="115" rx="7" fill="var(--surface)" stroke="var(--border)" stroke-width="1.5"/>
+            <text x="122" y="38"  fill="#7070a0" font-size="11" font-family="system-ui">a·b = a₁b₁ + a₂b₂</text>
+            <text x="122" y="57"  fill="#7070a0" font-size="11" font-family="system-ui">    = 3·1 + 2·3</text>
+            <text x="122" y="76"  fill="#7070a0" font-size="11" font-family="system-ui">    = 3 + 6</text>
+            <line x1="122" y1="85" x2="272" y2="85" stroke="var(--border)" stroke-width="1"/>
+            <text x="122" y="104" fill="#7070a0" font-size="12" font-family="system-ui">    = </text>
+            <text x="157" y="107" fill="#5c8aff" font-size="19" font-family="system-ui" font-weight="700">9</text>
+          </svg>
+          <p class="step-caption">Add the two partial products: <strong>a · b = 3 + 6 = 9</strong>. The dot product of a = (3, 2) and b = (1, 3) is 9.</p>
+        </div>
+
+        <!-- Step 5: Geometric meaning -->
+        <div class="step">
+          <svg viewBox="0 0 300 220" aria-label="Geometric interpretation: angle between vectors and projection">
+            <line x1="8" y1="160" x2="285" y2="160" stroke="#7070a0" stroke-width="1"/>
+            <line x1="60" y1="215" x2="60" y2="8" stroke="#7070a0" stroke-width="1"/>
+            <polygon points="288,160 280,156 280,164" fill="#7070a0"/>
+            <polygon points="60,5 56,13 64,13" fill="#7070a0"/>
+            <text x="290" y="164" fill="#7070a0" font-size="10" font-family="system-ui">x</text>
+            <text x="63" y="9" fill="#7070a0" font-size="10" font-family="system-ui">y</text>
+            <!-- projection shadow on a-line from O to proj-point (147,102) -->
+            <line x1="60" y1="160" x2="147" y2="102" stroke="#ffb830" stroke-width="4" stroke-linecap="round" opacity="0.7"/>
+            <!-- dashed perpendicular from b-tip (102,34) to proj-point (147,102) -->
+            <line x1="102" y1="34" x2="147" y2="102" stroke="#ffb830" stroke-width="1.5" stroke-dasharray="5,3" opacity="0.8"/>
+            <!-- right-angle mark at proj-point (147,102)
+                 a-direction unit (0.832,-0.555), b-perp unit (-0.555,-0.832)
+                 corner: along a +5, then along perp +5 -->
+            <polyline points="151.2,99.2 148.4,95.0 144.2,97.8" fill="none" stroke="#ffb830" stroke-width="1.2" opacity="0.8"/>
+            <circle cx="147" cy="102" r="3.5" fill="#ffb830" opacity="0.85"/>
+            <!-- angle arc from a-direction (33.7°) to b-direction (71.6°), radius 28
+                 start: O+28*(0.832,-0.555)=(83.3,144.5)
+                 end:   O+28*(0.316,-0.949)=(68.8,133.4)
+                 CCW in math = sweep=0 -->
+            <path d="M 83.3 144.5 A 28 28 0 0 0 68.8 133.4" stroke="#ffb830" stroke-width="1.5" fill="none"/>
+            <text x="83" y="128" fill="#ffb830" font-size="10" font-family="system-ui">θ≈38°</text>
+            <!-- vectors -->
+            <line x1="60" y1="160" x2="178" y2="82" stroke="#5c8aff" stroke-width="2.5"/>
+            <polygon points="186,76 180,85 175,78" fill="#5c8aff"/>
+            <text x="191" y="73" fill="#5c8aff" font-size="13" font-family="system-ui" font-weight="700">a</text>
+            <line x1="60" y1="160" x2="99" y2="44" stroke="#3ecf8e" stroke-width="2.5"/>
+            <polygon points="102,34 103,45 95,42" fill="#3ecf8e"/>
+            <text x="107" y="28" fill="#3ecf8e" font-size="13" font-family="system-ui" font-weight="700">b</text>
+            <!-- formula box -->
+            <rect x="148" y="8" width="144" height="54" rx="6" fill="var(--surface)" stroke="var(--border)" stroke-width="1"/>
+            <text x="156" y="26" fill="#7070a0" font-size="11" font-family="system-ui">a·b = |a||b| cos θ</text>
+            <text x="156" y="44" fill="#7070a0" font-size="11" font-family="system-ui">   = √13·√10·cos 38°</text>
+            <text x="156" y="56" fill="#5c8aff" font-size="9" font-family="system-ui">   ≈ 3.61 × 3.16 × 0.79 = 9</text>
+          </svg>
+          <p class="step-caption">The dot product equals <strong>|a| |b| cos θ</strong>. Since a · b = 9 > 0, the angle θ ≈ 38° is less than 90° — the vectors point roughly the same way. The orange segment is the <strong>projection</strong> of b onto a.</p>
+        </div>
+
+      </div><!-- .steps -->
+
+      <div class="step-nav">
+        <button class="prev" disabled>← Prev</button>
+        <div class="step-dots">
+          <span class="active"></span><span></span><span></span><span></span><span></span>
+        </div>
+        <button class="next">Next →</button>
+      </div>
+    </div><!-- .step-viewer -->
+  </section>
+
+  <!-- ══════════════════════════════════════════════════════════════════
+       Diagram 2: Dot Product — Projection & Angle (interactive)
+       viewBox 0 0 320 280  —  O=(130,150), scale=40
+       a=(3,0): fixed, tip=(250,150)
+       b=(2.5cosθ, 2.5sinθ): rotates with slider
+       ══════════════════════════════════════════════════════════════════ -->
+  <section class="diagram-set" style="margin-top:48px">
+    <h2>Dot Product — Projection &amp; Angle</h2>
+    <p class="subtitle">Rotate <strong>b</strong> with the slider and watch how the dot product changes with the angle between the vectors. The orange segment shows <strong>b</strong>'s projection onto <strong>a</strong>.</p>
+
+    <div class="interactive-diagram">
+      <svg viewBox="0 0 320 280" id="dp-svg" aria-label="Interactive dot product: vector a fixed, vector b rotates">
+
+        <!-- guide circle: constant magnitude of b = 2.5, radius 100 -->
+        <circle cx="130" cy="150" r="100" fill="none" stroke="var(--border)" stroke-width="1" stroke-dasharray="4,4" opacity="0.45"/>
+
+        <!-- axes -->
+        <line x1="8" y1="150" x2="308" y2="150" stroke="#7070a0" stroke-width="1"/>
+        <line x1="130" y1="272" x2="130" y2="8" stroke="#7070a0" stroke-width="1"/>
+        <polygon points="311,150 303,146 303,154" fill="#7070a0"/>
+        <polygon points="130,5 126,13 134,13" fill="#7070a0"/>
+        <text x="313" y="154" fill="#7070a0" font-size="10" font-family="system-ui">x</text>
+        <text x="133" y="9"   fill="#7070a0" font-size="10" font-family="system-ui">y</text>
+        <text x="118" y="163" fill="#7070a0" font-size="10" font-family="system-ui">O</text>
+
+        <!-- x ticks: −2(50), −1(90), 1(170), 2(210), 3(250) -->
+        <line x1="50"  y1="147" x2="50"  y2="153" stroke="#7070a0" stroke-width="1"/><text x="43"  y="164" fill="#7070a0" font-size="9" font-family="system-ui">−2</text>
+        <line x1="90"  y1="147" x2="90"  y2="153" stroke="#7070a0" stroke-width="1"/><text x="83"  y="164" fill="#7070a0" font-size="9" font-family="system-ui">−1</text>
+        <line x1="170" y1="147" x2="170" y2="153" stroke="#7070a0" stroke-width="1"/><text x="168" y="164" fill="#7070a0" font-size="9" font-family="system-ui">1</text>
+        <line x1="210" y1="147" x2="210" y2="153" stroke="#7070a0" stroke-width="1"/><text x="208" y="164" fill="#7070a0" font-size="9" font-family="system-ui">2</text>
+        <line x1="250" y1="147" x2="250" y2="153" stroke="#7070a0" stroke-width="1"/><text x="248" y="164" fill="#7070a0" font-size="9" font-family="system-ui">3</text>
+
+        <!-- y ticks: −2(230), −1(190), 1(110), 2(70) -->
+        <line x1="127" y1="230" x2="133" y2="230" stroke="#7070a0" stroke-width="1"/><text x="109" y="234" fill="#7070a0" font-size="9" font-family="system-ui">−2</text>
+        <line x1="127" y1="190" x2="133" y2="190" stroke="#7070a0" stroke-width="1"/><text x="109" y="194" fill="#7070a0" font-size="9" font-family="system-ui">−1</text>
+        <line x1="127" y1="110" x2="133" y2="110" stroke="#7070a0" stroke-width="1"/><text x="122" y="114" fill="#7070a0" font-size="9" font-family="system-ui">1</text>
+        <line x1="127" y1="70"  x2="133" y2="70"  stroke="#7070a0" stroke-width="1"/><text x="122" y="74"  fill="#7070a0" font-size="9" font-family="system-ui">2</text>
+
+        <!-- vector a: static, blue, shaft (130,150)→(240,150), tip (250,150) -->
+        <line x1="130" y1="150" x2="240" y2="150" stroke="#5c8aff" stroke-width="2.5"/>
+        <polygon points="250,150 240,154.5 240,145.5" fill="#5c8aff"/>
+        <text x="254" y="146" fill="#5c8aff" font-size="13" font-family="system-ui" font-weight="700">a</text>
+
+        <!-- DYNAMIC: projection segment on x-axis (orange) -->
+        <line id="dp-proj-seg" x1="130" y1="150" x2="194" y2="150" stroke="#ffb830" stroke-width="4" stroke-linecap="round" opacity="0.8"/>
+        <!-- DYNAMIC: perpendicular dashed line b-tip → x-axis -->
+        <line id="dp-perp" x1="194" y1="73" x2="194" y2="150" stroke="#ffb830" stroke-width="1.5" stroke-dasharray="5,3" opacity="0.75"/>
+        <!-- DYNAMIC: dot at projection point -->
+        <circle id="dp-proj-dot" cx="194" cy="150" r="4.5" fill="#ffb830"/>
+        <!-- DYNAMIC: angle arc -->
+        <path id="dp-arc" d="" stroke="#7070a0" stroke-width="1.5" fill="none"/>
+        <!-- DYNAMIC: θ label -->
+        <text id="dp-theta-lbl" x="165" y="138" fill="#7070a0" font-size="11" font-family="system-ui" text-anchor="middle">θ</text>
+        <!-- DYNAMIC: vector b shaft -->
+        <line id="dp-b-line" x1="130" y1="150" x2="184" y2="87" stroke="#3ecf8e" stroke-width="2.5"/>
+        <!-- DYNAMIC: vector b arrowhead -->
+        <polygon id="dp-b-head" points="194,73 185,81 177,70" fill="#3ecf8e"/>
+        <!-- DYNAMIC: b label -->
+        <text id="dp-b-lbl" x="202" y="68" fill="#3ecf8e" font-size="13" font-family="system-ui" font-weight="700">b</text>
+      </svg>
+
+      <div class="ctrl-row">
+        <span class="ctrl-label">Angle θ =</span>
+        <input type="range" id="dp-slider" min="-170" max="170" value="50" step="1"/>
+        <span class="ctrl-val" id="dp-deg">50°</span>
+      </div>
+
+      <div class="dp-result-row">
+        <span class="dp-result-label">a · b =</span>
+        <span class="dp-result-val" id="dp-result">4.82</span>
+      </div>
+
+      <div class="sum-stats">
+        <span>|a| = 3, |b| = 2.5</span>
+        <span>Formula: <strong id="dp-formula">3 × 2.5 × cos(50°) = 4.82</strong></span>
+      </div>
+      <div class="dp-sign" id="dp-sign">θ &lt; 90° — vectors point roughly the same direction</div>
+
+      <div class="dp-presets">
+        <button class="dp-preset" data-angle="0">Parallel (0°)</button>
+        <button class="dp-preset" data-angle="90">Perpendicular (90°)</button>
+        <button class="dp-preset" data-angle="175">Opposite (≈180°)</button>
+      </div>
+
+    </div><!-- .interactive-diagram -->
+  </section>
+
+  <!-- ══════════════════════════════════════════════════════════════════
+       Diagram 3: Matrix × Vector — Row-by-Row Multiplication (4-step click-through)
+       viewBox 0 0 340 260
+       A = [[1,2],[3,4]], v = (2,1), Av = (4,10)  — matches column 1 of the
+       textbook's [[1,2],[3,4]]·[[2,0],[1,3]] worked example
+       ══════════════════════════════════════════════════════════════════ -->
+  <section class="diagram-set" id="matrix-vector" style="margin-top:48px">
+    <h2>Matrix × Vector — Row-by-Row Multiplication</h2>
+    <p class="subtitle">How each entry of <strong>Av</strong> is built from one row of <strong>A</strong> and the whole vector <strong>v</strong>, for <strong>A = [[1,2],[3,4]]</strong> and <strong>v = (2, 1)</strong>.</p>
+
+    <div class="step-viewer">
+      <div class="step-counter">Step <span class="cur">1</span> of <span class="tot">4</span></div>
+
+      <div class="steps">
+
+        <!-- Step 1: Setup -->
+        <div class="step active">
+          <svg viewBox="0 0 340 260" aria-label="Matrix A times vector v equals an unknown result vector">
+            <path d="M28,55 L20,55 L20,145 L28,145" fill="none" stroke="#7070a0" stroke-width="1.5"/>
+            <path d="M102,55 L110,55 L110,145 L102,145" fill="none" stroke="#7070a0" stroke-width="1.5"/>
+            <text x="45" y="80" text-anchor="middle" fill="var(--text)" font-size="16" font-family="system-ui">1</text>
+            <text x="85" y="80" text-anchor="middle" fill="var(--text)" font-size="16" font-family="system-ui">2</text>
+            <text x="45" y="130" text-anchor="middle" fill="var(--text)" font-size="16" font-family="system-ui">3</text>
+            <text x="85" y="130" text-anchor="middle" fill="var(--text)" font-size="16" font-family="system-ui">4</text>
+            <path d="M133,55 L125,55 L125,145 L133,145" fill="none" stroke="#7070a0" stroke-width="1.5"/>
+            <path d="M157,55 L165,55 L165,145 L157,145" fill="none" stroke="#7070a0" stroke-width="1.5"/>
+            <text x="145" y="80" text-anchor="middle" fill="var(--text)" font-size="16" font-family="system-ui">2</text>
+            <text x="145" y="130" text-anchor="middle" fill="var(--text)" font-size="16" font-family="system-ui">1</text>
+            <text x="188" y="107" text-anchor="middle" fill="var(--muted)" font-size="20" font-family="system-ui">=</text>
+            <path d="M213,55 L205,55 L205,145 L213,145" fill="none" stroke="#7070a0" stroke-width="1.5"/>
+            <path d="M247,55 L255,55 L255,145 L247,145" fill="none" stroke="#7070a0" stroke-width="1.5"/>
+            <text x="230" y="80" text-anchor="middle" fill="var(--muted)" font-size="16" font-family="system-ui">?</text>
+            <text x="230" y="130" text-anchor="middle" fill="var(--muted)" font-size="16" font-family="system-ui">?</text>
+          </svg>
+          <p class="step-caption">A <strong>2×2 matrix</strong> times a <strong>2×1 vector</strong> produces a new <strong>2×1 vector</strong>. Each output entry is the dot product of one matrix row with <strong>v</strong>.</p>
+        </div>
+
+        <!-- Step 2: Row 1 -->
+        <div class="step">
+          <svg viewBox="0 0 340 260" aria-label="Row 1 of A, values 1 and 2, sliding down to pair with v, values 2 and 1, multiplying to 2 and 2, summing to 4">
+            <rect x="15" y="60" width="100" height="35" rx="6" fill="rgba(92,138,255,0.15)" stroke="#5c8aff" stroke-width="1" stroke-dasharray="3,3"/>
+            <rect x="118" y="50" width="52" height="100" rx="6" fill="rgba(62,207,142,0.12)" stroke="#3ecf8e" stroke-width="1" stroke-dasharray="3,3"/>
+            <path d="M28,55 L20,55 L20,145 L28,145" fill="none" stroke="#7070a0" stroke-width="1.5"/>
+            <path d="M102,55 L110,55 L110,145 L102,145" fill="none" stroke="#7070a0" stroke-width="1.5"/>
+            <text x="45" y="80" text-anchor="middle" fill="#5c8aff" font-size="16" font-family="system-ui" font-weight="700">1</text>
+            <text x="85" y="80" text-anchor="middle" fill="#5c8aff" font-size="16" font-family="system-ui" font-weight="700">2</text>
+            <text x="45" y="130" text-anchor="middle" fill="var(--muted)" font-size="16" font-family="system-ui" opacity="0.4">3</text>
+            <text x="85" y="130" text-anchor="middle" fill="var(--muted)" font-size="16" font-family="system-ui" opacity="0.4">4</text>
+            <path d="M133,55 L125,55 L125,145 L133,145" fill="none" stroke="#7070a0" stroke-width="1.5"/>
+            <path d="M157,55 L165,55 L165,145 L157,145" fill="none" stroke="#7070a0" stroke-width="1.5"/>
+            <text x="145" y="80" text-anchor="middle" fill="#3ecf8e" font-size="16" font-family="system-ui" font-weight="700">2</text>
+            <text x="145" y="130" text-anchor="middle" fill="#3ecf8e" font-size="16" font-family="system-ui" font-weight="700">1</text>
+            <text x="188" y="107" text-anchor="middle" fill="var(--muted)" font-size="20" font-family="system-ui">=</text>
+            <path d="M213,55 L205,55 L205,145 L213,145" fill="none" stroke="#7070a0" stroke-width="1.5"/>
+            <path d="M247,55 L255,55 L255,145 L247,145" fill="none" stroke="#7070a0" stroke-width="1.5"/>
+            <text x="230" y="80" text-anchor="middle" fill="var(--muted)" font-size="16" font-family="system-ui">?</text>
+            <text x="230" y="130" text-anchor="middle" fill="var(--muted)" font-size="16" font-family="system-ui">?</text>
+
+            <g class="mv-badge" style="--tx:40px;--ty:100px">
+              <circle cx="45" cy="75" r="14" fill="#5c8aff"/>
+              <text x="45" y="80" text-anchor="middle" fill="#fff" font-size="13" font-family="system-ui" font-weight="700">1</text>
+            </g>
+            <g class="mv-badge" style="--tx:-20px;--ty:100px">
+              <circle cx="145" cy="75" r="14" fill="#3ecf8e"/>
+              <text x="145" y="80" text-anchor="middle" fill="#fff" font-size="13" font-family="system-ui" font-weight="700">2</text>
+            </g>
+            <g class="mv-badge" style="--tx:0px;--ty:135px">
+              <circle cx="85" cy="75" r="14" fill="#5c8aff"/>
+              <text x="85" y="80" text-anchor="middle" fill="#fff" font-size="13" font-family="system-ui" font-weight="700">2</text>
+            </g>
+            <g class="mv-badge" style="--tx:-20px;--ty:85px">
+              <circle cx="145" cy="125" r="14" fill="#3ecf8e"/>
+              <text x="145" y="130" text-anchor="middle" fill="#fff" font-size="13" font-family="system-ui" font-weight="700">1</text>
+            </g>
+
+            <text class="mv-fade" x="105" y="180" text-anchor="middle" fill="var(--muted)" font-size="16" font-family="system-ui">×</text>
+            <text class="mv-fade" x="148" y="180" text-anchor="middle" fill="var(--muted)" font-size="16" font-family="system-ui">=</text>
+            <text class="mv-fade" x="167" y="180" text-anchor="middle" fill="var(--text)" font-size="16" font-family="system-ui" font-weight="700">2</text>
+
+            <text class="mv-fade" x="105" y="215" text-anchor="middle" fill="var(--muted)" font-size="16" font-family="system-ui">×</text>
+            <text class="mv-fade" x="148" y="215" text-anchor="middle" fill="var(--muted)" font-size="16" font-family="system-ui">=</text>
+            <text class="mv-fade" x="167" y="215" text-anchor="middle" fill="var(--text)" font-size="16" font-family="system-ui" font-weight="700">2</text>
+
+            <text class="mv-fade-late" x="182" y="202" text-anchor="middle" fill="var(--muted)" font-size="18" font-family="system-ui">+</text>
+            <text class="mv-fade-late" x="222" y="200" text-anchor="middle" fill="#5c8aff" font-size="18" font-family="system-ui" font-weight="700">= 4</text>
+          </svg>
+          <p class="step-caption">Row 1 of <strong>A</strong> — <strong>(1, 2)</strong> — slides down to pair with <strong>v</strong> — <strong>(2, 1)</strong> — position by position. Multiply each pair, then add: <strong>1×2 + 2×1 = 4</strong>. That becomes the first entry of the result.</p>
+        </div>
+
+        <!-- Step 3: Row 2 -->
+        <div class="step">
+          <svg viewBox="0 0 340 260" aria-label="Row 2 of A, values 3 and 4, sliding down to pair with v, values 2 and 1, multiplying to 6 and 4, summing to 10">
+            <rect x="15" y="110" width="100" height="35" rx="6" fill="rgba(92,138,255,0.15)" stroke="#5c8aff" stroke-width="1" stroke-dasharray="3,3"/>
+            <rect x="118" y="50" width="52" height="100" rx="6" fill="rgba(62,207,142,0.12)" stroke="#3ecf8e" stroke-width="1" stroke-dasharray="3,3"/>
+            <path d="M28,55 L20,55 L20,145 L28,145" fill="none" stroke="#7070a0" stroke-width="1.5"/>
+            <path d="M102,55 L110,55 L110,145 L102,145" fill="none" stroke="#7070a0" stroke-width="1.5"/>
+            <text x="45" y="80" text-anchor="middle" fill="var(--muted)" font-size="16" font-family="system-ui" opacity="0.4">1</text>
+            <text x="85" y="80" text-anchor="middle" fill="var(--muted)" font-size="16" font-family="system-ui" opacity="0.4">2</text>
+            <text x="45" y="130" text-anchor="middle" fill="#5c8aff" font-size="16" font-family="system-ui" font-weight="700">3</text>
+            <text x="85" y="130" text-anchor="middle" fill="#5c8aff" font-size="16" font-family="system-ui" font-weight="700">4</text>
+            <path d="M133,55 L125,55 L125,145 L133,145" fill="none" stroke="#7070a0" stroke-width="1.5"/>
+            <path d="M157,55 L165,55 L165,145 L157,145" fill="none" stroke="#7070a0" stroke-width="1.5"/>
+            <text x="145" y="80" text-anchor="middle" fill="#3ecf8e" font-size="16" font-family="system-ui" font-weight="700">2</text>
+            <text x="145" y="130" text-anchor="middle" fill="#3ecf8e" font-size="16" font-family="system-ui" font-weight="700">1</text>
+            <text x="188" y="107" text-anchor="middle" fill="var(--muted)" font-size="20" font-family="system-ui">=</text>
+            <path d="M213,55 L205,55 L205,145 L213,145" fill="none" stroke="#7070a0" stroke-width="1.5"/>
+            <path d="M247,55 L255,55 L255,145 L247,145" fill="none" stroke="#7070a0" stroke-width="1.5"/>
+            <text x="230" y="80" text-anchor="middle" fill="#5c8aff" font-size="16" font-family="system-ui" font-weight="700">4</text>
+            <text x="230" y="130" text-anchor="middle" fill="var(--muted)" font-size="16" font-family="system-ui">?</text>
+
+            <g class="mv-badge" style="--tx:40px;--ty:50px">
+              <circle cx="45" cy="125" r="14" fill="#5c8aff"/>
+              <text x="45" y="130" text-anchor="middle" fill="#fff" font-size="13" font-family="system-ui" font-weight="700">3</text>
+            </g>
+            <g class="mv-badge" style="--tx:-20px;--ty:100px">
+              <circle cx="145" cy="75" r="14" fill="#3ecf8e"/>
+              <text x="145" y="80" text-anchor="middle" fill="#fff" font-size="13" font-family="system-ui" font-weight="700">2</text>
+            </g>
+            <g class="mv-badge" style="--tx:0px;--ty:85px">
+              <circle cx="85" cy="125" r="14" fill="#5c8aff"/>
+              <text x="85" y="130" text-anchor="middle" fill="#fff" font-size="13" font-family="system-ui" font-weight="700">4</text>
+            </g>
+            <g class="mv-badge" style="--tx:-20px;--ty:85px">
+              <circle cx="145" cy="125" r="14" fill="#3ecf8e"/>
+              <text x="145" y="130" text-anchor="middle" fill="#fff" font-size="13" font-family="system-ui" font-weight="700">1</text>
+            </g>
+
+            <text class="mv-fade" x="105" y="180" text-anchor="middle" fill="var(--muted)" font-size="16" font-family="system-ui">×</text>
+            <text class="mv-fade" x="148" y="180" text-anchor="middle" fill="var(--muted)" font-size="16" font-family="system-ui">=</text>
+            <text class="mv-fade" x="167" y="180" text-anchor="middle" fill="var(--text)" font-size="16" font-family="system-ui" font-weight="700">6</text>
+
+            <text class="mv-fade" x="105" y="215" text-anchor="middle" fill="var(--muted)" font-size="16" font-family="system-ui">×</text>
+            <text class="mv-fade" x="148" y="215" text-anchor="middle" fill="var(--muted)" font-size="16" font-family="system-ui">=</text>
+            <text class="mv-fade" x="167" y="215" text-anchor="middle" fill="var(--text)" font-size="16" font-family="system-ui" font-weight="700">4</text>
+
+            <text class="mv-fade-late" x="182" y="202" text-anchor="middle" fill="var(--muted)" font-size="18" font-family="system-ui">+</text>
+            <text class="mv-fade-late" x="225" y="200" text-anchor="middle" fill="#5c8aff" font-size="18" font-family="system-ui" font-weight="700">= 10</text>
+          </svg>
+          <p class="step-caption">Row 2 of <strong>A</strong> — <strong>(3, 4)</strong> — pairs with the <em>same</em> vector <strong>v</strong>. Multiply and add: <strong>3×2 + 4×1 = 10</strong>. That becomes the second entry of the result.</p>
+        </div>
+
+        <!-- Step 4: Assembled result -->
+        <div class="step">
+          <svg viewBox="0 0 340 260" aria-label="Finished product: A times v equals the vector 4, 10">
+            <path d="M28,55 L20,55 L20,145 L28,145" fill="none" stroke="#7070a0" stroke-width="1.5"/>
+            <path d="M102,55 L110,55 L110,145 L102,145" fill="none" stroke="#7070a0" stroke-width="1.5"/>
+            <text x="45" y="80" text-anchor="middle" fill="var(--text)" font-size="16" font-family="system-ui">1</text>
+            <text x="85" y="80" text-anchor="middle" fill="var(--text)" font-size="16" font-family="system-ui">2</text>
+            <text x="45" y="130" text-anchor="middle" fill="var(--text)" font-size="16" font-family="system-ui">3</text>
+            <text x="85" y="130" text-anchor="middle" fill="var(--text)" font-size="16" font-family="system-ui">4</text>
+            <path d="M133,55 L125,55 L125,145 L133,145" fill="none" stroke="#7070a0" stroke-width="1.5"/>
+            <path d="M157,55 L165,55 L165,145 L157,145" fill="none" stroke="#7070a0" stroke-width="1.5"/>
+            <text x="145" y="80" text-anchor="middle" fill="var(--text)" font-size="16" font-family="system-ui">2</text>
+            <text x="145" y="130" text-anchor="middle" fill="var(--text)" font-size="16" font-family="system-ui">1</text>
+            <text x="188" y="107" text-anchor="middle" fill="var(--muted)" font-size="20" font-family="system-ui">=</text>
+            <path d="M213,55 L205,55 L205,145 L213,145" fill="none" stroke="#5c8aff" stroke-width="1.5"/>
+            <path d="M247,55 L255,55 L255,145 L247,145" fill="none" stroke="#5c8aff" stroke-width="1.5"/>
+            <text x="230" y="80" text-anchor="middle" fill="#5c8aff" font-size="17" font-family="system-ui" font-weight="700">4</text>
+            <text x="230" y="130" text-anchor="middle" fill="#5c8aff" font-size="17" font-family="system-ui" font-weight="700">10</text>
+          </svg>
+          <p class="step-caption">The finished product: <strong>Av = (4, 10)</strong>. Each entry is the dot product of one matrix row with <strong>v</strong> — exactly how a neural network layer computes <strong>y = Wx</strong> from one neuron's weight row and the input vector.</p>
+        </div>
+
+      </div><!-- .steps -->
+
+      <div class="step-nav">
+        <button class="prev" disabled>← Prev</button>
+        <div class="step-dots">
+          <span class="active"></span><span></span><span></span><span></span>
+        </div>
+        <button class="next">Next →</button>
+      </div>
+    </div><!-- .step-viewer -->
+  </section>
+
+</div><!-- .page -->
+
+<script src="textbook-switcher.js"></script>
+<script src="theme-toggle.js"></script>
+
+<!-- step-through controller -->
+<script>
+(function () {
+  'use strict';
+  document.querySelectorAll('.step-viewer').forEach(function (viewer) {
+    var steps = Array.from(viewer.querySelectorAll('.steps > .step'));
+    var dots  = Array.from(viewer.querySelectorAll('.step-dots span'));
+    var cur   = viewer.querySelector('.cur');
+    var prev  = viewer.querySelector('.prev');
+    var next  = viewer.querySelector('.next');
+    var idx   = 0;
+
+    function go(n) {
+      steps[idx].classList.remove('active');
+      dots[idx].classList.remove('active');
+      idx = n;
+      steps[idx].classList.add('active');
+      dots[idx].classList.add('active');
+      cur.textContent = idx + 1;
+      prev.disabled = (idx === 0);
+      next.disabled = (idx === steps.length - 1);
+    }
+
+    prev.addEventListener('click', function () { if (idx > 0) go(idx - 1); });
+    next.addEventListener('click', function () { if (idx < steps.length - 1) go(idx + 1); });
+
+    document.addEventListener('keydown', function (e) {
+      if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
+      if (e.key === 'ArrowLeft'  && idx > 0)                  go(idx - 1);
+      if (e.key === 'ArrowRight' && idx < steps.length - 1)   go(idx + 1);
+    });
+
+    go(0);
+  });
+}());
+</script>
+
+<!-- interactive dot product diagram -->
+<script>
+(function () {
+  'use strict';
+  var OX = 130, OY = 150, S = 40;
+  var magA = 3, magB = 2.5;
+  var PI = Math.PI;
+
+  var slider   = document.getElementById('dp-slider');
+  var degLbl   = document.getElementById('dp-deg');
+  var resultEl = document.getElementById('dp-result');
+  var formulaEl = document.getElementById('dp-formula');
+  var signEl   = document.getElementById('dp-sign');
+
+  var bLine    = document.getElementById('dp-b-line');
+  var bHead    = document.getElementById('dp-b-head');
+  var bLbl     = document.getElementById('dp-b-lbl');
+  var projSeg  = document.getElementById('dp-proj-seg');
+  var perpEl   = document.getElementById('dp-perp');
+  var projDot  = document.getElementById('dp-proj-dot');
+  var arcEl    = document.getElementById('dp-arc');
+  var thetaLbl = document.getElementById('dp-theta-lbl');
+
+  function update() {
+    var theta = parseFloat(slider.value);
+    var rad   = theta * PI / 180;
+    var cosT  = Math.cos(rad);
+    var sinT  = Math.sin(rad);
+    var dot   = magA * magB * cosT;   // = 7.5 cosθ
+
+    // b tip in SVG coords
+    var bTipX = OX + magB * S * cosT;
+    var bTipY = OY - magB * S * sinT;
+
+    // projection of b onto a (a is along x-axis, so proj x = b's SVG x)
+    var projX = bTipX;
+    var projY = OY;
+
+    // color by sign
+    var absD  = Math.abs(dot);
+    var color = absD < 0.15 ? '#7070a0' : dot > 0 ? '#3ecf8e' : '#ff6b6b';
+    var projColor = absD < 0.15 ? '#7070a0' : dot > 0 ? '#ffb830' : '#ff6b6b';
+
+    // --- vector b ---
+    var ux = cosT, uy = -sinT;          // unit in SVG
+    var px = -uy,  py =  ux;            // perpendicular (CCW)
+    var hL = 10, hw = 4.5;
+    var baseX = bTipX - hL * ux;
+    var baseY = bTipY - hL * uy;
+
+    bLine.setAttribute('x1', OX);
+    bLine.setAttribute('y1', OY);
+    bLine.setAttribute('x2', baseX.toFixed(1));
+    bLine.setAttribute('y2', baseY.toFixed(1));
+    bLine.setAttribute('stroke', color);
+
+    bHead.setAttribute('points',
+      bTipX.toFixed(1) + ',' + bTipY.toFixed(1) + ' ' +
+      (baseX + hw*px).toFixed(1) + ',' + (baseY + hw*py).toFixed(1) + ' ' +
+      (baseX - hw*px).toFixed(1) + ',' + (baseY - hw*py).toFixed(1));
+    bHead.setAttribute('fill', color);
+
+    bLbl.setAttribute('x', (bTipX + 13*ux).toFixed(1));
+    bLbl.setAttribute('y', (bTipY + 13*uy + 4).toFixed(1));
+    bLbl.setAttribute('fill', color);
+
+    // --- projection segment ---
+    projSeg.setAttribute('x1', OX);
+    projSeg.setAttribute('y1', OY);
+    projSeg.setAttribute('x2', projX.toFixed(1));
+    projSeg.setAttribute('y2', OY);
+    projSeg.setAttribute('stroke', projColor);
+    projSeg.style.display = absD < 0.02 ? 'none' : '';
+
+    // --- perpendicular dashed line ---
+    perpEl.setAttribute('x1', bTipX.toFixed(1));
+    perpEl.setAttribute('y1', bTipY.toFixed(1));
+    perpEl.setAttribute('x2', bTipX.toFixed(1));
+    perpEl.setAttribute('y2', OY);
+    perpEl.setAttribute('stroke', projColor);
+    perpEl.style.display = Math.abs(bTipY - OY) < 4 ? 'none' : '';
+
+    // --- projection dot ---
+    projDot.setAttribute('cx', projX.toFixed(1));
+    projDot.setAttribute('cy', OY);
+    projDot.setAttribute('fill', projColor);
+    projDot.style.display = absD < 0.02 ? 'none' : '';
+
+    // --- angle arc ---
+    var absTheta = Math.abs(theta);
+    if (absTheta < 2) {
+      arcEl.setAttribute('d', '');
+      thetaLbl.style.display = 'none';
+    } else {
+      var arcR = 28;
+      var ax1 = OX + arcR, ay1 = OY;
+      var ax2 = OX + arcR * cosT;
+      var ay2 = OY  - arcR * sinT;
+      var largeArc = absTheta > 180 ? 1 : 0;
+      var sweep     = sinT >= 0 ? 0 : 1;   // CCW in math = CCW in SVG (y-flip cancels)
+      arcEl.setAttribute('d',
+        'M ' + ax1.toFixed(1) + ' ' + ay1.toFixed(1) +
+        ' A ' + arcR + ' ' + arcR + ' 0 ' + largeArc + ' ' + sweep + ' ' +
+        ax2.toFixed(1) + ' ' + ay2.toFixed(1));
+      thetaLbl.style.display = '';
+      var midRad = theta / 2 * PI / 180;
+      var lblR   = 42;
+      thetaLbl.setAttribute('x', (OX + lblR * Math.cos(midRad)).toFixed(1));
+      thetaLbl.setAttribute('y', (OY - lblR * Math.sin(midRad) + 4).toFixed(1));
+    }
+
+    // --- readout ---
+    degLbl.textContent    = theta + '°';
+    resultEl.textContent  = dot.toFixed(2);
+    resultEl.style.color  = color;
+    formulaEl.textContent = '3 × 2.5 × cos(' + theta + '°) = ' + dot.toFixed(2);
+
+    if (absD < 0.15) {
+      signEl.textContent = 'θ ≈ 90° — vectors are perpendicular (orthogonal), dot product ≈ 0';
+    } else if (dot > 0) {
+      signEl.textContent = 'θ < 90° — vectors point roughly the same direction';
+    } else {
+      signEl.textContent = 'θ > 90° — vectors point in opposing directions';
+    }
+  }
+
+  slider.addEventListener('input', update);
+
+  document.querySelectorAll('.dp-preset').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      slider.value = btn.getAttribute('data-angle');
+      update();
+    });
+  });
+
+  update();
+}());
+</script>
+
+</body>
+</html>

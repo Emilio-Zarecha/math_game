@@ -1,0 +1,1121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Graph Theory — Math Game Textbook</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css" />
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
+          onload="renderMathInElement(document.body, {
+            delimiters: [{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}]
+          })"></script>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg:#0d0d1a; --surface:#151528; --panel:#1c1c35; --border:#2e2e55;
+      --accent:#5c8aff; --correct:#3ecf8e; --hint:#ffb830; --wrong:#ff6b6b;
+      --text:#e0e0f0; --muted:#7070a0; --ai:#2dd4bf;
+    }
+    body { background:var(--bg); color:var(--text); font-family:system-ui,sans-serif; min-height:100vh; padding:48px 24px 80px; display:flex; flex-direction:column; align-items:center; }
+    .page { width:100%; max-width:820px; }
+    header { display:flex; align-items:baseline; gap:16px; margin-bottom:12px; }
+    header h1 { font-size:1.5rem; font-weight:700; letter-spacing:.12em; text-transform:uppercase; color:var(--accent); }
+    header a { font-size:0.85rem; color:var(--muted); text-decoration:none; }
+    header a:hover { color:var(--accent); }
+    .subtitle { font-size:0.75rem; color:var(--muted); margin-bottom:36px; }
+    nav { background:var(--surface); border:1px solid var(--border); border-radius:12px; padding:24px 32px; margin-bottom:32px; }
+    nav h2 { font-size:0.7rem; letter-spacing:.18em; text-transform:uppercase; color:var(--hint); margin-bottom:16px; }
+    nav ol { padding-left:20px; display:grid; grid-template-columns:1fr 1fr; gap:6px 32px; }
+    nav li { font-size:0.9rem; }
+    nav a { color:var(--accent); text-decoration:none; }
+    nav a:hover { text-decoration:underline; }
+    section { background:var(--surface); border:1px solid var(--border); border-radius:12px; padding:32px 36px; margin-bottom:24px; scroll-margin-top:24px; }
+    section h3 { font-size:1.05rem; font-weight:700; color:var(--accent); margin-bottom:6px; }
+    .chapter-num { font-size:0.7rem; letter-spacing:.14em; text-transform:uppercase; color:var(--muted); margin-bottom:14px; }
+    p { line-height:1.8; color:var(--text); font-size:0.95rem; margin-bottom:14px; }
+    p:last-child { margin-bottom:0; }
+    .formula { background:var(--panel); border:1px solid var(--border); border-left:3px solid var(--accent); border-radius:8px; padding:14px 20px; margin:16px 0; }
+    .formula .label { font-size:0.7rem; letter-spacing:.14em; text-transform:uppercase; color:var(--hint); margin-bottom:8px; }
+    .formula p { margin-bottom:0; font-size:0.9rem; line-height:1.9; }
+    .definition { background:var(--panel); border:1px solid var(--border); border-left:3px solid var(--hint); border-radius:8px; padding:14px 20px; margin:16px 0; }
+    .definition .label { font-size:0.7rem; letter-spacing:.14em; text-transform:uppercase; color:var(--hint); margin-bottom:8px; }
+    .definition p { margin-bottom:0; font-size:0.9rem; line-height:1.9; }
+    .example { background:var(--panel); border:1px solid var(--border); border-left:3px solid var(--correct); border-radius:8px; padding:14px 20px; margin:16px 0; }
+    .example .label { font-size:0.7rem; letter-spacing:.14em; text-transform:uppercase; color:var(--correct); margin-bottom:10px; }
+    .example-step { display:flex; align-items:baseline; gap:12px; padding:4px 0; font-size:0.92rem; line-height:1.7; }
+    .example-step .why { color:var(--muted); font-size:0.82rem; min-width:200px; }
+    .ai-note { background:rgba(45,212,191,0.08); border:1px solid var(--border); border-left:3px solid var(--ai); border-radius:8px; padding:14px 20px; margin:16px 0; }
+    .ai-note .label { font-size:0.7rem; letter-spacing:.14em; text-transform:uppercase; color:var(--ai); margin-bottom:8px; }
+    .ai-note p { margin-bottom:0; font-size:0.9rem; line-height:1.9; }
+    .key { color:var(--hint); font-weight:600; }
+    .attribution { text-align:center; color:var(--muted); font-size:0.82rem; margin-top:36px; padding-top:20px; border-top:1px solid var(--border); }
+    @media (max-width:600px) { nav ol { grid-template-columns:1fr; } section { padding:24px 20px; } .example-step { flex-direction:column; gap:2px; } }
+    .toc-back { text-align: right; margin-top: 1.5rem; padding-top: 0.9rem;
+                border-top: 1px solid var(--panel, var(--border)); }
+    .toc-back a { color: var(--muted); font-size: 0.82rem; text-decoration: none;
+                  letter-spacing: 0.03em; }
+    .toc-back a:hover { color: var(--accent); }
+
+    [data-theme="light"] {
+      --bg:      #f5f0e4;
+      --surface: #faf7ee;
+      --panel:   #ede8d8;
+      --border:  #ccc6b4;
+      --text:    #18140c;
+      --muted:   #3e3c60;
+      --accent:  #2858c8;
+      --correct: #115238;
+      --hint:    #6e4a00;
+      --wrong:   #cc2040;
+      --ai:      #0f766e;
+    }
+    [data-theme="light"] section h3 { color: #18140c; }
+    [data-theme="light"] .chapter-num { color: #3e3c60; }
+  </style>
+  <script>(function(){var t=localStorage.getItem('math-theme')||((window.matchMedia&&window.matchMedia('(prefers-color-scheme:light)').matches)?'light':'dark');document.documentElement.setAttribute('data-theme',t);}());</script>
+</head>
+<body>
+<div class="page">
+
+  <header>
+    <h1>Graph Theory</h1>
+    <a href="index.html">← Back to game</a>
+  </header>
+  <p class="subtitle">Vertices, edges, and the structures that connect them — with sidebars on where each idea shows up in modern AI.</p>
+
+  <nav id="toc">
+    <h2>Contents</h2>
+    <ol>
+      <li><a href="#ch1">Graphs, Vertices, and Edges</a></li>
+      <li><a href="#ch2">Graph Representations</a></li>
+      <li><a href="#ch3">Paths, Walks, and Connectivity</a></li>
+      <li><a href="#ch4">Graph Traversal: BFS and DFS</a></li>
+      <li><a href="#ch5">Trees and Spanning Trees</a></li>
+      <li><a href="#ch6">Shortest Path Algorithms</a></li>
+      <li><a href="#ch7">Directed Acyclic Graphs and Topological Sort</a></li>
+      <li><a href="#ch8">Graph Coloring and Bipartite Graphs</a></li>
+      <li><a href="#ch9">Eulerian and Hamiltonian Paths</a></li>
+      <li><a href="#ch10">Network Flow</a></li>
+      <li><a href="#ch11">Graphs in Modern AI</a></li>
+    </ol>
+  </nav>
+
+  <!-- ── 1. Graphs, Vertices, and Edges ─────────────────────────────── -->
+  <section class="chapter" id="ch1">
+    <div class="chapter-num">Chapter 1</div>
+    <h3>Graphs, Vertices, and Edges</h3>
+
+    <p>
+      A map of flights between cities, a social network of friendships, and a diagram of which
+      web pages link to which — all three are the same mathematical object wearing different
+      clothes. Whenever a problem is really about a set of things and the pairwise relationships
+      between them, a <span class="key">graph</span> strips away the surface detail and leaves
+      only the structure that matters: who is connected to whom.
+    </p>
+
+    <div class="formula" style="display:flex;flex-direction:column;align-items:center;gap:0;padding-bottom:8px;">
+      <div class="label">Diagram — a small undirected graph G</div>
+      <svg width="260" height="200" viewBox="0 0 260 200" aria-label="An undirected graph with six vertices A through F, connected by seven edges forming a ring with one diagonal">
+        <line x1="60" y1="50" x2="160" y2="40" stroke="#7070a0" stroke-width="2"/>
+        <line x1="160" y1="40" x2="220" y2="100" stroke="#7070a0" stroke-width="2"/>
+        <line x1="220" y1="100" x2="170" y2="165" stroke="#7070a0" stroke-width="2"/>
+        <line x1="170" y1="165" x2="80" y2="175" stroke="#7070a0" stroke-width="2"/>
+        <line x1="80" y1="175" x2="25" y2="110" stroke="#7070a0" stroke-width="2"/>
+        <line x1="25" y1="110" x2="60" y2="50" stroke="#7070a0" stroke-width="2"/>
+        <line x1="60" y1="50" x2="170" y2="165" stroke="#5c8aff" stroke-width="2"/>
+        <circle cx="60" cy="50" r="14" fill="#1c1c35" stroke="#5c8aff" stroke-width="2"/>
+        <text x="60" y="55" text-anchor="middle" font-size="12" fill="#e0e0f0" font-family="system-ui,sans-serif">A</text>
+        <circle cx="160" cy="40" r="14" fill="#1c1c35" stroke="#5c8aff" stroke-width="2"/>
+        <text x="160" y="45" text-anchor="middle" font-size="12" fill="#e0e0f0" font-family="system-ui,sans-serif">B</text>
+        <circle cx="220" cy="100" r="14" fill="#1c1c35" stroke="#5c8aff" stroke-width="2"/>
+        <text x="220" y="105" text-anchor="middle" font-size="12" fill="#e0e0f0" font-family="system-ui,sans-serif">C</text>
+        <circle cx="170" cy="165" r="14" fill="#1c1c35" stroke="#5c8aff" stroke-width="2"/>
+        <text x="170" y="170" text-anchor="middle" font-size="12" fill="#e0e0f0" font-family="system-ui,sans-serif">D</text>
+        <circle cx="80" cy="175" r="14" fill="#1c1c35" stroke="#5c8aff" stroke-width="2"/>
+        <text x="80" y="180" text-anchor="middle" font-size="12" fill="#e0e0f0" font-family="system-ui,sans-serif">E</text>
+        <circle cx="25" cy="110" r="14" fill="#1c1c35" stroke="#5c8aff" stroke-width="2"/>
+        <text x="25" y="115" text-anchor="middle" font-size="12" fill="#e0e0f0" font-family="system-ui,sans-serif">F</text>
+      </svg>
+    </div>
+
+    <p>
+      Formally, a graph $G = (V, E)$ consists of a set of <span class="key">vertices</span>
+      $V$ (also called nodes) and a set of <span class="key">edges</span> $E$, where each edge
+      connects a pair of vertices. In the diagram above, $V = \{A,B,C,D,E,F\}$ and each line
+      is an edge — for example $\{A,B\}$ and the diagonal $\{A,D\}$. An edge with no direction
+      means the relationship runs both ways: "A is friends with B" implies "B is friends with A."
+      When direction matters instead — "A follows B" does not imply "B follows A" — the edges
+      carry arrows and the graph is called <span class="key">directed</span> (a digraph).
+    </p>
+
+    <p>
+      The <span class="key">degree</span> of a vertex is the number of edges touching it. In
+      graph G, vertex A touches edges to B, F, and D, so $\deg(A) = 3$; vertex B touches only
+      A and C, so $\deg(B) = 2$. Every edge contributes exactly 2 to the total degree count (one
+      at each endpoint), which gives a fact that holds for every graph, no matter how large:
+      the sum of all degrees is always even.
+    </p>
+
+    <div class="formula">
+      <div class="label">Handshake Theorem</div>
+      <p>
+        $\displaystyle\sum_{v \in V} \deg(v) = 2|E|$<br>
+        The sum of vertex degrees always equals twice the number of edges — so the sum of degrees is always even.
+      </p>
+    </div>
+
+    <div class="example">
+      <div class="label">Example — Verifying the Handshake Theorem on G</div>
+      <div class="example-step">
+        <span>$\deg(A){=}3,\ \deg(B){=}2,\ \deg(C){=}2,\ \deg(D){=}3,\ \deg(E){=}2,\ \deg(F){=}2$</span>
+        <span class="why">Count edges touching each vertex</span>
+      </div>
+      <div class="example-step">
+        <span>$3+2+2+3+2+2 = 14$</span>
+        <span class="why">Sum of all degrees</span>
+      </div>
+      <div class="example-step">
+        <span>$14 = 2 \times 7$, and $G$ has exactly 7 edges</span>
+        <span class="why">Confirms the theorem: sum of degrees = 2|E|</span>
+      </div>
+    </div>
+
+    <div class="ai-note">
+      <div class="label">⬡ AI Connection</div>
+      <p>
+        A neural network's forward pass is itself a graph: each operation (matrix multiply, add
+        bias, apply activation) is a vertex, and each edge carries a tensor from one operation
+        to the next. Frameworks like PyTorch and TensorFlow literally build this graph in memory
+        before running anything — "vertices and edges" is not a metaphor here, it's the data
+        structure the framework executes.
+      </p>
+    </div>
+
+    <p class="toc-back"><a href="#toc">↑ Table of Contents</a></p>
+  </section>
+
+  <!-- ── 2. Graph Representations ───────────────────────────────────── -->
+  <section class="chapter" id="ch2">
+    <div class="chapter-num">Chapter 2</div>
+    <h3>Graph Representations</h3>
+
+    <p>
+      Drawing a graph works for six vertices on a page. It breaks down completely for a social
+      network with a billion users. To compute anything about a graph — is it connected? what's
+      the shortest path? — a computer needs the graph encoded as data, not a picture. There are
+      two standard encodings, and the right choice depends entirely on whether the graph is
+      dense (many edges) or sparse (few edges relative to the number of possible pairs).
+    </p>
+
+    <div class="formula" style="display:flex;flex-direction:column;align-items:center;gap:0;padding-bottom:8px;">
+      <div class="label">Diagram — adjacency matrix for G (from Chapter 1)</div>
+      <svg width="230" height="200" viewBox="0 0 230 200" aria-label="A six by six adjacency matrix grid for graph G, with filled cells marking edges between vertices A through F">
+        <text x="15" y="34" text-anchor="middle" font-size="11" fill="#7070a0" font-family="monospace">A</text>
+        <text x="15" y="58" text-anchor="middle" font-size="11" fill="#7070a0" font-family="monospace">B</text>
+        <text x="15" y="82" text-anchor="middle" font-size="11" fill="#7070a0" font-family="monospace">C</text>
+        <text x="15" y="106" text-anchor="middle" font-size="11" fill="#7070a0" font-family="monospace">D</text>
+        <text x="15" y="130" text-anchor="middle" font-size="11" fill="#7070a0" font-family="monospace">E</text>
+        <text x="15" y="154" text-anchor="middle" font-size="11" fill="#7070a0" font-family="monospace">F</text>
+        <text x="57" y="15" text-anchor="middle" font-size="11" fill="#7070a0" font-family="monospace">A</text>
+        <text x="81" y="15" text-anchor="middle" font-size="11" fill="#7070a0" font-family="monospace">B</text>
+        <text x="105" y="15" text-anchor="middle" font-size="11" fill="#7070a0" font-family="monospace">C</text>
+        <text x="129" y="15" text-anchor="middle" font-size="11" fill="#7070a0" font-family="monospace">D</text>
+        <text x="153" y="15" text-anchor="middle" font-size="11" fill="#7070a0" font-family="monospace">E</text>
+        <text x="177" y="15" text-anchor="middle" font-size="11" fill="#7070a0" font-family="monospace">F</text>
+        <g font-family="monospace" font-size="11" fill="#e0e0f0">
+          <rect x="45" y="20" width="24" height="24" fill="#1c1c35" stroke="#2e2e55"/><text x="57" y="36" text-anchor="middle">0</text>
+          <rect x="69" y="20" width="24" height="24" fill="#5c8aff33" stroke="#2e2e55"/><text x="81" y="36" text-anchor="middle">1</text>
+          <rect x="93" y="20" width="24" height="24" fill="#1c1c35" stroke="#2e2e55"/><text x="105" y="36" text-anchor="middle">0</text>
+          <rect x="117" y="20" width="24" height="24" fill="#5c8aff33" stroke="#2e2e55"/><text x="129" y="36" text-anchor="middle">1</text>
+          <rect x="141" y="20" width="24" height="24" fill="#1c1c35" stroke="#2e2e55"/><text x="153" y="36" text-anchor="middle">0</text>
+          <rect x="165" y="20" width="24" height="24" fill="#5c8aff33" stroke="#2e2e55"/><text x="177" y="36" text-anchor="middle">1</text>
+
+          <rect x="45" y="44" width="24" height="24" fill="#5c8aff33" stroke="#2e2e55"/><text x="57" y="60" text-anchor="middle">1</text>
+          <rect x="69" y="44" width="24" height="24" fill="#1c1c35" stroke="#2e2e55"/><text x="81" y="60" text-anchor="middle">0</text>
+          <rect x="93" y="44" width="24" height="24" fill="#5c8aff33" stroke="#2e2e55"/><text x="105" y="60" text-anchor="middle">1</text>
+          <rect x="117" y="44" width="24" height="24" fill="#1c1c35" stroke="#2e2e55"/><text x="129" y="60" text-anchor="middle">0</text>
+          <rect x="141" y="44" width="24" height="24" fill="#1c1c35" stroke="#2e2e55"/><text x="153" y="60" text-anchor="middle">0</text>
+          <rect x="165" y="44" width="24" height="24" fill="#1c1c35" stroke="#2e2e55"/><text x="177" y="60" text-anchor="middle">0</text>
+
+          <rect x="45" y="68" width="24" height="24" fill="#1c1c35" stroke="#2e2e55"/><text x="57" y="84" text-anchor="middle">0</text>
+          <rect x="69" y="68" width="24" height="24" fill="#5c8aff33" stroke="#2e2e55"/><text x="81" y="84" text-anchor="middle">1</text>
+          <rect x="93" y="68" width="24" height="24" fill="#1c1c35" stroke="#2e2e55"/><text x="105" y="84" text-anchor="middle">0</text>
+          <rect x="117" y="68" width="24" height="24" fill="#5c8aff33" stroke="#2e2e55"/><text x="129" y="84" text-anchor="middle">1</text>
+          <rect x="141" y="68" width="24" height="24" fill="#1c1c35" stroke="#2e2e55"/><text x="153" y="84" text-anchor="middle">0</text>
+          <rect x="165" y="68" width="24" height="24" fill="#1c1c35" stroke="#2e2e55"/><text x="177" y="84" text-anchor="middle">0</text>
+
+          <rect x="45" y="92" width="24" height="24" fill="#5c8aff33" stroke="#2e2e55"/><text x="57" y="108" text-anchor="middle">1</text>
+          <rect x="69" y="92" width="24" height="24" fill="#1c1c35" stroke="#2e2e55"/><text x="81" y="108" text-anchor="middle">0</text>
+          <rect x="93" y="92" width="24" height="24" fill="#5c8aff33" stroke="#2e2e55"/><text x="105" y="108" text-anchor="middle">1</text>
+          <rect x="117" y="92" width="24" height="24" fill="#1c1c35" stroke="#2e2e55"/><text x="129" y="108" text-anchor="middle">0</text>
+          <rect x="141" y="92" width="24" height="24" fill="#5c8aff33" stroke="#2e2e55"/><text x="153" y="108" text-anchor="middle">1</text>
+          <rect x="165" y="92" width="24" height="24" fill="#1c1c35" stroke="#2e2e55"/><text x="177" y="108" text-anchor="middle">0</text>
+
+          <rect x="45" y="116" width="24" height="24" fill="#1c1c35" stroke="#2e2e55"/><text x="57" y="132" text-anchor="middle">0</text>
+          <rect x="69" y="116" width="24" height="24" fill="#1c1c35" stroke="#2e2e55"/><text x="81" y="132" text-anchor="middle">0</text>
+          <rect x="93" y="116" width="24" height="24" fill="#1c1c35" stroke="#2e2e55"/><text x="105" y="132" text-anchor="middle">0</text>
+          <rect x="117" y="116" width="24" height="24" fill="#5c8aff33" stroke="#2e2e55"/><text x="129" y="132" text-anchor="middle">1</text>
+          <rect x="141" y="116" width="24" height="24" fill="#1c1c35" stroke="#2e2e55"/><text x="153" y="132" text-anchor="middle">0</text>
+          <rect x="165" y="116" width="24" height="24" fill="#5c8aff33" stroke="#2e2e55"/><text x="177" y="132" text-anchor="middle">1</text>
+
+          <rect x="45" y="140" width="24" height="24" fill="#5c8aff33" stroke="#2e2e55"/><text x="57" y="156" text-anchor="middle">1</text>
+          <rect x="69" y="140" width="24" height="24" fill="#1c1c35" stroke="#2e2e55"/><text x="81" y="156" text-anchor="middle">0</text>
+          <rect x="93" y="140" width="24" height="24" fill="#1c1c35" stroke="#2e2e55"/><text x="105" y="156" text-anchor="middle">0</text>
+          <rect x="117" y="140" width="24" height="24" fill="#1c1c35" stroke="#2e2e55"/><text x="129" y="156" text-anchor="middle">0</text>
+          <rect x="141" y="140" width="24" height="24" fill="#5c8aff33" stroke="#2e2e55"/><text x="153" y="156" text-anchor="middle">1</text>
+          <rect x="165" y="140" width="24" height="24" fill="#1c1c35" stroke="#2e2e55"/><text x="177" y="156" text-anchor="middle">0</text>
+        </g>
+        <text x="115" y="185" text-anchor="middle" font-size="10" fill="#7070a0" font-family="system-ui,sans-serif">Symmetric because G is undirected</text>
+      </svg>
+    </div>
+
+    <p>
+      An <span class="key">adjacency matrix</span> is an $n \times n$ grid where entry $(i,j)$
+      is 1 if an edge connects vertex $i$ and vertex $j$, and 0 otherwise. For an undirected
+      graph the matrix is always symmetric, since an edge $\{i,j\}$ makes both $(i,j)$ and
+      $(j,i)$ equal to 1. Checking "is A connected to D?" is a single lookup — $O(1)$ — which
+      makes the matrix ideal for dense graphs or when adjacency queries dominate. The cost is
+      space: an $n$-vertex graph needs $n^2$ cells even if it only has a handful of edges.
+    </p>
+
+    <p>
+      An <span class="key">adjacency list</span> instead stores, for each vertex, just the list
+      of its neighbors. Vertex A's list would be $[B, D, F]$. This uses $O(|V| + |E|)$ space
+      total — proportional to the actual number of edges, not the square of the vertex count —
+      which is why almost every real-world graph library (road networks, social graphs, web
+      link graphs) defaults to adjacency lists: those graphs are sparse, with each vertex
+      connected to only a tiny fraction of all other vertices.
+    </p>
+
+    <div class="ai-note">
+      <div class="label">⬡ AI Connection</div>
+      <p>
+        Graph Neural Networks consume exactly this adjacency information as their input: a
+        node-feature matrix plus an adjacency structure (often a sparse adjacency list, since
+        real graphs like citation networks or molecules are sparse). A GNN layer computes each
+        node's new representation by aggregating its neighbors' features — reading straight off
+        the same adjacency list you'd use for any other graph algorithm.
+      </p>
+    </div>
+
+    <p class="toc-back"><a href="#toc">↑ Table of Contents</a></p>
+  </section>
+
+  <!-- ── 3. Paths, Walks, and Connectivity ──────────────────────────── -->
+  <section class="chapter" id="ch3">
+    <div class="chapter-num">Chapter 3</div>
+    <h3>Paths, Walks, and Connectivity</h3>
+
+    <p>
+      "Can I get from A to C?" is the single most common question asked of a graph — it's a
+      route planner, a network reachability check, and a social-graph "degree of separation"
+      query all at once. Answering it precisely requires being careful about the difference
+      between a walk that might repeat vertices and a path that visits each vertex at most once.
+    </p>
+
+    <div class="formula" style="display:flex;flex-direction:column;align-items:center;gap:0;padding-bottom:8px;">
+      <div class="label">Diagram — a path in G, and a disconnected vertex</div>
+      <svg width="260" height="200" viewBox="0 0 260 200" aria-label="Graph G with the path A to B to C highlighted in green, and an isolated seventh vertex Z with no edges, illustrating that a graph can have more than one connected component">
+        <line x1="60" y1="50" x2="160" y2="40" stroke="#3ecf8e" stroke-width="3"/>
+        <line x1="160" y1="40" x2="220" y2="100" stroke="#3ecf8e" stroke-width="3"/>
+        <line x1="220" y1="100" x2="170" y2="165" stroke="#2e2e55" stroke-width="2"/>
+        <line x1="170" y1="165" x2="80" y2="175" stroke="#2e2e55" stroke-width="2"/>
+        <line x1="80" y1="175" x2="25" y2="110" stroke="#2e2e55" stroke-width="2"/>
+        <line x1="25" y1="110" x2="60" y2="50" stroke="#2e2e55" stroke-width="2"/>
+        <line x1="60" y1="50" x2="170" y2="165" stroke="#2e2e55" stroke-width="2"/>
+        <circle cx="60" cy="50" r="14" fill="#1c1c35" stroke="#3ecf8e" stroke-width="2"/>
+        <text x="60" y="55" text-anchor="middle" font-size="12" fill="#e0e0f0" font-family="system-ui,sans-serif">A</text>
+        <circle cx="160" cy="40" r="14" fill="#1c1c35" stroke="#3ecf8e" stroke-width="2"/>
+        <text x="160" y="45" text-anchor="middle" font-size="12" fill="#e0e0f0" font-family="system-ui,sans-serif">B</text>
+        <circle cx="220" cy="100" r="14" fill="#1c1c35" stroke="#3ecf8e" stroke-width="2"/>
+        <text x="220" y="105" text-anchor="middle" font-size="12" fill="#e0e0f0" font-family="system-ui,sans-serif">C</text>
+        <circle cx="170" cy="165" r="14" fill="#1c1c35" stroke="#7070a0" stroke-width="2"/>
+        <text x="170" y="170" text-anchor="middle" font-size="12" fill="#e0e0f0" font-family="system-ui,sans-serif">D</text>
+        <circle cx="80" cy="175" r="14" fill="#1c1c35" stroke="#7070a0" stroke-width="2"/>
+        <text x="80" y="180" text-anchor="middle" font-size="12" fill="#e0e0f0" font-family="system-ui,sans-serif">E</text>
+        <circle cx="25" cy="110" r="14" fill="#1c1c35" stroke="#7070a0" stroke-width="2"/>
+        <text x="25" y="115" text-anchor="middle" font-size="12" fill="#e0e0f0" font-family="system-ui,sans-serif">F</text>
+        <circle cx="235" cy="25" r="12" fill="#1c1c35" stroke="#ff6b6b" stroke-width="2"/>
+        <text x="235" y="30" text-anchor="middle" font-size="11" fill="#e0e0f0" font-family="system-ui,sans-serif">Z</text>
+      </svg>
+    </div>
+
+    <p>
+      A <span class="key">walk</span> is any sequence of vertices where consecutive vertices
+      are joined by an edge; it may reuse vertices and edges freely. A <span class="key">path</span>
+      is a walk that never repeats a vertex. A <span class="key">cycle</span> is a path that
+      returns to its starting vertex (e.g. A→B→C→D→A in graph G). Two vertices are
+      <span class="key">connected</span> if some path exists between them, and a graph is
+      <span class="key">connected</span> overall if every pair of vertices is connected. The
+      isolated vertex Z above has no edges at all, so it forms its own
+      <span class="key">connected component</span> — the graph as a whole is disconnected.
+    </p>
+
+    <p>
+      Connectivity questions scale up in important ways. In a road network, a
+      <span class="key">bridge</span> (or cut edge) is an edge whose removal disconnects the
+      graph — a single point of failure. A <span class="key">cut vertex</span> plays the same
+      role for a vertex. Both concepts matter enormously for network reliability: internet
+      backbone design and power grid topology are both, at their core, exercises in avoiding
+      cut edges and cut vertices.
+    </p>
+
+    <div class="example">
+      <div class="label">Example — Is graph G connected?</div>
+      <div class="example-step">
+        <span>Start at A, list every vertex reachable by some path</span>
+        <span class="why">Reachability defines connectivity</span>
+      </div>
+      <div class="example-step">
+        <span>A→B, A→F, A→D, B→C, D→C, D→E</span>
+        <span class="why">Following edges from A outward</span>
+      </div>
+      <div class="example-step">
+        <span>Reachable set = $\{A,B,C,D,E,F\}$ = all of $V$</span>
+        <span class="why">Every vertex reached — G is connected</span>
+      </div>
+    </div>
+
+    <div class="ai-note">
+      <div class="label">⬡ AI Connection</div>
+      <p>
+        Backpropagation is a walk in reverse: to compute how the loss depends on an early-layer
+        weight, the chain rule multiplies gradients along every path from the loss node back to
+        that weight. If a weight's node has no path to the loss node — the analogue of a
+        disconnected component — its gradient is exactly zero and it never updates during training.
+      </p>
+    </div>
+
+    <p class="toc-back"><a href="#toc">↑ Table of Contents</a></p>
+  </section>
+
+  <!-- ── 4. Graph Traversal: BFS and DFS ────────────────────────────── -->
+  <section class="chapter" id="ch4">
+    <div class="chapter-num">Chapter 4</div>
+    <h3>Graph Traversal: BFS and DFS</h3>
+
+    <p>
+      Knowing a graph is connected is one thing; systematically visiting every vertex is
+      another, and it turns out there are exactly two fundamentally different disciplined ways
+      to do it. Both show up constantly — in maze solvers, in web crawlers, in game-tree search
+      — and the choice between them changes both the order vertices are visited in and the
+      memory the algorithm needs.
+    </p>
+
+    <div class="formula" style="display:flex;flex-direction:column;align-items:center;gap:0;padding-bottom:8px;">
+      <div class="label">Diagram — BFS visit order on G starting from A</div>
+      <svg width="260" height="200" viewBox="0 0 260 200" aria-label="Graph G with vertices numbered in the order breadth-first search visits them starting from A: A first, then B, F, D at distance one, then C, E at distance two">
+        <line x1="60" y1="50" x2="160" y2="40" stroke="#2e2e55" stroke-width="2"/>
+        <line x1="160" y1="40" x2="220" y2="100" stroke="#2e2e55" stroke-width="2"/>
+        <line x1="220" y1="100" x2="170" y2="165" stroke="#2e2e55" stroke-width="2"/>
+        <line x1="170" y1="165" x2="80" y2="175" stroke="#2e2e55" stroke-width="2"/>
+        <line x1="80" y1="175" x2="25" y2="110" stroke="#2e2e55" stroke-width="2"/>
+        <line x1="25" y1="110" x2="60" y2="50" stroke="#2e2e55" stroke-width="2"/>
+        <line x1="60" y1="50" x2="170" y2="165" stroke="#2e2e55" stroke-width="2"/>
+        <circle cx="60" cy="50" r="15" fill="#1c1c35" stroke="#ffb830" stroke-width="2"/>
+        <text x="60" y="47" text-anchor="middle" font-size="10" fill="#7070a0" font-family="system-ui,sans-serif">A</text>
+        <text x="60" y="59" text-anchor="middle" font-size="12" fill="#ffb830" font-family="system-ui,sans-serif" font-weight="700">1</text>
+        <circle cx="160" cy="40" r="15" fill="#1c1c35" stroke="#ffb830" stroke-width="2"/>
+        <text x="160" y="37" text-anchor="middle" font-size="10" fill="#7070a0" font-family="system-ui,sans-serif">B</text>
+        <text x="160" y="49" text-anchor="middle" font-size="12" fill="#ffb830" font-family="system-ui,sans-serif" font-weight="700">2</text>
+        <circle cx="220" cy="100" r="15" fill="#1c1c35" stroke="#ffb830" stroke-width="2"/>
+        <text x="220" y="97" text-anchor="middle" font-size="10" fill="#7070a0" font-family="system-ui,sans-serif">C</text>
+        <text x="220" y="109" text-anchor="middle" font-size="12" fill="#ffb830" font-family="system-ui,sans-serif" font-weight="700">5</text>
+        <circle cx="170" cy="165" r="15" fill="#1c1c35" stroke="#ffb830" stroke-width="2"/>
+        <text x="170" y="162" text-anchor="middle" font-size="10" fill="#7070a0" font-family="system-ui,sans-serif">D</text>
+        <text x="170" y="174" text-anchor="middle" font-size="12" fill="#ffb830" font-family="system-ui,sans-serif" font-weight="700">3</text>
+        <circle cx="80" cy="175" r="15" fill="#1c1c35" stroke="#ffb830" stroke-width="2"/>
+        <text x="80" y="172" text-anchor="middle" font-size="10" fill="#7070a0" font-family="system-ui,sans-serif">E</text>
+        <text x="80" y="184" text-anchor="middle" font-size="12" fill="#ffb830" font-family="system-ui,sans-serif" font-weight="700">6</text>
+        <circle cx="25" cy="110" r="15" fill="#1c1c35" stroke="#ffb830" stroke-width="2"/>
+        <text x="25" y="107" text-anchor="middle" font-size="10" fill="#7070a0" font-family="system-ui,sans-serif">F</text>
+        <text x="25" y="119" text-anchor="middle" font-size="12" fill="#ffb830" font-family="system-ui,sans-serif" font-weight="700">4</text>
+      </svg>
+    </div>
+
+    <p>
+      <span class="key">Breadth-First Search (BFS)</span> visits vertices in waves by distance
+      from the start: first the start vertex, then all its direct neighbors, then all vertices
+      two edges away, and so on. It uses a <span class="key">queue</span> (first-in, first-out)
+      to remember which vertex to visit next. Because it explores level by level, BFS is the
+      standard way to find the shortest path (fewest edges) in an unweighted graph — the first
+      time it reaches a vertex is guaranteed to be via a shortest route.
+    </p>
+
+    <p>
+      <span class="key">Depth-First Search (DFS)</span> instead commits to one direction and
+      follows it as far as possible before backtracking, using a <span class="key">stack</span>
+      (last-in, first-out) — implemented explicitly or, more commonly, via recursion. Starting
+      at A, DFS might go A→B→C→D→E→F, plunging deep before exploring alternatives. DFS uses
+      less memory for wide graphs, and it's the natural tool for tasks like detecting cycles,
+      finding connected components, and topological sorting (Chapter 7).
+    </p>
+
+    <div class="example">
+      <div class="label">Example — DFS visit order on G starting from A</div>
+      <div class="example-step">
+        <span>Visit A, push its unvisited neighbors: B, F, D</span>
+        <span class="why">DFS picks one neighbor and commits</span>
+      </div>
+      <div class="example-step">
+        <span>A → B → C → D (D's other neighbor E still unvisited) → E → F</span>
+        <span class="why">Follow each branch to its end before backtracking</span>
+      </div>
+      <div class="example-step">
+        <span>Order: A, B, C, D, E, F</span>
+        <span class="why">Compare to BFS order A, B, F, D, C, E above — same vertices, different order</span>
+      </div>
+    </div>
+
+    <div class="ai-note">
+      <div class="label">⬡ AI Connection</div>
+      <p>
+        Minimax search in game-playing AI (chess, Go) is depth-first traversal of the game
+        tree — commit to a line of play, evaluate it fully, then backtrack to try alternatives.
+        Message passing in a Graph Neural Network is closer to breadth-first: in each round every
+        node simultaneously gathers information from its immediate neighbors, exactly like BFS's
+        wave-by-distance expansion.
+      </p>
+    </div>
+
+    <p class="toc-back"><a href="#toc">↑ Table of Contents</a></p>
+  </section>
+
+  <!-- ── 5. Trees and Spanning Trees ────────────────────────────────── -->
+  <section class="chapter" id="ch5">
+    <div class="chapter-num">Chapter 5</div>
+    <h3>Trees and Spanning Trees</h3>
+
+    <p>
+      If you want to connect every city with fiber-optic cable at minimum cost, you don't need
+      every possible link — you need the cheapest set of links that still connects everything,
+      with zero redundant connections. That minimal connecting structure is always a
+      <span class="key">tree</span>, and finding it is one of the oldest solved problems in
+      graph theory.
+    </p>
+
+    <div class="formula" style="display:flex;flex-direction:column;align-items:center;gap:0;padding-bottom:8px;">
+      <div class="label">Diagram — a spanning tree of G (green edges)</div>
+      <svg width="260" height="200" viewBox="0 0 260 200" aria-label="Graph G with five green edges forming a spanning tree connecting all six vertices with no cycle, and two grey edges excluded from the tree">
+        <line x1="60" y1="50" x2="160" y2="40" stroke="#3ecf8e" stroke-width="3"/>
+        <line x1="160" y1="40" x2="220" y2="100" stroke="#3ecf8e" stroke-width="3"/>
+        <line x1="220" y1="100" x2="170" y2="165" stroke="#3ecf8e" stroke-width="3"/>
+        <line x1="170" y1="165" x2="80" y2="175" stroke="#3ecf8e" stroke-width="3"/>
+        <line x1="80" y1="175" x2="25" y2="110" stroke="#3ecf8e" stroke-width="3"/>
+        <line x1="25" y1="110" x2="60" y2="50" stroke="#2e2e55" stroke-width="2" stroke-dasharray="4,3"/>
+        <line x1="60" y1="50" x2="170" y2="165" stroke="#2e2e55" stroke-width="2" stroke-dasharray="4,3"/>
+        <circle cx="60" cy="50" r="14" fill="#1c1c35" stroke="#3ecf8e" stroke-width="2"/>
+        <text x="60" y="55" text-anchor="middle" font-size="12" fill="#e0e0f0" font-family="system-ui,sans-serif">A</text>
+        <circle cx="160" cy="40" r="14" fill="#1c1c35" stroke="#3ecf8e" stroke-width="2"/>
+        <text x="160" y="45" text-anchor="middle" font-size="12" fill="#e0e0f0" font-family="system-ui,sans-serif">B</text>
+        <circle cx="220" cy="100" r="14" fill="#1c1c35" stroke="#3ecf8e" stroke-width="2"/>
+        <text x="220" y="105" text-anchor="middle" font-size="12" fill="#e0e0f0" font-family="system-ui,sans-serif">C</text>
+        <circle cx="170" cy="165" r="14" fill="#1c1c35" stroke="#3ecf8e" stroke-width="2"/>
+        <text x="170" y="170" text-anchor="middle" font-size="12" fill="#e0e0f0" font-family="system-ui,sans-serif">D</text>
+        <circle cx="80" cy="175" r="14" fill="#1c1c35" stroke="#3ecf8e" stroke-width="2"/>
+        <text x="80" y="180" text-anchor="middle" font-size="12" fill="#e0e0f0" font-family="system-ui,sans-serif">E</text>
+        <circle cx="25" cy="110" r="14" fill="#1c1c35" stroke="#3ecf8e" stroke-width="2"/>
+        <text x="25" y="115" text-anchor="middle" font-size="12" fill="#e0e0f0" font-family="system-ui,sans-serif">F</text>
+      </svg>
+    </div>
+
+    <p>
+      A <span class="key">tree</span> is a connected graph with no cycles. This single
+      constraint forces a precise relationship between vertices and edges: any tree with $n$
+      vertices has exactly $n-1$ edges — one fewer edge than vertex, since each new vertex
+      attaches via exactly one edge without ever closing a loop. A <span class="key">spanning
+      tree</span> of a graph $G$ is a subgraph that is a tree and touches every vertex of $G$.
+      The diagram shows one of G's many possible spanning trees: 5 edges connecting all 6
+      vertices, with the diagonal $\{A,D\}$ and edge $\{F,A\}$ excluded to avoid closing a cycle.
+    </p>
+
+    <p>
+      When edges have weights (costs), the <span class="key">Minimum Spanning Tree (MST)</span>
+      is the spanning tree with the smallest total edge weight. Two greedy algorithms both
+      provably find it: <span class="key">Kruskal's algorithm</span> sorts all edges by weight
+      and adds each one unless it would create a cycle; <span class="key">Prim's algorithm</span>
+      grows a single tree outward, always adding the cheapest edge that connects a new vertex.
+      Both work because of a deep fact called the cut property: the cheapest edge crossing any
+      partition of the vertices is always part of some MST.
+    </p>
+
+    <div class="example">
+      <div class="label">Example — Kruskal's algorithm, sketch</div>
+      <div class="example-step">
+        <span>Sort edges by weight, ascending</span>
+        <span class="why">Greedy: always consider the cheapest remaining edge</span>
+      </div>
+      <div class="example-step">
+        <span>Add an edge only if its two endpoints are in different components</span>
+        <span class="why">Adding an edge within the same component would create a cycle</span>
+      </div>
+      <div class="example-step">
+        <span>Stop once $n-1$ edges have been added</span>
+        <span class="why">A tree spanning all $n$ vertices needs exactly $n-1$ edges</span>
+      </div>
+    </div>
+
+    <div class="ai-note">
+      <div class="label">⬡ AI Connection</div>
+      <p>
+        A decision tree — one of the most widely used classical ML models — is a rooted tree in
+        exactly this graph-theoretic sense: no cycles, one path from root to any leaf. Random
+        forests and gradient-boosted trees (XGBoost, LightGBM) are ensembles of many such trees,
+        and hierarchical clustering builds a "dendrogram" that is literally a spanning tree of
+        the data points ordered by similarity.
+      </p>
+    </div>
+
+    <p class="toc-back"><a href="#toc">↑ Table of Contents</a></p>
+  </section>
+
+  <!-- ── 6. Shortest Path Algorithms ────────────────────────────────── -->
+  <section class="chapter" id="ch6">
+    <div class="chapter-num">Chapter 6</div>
+    <h3>Shortest Path Algorithms</h3>
+
+    <p>
+      BFS finds shortest paths when every edge counts equally. Real routes rarely do — a flight
+      costs money, a road segment takes time, a network hop has latency. Once edges carry
+      weights, shortest-path finding needs a smarter algorithm than "explore in waves," and the
+      most famous one is due to Edsger Dijkstra.
+    </p>
+
+    <div class="formula" style="display:flex;flex-direction:column;align-items:center;gap:0;padding-bottom:8px;">
+      <div class="label">Diagram — weighted G, shortest path A to E highlighted</div>
+      <svg width="260" height="200" viewBox="0 0 260 200" aria-label="Graph G with edge weights labeled, and the shortest path from A to E highlighted in green going through F, with total weight 3, shorter than the direct alternatives">
+        <line x1="60" y1="50" x2="160" y2="40" stroke="#2e2e55" stroke-width="2"/>
+        <text x="105" y="38" text-anchor="middle" font-size="10" fill="#7070a0" font-family="monospace">4</text>
+        <line x1="160" y1="40" x2="220" y2="100" stroke="#2e2e55" stroke-width="2"/>
+        <text x="197" y="65" text-anchor="middle" font-size="10" fill="#7070a0" font-family="monospace">3</text>
+        <line x1="220" y1="100" x2="170" y2="165" stroke="#2e2e55" stroke-width="2"/>
+        <text x="203" y="138" text-anchor="middle" font-size="10" fill="#7070a0" font-family="monospace">2</text>
+        <line x1="170" y1="165" x2="80" y2="175" stroke="#3ecf8e" stroke-width="3"/>
+        <text x="125" y="182" text-anchor="middle" font-size="10" fill="#3ecf8e" font-family="monospace">5</text>
+        <line x1="80" y1="175" x2="25" y2="110" stroke="#3ecf8e" stroke-width="3"/>
+        <text x="45" y="150" text-anchor="middle" font-size="10" fill="#3ecf8e" font-family="monospace">2</text>
+        <line x1="25" y1="110" x2="60" y2="50" stroke="#3ecf8e" stroke-width="3"/>
+        <text x="35" y="75" text-anchor="middle" font-size="10" fill="#3ecf8e" font-family="monospace">1</text>
+        <line x1="60" y1="50" x2="170" y2="165" stroke="#2e2e55" stroke-width="2"/>
+        <text x="122" y="112" text-anchor="middle" font-size="10" fill="#7070a0" font-family="monospace">6</text>
+        <circle cx="60" cy="50" r="14" fill="#1c1c35" stroke="#3ecf8e" stroke-width="2"/>
+        <text x="60" y="55" text-anchor="middle" font-size="12" fill="#e0e0f0" font-family="system-ui,sans-serif">A</text>
+        <circle cx="160" cy="40" r="14" fill="#1c1c35" stroke="#7070a0" stroke-width="2"/>
+        <text x="160" y="45" text-anchor="middle" font-size="12" fill="#e0e0f0" font-family="system-ui,sans-serif">B</text>
+        <circle cx="220" cy="100" r="14" fill="#1c1c35" stroke="#7070a0" stroke-width="2"/>
+        <text x="220" y="105" text-anchor="middle" font-size="12" fill="#e0e0f0" font-family="system-ui,sans-serif">C</text>
+        <circle cx="170" cy="165" r="14" fill="#1c1c35" stroke="#7070a0" stroke-width="2"/>
+        <text x="170" y="170" text-anchor="middle" font-size="12" fill="#e0e0f0" font-family="system-ui,sans-serif">D</text>
+        <circle cx="80" cy="175" r="14" fill="#1c1c35" stroke="#3ecf8e" stroke-width="2"/>
+        <text x="80" y="180" text-anchor="middle" font-size="12" fill="#e0e0f0" font-family="system-ui,sans-serif">E</text>
+        <circle cx="25" cy="110" r="14" fill="#1c1c35" stroke="#3ecf8e" stroke-width="2"/>
+        <text x="25" y="115" text-anchor="middle" font-size="12" fill="#e0e0f0" font-family="system-ui,sans-serif">F</text>
+      </svg>
+    </div>
+
+    <p>
+      <span class="key">Dijkstra's algorithm</span> finds shortest paths from one source vertex
+      to all others, provided every edge weight is non-negative. It keeps a running "best known
+      distance" for every vertex (starting at $\infty$ except the source, which is 0), and
+      repeatedly picks the unvisited vertex with the smallest known distance, then
+      <span class="key">relaxes</span> its outgoing edges — updating a neighbor's distance if
+      going through the current vertex is cheaper than what was known before. Because it always
+      expands the cheapest frontier vertex next, once a vertex is finalized its distance can
+      never improve.
+    </p>
+
+    <p>
+      In the diagram, the direct edge $A$–$D$ costs 6, and the route $A\to B\to C\to D$ costs
+      $4+3+2=9$ — both worse than they might look at a glance. For the destination $E$, the
+      route $A \to F \to E$ costs only $1 + 2 = 3$, beating both $A \to D \to E$ ($6+5=11$) and
+      the long way around through $B$ and $C$. When negative edge weights are possible,
+      Dijkstra can give wrong answers, and the slower <span class="key">Bellman-Ford
+      algorithm</span> — which relaxes every edge repeatedly, $|V|-1$ times — is used instead,
+      since it can also detect negative-weight cycles.
+    </p>
+
+    <div class="example">
+      <div class="label">Example — comparing routes from A to E</div>
+      <div class="example-step">
+        <span>$A \to F \to E$: weight $1 + 2 = 3$</span>
+        <span class="why">Two hops through F</span>
+      </div>
+      <div class="example-step">
+        <span>$A \to D \to E$: weight $6 + 5 = 11$</span>
+        <span class="why">Two hops through D — much more expensive</span>
+      </div>
+      <div class="example-step">
+        <span>Shortest path: $A \to F \to E$, total weight $3$</span>
+        <span class="why">Dijkstra would finalize F (distance 1) before D (distance 6), then find E via F</span>
+      </div>
+    </div>
+
+    <div class="ai-note">
+      <div class="label">⬡ AI Connection</div>
+      <p>
+        A* search — Dijkstra plus a heuristic estimate of remaining distance — is the standard
+        pathfinding algorithm in robotics and game AI navigation. In reinforcement learning,
+        value iteration propagates value estimates backward through the state-transition graph
+        in a way that's structurally close to Dijkstra's edge relaxation: repeatedly improve an
+        estimate using a neighbor's already-improved estimate.
+      </p>
+    </div>
+
+    <p class="toc-back"><a href="#toc">↑ Table of Contents</a></p>
+  </section>
+
+  <!-- ── 7. Directed Acyclic Graphs and Topological Sort ────────────── -->
+  <section class="chapter" id="ch7">
+    <div class="chapter-num">Chapter 7</div>
+    <h3>Directed Acyclic Graphs and Topological Sort</h3>
+
+    <p>
+      Course prerequisites, build-system dependencies, and spreadsheet formula recalculation
+      all share one requirement: some things must happen before others, and there must be no
+      circular requirement ("A depends on B depends on A" is a contradiction, not a valid plan).
+      This is precisely the structure of a <span class="key">Directed Acyclic Graph (DAG)</span>.
+    </p>
+
+    <div class="formula" style="display:flex;flex-direction:column;align-items:center;gap:0;padding-bottom:8px;">
+      <div class="label">Diagram — a DAG with one valid topological order</div>
+      <svg width="260" height="200" viewBox="0 0 260 200" aria-label="A directed acyclic graph with five vertices P, Q, R, S, T. Arrows go from P to Q, P to R, Q to S, R to S, and S to T, with no cycles, illustrating a valid dependency order">
+        <defs>
+          <marker id="arrow7" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto">
+            <path d="M0,0 L8,4 L0,8 z" fill="#5c8aff"/>
+          </marker>
+        </defs>
+        <line x1="42" y1="100" x2="90" y2="48" stroke="#5c8aff" stroke-width="2" marker-end="url(#arrow7)"/>
+        <line x1="42" y1="100" x2="90" y2="152" stroke="#5c8aff" stroke-width="2" marker-end="url(#arrow7)"/>
+        <line x1="112" y1="42" x2="168" y2="92" stroke="#5c8aff" stroke-width="2" marker-end="url(#arrow7)"/>
+        <line x1="112" y1="158" x2="168" y2="108" stroke="#5c8aff" stroke-width="2" marker-end="url(#arrow7)"/>
+        <line x1="196" y1="100" x2="222" y2="100" stroke="#5c8aff" stroke-width="2" marker-end="url(#arrow7)"/>
+        <circle cx="30" cy="100" r="14" fill="#1c1c35" stroke="#5c8aff" stroke-width="2"/>
+        <text x="30" y="105" text-anchor="middle" font-size="12" fill="#e0e0f0" font-family="system-ui,sans-serif">P</text>
+        <circle cx="100" cy="40" r="14" fill="#1c1c35" stroke="#5c8aff" stroke-width="2"/>
+        <text x="100" y="45" text-anchor="middle" font-size="12" fill="#e0e0f0" font-family="system-ui,sans-serif">Q</text>
+        <circle cx="100" cy="160" r="14" fill="#1c1c35" stroke="#5c8aff" stroke-width="2"/>
+        <text x="100" y="165" text-anchor="middle" font-size="12" fill="#e0e0f0" font-family="system-ui,sans-serif">R</text>
+        <circle cx="182" cy="100" r="14" fill="#1c1c35" stroke="#5c8aff" stroke-width="2"/>
+        <text x="182" y="105" text-anchor="middle" font-size="12" fill="#e0e0f0" font-family="system-ui,sans-serif">S</text>
+        <circle cx="238" cy="100" r="14" fill="#1c1c35" stroke="#5c8aff" stroke-width="2"/>
+        <text x="238" y="105" text-anchor="middle" font-size="12" fill="#e0e0f0" font-family="system-ui,sans-serif">T</text>
+      </svg>
+    </div>
+
+    <p>
+      A DAG is a directed graph containing no directed cycles — you can never follow arrows and
+      return to where you started. A <span class="key">topological sort</span> is an ordering
+      of the vertices such that every edge points from an earlier vertex to a later one. In the
+      diagram, $P, Q, R, S, T$ is one valid order (P before its dependents Q and R; both before
+      S; S before T) — and $P, R, Q, S, T$ is equally valid, since Q and R don't depend on each
+      other. A topological sort exists if and only if the graph is acyclic; DFS produces one
+      directly, by outputting vertices in reverse order of when DFS finishes exploring them.
+    </p>
+
+    <p>
+      This is exactly what a build system or task scheduler computes before running anything:
+      given a dependency DAG, find *an* order (not necessarily unique) that respects every
+      dependency. If the dependency graph has a cycle, no valid order exists — which is precisely
+      how tools like `make` or a package manager detect and report circular dependencies.
+    </p>
+
+    <div class="example">
+      <div class="label">Example — course prerequisites as a DAG</div>
+      <div class="example-step">
+        <span>Calculus I → Calculus II, Calculus I → Linear Algebra, Calculus II → Diff. Eq.</span>
+        <span class="why">Arrows mean "must be taken before"</span>
+      </div>
+      <div class="example-step">
+        <span>Valid order: Calculus I, Linear Algebra, Calculus II, Diff. Eq.</span>
+        <span class="why">Every course appears after all its prerequisites</span>
+      </div>
+      <div class="example-step">
+        <span>If Diff. Eq. also required Linear Algebra → Calculus I, that edge would create a cycle</span>
+        <span class="why">No valid order could exist — the schedule would be impossible</span>
+      </div>
+    </div>
+
+    <div class="ai-note">
+      <div class="label">⬡ AI Connection</div>
+      <p>
+        This is the single most important graph structure in deep learning. A neural network's
+        computation graph is a DAG by construction — no operation can depend on its own output —
+        and reverse-mode automatic differentiation (backpropagation) works by topologically
+        sorting the graph, running forward in that order, then running backward in the reverse
+        order to accumulate gradients. Bayesian networks are also DAGs, where edges encode
+        direct probabilistic dependence rather than data flow.
+      </p>
+    </div>
+
+    <p class="toc-back"><a href="#toc">↑ Table of Contents</a></p>
+  </section>
+
+  <!-- ── 8. Graph Coloring and Bipartite Graphs ─────────────────────── -->
+  <section class="chapter" id="ch8">
+    <div class="chapter-num">Chapter 8</div>
+    <h3>Graph Coloring and Bipartite Graphs</h3>
+
+    <p>
+      Assign exam time slots so no student has two exams at once. Assign radio frequencies so
+      no two overlapping towers interfere. Color a map so no two adjacent countries share a
+      color. All three are the same problem: assign labels ("colors") to vertices so that no
+      edge connects two vertices with the same label, using as few colors as possible.
+    </p>
+
+    <div class="formula" style="display:flex;flex-direction:column;align-items:center;gap:0;padding-bottom:8px;">
+      <div class="label">Diagram — a bipartite graph, 2-colored</div>
+      <svg width="260" height="200" viewBox="0 0 260 200" aria-label="A bipartite graph with three left vertices L1, L2, L3 colored blue and three right vertices R1, R2, R3 colored green, with edges only crossing between the two sides, never within a side">
+        <line x1="40" y1="40" x2="220" y2="40" stroke="#7070a0" stroke-width="2"/>
+        <line x1="40" y1="40" x2="220" y2="100" stroke="#7070a0" stroke-width="2"/>
+        <line x1="40" y1="100" x2="220" y2="100" stroke="#7070a0" stroke-width="2"/>
+        <line x1="40" y1="100" x2="220" y2="160" stroke="#7070a0" stroke-width="2"/>
+        <line x1="40" y1="160" x2="220" y2="40" stroke="#7070a0" stroke-width="2"/>
+        <line x1="40" y1="160" x2="220" y2="160" stroke="#7070a0" stroke-width="2"/>
+        <circle cx="40" cy="40" r="15" fill="#5c8aff33" stroke="#5c8aff" stroke-width="2"/>
+        <text x="40" y="45" text-anchor="middle" font-size="11" fill="#e0e0f0" font-family="system-ui,sans-serif">L1</text>
+        <circle cx="40" cy="100" r="15" fill="#5c8aff33" stroke="#5c8aff" stroke-width="2"/>
+        <text x="40" y="105" text-anchor="middle" font-size="11" fill="#e0e0f0" font-family="system-ui,sans-serif">L2</text>
+        <circle cx="40" cy="160" r="15" fill="#5c8aff33" stroke="#5c8aff" stroke-width="2"/>
+        <text x="40" y="165" text-anchor="middle" font-size="11" fill="#e0e0f0" font-family="system-ui,sans-serif">L3</text>
+        <circle cx="220" cy="40" r="15" fill="#3ecf8e33" stroke="#3ecf8e" stroke-width="2"/>
+        <text x="220" y="45" text-anchor="middle" font-size="11" fill="#e0e0f0" font-family="system-ui,sans-serif">R1</text>
+        <circle cx="220" cy="100" r="15" fill="#3ecf8e33" stroke="#3ecf8e" stroke-width="2"/>
+        <text x="220" y="105" text-anchor="middle" font-size="11" fill="#e0e0f0" font-family="system-ui,sans-serif">R2</text>
+        <circle cx="220" cy="160" r="15" fill="#3ecf8e33" stroke="#3ecf8e" stroke-width="2"/>
+        <text x="220" y="165" text-anchor="middle" font-size="11" fill="#e0e0f0" font-family="system-ui,sans-serif">R3</text>
+      </svg>
+    </div>
+
+    <p>
+      The minimum number of colors needed is the <span class="key">chromatic number</span>,
+      $\chi(G)$. Finding it exactly is NP-hard in general — there's no known efficient algorithm
+      that works on all graphs — but one special case is easy to recognize and solve: a graph is
+      <span class="key">bipartite</span> if its vertices split into two groups with every edge
+      crossing between groups and none within a group. A graph is bipartite if and only if it
+      contains no odd-length cycle, and every bipartite graph has $\chi(G) = 2$ — exactly the
+      two colors shown above, since by definition no edge ever connects two same-side vertices.
+    </p>
+
+    <p>
+      Bipartite graphs also support <span class="key">matching</span>: pairing up vertices
+      across the two sides so that each vertex is used at most once. The classic application is
+      assigning applicants to jobs, or students to dorm rooms, where each side has preferences —
+      the Hungarian algorithm finds an optimal matching efficiently, in polynomial time, even
+      though general graph coloring does not have such a guarantee.
+    </p>
+
+    <div class="example">
+      <div class="label">Example — why an odd cycle can't be bipartite</div>
+      <div class="example-step">
+        <span>Triangle A–B–C–A: try to 2-color it</span>
+        <span class="why">3-cycle, odd length</span>
+      </div>
+      <div class="example-step">
+        <span>A = blue, B = green (forced, since A–B is an edge)</span>
+        <span class="why">Adjacent vertices must differ</span>
+      </div>
+      <div class="example-step">
+        <span>C must differ from both B (green) and A (blue) — no color left</span>
+        <span class="why">Odd cycles always fail 2-coloring; this is the bipartite test</span>
+      </div>
+    </div>
+
+    <div class="ai-note">
+      <div class="label">⬡ AI Connection</div>
+      <p>
+        Graph coloring's classical use in compilers — assigning a limited set of CPU registers
+        to variables so that no two "live at the same time" variables share one — is register
+        allocation, and it directly affects how efficiently a trained model's compiled inference
+        code runs. Bipartite matching also shows up in attention-adjacent problems: assigning a
+        fixed set of experts to tokens in mixture-of-experts models is a bipartite matching
+        problem at each layer.
+      </p>
+    </div>
+
+    <p class="toc-back"><a href="#toc">↑ Table of Contents</a></p>
+  </section>
+
+  <!-- ── 9. Eulerian and Hamiltonian Paths ──────────────────────────── -->
+  <section class="chapter" id="ch9">
+    <div class="chapter-num">Chapter 9</div>
+    <h3>Eulerian and Hamiltonian Paths</h3>
+
+    <p>
+      In 1736, the city of Königsberg had seven bridges, and its residents wondered whether a
+      walk existed that crossed every bridge exactly once and returned to the start. Leonhard
+      Euler proved it was impossible — and in doing so, invented graph theory as a field. The
+      question "visit every edge exactly once" and the very different question "visit every
+      vertex exactly once" turn out to have sharply different levels of difficulty.
+    </p>
+
+    <div class="formula" style="display:flex;flex-direction:column;align-items:center;gap:0;padding-bottom:8px;">
+      <div class="label">Diagram — an Eulerian path on G, edges numbered by visit order</div>
+      <svg width="260" height="200" viewBox="0 0 260 200" aria-label="Graph G with all seven edges numbered one through seven showing an Eulerian path from A to D that traverses every edge exactly once, starting and ending at the only two odd-degree vertices">
+        <line x1="60" y1="50" x2="160" y2="40" stroke="#5c8aff" stroke-width="2"/>
+        <text x="105" y="35" text-anchor="middle" font-size="10" fill="#ffb830" font-family="monospace" font-weight="700">6</text>
+        <line x1="160" y1="40" x2="220" y2="100" stroke="#5c8aff" stroke-width="2"/>
+        <text x="197" y="65" text-anchor="middle" font-size="10" fill="#ffb830" font-family="monospace" font-weight="700">5</text>
+        <line x1="220" y1="100" x2="170" y2="165" stroke="#5c8aff" stroke-width="2"/>
+        <text x="203" y="138" text-anchor="middle" font-size="10" fill="#ffb830" font-family="monospace" font-weight="700">4</text>
+        <line x1="170" y1="165" x2="80" y2="175" stroke="#5c8aff" stroke-width="2"/>
+        <text x="125" y="182" text-anchor="middle" font-size="10" fill="#ffb830" font-family="monospace" font-weight="700">3</text>
+        <line x1="80" y1="175" x2="25" y2="110" stroke="#5c8aff" stroke-width="2"/>
+        <text x="45" y="150" text-anchor="middle" font-size="10" fill="#ffb830" font-family="monospace" font-weight="700">2</text>
+        <line x1="25" y1="110" x2="60" y2="50" stroke="#5c8aff" stroke-width="2"/>
+        <text x="35" y="75" text-anchor="middle" font-size="10" fill="#ffb830" font-family="monospace" font-weight="700">1</text>
+        <line x1="60" y1="50" x2="170" y2="165" stroke="#5c8aff" stroke-width="2"/>
+        <text x="122" y="112" text-anchor="middle" font-size="10" fill="#ffb830" font-family="monospace" font-weight="700">7</text>
+        <circle cx="60" cy="50" r="14" fill="#1c1c35" stroke="#3ecf8e" stroke-width="2"/>
+        <text x="60" y="55" text-anchor="middle" font-size="12" fill="#e0e0f0" font-family="system-ui,sans-serif">A</text>
+        <circle cx="160" cy="40" r="14" fill="#1c1c35" stroke="#7070a0" stroke-width="2"/>
+        <text x="160" y="45" text-anchor="middle" font-size="12" fill="#e0e0f0" font-family="system-ui,sans-serif">B</text>
+        <circle cx="220" cy="100" r="14" fill="#1c1c35" stroke="#7070a0" stroke-width="2"/>
+        <text x="220" y="105" text-anchor="middle" font-size="12" fill="#e0e0f0" font-family="system-ui,sans-serif">C</text>
+        <circle cx="170" cy="165" r="14" fill="#1c1c35" stroke="#3ecf8e" stroke-width="2"/>
+        <text x="170" y="170" text-anchor="middle" font-size="12" fill="#e0e0f0" font-family="system-ui,sans-serif">D</text>
+        <circle cx="80" cy="175" r="14" fill="#1c1c35" stroke="#7070a0" stroke-width="2"/>
+        <text x="80" y="180" text-anchor="middle" font-size="12" fill="#e0e0f0" font-family="system-ui,sans-serif">E</text>
+        <circle cx="25" cy="110" r="14" fill="#1c1c35" stroke="#7070a0" stroke-width="2"/>
+        <text x="25" y="115" text-anchor="middle" font-size="12" fill="#e0e0f0" font-family="system-ui,sans-serif">F</text>
+      </svg>
+    </div>
+
+    <p>
+      An <span class="key">Eulerian circuit</span> traverses every edge exactly once and returns
+      to its start; an <span class="key">Eulerian path</span> does the same but may end
+      elsewhere. Euler's theorem settles both completely: a connected graph has an Eulerian
+      circuit if and only if every vertex has even degree, and has an Eulerian path (but not a
+      circuit) if and only if exactly two vertices have odd degree — the path must start at one
+      and end at the other. Graph G has exactly two odd-degree vertices, A and D
+      ($\deg(A){=}\deg(D){=}3$ from Chapter 1), so it has an Eulerian path but no Eulerian
+      circuit — the numbered path above, $A \to F \to E \to D \to C \to B \to A \to D$, uses
+      each of the 7 edges exactly once.
+    </p>
+
+    <p>
+      A <span class="key">Hamiltonian path</span> instead visits every <em>vertex</em> exactly
+      once (edges may be skipped entirely). It sounds like a small variation on the Eulerian
+      question, but the two problems live in completely different complexity classes: Euler's
+      even-degree test decides Eulerian existence instantly, while no efficient test is known
+      for Hamiltonian paths in general — determining whether one exists is NP-complete. The
+      famous Traveling Salesman Problem is the Hamiltonian question with the extra twist of
+      minimizing total edge weight.
+    </p>
+
+    <div class="ai-note">
+      <div class="label">⬡ AI Connection</div>
+      <p>
+        Because Hamiltonian-path and TSP-style problems resist exact efficient solutions, they
+        are a standard benchmark for AI optimization methods: reinforcement learning agents,
+        neural combinatorial optimization models, and metaheuristics like ant colony
+        optimization are all routinely trained or tuned by trying to beat classical heuristics
+        on TSP instances — a problem simple enough to state but hard enough to stay relevant.
+      </p>
+    </div>
+
+    <p class="toc-back"><a href="#toc">↑ Table of Contents</a></p>
+  </section>
+
+  <!-- ── 10. Network Flow ───────────────────────────────────────────── -->
+  <section class="chapter" id="ch10">
+    <div class="chapter-num">Chapter 10</div>
+    <h3>Network Flow</h3>
+
+    <p>
+      A pipeline network moving oil from a source to a refinery, each pipe segment able to carry
+      only so much per hour — how much oil can actually get through, end to end? This is the
+      <span class="key">maximum flow</span> problem, and its answer connects to something that
+      sounds completely different: the cheapest way to disconnect the network entirely.
+    </p>
+
+    <div class="formula" style="display:flex;flex-direction:column;align-items:center;gap:0;padding-bottom:8px;">
+      <div class="label">Diagram — a flow network, source S to sink T</div>
+      <svg width="260" height="200" viewBox="0 0 260 200" aria-label="A flow network with source S, sink T, and two intermediate vertices A and B. Edge capacities are: S to A ten, S to B five, A to T eight, B to T seven. Maximum flow is thirteen.">
+        <defs>
+          <marker id="arrow10" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto">
+            <path d="M0,0 L8,4 L0,8 z" fill="#5c8aff"/>
+          </marker>
+        </defs>
+        <line x1="44" y1="95" x2="106" y2="55" stroke="#5c8aff" stroke-width="2" marker-end="url(#arrow10)"/>
+        <text x="65" y="65" text-anchor="middle" font-size="10" fill="#ffb830" font-family="monospace">10</text>
+        <line x1="44" y1="105" x2="106" y2="145" stroke="#5c8aff" stroke-width="2" marker-end="url(#arrow10)"/>
+        <text x="65" y="140" text-anchor="middle" font-size="10" fill="#ffb830" font-family="monospace">5</text>
+        <line x1="134" y1="50" x2="196" y2="95" stroke="#5c8aff" stroke-width="2" marker-end="url(#arrow10)"/>
+        <text x="175" y="65" text-anchor="middle" font-size="10" fill="#ffb830" font-family="monospace">8</text>
+        <line x1="134" y1="150" x2="196" y2="105" stroke="#5c8aff" stroke-width="2" marker-end="url(#arrow10)"/>
+        <text x="175" y="140" text-anchor="middle" font-size="10" fill="#ffb830" font-family="monospace">7</text>
+        <circle cx="30" cy="100" r="14" fill="#1c1c35" stroke="#3ecf8e" stroke-width="2"/>
+        <text x="30" y="105" text-anchor="middle" font-size="12" fill="#e0e0f0" font-family="system-ui,sans-serif">S</text>
+        <circle cx="120" cy="40" r="14" fill="#1c1c35" stroke="#5c8aff" stroke-width="2"/>
+        <text x="120" y="45" text-anchor="middle" font-size="12" fill="#e0e0f0" font-family="system-ui,sans-serif">A</text>
+        <circle cx="120" cy="160" r="14" fill="#1c1c35" stroke="#5c8aff" stroke-width="2"/>
+        <text x="120" y="165" text-anchor="middle" font-size="12" fill="#e0e0f0" font-family="system-ui,sans-serif">B</text>
+        <circle cx="210" cy="100" r="14" fill="#1c1c35" stroke="#ff6b6b" stroke-width="2"/>
+        <text x="210" y="105" text-anchor="middle" font-size="12" fill="#e0e0f0" font-family="system-ui,sans-serif">T</text>
+      </svg>
+    </div>
+
+    <p>
+      Every edge in a <span class="key">flow network</span> has a capacity — the maximum amount
+      it can carry — and flow must satisfy conservation: at every vertex except the source $S$
+      and sink $T$, flow in equals flow out. In the diagram, up to 10 units can flow $S\to A$
+      and up to 8 can then flow $A \to T$, so the $S$–$A$–$T$ route is bottlenecked at
+      $\min(10,8)=8$; the $S$–$B$–$T$ route is bottlenecked at $\min(5,7)=5$. Since the two
+      routes share no edges, the maximum total flow from $S$ to $T$ is $8+5=13$.
+    </p>
+
+    <p>
+      The <span class="key">Max-Flow Min-Cut Theorem</span> proves this is no coincidence: the
+      maximum possible flow through a network always exactly equals the minimum total capacity
+      of edges that would need to be cut to fully separate the source from the sink. Finding the
+      bottleneck and finding the max flow are the same computation viewed two ways — the
+      <span class="key">Ford-Fulkerson method</span> finds max flow by repeatedly finding any
+      path from $S$ to $T$ with spare capacity and pushing more flow along it, until no such
+      path remains.
+    </p>
+
+    <div class="example">
+      <div class="label">Example — reading the min cut off the diagram</div>
+      <div class="example-step">
+        <span>Cut $\{A\to T, B\to T\}$: total capacity $8+7=15$</span>
+        <span class="why">Separates T from everything else</span>
+      </div>
+      <div class="example-step">
+        <span>Cut $\{S\to A, S\to B\}$: total capacity $10+5=15$</span>
+        <span class="why">Separates S from everything else</span>
+      </div>
+      <div class="example-step">
+        <span>Neither is minimal — the true min cut is $8+5=13$, matching max flow</span>
+        <span class="why">Cutting A→T (8) and S→B (5) also fully separates S from T, at lower cost</span>
+      </div>
+    </div>
+
+    <div class="ai-note">
+      <div class="label">⬡ AI Connection</div>
+      <p>
+        Flow-network thinking underlies resource-constrained scheduling problems that show up in
+        distributed model training — routing gradient updates or data shards through a limited-
+        bandwidth cluster network is a max-flow-style optimization. It also gives a useful mental
+        model for attention: a fixed "budget" of attention weight flowing from each query token,
+        distributed across key tokens, is loosely analogous to flow conservation at a vertex.
+      </p>
+    </div>
+
+    <p class="toc-back"><a href="#toc">↑ Table of Contents</a></p>
+  </section>
+
+  <!-- ── 11. Graphs in Modern AI ─────────────────────────────────────── -->
+  <section class="chapter" id="ch11">
+    <div class="chapter-num">Chapter 11</div>
+    <h3>Graphs in Modern AI</h3>
+
+    <p>
+      Every chapter so far has included a short AI sidebar — this chapter is where those threads
+      tie together. Nearly every major modern AI architecture is, underneath its name, a
+      particular way of computing over a graph: the only real questions are what the vertices
+      represent, what the edges represent, and what computation happens at each vertex.
+    </p>
+
+    <div class="formula" style="display:flex;flex-direction:column;align-items:center;gap:0;padding-bottom:8px;">
+      <div class="label">Diagram — a small feedforward network as a layered computation graph</div>
+      <svg width="260" height="200" viewBox="0 0 260 200" aria-label="A feedforward neural network drawn as a layered graph: two input vertices fully connected to three hidden vertices, fully connected to one output vertex, with all edges directed left to right">
+        <defs>
+          <marker id="arrow11" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto">
+            <path d="M0,0 L7,3.5 L0,7 z" fill="#7070a0"/>
+          </marker>
+        </defs>
+        <g stroke="#7070a0" stroke-width="1.3" marker-end="url(#arrow11)">
+          <line x1="44" y1="60" x2="116" y2="30"/>
+          <line x1="44" y1="60" x2="116" y2="100"/>
+          <line x1="44" y1="60" x2="116" y2="170"/>
+          <line x1="44" y1="140" x2="116" y2="30"/>
+          <line x1="44" y1="140" x2="116" y2="100"/>
+          <line x1="44" y1="140" x2="116" y2="170"/>
+          <line x1="144" y1="30" x2="216" y2="100"/>
+          <line x1="144" y1="100" x2="216" y2="100"/>
+          <line x1="144" y1="170" x2="216" y2="100"/>
+        </g>
+        <circle cx="30" cy="60" r="13" fill="#1c1c35" stroke="#5c8aff" stroke-width="2"/>
+        <text x="30" y="64" text-anchor="middle" font-size="10" fill="#e0e0f0" font-family="system-ui,sans-serif">I1</text>
+        <circle cx="30" cy="140" r="13" fill="#1c1c35" stroke="#5c8aff" stroke-width="2"/>
+        <text x="30" y="144" text-anchor="middle" font-size="10" fill="#e0e0f0" font-family="system-ui,sans-serif">I2</text>
+        <circle cx="130" cy="30" r="13" fill="#1c1c35" stroke="#2dd4bf" stroke-width="2"/>
+        <text x="130" y="34" text-anchor="middle" font-size="10" fill="#e0e0f0" font-family="system-ui,sans-serif">H1</text>
+        <circle cx="130" cy="100" r="13" fill="#1c1c35" stroke="#2dd4bf" stroke-width="2"/>
+        <text x="130" y="104" text-anchor="middle" font-size="10" fill="#e0e0f0" font-family="system-ui,sans-serif">H2</text>
+        <circle cx="130" cy="170" r="13" fill="#1c1c35" stroke="#2dd4bf" stroke-width="2"/>
+        <text x="130" y="174" text-anchor="middle" font-size="10" fill="#e0e0f0" font-family="system-ui,sans-serif">H3</text>
+        <circle cx="230" cy="100" r="13" fill="#1c1c35" stroke="#ffb830" stroke-width="2"/>
+        <text x="230" y="104" text-anchor="middle" font-size="10" fill="#e0e0f0" font-family="system-ui,sans-serif">O</text>
+      </svg>
+    </div>
+
+    <p>
+      A <span class="key">Graph Neural Network (GNN)</span> generalizes the feedforward picture
+      above to arbitrary graph-structured data — molecules, social networks, road networks —
+      where the "layers" aren't fixed by architecture but by the input graph's own edges. Each
+      GNN layer performs <span class="key">message passing</span>: every vertex gathers
+      (aggregates) information from its immediate neighbors, exactly the BFS one-hop expansion
+      from Chapter 4, and updates its own representation. Stacking $k$ layers lets information
+      travel $k$ hops — a vertex's final representation depends on everything within distance
+      $k$ in the graph.
+    </p>
+
+    <p>
+      A <span class="key">Transformer</span> — the architecture behind large language models —
+      can be read as a GNN operating on a complete graph: every token attends to every other
+      token, so the "graph" connecting the tokens in a sequence has an edge between every pair.
+      Attention weights are, in this reading, learned edge weights recomputed fresh for every
+      input. <span class="key">Knowledge graphs</span> take the opposite approach: vertices are
+      real-world entities, edges are explicit relations ("Paris" —capital-of→ "France"), and
+      models are trained to predict missing edges — the graph *is* the knowledge representation,
+      not just a computational scaffold. Finally, <span class="key">PageRank</span>, Google's
+      original ranking algorithm, treats the entire web as a directed graph and computes each
+      page's importance as a function of a random walk over that graph — closely related to the
+      "steady-state" behavior at the heart of Markov chains.
+    </p>
+
+    <div class="ai-note">
+      <div class="label">⬡ AI Connection</div>
+      <p>
+        The throughline of this whole chapter: BFS's wave expansion is GNN message passing;
+        DAG topological order is exactly how backpropagation sequences its computation; MSTs and
+        trees underlie decision trees and clustering; shortest-path relaxation resembles value
+        iteration in reinforcement learning; and bipartite matching shows up in routing tokens
+        to experts. Graph theory isn't a prerequisite you check off before AI — it's the
+        vocabulary AI architectures are already written in.
+      </p>
+    </div>
+
+    <p class="toc-back"><a href="#toc">↑ Table of Contents</a></p>
+  </section>
+
+  <!-- ── Appendix ────────────────────────────────────────────────────── -->
+  <section class="chapter" id="appendix-resources">
+    <div class="chapter-num">Appendix</div>
+    <h3>Interactive Resources</h3>
+    <p>
+      These free tools let you build, run, and watch graph algorithms execute step by step —
+      a natural complement to the static diagrams above.
+    </p>
+    <ul style="padding-left:20px;">
+      <li style="margin-bottom:8px;"><a href="https://visualgo.net/en/graphds" target="_blank" rel="noopener">VisuAlgo — Graph Data Structures</a> — build a graph and step through BFS, DFS, and connectivity checks visually.</li>
+      <li style="margin-bottom:8px;"><a href="https://visualgo.net/en/sssp" target="_blank" rel="noopener">VisuAlgo — Single-Source Shortest Path</a> — animated Dijkstra and Bellman-Ford on graphs you draw yourself.</li>
+      <li style="margin-bottom:8px;"><a href="https://visualgo.net/en/mst" target="_blank" rel="noopener">VisuAlgo — Minimum Spanning Tree</a> — watch Kruskal's and Prim's algorithms build an MST edge by edge.</li>
+      <li style="margin-bottom:0;"><a href="https://distill.pub/2021/gnn-intro/" target="_blank" rel="noopener">Distill — A Gentle Introduction to Graph Neural Networks</a> — interactive, visual walkthrough connecting this chapter's Chapter 11 material to real GNN mechanics.</li>
+    </ul>
+    <p class="toc-back"><a href="#toc">↑ Table of Contents</a></p>
+  </section>
+
+  <p class="attribution">Graph Theory — Math Game Textbook</p>
+
+</div><!-- .page -->
+
+<script src="textbook-switcher.js"></script>
+<script src="textbook-notes.js"></script>
+<script src="textbook-nav.js"></script>
+<script src="theme-toggle.js"></script>
+<script src="textbook-ai.js"></script>
+</body>
+</html>

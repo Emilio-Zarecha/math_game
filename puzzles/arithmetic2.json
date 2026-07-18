@@ -1,0 +1,3482 @@
+[
+  {
+    "id": "arith2-e-001",
+    "topic": "arithmetic2",
+    "difficulty": "easy",
+    "question": {
+      "latex": "\\frac{1}{4} + \\frac{1}{4} = ?",
+      "plain": "What is 1/4 + 1/4?"
+    },
+    "symbols": {
+      "\\frac": "Fraction — numerator over denominator"
+    },
+    "palette": [
+      {
+        "id": "p1",
+        "latex": "\\frac{1}{2}",
+        "description": "Same denominator: add numerators 1+1=2, keep 4, simplify 2/4=1/2"
+      }
+    ],
+    "steps": [
+      {
+        "id": "s0a",
+        "fromLatex": "1+1=2",
+        "toLatex": "1+1=2",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "Add numerators: 1+1=2"
+      },
+      {
+        "id": "s1",
+        "fromLatex": "\\frac{1}{4}+\\frac{1}{4}",
+        "toLatex": "\\frac{2}{4}",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "Same denominator — add numerators"
+      },
+      {
+        "id": "s2",
+        "fromLatex": "\\frac{2}{4}",
+        "toLatex": "\\frac{1}{2}",
+        "paletteRef": "p1",
+        "dropTargets": [
+          "\\frac{2}{4}"
+        ],
+        "description": "Simplify: divide top and bottom by 2"
+      }
+    ]
+  },
+  {
+    "id": "arith2-e-002",
+    "topic": "arithmetic2",
+    "difficulty": "easy",
+    "question": {
+      "latex": "\\frac{3}{4} \\times \\frac{2}{3} = ?",
+      "plain": "What is 3/4 × 2/3?"
+    },
+    "symbols": {
+      "\\frac": "Fraction",
+      "\\times": "Multiply"
+    },
+    "palette": [
+      {
+        "id": "p1",
+        "latex": "\\frac{6}{12}",
+        "description": "Multiply straight across: 3×2=6, 4×3=12"
+      },
+      {
+        "id": "p2",
+        "latex": "\\frac{1}{2}",
+        "description": "Simplify 6/12 by dividing by 6"
+      }
+    ],
+    "steps": [
+      {
+        "id": "s0a",
+        "fromLatex": "3 \\times 2 = 6 \\text{ and } 4 \\times 3 = 12",
+        "toLatex": "3 \\times 2 = 6 \\text{ and } 4 \\times 3 = 12",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "Multiply numerators and denominators"
+      },
+      {
+        "id": "s1",
+        "fromLatex": "\\frac{3}{4} \\times \\frac{2}{3}",
+        "toLatex": "\\frac{6}{12}",
+        "paletteRef": "p1",
+        "dropTargets": [
+          "\\frac{3}{4} \\times \\frac{2}{3}"
+        ],
+        "description": "Multiply numerators, then denominators"
+      },
+      {
+        "id": "s2",
+        "fromLatex": "\\frac{6}{12}",
+        "toLatex": "\\frac{1}{2}",
+        "paletteRef": "p2",
+        "dropTargets": [
+          "\\frac{6}{12}"
+        ],
+        "description": "Simplify: GCF(6,12)=6, divide both by 6"
+      }
+    ]
+  },
+  {
+    "id": "arith2-e-003",
+    "topic": "arithmetic2",
+    "difficulty": "easy",
+    "question": {
+      "latex": "\\text{Convert } \\frac{9}{4} \\text{ to a mixed number}",
+      "plain": "Convert 9/4 to a mixed number"
+    },
+    "symbols": {
+      "\\frac": "Fraction"
+    },
+    "palette": [
+      {
+        "id": "p1",
+        "latex": "2\\frac{1}{4}",
+        "description": "9÷4=2 remainder 1, so 2 and 1/4"
+      }
+    ],
+    "steps": [
+      {
+        "id": "s0a",
+        "fromLatex": "9 \\div 4 = 2 \\text{ remainder } 1",
+        "toLatex": "9 \\div 4 = 2 \\text{ remainder } 1",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "Divide: 9÷4=2 with remainder 1"
+      },
+      {
+        "id": "s1",
+        "fromLatex": "\\frac{9}{4}",
+        "toLatex": "2\\frac{1}{4}",
+        "paletteRef": "p1",
+        "dropTargets": [
+          "\\frac{9}{4}"
+        ],
+        "description": "Quotient 2 is whole part; remainder 1 over divisor 4"
+      }
+    ]
+  },
+  {
+    "id": "arith2-e-004",
+    "topic": "arithmetic2",
+    "difficulty": "easy",
+    "question": {
+      "latex": "10\\% \\text{ of } 80 = ?",
+      "plain": "What is 10% of 80?"
+    },
+    "symbols": {},
+    "palette": [
+      {
+        "id": "p1",
+        "latex": "8",
+        "description": "Move decimal left one place: 80.0 → 8.0"
+      }
+    ],
+    "steps": [
+      {
+        "id": "s0a",
+        "fromLatex": "10\\% = 0.10",
+        "toLatex": "10\\% = 0.10",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "Convert percent to decimal"
+      },
+      {
+        "id": "s1",
+        "fromLatex": "0.10 \\times 80",
+        "toLatex": "8",
+        "paletteRef": "p1",
+        "dropTargets": [
+          "0.10 \\times 80"
+        ],
+        "description": "0.10 × 80 = 8"
+      }
+    ]
+  },
+  {
+    "id": "arith2-e-005",
+    "topic": "arithmetic2",
+    "difficulty": "easy",
+    "question": {
+      "latex": "\\text{Mean of } 2, 4, 6, 8",
+      "plain": "What is the mean of 2, 4, 6, 8?"
+    },
+    "symbols": {},
+    "palette": [
+      {
+        "id": "p1",
+        "latex": "\\frac{20}{4}",
+        "description": "Sum÷count: 20÷4"
+      },
+      {
+        "id": "p2",
+        "latex": "5",
+        "description": "20÷4=5"
+      }
+    ],
+    "steps": [
+      {
+        "id": "s0a",
+        "fromLatex": "2+4+6+8=20",
+        "toLatex": "2+4+6+8=20",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "Sum the values"
+      },
+      {
+        "id": "s1",
+        "fromLatex": "\\text{Mean} = \\frac{\\text{sum}}{\\text{count}}",
+        "toLatex": "\\frac{20}{4}",
+        "paletteRef": "p1",
+        "dropTargets": [
+          "\\frac{\\text{sum}}{\\text{count}}"
+        ],
+        "description": "Divide sum by count of values (4)"
+      },
+      {
+        "id": "s2",
+        "fromLatex": "\\frac{20}{4}",
+        "toLatex": "5",
+        "paletteRef": "p2",
+        "dropTargets": [
+          "\\frac{20}{4}"
+        ],
+        "description": "20÷4=5"
+      }
+    ]
+  },
+  {
+    "id": "arith2-e-006",
+    "topic": "arithmetic2",
+    "difficulty": "easy",
+    "question": {
+      "latex": "\\frac{1}{2} \\div \\frac{3}{4} = ?",
+      "plain": "What is 1/2 ÷ 3/4?"
+    },
+    "symbols": {
+      "\\frac": "Fraction"
+    },
+    "palette": [
+      {
+        "id": "p1",
+        "latex": "\\frac{1}{2} \\times \\frac{4}{3}",
+        "description": "Keep-Change-Flip: keep 1/2, change ÷ to ×, flip 3/4 to 4/3"
+      },
+      {
+        "id": "p2",
+        "latex": "\\frac{4}{6} = \\frac{2}{3}",
+        "description": "Multiply: 1×4=4, 2×3=6; simplify 4/6=2/3"
+      }
+    ],
+    "steps": [
+      {
+        "id": "s1",
+        "fromLatex": "\\frac{1}{2} \\div \\frac{3}{4}",
+        "toLatex": "\\frac{1}{2} \\times \\frac{4}{3}",
+        "paletteRef": "p1",
+        "dropTargets": [
+          "\\frac{3}{4}"
+        ],
+        "description": "KCF: flip the divisor to get reciprocal"
+      },
+      {
+        "id": "s0a",
+        "fromLatex": "1 \\times 4=4 \\text{ and } 2 \\times 3=6",
+        "toLatex": "1 \\times 4=4 \\text{ and } 2 \\times 3=6",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "Multiply across"
+      },
+      {
+        "id": "s2",
+        "fromLatex": "\\frac{1}{2} \\times \\frac{4}{3}",
+        "toLatex": "\\frac{2}{3}",
+        "paletteRef": "p2",
+        "dropTargets": [
+          "\\frac{1}{2} \\times \\frac{4}{3}"
+        ],
+        "description": "4/6 simplified by ÷2 = 2/3"
+      }
+    ]
+  },
+  {
+    "id": "arith2-e-007",
+    "topic": "arithmetic2",
+    "difficulty": "easy",
+    "question": {
+      "latex": "\\text{Median of } 1, 3, 5, 7, 9",
+      "plain": "What is the median of 1, 3, 5, 7, 9?"
+    },
+    "symbols": {},
+    "palette": [
+      {
+        "id": "p1",
+        "latex": "5",
+        "description": "Middle value of 5 sorted numbers is the 3rd"
+      }
+    ],
+    "steps": [
+      {
+        "id": "s0a",
+        "fromLatex": "1, 3, 5, 7, 9 \\text{ (already sorted)}",
+        "toLatex": "1, 3, \\mathbf{5}, 7, 9",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "List is already in order — identify the middle"
+      },
+      {
+        "id": "s1",
+        "fromLatex": "\\text{Median} = \\text{middle of 5 values}",
+        "toLatex": "5",
+        "paletteRef": "p1",
+        "dropTargets": [],
+        "description": "5 values → middle is the 3rd: 5"
+      }
+    ]
+  },
+  {
+    "id": "arith2-e-008",
+    "topic": "arithmetic2",
+    "difficulty": "easy",
+    "question": {
+      "latex": "2 + 3 \\times 4 = ?",
+      "plain": "Evaluate 2 + 3 × 4"
+    },
+    "symbols": {
+      "\\times": "Multiply"
+    },
+    "palette": [
+      {
+        "id": "p1",
+        "latex": "12",
+        "description": "Multiplication before addition: 3×4=12"
+      },
+      {
+        "id": "p2",
+        "latex": "14",
+        "description": "Then add: 2+12=14"
+      }
+    ],
+    "steps": [
+      {
+        "id": "s0a",
+        "fromLatex": "3 \\times 4 = 12",
+        "toLatex": "3 \\times 4 = 12",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "Multiply first (before addition)"
+      },
+      {
+        "id": "s1",
+        "fromLatex": "2 + 3 \\times 4",
+        "toLatex": "2 + 12",
+        "paletteRef": "p1",
+        "dropTargets": [
+          "3 \\times 4"
+        ],
+        "description": "Replace 3×4 with 12"
+      },
+      {
+        "id": "s2",
+        "fromLatex": "2 + 12",
+        "toLatex": "14",
+        "paletteRef": "p2",
+        "dropTargets": [
+          "2 + 12"
+        ],
+        "description": "Add: 2+12=14"
+      }
+    ]
+  },
+  {
+    "id": "arith2-e-009",
+    "topic": "arithmetic2",
+    "difficulty": "easy",
+    "question": {
+      "latex": "1\\frac{1}{3} + \\frac{2}{3} = ?",
+      "plain": "What is 1 1/3 + 2/3?"
+    },
+    "symbols": {
+      "\\frac": "Fraction"
+    },
+    "palette": [
+      {
+        "id": "p1",
+        "latex": "\\frac{4}{3}",
+        "description": "1⅓ = 4/3"
+      },
+      {
+        "id": "p2",
+        "latex": "\\frac{6}{3} = 2",
+        "description": "4/3 + 2/3 = 6/3 = 2"
+      }
+    ],
+    "steps": [
+      {
+        "id": "s0a",
+        "fromLatex": "1\\frac{1}{3} = \\frac{4}{3}",
+        "toLatex": "1\\frac{1}{3} = \\frac{4}{3}",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "Convert mixed number: 1×3+1=4, so 4/3"
+      },
+      {
+        "id": "s1",
+        "fromLatex": "1\\frac{1}{3}+\\frac{2}{3}",
+        "toLatex": "\\frac{4}{3}+\\frac{2}{3}",
+        "paletteRef": "p1",
+        "dropTargets": [
+          "1\\frac{1}{3}"
+        ],
+        "description": "Rewrite 1⅓ as improper fraction"
+      },
+      {
+        "id": "s2",
+        "fromLatex": "\\frac{4}{3}+\\frac{2}{3}",
+        "toLatex": "2",
+        "paletteRef": "p2",
+        "dropTargets": [
+          "\\frac{4}{3}+\\frac{2}{3}"
+        ],
+        "description": "Same denominator: 4+2=6, 6/3=2"
+      }
+    ]
+  },
+  {
+    "id": "arith2-e-010",
+    "topic": "arithmetic2",
+    "difficulty": "easy",
+    "question": {
+      "latex": "0.35 = ?\\%",
+      "plain": "Write 0.35 as a percent"
+    },
+    "symbols": {},
+    "palette": [
+      {
+        "id": "p1",
+        "latex": "35\\%",
+        "description": "Multiply by 100: move decimal right two places"
+      }
+    ],
+    "steps": [
+      {
+        "id": "s0a",
+        "fromLatex": "0.35 \\times 100 = 35",
+        "toLatex": "0.35 \\times 100 = 35",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "Multiply by 100 to convert to percent"
+      },
+      {
+        "id": "s1",
+        "fromLatex": "0.35",
+        "toLatex": "35\\%",
+        "paletteRef": "p1",
+        "dropTargets": [
+          "0.35"
+        ],
+        "description": "0.35 = 35%"
+      }
+    ]
+  },
+  {
+    "id": "arith2-e-011",
+    "topic": "arithmetic2",
+    "difficulty": "easy",
+    "question": {
+      "latex": "\\text{GCF}(12, 8) = ?",
+      "plain": "Find the GCF of 12 and 8"
+    },
+    "symbols": {},
+    "palette": [
+      {
+        "id": "p1",
+        "latex": "4",
+        "description": "Factors of 12: 1,2,3,4,6,12; of 8: 1,2,4,8; greatest common is 4"
+      }
+    ],
+    "steps": [
+      {
+        "id": "s0a",
+        "fromLatex": "12 = 2^2 \\times 3 \\qquad 8 = 2^3",
+        "toLatex": "12 = 2^2 \\times 3 \\qquad 8 = 2^3",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "Prime factorize both numbers"
+      },
+      {
+        "id": "s1",
+        "fromLatex": "\\text{GCF} = 2^2",
+        "toLatex": "4",
+        "paletteRef": "p1",
+        "dropTargets": [],
+        "description": "Take lowest power of each shared prime: 2² = 4"
+      }
+    ]
+  },
+  {
+    "id": "arith2-e-012",
+    "topic": "arithmetic2",
+    "difficulty": "easy",
+    "question": {
+      "latex": "\\text{A \\$60 jacket is 50\\% off. Sale price?}",
+      "plain": "A $60 jacket is 50% off. What is the sale price?"
+    },
+    "symbols": {},
+    "palette": [
+      {
+        "id": "p1",
+        "latex": "\\$30",
+        "description": "50% of 60 = 30; 60−30 = 30"
+      }
+    ],
+    "steps": [
+      {
+        "id": "s0a",
+        "fromLatex": "0.50 \\times 60 = 30",
+        "toLatex": "0.50 \\times 60 = 30",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "Find the discount amount: 50% × $60"
+      },
+      {
+        "id": "s1",
+        "fromLatex": "60 - 30",
+        "toLatex": "\\$30",
+        "paletteRef": "p1",
+        "dropTargets": [
+          "60 - 30"
+        ],
+        "description": "Subtract discount from original price"
+      }
+    ]
+  },
+  {
+    "id": "arith2-e-013",
+    "topic": "arithmetic2",
+    "difficulty": "easy",
+    "question": {
+      "latex": "\\frac{3}{4} \\text{ of } 48 = ?",
+      "plain": "What is 3/4 of 48?"
+    },
+    "symbols": {
+      "\\frac": "Fraction"
+    },
+    "palette": [
+      {
+        "id": "p1",
+        "latex": "\\frac{3 \\times 48}{4}",
+        "description": "Multiply: 3/4 × 48 = 144/4"
+      },
+      {
+        "id": "p2",
+        "latex": "36",
+        "description": "144÷4=36"
+      }
+    ],
+    "steps": [
+      {
+        "id": "s0a",
+        "fromLatex": "3 \\times 48 = 144",
+        "toLatex": "3 \\times 48 = 144",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "Multiply numerator by 48"
+      },
+      {
+        "id": "s1",
+        "fromLatex": "\\frac{3}{4} \\times 48",
+        "toLatex": "\\frac{144}{4}",
+        "paletteRef": "p1",
+        "dropTargets": [
+          "\\frac{3}{4} \\times 48"
+        ],
+        "description": "Write as fraction"
+      },
+      {
+        "id": "s2",
+        "fromLatex": "\\frac{144}{4}",
+        "toLatex": "36",
+        "paletteRef": "p2",
+        "dropTargets": [
+          "\\frac{144}{4}"
+        ],
+        "description": "144÷4=36"
+      }
+    ]
+  },
+  {
+    "id": "arith2-e-014",
+    "topic": "arithmetic2",
+    "difficulty": "easy",
+    "question": {
+      "latex": "\\text{Simplify } \\frac{18}{24}",
+      "plain": "Simplify 18/24"
+    },
+    "symbols": {
+      "\\frac": "Fraction"
+    },
+    "palette": [
+      {
+        "id": "p1",
+        "latex": "\\frac{3}{4}",
+        "description": "GCF(18,24)=6; 18÷6=3, 24÷6=4"
+      }
+    ],
+    "steps": [
+      {
+        "id": "s0a",
+        "fromLatex": "\\text{GCF}(18,24)=6",
+        "toLatex": "\\text{GCF}(18,24)=6",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "Find GCF: factors of 18 include 6; 24÷6=4 ✓"
+      },
+      {
+        "id": "s1",
+        "fromLatex": "\\frac{18}{24}",
+        "toLatex": "\\frac{3}{4}",
+        "paletteRef": "p1",
+        "dropTargets": [
+          "\\frac{18}{24}"
+        ],
+        "description": "Divide numerator and denominator by 6"
+      }
+    ]
+  },
+  {
+    "id": "arith2-e-015",
+    "topic": "arithmetic2",
+    "difficulty": "easy",
+    "question": {
+      "latex": "\\text{Range of } 3, 5, 8, 12, 10",
+      "plain": "What is the range of 3, 5, 8, 12, 10?"
+    },
+    "symbols": {},
+    "palette": [
+      {
+        "id": "p1",
+        "latex": "9",
+        "description": "Max=12, Min=3; Range=12−3=9"
+      }
+    ],
+    "steps": [
+      {
+        "id": "s0a",
+        "fromLatex": "\\max = 12,\\quad \\min = 3",
+        "toLatex": "\\max = 12,\\quad \\min = 3",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "Identify largest and smallest values"
+      },
+      {
+        "id": "s1",
+        "fromLatex": "12 - 3",
+        "toLatex": "9",
+        "paletteRef": "p1",
+        "dropTargets": [
+          "12 - 3"
+        ],
+        "description": "Range = max − min"
+      }
+    ]
+  },
+  {
+    "id": "arith2-e-016",
+    "topic": "arithmetic2",
+    "difficulty": "easy",
+    "question": {
+      "latex": "-6 + (-4) = ?",
+      "plain": "What is −6 + (−4)?"
+    },
+    "symbols": {},
+    "palette": [
+      {
+        "id": "p1",
+        "latex": "-10",
+        "description": "Same sign: add magnitudes 6+4=10, keep negative"
+      }
+    ],
+    "steps": [
+      {
+        "id": "s0a",
+        "fromLatex": "6 + 4 = 10",
+        "toLatex": "6 + 4 = 10",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "Add the magnitudes"
+      },
+      {
+        "id": "s1",
+        "fromLatex": "-6 + (-4)",
+        "toLatex": "-10",
+        "paletteRef": "p1",
+        "dropTargets": [
+          "-6 + (-4)"
+        ],
+        "description": "Both negative → keep the negative sign"
+      }
+    ]
+  },
+  {
+    "id": "arith2-e-017",
+    "topic": "arithmetic2",
+    "difficulty": "easy",
+    "question": {
+      "latex": "\\text{Mode of } 2, 5, 3, 5, 8, 2, 5",
+      "plain": "What is the mode of 2, 5, 3, 5, 8, 2, 5?"
+    },
+    "symbols": {},
+    "palette": [
+      {
+        "id": "p1",
+        "latex": "5",
+        "description": "5 appears 3 times — more than any other value"
+      }
+    ],
+    "steps": [
+      {
+        "id": "s0a",
+        "fromLatex": "2\\times2,\\; 5\\times3,\\; 3\\times1,\\; 8\\times1",
+        "toLatex": "2\\times2,\\; 5\\times3,\\; 3\\times1,\\; 8\\times1",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "Count how many times each value appears"
+      },
+      {
+        "id": "s1",
+        "fromLatex": "\\text{Mode} = \\text{most frequent}",
+        "toLatex": "5",
+        "paletteRef": "p1",
+        "dropTargets": [],
+        "description": "5 appears 3 times — the highest frequency"
+      }
+    ]
+  },
+  {
+    "id": "arith2-e-018",
+    "topic": "arithmetic2",
+    "difficulty": "easy",
+    "question": {
+      "latex": "2.5 \\text{ km} = ? \\text{ m}",
+      "plain": "Convert 2.5 km to meters"
+    },
+    "symbols": {},
+    "palette": [
+      {
+        "id": "p1",
+        "latex": "2500 \\text{ m}",
+        "description": "1 km = 1000 m; 2.5 × 1000 = 2500"
+      }
+    ],
+    "steps": [
+      {
+        "id": "s0a",
+        "fromLatex": "1 \\text{ km} = 1000 \\text{ m}",
+        "toLatex": "1 \\text{ km} = 1000 \\text{ m}",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "Conversion factor: 1 kilometre = 1000 metres"
+      },
+      {
+        "id": "s1",
+        "fromLatex": "2.5 \\times 1000",
+        "toLatex": "2500 \\text{ m}",
+        "paletteRef": "p1",
+        "dropTargets": [
+          "2.5 \\times 1000"
+        ],
+        "description": "Multiply to convert"
+      }
+    ]
+  },
+  {
+    "id": "arith2-e-019",
+    "topic": "arithmetic2",
+    "difficulty": "easy",
+    "question": {
+      "latex": "\\frac{1}{2} \\times \\frac{4}{5} = ?",
+      "plain": "What is 1/2 × 4/5?"
+    },
+    "symbols": {
+      "\\frac": "Fraction",
+      "\\times": "Multiply"
+    },
+    "palette": [
+      {
+        "id": "p1",
+        "latex": "\\frac{4}{10}",
+        "description": "Multiply across: 1×4=4, 2×5=10"
+      },
+      {
+        "id": "p2",
+        "latex": "\\frac{2}{5}",
+        "description": "Simplify 4/10: divide by 2"
+      }
+    ],
+    "steps": [
+      {
+        "id": "s1",
+        "fromLatex": "\\frac{1}{2} \\times \\frac{4}{5}",
+        "toLatex": "\\frac{4}{10}",
+        "paletteRef": "p1",
+        "dropTargets": [
+          "\\frac{1}{2} \\times \\frac{4}{5}"
+        ],
+        "description": "Multiply numerators, multiply denominators"
+      },
+      {
+        "id": "s2",
+        "fromLatex": "\\frac{4}{10}",
+        "toLatex": "\\frac{2}{5}",
+        "paletteRef": "p2",
+        "dropTargets": [
+          "\\frac{4}{10}"
+        ],
+        "description": "Simplify: GCF(4,10)=2"
+      }
+    ]
+  },
+  {
+    "id": "arith2-e-020",
+    "topic": "arithmetic2",
+    "difficulty": "easy",
+    "question": {
+      "latex": "|-12 + 5| = ?",
+      "plain": "Evaluate |−12 + 5|"
+    },
+    "symbols": {},
+    "palette": [
+      {
+        "id": "p1",
+        "latex": "7",
+        "description": "−12+5=−7; |−7|=7"
+      }
+    ],
+    "steps": [
+      {
+        "id": "s0a",
+        "fromLatex": "-12 + 5 = -7",
+        "toLatex": "-12 + 5 = -7",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "Compute inside the absolute value bars"
+      },
+      {
+        "id": "s1",
+        "fromLatex": "|-7|",
+        "toLatex": "7",
+        "paletteRef": "p1",
+        "dropTargets": [
+          "|-7|"
+        ],
+        "description": "Absolute value: distance from zero = 7"
+      }
+    ]
+  },
+  {
+    "id": "arith2-m-001",
+    "topic": "arithmetic2",
+    "difficulty": "medium",
+    "question": {
+      "latex": "2\\frac{3}{4} + 1\\frac{5}{8} = ?",
+      "plain": "Add 2 3/4 + 1 5/8"
+    },
+    "symbols": {
+      "\\frac": "Fraction"
+    },
+    "palette": [
+      {
+        "id": "p1",
+        "latex": "\\frac{11}{4}",
+        "description": "2¾ = (2×4+3)/4 = 11/4"
+      },
+      {
+        "id": "p2",
+        "latex": "\\frac{13}{8}",
+        "description": "1⅝ = (1×8+5)/8 = 13/8"
+      },
+      {
+        "id": "p3",
+        "latex": "\\frac{22}{8}+\\frac{13}{8}",
+        "description": "Convert 11/4 to eighths: 22/8"
+      },
+      {
+        "id": "p4",
+        "latex": "4\\frac{3}{8}",
+        "description": "35/8 = 4 remainder 3 = 4 3/8"
+      }
+    ],
+    "steps": [
+      {
+        "id": "s0a",
+        "fromLatex": "2\\times4+3=11",
+        "toLatex": "2\\times4+3=11",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "Convert 2¾: 2×4+3=11 → 11/4"
+      },
+      {
+        "id": "s0b",
+        "fromLatex": "1\\times8+5=13",
+        "toLatex": "1\\times8+5=13",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "Convert 1⅝: 1×8+5=13 → 13/8"
+      },
+      {
+        "id": "s1",
+        "fromLatex": "2\\frac{3}{4}",
+        "toLatex": "\\frac{11}{4}",
+        "paletteRef": "p1",
+        "dropTargets": [
+          "2\\frac{3}{4}"
+        ],
+        "description": "Write as improper fraction"
+      },
+      {
+        "id": "s2",
+        "fromLatex": "1\\frac{5}{8}",
+        "toLatex": "\\frac{13}{8}",
+        "paletteRef": "p2",
+        "dropTargets": [
+          "1\\frac{5}{8}"
+        ],
+        "description": "Write as improper fraction"
+      },
+      {
+        "id": "s0c",
+        "fromLatex": "\\frac{11}{4}=\\frac{22}{8}",
+        "toLatex": "\\frac{11}{4}=\\frac{22}{8}",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "Convert to LCD=8: multiply top and bottom by 2"
+      },
+      {
+        "id": "s3",
+        "fromLatex": "\\frac{11}{4}+\\frac{13}{8}",
+        "toLatex": "\\frac{22}{8}+\\frac{13}{8}",
+        "paletteRef": "p3",
+        "dropTargets": [
+          "\\frac{11}{4}"
+        ],
+        "description": "Rewrite 11/4 with denominator 8"
+      },
+      {
+        "id": "s0d",
+        "fromLatex": "22+13=35",
+        "toLatex": "22+13=35",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "Add numerators"
+      },
+      {
+        "id": "s4",
+        "fromLatex": "\\frac{22}{8}+\\frac{13}{8}",
+        "toLatex": "4\\frac{3}{8}",
+        "paletteRef": "p4",
+        "dropTargets": [
+          "\\frac{22}{8}+\\frac{13}{8}"
+        ],
+        "description": "35/8 = 4 with remainder 3 = 4⅜"
+      }
+    ]
+  },
+  {
+    "id": "arith2-m-002",
+    "topic": "arithmetic2",
+    "difficulty": "medium",
+    "question": {
+      "latex": "\\text{What percent of 60 is 45?}",
+      "plain": "What percent of 60 is 45?"
+    },
+    "symbols": {},
+    "palette": [
+      {
+        "id": "p1",
+        "latex": "\\frac{45}{60}",
+        "description": "Set up: part/whole = 45/60"
+      },
+      {
+        "id": "p2",
+        "latex": "75\\%",
+        "description": "0.75 × 100 = 75%"
+      }
+    ],
+    "steps": [
+      {
+        "id": "s1",
+        "fromLatex": "\\% = \\frac{\\text{part}}{\\text{whole}} \\times 100",
+        "toLatex": "\\frac{45}{60}",
+        "paletteRef": "p1",
+        "dropTargets": [],
+        "description": "Part = 45, whole = 60"
+      },
+      {
+        "id": "s0a",
+        "fromLatex": "45 \\div 60 = 0.75",
+        "toLatex": "45 \\div 60 = 0.75",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "Divide: 45÷60=0.75"
+      },
+      {
+        "id": "s2",
+        "fromLatex": "0.75 \\times 100",
+        "toLatex": "75\\%",
+        "paletteRef": "p2",
+        "dropTargets": [
+          "0.75 \\times 100"
+        ],
+        "description": "Multiply by 100 to get percent"
+      }
+    ]
+  },
+  {
+    "id": "arith2-m-003",
+    "topic": "arithmetic2",
+    "difficulty": "medium",
+    "question": {
+      "latex": "\\text{A \\$120 item is marked up 25\\%. New price?}",
+      "plain": "A $120 item is marked up 25%. What is the new price?"
+    },
+    "symbols": {},
+    "palette": [
+      {
+        "id": "p1",
+        "latex": "\\$30",
+        "description": "25% of $120 = 0.25×120 = $30"
+      },
+      {
+        "id": "p2",
+        "latex": "\\$150",
+        "description": "$120 + $30 = $150"
+      }
+    ],
+    "steps": [
+      {
+        "id": "s0a",
+        "fromLatex": "0.25 \\times 120 = 30",
+        "toLatex": "0.25 \\times 120 = 30",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "Find markup amount: 25% of $120"
+      },
+      {
+        "id": "s1",
+        "fromLatex": "0.25 \\times 120",
+        "toLatex": "\\$30",
+        "paletteRef": "p1",
+        "dropTargets": [
+          "0.25 \\times 120"
+        ],
+        "description": "Markup = $30"
+      },
+      {
+        "id": "s2",
+        "fromLatex": "120 + 30",
+        "toLatex": "\\$150",
+        "paletteRef": "p2",
+        "dropTargets": [
+          "120 + 30"
+        ],
+        "description": "New price = original + markup"
+      }
+    ]
+  },
+  {
+    "id": "arith2-m-004",
+    "topic": "arithmetic2",
+    "difficulty": "medium",
+    "question": {
+      "latex": "3 \\times (4 + 2^2) - 5 = ?",
+      "plain": "Evaluate 3 × (4 + 2²) − 5"
+    },
+    "symbols": {
+      "^": "Exponent"
+    },
+    "palette": [
+      {
+        "id": "p1",
+        "latex": "4",
+        "description": "Exponent inside brackets: 2²=4"
+      },
+      {
+        "id": "p2",
+        "latex": "8",
+        "description": "Add inside brackets: 4+4=8"
+      },
+      {
+        "id": "p3",
+        "latex": "24",
+        "description": "Multiply: 3×8=24"
+      },
+      {
+        "id": "p4",
+        "latex": "19",
+        "description": "Subtract: 24−5=19"
+      }
+    ],
+    "steps": [
+      {
+        "id": "s0a",
+        "fromLatex": "2^2=4",
+        "toLatex": "2^2=4",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "Exponent first (inside parentheses)"
+      },
+      {
+        "id": "s1",
+        "fromLatex": "3 \\times (4 + 2^2) - 5",
+        "toLatex": "3 \\times (4 + 4) - 5",
+        "paletteRef": "p1",
+        "dropTargets": [
+          "2^2"
+        ],
+        "description": "Replace 2² with 4"
+      },
+      {
+        "id": "s0b",
+        "fromLatex": "4+4=8",
+        "toLatex": "4+4=8",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "Add inside parentheses"
+      },
+      {
+        "id": "s2",
+        "fromLatex": "3 \\times (4 + 4) - 5",
+        "toLatex": "3 \\times 8 - 5",
+        "paletteRef": "p2",
+        "dropTargets": [
+          "(4 + 4)"
+        ],
+        "description": "Simplify parentheses: 4+4=8"
+      },
+      {
+        "id": "s0c",
+        "fromLatex": "3\\times8=24",
+        "toLatex": "3\\times8=24",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "Multiply next"
+      },
+      {
+        "id": "s3",
+        "fromLatex": "3 \\times 8 - 5",
+        "toLatex": "24 - 5",
+        "paletteRef": "p3",
+        "dropTargets": [
+          "3 \\times 8"
+        ],
+        "description": "Multiply: 3×8=24"
+      },
+      {
+        "id": "s4",
+        "fromLatex": "24 - 5",
+        "toLatex": "19",
+        "paletteRef": "p4",
+        "dropTargets": [
+          "24 - 5"
+        ],
+        "description": "Subtract: 24−5=19"
+      }
+    ]
+  },
+  {
+    "id": "arith2-m-005",
+    "topic": "arithmetic2",
+    "difficulty": "medium",
+    "question": {
+      "latex": "\\text{GCF}(36, 48) = ?",
+      "plain": "Find the GCF of 36 and 48"
+    },
+    "symbols": {},
+    "palette": [
+      {
+        "id": "p1",
+        "latex": "36 = 2^2 \\times 3^2",
+        "description": "36 = 4×9 = 2²×3²"
+      },
+      {
+        "id": "p2",
+        "latex": "48 = 2^4 \\times 3",
+        "description": "48 = 16×3 = 2⁴×3"
+      },
+      {
+        "id": "p3",
+        "latex": "12",
+        "description": "GCF = 2²×3 = 4×3 = 12"
+      }
+    ],
+    "steps": [
+      {
+        "id": "s1",
+        "fromLatex": "36",
+        "toLatex": "2^2 \\times 3^2",
+        "paletteRef": "p1",
+        "dropTargets": [
+          "36"
+        ],
+        "description": "Prime factorize 36"
+      },
+      {
+        "id": "s2",
+        "fromLatex": "48",
+        "toLatex": "2^4 \\times 3",
+        "paletteRef": "p2",
+        "dropTargets": [
+          "48"
+        ],
+        "description": "Prime factorize 48"
+      },
+      {
+        "id": "s0a",
+        "fromLatex": "\\text{Shared primes: } 2^{\\min(2,4)} \\times 3^{\\min(2,1)} = 2^2 \\times 3",
+        "toLatex": "2^2 \\times 3 = 12",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "Take minimum powers of shared primes"
+      },
+      {
+        "id": "s3",
+        "fromLatex": "\\text{GCF} = 2^2 \\times 3",
+        "toLatex": "12",
+        "paletteRef": "p3",
+        "dropTargets": [],
+        "description": "2²×3 = 4×3 = 12"
+      }
+    ]
+  },
+  {
+    "id": "arith2-m-006",
+    "topic": "arithmetic2",
+    "difficulty": "medium",
+    "question": {
+      "latex": "\\text{A car travels 240 miles in 4 hours. Speed in mph?}",
+      "plain": "A car travels 240 miles in 4 hours. What is its speed in mph?"
+    },
+    "symbols": {},
+    "palette": [
+      {
+        "id": "p1",
+        "latex": "\\frac{240}{4}",
+        "description": "Speed = distance ÷ time"
+      },
+      {
+        "id": "p2",
+        "latex": "60 \\text{ mph}",
+        "description": "240÷4=60"
+      }
+    ],
+    "steps": [
+      {
+        "id": "s1",
+        "fromLatex": "\\text{speed} = \\frac{\\text{distance}}{\\text{time}}",
+        "toLatex": "\\frac{240}{4}",
+        "paletteRef": "p1",
+        "dropTargets": [],
+        "description": "Apply distance-rate-time formula: d=rt → r=d/t"
+      },
+      {
+        "id": "s2",
+        "fromLatex": "\\frac{240}{4}",
+        "toLatex": "60 \\text{ mph}",
+        "paletteRef": "p2",
+        "dropTargets": [
+          "\\frac{240}{4}"
+        ],
+        "description": "240÷4=60"
+      }
+    ]
+  },
+  {
+    "id": "arith2-m-007",
+    "topic": "arithmetic2",
+    "difficulty": "medium",
+    "question": {
+      "latex": "\\frac{5}{6} \\div \\frac{5}{9} = ?",
+      "plain": "What is 5/6 ÷ 5/9?"
+    },
+    "symbols": {
+      "\\frac": "Fraction"
+    },
+    "palette": [
+      {
+        "id": "p1",
+        "latex": "\\frac{5}{6} \\times \\frac{9}{5}",
+        "description": "KCF: flip 5/9 to 9/5"
+      },
+      {
+        "id": "p2",
+        "latex": "\\frac{45}{30}",
+        "description": "Multiply across: 5×9=45, 6×5=30"
+      },
+      {
+        "id": "p3",
+        "latex": "\\frac{3}{2}",
+        "description": "Simplify: GCF(45,30)=15; 3/2"
+      }
+    ],
+    "steps": [
+      {
+        "id": "s1",
+        "fromLatex": "\\frac{5}{6} \\div \\frac{5}{9}",
+        "toLatex": "\\frac{5}{6} \\times \\frac{9}{5}",
+        "paletteRef": "p1",
+        "dropTargets": [
+          "\\frac{5}{9}"
+        ],
+        "description": "KCF: flip the divisor"
+      },
+      {
+        "id": "s2",
+        "fromLatex": "\\frac{5}{6} \\times \\frac{9}{5}",
+        "toLatex": "\\frac{45}{30}",
+        "paletteRef": "p2",
+        "dropTargets": [
+          "\\frac{5}{6} \\times \\frac{9}{5}"
+        ],
+        "description": "Multiply numerators and denominators"
+      },
+      {
+        "id": "s3",
+        "fromLatex": "\\frac{45}{30}",
+        "toLatex": "\\frac{3}{2}",
+        "paletteRef": "p3",
+        "dropTargets": [
+          "\\frac{45}{30}"
+        ],
+        "description": "Simplify by dividing by 15"
+      }
+    ]
+  },
+  {
+    "id": "arith2-m-008",
+    "topic": "arithmetic2",
+    "difficulty": "medium",
+    "question": {
+      "latex": "\\text{Mean of } 8, 12, 15, 9, 11",
+      "plain": "What is the mean of 8, 12, 15, 9, 11?"
+    },
+    "symbols": {},
+    "palette": [
+      {
+        "id": "p1",
+        "latex": "\\frac{55}{5}",
+        "description": "Sum=55, count=5"
+      },
+      {
+        "id": "p2",
+        "latex": "11",
+        "description": "55÷5=11"
+      }
+    ],
+    "steps": [
+      {
+        "id": "s0a",
+        "fromLatex": "8+12+15+9+11=55",
+        "toLatex": "8+12+15+9+11=55",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "Add all values"
+      },
+      {
+        "id": "s1",
+        "fromLatex": "\\text{Mean}=\\frac{55}{5}",
+        "toLatex": "\\frac{55}{5}",
+        "paletteRef": "p1",
+        "dropTargets": [],
+        "description": "Divide sum by count (5 values)"
+      },
+      {
+        "id": "s2",
+        "fromLatex": "\\frac{55}{5}",
+        "toLatex": "11",
+        "paletteRef": "p2",
+        "dropTargets": [
+          "\\frac{55}{5}"
+        ],
+        "description": "55÷5=11"
+      }
+    ]
+  },
+  {
+    "id": "arith2-m-009",
+    "topic": "arithmetic2",
+    "difficulty": "medium",
+    "question": {
+      "latex": "I = Prt,\\; P=\\$500,\\; r=4\\%,\\; t=3\\,\\text{yr}",
+      "plain": "Simple interest: P=$500, r=4%, t=3 yr. Interest earned?"
+    },
+    "symbols": {},
+    "palette": [
+      {
+        "id": "p1",
+        "latex": "I = 500 \\times 0.04 \\times 3",
+        "description": "Substitute into I=Prt"
+      },
+      {
+        "id": "p2",
+        "latex": "\\$60",
+        "description": "500×0.04×3=60"
+      }
+    ],
+    "steps": [
+      {
+        "id": "s0a",
+        "fromLatex": "4\\% = 0.04",
+        "toLatex": "4\\% = 0.04",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "Convert rate to decimal"
+      },
+      {
+        "id": "s1",
+        "fromLatex": "I = Prt",
+        "toLatex": "I = 500 \\times 0.04 \\times 3",
+        "paletteRef": "p1",
+        "dropTargets": [
+          "Prt"
+        ],
+        "description": "Substitute P=500, r=0.04, t=3"
+      },
+      {
+        "id": "s0b",
+        "fromLatex": "500 \\times 0.04 = 20",
+        "toLatex": "500 \\times 0.04 = 20",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "500×0.04=20"
+      },
+      {
+        "id": "s2",
+        "fromLatex": "500 \\times 0.04 \\times 3",
+        "toLatex": "\\$60",
+        "paletteRef": "p2",
+        "dropTargets": [
+          "500 \\times 0.04 \\times 3"
+        ],
+        "description": "20×3=60"
+      }
+    ]
+  },
+  {
+    "id": "arith2-m-010",
+    "topic": "arithmetic2",
+    "difficulty": "medium",
+    "question": {
+      "latex": "3.2 \\text{ km} = ? \\text{ m}",
+      "plain": "Convert 3.2 km to metres"
+    },
+    "symbols": {},
+    "palette": [
+      {
+        "id": "p1",
+        "latex": "3200 \\text{ m}",
+        "description": "1 km = 1000 m; 3.2 × 1000 = 3200"
+      }
+    ],
+    "steps": [
+      {
+        "id": "s0a",
+        "fromLatex": "1\\text{ km}=1000\\text{ m}",
+        "toLatex": "1\\text{ km}=1000\\text{ m}",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "Conversion: 1 kilometre = 1000 metres"
+      },
+      {
+        "id": "s1",
+        "fromLatex": "3.2 \\times 1000",
+        "toLatex": "3200 \\text{ m}",
+        "paletteRef": "p1",
+        "dropTargets": [
+          "3.2 \\times 1000"
+        ],
+        "description": "Multiply to convert"
+      }
+    ]
+  },
+  {
+    "id": "arith2-m-011",
+    "topic": "arithmetic2",
+    "difficulty": "medium",
+    "question": {
+      "latex": "\\frac{5}{6} - \\frac{1}{4} = ?",
+      "plain": "What is 5/6 − 1/4?"
+    },
+    "symbols": {
+      "\\frac": "Fraction"
+    },
+    "palette": [
+      {
+        "id": "p1",
+        "latex": "\\frac{10}{12}-\\frac{3}{12}",
+        "description": "LCD=12: 5/6=10/12, 1/4=3/12"
+      },
+      {
+        "id": "p2",
+        "latex": "\\frac{7}{12}",
+        "description": "10−3=7, denominator stays 12"
+      }
+    ],
+    "steps": [
+      {
+        "id": "s0a",
+        "fromLatex": "\\text{LCD}(6,4)=12",
+        "toLatex": "\\text{LCD}(6,4)=12",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "Find LCD: 6 and 4 share factor 2; LCD=12"
+      },
+      {
+        "id": "s0b",
+        "fromLatex": "\\tfrac{5}{6}=\\tfrac{10}{12},\\quad\\tfrac{1}{4}=\\tfrac{3}{12}",
+        "toLatex": "\\tfrac{5}{6}=\\tfrac{10}{12},\\quad\\tfrac{1}{4}=\\tfrac{3}{12}",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "Convert each fraction to twelfths"
+      },
+      {
+        "id": "s1",
+        "fromLatex": "\\frac{5}{6}-\\frac{1}{4}",
+        "toLatex": "\\frac{10}{12}-\\frac{3}{12}",
+        "paletteRef": "p1",
+        "dropTargets": [
+          "\\frac{5}{6}-\\frac{1}{4}"
+        ],
+        "description": "Rewrite with common denominator 12"
+      },
+      {
+        "id": "s2",
+        "fromLatex": "\\frac{10}{12}-\\frac{3}{12}",
+        "toLatex": "\\frac{7}{12}",
+        "paletteRef": "p2",
+        "dropTargets": [
+          "\\frac{10}{12}-\\frac{3}{12}"
+        ],
+        "description": "Subtract numerators: 10−3=7"
+      }
+    ]
+  },
+  {
+    "id": "arith2-m-012",
+    "topic": "arithmetic2",
+    "difficulty": "medium",
+    "question": {
+      "latex": "\\text{Percent decrease from 80 to 60?}",
+      "plain": "What is the percent decrease from 80 to 60?"
+    },
+    "symbols": {},
+    "palette": [
+      {
+        "id": "p1",
+        "latex": "\\frac{80-60}{80} \\times 100",
+        "description": "% change = (old−new)/old × 100"
+      },
+      {
+        "id": "p2",
+        "latex": "25\\%",
+        "description": "20/80 × 100 = 25%"
+      }
+    ],
+    "steps": [
+      {
+        "id": "s0a",
+        "fromLatex": "80-60=20",
+        "toLatex": "80-60=20",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "Find the decrease: 80−60=20"
+      },
+      {
+        "id": "s1",
+        "fromLatex": "\\%\\text{ decrease}=\\frac{\\text{decrease}}{\\text{original}}\\times100",
+        "toLatex": "\\frac{20}{80} \\times 100",
+        "paletteRef": "p1",
+        "dropTargets": [],
+        "description": "Divide decrease by original, multiply by 100"
+      },
+      {
+        "id": "s0b",
+        "fromLatex": "\\frac{20}{80}=0.25",
+        "toLatex": "\\frac{20}{80}=0.25",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "20÷80=0.25"
+      },
+      {
+        "id": "s2",
+        "fromLatex": "0.25 \\times 100",
+        "toLatex": "25\\%",
+        "paletteRef": "p2",
+        "dropTargets": [
+          "0.25 \\times 100"
+        ],
+        "description": "25%"
+      }
+    ]
+  },
+  {
+    "id": "arith2-m-013",
+    "topic": "arithmetic2",
+    "difficulty": "medium",
+    "question": {
+      "latex": "|3 - 8| + |2 - (-1)| = ?",
+      "plain": "Evaluate |3 − 8| + |2 − (−1)|"
+    },
+    "symbols": {},
+    "palette": [
+      {
+        "id": "p1",
+        "latex": "5",
+        "description": "|3−8|=|−5|=5"
+      },
+      {
+        "id": "p2",
+        "latex": "3",
+        "description": "|2−(−1)|=|3|=3"
+      },
+      {
+        "id": "p3",
+        "latex": "8",
+        "description": "5+3=8"
+      }
+    ],
+    "steps": [
+      {
+        "id": "s0a",
+        "fromLatex": "3-8=-5",
+        "toLatex": "3-8=-5",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "Inside first absolute value: 3−8=−5"
+      },
+      {
+        "id": "s1",
+        "fromLatex": "|3-8|",
+        "toLatex": "5",
+        "paletteRef": "p1",
+        "dropTargets": [
+          "|3-8|"
+        ],
+        "description": "|−5|=5"
+      },
+      {
+        "id": "s0b",
+        "fromLatex": "2-(-1)=3",
+        "toLatex": "2-(-1)=3",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "Inside second: 2−(−1)=2+1=3"
+      },
+      {
+        "id": "s2",
+        "fromLatex": "|2-(-1)|",
+        "toLatex": "3",
+        "paletteRef": "p2",
+        "dropTargets": [
+          "|2-(-1)|"
+        ],
+        "description": "|3|=3"
+      },
+      {
+        "id": "s3",
+        "fromLatex": "5+3",
+        "toLatex": "8",
+        "paletteRef": "p3",
+        "dropTargets": [
+          "5+3"
+        ],
+        "description": "Add the results"
+      }
+    ]
+  },
+  {
+    "id": "arith2-m-014",
+    "topic": "arithmetic2",
+    "difficulty": "medium",
+    "question": {
+      "latex": "\\text{LCM}(6, 10, 15) = ?",
+      "plain": "Find the LCM of 6, 10, and 15"
+    },
+    "symbols": {},
+    "palette": [
+      {
+        "id": "p1",
+        "latex": "6=2\\times3,\\;10=2\\times5,\\;15=3\\times5",
+        "description": "Prime factorizations"
+      },
+      {
+        "id": "p2",
+        "latex": "30",
+        "description": "LCM = 2×3×5 = 30"
+      }
+    ],
+    "steps": [
+      {
+        "id": "s1",
+        "fromLatex": "6,\\,10,\\,15",
+        "toLatex": "6=2\\times3,\\;10=2\\times5,\\;15=3\\times5",
+        "paletteRef": "p1",
+        "dropTargets": [],
+        "description": "Prime factorize each number"
+      },
+      {
+        "id": "s0a",
+        "fromLatex": "\\text{Take max power of each prime: }2^1,\\,3^1,\\,5^1",
+        "toLatex": "2\\times3\\times5=30",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "LCM uses highest power of each prime"
+      },
+      {
+        "id": "s2",
+        "fromLatex": "2\\times3\\times5",
+        "toLatex": "30",
+        "paletteRef": "p2",
+        "dropTargets": [
+          "2\\times3\\times5"
+        ],
+        "description": "Multiply: 2×3×5=30"
+      }
+    ]
+  },
+  {
+    "id": "arith2-m-015",
+    "topic": "arithmetic2",
+    "difficulty": "medium",
+    "question": {
+      "latex": "2\\frac{1}{3} \\times 1\\frac{1}{2} = ?",
+      "plain": "Multiply 2 1/3 × 1 1/2"
+    },
+    "symbols": {
+      "\\frac": "Fraction",
+      "\\times": "Multiply"
+    },
+    "palette": [
+      {
+        "id": "p1",
+        "latex": "\\frac{7}{3}",
+        "description": "2⅓: 2×3+1=7 → 7/3"
+      },
+      {
+        "id": "p2",
+        "latex": "\\frac{3}{2}",
+        "description": "1½: 1×2+1=3 → 3/2"
+      },
+      {
+        "id": "p3",
+        "latex": "\\frac{21}{6}",
+        "description": "Multiply: 7×3=21, 3×2=6"
+      },
+      {
+        "id": "p4",
+        "latex": "3\\frac{1}{2}",
+        "description": "Simplify 21/6=7/2=3½"
+      }
+    ],
+    "steps": [
+      {
+        "id": "s1",
+        "fromLatex": "2\\frac{1}{3}",
+        "toLatex": "\\frac{7}{3}",
+        "paletteRef": "p1",
+        "dropTargets": [
+          "2\\frac{1}{3}"
+        ],
+        "description": "Convert to improper: 2×3+1=7"
+      },
+      {
+        "id": "s2",
+        "fromLatex": "1\\frac{1}{2}",
+        "toLatex": "\\frac{3}{2}",
+        "paletteRef": "p2",
+        "dropTargets": [
+          "1\\frac{1}{2}"
+        ],
+        "description": "Convert to improper: 1×2+1=3"
+      },
+      {
+        "id": "s3",
+        "fromLatex": "\\frac{7}{3} \\times \\frac{3}{2}",
+        "toLatex": "\\frac{21}{6}",
+        "paletteRef": "p3",
+        "dropTargets": [
+          "\\frac{7}{3} \\times \\frac{3}{2}"
+        ],
+        "description": "Multiply across"
+      },
+      {
+        "id": "s4",
+        "fromLatex": "\\frac{21}{6}",
+        "toLatex": "3\\frac{1}{2}",
+        "paletteRef": "p4",
+        "dropTargets": [
+          "\\frac{21}{6}"
+        ],
+        "description": "21/6 = 7/2 (÷3) = 3½"
+      }
+    ]
+  },
+  {
+    "id": "arith2-m-016",
+    "topic": "arithmetic2",
+    "difficulty": "medium",
+    "question": {
+      "latex": "\\frac{3}{5} = \\frac{x}{40} \\quad \\text{Find } x",
+      "plain": "Solve the proportion: 3/5 = x/40"
+    },
+    "symbols": {
+      "\\frac": "Fraction"
+    },
+    "palette": [
+      {
+        "id": "p1",
+        "latex": "5x = 3 \\times 40",
+        "description": "Cross-multiply: 3×40 = 5×x"
+      },
+      {
+        "id": "p2",
+        "latex": "x = 24",
+        "description": "5x=120 → x=24"
+      }
+    ],
+    "steps": [
+      {
+        "id": "s1",
+        "fromLatex": "\\frac{3}{5}=\\frac{x}{40}",
+        "toLatex": "5x = 3 \\times 40",
+        "paletteRef": "p1",
+        "dropTargets": [
+          "\\frac{3}{5}=\\frac{x}{40}"
+        ],
+        "description": "Cross-multiply: 3×40=5×x"
+      },
+      {
+        "id": "s0a",
+        "fromLatex": "3\\times40=120",
+        "toLatex": "3\\times40=120",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "Compute: 3×40=120"
+      },
+      {
+        "id": "s2",
+        "fromLatex": "5x = 120",
+        "toLatex": "x = 24",
+        "paletteRef": "p2",
+        "dropTargets": [
+          "5x = 120"
+        ],
+        "description": "Divide both sides by 5: x=24"
+      }
+    ]
+  },
+  {
+    "id": "arith2-m-017",
+    "topic": "arithmetic2",
+    "difficulty": "medium",
+    "question": {
+      "latex": "25^\\circ\\text{C to }^\\circ\\text{F}",
+      "plain": "Convert 25°C to °F"
+    },
+    "symbols": {
+      "^\\circ": "Degree symbol"
+    },
+    "palette": [
+      {
+        "id": "p1",
+        "latex": "F = \\frac{9}{5}(25)+32",
+        "description": "Substitute C=25 into F=9/5×C+32"
+      },
+      {
+        "id": "p2",
+        "latex": "77^\\circ\\text{F}",
+        "description": "45+32=77°F"
+      }
+    ],
+    "steps": [
+      {
+        "id": "s0a",
+        "fromLatex": "F=\\tfrac{9}{5}C+32",
+        "toLatex": "F=\\tfrac{9}{5}C+32",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "Temperature formula"
+      },
+      {
+        "id": "s1",
+        "fromLatex": "F = \\frac{9}{5}C + 32",
+        "toLatex": "F = \\frac{9}{5}(25)+32",
+        "paletteRef": "p1",
+        "dropTargets": [
+          "C"
+        ],
+        "description": "Substitute C=25"
+      },
+      {
+        "id": "s0b",
+        "fromLatex": "\\frac{9}{5}\\times25=45",
+        "toLatex": "\\frac{9}{5}\\times25=45",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "9×25=225; 225÷5=45"
+      },
+      {
+        "id": "s2",
+        "fromLatex": "45 + 32",
+        "toLatex": "77^\\circ\\text{F}",
+        "paletteRef": "p2",
+        "dropTargets": [
+          "45 + 32"
+        ],
+        "description": "Add: 45+32=77°F"
+      }
+    ]
+  },
+  {
+    "id": "arith2-m-018",
+    "topic": "arithmetic2",
+    "difficulty": "medium",
+    "question": {
+      "latex": "72 = 2^? \\times 3^?",
+      "plain": "Write the prime factorization of 72"
+    },
+    "symbols": {
+      "^": "Exponent"
+    },
+    "palette": [
+      {
+        "id": "p1",
+        "latex": "72 = 8 \\times 9",
+        "description": "72 = 8×9"
+      },
+      {
+        "id": "p2",
+        "latex": "2^3 \\times 3^2",
+        "description": "8=2³, 9=3²; so 72=2³×3²"
+      }
+    ],
+    "steps": [
+      {
+        "id": "s0a",
+        "fromLatex": "72 = 8 \\times 9",
+        "toLatex": "72 = 8 \\times 9",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "Split into convenient factors"
+      },
+      {
+        "id": "s1",
+        "fromLatex": "72",
+        "toLatex": "8 \\times 9",
+        "paletteRef": "p1",
+        "dropTargets": [
+          "72"
+        ],
+        "description": "Factor tree: 72=8×9"
+      },
+      {
+        "id": "s0b",
+        "fromLatex": "8=2^3,\\quad9=3^2",
+        "toLatex": "8=2^3,\\quad9=3^2",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "Factorize each: 8=2×2×2=2³, 9=3×3=3²"
+      },
+      {
+        "id": "s2",
+        "fromLatex": "8 \\times 9",
+        "toLatex": "2^3 \\times 3^2",
+        "paletteRef": "p2",
+        "dropTargets": [
+          "8 \\times 9"
+        ],
+        "description": "Replace each factor with prime powers"
+      }
+    ]
+  },
+  {
+    "id": "arith2-m-019",
+    "topic": "arithmetic2",
+    "difficulty": "medium",
+    "question": {
+      "latex": "\\text{Round } 4.8763 \\text{ to 3 significant figures}",
+      "plain": "Round 4.8763 to 3 significant figures"
+    },
+    "symbols": {},
+    "palette": [
+      {
+        "id": "p1",
+        "latex": "4.88",
+        "description": "Digits 4, 8, 7 — the 4th digit is 6 ≥ 5, so round up the 7 to 8"
+      }
+    ],
+    "steps": [
+      {
+        "id": "s0a",
+        "fromLatex": "4.\\underbrace{8\\,7}_{\\text{3 sig figs}}63",
+        "toLatex": "4.8\\underline{7}63",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "Identify the 3rd significant figure: 7. Look at next digit: 6 ≥ 5"
+      },
+      {
+        "id": "s1",
+        "fromLatex": "4.8763",
+        "toLatex": "4.88",
+        "paletteRef": "p1",
+        "dropTargets": [
+          "4.8763"
+        ],
+        "description": "Round up: 7 becomes 8 → 4.88"
+      }
+    ]
+  },
+  {
+    "id": "arith2-m-020",
+    "topic": "arithmetic2",
+    "difficulty": "medium",
+    "question": {
+      "latex": "\\text{Median of } 5, 8, 11, 14, 17, 22",
+      "plain": "Find the median of 5, 8, 11, 14, 17, 22"
+    },
+    "symbols": {},
+    "palette": [
+      {
+        "id": "p1",
+        "latex": "\\frac{11+14}{2}",
+        "description": "Even count (6 values): average the two middle values"
+      },
+      {
+        "id": "p2",
+        "latex": "12.5",
+        "description": "(11+14)÷2=25÷2=12.5"
+      }
+    ],
+    "steps": [
+      {
+        "id": "s0a",
+        "fromLatex": "5,\\,8,\\,11,\\,14,\\,17,\\,22 \\text{ (sorted)}",
+        "toLatex": "5,\\,8,\\,\\mathbf{11},\\,\\mathbf{14},\\,17,\\,22",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "Already sorted; 6 values → average the 3rd and 4th"
+      },
+      {
+        "id": "s1",
+        "fromLatex": "\\text{Median}",
+        "toLatex": "\\frac{11+14}{2}",
+        "paletteRef": "p1",
+        "dropTargets": [],
+        "description": "Average the two middle values"
+      },
+      {
+        "id": "s2",
+        "fromLatex": "\\frac{11+14}{2}",
+        "toLatex": "12.5",
+        "paletteRef": "p2",
+        "dropTargets": [
+          "\\frac{11+14}{2}"
+        ],
+        "description": "(11+14)÷2=12.5"
+      }
+    ]
+  },
+  {
+    "id": "arith2-h-001",
+    "topic": "arithmetic2",
+    "difficulty": "hard",
+    "question": {
+      "latex": "4\\frac{2}{5} \\div 1\\frac{1}{3} = ?",
+      "plain": "Divide 4 2/5 ÷ 1 1/3"
+    },
+    "symbols": {
+      "\\frac": "Fraction"
+    },
+    "palette": [
+      {
+        "id": "p1",
+        "latex": "\\frac{22}{5}",
+        "description": "4⅖: 4×5+2=22 → 22/5"
+      },
+      {
+        "id": "p2",
+        "latex": "\\frac{4}{3}",
+        "description": "1⅓: 1×3+1=4 → 4/3"
+      },
+      {
+        "id": "p3",
+        "latex": "\\frac{22}{5} \\times \\frac{3}{4}",
+        "description": "KCF: flip 4/3 to 3/4"
+      },
+      {
+        "id": "p4",
+        "latex": "3\\frac{3}{10}",
+        "description": "66/20 = 33/10 = 3 3/10"
+      }
+    ],
+    "steps": [
+      {
+        "id": "s1",
+        "fromLatex": "4\\frac{2}{5}",
+        "toLatex": "\\frac{22}{5}",
+        "paletteRef": "p1",
+        "dropTargets": [
+          "4\\frac{2}{5}"
+        ],
+        "description": "Convert: 4×5+2=22 → 22/5"
+      },
+      {
+        "id": "s2",
+        "fromLatex": "1\\frac{1}{3}",
+        "toLatex": "\\frac{4}{3}",
+        "paletteRef": "p2",
+        "dropTargets": [
+          "1\\frac{1}{3}"
+        ],
+        "description": "Convert: 1×3+1=4 → 4/3"
+      },
+      {
+        "id": "s3",
+        "fromLatex": "\\frac{22}{5} \\div \\frac{4}{3}",
+        "toLatex": "\\frac{22}{5} \\times \\frac{3}{4}",
+        "paletteRef": "p3",
+        "dropTargets": [
+          "\\frac{4}{3}"
+        ],
+        "description": "KCF: keep 22/5, change ÷ to ×, flip 4/3"
+      },
+      {
+        "id": "s0a",
+        "fromLatex": "22\\times3=66,\\quad5\\times4=20",
+        "toLatex": "\\frac{66}{20}",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "Multiply across: 22×3=66, 5×4=20"
+      },
+      {
+        "id": "s4",
+        "fromLatex": "\\frac{66}{20}",
+        "toLatex": "3\\frac{3}{10}",
+        "paletteRef": "p4",
+        "dropTargets": [
+          "\\frac{66}{20}"
+        ],
+        "description": "66/20=33/10; 33÷10=3 remainder 3 → 3 3/10"
+      }
+    ]
+  },
+  {
+    "id": "arith2-h-002",
+    "topic": "arithmetic2",
+    "difficulty": "hard",
+    "question": {
+      "latex": "\\text{20\\% off, then 15\\% off. Total \\% off?}",
+      "plain": "A store applies 20% off then 15% more off. What is the total percent off?"
+    },
+    "symbols": {},
+    "palette": [
+      {
+        "id": "p1",
+        "latex": "0.80P",
+        "description": "After 20% off: 80% remains → multiply by 0.80"
+      },
+      {
+        "id": "p2",
+        "latex": "0.68P",
+        "description": "After further 15% off: 0.80×0.85=0.68P"
+      },
+      {
+        "id": "p3",
+        "latex": "32\\%",
+        "description": "0.68P means 32% off"
+      }
+    ],
+    "steps": [
+      {
+        "id": "s1",
+        "fromLatex": "P \\xrightarrow{-20\\%} ?",
+        "toLatex": "0.80P",
+        "paletteRef": "p1",
+        "dropTargets": [],
+        "description": "After 20% off: 100%−20%=80% remains"
+      },
+      {
+        "id": "s0a",
+        "fromLatex": "0.80 \\times 0.85 = 0.68",
+        "toLatex": "0.80 \\times 0.85 = 0.68",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "Apply second discount: 0.80×0.85=0.68"
+      },
+      {
+        "id": "s2",
+        "fromLatex": "0.80P \\xrightarrow{-15\\%} ?",
+        "toLatex": "0.68P",
+        "paletteRef": "p2",
+        "dropTargets": [],
+        "description": "Take 15% off the already-reduced price"
+      },
+      {
+        "id": "s3",
+        "fromLatex": "1 - 0.68 = 0.32",
+        "toLatex": "32\\%",
+        "paletteRef": "p3",
+        "dropTargets": [],
+        "description": "Total discount = 1−0.68=0.32=32%"
+      }
+    ]
+  },
+  {
+    "id": "arith2-h-003",
+    "topic": "arithmetic2",
+    "difficulty": "hard",
+    "question": {
+      "latex": "(2^3 + 4) \\times (6 - 2^2) \\div 6 = ?",
+      "plain": "Evaluate (2³ + 4) × (6 − 2²) ÷ 6"
+    },
+    "symbols": {
+      "^": "Exponent",
+      "\\times": "Multiply"
+    },
+    "palette": [
+      {
+        "id": "p1",
+        "latex": "8",
+        "description": "2³=8"
+      },
+      {
+        "id": "p2",
+        "latex": "4",
+        "description": "2²=4"
+      },
+      {
+        "id": "p3",
+        "latex": "12",
+        "description": "8+4=12"
+      },
+      {
+        "id": "p4",
+        "latex": "2",
+        "description": "6−4=2"
+      },
+      {
+        "id": "p5",
+        "latex": "4",
+        "description": "12×2÷6 = 24÷6 = 4"
+      }
+    ],
+    "steps": [
+      {
+        "id": "s0a",
+        "fromLatex": "2^3=8",
+        "toLatex": "2^3=8",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "Evaluate exponent in first bracket"
+      },
+      {
+        "id": "s1",
+        "fromLatex": "(2^3+4)",
+        "toLatex": "(8+4)",
+        "paletteRef": "p1",
+        "dropTargets": [
+          "2^3"
+        ],
+        "description": "Replace 2³ with 8"
+      },
+      {
+        "id": "s0b",
+        "fromLatex": "2^2=4",
+        "toLatex": "2^2=4",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "Evaluate exponent in second bracket"
+      },
+      {
+        "id": "s2",
+        "fromLatex": "(6-2^2)",
+        "toLatex": "(6-4)",
+        "paletteRef": "p2",
+        "dropTargets": [
+          "2^2"
+        ],
+        "description": "Replace 2² with 4"
+      },
+      {
+        "id": "s3",
+        "fromLatex": "(8+4)",
+        "toLatex": "12",
+        "paletteRef": "p3",
+        "dropTargets": [
+          "(8+4)"
+        ],
+        "description": "8+4=12"
+      },
+      {
+        "id": "s4",
+        "fromLatex": "(6-4)",
+        "toLatex": "2",
+        "paletteRef": "p4",
+        "dropTargets": [
+          "(6-4)"
+        ],
+        "description": "6−4=2"
+      },
+      {
+        "id": "s5",
+        "fromLatex": "12 \\times 2 \\div 6",
+        "toLatex": "4",
+        "paletteRef": "p5",
+        "dropTargets": [
+          "12 \\times 2 \\div 6"
+        ],
+        "description": "Left to right: 12×2=24, 24÷6=4"
+      }
+    ]
+  },
+  {
+    "id": "arith2-h-004",
+    "topic": "arithmetic2",
+    "difficulty": "hard",
+    "question": {
+      "latex": "\\text{LCM}(12, 18, 24) = ?",
+      "plain": "Find the LCM of 12, 18, and 24"
+    },
+    "symbols": {},
+    "palette": [
+      {
+        "id": "p1",
+        "latex": "12=2^2\\times3,\\;18=2\\times3^2,\\;24=2^3\\times3",
+        "description": "Prime factorizations of all three"
+      },
+      {
+        "id": "p2",
+        "latex": "72",
+        "description": "LCM=2³×3²=8×9=72"
+      }
+    ],
+    "steps": [
+      {
+        "id": "s1",
+        "fromLatex": "12,\\,18,\\,24",
+        "toLatex": "12=2^2\\times3,\\;18=2\\times3^2,\\;24=2^3\\times3",
+        "paletteRef": "p1",
+        "dropTargets": [],
+        "description": "Prime factorize each"
+      },
+      {
+        "id": "s0a",
+        "fromLatex": "\\text{Max powers: }2^3,\\,3^2",
+        "toLatex": "2^3 \\times 3^2 = 8 \\times 9",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "Take maximum power of each prime: 2³ and 3²"
+      },
+      {
+        "id": "s2",
+        "fromLatex": "2^3 \\times 3^2",
+        "toLatex": "72",
+        "paletteRef": "p2",
+        "dropTargets": [
+          "2^3 \\times 3^2"
+        ],
+        "description": "8×9=72"
+      }
+    ]
+  },
+  {
+    "id": "arith2-h-005",
+    "topic": "arithmetic2",
+    "difficulty": "hard",
+    "question": {
+      "latex": "P=\\$800,\\;r=3.5\\%,\\;t=4\\,\\text{yr}.\\;\\text{Total amount?}",
+      "plain": "Simple interest: P=$800, r=3.5%, t=4 yr. Total amount?"
+    },
+    "symbols": {},
+    "palette": [
+      {
+        "id": "p1",
+        "latex": "I=800\\times0.035\\times4",
+        "description": "I=Prt with P=800, r=0.035, t=4"
+      },
+      {
+        "id": "p2",
+        "latex": "\\$112",
+        "description": "800×0.035×4=112"
+      },
+      {
+        "id": "p3",
+        "latex": "\\$912",
+        "description": "A=P+I=800+112=912"
+      }
+    ],
+    "steps": [
+      {
+        "id": "s0a",
+        "fromLatex": "3.5\\%=0.035",
+        "toLatex": "3.5\\%=0.035",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "Convert rate to decimal"
+      },
+      {
+        "id": "s1",
+        "fromLatex": "I=Prt",
+        "toLatex": "I=800\\times0.035\\times4",
+        "paletteRef": "p1",
+        "dropTargets": [
+          "Prt"
+        ],
+        "description": "Substitute values"
+      },
+      {
+        "id": "s0b",
+        "fromLatex": "800\\times0.035=28",
+        "toLatex": "28\\times4=112",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "800×0.035=28; 28×4=112"
+      },
+      {
+        "id": "s2",
+        "fromLatex": "I=800\\times0.035\\times4",
+        "toLatex": "\\$112",
+        "paletteRef": "p2",
+        "dropTargets": [],
+        "description": "Interest = $112"
+      },
+      {
+        "id": "s3",
+        "fromLatex": "A=P+I=800+112",
+        "toLatex": "\\$912",
+        "paletteRef": "p3",
+        "dropTargets": [
+          "800+112"
+        ],
+        "description": "Total amount = principal + interest"
+      }
+    ]
+  },
+  {
+    "id": "arith2-h-006",
+    "topic": "arithmetic2",
+    "difficulty": "hard",
+    "question": {
+      "latex": "\\text{Weighted mean: scores 70, 80, 90 with weights 1, 2, 3}",
+      "plain": "Weighted mean: scores 70, 80, 90 with weights 1, 2, 3"
+    },
+    "symbols": {},
+    "palette": [
+      {
+        "id": "p1",
+        "latex": "\\frac{1(70)+2(80)+3(90)}{1+2+3}",
+        "description": "Weighted mean formula: Σ(w·x)/Σw"
+      },
+      {
+        "id": "p2",
+        "latex": "\\frac{500}{6}",
+        "description": "70+160+270=500; weights sum=6"
+      },
+      {
+        "id": "p3",
+        "latex": "83.\\overline{3}",
+        "description": "500÷6≈83.3"
+      }
+    ],
+    "steps": [
+      {
+        "id": "s0a",
+        "fromLatex": "1(70)=70,\\;2(80)=160,\\;3(90)=270",
+        "toLatex": "1(70)+2(80)+3(90)=500",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "Multiply each score by its weight, then add"
+      },
+      {
+        "id": "s1",
+        "fromLatex": "\\bar{x}_w=\\frac{\\sum w_i x_i}{\\sum w_i}",
+        "toLatex": "\\frac{1(70)+2(80)+3(90)}{1+2+3}",
+        "paletteRef": "p1",
+        "dropTargets": [],
+        "description": "Apply weighted mean formula"
+      },
+      {
+        "id": "s2",
+        "fromLatex": "\\frac{1(70)+2(80)+3(90)}{6}",
+        "toLatex": "\\frac{500}{6}",
+        "paletteRef": "p2",
+        "dropTargets": [],
+        "description": "Numerator 70+160+270=500; denominator 1+2+3=6"
+      },
+      {
+        "id": "s3",
+        "fromLatex": "\\frac{500}{6}",
+        "toLatex": "83.\\overline{3}",
+        "paletteRef": "p3",
+        "dropTargets": [
+          "\\frac{500}{6}"
+        ],
+        "description": "500÷6=83.3̄"
+      }
+    ]
+  },
+  {
+    "id": "arith2-h-007",
+    "topic": "arithmetic2",
+    "difficulty": "hard",
+    "question": {
+      "latex": "\\text{Item costs \\$68 after 15\\% discount. Original price?}",
+      "plain": "An item costs $68 after a 15% discount. What was the original price?"
+    },
+    "symbols": {},
+    "palette": [
+      {
+        "id": "p1",
+        "latex": "0.85P = 68",
+        "description": "After 15% off: 85% of P = $68"
+      },
+      {
+        "id": "p2",
+        "latex": "P = \\frac{68}{0.85}",
+        "description": "Divide both sides by 0.85"
+      },
+      {
+        "id": "p3",
+        "latex": "\\$80",
+        "description": "68÷0.85=80"
+      }
+    ],
+    "steps": [
+      {
+        "id": "s1",
+        "fromLatex": "P - 0.15P = 68",
+        "toLatex": "0.85P = 68",
+        "paletteRef": "p1",
+        "dropTargets": [
+          "P - 0.15P"
+        ],
+        "description": "15% off means 85% of original remains"
+      },
+      {
+        "id": "s2",
+        "fromLatex": "0.85P = 68",
+        "toLatex": "P = \\frac{68}{0.85}",
+        "paletteRef": "p2",
+        "dropTargets": [
+          "0.85P = 68"
+        ],
+        "description": "Isolate P: divide both sides by 0.85"
+      },
+      {
+        "id": "s3",
+        "fromLatex": "\\frac{68}{0.85}",
+        "toLatex": "\\$80",
+        "paletteRef": "p3",
+        "dropTargets": [
+          "\\frac{68}{0.85}"
+        ],
+        "description": "68÷0.85=80"
+      }
+    ]
+  },
+  {
+    "id": "arith2-h-008",
+    "topic": "arithmetic2",
+    "difficulty": "hard",
+    "question": {
+      "latex": "3\\,\\text{lb}\\;4\\,\\text{oz} = ?\\,\\text{oz}",
+      "plain": "Convert 3 lb 4 oz to ounces"
+    },
+    "symbols": {},
+    "palette": [
+      {
+        "id": "p1",
+        "latex": "3 \\times 16 = 48 \\text{ oz}",
+        "description": "1 lb = 16 oz; 3 lb = 48 oz"
+      },
+      {
+        "id": "p2",
+        "latex": "52 \\text{ oz}",
+        "description": "48+4=52 oz"
+      }
+    ],
+    "steps": [
+      {
+        "id": "s0a",
+        "fromLatex": "1\\,\\text{lb}=16\\,\\text{oz}",
+        "toLatex": "1\\,\\text{lb}=16\\,\\text{oz}",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "Conversion: 1 pound = 16 ounces"
+      },
+      {
+        "id": "s1",
+        "fromLatex": "3 \\times 16",
+        "toLatex": "48 \\text{ oz}",
+        "paletteRef": "p1",
+        "dropTargets": [
+          "3 \\times 16"
+        ],
+        "description": "Convert 3 lb to ounces"
+      },
+      {
+        "id": "s2",
+        "fromLatex": "48 + 4",
+        "toLatex": "52 \\text{ oz}",
+        "paletteRef": "p2",
+        "dropTargets": [
+          "48 + 4"
+        ],
+        "description": "Add the extra 4 oz"
+      }
+    ]
+  },
+  {
+    "id": "arith2-h-009",
+    "topic": "arithmetic2",
+    "difficulty": "hard",
+    "question": {
+      "latex": "3 + 4 \\times 2^3 \\div (10-2) - 1 = ?",
+      "plain": "Evaluate 3 + 4 × 2³ ÷ (10−2) − 1"
+    },
+    "symbols": {
+      "^": "Exponent"
+    },
+    "palette": [
+      {
+        "id": "p1",
+        "latex": "8",
+        "description": "Parentheses: 10−2=8"
+      },
+      {
+        "id": "p2",
+        "latex": "8",
+        "description": "Exponent: 2³=8"
+      },
+      {
+        "id": "p3",
+        "latex": "32",
+        "description": "Multiply: 4×8=32"
+      },
+      {
+        "id": "p4",
+        "latex": "4",
+        "description": "Divide: 32÷8=4"
+      },
+      {
+        "id": "p5",
+        "latex": "6",
+        "description": "3+4−1=6"
+      }
+    ],
+    "steps": [
+      {
+        "id": "s0a",
+        "fromLatex": "10-2=8",
+        "toLatex": "10-2=8",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "Parentheses first"
+      },
+      {
+        "id": "s1",
+        "fromLatex": "(10-2)",
+        "toLatex": "8",
+        "paletteRef": "p1",
+        "dropTargets": [
+          "(10-2)"
+        ],
+        "description": "Evaluate parentheses"
+      },
+      {
+        "id": "s0b",
+        "fromLatex": "2^3=8",
+        "toLatex": "2^3=8",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "Exponent next"
+      },
+      {
+        "id": "s2",
+        "fromLatex": "2^3",
+        "toLatex": "8",
+        "paletteRef": "p2",
+        "dropTargets": [
+          "2^3"
+        ],
+        "description": "Evaluate exponent"
+      },
+      {
+        "id": "s0c",
+        "fromLatex": "4\\times8=32",
+        "toLatex": "4\\times8=32",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "Multiply left to right"
+      },
+      {
+        "id": "s3",
+        "fromLatex": "4 \\times 8",
+        "toLatex": "32",
+        "paletteRef": "p3",
+        "dropTargets": [
+          "4 \\times 8"
+        ],
+        "description": "4×8=32"
+      },
+      {
+        "id": "s0d",
+        "fromLatex": "32\\div8=4",
+        "toLatex": "32\\div8=4",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "Divide left to right"
+      },
+      {
+        "id": "s4",
+        "fromLatex": "32 \\div 8",
+        "toLatex": "4",
+        "paletteRef": "p4",
+        "dropTargets": [
+          "32 \\div 8"
+        ],
+        "description": "32÷8=4"
+      },
+      {
+        "id": "s5",
+        "fromLatex": "3 + 4 - 1",
+        "toLatex": "6",
+        "paletteRef": "p5",
+        "dropTargets": [
+          "3 + 4 - 1"
+        ],
+        "description": "Add/subtract left to right: 3+4−1=6"
+      }
+    ]
+  },
+  {
+    "id": "arith2-h-010",
+    "topic": "arithmetic2",
+    "difficulty": "hard",
+    "question": {
+      "latex": "\\frac{7}{x} = \\frac{21}{15} \\quad \\text{Find } x",
+      "plain": "Solve the proportion: 7/x = 21/15"
+    },
+    "symbols": {
+      "\\frac": "Fraction"
+    },
+    "palette": [
+      {
+        "id": "p1",
+        "latex": "21x = 7 \\times 15",
+        "description": "Cross-multiply: 7×15=21×x"
+      },
+      {
+        "id": "p2",
+        "latex": "x = 5",
+        "description": "21x=105 → x=105÷21=5"
+      }
+    ],
+    "steps": [
+      {
+        "id": "s1",
+        "fromLatex": "\\frac{7}{x}=\\frac{21}{15}",
+        "toLatex": "21x = 7 \\times 15",
+        "paletteRef": "p1",
+        "dropTargets": [
+          "\\frac{7}{x}=\\frac{21}{15}"
+        ],
+        "description": "Cross-multiply: 7×15=21x"
+      },
+      {
+        "id": "s0a",
+        "fromLatex": "7\\times15=105",
+        "toLatex": "7\\times15=105",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "Compute: 7×15=105"
+      },
+      {
+        "id": "s2",
+        "fromLatex": "21x = 105",
+        "toLatex": "x = 5",
+        "paletteRef": "p2",
+        "dropTargets": [
+          "21x = 105"
+        ],
+        "description": "Divide both sides by 21: x=5"
+      }
+    ]
+  },
+  {
+    "id": "arith2-h-011",
+    "topic": "arithmetic2",
+    "difficulty": "hard",
+    "question": {
+      "latex": "\\dfrac{\\;\\frac{3}{4}\\;}{\\frac{9}{16}} = ?",
+      "plain": "Evaluate the complex fraction (3/4) ÷ (9/16)"
+    },
+    "symbols": {
+      "\\frac": "Fraction"
+    },
+    "palette": [
+      {
+        "id": "p1",
+        "latex": "\\frac{3}{4} \\times \\frac{16}{9}",
+        "description": "Complex fraction = top ÷ bottom; KCF: flip 9/16"
+      },
+      {
+        "id": "p2",
+        "latex": "\\frac{48}{36}",
+        "description": "Multiply: 3×16=48, 4×9=36"
+      },
+      {
+        "id": "p3",
+        "latex": "\\frac{4}{3}",
+        "description": "Simplify: GCF(48,36)=12; 4/3"
+      }
+    ],
+    "steps": [
+      {
+        "id": "s1",
+        "fromLatex": "\\frac{3/4}{9/16}",
+        "toLatex": "\\frac{3}{4} \\times \\frac{16}{9}",
+        "paletteRef": "p1",
+        "dropTargets": [
+          "9/16"
+        ],
+        "description": "Rewrite as division, then KCF"
+      },
+      {
+        "id": "s2",
+        "fromLatex": "\\frac{3}{4} \\times \\frac{16}{9}",
+        "toLatex": "\\frac{48}{36}",
+        "paletteRef": "p2",
+        "dropTargets": [
+          "\\frac{3}{4} \\times \\frac{16}{9}"
+        ],
+        "description": "Multiply across: 3×16=48, 4×9=36"
+      },
+      {
+        "id": "s3",
+        "fromLatex": "\\frac{48}{36}",
+        "toLatex": "\\frac{4}{3}",
+        "paletteRef": "p3",
+        "dropTargets": [
+          "\\frac{48}{36}"
+        ],
+        "description": "Simplify by dividing by 12"
+      }
+    ]
+  },
+  {
+    "id": "arith2-h-012",
+    "topic": "arithmetic2",
+    "difficulty": "hard",
+    "question": {
+      "latex": "\\text{Boys:girls} = 4:5,\\; 45 \\text{ students total. How many girls?}",
+      "plain": "Boys:girls = 4:5, 45 students total. How many girls?"
+    },
+    "symbols": {},
+    "palette": [
+      {
+        "id": "p1",
+        "latex": "\\frac{5}{9} \\times 45",
+        "description": "Girls = 5 parts out of 4+5=9 total parts"
+      },
+      {
+        "id": "p2",
+        "latex": "25",
+        "description": "5/9 × 45 = 225/9 = 25"
+      }
+    ],
+    "steps": [
+      {
+        "id": "s0a",
+        "fromLatex": "4+5=9 \\text{ total parts}",
+        "toLatex": "4+5=9 \\text{ total parts}",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "Total ratio parts: 4+5=9"
+      },
+      {
+        "id": "s1",
+        "fromLatex": "\\text{Girls}=\\frac{5}{9}\\times45",
+        "toLatex": "\\frac{5}{9} \\times 45",
+        "paletteRef": "p1",
+        "dropTargets": [],
+        "description": "Girls are 5 out of every 9 students"
+      },
+      {
+        "id": "s2",
+        "fromLatex": "\\frac{5 \\times 45}{9}",
+        "toLatex": "25",
+        "paletteRef": "p2",
+        "dropTargets": [
+          "\\frac{5}{9} \\times 45"
+        ],
+        "description": "225÷9=25 girls"
+      }
+    ]
+  },
+  {
+    "id": "arith2-h-013",
+    "topic": "arithmetic2",
+    "difficulty": "hard",
+    "question": {
+      "latex": "\\frac{3}{8} + \\frac{5}{6} - \\frac{1}{4} = ?",
+      "plain": "Evaluate 3/8 + 5/6 − 1/4"
+    },
+    "symbols": {
+      "\\frac": "Fraction"
+    },
+    "palette": [
+      {
+        "id": "p1",
+        "latex": "\\text{LCD}=24",
+        "description": "LCM(8,6,4)=24"
+      },
+      {
+        "id": "p2",
+        "latex": "\\frac{9}{24}+\\frac{20}{24}-\\frac{6}{24}",
+        "description": "Convert: 3/8=9/24, 5/6=20/24, 1/4=6/24"
+      },
+      {
+        "id": "p3",
+        "latex": "\\frac{23}{24}",
+        "description": "9+20−6=23; denominator stays 24"
+      }
+    ],
+    "steps": [
+      {
+        "id": "s1",
+        "fromLatex": "\\text{LCD}(8,6,4)",
+        "toLatex": "24",
+        "paletteRef": "p1",
+        "dropTargets": [],
+        "description": "Find LCD: 8=2³, 6=2×3, 4=2²; LCD=2³×3=24"
+      },
+      {
+        "id": "s0a",
+        "fromLatex": "\\tfrac{3}{8}=\\tfrac{9}{24},\\;\\tfrac{5}{6}=\\tfrac{20}{24},\\;\\tfrac{1}{4}=\\tfrac{6}{24}",
+        "toLatex": "\\tfrac{3}{8}=\\tfrac{9}{24},\\;\\tfrac{5}{6}=\\tfrac{20}{24},\\;\\tfrac{1}{4}=\\tfrac{6}{24}",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "Convert each fraction to 24ths"
+      },
+      {
+        "id": "s2",
+        "fromLatex": "\\frac{3}{8}+\\frac{5}{6}-\\frac{1}{4}",
+        "toLatex": "\\frac{9}{24}+\\frac{20}{24}-\\frac{6}{24}",
+        "paletteRef": "p2",
+        "dropTargets": [
+          "\\frac{3}{8}+\\frac{5}{6}-\\frac{1}{4}"
+        ],
+        "description": "Rewrite all fractions over LCD 24"
+      },
+      {
+        "id": "s0b",
+        "fromLatex": "9+20-6=23",
+        "toLatex": "9+20-6=23",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "Combine numerators"
+      },
+      {
+        "id": "s3",
+        "fromLatex": "\\frac{9}{24}+\\frac{20}{24}-\\frac{6}{24}",
+        "toLatex": "\\frac{23}{24}",
+        "paletteRef": "p3",
+        "dropTargets": [
+          "\\frac{9}{24}+\\frac{20}{24}-\\frac{6}{24}"
+        ],
+        "description": "23/24 — already in lowest terms"
+      }
+    ]
+  },
+  {
+    "id": "arith2-h-014",
+    "topic": "arithmetic2",
+    "difficulty": "hard",
+    "question": {
+      "latex": "P=\\$400,\\;r=5\\%.\\;\\text{When does it reach }\\$500?",
+      "plain": "P=$400, r=5%. How many years until it reaches $500?"
+    },
+    "symbols": {},
+    "palette": [
+      {
+        "id": "p1",
+        "latex": "I = 500 - 400 = 100",
+        "description": "Interest needed = $500−$400=$100"
+      },
+      {
+        "id": "p2",
+        "latex": "t = \\frac{I}{Pr}",
+        "description": "From I=Prt: t=I/(P×r)"
+      },
+      {
+        "id": "p3",
+        "latex": "5 \\text{ years}",
+        "description": "t=100/(400×0.05)=100/20=5"
+      }
+    ],
+    "steps": [
+      {
+        "id": "s1",
+        "fromLatex": "\\text{Interest needed}=500-400",
+        "toLatex": "I=\\$100",
+        "paletteRef": "p1",
+        "dropTargets": [
+          "500-400"
+        ],
+        "description": "Find required interest: $500−$400=$100"
+      },
+      {
+        "id": "s0a",
+        "fromLatex": "I=Prt \\Rightarrow t=\\frac{I}{Pr}",
+        "toLatex": "t=\\frac{I}{Pr}",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "Rearrange I=Prt for t"
+      },
+      {
+        "id": "s2",
+        "fromLatex": "t=\\frac{I}{Pr}",
+        "toLatex": "t = \\frac{100}{400 \\times 0.05}",
+        "paletteRef": "p2",
+        "dropTargets": [],
+        "description": "Substitute: I=100, P=400, r=0.05"
+      },
+      {
+        "id": "s0b",
+        "fromLatex": "400\\times0.05=20",
+        "toLatex": "t=\\frac{100}{20}",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "400×0.05=20"
+      },
+      {
+        "id": "s3",
+        "fromLatex": "t=\\frac{100}{20}",
+        "toLatex": "5 \\text{ years}",
+        "paletteRef": "p3",
+        "dropTargets": [
+          "\\frac{100}{20}"
+        ],
+        "description": "100÷20=5 years"
+      }
+    ]
+  },
+  {
+    "id": "arith2-h-015",
+    "topic": "arithmetic2",
+    "difficulty": "hard",
+    "question": {
+      "latex": "60 \\text{ mph} = ?\\,\\tfrac{\\text{ft}}{\\text{s}}",
+      "plain": "Convert 60 mph to feet per second"
+    },
+    "symbols": {},
+    "palette": [
+      {
+        "id": "p1",
+        "latex": "\\frac{60\\,\\text{mi}}{1\\,\\text{hr}} \\times \\frac{5280\\,\\text{ft}}{1\\,\\text{mi}} \\times \\frac{1\\,\\text{hr}}{3600\\,\\text{s}}",
+        "description": "Chain conversion factors so units cancel"
+      },
+      {
+        "id": "p2",
+        "latex": "88\\,\\tfrac{\\text{ft}}{\\text{s}}",
+        "description": "60×5280÷3600 = 316800÷3600 = 88"
+      }
+    ],
+    "steps": [
+      {
+        "id": "s1",
+        "fromLatex": "60\\,\\text{mph}",
+        "toLatex": "\\frac{60\\,\\text{mi}}{1\\,\\text{hr}} \\times \\frac{5280\\,\\text{ft}}{1\\,\\text{mi}} \\times \\frac{1\\,\\text{hr}}{3600\\,\\text{s}}",
+        "paletteRef": "p1",
+        "dropTargets": [
+          "60\\,\\text{mph}"
+        ],
+        "description": "Write as fraction, chain conversion factors"
+      },
+      {
+        "id": "s0a",
+        "fromLatex": "60\\times5280=316{,}800",
+        "toLatex": "60\\times5280=316{,}800",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "Multiply: 60×5280=316,800"
+      },
+      {
+        "id": "s0b",
+        "fromLatex": "316{,}800\\div3600=88",
+        "toLatex": "316{,}800\\div3600=88",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "Divide: 316,800÷3600=88"
+      },
+      {
+        "id": "s2",
+        "fromLatex": "\\frac{316800}{3600}",
+        "toLatex": "88\\,\\tfrac{\\text{ft}}{\\text{s}}",
+        "paletteRef": "p2",
+        "dropTargets": [
+          "\\frac{316800}{3600}"
+        ],
+        "description": "Result: 88 feet per second"
+      }
+    ]
+  },
+  {
+    "id": "arith2-h-016",
+    "topic": "arithmetic2",
+    "difficulty": "hard",
+    "question": {
+      "latex": "\\frac{5}{6} - \\frac{2}{3} + \\frac{1}{4} = ?",
+      "plain": "Evaluate 5/6 − 2/3 + 1/4"
+    },
+    "symbols": {
+      "\\frac": "Fraction"
+    },
+    "palette": [
+      {
+        "id": "p1",
+        "latex": "\\text{LCD}=12",
+        "description": "LCM(6,3,4)=12"
+      },
+      {
+        "id": "p2",
+        "latex": "\\frac{10}{12}-\\frac{8}{12}+\\frac{3}{12}",
+        "description": "5/6=10/12, 2/3=8/12, 1/4=3/12"
+      },
+      {
+        "id": "p3",
+        "latex": "\\frac{5}{12}",
+        "description": "10−8+3=5; 5/12"
+      }
+    ],
+    "steps": [
+      {
+        "id": "s1",
+        "fromLatex": "\\text{LCD}(6,3,4)",
+        "toLatex": "12",
+        "paletteRef": "p1",
+        "dropTargets": [],
+        "description": "Find LCD: LCM(6,3,4)=12"
+      },
+      {
+        "id": "s2",
+        "fromLatex": "\\frac{5}{6}-\\frac{2}{3}+\\frac{1}{4}",
+        "toLatex": "\\frac{10}{12}-\\frac{8}{12}+\\frac{3}{12}",
+        "paletteRef": "p2",
+        "dropTargets": [
+          "\\frac{5}{6}-\\frac{2}{3}+\\frac{1}{4}"
+        ],
+        "description": "Convert all to twelfths"
+      },
+      {
+        "id": "s0a",
+        "fromLatex": "10-8+3=5",
+        "toLatex": "10-8+3=5",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "Operate on numerators left to right"
+      },
+      {
+        "id": "s3",
+        "fromLatex": "\\frac{10}{12}-\\frac{8}{12}+\\frac{3}{12}",
+        "toLatex": "\\frac{5}{12}",
+        "paletteRef": "p3",
+        "dropTargets": [
+          "\\frac{10}{12}-\\frac{8}{12}+\\frac{3}{12}"
+        ],
+        "description": "5/12 is already simplified"
+      }
+    ]
+  },
+  {
+    "id": "arith2-h-017",
+    "topic": "arithmetic2",
+    "difficulty": "hard",
+    "question": {
+      "latex": "360 = 2^? \\times 3^? \\times 5^?",
+      "plain": "Write the prime factorization of 360"
+    },
+    "symbols": {
+      "^": "Exponent"
+    },
+    "palette": [
+      {
+        "id": "p1",
+        "latex": "360=8\\times45",
+        "description": "Split: 360=8×45"
+      },
+      {
+        "id": "p2",
+        "latex": "8=2^3,\\;45=9\\times5=3^2\\times5",
+        "description": "Factorize each part"
+      },
+      {
+        "id": "p3",
+        "latex": "2^3\\times3^2\\times5",
+        "description": "Combined prime factorization"
+      }
+    ],
+    "steps": [
+      {
+        "id": "s1",
+        "fromLatex": "360",
+        "toLatex": "8\\times45",
+        "paletteRef": "p1",
+        "dropTargets": [
+          "360"
+        ],
+        "description": "Split into two factors"
+      },
+      {
+        "id": "s2",
+        "fromLatex": "8 \\text{ and } 45",
+        "toLatex": "2^3 \\text{ and } 3^2 \\times 5",
+        "paletteRef": "p2",
+        "dropTargets": [],
+        "description": "8=2³; 45=9×5=3²×5"
+      },
+      {
+        "id": "s3",
+        "fromLatex": "2^3,\\;3^2,\\;5",
+        "toLatex": "2^3\\times3^2\\times5",
+        "paletteRef": "p3",
+        "dropTargets": [],
+        "description": "Combine: 2³×3²×5"
+      }
+    ]
+  },
+  {
+    "id": "arith2-h-018",
+    "topic": "arithmetic2",
+    "difficulty": "hard",
+    "question": {
+      "latex": "2 + [3 \\times (5-2)^2] \\div 9 - 1 = ?",
+      "plain": "Evaluate 2 + [3 × (5−2)²] ÷ 9 − 1"
+    },
+    "symbols": {
+      "^": "Exponent"
+    },
+    "palette": [
+      {
+        "id": "p1",
+        "latex": "3",
+        "description": "Innermost: 5−2=3"
+      },
+      {
+        "id": "p2",
+        "latex": "9",
+        "description": "Exponent: 3²=9"
+      },
+      {
+        "id": "p3",
+        "latex": "27",
+        "description": "Multiply: 3×9=27"
+      },
+      {
+        "id": "p4",
+        "latex": "3",
+        "description": "Divide: 27÷9=3"
+      },
+      {
+        "id": "p5",
+        "latex": "4",
+        "description": "2+3−1=4"
+      }
+    ],
+    "steps": [
+      {
+        "id": "s0a",
+        "fromLatex": "5-2=3",
+        "toLatex": "5-2=3",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "Innermost parentheses first"
+      },
+      {
+        "id": "s1",
+        "fromLatex": "(5-2)",
+        "toLatex": "3",
+        "paletteRef": "p1",
+        "dropTargets": [
+          "(5-2)"
+        ],
+        "description": "5−2=3"
+      },
+      {
+        "id": "s0b",
+        "fromLatex": "3^2=9",
+        "toLatex": "3^2=9",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "Exponent next"
+      },
+      {
+        "id": "s2",
+        "fromLatex": "3^2",
+        "toLatex": "9",
+        "paletteRef": "p2",
+        "dropTargets": [
+          "3^2"
+        ],
+        "description": "3²=9"
+      },
+      {
+        "id": "s0c",
+        "fromLatex": "3\\times9=27",
+        "toLatex": "3\\times9=27",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "Multiply inside brackets"
+      },
+      {
+        "id": "s3",
+        "fromLatex": "3 \\times 9",
+        "toLatex": "27",
+        "paletteRef": "p3",
+        "dropTargets": [
+          "3 \\times 9"
+        ],
+        "description": "3×9=27"
+      },
+      {
+        "id": "s4",
+        "fromLatex": "27 \\div 9",
+        "toLatex": "3",
+        "paletteRef": "p4",
+        "dropTargets": [
+          "27 \\div 9"
+        ],
+        "description": "Divide: 27÷9=3"
+      },
+      {
+        "id": "s5",
+        "fromLatex": "2 + 3 - 1",
+        "toLatex": "4",
+        "paletteRef": "p5",
+        "dropTargets": [
+          "2 + 3 - 1"
+        ],
+        "description": "Add/subtract left to right: 2+3−1=4"
+      }
+    ]
+  },
+  {
+    "id": "arith2-h-019",
+    "topic": "arithmetic2",
+    "difficulty": "hard",
+    "question": {
+      "latex": "\\text{Mean of 5 numbers is 14. A 6th number is added, new mean}=15.\\text{ Find it.}",
+      "plain": "Mean of 5 numbers is 14. A 6th number is added making mean 15. Find the 6th number."
+    },
+    "symbols": {},
+    "palette": [
+      {
+        "id": "p1",
+        "latex": "5 \\times 14 = 70",
+        "description": "Original sum: 5 numbers × mean 14 = 70"
+      },
+      {
+        "id": "p2",
+        "latex": "6 \\times 15 = 90",
+        "description": "New sum: 6 numbers × new mean 15 = 90"
+      },
+      {
+        "id": "p3",
+        "latex": "20",
+        "description": "6th number = 90−70=20"
+      }
+    ],
+    "steps": [
+      {
+        "id": "s1",
+        "fromLatex": "\\text{Original sum}=n\\times\\bar{x}",
+        "toLatex": "5 \\times 14 = 70",
+        "paletteRef": "p1",
+        "dropTargets": [],
+        "description": "Recover original sum: count × mean = 5×14=70"
+      },
+      {
+        "id": "s2",
+        "fromLatex": "\\text{New sum}=6\\times15",
+        "toLatex": "6 \\times 15 = 90",
+        "paletteRef": "p2",
+        "dropTargets": [],
+        "description": "New required sum: 6 numbers × new mean 15=90"
+      },
+      {
+        "id": "s0a",
+        "fromLatex": "90-70=20",
+        "toLatex": "90-70=20",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "6th number = new sum − old sum"
+      },
+      {
+        "id": "s3",
+        "fromLatex": "90 - 70",
+        "toLatex": "20",
+        "paletteRef": "p3",
+        "dropTargets": [
+          "90 - 70"
+        ],
+        "description": "The 6th number is 20"
+      }
+    ]
+  },
+  {
+    "id": "arith2-h-020",
+    "topic": "arithmetic2",
+    "difficulty": "hard",
+    "question": {
+      "latex": "\\text{Stock rises 20\\%, then falls 20\\%. Net \\% change?}",
+      "plain": "A stock rises 20% then falls 20%. What is the net percent change?"
+    },
+    "symbols": {},
+    "palette": [
+      {
+        "id": "p1",
+        "latex": "1.20P",
+        "description": "After 20% rise: price = 1.20P"
+      },
+      {
+        "id": "p2",
+        "latex": "0.96P",
+        "description": "After 20% fall: 1.20P × 0.80 = 0.96P"
+      },
+      {
+        "id": "p3",
+        "latex": "-4\\%",
+        "description": "0.96P means a net loss of 4%"
+      }
+    ],
+    "steps": [
+      {
+        "id": "s1",
+        "fromLatex": "P \\xrightarrow{+20\\%} ?",
+        "toLatex": "1.20P",
+        "paletteRef": "p1",
+        "dropTargets": [],
+        "description": "Rise 20%: multiply by 1.20"
+      },
+      {
+        "id": "s0a",
+        "fromLatex": "1.20 \\times 0.80 = 0.96",
+        "toLatex": "1.20 \\times 0.80 = 0.96",
+        "paletteRef": null,
+        "dropTargets": [],
+        "description": "Then fall 20%: multiply by 0.80"
+      },
+      {
+        "id": "s2",
+        "fromLatex": "1.20P \\xrightarrow{-20\\%} ?",
+        "toLatex": "0.96P",
+        "paletteRef": "p2",
+        "dropTargets": [],
+        "description": "0.96P — price is now less than original!"
+      },
+      {
+        "id": "s3",
+        "fromLatex": "0.96P - P = -0.04P",
+        "toLatex": "-4\\%",
+        "paletteRef": "p3",
+        "dropTargets": [],
+        "description": "Net change: 0.96−1.00=−0.04 = −4% loss"
+      }
+    ]
+  }
+]

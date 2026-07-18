@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Intermediate Arithmetic Diagrams</title>
+  <script>(function(){var t=localStorage.getItem('math-theme')||((window.matchMedia&&window.matchMedia('(prefers-color-scheme:light)').matches)?'light':'dark');document.documentElement.setAttribute('data-theme',t);}());</script>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg:#0d0d1a; --surface:#151528; --panel:#1c1c35; --border:#2e2e55;
+      --accent:#5c8aff; --correct:#3ecf8e; --hint:#ffb830; --text:#e0e0f0; --muted:#7070a0;
+    }
+    [data-theme="light"] {
+      --bg:#f5f0e4; --surface:#faf7ee; --panel:#ede8d8; --border:#ccc6b4;
+      --text:#18140c; --muted:#3e3c60; --accent:#2858c8; --correct:#115238; --hint:#6e4a00;
+    }
+    body { background:var(--bg); color:var(--text); font-family:system-ui,sans-serif; min-height:100vh; padding:40px 20px 80px; display:flex; flex-direction:column; align-items:center; }
+    .page { width:100%; max-width:860px; }
+    header { display:flex; align-items:baseline; gap:16px; margin-bottom:6px; }
+    header h1 { font-size:1.4rem; font-weight:700; letter-spacing:.12em; text-transform:uppercase; color:var(--accent); }
+    header a { font-size:0.85rem; color:var(--muted); text-decoration:none; }
+    header a:hover { color:var(--accent); }
+    .subtitle { font-size:0.85rem; color:var(--muted); margin-bottom:40px; line-height:1.6; }
+
+    .diagram-block { background:var(--surface); border:1px solid var(--border); border-radius:12px; padding:28px 28px 24px; margin-bottom:28px; }
+    .diagram-block h2 { font-size:1rem; font-weight:700; color:var(--accent); margin-bottom:6px; letter-spacing:.04em; }
+    .diagram-block p.desc { font-size:0.83rem; color:var(--muted); margin-bottom:20px; line-height:1.5; }
+
+    svg { display:block; width:100%; }
+    .svg-wrap { background:var(--panel); border-radius:8px; padding:12px 8px; margin-bottom:16px; overflow-x:auto; }
+
+    .ctrl-row { display:flex; align-items:center; gap:14px; flex-wrap:wrap; margin-top:6px; }
+    label { font-size:0.8rem; color:var(--muted); }
+    input[type=range] { width:160px; accent-color:var(--accent); }
+    .val-badge { background:var(--panel); border:1px solid var(--border); border-radius:6px; padding:3px 10px; font-size:0.8rem; color:var(--text); min-width:36px; text-align:center; }
+
+    .btn-row { display:flex; gap:10px; flex-wrap:wrap; margin-bottom:14px; }
+    .step-btn { background:var(--panel); border:1px solid var(--border); border-radius:8px; padding:7px 16px; font-size:0.8rem; color:var(--text); cursor:pointer; transition:border-color .15s; }
+    .step-btn:hover { border-color:var(--accent); color:var(--accent); }
+    .step-btn.active { border-color:var(--accent); color:var(--accent); }
+
+    .expr-display { font-family:monospace; font-size:1.1rem; background:var(--panel); border:1px solid var(--border); border-radius:8px; padding:10px 16px; text-align:center; margin-bottom:12px; letter-spacing:.06em; }
+    .expr-display .hi { color:var(--hint); font-weight:700; }
+    .expr-display .done { color:var(--correct); }
+
+    .info-box { background:var(--panel); border:1px solid var(--border); border-radius:8px; padding:10px 16px; font-size:0.8rem; color:var(--muted); line-height:1.55; }
+    .info-box strong { color:var(--text); }
+  </style>
+</head>
+<body>
+<div class="page">
+
+  <header>
+    <h1>Intermediate Arithmetic Diagrams</h1>
+    <a href="diagrams.html">← All Diagrams</a>
+  </header>
+  <p class="subtitle">Three interactive diagrams for Intermediate Arithmetic — order of operations, fraction addition, and percent change.</p>
+
+  <!-- ── Diagram 1: Order of Operations ─────────────────────────── -->
+  <div class="diagram-block">
+    <h2>1 — Order of Operations (PEMDAS)</h2>
+    <p class="desc">Click each step to highlight the operation evaluated next. The expression <strong>2 + 3 × (8 − 2²) ÷ 6 − 1</strong> walks through all six PEMDAS levels.</p>
+
+    <div class="btn-row" id="pemdas-btns">
+      <button class="step-btn" data-step="0">Reset</button>
+      <button class="step-btn" data-step="1">E — Exponent</button>
+      <button class="step-btn" data-step="2">P — Parentheses</button>
+      <button class="step-btn" data-step="3">MD — Multiply</button>
+      <button class="step-btn" data-step="4">MD — Divide</button>
+      <button class="step-btn" data-step="5">AS — Add / Sub</button>
+      <button class="step-btn" data-step="6">Done</button>
+    </div>
+
+    <div id="pemdas-expr" class="expr-display">2 + 3 × ( 8 − 2² ) ÷ 6 − 1</div>
+
+    <div class="svg-wrap">
+      <svg id="pemdas-svg" viewBox="0 0 720 110">
+        <!-- step labels inside SVG -->
+        <g id="pemdas-labels" font-family="system-ui,sans-serif" font-size="12" fill="#7070a0"></g>
+      </svg>
+    </div>
+
+    <div id="pemdas-info" class="info-box">
+      <strong>PEMDAS:</strong> Parentheses → Exponents → Multiplication &amp; Division (left to right) → Addition &amp; Subtraction (left to right)
+    </div>
+  </div>
+
+  <!-- ── Diagram 2: Fraction Addition (area model) ──────────────── -->
+  <div class="diagram-block">
+    <h2>2 — Fraction Addition — Area Model</h2>
+    <p class="desc">Adjust the two fractions. The diagram converts both to a common denominator and shows the sum as shaded sections of equal-width strips.</p>
+
+    <div class="ctrl-row" style="margin-bottom:16px;">
+      <label>Fraction A: <span id="fa-lbl">1/3</span></label>
+      <label>Numerator A</label><input type="range" id="fa-n" min="1" max="11" value="1">
+      <label>Denominator A</label><input type="range" id="fa-d" min="2" max="12" value="3">
+    </div>
+    <div class="ctrl-row" style="margin-bottom:20px;">
+      <label>Fraction B: <span id="fb-lbl">1/4</span></label>
+      <label>Numerator B</label><input type="range" id="fb-n" min="1" max="11" value="1">
+      <label>Denominator B</label><input type="range" id="fb-d" min="2" max="12" value="4">
+    </div>
+
+    <div class="svg-wrap">
+      <svg id="fa-svg" viewBox="0 0 560 210">
+        <!-- rows: strip A, strip B, strip LCD, result -->
+        <g id="fa-g"></g>
+      </svg>
+    </div>
+    <div id="fa-info" class="info-box"></div>
+  </div>
+
+  <!-- ── Diagram 3: Percent Change ──────────────────────────────── -->
+  <div class="diagram-block">
+    <h2>3 — Percent Change — Before / After Bar</h2>
+    <p class="desc">Set the original value and the new value to visualise the increase or decrease as a percentage.</p>
+
+    <div class="ctrl-row" style="margin-bottom:20px;">
+      <label>Original</label>
+      <input type="range" id="pc-orig" min="10" max="200" value="80">
+      <span class="val-badge" id="pc-orig-v">80</span>
+      <label style="margin-left:12px;">New Value</label>
+      <input type="range" id="pc-new" min="10" max="200" value="100">
+      <span class="val-badge" id="pc-new-v">100</span>
+    </div>
+
+    <div class="svg-wrap">
+      <svg id="pc-svg" viewBox="0 0 560 150"></svg>
+    </div>
+    <div id="pc-info" class="info-box"></div>
+  </div>
+
+</div><!-- .page -->
+
+<script src="textbook-switcher.js"></script>
+<script src="theme-toggle.js"></script>
+<script>
+// ─── helpers ───────────────────────────────────────────────────────────────
+function gcd(a,b){ a=Math.abs(a); b=Math.abs(b); while(b){var t=b;b=a%b;a=t;} return a; }
+function lcm(a,b){ return a/gcd(a,b)*b; }
+function simplify(n,d){ var g=gcd(n,d); return [n/g, d/g]; }
+function cssVar(name){ return getComputedStyle(document.documentElement).getPropertyValue(name).trim(); }
+
+// ─── Diagram 1: PEMDAS ─────────────────────────────────────────────────────
+(function(){
+  var steps = [
+    { label:"Reset", expr:"2 + 3 × ( 8 − 2² ) ÷ 6 − 1", info:"<strong>Original expression.</strong> Follow PEMDAS to evaluate step by step." },
+    { label:"E", expr:'2 + 3 × ( 8 − <span class="hi">2²</span> ) ÷ 6 − 1', info:"<strong>E — Exponents first.</strong> 2² = 4. <em>Always handle exponents before other operations outside parentheses — but inside parentheses, still do E before MD/AS.</em>" },
+    { label:"P", expr:'2 + 3 × ( <span class="hi">8 − 4</span> ) ÷ 6 − 1 → 2 + 3 × <span class="hi">4</span> ÷ 6 − 1', info:"<strong>P — Parentheses.</strong> 8 − 4 = 4. Now the parentheses are gone." },
+    { label:"M", expr:'2 + <span class="hi">3 × 4</span> ÷ 6 − 1 → 2 + <span class="hi">12</span> ÷ 6 − 1', info:"<strong>MD — Multiplication first (left to right).</strong> 3 × 4 = 12." },
+    { label:"D", expr:'2 + <span class="hi">12 ÷ 6</span> − 1 → 2 + <span class="hi">2</span> − 1', info:"<strong>MD — Division next (left to right).</strong> 12 ÷ 6 = 2." },
+    { label:"AS", expr:'<span class="hi">2 + 2 − 1</span> → <span class="hi">3</span>', info:"<strong>AS — Addition &amp; Subtraction last, left to right.</strong> 2 + 2 = 4; 4 − 1 = 3." },
+    { label:"Done", expr:'<span class="done">= 3</span>', info:"<strong>Final answer: 3.</strong> The expression 2 + 3 × (8 − 2²) ÷ 6 − 1 = 3." }
+  ];
+
+  var current = 0;
+  var btnRow = document.getElementById('pemdas-btns');
+  var exprDiv = document.getElementById('pemdas-expr');
+  var infoDiv = document.getElementById('pemdas-info');
+
+  // Pipeline diagram in SVG
+  var svg = document.getElementById('pemdas-svg');
+  var labels = ['Start','E → 2²=4','P → 4','×3=12','÷6=2','±=3','=3'];
+  var colors = ['#7070a0','#ffb830','#5c8aff','#e060ff','#e060ff','#3ecf8e','#3ecf8e'];
+  var g = document.getElementById('pemdas-labels');
+  var W = 720, bw = 88, gap = 18, total = labels.length;
+  var startX = (W - (total*bw + (total-1)*gap)) / 2;
+  for(var i=0;i<total;i++){
+    var x = startX + i*(bw+gap);
+    var rect = document.createElementNS('http://www.w3.org/2000/svg','rect');
+    rect.setAttribute('x', x); rect.setAttribute('y', 24);
+    rect.setAttribute('width', bw); rect.setAttribute('height', 36);
+    rect.setAttribute('rx', 7); rect.setAttribute('fill','#1c1c35');
+    rect.setAttribute('stroke','#2e2e55'); rect.setAttribute('stroke-width','1.5');
+    rect.setAttribute('class','pb-'+i);
+    g.appendChild(rect);
+    var txt = document.createElementNS('http://www.w3.org/2000/svg','text');
+    txt.setAttribute('x', x+bw/2); txt.setAttribute('y', 46);
+    txt.setAttribute('text-anchor','middle'); txt.setAttribute('font-size','11');
+    txt.setAttribute('fill', colors[i]); txt.textContent = labels[i];
+    g.appendChild(txt);
+    var sub = document.createElementNS('http://www.w3.org/2000/svg','text');
+    sub.setAttribute('x', x+bw/2); sub.setAttribute('y', 60);
+    sub.setAttribute('text-anchor','middle'); sub.setAttribute('font-size','9.5');
+    sub.setAttribute('fill','#5050a0'); sub.textContent = ['','Exponent','Parens','Mult','Div','Add/Sub','Final'][i];
+    g.appendChild(sub);
+    if(i < total-1){
+      var arr = document.createElementNS('http://www.w3.org/2000/svg','text');
+      arr.setAttribute('x', x+bw+gap/2); arr.setAttribute('y', 46);
+      arr.setAttribute('text-anchor','middle'); arr.setAttribute('font-size','13');
+      arr.setAttribute('fill','#3a3a60'); arr.textContent = '→';
+      g.appendChild(arr);
+    }
+  }
+
+  function setStep(s){
+    current = s;
+    exprDiv.innerHTML = steps[s].expr;
+    infoDiv.innerHTML = steps[s].info;
+    // highlight pipeline box
+    for(var i=0;i<total;i++){
+      var boxes = g.querySelectorAll('.pb-'+i);
+      boxes.forEach(function(b){
+        b.setAttribute('stroke', i<=s ? colors[i] : '#2e2e55');
+        b.setAttribute('stroke-width', i===s ? '2.5' : '1.5');
+        b.setAttribute('fill', i===s ? '#252545' : '#1c1c35');
+      });
+    }
+    btnRow.querySelectorAll('.step-btn').forEach(function(btn){
+      btn.classList.toggle('active', parseInt(btn.dataset.step)===s);
+    });
+  }
+  btnRow.addEventListener('click', function(e){
+    var btn = e.target.closest('[data-step]');
+    if(btn) setStep(parseInt(btn.dataset.step));
+  });
+  setStep(0);
+})();
+
+// ─── Diagram 2: Fraction Addition Area Model ───────────────────────────────
+(function(){
+  var faN = document.getElementById('fa-n');
+  var faD = document.getElementById('fa-d');
+  var fbN = document.getElementById('fb-n');
+  var fbD = document.getElementById('fb-d');
+  var faLbl = document.getElementById('fa-lbl');
+  var fbLbl = document.getElementById('fb-lbl');
+  var svg = document.getElementById('fa-svg');
+  var g = document.getElementById('fa-g');
+  var info = document.getElementById('fa-info');
+
+  var BAR_X=30, BAR_W=500, ROW_H=32, GAP=16;
+
+  function colorFor(idx,total){ return idx<total?'#5c8aff':'#e0e0f0'; }
+
+  function draw(){
+    var an=parseInt(faN.value), ad=parseInt(faD.value);
+    var bn=parseInt(fbN.value), bd=parseInt(fbD.value);
+    if(an>ad){faN.value=ad;an=ad;}
+    if(bn>bd){fbN.value=bd;bn=bd;}
+    faN.max=ad; fbN.max=bd;
+    faLbl.textContent=an+'/'+ad;
+    fbLbl.textContent=bn+'/'+bd;
+
+    var L=lcm(ad,bd);
+    var an2=an*(L/ad), bn2=bn*(L/bd);
+    var sn=an2+bn2, sd=L;
+    var sr=simplify(sn,sd);
+
+    while(g.firstChild) g.removeChild(g.firstChild);
+    var ns='http://www.w3.org/2000/svg';
+
+    function makeRow(y,n,d,color,labelLeft,labelRight){
+      var cellW=BAR_W/d;
+      // background cells
+      for(var i=0;i<d;i++){
+        var r=document.createElementNS(ns,'rect');
+        r.setAttribute('x',BAR_X+i*cellW); r.setAttribute('y',y);
+        r.setAttribute('width',cellW-1); r.setAttribute('height',ROW_H);
+        r.setAttribute('rx',3);
+        r.setAttribute('fill', i<n ? color : '#1c1c35');
+        r.setAttribute('stroke','#2e2e55'); r.setAttribute('stroke-width','1');
+        g.appendChild(r);
+      }
+      // left label
+      var lt=document.createElementNS(ns,'text');
+      lt.setAttribute('x',BAR_X-6); lt.setAttribute('y',y+ROW_H/2+4);
+      lt.setAttribute('text-anchor','end'); lt.setAttribute('font-size','12');
+      lt.setAttribute('fill','#e0e0f0'); lt.setAttribute('font-family','system-ui,sans-serif');
+      lt.textContent=labelLeft; g.appendChild(lt);
+      // right label
+      var rt=document.createElementNS(ns,'text');
+      rt.setAttribute('x',BAR_X+BAR_W+6); rt.setAttribute('y',y+ROW_H/2+4);
+      rt.setAttribute('text-anchor','start'); rt.setAttribute('font-size','12');
+      rt.setAttribute('fill','#e0e0f0'); rt.setAttribute('font-family','system-ui,sans-serif');
+      rt.textContent=labelRight; g.appendChild(rt);
+    }
+
+    var y0=8;
+    makeRow(y0, an, ad, '#5c8aff', an+'/'+ad, '(×'+( L/ad )+'→'+an2+'/'+L+')');
+    y0+=ROW_H+GAP;
+    makeRow(y0, bn, bd, '#3ecf8e', bn+'/'+bd, '(×'+( L/bd )+'→'+bn2+'/'+L+')');
+    y0+=ROW_H+GAP+4;
+
+    // divider line
+    var line=document.createElementNS(ns,'line');
+    line.setAttribute('x1',BAR_X); line.setAttribute('y1',y0-6);
+    line.setAttribute('x2',BAR_X+BAR_W); line.setAttribute('y2',y0-6);
+    line.setAttribute('stroke','#3a3a60'); line.setAttribute('stroke-width','1');
+    g.appendChild(line);
+
+    // result row — show an2 in blue, then bn2 in green
+    var cellW2=BAR_W/L;
+    for(var i=0;i<L;i++){
+      var r2=document.createElementNS(ns,'rect');
+      r2.setAttribute('x',BAR_X+i*cellW2); r2.setAttribute('y',y0);
+      r2.setAttribute('width',cellW2-1); r2.setAttribute('height',ROW_H);
+      r2.setAttribute('rx',3);
+      var col='#1c1c35';
+      if(i<an2) col='#5c8aff';
+      else if(i<an2+bn2) col='#3ecf8e';
+      r2.setAttribute('fill',col);
+      r2.setAttribute('stroke','#2e2e55'); r2.setAttribute('stroke-width','1');
+      g.appendChild(r2);
+    }
+    var lbl2=document.createElementNS(ns,'text');
+    lbl2.setAttribute('x',BAR_X-6); lbl2.setAttribute('y',y0+ROW_H/2+4);
+    lbl2.setAttribute('text-anchor','end'); lbl2.setAttribute('font-size','12');
+    lbl2.setAttribute('fill','#e0e0f0'); lbl2.setAttribute('font-family','system-ui,sans-serif');
+    lbl2.textContent='Sum'; g.appendChild(lbl2);
+
+    var rLabel=sn+'/'+L;
+    if(sr[0]!==sn||sr[1]!==L) rLabel+=' = '+sr[0]+'/'+sr[1];
+    if(sr[0]>=sr[1]) rLabel+=' = '+Math.floor(sr[0]/sr[1])+(sr[0]%sr[1]?' ⁄  '+simplify(sr[0]%sr[1],sr[1]).join('/'):'');
+    var rl=document.createElementNS(ns,'text');
+    rl.setAttribute('x',BAR_X+BAR_W+6); rl.setAttribute('y',y0+ROW_H/2+4);
+    rl.setAttribute('text-anchor','start'); rl.setAttribute('font-size','12');
+    rl.setAttribute('fill','#ffb830'); rl.setAttribute('font-family','system-ui,sans-serif');
+    rl.textContent=rLabel; g.appendChild(rl);
+
+    // update svg height
+    svg.setAttribute('viewBox','0 0 560 '+(y0+ROW_H+16));
+
+    var sdisp=sr[0]+'/'+sr[1];
+    info.innerHTML='<strong>LCD(' +ad+', '+bd+') = '+L+'</strong> — convert fractions: '+an+'/'+ad+' → '+an2+'/'+L+' and '+bn+'/'+bd+' → '+bn2+'/'+L+'. Add numerators: '+an2+'+'+bn2+'='+sn+'. Result: <strong>'+sn+'/'+L+(sn!==sr[0]?' = '+sdisp:'')+'</strong>';
+  }
+
+  [faN,faD,fbN,fbD].forEach(function(s){ s.addEventListener('input',draw); });
+  draw();
+})();
+
+// ─── Diagram 3: Percent Change ─────────────────────────────────────────────
+(function(){
+  var origSlider = document.getElementById('pc-orig');
+  var newSlider  = document.getElementById('pc-new');
+  var origV = document.getElementById('pc-orig-v');
+  var newV  = document.getElementById('pc-new-v');
+  var svg   = document.getElementById('pc-svg');
+  var info  = document.getElementById('pc-info');
+  var ns    = 'http://www.w3.org/2000/svg';
+
+  var BAR_X=60, BAR_TOP=30, BAR_H=36, MAX_W=420;
+
+  function draw(){
+    var orig=parseInt(origSlider.value);
+    var nval=parseInt(newSlider.value);
+    origV.textContent=orig;
+    newV.textContent=nval;
+
+    while(svg.firstChild) svg.removeChild(svg.firstChild);
+
+    var maxVal=Math.max(orig,nval,1);
+    var origW=orig/maxVal*MAX_W;
+    var newW=nval/maxVal*MAX_W;
+    var pct=((nval-orig)/orig*100).toFixed(1);
+    var isInc=nval>=orig;
+    var diffColor=isInc?'#3ecf8e':'#ff6b6b';
+    var diffW=Math.abs(newW-origW);
+
+    function txt(x,y,content,fill,size,anchor){
+      var t=document.createElementNS(ns,'text');
+      t.setAttribute('x',x); t.setAttribute('y',y);
+      t.setAttribute('fill',fill); t.setAttribute('font-size',size||12);
+      t.setAttribute('text-anchor',anchor||'start');
+      t.setAttribute('font-family','system-ui,sans-serif');
+      t.textContent=content; svg.appendChild(t);
+    }
+    function rect(x,y,w,h,fill,rx){
+      if(w<=0) return;
+      var r=document.createElementNS(ns,'rect');
+      r.setAttribute('x',x); r.setAttribute('y',y);
+      r.setAttribute('width',w); r.setAttribute('height',h);
+      r.setAttribute('fill',fill); r.setAttribute('rx',rx||4);
+      svg.appendChild(r);
+    }
+
+    // original bar
+    txt(BAR_X-6, BAR_TOP+BAR_H/2+4, 'Original', '#7070a0', 11, 'end');
+    rect(BAR_X, BAR_TOP, origW, BAR_H, '#5c8aff', 5);
+    txt(BAR_X+origW+6, BAR_TOP+BAR_H/2+4, orig, '#5c8aff', 12);
+
+    // new bar
+    var y2=BAR_TOP+BAR_H+20;
+    txt(BAR_X-6, y2+BAR_H/2+4, 'New', '#7070a0', 11, 'end');
+    var minW=Math.min(origW,newW);
+    rect(BAR_X, y2, minW, BAR_H, '#5c8aff', 5);  // shared portion same color
+    if(isInc){
+      rect(BAR_X+minW, y2, diffW, BAR_H, diffColor, 5);
+    } else {
+      rect(BAR_X+newW, y2, diffW, BAR_H, '#ff6b6b33', 5);
+      // strikethrough dashes
+      for(var dx=0;dx<diffW;dx+=8){
+        var ln=document.createElementNS(ns,'line');
+        ln.setAttribute('x1',BAR_X+newW+dx); ln.setAttribute('y1',y2+2);
+        ln.setAttribute('x2',BAR_X+newW+dx+5); ln.setAttribute('y2',y2+BAR_H-2);
+        ln.setAttribute('stroke','#ff6b6b'); ln.setAttribute('stroke-width','1.5');
+        svg.appendChild(ln);
+      }
+    }
+    txt(BAR_X+newW+6, y2+BAR_H/2+4, nval, isInc?diffColor:'#7070a0', 12);
+
+    // percent label
+    var bigY=y2+BAR_H+36;
+    var sign=isInc?'+':'';
+    txt(BAR_X+origW/2, bigY, sign+pct+'%', diffColor, 22, 'middle');
+    txt(BAR_X+origW/2, bigY+18, isInc?'increase':'decrease', '#7070a0', 11, 'middle');
+
+    // formula annotation
+    var diff=Math.abs(nval-orig);
+    txt(BAR_X+MAX_W+16, BAR_TOP+BAR_H/2+4, '← '+orig, '#5c8aff', 10);
+
+    svg.setAttribute('viewBox','0 0 560 '+(bigY+30));
+
+    var dir=isInc?'increase':'decrease';
+    info.innerHTML='<strong>% change = (new − original) / original × 100</strong><br>= ('+nval+' − '+orig+') / '+orig+' × 100 = <strong style="color:'+diffColor+'">'+sign+pct+'%</strong> &nbsp;'+dir;
+  }
+
+  origSlider.addEventListener('input',draw);
+  newSlider.addEventListener('input',draw);
+  draw();
+})();
+</script>
+</body>
+</html>

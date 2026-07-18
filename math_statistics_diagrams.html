@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Statistics Diagrams</title>
+  <script>(function(){var t=localStorage.getItem('math-theme')||((window.matchMedia&&window.matchMedia('(prefers-color-scheme:light)').matches)?'light':'dark');document.documentElement.setAttribute('data-theme',t);}());</script>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg:#0d0d1a; --surface:#151528; --panel:#1c1c35; --border:#2e2e55;
+      --accent:#5c8aff; --correct:#3ecf8e; --hint:#ffb830; --wrong:#ff6b6b;
+      --text:#e0e0f0; --muted:#7070a0;
+    }
+    [data-theme="light"] {
+      --bg:#f5f0e4; --surface:#faf7ee; --panel:#ede8d8; --border:#ccc6b4;
+      --text:#18140c; --muted:#3e3c60; --accent:#2858c8; --correct:#115238;
+      --hint:#6e4a00; --wrong:#991111;
+    }
+    body { background:var(--bg); color:var(--text); font-family:system-ui,sans-serif; min-height:100vh; padding:40px 20px 80px; display:flex; flex-direction:column; align-items:center; }
+    .page { width:100%; max-width:900px; }
+    header { display:flex; align-items:baseline; gap:16px; margin-bottom:6px; }
+    header h1 { font-size:1.4rem; font-weight:700; letter-spacing:.12em; text-transform:uppercase; color:var(--accent); }
+    header a { font-size:0.85rem; color:var(--muted); text-decoration:none; }
+    header a:hover { color:var(--accent); }
+    .subtitle { font-size:0.85rem; color:var(--muted); margin-bottom:40px; line-height:1.6; }
+
+    .diagram-block { background:var(--surface); border:1px solid var(--border); border-radius:12px; padding:28px 28px 24px; margin-bottom:28px; }
+    .diagram-block h2 { font-size:1rem; font-weight:700; color:var(--accent); margin-bottom:6px; letter-spacing:.04em; }
+    .diagram-block p.desc { font-size:0.83rem; color:var(--muted); margin-bottom:18px; line-height:1.55; }
+
+    .svg-wrap { background:var(--panel); border-radius:8px; padding:10px 6px; margin-bottom:14px; overflow-x:auto; }
+    svg { display:block; width:100%; }
+
+    .ctrl-row { display:flex; align-items:center; gap:14px; flex-wrap:wrap; margin-bottom:14px; }
+    label { font-size:0.8rem; color:var(--muted); }
+    input[type=range] { width:140px; accent-color:var(--accent); }
+    .val-badge { background:var(--panel); border:1px solid var(--border); border-radius:6px; padding:3px 10px; font-size:0.8rem; color:var(--text); min-width:28px; text-align:center; }
+
+    .formula-strip { font-family:monospace; font-size:0.95rem; background:var(--panel); border:1px solid var(--border); border-radius:8px; padding:10px 16px; text-align:center; margin-bottom:12px; line-height:1.7; }
+    .formula-strip .hi { color:var(--hint); font-weight:700; }
+    .formula-strip .ans { color:var(--correct); font-weight:700; }
+
+    .info-box { background:var(--panel); border:1px solid var(--border); border-radius:8px; padding:10px 14px; font-size:0.8rem; color:var(--muted); line-height:1.55; }
+    .info-box strong { color:var(--text); }
+  </style>
+</head>
+<body>
+<div class="page">
+
+  <header>
+    <h1>Statistics Diagrams</h1>
+    <a href="diagrams.html">← All Diagrams</a>
+  </header>
+  <p class="subtitle">One interactive diagram: the binomial probability mass function.</p>
+
+  <!-- ── 1. Binomial PMF ──────────────────────────────────────────────────── -->
+  <div class="diagram-block">
+    <h2>1 — Binomial Probability Mass Function</h2>
+    <p class="desc">n independent trials, each a success with probability p. The bar at each i shows P(X = i). Bars from 0 up to k are shaded to show them accumulating into P(X ≤ k) — the area under the curve up to k. The red curve is the normal approximation N(np, np(1−p)).</p>
+
+    <div class="formula-strip" id="bi-formula-static">P(X = i) = C(n, i) · p<sup>i</sup> · (1−p)<sup>(n−i)</sup></div>
+
+    <div class="ctrl-row">
+      <label>n (trials)</label>
+      <input type="range" id="bi-n" min="1" max="30" value="12">
+      <span class="val-badge" id="bi-n-v">12</span>
+      <label>p (success prob)</label>
+      <input type="range" id="bi-p" min="0" max="1" step="0.01" value="0.5">
+      <span class="val-badge" id="bi-p-v">0.50</span>
+      <label>k (highlight)</label>
+      <input type="range" id="bi-k" min="0" max="12" value="6">
+      <span class="val-badge" id="bi-k-v">6</span>
+    </div>
+
+    <div class="svg-wrap">
+      <svg id="bi-svg"></svg>
+    </div>
+    <div class="formula-strip" id="bi-formula"></div>
+    <div class="info-box" id="bi-info"></div>
+  </div>
+
+</div><!-- .page -->
+
+<script src="textbook-switcher.js"></script>
+<script src="theme-toggle.js"></script>
+<script>
+var ns = 'http://www.w3.org/2000/svg';
+function svgEl(tag, attrs){
+  var el=document.createElementNS(ns,tag);
+  for(var k in attrs) el.setAttribute(k,attrs[k]);
+  return el;
+}
+function svgText(x,y,txt,fill,size,anchor,weight){
+  var t=svgEl('text',{x:x,y:y,fill:fill||'#e0e0f0','font-size':size||12,'text-anchor':anchor||'middle','font-family':'system-ui,sans-serif','font-weight':weight||'normal'});
+  t.textContent=txt; return t;
+}
+// Multiplicative nCr — avoids precision loss from huge factorials at n up to 30
+function binomCoeff(n,r){
+  if(r<0||r>n) return 0;
+  r=Math.min(r,n-r);
+  var result=1;
+  for(var i=0;i<r;i++) result = result*(n-i)/(i+1);
+  return result;
+}
+function pmf(n,i,p){ return binomCoeff(n,i)*Math.pow(p,i)*Math.pow(1-p,n-i); }
+
+// ────────────────────────────────────────────────────────────────────────────
+// DIAGRAM 1: BINOMIAL PMF
+// ────────────────────────────────────────────────────────────────────────────
+(function(){
+  var nSlider=document.getElementById('bi-n');
+  var pSlider=document.getElementById('bi-p');
+  var kSlider=document.getElementById('bi-k');
+  var nV=document.getElementById('bi-n-v');
+  var pV=document.getElementById('bi-p-v');
+  var kV=document.getElementById('bi-k-v');
+  var svg=document.getElementById('bi-svg');
+  var formulaEl=document.getElementById('bi-formula');
+  var infoEl=document.getElementById('bi-info');
+
+  function draw(){
+    var n=parseInt(nSlider.value);
+    var p=parseFloat(pSlider.value);
+    kSlider.max=n;
+    var k=Math.min(parseInt(kSlider.value),n);
+    kSlider.value=k;
+    nV.textContent=n; pV.textContent=p.toFixed(2); kV.textContent=k;
+
+    var probs=[];
+    for(var i=0;i<=n;i++) probs.push(pmf(n,i,p));
+    var maxProb=Math.max.apply(null,probs);
+    var cumK=0; for(var i2=0;i2<=k;i2++) cumK+=probs[i2];
+
+    while(svg.firstChild) svg.removeChild(svg.firstChild);
+
+    var W=Math.max(700, n*26+80);
+    var plotH=220, marginTop=20, marginBottom=34, marginX=40;
+    var H=plotH+marginTop+marginBottom;
+    svg.setAttribute('viewBox','0 0 '+W+' '+H);
+
+    var barSlot=(W-2*marginX)/(n+1);
+    var barW=Math.max(4, barSlot*0.72);
+    var baseY=marginTop+plotH;
+
+    // baseline
+    svg.appendChild(svgEl('line',{x1:marginX-6,y1:baseY,x2:W-marginX+6,y2:baseY,stroke:'#7070a0','stroke-width':'1'}));
+
+    var showLabels = n<=20;
+    var showTicks = n<=30;
+
+    for(var i=0;i<=n;i++){
+      var x=marginX+i*barSlot+(barSlot-barW)/2;
+      var h=maxProb>0 ? (probs[i]/maxProb)*plotH : 0;
+      var y=baseY-h;
+      var fill, stroke='none', sw='0';
+      if(i<k){ fill='#5c8aff59'; }
+      else if(i===k){ fill='#5c8aff'; stroke='#ffb830'; sw='2'; }
+      else { fill='#2e2e55'; }
+      svg.appendChild(svgEl('rect',{x:x,y:y,width:barW,height:Math.max(h,0.5),rx:2,fill:fill,stroke:stroke,'stroke-width':sw}));
+
+      if(showTicks && (n<=20 || i%2===0 || i===n)){
+        svg.appendChild(svgText(x+barW/2, baseY+14, i, '#7070a0', 9));
+      }
+      if(showLabels && probs[i]>maxProb*0.06){
+        svg.appendChild(svgText(x+barW/2, y-5, probs[i].toFixed(3), i===k?'#ffb830':'#7070a0', 8.5));
+      }
+    }
+
+    // Normal approximation overlay: N(mu, sigma^2), density plotted on the same
+    // per-unit scale as the bars (bin width 1, so density(i) ≈ P(X=i) for large n)
+    var mu=n*p, sigma=Math.sqrt(n*p*(1-p));
+    if(sigma>0){
+      var pathPts=[];
+      var steps=200;
+      for(var s=0;s<=steps;s++){
+        var xv=-0.5+(n+1)*(s/steps);
+        var dens=(1/(sigma*Math.sqrt(2*Math.PI)))*Math.exp(-0.5*Math.pow((xv-mu)/sigma,2));
+        var px=marginX+(xv+0.5)*barSlot;
+        var py=baseY-Math.min(dens/maxProb,1.15)*plotH;
+        py=Math.max(py,marginTop-6);
+        pathPts.push(px.toFixed(2)+','+py.toFixed(2));
+      }
+      svg.appendChild(svgEl('path',{d:'M'+pathPts.join(' L'),fill:'none',stroke:'#ff6b6b','stroke-width':'2','stroke-linejoin':'round'}));
+    }
+
+    svg.appendChild(svgText(W/2, marginTop-6, 'P(X = i) for i = 0…'+n, '#7070a0', 10));
+
+    formulaEl.innerHTML =
+      'P(X = '+k+') = C('+n+','+k+')·p<sup>'+k+'</sup>·(1−p)<sup>'+(n-k)+'</sup> = <span class="hi">'+probs[k].toFixed(4)+'</span><br>' +
+      'P(X ≤ '+k+') = Σ<sub>i=0</sub><sup>'+k+'</sup> P(X = i) = <span class="ans">'+cumK.toFixed(4)+'</span>';
+
+    var normalNote;
+    if(sigma>0){
+      normalNote = (n*p>=5 && n*(1-p)>=5)
+        ? 'Rule of thumb (np ≥ 5 and n(1−p) ≥ 5) is satisfied — the curve should track the bars closely.'
+        : 'Rule of thumb (np ≥ 5 and n(1−p) ≥ 5) is not satisfied — expect the curve to fit poorly.';
+    } else {
+      normalNote = 'σ = 0 at p = 0 or p = 1, so the normal approximation is undefined (no curve shown).';
+    }
+
+    infoEl.innerHTML = '<strong>Binomial PMF:</strong> with n = '+n+' trials and success probability p = '+p.toFixed(2)+
+      ', each bar P(X = i) is the chance of exactly i successes. All '+(n+1)+' bars sum to 1. ' +
+      'The shaded bars (0 through k = '+k+', outlined bar included) accumulate into P(X ≤ '+k+') = '+cumK.toFixed(4)+
+      ' — the discrete "area under the curve" up to k.<br>' +
+      '<strong>Normal approximation:</strong> μ = np = '+mu.toFixed(2)+', σ = √(np(1−p)) = '+sigma.toFixed(2)+'. '+normalNote;
+  }
+
+  [nSlider,pSlider,kSlider].forEach(function(s){s.addEventListener('input',draw);});
+  draw();
+})();
+</script>
+</body>
+</html>

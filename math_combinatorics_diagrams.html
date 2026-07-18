@@ -1,0 +1,823 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Combinatorics Diagrams</title>
+  <script>(function(){var t=localStorage.getItem('math-theme')||((window.matchMedia&&window.matchMedia('(prefers-color-scheme:light)').matches)?'light':'dark');document.documentElement.setAttribute('data-theme',t);}());</script>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg:#0d0d1a; --surface:#151528; --panel:#1c1c35; --border:#2e2e55;
+      --accent:#5c8aff; --correct:#3ecf8e; --hint:#ffb830; --wrong:#ff6b6b;
+      --text:#e0e0f0; --muted:#7070a0;
+    }
+    [data-theme="light"] {
+      --bg:#f5f0e4; --surface:#faf7ee; --panel:#ede8d8; --border:#ccc6b4;
+      --text:#18140c; --muted:#3e3c60; --accent:#2858c8; --correct:#115238;
+      --hint:#6e4a00; --wrong:#991111;
+    }
+    body { background:var(--bg); color:var(--text); font-family:system-ui,sans-serif; min-height:100vh; padding:40px 20px 80px; display:flex; flex-direction:column; align-items:center; }
+    .page { width:100%; max-width:900px; }
+    header { display:flex; align-items:baseline; gap:16px; margin-bottom:6px; }
+    header h1 { font-size:1.4rem; font-weight:700; letter-spacing:.12em; text-transform:uppercase; color:var(--accent); }
+    header a { font-size:0.85rem; color:var(--muted); text-decoration:none; }
+    header a:hover { color:var(--accent); }
+    .subtitle { font-size:0.85rem; color:var(--muted); margin-bottom:40px; line-height:1.6; }
+
+    .diagram-block { background:var(--surface); border:1px solid var(--border); border-radius:12px; padding:28px 28px 24px; margin-bottom:28px; }
+    .diagram-block h2 { font-size:1rem; font-weight:700; color:var(--accent); margin-bottom:6px; letter-spacing:.04em; }
+    .diagram-block p.desc { font-size:0.83rem; color:var(--muted); margin-bottom:18px; line-height:1.55; }
+
+    .svg-wrap { background:var(--panel); border-radius:8px; padding:10px 6px; margin-bottom:14px; overflow-x:auto; }
+    svg { display:block; width:100%; }
+
+    .ctrl-row { display:flex; align-items:center; gap:14px; flex-wrap:wrap; margin-bottom:14px; }
+    label { font-size:0.8rem; color:var(--muted); }
+    input[type=range] { width:140px; accent-color:var(--accent); }
+    .val-badge { background:var(--panel); border:1px solid var(--border); border-radius:6px; padding:3px 10px; font-size:0.8rem; color:var(--text); min-width:28px; text-align:center; }
+
+    .btn-row { display:flex; gap:8px; flex-wrap:wrap; margin-bottom:14px; }
+    .tog-btn { background:var(--panel); border:1px solid var(--border); border-radius:8px; padding:6px 14px; font-size:0.78rem; color:var(--text); cursor:pointer; transition:border-color .15s; }
+    .tog-btn:hover { border-color:var(--accent); }
+    .tog-btn.active { border-color:var(--accent); color:var(--accent); background:var(--bg); }
+
+    .formula-strip { font-family:monospace; font-size:1.05rem; background:var(--panel); border:1px solid var(--border); border-radius:8px; padding:10px 16px; text-align:center; margin-bottom:12px; }
+    .formula-strip .hi { color:var(--hint); font-weight:700; }
+    .formula-strip .ans { color:var(--correct); font-weight:700; }
+
+    .info-box { background:var(--panel); border:1px solid var(--border); border-radius:8px; padding:10px 14px; font-size:0.8rem; color:var(--muted); line-height:1.55; }
+    .info-box strong { color:var(--text); }
+
+    /* Pascal triangle cells */
+    .pt-cell { cursor:pointer; transition:all .15s; }
+    .pt-cell rect { fill:var(--panel); stroke:var(--border); stroke-width:1; transition:fill .15s; }
+    .pt-cell:hover rect { fill:#252545; stroke:var(--accent); }
+    .pt-cell.selected rect { fill:#1e2a50; stroke:var(--accent); stroke-width:2; }
+    .pt-cell.parent rect { fill:#1e3a28; stroke:var(--correct); stroke-width:1.5; }
+    .pt-cell.hs rect { fill:#2e2010; stroke:var(--hint); stroke-width:1.5; }
+    .pt-cell text { pointer-events:none; }
+  </style>
+</head>
+<body>
+<div class="page">
+
+  <header>
+    <h1>Combinatorics Diagrams</h1>
+    <a href="diagrams.html">← All Diagrams</a>
+  </header>
+  <p class="subtitle">Five interactive diagrams: counting trees, P vs C visualiser, Pascal's triangle, inclusion-exclusion, and stars and bars.</p>
+
+  <!-- ── 1. Counting Tree ─────────────────────────────────────────────────── -->
+  <div class="diagram-block">
+    <h2>1 — Fundamental Counting Principle: Tree Diagram</h2>
+    <p class="desc">Adjust the number of choices at each step. Every path from root to leaf is one complete outcome. The total equals the product of choices — the Fundamental Counting Principle.</p>
+
+    <div class="ctrl-row">
+      <label>Steps</label>
+      <input type="range" id="tree-steps" min="1" max="3" value="2">
+      <span class="val-badge" id="tree-steps-v">2</span>
+      <label style="margin-left:8px;">Step 1 choices</label>
+      <input type="range" id="tree-n1" min="2" max="5" value="3">
+      <span class="val-badge" id="tree-n1-v">3</span>
+      <label>Step 2 choices</label>
+      <input type="range" id="tree-n2" min="2" max="5" value="3">
+      <span class="val-badge" id="tree-n2-v">3</span>
+      <label id="tree-n3-label">Step 3 choices</label>
+      <input type="range" id="tree-n3" min="2" max="4" value="2">
+      <span class="val-badge" id="tree-n3-v">2</span>
+    </div>
+
+    <div class="svg-wrap">
+      <svg id="tree-svg"></svg>
+    </div>
+    <div class="formula-strip" id="tree-formula"></div>
+    <div class="info-box" id="tree-info"></div>
+  </div>
+
+  <!-- ── 2. P vs C Visualiser ─────────────────────────────────────────────── -->
+  <div class="diagram-block">
+    <h2>2 — Permutations vs Combinations</h2>
+    <p class="desc">Choose n items and select r of them. Toggle between ordered (permutation) and unordered (combination) to see why C(n,r) = P(n,r) ÷ r!.</p>
+
+    <div class="ctrl-row">
+      <label>n (items)</label>
+      <input type="range" id="pc-n" min="2" max="6" value="4">
+      <span class="val-badge" id="pc-n-v">4</span>
+      <label>r (select)</label>
+      <input type="range" id="pc-r" min="1" max="5" value="2">
+      <span class="val-badge" id="pc-r-v">2</span>
+    </div>
+    <div class="btn-row">
+      <button class="tog-btn active" id="btn-perm">Permutations P(n,r)</button>
+      <button class="tog-btn" id="btn-comb">Combinations C(n,r)</button>
+    </div>
+
+    <div class="svg-wrap">
+      <svg id="pc-svg"></svg>
+    </div>
+    <div class="formula-strip" id="pc-formula"></div>
+    <div class="info-box" id="pc-info"></div>
+  </div>
+
+  <!-- ── 3. Pascal's Triangle ──────────────────────────────────────────────── -->
+  <div class="diagram-block">
+    <h2>3 — Pascal's Triangle</h2>
+    <p class="desc">Click any cell C(n,k) to see its value and the two parent cells that sum to it. Use the buttons to highlight special patterns.</p>
+
+    <div class="btn-row">
+      <button class="tog-btn active" id="pt-btn-none" data-mode="none">Click a cell</button>
+      <button class="tog-btn" id="pt-btn-hs" data-mode="hs">Hockey Stick (k=2)</button>
+      <button class="tog-btn" id="pt-btn-sym" data-mode="sym">Row sums = 2ⁿ</button>
+    </div>
+
+    <div class="svg-wrap">
+      <svg id="pt-svg" viewBox="0 0 640 340"></svg>
+    </div>
+    <div class="formula-strip" id="pt-formula">Click any cell to explore C(n, k)</div>
+    <div class="info-box" id="pt-info">Each interior cell equals the sum of the two cells directly above it — Pascal's Identity: <strong>C(n,k) = C(n−1,k−1) + C(n−1,k)</strong>.</div>
+  </div>
+
+  <!-- ── 4. Inclusion-Exclusion Venn ──────────────────────────────────────── -->
+  <div class="diagram-block">
+    <h2>4 — Inclusion-Exclusion</h2>
+    <p class="desc">Drag the sliders to set set sizes. Watch the formula update live. Toggle to a 3-set view.</p>
+
+    <div class="btn-row">
+      <button class="tog-btn active" id="ie-btn-2" data-sets="2">2 Sets</button>
+      <button class="tog-btn" id="ie-btn-3" data-sets="3">3 Sets</button>
+    </div>
+
+    <div id="ie-2set">
+      <div class="ctrl-row">
+        <label>|A|</label><input type="range" id="ie-a" min="2" max="30" value="18"><span class="val-badge" id="ie-a-v">18</span>
+        <label>|B|</label><input type="range" id="ie-b" min="2" max="30" value="15"><span class="val-badge" id="ie-b-v">15</span>
+        <label>|A∩B|</label><input type="range" id="ie-ab" min="0" max="15" value="5"><span class="val-badge" id="ie-ab-v">5</span>
+      </div>
+    </div>
+    <div id="ie-3set" style="display:none">
+      <div class="ctrl-row">
+        <label>|A|</label><input type="range" id="ie3-a" min="2" max="25" value="15">
+        <label>|B|</label><input type="range" id="ie3-b" min="2" max="25" value="12">
+        <label>|C|</label><input type="range" id="ie3-c" min="2" max="25" value="10">
+      </div>
+      <div class="ctrl-row">
+        <label>|A∩B|</label><input type="range" id="ie3-ab" min="0" max="12" value="4">
+        <label>|A∩C|</label><input type="range" id="ie3-ac" min="0" max="10" value="3">
+        <label>|B∩C|</label><input type="range" id="ie3-bc" min="0" max="10" value="3">
+        <label>|A∩B∩C|</label><input type="range" id="ie3-abc" min="0" max="6" value="1">
+      </div>
+    </div>
+
+    <div class="svg-wrap">
+      <svg id="ie-svg"></svg>
+    </div>
+    <div class="formula-strip" id="ie-formula"></div>
+    <div class="info-box" id="ie-info"></div>
+  </div>
+
+  <!-- ── 5. Stars and Bars ────────────────────────────────────────────────── -->
+  <div class="diagram-block">
+    <h2>5 — Stars and Bars</h2>
+    <p class="desc">Count the ways to split n identical items into k ordered bins. Arrange n stars and k−1 bars in a row — the bars' positions determine each bin's count.</p>
+
+    <div class="ctrl-row">
+      <label>n (stars)</label>
+      <input type="range" id="sb-n" min="2" max="8" value="5">
+      <span class="val-badge" id="sb-n-v">5</span>
+      <label>k (bins)</label>
+      <input type="range" id="sb-k" min="2" max="5" value="3">
+      <span class="val-badge" id="sb-k-v">3</span>
+    </div>
+
+    <div class="svg-wrap">
+      <svg id="sb-svg"></svg>
+    </div>
+    <div class="formula-strip" id="sb-formula"></div>
+    <div class="info-box" id="sb-info"></div>
+  </div>
+
+</div><!-- .page -->
+
+<script src="textbook-switcher.js"></script>
+<script src="theme-toggle.js"></script>
+<script>
+var ns = 'http://www.w3.org/2000/svg';
+function svgEl(tag, attrs){
+  var el=document.createElementNS(ns,tag);
+  for(var k in attrs) el.setAttribute(k,attrs[k]);
+  return el;
+}
+function svgText(x,y,txt,fill,size,anchor,weight){
+  var t=svgEl('text',{x:x,y:y,fill:fill||'#e0e0f0','font-size':size||12,'text-anchor':anchor||'middle','font-family':'system-ui,sans-serif','font-weight':weight||'normal'});
+  t.textContent=txt; return t;
+}
+function gcd(a,b){ while(b){var t=b;b=a%b;a=t;} return a; }
+function fact(n){ var r=1; for(var i=2;i<=n;i++) r*=i; return r; }
+function C(n,r){ if(r<0||r>n) return 0; return fact(n)/(fact(r)*fact(n-r)); }
+
+// ── Palette of item colors ──────────────────────────────────────────────────
+var COLORS = ['#5c8aff','#3ecf8e','#ffb830','#ff6b6b','#c060ff','#40d0ff'];
+var LABELS = ['A','B','C','D','E','F'];
+
+// ────────────────────────────────────────────────────────────────────────────
+// DIAGRAM 1: COUNTING TREE
+// ────────────────────────────────────────────────────────────────────────────
+(function(){
+  var stepsSlider=document.getElementById('tree-steps');
+  var n1Slider=document.getElementById('tree-n1');
+  var n2Slider=document.getElementById('tree-n2');
+  var n3Slider=document.getElementById('tree-n3');
+  var stepsV=document.getElementById('tree-steps-v');
+  var n1V=document.getElementById('tree-n1-v');
+  var n2V=document.getElementById('tree-n2-v');
+  var n3V=document.getElementById('tree-n3-v');
+  var n3Label=document.getElementById('tree-n3-label');
+  var svg=document.getElementById('tree-svg');
+  var formula=document.getElementById('tree-formula');
+  var info=document.getElementById('tree-info');
+
+  var STEP_NAMES=[['A','B','C','D','E'],['1','2','3','4','5'],['α','β','γ','δ']];
+  var STEP_COLORS=['#5c8aff','#3ecf8e','#ffb830'];
+
+  function draw(){
+    var steps=parseInt(stepsSlider.value);
+    var ns=[parseInt(n1Slider.value),parseInt(n2Slider.value),parseInt(n3Slider.value)];
+    stepsV.textContent=steps;
+    n1V.textContent=ns[0]; n2V.textContent=ns[1]; n3V.textContent=ns[2];
+
+    // show/hide step 3 controls
+    n3Slider.parentElement.style.display=steps>=3?'':'none';
+    n3Label.style.display=steps>=3?'':'none';
+    n3V.parentElement.style.display=steps>=3?'':'none';
+
+    var activeN=ns.slice(0,steps);
+    var total=activeN.reduce(function(a,b){return a*b;},1);
+    if(total>120){ svg.setAttribute('viewBox','0 0 700 80'); while(svg.firstChild)svg.removeChild(svg.firstChild); svg.appendChild(svgText(350,50,'Too many paths to display (max 120). Reduce choices.',STEP_COLORS[0],13)); return; }
+
+    // Layout: levels are columns
+    var W=700, margin=50;
+    var numCols=steps+1; // root + step levels
+    var colX=[];
+    for(var c=0;c<=steps;c++) colX.push(margin + c*(W-2*margin)/steps);
+
+    // Build tree nodes
+    // Each node: {col, row, label, children:[]}
+    function buildLevel(col, parentCount){
+      if(col>steps) return [];
+      var n=ns[col-1];
+      var nodes=[];
+      for(var p=0;p<parentCount;p++){
+        for(var c=0;c<n;c++){
+          nodes.push({col:col, parentIdx:p, childIdx:c, label:STEP_NAMES[col-1][c]});
+        }
+      }
+      return nodes;
+    }
+
+    // Count leaves
+    var leafCount=total;
+    var H=Math.max(180, leafCount*22+40);
+    svg.setAttribute('viewBox','0 0 '+W+' '+H);
+    while(svg.firstChild) svg.removeChild(svg.firstChild);
+
+    // Draw root
+    var rootY=H/2;
+    svg.appendChild(svgEl('circle',{cx:colX[0],cy:rootY,r:8,fill:'#7070a0'}));
+    svg.appendChild(svgText(colX[0],rootY-14,'Start','#7070a0',11));
+
+    // Compute y positions for all leaf combinations
+    var combos=[];
+    function expand(level, combo){
+      if(level===steps){ combos.push(combo.slice()); return; }
+      for(var i=0;i<ns[level];i++){ combo.push(i); expand(level+1,combo); combo.pop(); }
+    }
+    expand(0,[]);
+
+    // For each combo, draw circles and lines
+    var leafY=combos.map(function(_,i){ return 20+(H-40)/(leafCount)*(i+0.5); });
+
+    // Collect node positions by path prefix
+    var nodePos={}; // key = "i,j,k..." → {x,y}
+    nodePos['']={x:colX[0],y:rootY};
+
+    for(var col=1;col<=steps;col++){
+      // Group combos by prefix of length col
+      var groups={};
+      combos.forEach(function(combo,li){
+        var key=combo.slice(0,col).join(',');
+        if(!groups[key]) groups[key]={leaves:[]};
+        groups[key].leaves.push(li);
+      });
+      Object.keys(groups).forEach(function(key){
+        var leaves=groups[key].leaves;
+        var y=leaves.reduce(function(a,b){return a+leafY[b];},0)/leaves.length;
+        nodePos[key]={x:colX[col],y:y};
+      });
+    }
+
+    // Draw edges
+    combos.forEach(function(combo,li){
+      for(var col=1;col<=steps;col++){
+        var parentKey=combo.slice(0,col-1).join(',');
+        var childKey=combo.slice(0,col).join(',');
+        var p=nodePos[parentKey];
+        var ch=nodePos[childKey];
+        var line=svgEl('line',{x1:p.x,y1:p.y,x2:ch.x,y2:ch.y,stroke:STEP_COLORS[col-1],'stroke-width':'1.2',opacity:'0.5'});
+        svg.appendChild(line);
+      }
+    });
+
+    // Draw nodes and labels
+    for(var col=1;col<=steps;col++){
+      var seen={};
+      combos.forEach(function(combo){
+        var key=combo.slice(0,col).join(',');
+        if(seen[key]) return; seen[key]=true;
+        var pos=nodePos[key];
+        var label=STEP_NAMES[col-1][combo[col-1]];
+        svg.appendChild(svgEl('circle',{cx:pos.x,cy:pos.y,r:14,fill:STEP_COLORS[col-1]+'33',stroke:STEP_COLORS[col-1],'stroke-width':'1.5'}));
+        svg.appendChild(svgText(pos.x,pos.y+4.5,label,STEP_COLORS[col-1],11));
+      });
+    }
+
+    // Leaf labels (full combo)
+    combos.forEach(function(combo,li){
+      var lbl=combo.map(function(i,col){return STEP_NAMES[col][i];}).join('');
+      var x=colX[steps]+24, y=leafY[li];
+      svg.appendChild(svgText(x,y+4,lbl,'#7070a0',9,'start'));
+      // dot at leaf
+      svg.appendChild(svgEl('circle',{cx:colX[steps],cy:y,r:3,fill:'#7070a0'}));
+    });
+
+    // Column headers
+    svg.appendChild(svgText(colX[0],12,'Start','#7070a0',10));
+    for(var col=1;col<=steps;col++){
+      svg.appendChild(svgText(colX[col],12,'Step '+col+' ('+ns[col-1]+')',STEP_COLORS[col-1],10));
+    }
+    svg.appendChild(svgText(colX[steps]+32,12,'Outcome','#7070a0',10,'start'));
+
+    // Formula
+    var parts=activeN.map(function(n,i){return '<span class="hi" style="color:'+STEP_COLORS[i]+'">'+n+'</span>';});
+    formula.innerHTML=parts.join(' &times; ')+' = <span class="ans">'+total+'</span>';
+    info.innerHTML='<strong>Fundamental Counting Principle:</strong> '+activeN.join('×')+' = '+total+' total outcomes. Each path root→leaf is one complete outcome.';
+  }
+
+  [stepsSlider,n1Slider,n2Slider,n3Slider].forEach(function(s){s.addEventListener('input',draw);});
+  draw();
+})();
+
+// ────────────────────────────────────────────────────────────────────────────
+// DIAGRAM 2: PERMUTATIONS vs COMBINATIONS
+// ────────────────────────────────────────────────────────────────────────────
+(function(){
+  var nSlider=document.getElementById('pc-n');
+  var rSlider=document.getElementById('pc-r');
+  var nV=document.getElementById('pc-n-v');
+  var rV=document.getElementById('pc-r-v');
+  var svg=document.getElementById('pc-svg');
+  var formulaEl=document.getElementById('pc-formula');
+  var infoEl=document.getElementById('pc-info');
+  var btnPerm=document.getElementById('btn-perm');
+  var btnComb=document.getElementById('btn-comb');
+  var mode='perm';
+
+  btnPerm.addEventListener('click',function(){ mode='perm'; btnPerm.classList.add('active'); btnComb.classList.remove('active'); draw(); });
+  btnComb.addEventListener('click',function(){ mode='comb'; btnComb.classList.add('active'); btnPerm.classList.remove('active'); draw(); });
+
+  function permutations(arr, r){
+    if(r===0) return [[]];
+    var result=[];
+    arr.forEach(function(item,i){
+      var rest=arr.slice(0,i).concat(arr.slice(i+1));
+      permutations(rest,r-1).forEach(function(p){ result.push([item].concat(p)); });
+    });
+    return result;
+  }
+  function combinations(arr, r){
+    if(r===0) return [[]];
+    if(arr.length===0) return [];
+    var first=arr[0], rest=arr.slice(1);
+    var withFirst=combinations(rest,r-1).map(function(c){return [first].concat(c);});
+    var withoutFirst=combinations(rest,r);
+    return withFirst.concat(withoutFirst);
+  }
+
+  function draw(){
+    var n=parseInt(nSlider.value);
+    var r=parseInt(rSlider.value);
+    if(r>n){ rSlider.value=n; r=n; }
+    rSlider.max=n;
+    nV.textContent=n; rV.textContent=r;
+
+    while(svg.firstChild) svg.removeChild(svg.firstChild);
+
+    var items=LABELS.slice(0,n);
+    var groups = mode==='perm' ? permutations(items,r) : combinations(items,r);
+    var count=groups.length;
+
+    // Layout: items row at top, groups grid below
+    var W=800;
+    var itemSpacing=50, itemY=40;
+    var startX=(W-(n-1)*itemSpacing)/2;
+
+    // Draw item circles
+    items.forEach(function(lbl,i){
+      var x=startX+i*itemSpacing;
+      svg.appendChild(svgEl('circle',{cx:x,cy:itemY,r:16,fill:COLORS[i]+'44',stroke:COLORS[i],'stroke-width':'2'}));
+      svg.appendChild(svgText(x,itemY+5,lbl,COLORS[i],13,'middle','700'));
+    });
+    svg.appendChild(svgText(W/2,itemY-26,'n = '+n+' items',  '#7070a0',11));
+
+    // Groups
+    var maxShow=Math.min(count,60);
+    var cols=Math.min(maxShow,10);
+    var rows=Math.ceil(maxShow/cols);
+    var cellW=Math.min(60, (W-40)/cols);
+    var cellH=r*18+14;
+    var gridX=(W-cols*cellW)/2;
+    var gridY=itemY+36;
+
+    groups.slice(0,maxShow).forEach(function(grp,gi){
+      var col=gi%cols, row=Math.floor(gi/cols);
+      var x=gridX+col*cellW;
+      var y=gridY+row*(cellH+6);
+      // box
+      svg.appendChild(svgEl('rect',{x:x+2,y:y,width:cellW-4,height:cellH,rx:5,fill:'#1c1c35',stroke:'#2e2e55','stroke-width':'1'}));
+      // items inside
+      grp.forEach(function(lbl,pos){
+        var idx=LABELS.indexOf(lbl);
+        svg.appendChild(svgEl('circle',{cx:x+cellW/2,cy:y+8+pos*18,r:7,fill:COLORS[idx]+'55',stroke:COLORS[idx],'stroke-width':'1.5'}));
+        svg.appendChild(svgText(x+cellW/2,y+12+pos*18,lbl,COLORS[idx],9,'middle','700'));
+      });
+    });
+
+    if(count>maxShow){
+      svg.appendChild(svgText(W/2,gridY+rows*(cellH+6)+14,'… and '+(count-maxShow)+' more','#7070a0',11));
+    }
+
+    var totalH=gridY+rows*(cellH+6)+(count>maxShow?30:10);
+    svg.setAttribute('viewBox','0 0 '+W+' '+totalH);
+
+    // Formula
+    if(mode==='perm'){
+      formulaEl.innerHTML='P('+n+','+r+') = '+n+'! / ('+n+'−'+r+')! = <span class="ans">'+count+'</span>';
+      infoEl.innerHTML='<strong>Permutations</strong> — order matters. Each box shows a distinct ordered arrangement of '+r+' items. P('+n+','+r+') = '+count+(count>maxShow?' (showing first '+maxShow+')':'')+'.<br>Try switching to Combinations to see how many groups collapse into one.';
+    } else {
+      var pCount=Math.round(C(n,r)*(fact(r)));
+      formulaEl.innerHTML='C('+n+','+r+') = P('+n+','+r+') ÷ '+r+'! = '+pCount+' ÷ '+fact(r)+' = <span class="ans">'+count+'</span>';
+      infoEl.innerHTML='<strong>Combinations</strong> — order does not matter. Each box is an unordered group. C('+n+','+r+') = '+count+'. Compare with P('+n+','+r+')='+(fact(r)*count)+': dividing by '+r+'! = '+fact(r)+' removes the ordering.';
+    }
+  }
+
+  nSlider.addEventListener('input',draw);
+  rSlider.addEventListener('input',draw);
+  draw();
+})();
+
+// ────────────────────────────────────────────────────────────────────────────
+// DIAGRAM 3: PASCAL'S TRIANGLE
+// ────────────────────────────────────────────────────────────────────────────
+(function(){
+  var ROWS=9;
+  var svg=document.getElementById('pt-svg');
+  var formulaEl=document.getElementById('pt-formula');
+  var infoEl=document.getElementById('pt-info');
+  var mode='none';
+  var selectedCell=null; // {n,k}
+
+  var CW=54, CH=30, VG=8;
+  var W=640, H=340;
+
+  // Build values
+  var tri=[];
+  for(var n=0;n<ROWS;n++){
+    tri[n]=[];
+    for(var k=0;k<=n;k++) tri[n][k]=Math.round(C(n,k));
+  }
+
+  function cellX(n,k){
+    var totalW=n*CW;
+    var startX=(W-totalW)/2;
+    return startX+k*CW;
+  }
+  function cellY(n){ return 10+n*(CH+VG); }
+
+  function drawTriangle(highlight){
+    while(svg.firstChild) svg.removeChild(svg.firstChild);
+
+    for(var n=0;n<ROWS;n++){
+      for(var k=0;k<=n;k++){
+        var x=cellX(n,k), y=cellY(n);
+        var val=tri[n][k];
+        var cls='pt-cell';
+        var extraCls='';
+        if(highlight && highlight.selected && highlight.selected.n===n && highlight.selected.k===k) extraCls='selected';
+        else if(highlight && highlight.parents && highlight.parents.some(function(p){return p.n===n&&p.k===k;})) extraCls='parent';
+        else if(highlight && highlight.hs && highlight.hs.some(function(p){return p.n===n&&p.k===k;})) extraCls='hs';
+
+        var g=svgEl('g',{'class':'pt-cell'+(extraCls?' '+extraCls:''),'data-n':n,'data-k':k});
+        g.appendChild(svgEl('rect',{x:x,y:y,width:CW-4,height:CH,rx:5}));
+        g.appendChild(svgText(x+(CW-4)/2, y+CH/2+4, val, extraCls==='selected'?'#5c8aff':extraCls==='parent'?'#3ecf8e':extraCls==='hs'?'#ffb830':'#c0c0e0', val>99?9:val>9?11:12));
+        svg.appendChild(g);
+      }
+    }
+
+    // draw sum labels for sym mode
+    if(highlight && highlight.rowSums){
+      for(var n=0;n<ROWS;n++){
+        var lastX=cellX(n,n)+CW+4;
+        svg.appendChild(svgText(lastX, cellY(n)+CH/2+4, '= '+Math.pow(2,n), '#ffb830', 10, 'start'));
+      }
+    }
+
+    // click handler
+    svg.querySelectorAll('.pt-cell').forEach(function(g){
+      g.addEventListener('click',function(){
+        var n=parseInt(g.getAttribute('data-n')), k=parseInt(g.getAttribute('data-k'));
+        selectCell(n,k);
+      });
+    });
+  }
+
+  function selectCell(n,k){
+    if(mode==='hs') return;
+    if(mode==='sym') return;
+    selectedCell={n:n,k:k};
+    var parents=[];
+    if(n>0 && k>0) parents.push({n:n-1,k:k-1});
+    if(n>0 && k<n) parents.push({n:n-1,k:k});
+    drawTriangle({selected:{n:n,k:k}, parents:parents});
+    formulaEl.innerHTML='C('+n+','+k+') = '+tri[n][k]+(n>0?'  =  C('+(n-1)+','+(k-1>0?k-1:0)+') + C('+(n-1)+','+(k<n?k:n-1)+')':'');
+    if(n===0){
+      infoEl.innerHTML='<strong>C(0,0) = 1</strong> — the apex. There is exactly one way to choose nothing from nothing.';
+    } else if(parents.length===2){
+      infoEl.innerHTML='<strong>Pascal\'s Identity:</strong> C('+n+','+k+') = C('+(n-1)+','+(k-1)+') + C('+(n-1)+','+k+') = '+tri[n-1][k-1]+' + '+tri[n-1][k]+' = '+tri[n][k];
+    } else if(k===0||k===n){
+      infoEl.innerHTML='<strong>Edge cell: C('+n+','+(k===0?0:n)+') = 1</strong> — always 1. There\'s only one way to choose all or none.';
+    }
+  }
+
+  document.querySelectorAll('[data-mode]').forEach(function(btn){
+    btn.addEventListener('click',function(){
+      mode=btn.getAttribute('data-mode');
+      document.querySelectorAll('[data-mode]').forEach(function(b){ b.classList.remove('active'); });
+      btn.classList.add('active');
+      selectedCell=null;
+
+      if(mode==='none'){
+        drawTriangle(null);
+        formulaEl.textContent='Click any cell to explore C(n, k)';
+        infoEl.innerHTML='Each interior cell equals the sum of the two cells directly above it — <strong>Pascal\'s Identity: C(n,k) = C(n−1,k−1) + C(n−1,k)</strong>.';
+      } else if(mode==='hs'){
+        // Hockey stick diagonal k=2
+        var hsCells=[];
+        for(var n=2;n<=7;n++) hsCells.push({n:n,k:2});
+        hsCells.push({n:8,k:3}); // sum cell
+        drawTriangle({hs:hsCells});
+        formulaEl.innerHTML='C(2,2)+C(3,2)+C(4,2)+C(5,2)+C(6,2)+C(7,2) = C(8,3) = 56';
+        infoEl.innerHTML='<strong>Hockey Stick Identity:</strong> Σ C(r,k) for r = k to n = C(n+1, k+1). The diagonal sum "telescopes" into a single cell one row lower and one column right.';
+      } else if(mode==='sym'){
+        drawTriangle({rowSums:true});
+        formulaEl.innerHTML='Row sums: 1, 2, 4, 8, 16, … = 2⁰, 2¹, 2², …';
+        infoEl.innerHTML='<strong>Row sum = 2ⁿ:</strong> The sum of all entries in row n equals 2ⁿ. This reflects the fact that each element of an n-element set can be included or excluded, giving 2ⁿ total subsets.';
+      }
+    });
+  });
+
+  drawTriangle(null);
+  formulaEl.textContent='Click any cell to explore C(n, k)';
+  infoEl.innerHTML='Each interior cell equals the sum of the two cells directly above it — <strong>Pascal\'s Identity: C(n,k) = C(n−1,k−1) + C(n−1,k)</strong>.';
+})();
+
+// ────────────────────────────────────────────────────────────────────────────
+// DIAGRAM 4: INCLUSION-EXCLUSION
+// ────────────────────────────────────────────────────────────────────────────
+(function(){
+  var mode=2;
+  var svg=document.getElementById('ie-svg');
+  var formulaEl=document.getElementById('ie-formula');
+  var infoEl=document.getElementById('ie-info');
+
+  document.querySelectorAll('[data-sets]').forEach(function(btn){
+    btn.addEventListener('click',function(){
+      mode=parseInt(btn.getAttribute('data-sets'));
+      document.querySelectorAll('[data-sets]').forEach(function(b){b.classList.remove('active');});
+      btn.classList.add('active');
+      document.getElementById('ie-2set').style.display=mode===2?'':'none';
+      document.getElementById('ie-3set').style.display=mode===3?'':'none';
+      draw();
+    });
+  });
+
+  function getVal(id){ return parseInt(document.getElementById(id).value)||0; }
+  function watchAll(ids){ ids.forEach(function(id){ var el=document.getElementById(id); if(el)el.addEventListener('input',function(){ updateBadge(id); draw(); }); }); }
+  function updateBadge(id){
+    var badge=document.getElementById(id+'-v');
+    if(badge) badge.textContent=getVal(id);
+  }
+  function updateAllBadges(){
+    ['ie-a','ie-b','ie-ab'].forEach(updateBadge);
+  }
+
+  watchAll(['ie-a','ie-b','ie-ab','ie3-a','ie3-b','ie3-c','ie3-ab','ie3-ac','ie3-bc','ie3-abc']);
+
+  function draw(){
+    while(svg.firstChild) svg.removeChild(svg.firstChild);
+    if(mode===2) draw2(); else draw3();
+  }
+
+  function draw2(){
+    var a=getVal('ie-a'), b=getVal('ie-b'), ab=getVal('ie-ab');
+    // clamp
+    var maxAB=Math.min(a,b);
+    if(ab>maxAB){ ab=maxAB; document.getElementById('ie-ab').value=ab; }
+    document.getElementById('ie-ab-v').textContent=ab;
+    var union=a+b-ab;
+
+    var W=560, H=220;
+    svg.setAttribute('viewBox','0 0 '+W+' '+H);
+
+    // Circles
+    var r=80, cx1=W/2-50, cx2=W/2+50, cy=H/2+10;
+    // overlap proportional to ab
+    var overlapFrac=ab/Math.min(a,b);
+    var dist=r*(2-overlapFrac*1.4);
+    var cx1a=W/2-dist/2, cx2a=W/2+dist/2;
+
+    // draw filled arcs - simplified: just two circles with opacity
+    var ca=svgEl('circle',{cx:cx1a,cy:cy,r:r,fill:'#5c8aff22',stroke:'#5c8aff','stroke-width':'2'});
+    var cb=svgEl('circle',{cx:cx2a,cy:cy,r:r,fill:'#3ecf8e22',stroke:'#3ecf8e','stroke-width':'2'});
+    svg.appendChild(ca); svg.appendChild(cb);
+
+    // A only label
+    svg.appendChild(svgText(cx1a-r*0.45, cy+4, (a-ab), '#5c8aff', 16, 'middle', '700'));
+    svg.appendChild(svgText(cx1a-r*0.45, cy+20, 'A only', '#5c8aff', 9));
+    // overlap label
+    svg.appendChild(svgText((cx1a+cx2a)/2, cy+4, ab, '#e0e0f0', 16, 'middle', '700'));
+    svg.appendChild(svgText((cx1a+cx2a)/2, cy+20, 'A∩B', '#e0e0f0', 9));
+    // B only label
+    svg.appendChild(svgText(cx2a+r*0.45, cy+4, (b-ab), '#3ecf8e', 16, 'middle', '700'));
+    svg.appendChild(svgText(cx2a+r*0.45, cy+20, 'B only', '#3ecf8e', 9));
+
+    // Set labels
+    svg.appendChild(svgText(cx1a, cy-r-10, '|A| = '+a, '#5c8aff', 12));
+    svg.appendChild(svgText(cx2a, cy-r-10, '|B| = '+b, '#3ecf8e', 12));
+
+    formulaEl.innerHTML='|A &cup; B| = <span class="hi" style="color:#5c8aff">'+a+'</span> + <span class="hi" style="color:#3ecf8e">'+b+'</span> &minus; <span class="hi">'+ab+'</span> = <span class="ans">'+union+'</span>';
+    infoEl.innerHTML='<strong>Inclusion-Exclusion (2 sets):</strong> Adding |A|+|B| counts the overlap |A∩B| twice. Subtract it once to get the correct union size: '+(a-ab)+' + '+ab+' + '+(b-ab)+' = '+union+'.';
+  }
+
+  function draw3(){
+    var a=getVal('ie3-a')||15, b=getVal('ie3-b')||12, c=getVal('ie3-c')||10;
+    var ab=Math.min(getVal('ie3-ab')||4, Math.min(a,b));
+    var ac=Math.min(getVal('ie3-ac')||3, Math.min(a,c));
+    var bc=Math.min(getVal('ie3-bc')||3, Math.min(b,c));
+    var abc=Math.min(getVal('ie3-abc')||1, Math.min(ab,ac,bc));
+    var union=a+b+c-ab-ac-bc+abc;
+
+    var W=560, H=280;
+    svg.setAttribute('viewBox','0 0 '+W+' '+H);
+    var r=85;
+    var cx1=W/2-70, cy1=100;
+    var cx2=W/2+70, cy2=100;
+    var cx3=W/2, cy3=210;
+
+    [
+      {cx:cx1,cy:cy1,fill:'#5c8aff22',stroke:'#5c8aff',lbl:'A'},
+      {cx:cx2,cy:cy2,fill:'#3ecf8e22',stroke:'#3ecf8e',lbl:'B'},
+      {cx:cx3,cy:cy3,fill:'#ffb83022',stroke:'#ffb830',lbl:'C'}
+    ].forEach(function(d){
+      svg.appendChild(svgEl('circle',{cx:d.cx,cy:d.cy,r:r,fill:d.fill,stroke:d.stroke,'stroke-width':'2'}));
+    });
+
+    // Region labels
+    svg.appendChild(svgText(cx1-50,cy1,'|A|='+a,'#5c8aff',11));
+    svg.appendChild(svgText(cx2+50,cy2,'|B|='+b,'#3ecf8e',11,'start'));
+    svg.appendChild(svgText(cx3,cy3+r+14,'|C|='+c,'#ffb830',11));
+
+    svg.appendChild(svgText(cx1,cy1-r-12,'A∩B='+ab,'#aaa',9));
+    svg.appendChild(svgText(cx2,cy2-r-12,'A∩C='+ac,'#aaa',9,'start'));
+    svg.appendChild(svgText(cx3-r,cy3+r/2,'B∩C='+bc,'#aaa',9,'end'));
+    svg.appendChild(svgText(W/2,H/2+10,'∩='+abc,'#e0e0f0',11));
+
+    formulaEl.innerHTML='|A&cup;B&cup;C| = '+a+'+'+b+'+'+c+'&minus;'+ab+'&minus;'+ac+'&minus;'+bc+'+'+abc+' = <span class="ans">'+union+'</span>';
+    infoEl.innerHTML='<strong>3-set Inclusion-Exclusion:</strong> Add all three, subtract each pairwise overlap, add back the triple overlap: '+a+'+'+b+'+'+c+'−'+ab+'−'+ac+'−'+bc+'+'+abc+' = '+union+'.';
+  }
+
+  updateAllBadges();
+  draw();
+})();
+
+// ────────────────────────────────────────────────────────────────────────────
+// DIAGRAM 5: STARS AND BARS
+// ────────────────────────────────────────────────────────────────────────────
+(function(){
+  var nSlider=document.getElementById('sb-n');
+  var kSlider=document.getElementById('sb-k');
+  var nV=document.getElementById('sb-n-v');
+  var kV=document.getElementById('sb-k-v');
+  var svg=document.getElementById('sb-svg');
+  var formulaEl=document.getElementById('sb-formula');
+  var infoEl=document.getElementById('sb-info');
+
+  function compositions(n,k){
+    if(k===1) return [[n]];
+    var result=[];
+    for(var x=0;x<=n;x++){
+      compositions(n-x,k-1).forEach(function(rest){ result.push([x].concat(rest)); });
+    }
+    return result;
+  }
+
+  // Draw one star/bar sequence starting at (x,y), returns width used
+  function drawSequence(g, comp, x, y, gap, starR, barH, color){
+    var pos=x;
+    comp.forEach(function(count,bi){
+      for(var s=0;s<count;s++){
+        g.appendChild(svgEl('circle',{cx:pos,cy:y,r:starR,fill:color}));
+        pos+=gap;
+      }
+      if(bi<comp.length-1){
+        g.appendChild(svgEl('line',{x1:pos-gap/2+2,y1:y-barH/2,x2:pos-gap/2+2,y2:y+barH/2,stroke:'#7070a0','stroke-width':'2'}));
+        pos+=gap;
+      }
+    });
+    return pos-gap;
+  }
+
+  function draw(){
+    var n=parseInt(nSlider.value);
+    var k=parseInt(kSlider.value);
+    nV.textContent=n; kV.textContent=k;
+
+    while(svg.firstChild) svg.removeChild(svg.firstChild);
+
+    var all=compositions(n,k);
+    var total=all.length;
+
+    var W=800;
+    // ── Featured example: as-even-as-possible split ──────────────────────
+    var base=Math.floor(n/k), rem=n%k;
+    var example=[];
+    for(var i=0;i<k;i++) example.push(base+(i<rem?1:0));
+
+    var exY=44, exGap=22, exR=6, exBarH=20;
+    var exWidth=(n+k-1-1)*exGap;
+    var exStartX=(W-exWidth)/2;
+    var exG=svgEl('g',{});
+    svg.appendChild(exG);
+    drawSequence(exG, example, exStartX, exY, exGap, exR, exBarH, '#5c8aff');
+
+    // Bin labels + brace under the example
+    var pos=exStartX;
+    example.forEach(function(count,bi){
+      var binStartX=pos;
+      var binEndX=pos+(count>0?(count-1)*exGap:0);
+      var midX=(binStartX+binEndX)/2;
+      exG.appendChild(svgText(midX, exY+30, 'Bin '+(bi+1)+' = '+count, '#7070a0', 10));
+      pos+=count*exGap;
+      if(bi<example.length-1) pos+=exGap;
+    });
+    exG.appendChild(svgText(W/2, 14, n+' stars, '+(k-1)+' bars → ('+example.join(', ')+')', '#e0e0f0', 12,'middle','700'));
+
+    // ── Grid of all compositions ──────────────────────────────────────────
+    var maxShow=Math.min(total,60);
+    var cols=Math.min(maxShow,8);
+    var rows=Math.ceil(maxShow/cols);
+    var symCount=n+k-1;
+    var cellW=Math.max(60, symCount*11+14);
+    var cellH=30;
+    var gridX=(W-cols*cellW)/2;
+    var gridY=exY+56;
+
+    all.slice(0,maxShow).forEach(function(comp,gi){
+      var col=gi%cols, row=Math.floor(gi/cols);
+      var x=gridX+col*cellW;
+      var y=gridY+row*(cellH+22);
+      svg.appendChild(svgEl('rect',{x:x+2,y:y,width:cellW-4,height:cellH,rx:5,fill:'#1c1c35',stroke:'#2e2e55','stroke-width':'1'}));
+      var g=svgEl('g',{});
+      svg.appendChild(g);
+      var seqW=(symCount-1)*10;
+      drawSequence(g, comp, x+(cellW-seqW)/2, y+cellH/2-3, 10, 3.5, 12, '#3ecf8e');
+      svg.appendChild(svgText(x+cellW/2, y+cellH+13, '('+comp.join(',')+')', '#7070a0', 9));
+    });
+
+    var gridBottom=gridY+rows*(cellH+22);
+    if(total>maxShow){
+      svg.appendChild(svgText(W/2, gridBottom+8, '… and '+(total-maxShow)+' more', '#7070a0', 11));
+      gridBottom+=26;
+    }
+
+    svg.setAttribute('viewBox','0 0 '+W+' '+(gridBottom+10));
+
+    formulaEl.innerHTML='Stars = <span class="hi">'+n+'</span>, Bars = <span class="hi">'+(k-1)+'</span> → positions = '+n+'+'+(k-1)+' = '+(n+k-1)+', choose bar slots: C('+(n+k-1)+', '+(k-1)+') = <span class="ans">'+total+'</span>';
+    infoEl.innerHTML='<strong>Stars and Bars:</strong> the number of ways to write n = '+n+' as an ordered sum of k = '+k+' non-negative integers x₁+x₂+…+x'+k+' = '+n+' equals C(n+k−1, k−1). Each arrangement of '+n+' stars (●) and '+(k-1)+' bars (│) in a row picks which of the '+(n+k-1)+' positions are bars — the stars between consecutive bars give each bin\'s count.';
+  }
+
+  [nSlider,kSlider].forEach(function(s){s.addEventListener('input',draw);});
+  draw();
+})();
+</script>
+</body>
+</html>
