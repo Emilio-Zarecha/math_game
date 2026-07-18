@@ -16,7 +16,7 @@
       --correct: #3ecf8e;
       --hint:    #ffb830;
       --text:    #e0e0f0;
-      --muted:   #7070a0;
+      --muted:   #8a8ab5;
     }
 
     body {
@@ -155,10 +155,11 @@
       The picker at the top of the screen has two browse modes, selected with the
       <strong>By Topic</strong> and <strong>By Concept</strong> toggle.
       In <strong>By Topic</strong> mode, choose a subject — Algebra, Algebra 2, Arithmetic,
-      Geometry, Trigonometry, or Calculus — then pick a specific problem from the list.
-      Problems are labeled easy, medium, or hard. Press <strong>Load Puzzle</strong> to begin.
-      The question appears in the upper panel, and a diagram is shown for geometry,
-      trigonometry, and calculus puzzles.
+      Intermediate Arithmetic, Combinatorics, Geometry, Trigonometry, Calculus, Statistics,
+      Linear Algebra, or Graph Theory — then pick a specific problem from the list.
+      Problems are labeled easy, medium, or hard, and a puzzle you've already solved is marked
+      with a checkmark. Press <strong>Load Puzzle</strong> to begin. The question appears in
+      the upper panel, and a diagram is shown for geometry, trigonometry, and calculus puzzles.
     </p>
   </section>
 
@@ -188,18 +189,23 @@
       Interactive steps contain one or more dashed-border <strong>drop zones</strong>
       inside the equation, waiting for you to fill them in.
       The step description below the equation tells you what the move is trying to accomplish.
+      Hover over (or tap) any symbol in the equation to see what it means — toggle this off
+      with the <strong>💡 Symbol tips</strong> button if you'd rather work without them.
     </p>
   </section>
 
   <section>
     <h3>Making a Move</h3>
     <p>
-      The <strong>Palette</strong> on the left holds the pieces available for this step.
-      Drag the correct piece from the palette and drop it onto the matching drop zone in the
-      equation. If your choice is right the zone turns green; if it is wrong it flashes red
-      and you can try again. Some steps require you to drop the same piece into more than one
-      zone — the game will prompt you when another zone still needs to be filled.
-      Once all drop zones in a step are satisfied the puzzle advances to the next step on its own.
+      The <strong>Palette</strong> on the left holds the pieces available for this step. On a
+      mouse, drag the correct piece and drop it onto the matching drop zone in the equation.
+      On a touch device (or with a mouse, if you prefer), tap a palette piece to select it —
+      it gets a highlighted border — then tap the drop zone you want to place it in.
+      If your choice is right the zone turns green; if it is wrong it flashes red with a short
+      message telling you to check the step description, and you can try again. Some steps
+      require you to drop the same piece into more than one zone — the game will prompt you
+      when another zone still needs to be filled. Once all drop zones in a step are satisfied
+      the puzzle advances to the next step on its own.
     </p>
   </section>
 
@@ -223,10 +229,11 @@
     <p>
       After the last step the completion screen appears. Press <strong>Final Answer</strong>
       at any point to jump straight there if you are confident you understand the solution.
-      Your score bar at the top tracks puzzles solved and hints used across the session.
-      Use <strong>Reset</strong> to restart the current puzzle from the beginning whenever
-      you want more practice. To try a different problem, just pick a new one from the
-      dropdowns and load it — your session totals carry over.
+      Your score bar at the top tracks puzzles solved, hints used, your current streak, and
+      your best streak — these are saved in the browser, so they carry over even after you
+      close the tab or reload. Use <strong>Reset</strong> to restart the current puzzle from
+      the beginning whenever you want more practice. To try a different problem, just pick a
+      new one from the dropdowns and load it — your totals carry over.
     </p>
   </section>
 
@@ -264,8 +271,9 @@
       or links to reference material. Notes save automatically as you type, so there is no Save
       button to press. An amber dot on the Notes button signals that the current puzzle has
       notes stored. You can clear a puzzle's notes at any time with the
-      <strong>Clear notes</strong> button. Press <span class="key">Esc</span> or click outside
-      the notepad to close it without losing anything.
+      <strong>Clear notes</strong> button, or download every note you've written across every
+      puzzle as one text file with <strong>↓ Export all</strong>. Press <span class="key">Esc</span>
+      or click outside the notepad to close it without losing anything.
     </p>
     <p>
       The notepad has two tabs. <strong>Edit</strong> is a plain text area where you write
@@ -273,6 +281,68 @@
       converted into clickable links that open in a new browser tab — useful for pasting a
       Khan Academy page, a Wikipedia article, or any other reference you want to revisit later.
       Switching to a new puzzle always returns the notepad to Edit mode.
+    </p>
+  </section>
+
+  <h2>Player Manual — Chapter 2: Using the Textbooks</h2>
+
+  <section>
+    <h3>Reading a Textbook</h3>
+    <p>
+      Every subject has a full textbook — reach one from the game's header links, from the
+      "📖 Read about this topic →" link that appears once you load a puzzle, or from the tab
+      bar of another textbook. That tab bar sits below the title on every textbook page and
+      lets you jump straight from one subject to another; it scrolls horizontally if it
+      doesn't fit your screen. Each textbook has a table of contents you can jump back to at
+      any time, and if you follow a puzzle's deep link into the middle of a chapter, a
+      "↩ Back to where I was" button appears so you can return to your place in the puzzle
+      afterward.
+    </p>
+  </section>
+
+  <section>
+    <h3>Glossary Terms</h3>
+    <p>
+      Key terms are underlined throughout each textbook. On a desktop, hover over one to see
+      its definition; on a touch device, tap the term once to open the definition and tap
+      again (or tap anywhere else) to close it.
+    </p>
+  </section>
+
+  <section>
+    <h3>Sticky Notes</h3>
+    <p>
+      Every formula, example, and definition box has a small <span class="key">✎</span>
+      button in its corner. Click it to open a note for just that box — useful for writing a
+      reminder, a worked-out variant, or a question to come back to. Notes save automatically
+      as you type and persist in your browser between visits. A toolbar on the page lets you
+      download every note you've written in that textbook as a single text file with the
+      <strong>↓ Export</strong> button.
+    </p>
+  </section>
+
+  <section>
+    <h3>Ask AI Tutor</h3>
+    <p>
+      Click the <strong>Ask AI</strong> button in a textbook's header to open a chat modal
+      that already knows which chapter section you're currently reading. The first time you
+      use it, you'll be asked to paste in a free Gemini API key from
+      <a href="https://aistudio.google.com/apikey" target="_blank">aistudio.google.com/apikey</a>
+      — it's stored only in your browser and sent directly to Google, never through this site.
+      Your conversation is kept if you close the modal and reopen it later in the same visit,
+      so you can step away to re-read a formula without losing the thread. Click
+      <strong>new conversation</strong> in the modal's footer whenever you want to start over.
+    </p>
+  </section>
+
+  <section>
+    <h3>Diagram Pages</h3>
+    <p>
+      Several subjects — Arithmetic, Intermediate Arithmetic, Calculus, Combinatorics, Graph
+      Theory, Linear Algebra, and Statistics — have a companion diagrams page with interactive,
+      step-through visual walkthroughs of key ideas. Reach one from its textbook's
+      "Diagrams →" header link, or browse every subject's diagrams from the
+      <a href="diagrams.html">Diagrams hub</a>.
     </p>
   </section>
 

@@ -38,6 +38,29 @@
     tip.style.top  = (e.clientY - 10) + 'px';
   }
 
+  function positionTipNear(el){
+    var r = el.getBoundingClientRect();
+    tip.style.left = r.left + 'px';
+    tip.style.top  = (r.bottom + 6) + 'px';
+  }
+
+  // Keyboard access works the same regardless of hover/touch capability —
+  // wired up once, up front, alongside whichever pointer scheme applies below.
+  document.querySelectorAll('.key').forEach(function(el){
+    var term = el.textContent.trim();
+    var def = GLOSSARY[term];
+    if (!def) return;
+    el.setAttribute('tabindex', '0');
+    el.addEventListener('focus', function(){
+      tip.textContent = def;
+      tip.style.display = 'block';
+      positionTipNear(el);
+    });
+    el.addEventListener('blur', function(){
+      tip.style.display = 'none';
+    });
+  });
+
   /* Devices with no real hover (touch, e.g. iPad) get synthesized mouseenter
    * on tap but never a reliable mouseleave — the tooltip would get stuck
    * open. Checked once at load: good enough for this site, not worth

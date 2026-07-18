@@ -7,7 +7,7 @@
   <script>(function(){var t=localStorage.getItem('math-theme')||((window.matchMedia&&window.matchMedia('(prefers-color-scheme:light)').matches)?'light':'dark');document.documentElement.setAttribute('data-theme',t);}());</script>
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    :root { --bg:#0d0d1a; --surface:#151528; --panel:#1c1c35; --border:#2e2e55; --accent:#5c8aff; --correct:#3ecf8e; --hint:#ffb830; --text:#e0e0f0; --muted:#7070a0; }
+    :root { --bg:#0d0d1a; --surface:#151528; --panel:#1c1c35; --border:#2e2e55; --accent:#5c8aff; --correct:#3ecf8e; --hint:#ffb830; --text:#e0e0f0; --muted:#8a8ab5; }
     [data-theme="light"] {
       --bg:#f5f0e4; --surface:#faf7ee; --panel:#ede8d8; --border:#ccc6b4;
       --text:#18140c; --muted:#3e3c60; --accent:#2858c8; --correct:#115238;
@@ -77,6 +77,79 @@
   </header>
   <p class="page-subtitle">Step-by-step and interactive SVG diagrams, one page per subject. Each page builds visual intuition alongside the matching textbook chapter.</p>
 
+  <!-- Curriculum order matches textbook-switcher.js's BOOKS list — every subject
+       appears once, in place, whether its diagrams are live or still planned. -->
+
+  <div class="subject-section">
+    <div class="subject-label">Arithmetic</div>
+    <a class="diagram-card" href="math_arithmetic_diagrams.html">
+      <div class="diagram-card-info">
+        <h3>Arithmetic Diagrams</h3>
+        <ul>
+          <li>Multiplication Array — interactive dot grid, rows × columns, up to 12 × 12</li>
+          <li>Fraction Bar — shaded bar + number line, numerator and denominator sliders</li>
+          <li>Place Value Blocks — base-ten blocks for any number 0–999</li>
+        </ul>
+      </div>
+      <span class="diagram-card-arrow">→</span>
+    </a>
+  </div>
+
+  <div class="subject-section">
+    <div class="subject-label">Intermediate Arithmetic</div>
+    <a class="diagram-card" href="math_arithmetic2_diagrams.html">
+      <div class="diagram-card-info">
+        <h3>Intermediate Arithmetic Diagrams</h3>
+        <ul>
+          <li>Order of Operations — step-by-step PEMDAS click-through</li>
+          <li>Fraction Addition — area model showing common denominator</li>
+          <li>Percent Change — before/after bar diagram</li>
+        </ul>
+      </div>
+      <span class="diagram-card-arrow">→</span>
+    </a>
+  </div>
+
+  <div class="subject-section">
+    <div class="diagram-card soon">
+      <div class="diagram-card-info">
+        <h3>Algebra</h3>
+        <ul><li>Planned</li></ul>
+      </div>
+      <span class="soon-badge">soon</span>
+    </div>
+  </div>
+
+  <div class="subject-section">
+    <div class="diagram-card soon">
+      <div class="diagram-card-info">
+        <h3>Algebra 2</h3>
+        <ul><li>Planned</li></ul>
+      </div>
+      <span class="soon-badge">soon</span>
+    </div>
+  </div>
+
+  <div class="subject-section">
+    <div class="diagram-card soon">
+      <div class="diagram-card-info">
+        <h3>Geometry</h3>
+        <ul><li>Planned</li></ul>
+      </div>
+      <span class="soon-badge">soon</span>
+    </div>
+  </div>
+
+  <div class="subject-section">
+    <div class="diagram-card soon">
+      <div class="diagram-card-info">
+        <h3>Trigonometry</h3>
+        <ul><li>Planned</li></ul>
+      </div>
+      <span class="soon-badge">soon</span>
+    </div>
+  </div>
+
   <div class="subject-section">
     <div class="subject-label">Calculus</div>
     <a class="diagram-card" href="math_calculus_diagrams.html">
@@ -92,13 +165,12 @@
   </div>
 
   <div class="subject-section">
-    <div class="subject-label">Linear Algebra</div>
-    <a class="diagram-card" href="math_linearalgebra_diagrams.html">
+    <div class="subject-label">Statistics</div>
+    <a class="diagram-card" href="math_statistics_diagrams.html">
       <div class="diagram-card-info">
-        <h3>Linear Algebra Diagrams</h3>
+        <h3>Statistics Diagrams</h3>
         <ul>
-          <li>Dot Product — Component Method — 5-step click-through</li>
-          <li>Dot Product — Projection &amp; Angle — interactive angle slider</li>
+          <li>Binomial PMF — adjust n, p, k; watch bars accumulate into P(X ≤ k)</li>
         </ul>
       </div>
       <span class="diagram-card-arrow">→</span>
@@ -106,14 +178,13 @@
   </div>
 
   <div class="subject-section">
-    <div class="subject-label">Arithmetic</div>
-    <a class="diagram-card" href="math_arithmetic_diagrams.html">
+    <div class="subject-label">Linear Algebra</div>
+    <a class="diagram-card" href="math_linearalgebra_diagrams.html">
       <div class="diagram-card-info">
-        <h3>Arithmetic Diagrams</h3>
+        <h3>Linear Algebra Diagrams</h3>
         <ul>
-          <li>Multiplication Array — interactive dot grid, rows × columns, up to 12 × 12</li>
-          <li>Fraction Bar — shaded bar + number line, numerator and denominator sliders</li>
-          <li>Place Value Blocks — base-ten blocks for any number 0–999</li>
+          <li>Dot Product — Component Method — 5-step click-through</li>
+          <li>Dot Product — Projection &amp; Angle — interactive angle slider</li>
         </ul>
       </div>
       <span class="diagram-card-arrow">→</span>
@@ -145,52 +216,6 @@
         <ul>
           <li>Graph Traversal — toggle BFS vs DFS, pick any start vertex</li>
           <li>Kruskal's Algorithm — step through building a minimum spanning tree</li>
-        </ul>
-      </div>
-      <span class="diagram-card-arrow">→</span>
-    </a>
-  </div>
-
-  <div class="subject-section">
-    <div class="subject-label">Intermediate Arithmetic</div>
-    <a class="diagram-card" href="math_arithmetic2_diagrams.html">
-      <div class="diagram-card-info">
-        <h3>Intermediate Arithmetic Diagrams</h3>
-        <ul>
-          <li>Order of Operations — step-by-step PEMDAS click-through</li>
-          <li>Fraction Addition — area model showing common denominator</li>
-          <li>Percent Change — before/after bar diagram</li>
-        </ul>
-      </div>
-      <span class="diagram-card-arrow">→</span>
-    </a>
-  </div>
-
-  <div class="subject-section">
-    <div class="subject-label">Coming Soon</div>
-    <div class="diagram-card soon">
-      <div class="diagram-card-info">
-        <h3>Algebra</h3>
-        <ul><li>Planned</li></ul>
-      </div>
-      <span class="soon-badge">soon</span>
-    </div>
-    <div class="diagram-card soon">
-      <div class="diagram-card-info">
-        <h3>Trigonometry</h3>
-        <ul><li>Planned</li></ul>
-      </div>
-      <span class="soon-badge">soon</span>
-    </div>
-  </div>
-
-  <div class="subject-section">
-    <div class="subject-label">Statistics</div>
-    <a class="diagram-card" href="math_statistics_diagrams.html">
-      <div class="diagram-card-info">
-        <h3>Statistics Diagrams</h3>
-        <ul>
-          <li>Binomial PMF — adjust n, p, k; watch bars accumulate into P(X ≤ k)</li>
         </ul>
       </div>
       <span class="diagram-card-arrow">→</span>

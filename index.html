@@ -4,8 +4,8 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Math Game</title>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css" />
-  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+  <link rel="stylesheet" href="katex/katex.min.css" />
+  <script defer src="katex/katex.min.js"></script>
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -19,7 +19,7 @@
       --wrong:    #ff4d6d;
       --hint:     #ffb830;
       --text:     #e0e0f0;
-      --muted:    #7070a0;
+      --muted:    #8a8ab5;
       --radius:   10px;
     }
 
@@ -56,6 +56,10 @@
       letter-spacing: 0.05em;
     }
     #manual-link:hover, .textbook-link:hover { color: var(--accent); }
+
+    /* textbook-switcher.js's nav has no width of its own; constrain it here so it
+       lines up with #layout below and its overflow-x scroll actually engages. */
+    nav.textbook-switcher { width: 100%; max-width: 920px; border-radius: 8px; }
 
     /* ── Score bar ─────────────────────────────────────────── */
     #score-bar {
@@ -169,15 +173,18 @@
       transition: border-color 0.2s, box-shadow 0.2s, opacity 0.2s;
     }
     .palette-item:hover { border-color: var(--accent); }
+    .palette-item:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
     .palette-item.dragging { opacity: 0.35; cursor: grabbing; }
     .palette-item.dragging .pal-tip { display: none !important; }
     .palette-item.used { opacity: 0.3; pointer-events: none; }
     .palette-item.hint-highlight {
       border-color: var(--hint);
       box-shadow: 0 0 16px var(--hint);
-      animation: pulse 1s ease-in-out infinite alternate;
     }
     @keyframes pulse { to { box-shadow: 0 0 26px var(--hint); } }
+    @media (prefers-reduced-motion: no-preference) {
+      .palette-item.hint-highlight { animation: pulse 1s ease-in-out infinite alternate; }
+    }
 
     .pal-tip {
       display: none;
@@ -261,6 +268,7 @@
       transition: border-color 0.2s, background 0.2s, box-shadow 0.2s;
       vertical-align: middle;
     }
+    .drop-zone:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
     #step-eq:hover .drop-zone:not(.done) {
       border-color: var(--accent);
       background: rgba(92,138,255,0.08);
@@ -281,7 +289,9 @@
       border-color: var(--hint);
       box-shadow: 0 0 12px var(--hint);
       background: rgba(255,184,48,0.12);
-      animation: pulse 1s ease-in-out infinite alternate;
+    }
+    @media (prefers-reduced-motion: no-preference) {
+      .drop-zone.hint-target { animation: pulse 1s ease-in-out infinite alternate; }
     }
     .drop-zone.done {
       border: 2px solid var(--correct);
@@ -496,7 +506,8 @@
       color: var(--muted);
       min-width: 80px;
     }
-    #notes-clear {
+    #notes-actions { display: flex; gap: 8px; }
+    #notes-clear, #notes-export {
       background: none;
       border: 1px solid var(--border);
       color: var(--muted);
@@ -506,6 +517,7 @@
       cursor: pointer;
     }
     #notes-clear:hover { border-color: var(--wrong); color: var(--wrong); }
+    #notes-export:hover { border-color: var(--accent); color: var(--accent); }
 
     #notes-mode-toggle {
       display: flex;
@@ -863,21 +875,10 @@
 </head>
 <body>
 
-<h1>Math Game</h1>
+<header><h1>Math Game</h1></header>
 <div class="header-links">
   <a id="manual-link" href="manual.html">Player Manual</a>
   <a class="textbook-link" href="diagrams.html">Diagrams</a>
-  <a class="textbook-link" href="textbook_algebra.html">Algebra Textbook</a>
-  <a class="textbook-link" href="textbook_geometry.html">Geometry Textbook</a>
-  <a class="textbook-link" href="textbook_arithmetic.html">Arithmetic Textbook</a>
-  <a class="textbook-link" href="textbook_arithmetic2.html">Intermediate Arithmetic Textbook</a>
-  <a class="textbook-link" href="textbook_trigonometry.html">Trigonometry Textbook</a>
-  <a class="textbook-link" href="textbook_calculus.html">Calculus Textbook</a>
-  <a class="textbook-link" href="textbook_algebra2.html">Algebra 2 Textbook</a>
-  <a class="textbook-link" href="textbook_statistics.html">Statistics Textbook</a>
-  <a class="textbook-link" href="textbook_linearalgebra.html">Linear Algebra Textbook</a>
-  <a class="textbook-link" href="textbook_combinatorics.html">Combinatorics Textbook</a>
-  <a class="textbook-link" href="textbook_graphtheory.html">Graph Theory Textbook</a>
 </div>
 
 <div id="score-bar">
@@ -939,14 +940,14 @@
       <div id="step-equation"></div>
     </div>
 
-    <div id="side-message" class="hidden-msg">—</div>
+    <div id="side-message" class="hidden-msg" aria-live="polite">—</div>
 
     <div id="step-meta">
-      <div id="step-desc"></div>
+      <div id="step-desc" aria-live="polite"></div>
       <div id="step-progress">—</div>
     </div>
 
-    <div id="completion">Puzzle complete! Well done.</div>
+    <div id="completion" aria-live="polite">Puzzle complete! Well done.</div>
 
     <div id="controls">
       <button class="ctrl-btn nav" id="prev-btn" disabled>← Prev</button>
@@ -1018,7 +1019,10 @@
       <div id="notes-preview"></div>
       <div id="notes-footer">
         <span id="notes-status"></span>
-        <button id="notes-clear">Clear notes</button>
+        <div id="notes-actions">
+          <button id="notes-export">↓ Export all</button>
+          <button id="notes-clear">Clear notes</button>
+        </div>
       </div>
     </div>
   </div>
@@ -1082,6 +1086,17 @@ const TEXTBOOK_MAP = {
   'stat':   'textbook_statistics.html',
   'linalg': 'textbook_linearalgebra.html',
   'graph':  'textbook_graphtheory.html',
+};
+
+// Only subjects that actually have a math_<subject>_diagrams.html page.
+const DIAGRAMS_MAP = {
+  'arith':  'math_arithmetic_diagrams.html',
+  'arith2': 'math_arithmetic2_diagrams.html',
+  'comb':   'math_combinatorics_diagrams.html',
+  'calc':   'math_calculus_diagrams.html',
+  'stat':   'math_statistics_diagrams.html',
+  'linalg': 'math_linearalgebra_diagrams.html',
+  'graph':  'math_graphtheory_diagrams.html',
 };
 
 function visibleSteps() {
@@ -1339,11 +1354,13 @@ function loadPuzzle() {
 
   const topicPrefix = G.puzzle.id.split('-')[0];
   const tbUrl = TEXTBOOK_MAP[topicPrefix];
+  const dgUrl = DIAGRAMS_MAP[topicPrefix];
   const tbBar = $('textbook-link-bar');
   const anchor = G.puzzle.chapter ? `#ch${G.puzzle.chapter}` : '';
-  tbBar.innerHTML = tbUrl
-    ? `<a href="${tbUrl}${anchor}" target="_blank">📖 Read about this topic →</a>`
-    : '';
+  const links = [];
+  if (tbUrl) links.push(`<a href="${tbUrl}${anchor}" target="_blank">📖 Read about this topic →</a>`);
+  if (dgUrl) links.push(`<a href="${dgUrl}" target="_blank">🖼 See diagrams →</a>`);
+  tbBar.innerHTML = links.join('&nbsp;·&nbsp;');
 
   renderAll();
   loadNotes();
@@ -1423,6 +1440,9 @@ function renderPalette() {
     div.className = 'palette-item';
     div.dataset.id = item.id;
     div.draggable = true;
+    div.setAttribute('role', 'button');
+    div.setAttribute('tabindex', '0');
+    div.setAttribute('aria-label', item.description || 'Palette piece');
 
     const math = document.createElement('span');
     renderLatex(item.latex, math);
@@ -1444,8 +1464,8 @@ function renderPalette() {
       G.draggingId = null;
     });
 
-    // ── Tap to select (mouse click or touch tap) ─────────────────
-    div.addEventListener('click', () => {
+    // ── Tap/keyboard to select (mouse click, touch tap, or Enter/Space) ──
+    function toggleSelect() {
       if (div.classList.contains('used')) return;
       if (selectedPaletteEl === div) { clearPaletteSelection(); return; }
       if (selectedPaletteEl) selectedPaletteEl.classList.remove('touch-selected');
@@ -1453,6 +1473,10 @@ function renderPalette() {
       selectedPaletteId = item.id;
       div.classList.add('touch-selected');
       symTip.style.display = 'none';
+    }
+    div.addEventListener('click', toggleSelect);
+    div.addEventListener('keydown', e => {
+      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggleSelect(); }
     });
 
     pal.appendChild(div);
@@ -1468,7 +1492,9 @@ function syncPaletteUsed() {
   pal.querySelectorAll('.palette-item').forEach(el => {
     const id = el.dataset.id;
     const usedAt = visibleSteps().findIndex(s => s.paletteRef === id);
-    el.classList.toggle('used', usedAt !== -1 && usedAt < G.currentStep);
+    const used = usedAt !== -1 && usedAt < G.currentStep;
+    el.classList.toggle('used', used);
+    el.setAttribute('tabindex', used ? '-1' : '0');
   });
 }
 
@@ -1555,6 +1581,9 @@ function buildDropZoneEquation(fullLatex, targets, container) {
     const dz = document.createElement('span');
     dz.className = 'drop-zone' + (G.completedDrops.has(i) ? ' done' : '');
     dz.dataset.dzIdx = i;
+    dz.setAttribute('role', 'button');
+    dz.setAttribute('tabindex', G.completedDrops.has(i) ? '-1' : '0');
+    dz.setAttribute('aria-label', `Drop zone ${i + 1}`);
     inner.parentNode.insertBefore(dz, inner);
     dz.appendChild(inner);
     setupDropZone(dz, i);
@@ -1576,13 +1605,17 @@ function setupDropZone(dz, dzIdx) {
     handleDrop(dz, dzIdx, G.draggingId);
   });
 
-  // Tap-to-place: completes the pending tap-selected palette item.
-  dz.addEventListener('click', () => {
+  // Tap/keyboard-to-place: completes the pending selected palette item.
+  function placeSelected() {
     if (G.completedDrops.has(dzIdx) || !selectedPaletteId) return;
     const step = visibleSteps()[G.currentStep];
     const wasCorrect = step && step.paletteRef === selectedPaletteId;
     handleDrop(dz, dzIdx, selectedPaletteId);
     if (wasCorrect) clearPaletteSelection();
+  }
+  dz.addEventListener('click', placeSelected);
+  dz.addEventListener('keydown', e => {
+    if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); placeSelected(); }
   });
 }
 
@@ -1595,6 +1628,7 @@ function handleDrop(dz, dzIdx, paletteId) {
     dz.classList.add('correct-drop');
     G.completedDrops.add(dzIdx);
     dz.classList.add('done');
+    dz.setAttribute('tabindex', '-1');
 
     // Stamp the operation onto the zone so the user sees it applied to both sides
     const palItem = G.puzzle.palette.find(p => p.id === paletteId);
@@ -1788,6 +1822,10 @@ $('final-btn').addEventListener('click', () => {
 
 // ── Animated right-arrow solve ─────────────────────────────────
 function flyGhost(fromEl, toEl, ver, onArrive) {
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    if (G.stepVer === ver) onArrive();
+    return;
+  }
   const fr = fromEl.getBoundingClientRect();
   const tr = toEl.getBoundingClientRect();
 
@@ -1907,6 +1945,7 @@ function attachSymbolHovers() {
       if (syms[t] && !el.dataset.tipBound) {
         el.dataset.tipBound = '1';
         el.style.cursor = 'help';
+        el.setAttribute('tabindex', '0');
         el.addEventListener('mouseenter', ev => {
           if (!hoverTipsOn) return;
           symTip.textContent = syms[t];
@@ -1918,6 +1957,13 @@ function attachSymbolHovers() {
           symTip.style.display = 'none';
           el.removeEventListener('mousemove', moveTip);
         });
+        el.addEventListener('focus', () => {
+          if (!hoverTipsOn) return;
+          symTip.textContent = syms[t];
+          symTip.style.display = 'block';
+          positionTipNearEl(el, symTip);
+        });
+        el.addEventListener('blur', () => { symTip.style.display = 'none'; });
       }
     });
   }
@@ -1926,6 +1972,12 @@ function attachSymbolHovers() {
 function moveTip(e) {
   symTip.style.left = (e.clientX + 14) + 'px';
   symTip.style.top  = (e.clientY - 10) + 'px';
+}
+
+function positionTipNearEl(el, tipEl) {
+  const r = el.getBoundingClientRect();
+  tipEl.style.left = r.left + 'px';
+  tipEl.style.top  = (r.bottom + 6) + 'px';
 }
 
 const INTEGRAL_TIP =
@@ -1938,6 +1990,7 @@ function attachIntegralTooltip(container) {
     if (el.dataset.intBound) return;
     el.dataset.intBound = '1';
     el.style.cursor = 'help';
+    el.setAttribute('tabindex', '0');
     el.addEventListener('mouseenter', ev => {
       if (!hoverTipsOn) return;
       symTip.textContent = INTEGRAL_TIP;
@@ -1949,6 +2002,13 @@ function attachIntegralTooltip(container) {
       symTip.style.display = 'none';
       el.removeEventListener('mousemove', moveTip);
     });
+    el.addEventListener('focus', () => {
+      if (!hoverTipsOn) return;
+      symTip.textContent = INTEGRAL_TIP;
+      symTip.style.display = 'block';
+      positionTipNearEl(el, symTip);
+    });
+    el.addEventListener('blur', () => { symTip.style.display = 'none'; });
   });
 }
 
@@ -1992,6 +2052,35 @@ function updateNotesBadge() {
   const key = notesKey();
   const hasNote = key && !!localStorage.getItem(key);
   notesBtn.classList.toggle('has-notes', hasNote);
+}
+
+function exportAllNotes() {
+  const entries = [];
+  for (let i = 0; i < localStorage.length; i++) {
+    const key = localStorage.key(i);
+    if (key && key.startsWith('notes.')) {
+      entries.push([key.slice('notes.'.length), localStorage.getItem(key)]);
+    }
+  }
+  if (!entries.length) return;
+
+  entries.sort((a, b) => a[0].localeCompare(b[0]));
+  const lines = ['=== Math Game — Puzzle Notes ===', 'Exported: ' + new Date().toLocaleDateString(), ''];
+  entries.forEach(([id, text]) => {
+    lines.push(`--- ${id} ---`);
+    lines.push(text.trim());
+    lines.push('');
+  });
+
+  const blob = new Blob([lines.join('\n')], { type: 'text/plain' });
+  const url  = URL.createObjectURL(blob);
+  const a    = document.createElement('a');
+  a.href     = url;
+  a.download = 'math_game_notes.txt';
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  URL.revokeObjectURL(url);
 }
 
 const notesPreview = $('notes-preview');
@@ -2066,11 +2155,14 @@ $('notes-clear').addEventListener('click', () => {
   saveNotes();
 });
 
+$('notes-export').addEventListener('click', exportAllNotes);
+
 // ── Sigma Stepper ──────────────────────────────────────────────
 const sigmaModal  = $('sigma-modal');
 let _sigmaTerms   = [];   // [{k, term, runSum}]
 let _sigmaIdx     = 0;    // current row index
 let _sigmaInfo    = null; // {varName, lower, upper, bodyLatex}
+let _sigmaOpenerEl = null; // element to restore focus to on close
 
 // Parse \sum_{k=lower}^{upper} body from a LaTeX string.
 // Returns null if not found or bounds are non-numeric.
@@ -2194,11 +2286,15 @@ function openSigmaModal() {
   });
 
   renderSigmaStep(0);
+  _sigmaOpenerEl = document.activeElement;
   sigmaModal.classList.add('open');
+  $('sigma-close').focus();
 }
 
 function closeSigmaModal() {
   sigmaModal.classList.remove('open');
+  if (_sigmaOpenerEl && document.contains(_sigmaOpenerEl)) _sigmaOpenerEl.focus();
+  _sigmaOpenerEl = null;
 }
 
 // Show/hide sigma button based on current step
@@ -2234,5 +2330,6 @@ document.addEventListener('keydown', e => {
 })();
 </script>
 <script src="theme-toggle.js"></script>
+<script src="textbook-switcher.js"></script>
 </body>
 </html>

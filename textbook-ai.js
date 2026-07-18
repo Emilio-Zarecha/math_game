@@ -205,6 +205,9 @@
     '}',
     '#ai-change-key { cursor: pointer; text-decoration: underline; }',
     '#ai-change-key:hover { color: var(--accent); }',
+    '#ai-footer-right { display: flex; gap: 12px; }',
+    '#ai-new-convo { cursor: pointer; text-decoration: underline; }',
+    '#ai-new-convo:hover { color: var(--accent); }',
   ].join('\n');
   document.head.appendChild(style);
 
@@ -302,7 +305,10 @@
     '</div>' +
     '<div id="ai-footer">' +
     '<span>Gemini 2.5 Flash · current chapter as context</span>' +
+    '<span id="ai-footer-right">' +
+    '<span id="ai-new-convo">new conversation</span>' +
     '<span id="ai-change-key">change key</span>' +
+    '</span>' +
     '</div>' +
     '</div>' +
 
@@ -337,13 +343,16 @@
   function openModal() {
     var ch    = getCurrentChapter();
     chapterCtx = ch.text;
-    history   = [];
-    el('ai-history').innerHTML      = '';
     el('ai-chapter-label').textContent = ch.title ? '· ' + ch.title : '';
     overlay.classList.add('open');
     apiKey ? showChatPane() : showKeyPane();
   }
   function closeModal() { overlay.classList.remove('open'); }
+
+  function startNewConversation() {
+    history = [];
+    el('ai-history').innerHTML = '';
+  }
 
   // ── Events ────────────────────────────────────────────────────────────────
   triggerBtn.addEventListener('click', openModal);
@@ -363,6 +372,7 @@
   });
 
   el('ai-change-key').addEventListener('click', showKeyPane);
+  el('ai-new-convo').addEventListener('click', startNewConversation);
 
   function sendQuestion() {
     var ta       = el('ai-textarea');

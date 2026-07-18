@@ -29,10 +29,12 @@
   var backContainer = null;
 
   function smoothScrollTo(target) {
+    var behavior = (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches)
+      ? 'auto' : 'smooth';
     if (typeof target === 'number') {
-      window.scrollTo({ top: target, behavior: 'smooth' });
+      window.scrollTo({ top: target, behavior: behavior });
     } else if (target && target.scrollIntoView) {
-      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      target.scrollIntoView({ behavior: behavior, block: 'start' });
     }
   }
 

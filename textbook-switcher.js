@@ -1,6 +1,13 @@
 (function () {
   'use strict';
 
+  // Not textbooks, but the switcher is the only nav that persists across every
+  // page, so it doubles as the site's back-to-game / diagrams shortcut too.
+  var EXTRAS = [
+    { file: 'index.html',      label: '◂ Game',  extra: true },
+    { file: 'diagrams.html',   label: 'Diagrams', extra: true },
+  ];
+
   var BOOKS = [
     { file: 'textbook_arithmetic.html',    label: 'Arithmetic' },
     { file: 'textbook_arithmetic2.html',   label: 'Intermediate Arithmetic' },
@@ -26,6 +33,9 @@
     '  background: var(--panel);',
     '  border-bottom: 1px solid var(--border);',
     '  padding: 0 1rem;',
+    /* Hints that the bar scrolls, since the scrollbar itself is hidden above. */
+    '  mask-image: linear-gradient(to right, transparent, black 20px, black calc(100% - 20px), transparent);',
+    '  -webkit-mask-image: linear-gradient(to right, transparent, black 20px, black calc(100% - 20px), transparent);',
     '}',
     'nav.textbook-switcher::-webkit-scrollbar { display: none; }',
     'nav.textbook-switcher a {',
@@ -48,6 +58,9 @@
     '  border-bottom-color: var(--accent);',
     '  font-weight: 600;',
     '}',
+    'nav.textbook-switcher a.extra {',
+    '  border-right: 1px solid var(--border);',
+    '}',
   ].join('\n');
   document.head.appendChild(style);
 
@@ -58,14 +71,17 @@
     nav.className = 'textbook-switcher';
     nav.setAttribute('aria-label', 'Switch textbook');
 
-    BOOKS.forEach(function (b) {
+    EXTRAS.concat(BOOKS).forEach(function (b) {
       var a = document.createElement('a');
       a.href = b.file;
       a.textContent = b.label;
+      var classes = [];
+      if (b.extra) classes.push('extra');
       if (b.file === current) {
-        a.className = 'current';
+        classes.push('current');
         a.setAttribute('aria-current', 'page');
       }
+      if (classes.length) a.className = classes.join(' ');
       nav.appendChild(a);
     });
 
