@@ -360,6 +360,7 @@
       transition: opacity 0.3s;
     }
     #side-message.hidden-msg { opacity: 0; }
+    #side-message.wrong { color: var(--wrong); }
 
     /* Auto-step label */
     #auto-label {
@@ -883,6 +884,7 @@
   Solved: <b id="sc-solved">0</b>
   &nbsp;|&nbsp; Hints: <b id="sc-hints">0</b>
   &nbsp;|&nbsp; Streak: <b id="sc-streak">0</b>
+  &nbsp;|&nbsp; Best: <b id="sc-best">0</b>
   &nbsp;|&nbsp; Problem: <b id="sc-num" style="color:var(--hint)">—</b>
   &nbsp;|&nbsp; ID: <b id="sc-puzzle">—</b>
 </div>
@@ -954,7 +956,7 @@
       <button class="ctrl-btn primary" id="final-btn">Final Answer</button>
       <button class="ctrl-btn" id="notes-btn">📝 Notes<span class="badge"></span></button>
       <button class="ctrl-btn" id="sigma-btn" style="display:none">∑ Expand</button>
-      <button class="ctrl-btn" id="hover-toggle-btn">💡 Hints: On</button>
+      <button class="ctrl-btn" id="hover-toggle-btn">💡 Symbol tips: On</button>
     </div>
 
   </div>
@@ -1039,6 +1041,35 @@ const G = {
   score:           { solved: 0, hints: 0, streak: 0, bestStreak: 0 },
 };
 
+// ── Persisted score + solved-puzzle history ────────────────────
+const SCORE_KEY  = 'math-score';
+const SOLVED_KEY = 'math-solved-ids';
+
+function loadScore() {
+  try {
+    const saved = JSON.parse(localStorage.getItem(SCORE_KEY));
+    if (saved && typeof saved === 'object') Object.assign(G.score, saved);
+  } catch (e) {}
+  $('sc-solved').textContent = G.score.solved;
+  $('sc-hints').textContent  = G.score.hints;
+  $('sc-streak').textContent = G.score.streak > 0 ? `🔥${G.score.streak}` : '0';
+  $('sc-best').textContent   = G.score.bestStreak;
+}
+
+function saveScore() {
+  localStorage.setItem(SCORE_KEY, JSON.stringify(G.score));
+}
+
+let solvedIds = new Set();
+try {
+  solvedIds = new Set(JSON.parse(localStorage.getItem(SOLVED_KEY)) || []);
+} catch (e) {}
+
+function markPuzzleSolved(id) {
+  solvedIds.add(id);
+  localStorage.setItem(SOLVED_KEY, JSON.stringify([...solvedIds]));
+}
+
 const TEXTBOOK_MAP = {
   'alg':    'textbook_algebra.html',
   'alg2':   'textbook_algebra2.html',
@@ -1101,14 +1132,71 @@ async function loadGlobalSymbols() {
 }
 
 // ── Load topic list ────────────────────────────────────────────
+// ── Puzzle dropdown: grouped + word-boundary-truncated options ──
+function truncateLabel(text, max = 50) {
+  if (text.length <= max) return text;
+  const cut = text.slice(0, max);
+  const lastSpace = cut.lastIndexOf(' ');
+  return (lastSpace > 20 ? cut.slice(0, lastSpace) : cut) + '…';
+}
+
+function escapeAttr(str) {
+  return str.replace(/&/g, '&amp;').replace(/"/g, '&quot;');
+}
+
+function puzzleOptionHtml(p, i, prefix = '') {
+  const check = solvedIds.has(p.id) ? '✓ ' : '';
+  const full  = `${prefix}${p.id} — ${p.question.plain} (${p.difficulty})`;
+  const label = `${check}${prefix}${p.id} — ${truncateLabel(p.question.plain)} (${p.difficulty})`;
+  return `<option value="${i}" title="${escapeAttr(full)}">${label}</option>`;
+}
+
+// Group by difficulty — always available, and the only sane grouping when
+// puzzles come from mixed topics (concept mode).
+function groupByDifficulty(puzzles) {
+  const order = ['easy', 'medium', 'hard'];
+  const groups = new Map();
+  puzzles.forEach((p, i) => {
+    const key = p.difficulty || 'other';
+    if (!groups.has(key)) groups.set(key, []);
+    groups.get(key).push({ p, i });
+  });
+  return [...groups.entries()]
+    .sort((a, b) => order.indexOf(a[0]) - order.indexOf(b[0]))
+    .map(([key, items]) => ({ label: key.charAt(0).toUpperCase() + key.slice(1), items }));
+}
+
+// Group by chapter when every puzzle in this topic has one, else fall back
+// to difficulty — most topics don't carry chapter data yet.
+function groupForTopic(puzzles) {
+  const hasChapters = puzzles.length > 0 && puzzles.every(p => p.chapter != null);
+  if (!hasChapters) return groupByDifficulty(puzzles);
+  const groups = new Map();
+  puzzles.forEach((p, i) => {
+    const key = String(p.chapter);
+    if (!groups.has(key)) groups.set(key, []);
+    groups.get(key).push({ p, i });
+  });
+  return [...groups.entries()].map(([key, items]) => ({
+    label: /^\d+$/.test(key) ? `Chapter ${key}` : key.charAt(0).toUpperCase() + key.slice(1),
+    items
+  }));
+}
+
+function renderGroupedOptions(groups, prefixFn) {
+  return groups.map(g =>
+    `<optgroup label="${escapeAttr(g.label)}">` +
+    g.items.map(({ p, i }) => puzzleOptionHtml(p, i, prefixFn ? prefixFn(p) : '')).join('') +
+    `</optgroup>`
+  ).join('');
+}
+
 async function loadTopicIndex() {
   const topic = topicSel.value;
   try {
     const r = await fetch(`puzzles/${topic}`);
     const puzzles = await r.json();
-    puzzleSel.innerHTML = puzzles.map((p, i) =>
-      `<option value="${i}">${p.id} — ${p.question.plain} (${p.difficulty})</option>`
-    ).join('');
+    puzzleSel.innerHTML = renderGroupedOptions(groupForTopic(puzzles));
     puzzleSel._data = puzzles;
   } catch(e) {
     puzzleSel.innerHTML = '<option>Error loading</option>';
@@ -1153,7 +1241,10 @@ tabConcept.addEventListener('click', () => setMode('concept'));
 const G_topicCache = {};
 
 async function preloadTopicCache() {
-  for (const file of ['algebra2.json', 'trigonometry.json', 'calculus.json', 'statistics.json']) {
+  // Fetch every file TOPIC_META can reference, so a concept can never point at a
+  // topic this cache forgot to load (see TOPIC_META below — single source of truth).
+  const files = new Set(Object.values(TOPIC_META).map(tm => tm.file));
+  for (const file of files) {
     try {
       const r = await fetch(`puzzles/${file}`);
       G_topicCache[file] = await r.json();
@@ -1174,12 +1265,19 @@ async function loadConcepts() {
   } catch(e) {}
 }
 
+// topicIndex must match the 0-based order of #topic-select's <option>s exactly —
+// it's what makes a concept-loaded puzzle's "Problem #" agree with topic-browse mode.
 const TOPIC_META = {
-  'trig':   { file: 'trigonometry.json',   topicIndex: 4 },
-  'calc':   { file: 'calculus.json',       topicIndex: 5 },
+  'alg':    { file: 'algebra.json',        topicIndex: 0 },
   'alg2':   { file: 'algebra2.json',       topicIndex: 1 },
-  'stat':   { file: 'statistics.json',     topicIndex: 6 },
-  'linalg': { file: 'linearalgebra.json',  topicIndex: 7 },
+  'arith':  { file: 'arithmetic.json',     topicIndex: 2 },
+  'arith2': { file: 'arithmetic2.json',    topicIndex: 3 },
+  'comb':   { file: 'combinatorics.json',  topicIndex: 4 },
+  'geo':    { file: 'geometry.json',       topicIndex: 5 },
+  'trig':   { file: 'trigonometry.json',   topicIndex: 6 },
+  'calc':   { file: 'calculus.json',       topicIndex: 7 },
+  'stat':   { file: 'statistics.json',     topicIndex: 8 },
+  'linalg': { file: 'linearalgebra.json',  topicIndex: 9 },
   'graph':  { file: 'graphtheory.json',    topicIndex: 10 },
 };
 
@@ -1209,9 +1307,10 @@ conceptSel.addEventListener('change', () => {
     meta.push({ topicIndex: tm.topicIndex, puzzleIdxInTopic: idx });
   }
 
-  puzzleSel.innerHTML = filtered.map((p, i) =>
-    `<option value="${i}">[${p.id.split('-')[0].toUpperCase()}] ${p.id} — ${p.question.plain} (${p.difficulty})</option>`
-  ).join('');
+  puzzleSel.innerHTML = renderGroupedOptions(
+    groupByDifficulty(filtered),
+    p => `[${p.id.split('-')[0].toUpperCase()}] `
+  );
   puzzleSel._data     = filtered;
   puzzleSel._dataMeta = meta;
   conceptCount.textContent = `${filtered.length} puzzle${filtered.length !== 1 ? 's' : ''}`;
@@ -1302,6 +1401,18 @@ function renderQuestion() {
 }
 
 // ── Palette ────────────────────────────────────────────────────
+// Tap-to-select: tap a palette item to select it, then tap a drop zone to
+// place it. Works identically with mouse click or touch tap (both fire
+// 'click'), so it needs no touch-specific handling and never blocks scroll.
+let selectedPaletteId = null;
+let selectedPaletteEl = null;
+
+function clearPaletteSelection() {
+  if (selectedPaletteEl) selectedPaletteEl.classList.remove('touch-selected');
+  selectedPaletteEl = null;
+  selectedPaletteId = null;
+}
+
 function renderPalette() {
   const pal = $('palette');
   pal.querySelectorAll('.palette-item').forEach(el => el.remove());
@@ -1333,35 +1444,15 @@ function renderPalette() {
       G.draggingId = null;
     });
 
-    // ── Touch drag: swipe palette item onto a drop zone ──────────
-    div.addEventListener('touchstart', () => {
-      G.draggingId = item.id;
-      div.classList.add('dragging');
+    // ── Tap to select (mouse click or touch tap) ─────────────────
+    div.addEventListener('click', () => {
+      if (div.classList.contains('used')) return;
+      if (selectedPaletteEl === div) { clearPaletteSelection(); return; }
+      if (selectedPaletteEl) selectedPaletteEl.classList.remove('touch-selected');
+      selectedPaletteEl = div;
+      selectedPaletteId = item.id;
+      div.classList.add('touch-selected');
       symTip.style.display = 'none';
-    }, { passive: true });
-
-    div.addEventListener('touchmove', e => {
-      e.preventDefault(); // prevent page scroll while dragging
-      const t = e.touches[0];
-      stepEq.querySelectorAll('.drop-zone').forEach(el => el.classList.remove('drag-over'));
-      const under = document.elementFromPoint(t.clientX, t.clientY);
-      const dz = under?.closest('.drop-zone:not(.done)');
-      if (dz) dz.classList.add('drag-over');
-    }, { passive: false });
-
-    div.addEventListener('touchend', e => {
-      div.classList.remove('dragging');
-      stepEq.querySelectorAll('.drop-zone.drag-over').forEach(el => el.classList.remove('drag-over'));
-      const t = e.changedTouches[0];
-      const under = document.elementFromPoint(t.clientX, t.clientY);
-      const dz = under?.closest('.drop-zone');
-      if (dz) {
-        const idx = parseInt(dz.dataset.dzIdx);
-        if (!isNaN(idx) && !G.completedDrops.has(idx)) {
-          handleDrop(dz, idx, G.draggingId);
-        }
-      }
-      G.draggingId = null;
     });
 
     pal.appendChild(div);
@@ -1384,6 +1475,7 @@ function syncPaletteUsed() {
 // ── Current step ───────────────────────────────────────────────
 function renderCurrentStep() {
   if (!G.puzzle) return;
+  clearPaletteSelection();
   const p   = G.puzzle;
   const vs  = visibleSteps();
   const done = G.currentStep >= vs.length;
@@ -1483,6 +1575,15 @@ function setupDropZone(dz, dzIdx) {
     if (G.completedDrops.has(dzIdx)) return;
     handleDrop(dz, dzIdx, G.draggingId);
   });
+
+  // Tap-to-place: completes the pending tap-selected palette item.
+  dz.addEventListener('click', () => {
+    if (G.completedDrops.has(dzIdx) || !selectedPaletteId) return;
+    const step = visibleSteps()[G.currentStep];
+    const wasCorrect = step && step.paletteRef === selectedPaletteId;
+    handleDrop(dz, dzIdx, selectedPaletteId);
+    if (wasCorrect) clearPaletteSelection();
+  });
 }
 
 function handleDrop(dz, dzIdx, paletteId) {
@@ -1524,6 +1625,8 @@ function handleDrop(dz, dzIdx, paletteId) {
     // Wrong palette item
     dz.classList.add('wrong-drop');
     setTimeout(() => dz.classList.remove('wrong-drop'), 380);
+    showSideMsg('✗ Not that one — check the step description below.', true);
+    wrongMsgTimer = setTimeout(hideSideMsg, 1800);
   }
 }
 
@@ -1545,11 +1648,16 @@ function advanceStep() {
       $('sc-solved').textContent = G.score.solved;
       if (G.cleanSolve) {
         G.score.streak++;
-        if (G.score.streak > G.score.bestStreak) G.score.bestStreak = G.score.streak;
+        if (G.score.streak > G.score.bestStreak) {
+          G.score.bestStreak = G.score.streak;
+          $('sc-best').textContent = G.score.bestStreak;
+        }
       } else {
         G.score.streak = 0;
       }
       $('sc-streak').textContent = G.score.streak > 0 ? `🔥${G.score.streak}` : '0';
+      markPuzzleSolved(G.puzzle.id);
+      saveScore();
     }
     renderCurrentStep();
     requestAnimationFrame(() => requestAnimationFrame(() => {
@@ -1565,6 +1673,7 @@ function markHintUsed() {
   G.cleanSolve = false;
   G.score.streak = 0;
   $('sc-streak').textContent = '0';
+  saveScore();
 }
 
 function activateHint() {
@@ -1604,12 +1713,18 @@ function clearHint() {
 $('hint-btn').addEventListener('click', activateHint);
 
 // ── Side message ───────────────────────────────────────────────
-function showSideMsg(text) {
+let wrongMsgTimer = null;
+
+function showSideMsg(text, isWrong = false) {
+  clearTimeout(wrongMsgTimer);
   sideMsg.textContent = text;
+  sideMsg.classList.toggle('wrong', isWrong);
   sideMsg.classList.remove('hidden-msg');
 }
 function hideSideMsg() {
+  clearTimeout(wrongMsgTimer);
   sideMsg.classList.add('hidden-msg');
+  sideMsg.classList.remove('wrong');
   sideMsg.textContent = '';
 }
 
@@ -1767,7 +1882,7 @@ document.addEventListener('keydown', e => {
 let hoverTipsOn = localStorage.getItem('math-hovertips') !== 'off';
 
 function applyHoverTipsUI() {
-  hoverToggleBtn.textContent = hoverTipsOn ? '💡 Hints: On' : '💡 Hints: Off';
+  hoverToggleBtn.textContent = hoverTipsOn ? '💡 Symbol tips: On' : '💡 Symbol tips: Off';
   hoverToggleBtn.classList.toggle('primary', hoverTipsOn);
   document.body.classList.toggle('hints-off', !hoverTipsOn);
   if (!hoverTipsOn) symTip.style.display = 'none';
@@ -2112,6 +2227,7 @@ document.addEventListener('keydown', e => {
 
 // ── Init ───────────────────────────────────────────────────────
 (async () => {
+  loadScore();
   await loadGlobalSymbols();
   await loadTopicIndex();
   await Promise.all([preloadTopicCache(), loadConcepts()]);
