@@ -60,11 +60,28 @@
     <h1>Graph Theory Diagrams</h1>
     <a href="diagrams.html">← All Diagrams</a>
   </header>
-  <p class="subtitle">Two interactive diagrams: graph traversal (BFS vs DFS) and building a minimum spanning tree with Kruskal's algorithm.</p>
+  <p class="subtitle">Three interactive diagrams: the handshake theorem, graph traversal (BFS vs DFS), and building a minimum spanning tree with Kruskal's algorithm.</p>
 
-  <!-- ── 1. BFS vs DFS Traversal ─────────────────────────────────────────── -->
+  <!-- ── 1. Handshake Theorem ─────────────────────────────────────────────── -->
   <div class="diagram-block">
-    <h2>1 — Graph Traversal: BFS vs DFS</h2>
+    <h2>1 — The Handshake Theorem</h2>
+    <p class="desc">Click any faint line to toggle that edge on or off. Watch the degree of each vertex update live, and see that the sum of all degrees always equals 2|E| — no matter which edges you pick.</p>
+
+    <div class="btn-row">
+      <button class="tog-btn" id="hs-clear">Clear All Edges</button>
+      <button class="tog-btn" id="hs-load">Load Graph G (Ch. 1)</button>
+    </div>
+
+    <div class="svg-wrap">
+      <svg id="hs-svg" viewBox="0 0 260 200"></svg>
+    </div>
+    <div class="formula-strip" id="hs-formula"></div>
+    <div class="info-box" id="hs-info"></div>
+  </div>
+
+  <!-- ── 2. BFS vs DFS Traversal ─────────────────────────────────────────── -->
+  <div class="diagram-block">
+    <h2>2 — Graph Traversal: BFS vs DFS</h2>
     <p class="desc">Pick a start vertex and a traversal method. Numbers show visit order; highlighted edges are the traversal tree — the edge used to first reach each vertex.</p>
 
     <div class="btn-row">
@@ -88,9 +105,9 @@
     <div class="info-box" id="trav-info"></div>
   </div>
 
-  <!-- ── 2. Kruskal's Algorithm ───────────────────────────────────────────── -->
+  <!-- ── 3. Kruskal's Algorithm ───────────────────────────────────────────── -->
   <div class="diagram-block">
-    <h2>2 — Kruskal's Algorithm: Building an MST</h2>
+    <h2>3 — Kruskal's Algorithm: Building an MST</h2>
     <p class="desc">Step through Kruskal's algorithm edge by edge, sorted by weight. Each edge is accepted (added to the tree) unless both endpoints are already connected, which would create a cycle.</p>
 
     <div class="btn-row">
@@ -133,7 +150,87 @@ var EDGES = WEIGHTED_EDGES.map(function(e){ return [e[0],e[1]]; });
 function edgeKey(u,v){ return [u,v].sort().join(''); }
 
 // ────────────────────────────────────────────────────────────────────────────
-// DIAGRAM 1: BFS vs DFS
+// DIAGRAM 1: HANDSHAKE THEOREM
+// ────────────────────────────────────────────────────────────────────────────
+(function(){
+  var svg=document.getElementById('hs-svg');
+  var formulaEl=document.getElementById('hs-formula');
+  var infoEl=document.getElementById('hs-info');
+  var clearBtn=document.getElementById('hs-clear');
+  var loadBtn=document.getElementById('hs-load');
+
+  var vertices = Object.keys(POS);
+  var allPairs = [];
+  for(var i=0;i<vertices.length;i++){
+    for(var j=i+1;j<vertices.length;j++){
+      allPairs.push([vertices[i],vertices[j]]);
+    }
+  }
+
+  var active = {};
+  function loadG(){
+    active = {};
+    EDGES.forEach(function(e){ active[edgeKey(e[0],e[1])]=true; });
+  }
+  loadG();
+
+  function toggle(u,v){
+    var k=edgeKey(u,v);
+    if(active[k]) delete active[k]; else active[k]=true;
+    draw();
+  }
+
+  function draw(){
+    while(svg.firstChild) svg.removeChild(svg.firstChild);
+
+    var deg={};
+    vertices.forEach(function(v){ deg[v]=0; });
+    var edgeCount=0;
+
+    allPairs.forEach(function(e){
+      var k=edgeKey(e[0],e[1]);
+      var on = !!active[k];
+      var p1=POS[e[0]], p2=POS[e[1]];
+
+      var hit=svgEl('line',{x1:p1[0],y1:p1[1],x2:p2[0],y2:p2[1],
+        stroke:'transparent','stroke-width':'10',style:'cursor:pointer'});
+      hit.addEventListener('click', (function(a,b){ return function(){ toggle(a,b); }; })(e[0],e[1]));
+      svg.appendChild(hit);
+
+      svg.appendChild(svgEl('line',{x1:p1[0],y1:p1[1],x2:p2[0],y2:p2[1],
+        stroke: on ? '#5c8aff' : '#2e2e55',
+        'stroke-width': on ? '3' : '1',
+        'stroke-dasharray': on ? 'none' : '3,3',
+        'pointer-events':'none'}));
+
+      if(on){ deg[e[0]]++; deg[e[1]]++; edgeCount++; }
+    });
+
+    vertices.forEach(function(v){
+      var p=POS[v];
+      svg.appendChild(svgEl('circle',{cx:p[0],cy:p[1],r:15,fill:'#1c1c35',stroke:'#5c8aff','stroke-width':'2','pointer-events':'none'}));
+      svg.appendChild(svgText(p[0],p[1]-3,v,'#e0e0f0',11));
+      svg.appendChild(svgText(p[0],p[1]+11,'deg '+deg[v],'#ffb830',8));
+    });
+
+    var degSum = vertices.reduce(function(s,v){ return s+deg[v]; }, 0);
+    var terms = vertices.map(function(v){ return deg[v]; }).join('+');
+
+    formulaEl.innerHTML = 'Σ deg(v) = ' + terms + ' = <span class="hi">' + degSum + '</span>' +
+      ' &nbsp;=&nbsp; 2|E| = 2 &times; ' + edgeCount + ' = <span class="ans">' + (2*edgeCount) + '</span>';
+    infoEl.innerHTML = 'Toggle edges freely — the sum of all vertex degrees always equals <strong>2|E|</strong>, ' +
+      'because every edge adds exactly 1 to each of its two endpoints\' degree, contributing exactly 2 to the total ' +
+      'no matter which edges are chosen. Currently ' + edgeCount + ' edge' + (edgeCount===1?'':'s') + ' selected.';
+  }
+
+  clearBtn.addEventListener('click', function(){ active={}; draw(); });
+  loadBtn.addEventListener('click', function(){ loadG(); draw(); });
+
+  draw();
+})();
+
+// ────────────────────────────────────────────────────────────────────────────
+// DIAGRAM 2: BFS vs DFS
 // ────────────────────────────────────────────────────────────────────────────
 (function(){
   var svg=document.getElementById('trav-svg');
@@ -221,7 +318,7 @@ function edgeKey(u,v){ return [u,v].sort().join(''); }
 })();
 
 // ────────────────────────────────────────────────────────────────────────────
-// DIAGRAM 2: KRUSKAL'S ALGORITHM
+// DIAGRAM 3: KRUSKAL'S ALGORITHM
 // ────────────────────────────────────────────────────────────────────────────
 (function(){
   var svg=document.getElementById('mst-svg');
