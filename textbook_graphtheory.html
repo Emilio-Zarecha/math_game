@@ -48,7 +48,23 @@
     .ai-note { background:rgba(45,212,191,0.08); border:1px solid var(--border); border-left:3px solid var(--ai); border-radius:8px; padding:14px 20px; margin:16px 0; }
     .ai-note .label { font-size:0.7rem; letter-spacing:.14em; text-transform:uppercase; color:var(--ai); margin-bottom:8px; }
     .ai-note p { margin-bottom:0; font-size:0.9rem; line-height:1.9; }
-    .key { color:var(--hint); font-weight:600; }
+    .key { color:var(--hint); font-weight:600; cursor:help; border-bottom:1px dotted var(--muted); }
+    #glossary-tip {
+      position: fixed;
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 8px 12px;
+      font-size: 0.8rem;
+      color: var(--text);
+      z-index: 300;
+      pointer-events: none;
+      white-space: normal;
+      max-width: 280px;
+      line-height: 1.5;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.5);
+      display: none;
+    }
     .attribution { text-align:center; color:var(--muted); font-size:0.82rem; margin-top:36px; padding-top:20px; border-top:1px solid var(--border); }
     @media (max-width:600px) { nav ol { grid-template-columns:1fr; } section { padding:24px 20px; } .example-step { flex-direction:column; gap:2px; } }
     .toc-back { text-align: right; margin-top: 1.5rem; padding-top: 0.9rem;
@@ -524,8 +540,8 @@
       A <span class="key">tree</span> is a connected graph with no cycles. This single
       constraint forces a precise relationship between vertices and edges: any tree with $n$
       vertices has exactly $n-1$ edges — one fewer edge than vertex, since each new vertex
-      attaches via exactly one edge without ever closing a loop. A <span class="key">spanning
-      tree</span> of a graph $G$ is a subgraph that is a tree and touches every vertex of $G$.
+      attaches via exactly one edge without ever closing a loop. A <span class="key">spanning tree</span>
+      of a graph $G$ is a subgraph that is a tree and touches every vertex of $G$.
       The diagram shows one of G's many possible spanning trees: 5 edges connecting all 6
       vertices, with the diagonal $\{A,D\}$ and edge $\{F,A\}$ excluded to avoid closing a cycle.
     </p>
@@ -630,8 +646,8 @@
       $4+3+2=9$ — both worse than they might look at a glance. For the destination $E$, the
       route $A \to F \to E$ costs only $1 + 2 = 3$, beating both $A \to D \to E$ ($6+5=11$) and
       the long way around through $B$ and $C$. When negative edge weights are possible,
-      Dijkstra can give wrong answers, and the slower <span class="key">Bellman-Ford
-      algorithm</span> — which relaxes every edge repeatedly, $|V|-1$ times — is used instead,
+      Dijkstra can give wrong answers, and the slower <span class="key">Bellman-Ford algorithm</span>
+      — which relaxes every edge repeatedly, $|V|-1$ times — is used instead,
       since it can also detect negative-weight cycles.
     </p>
 
@@ -1112,10 +1128,85 @@
 
 </div><!-- .page -->
 
+<div id="glossary-tip"></div>
+
 <script src="textbook-switcher.js"></script>
 <script src="textbook-notes.js"></script>
 <script src="textbook-nav.js"></script>
 <script src="theme-toggle.js"></script>
 <script src="textbook-ai.js"></script>
+<script>
+// ── Glossary hover tooltips for .key terms ──────────────────────
+(function(){
+  var GLOSSARY = {
+    'graph': 'A set of vertices together with a set of edges connecting pairs of them.',
+    'vertices': 'The points (also called nodes) in a graph — the "things" being connected.',
+    'edges': 'The connections between pairs of vertices in a graph.',
+    'directed': 'Describes a graph whose edges have a direction (an arrow), so the relationship only runs one way.',
+    'degree': 'The number of edges touching a vertex.',
+    'adjacency matrix': 'An n×n grid where entry (i,j) is 1 if vertices i and j are connected, 0 otherwise.',
+    'adjacency list': "A per-vertex list of that vertex's neighbors — the standard sparse-graph representation.",
+    'walk': 'Any sequence of vertices where consecutive ones are joined by an edge; vertices and edges may repeat.',
+    'path': 'A walk that never repeats a vertex.',
+    'cycle': 'A path that returns to its own starting vertex.',
+    'connected': 'Two vertices are connected if some path exists between them.',
+    'connected component': 'A maximal set of vertices that are all mutually connected to each other.',
+    'bridge': 'An edge whose removal disconnects the graph — a single point of failure.',
+    'cut vertex': 'A vertex whose removal disconnects the graph.',
+    'Breadth-First Search (BFS)': "Traversal that visits vertices in waves by distance from the start, using a queue — finds shortest paths in unweighted graphs.",
+    'queue': 'A first-in, first-out list — the data structure BFS uses to decide which vertex to visit next.',
+    'Depth-First Search (DFS)': 'Traversal that follows one branch as far as possible before backtracking, using a stack (often via recursion).',
+    'stack': 'A last-in, first-out list — the data structure DFS uses (explicitly or via recursion).',
+    'tree': 'A connected graph with no cycles; n vertices always means exactly n−1 edges.',
+    'spanning tree': 'A subgraph that is a tree and touches every vertex of the original graph.',
+    'Minimum Spanning Tree (MST)': "A spanning tree whose total edge weight is as small as possible.",
+    "Kruskal's algorithm": 'Builds an MST by sorting all edges by weight and adding each one unless it would create a cycle.',
+    "Prim's algorithm": 'Builds an MST by growing a single tree outward, always adding the cheapest edge that reaches a new vertex.',
+    "Dijkstra's algorithm": 'Finds shortest paths from one source to all other vertices, provided every edge weight is non-negative.',
+    'Bellman-Ford algorithm': 'Finds shortest paths by relaxing every edge repeatedly; slower than Dijkstra but handles negative edge weights.',
+    'relaxes': "Updates a vertex's best-known distance when a cheaper route through another vertex is found.",
+    'Directed Acyclic Graph (DAG)': 'A directed graph containing no directed cycles — you can never follow arrows back to where you started.',
+    'topological sort': 'An ordering of a DAG\'s vertices such that every edge points from an earlier vertex to a later one.',
+    'chromatic number': 'The minimum number of colors needed to color a graph so no edge joins two same-colored vertices.',
+    'bipartite': 'Describes a graph whose vertices split into two groups with every edge crossing between groups, none within one.',
+    'matching': 'A set of edges in a bipartite graph pairing vertices across the two sides, each vertex used at most once.',
+    'Eulerian circuit': 'A closed walk that traverses every edge of a graph exactly once and returns to its start.',
+    'Eulerian path': 'A walk that traverses every edge exactly once but may end at a different vertex than it started.',
+    'Hamiltonian path': 'A path that visits every vertex of a graph exactly once (edges may be skipped).',
+    'maximum flow': 'The greatest total amount that can be sent from a source to a sink through a capacitated network.',
+    'flow network': 'A directed graph where each edge has a capacity limiting how much can flow through it.',
+    'Max-Flow Min-Cut Theorem': 'States that the maximum possible flow always exactly equals the minimum total capacity of edges separating source from sink.',
+    'Ford-Fulkerson method': 'Finds max flow by repeatedly finding a path with spare capacity from source to sink and pushing more flow along it.',
+    'Graph Neural Network (GNN)': "A neural network that operates directly on graph-structured data via message passing between neighboring nodes.",
+    'message passing': "A GNN's core operation: every vertex gathers information from its immediate neighbors and updates its own representation.",
+    'Transformer': 'The architecture behind large language models; can be read as a GNN where every token attends to every other token.',
+    'Knowledge graphs': 'Graphs where vertices are real-world entities and edges are explicit relations between them.',
+    'PageRank': "Google's original ranking algorithm, which scores a web page's importance from a random walk over the web's link graph.",
+  };
+
+  var tip = document.getElementById('glossary-tip');
+
+  function moveTip(e){
+    tip.style.left = (e.clientX + 14) + 'px';
+    tip.style.top  = (e.clientY - 10) + 'px';
+  }
+
+  document.querySelectorAll('.key').forEach(function(el){
+    var term = el.textContent.trim();
+    var def = GLOSSARY[term];
+    if(!def) return;
+    el.addEventListener('mouseenter', function(ev){
+      tip.textContent = def;
+      tip.style.display = 'block';
+      moveTip(ev);
+      el.addEventListener('mousemove', moveTip);
+    });
+    el.addEventListener('mouseleave', function(){
+      tip.style.display = 'none';
+      el.removeEventListener('mousemove', moveTip);
+    });
+  });
+})();
+</script>
 </body>
 </html>
