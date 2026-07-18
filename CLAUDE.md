@@ -7,34 +7,51 @@
 | `index.html` | Single-file game app — all CSS, HTML, JS inline |
 | `puzzles/*.json` | One JSON array per topic |
 | `textbook_*.html` | One standalone textbook per topic |
+| `math_<subject>_diagrams.html` | One interactive diagram page per subject (7 of 11 exist so far) |
+| `diagrams.html` | Hub linking to every diagram page, in canonical curriculum order |
 | `manual.html` | Player manual |
+| `katex/` | KaTeX 0.16.9 vendored locally (js, css, fonts, auto-render) — no CDN dependency |
 | `textbook-notes.js` | Shared script — per-box and per-section notes for all textbooks |
 | `textbook-nav.js` | Shared script — wires `.toc-back` links with scroll-position memory |
+| `textbook-switcher.js` | Shared script — injects the cross-textbook tab bar (also used on `index.html` and `diagrams.html`) |
+| `textbook-glossary.js` | Shared script — hover/tap/keyboard glossary tooltips for `.key` terms |
+| `textbook-ai.js` | Shared script — "Ask AI" tutor modal (Gemini) |
+| `theme-toggle.js` | Shared script — light/dark theme toggle |
 
 ---
 
 ## Adding a New Topic — Checklist
 
-When adding a new topic (e.g., Linear Algebra), update **all four** locations in `index.html`:
+When adding a new topic (e.g., Linear Algebra), update these locations:
 
-1. **Header links** (`<div class="header-links">`):
-   ```html
-   <a class="textbook-link" href="textbook_TOPIC.html">TOPIC Textbook</a>
+1. **`textbook-switcher.js`'s `BOOKS` array** (NOT `index.html` — the header no longer
+   lists textbooks individually; it just loads this shared script):
+   ```js
+   { file: 'textbook_TOPIC.html', label: 'TOPIC Name' },
    ```
 
-2. **Topic select** (`<select id="topic-select">`):
+2. **Topic select** (`<select id="topic-select">` in `index.html`):
    ```html
    <option value="TOPIC.json">TOPIC Name</option>
    ```
 
-3. **`TOPIC_META`** object (used by concept-search tab):
+3. **`TOPIC_META`** object in `index.html` (used by concept-search tab AND as the
+   single source of truth `preloadTopicCache()` derives its fetch list from —
+   adding an entry here is enough, no second file list to keep in sync):
    ```js
    'PREFIX': { file: 'TOPIC.json', topicIndex: N },
    ```
 
-4. **`TEXTBOOK_MAP`** object (used by textbook link bar):
+4. **`TEXTBOOK_MAP`** object in `index.html` (used by the puzzle context bar's
+   "📖 Read about this topic →" link):
    ```js
    'PREFIX': 'textbook_TOPIC.html',
+   ```
+
+5. **`DIAGRAMS_MAP`** object in `index.html` — only once this topic gets a
+   `math_TOPIC_diagrams.html` page (see **Diagram Pages** below):
+   ```js
+   'PREFIX': 'math_TOPIC_diagrams.html',
    ```
 
 ### Current topicIndex assignments
@@ -56,7 +73,11 @@ When adding a new topic (e.g., Linear Algebra), update **all four** locations in
 
 **Global puzzle number formula:** `topicIndex * 30 + idxInTopic + 1`
 
-Note: `TOPIC_META` (used only by concept-search, a separate lookup from the main browse flow) currently only covers 5 of 11 topics, and its topicIndex values for trig/calc/stat/linalg are stale relative to the table above — a known pre-existing gap, not yet fixed.
+`TOPIC_META` now covers all 11 topics with `topicIndex` values matching the table
+above exactly, so a concept-loaded puzzle's "Problem #" always agrees with the
+number the same puzzle shows in topic-browse mode. Keep it that way: whenever a
+topic is appended to `#topic-select`, its `TOPIC_META` entry must get the matching
+new `topicIndex`, not be left out or left stale.
 
 ---
 
@@ -181,7 +202,7 @@ assert body.count('</section>') == body.count('toc-back'), "sections/links misma
 SVG rules:
 - All coordinate points must fall within the declared `viewBox`; verify with a script after writing (see Lessons)
 - Polygons labeled as "squares" must have all four sides equal — compute distances explicitly before committing
-- Use the project palette: `#5c8aff` blue, `#3ecf8e` green, `#ffb830` amber, `#ff6b6b` red, `#7070a0` muted
+- Use the project palette: `#5c8aff` blue, `#3ecf8e` green, `#ffb830` amber, `#ff6b6b` red, `#8a8ab5` muted
 - Always include `aria-label` on the `<svg>` element
 
 **Required structure per textbook:**
@@ -218,15 +239,32 @@ SVG rules:
 
 **Interactive Resources appendix** — each textbook's appendix links to free, interactive tools that let readers explore the same concepts dynamically. Keep 2–4 links; prefer tools that closely match the textbook's specific topic arc rather than generic math sites.
 
-**Textbook switcher nav bar** (`textbook-switcher.js`) — injected dynamically after `<header>` in every textbook. Renders as a horizontal carousel (single row, `overflow-x: auto`, hidden scrollbar) constrained to the same `.page` max-width (820px) as the chapter sections. Lists all textbooks; active page marked with `class="current"` and `aria-current="page"`.
+**Textbook switcher nav bar** (`textbook-switcher.js`) — injected dynamically after the first `<header>` element on the page (works on any page that has one — every textbook, plus `index.html` and `diagrams.html`, each of which now wraps its title in `<header>` specifically so this script has an anchor point). Renders as a horizontal carousel (single row, `overflow-x: auto`, hidden scrollbar, edge-fade `mask-image` since the scrollbar itself is hidden) constrained to the same `.page`/`#layout` max-width as the surrounding content. An `EXTRAS` array prepends "◂ Game" and "Diagrams" entries (visually separated by a border) before the `BOOKS` list, so this bar doubles as the site's one persistent nav, not just a textbook-to-textbook switcher. Active page marked with `class="current"` and `aria-current="page"`.
 
-**AI tutor modal** (`textbook-ai.js`) — injects an "Ask AI" button into the textbook header. On click, opens a modal that detects the most-visible `section.chapter` on screen, sends its `innerText` (capped at 12 000 chars) as system context to Google Gemini 2.0 Flash, and streams back a plain-text answer. API key stored in `localStorage` under `gemini-api-key`; first-time use shows a key-entry pane with a link to aistudio.google.com/apikey. Multi-turn conversation resets each time the modal is opened. Script must be loaded after `theme-toggle.js` so its button appends to the header after the theme toggle.
+**AI tutor modal** (`textbook-ai.js`) — injects an "Ask AI" button into the textbook header. On click, opens a modal that detects the most-visible `section.chapter` on screen, sends its `innerText` (capped at 12 000 chars) as system context to Google Gemini 2.5 Flash, and streams back a plain-text answer. API key stored in `localStorage` under `gemini-api-key`; first-time use shows a key-entry pane with a link to aistudio.google.com/apikey. The conversation transcript (`history`) persists across opening/closing the modal within the same page load — only the chapter context (`chapterCtx`) refreshes on each open, to whatever section is currently most visible. Click "new conversation" in the modal's footer to clear the transcript explicitly. Script must be loaded after `theme-toggle.js` so its button appends to the header after the theme toggle.
 
 ---
 
 ## Diagram Pages (`math_<subject>_diagrams.html`)
 
 One diagram page per textbook, named `math_<subject>_diagrams.html` (e.g. `math_calculus_diagrams.html`).
+
+**Current coverage (7 of 11 subjects):** Arithmetic, Intermediate Arithmetic, Calculus,
+Combinatorics, Graph Theory, Linear Algebra, Statistics. Algebra, Algebra 2, Geometry,
+and Trigonometry don't have one yet — they show as a dimmed "soon" card on the hub.
+
+**`diagrams.html` (the hub)** lists every subject in the same curriculum order as
+`textbook-switcher.js`'s `BOOKS` array — live subjects get a full card linking to
+their page, subjects without one yet get a `.diagram-card.soon` placeholder in
+their correct position. Don't reintroduce a separate trailing "Coming Soon"
+section — a past version of this page did that and it made a finished page
+(Statistics) look unfinished by sitting below the placeholder block.
+
+**Reciprocal links:** every textbook that has a diagram page links to it via a
+"Diagrams →" header link, and every diagram page links back via a "Textbook →"
+header link. When a new topic gets its diagram page written, add both links and
+the `DIAGRAMS_MAP` entry in `index.html` (see checklist above) so the puzzle
+context bar's "🖼 See diagrams →" link appears too.
 
 ## Diagram Viewer — `math_calculus_diagrams.html`
 
@@ -282,7 +320,7 @@ All HTML pages (textbooks, game, manual) share a single theme toggle.
 <script src="theme-toggle.js"></script>
 ```
 
-**Button placement:** `theme-toggle.js` looks for a `<header>` element and appends the button there (textbooks). If none is found (game, manual), it falls back to a fixed position at top-right.
+**Button placement:** `theme-toggle.js` looks for a `<header>` element and appends the button there with `margin-left:auto` — this requires `header { display:flex; ... }` on that page (every textbook has this; `index.html` and `manual.html` do too, specifically so this works). If no `<header>` is found, it falls back to a fixed position at top-right — currently only `textbook_linearalgebra.html` and `textbook_statistics.html` use the older `<a class="back-link">` pattern instead of `<header>`, so they hit this fallback.
 
 **Storage key:** `localStorage` key is `math-theme`, values `'light'` or `'dark'`.
 
@@ -312,6 +350,7 @@ Optional — only activates if the page defines a global `GLOSSARY` object befor
 - Injects its own CSS (`.key` gets `cursor: help` + dotted underline; `#glossary-tip` floating box) and the `#glossary-tip` div — no manual HTML/CSS needed per textbook beyond the `GLOSSARY` object itself.
 - **Desktop** (`hover: hover` media query true at load): standard `mouseenter`/`mousemove`/`mouseleave`, tooltip follows the cursor.
 - **Touch** (`hover: none`, e.g. iPad): tap-to-toggle via `touchend` — tap a term to open it, tap it again or tap anywhere else on the page to close. Deliberately does **not** use `click`: WebKit only synthesizes a click event reliably for elements that already look interactive (own listener / `cursor: pointer`), so a tap on a plain paragraph elsewhere on the page never produced one, leaving the tooltip stuck open with the old mouseenter/mouseleave-only approach. `touchend` fires unconditionally regardless of element type. `hover: hover` is checked once at load, not tracked live — not worth handling a mouse/trackpad being attached mid-session on a hybrid device.
+- **Keyboard**: every glossary-backed `.key` term also gets `tabindex="0"` plus `focus`/`blur` handlers, wired once up front regardless of which pointer branch above applies. The tooltip positions itself under the element's bounding rect (no mouse coordinates available on focus) rather than following a cursor.
 - **Coverage**: every unique `.key` term in a textbook must have a matching `GLOSSARY` entry. Validate with a script comparing `re.findall(r'<span class="key">([^<]*)</span>', html)` (unique, trimmed) against the `GLOSSARY` object's keys — mismatches in either direction are bugs (missing = silently no tooltip; extra = dead entry, usually means the term's wording changed in the prose).
 - **Line-wrap trap**: if a `<span class="key">` gets wrapped across multiple source lines during editing, its `.textContent` includes the embedded newline/indentation, so it will never match a clean `GLOSSARY` key. Keep every `.key` span on one line, or verify with the coverage script above (it will surface these as "missing").
 
@@ -320,7 +359,7 @@ Optional — only activates if the page defines a global `GLOSSARY` object befor
 ## Game Mechanic Notes
 
 ### Drop zone rendering
-`buildDropZoneEquation(fromLatex, targets, container)` finds each target string in `fromLatex`, wraps it in `\htmlClass{dz-N}{...}` via KaTeX, then promotes those elements to `.drop-zone` spans.
+`buildDropZoneEquation(fromLatex, targets, container)` finds each target string in `fromLatex`, wraps it in `\htmlClass{dz-N}{...}` via KaTeX, then promotes those elements to `.drop-zone` spans, each `tabindex`-managed (see **Palette interaction** below).
 
 ### Hover behavior
 `#step-eq:hover .drop-zone:not(.done)` reveals all pending drop zones in blue (8% opacity) when the cursor is anywhere in the equation block.
@@ -329,10 +368,30 @@ Optional — only activates if the page defines a global `GLOSSARY` object befor
 Correct drops append a `.drop-stamp` badge (green, positioned above the zone) rendering the palette item's LaTeX — so the user sees the operation applied to both sides.
 
 ### Step description callout
-`step.description` renders in `#step-desc` as a green left-bordered callout box. Always write descriptions that explain the **why**, not just the what. Neural architecture context is welcome here.
+`step.description` renders in `#step-desc` as a green left-bordered callout box (`aria-live="polite"`, along with `#side-message` and `#completion`, so screen readers hear step/feedback changes). Always write descriptions that explain the **why**, not just the what. Neural architecture context is welcome here.
+
+### Palette interaction: drag, tap, and keyboard
+Three input paths all funnel into the same `handleDrop(dz, dzIdx, paletteId)`:
+- **Mouse drag**: native HTML5 drag-and-drop (`draggable`, `dragstart`/`dragend` on palette items; `dragover`/`drop` on drop zones).
+- **Tap-to-select** (mouse click or touch tap — deliberately just a `click` listener, not touch-specific handlers, so it never blocks page scroll): tap a palette item to select it (`.touch-selected` highlight), tap a drop zone to place it. A wrong placement keeps the selection so you can immediately retry a different zone; a correct one clears it.
+- **Keyboard**: palette items and drop zones are `role="button"` with `tabindex` kept in sync (`-1` once `.used`/`.done`, `0` otherwise); Enter/Space triggers the identical select/place logic as tap.
 
 ### Streak counter
-`G.score.streak` increments only on clean puzzle solves (no hints). `G.cleanSolve` resets to `true` on `loadPuzzle()` and `reset-btn`. It is set to `false` in `activateHint()`.
+`G.score.streak` increments only on clean puzzle solves (no hints). `G.cleanSolve` resets to `true` on `loadPuzzle()` and `reset-btn`. Both "Give Up This Step" (`activateHint()`) and the arrow-key animated auto-solve (`animatedSolve()`) route through the shared `markHintUsed()` helper, which sets `G.cleanSolve = false`, increments the hint counter, and persists the score — arrow-keying through a step costs a hint just like giving up does, it is not a free auto-solve.
+
+### Score & progress persistence
+`G.score` (`solved`/`hints`/`streak`/`bestStreak`) is persisted to `localStorage` under `math-score` via `saveScore()`/`loadScore()`; a `Set` of solved puzzle IDs is persisted under `math-solved-ids` via `markPuzzleSolved()`. Both the topic- and concept-browse puzzle dropdowns prefix a solved puzzle's option text with `✓`. The puzzle dropdown is also grouped with `<optgroup>` — by chapter when every puzzle in that topic file actually has one (currently only Graph Theory and Linear Algebra), otherwise by difficulty — with question text word-boundary-truncated (~50 chars) and the full text kept in the option's `title` attribute.
+
+### Game notes export
+The "📝 Notes" modal's footer has a "↓ Export all" button (`exportAllNotes()`) that dumps every `notes.<puzzle-id>` key in `localStorage` into one downloaded `.txt` file — the per-puzzle-notes equivalent of `textbook-notes.js`'s export.
+
+### Accessibility
+- `prefers-reduced-motion: reduce` disables the ghost-fly ArrowRight animation (jumps straight to the result), the palette/drop-zone hint pulse animation, and swaps `textbook-nav.js`'s smooth-scrolling for instant jumps.
+- The Σ (sigma) expansion modal moves focus to its close button on open and restores focus to whatever triggered it on close.
+- Dark-theme `--muted` is `#8a8ab5` (not the old `#7070a0`, which computed under WCAG AA contrast at the small sizes used for switcher tabs and TOC links) — keep this value if you add `--muted` to a new page.
+
+### KaTeX is vendored locally
+All pages load KaTeX from `katex/` (relative path), not a CDN — this is a self-hosted LAN site, so a missing internet connection must not break every equation on the page. If KaTeX needs a version bump, re-download the npm tarball's `dist/` folder (js, css, fonts, `contrib/auto-render.min.js`) into `katex/` rather than pointing back at `cdn.jsdelivr.net`.
 
 ---
 
