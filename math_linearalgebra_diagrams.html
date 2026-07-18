@@ -380,7 +380,65 @@
   </section>
 
   <!-- ══════════════════════════════════════════════════════════════════
-       Diagram 3: Matrix × Vector — Row-by-Row Multiplication (4-step click-through)
+       Diagram 3: The p-Norm — Star to Diamond to Circle to Square (interactive)
+       viewBox 0 0 320 280  —  O=(130,150), S=100 (1 unit = 100px)
+       Superellipse parametrization (exact for all p>0):
+         x = OX + S·sign(cosθ)·|cosθ|^(2/p),  y = OY − S·sign(sinθ)·|sinθ|^(2/p)
+       Slider is log-mapped (raw 0–1000 → p in [0.3, 40]) so the visually
+       interesting star/diamond/circle range isn't squeezed into a sliver
+       of the control — see pnorm JS for rawToP/pToRaw.
+       ══════════════════════════════════════════════════════════════════ -->
+  <section class="diagram-set" id="p-norm" style="margin-top:48px">
+    <h2>The p-Norm — From Star to Diamond to Circle to Square</h2>
+    <p class="subtitle">L1 and L2 are just two special cases of the general <strong>p-norm</strong>: ‖x‖<sub>p</sub> = (|x|<sup>p</sup> + |y|<sup>p</sup>)<sup>1/p</sup>. Drag the slider to change <strong>p</strong> and watch the unit ball — the set of points exactly distance 1 from the origin — change shape.</p>
+
+    <div class="interactive-diagram">
+      <svg viewBox="0 0 320 280" id="pnorm-svg" aria-label="Interactive p-norm unit ball that morphs shape as p changes">
+
+        <!-- reference dashed circle: the p=2 baseline, always visible -->
+        <circle cx="130" cy="150" r="100" fill="none" stroke="var(--border)" stroke-width="1" stroke-dasharray="4,4" opacity="0.5"/>
+
+        <!-- axes -->
+        <line x1="10" y1="150" x2="300" y2="150" stroke="#7070a0" stroke-width="1"/>
+        <line x1="130" y1="268" x2="130" y2="12" stroke="#7070a0" stroke-width="1"/>
+        <polygon points="303,150 295,146 295,154" fill="#7070a0"/>
+        <polygon points="130,7 126,15 134,15" fill="#7070a0"/>
+        <text x="306" y="154" fill="#7070a0" font-size="10" font-family="system-ui">x</text>
+        <text x="133" y="11" fill="#7070a0" font-size="10" font-family="system-ui">y</text>
+
+        <!-- unit ticks at ±1 -->
+        <line x1="230" y1="147" x2="230" y2="153" stroke="#7070a0" stroke-width="1"/><text x="226" y="164" fill="#7070a0" font-size="9" font-family="system-ui">1</text>
+        <line x1="30"  y1="147" x2="30"  y2="153" stroke="#7070a0" stroke-width="1"/><text x="18"  y="164" fill="#7070a0" font-size="9" font-family="system-ui">−1</text>
+        <line x1="127" y1="50"  x2="133" y2="50"  stroke="#7070a0" stroke-width="1"/><text x="112" y="53"  fill="#7070a0" font-size="9" font-family="system-ui">1</text>
+        <line x1="127" y1="250" x2="133" y2="250" stroke="#7070a0" stroke-width="1"/><text x="103" y="253" fill="#7070a0" font-size="9" font-family="system-ui">−1</text>
+
+        <!-- DYNAMIC: the p-norm unit ball -->
+        <polygon id="pnorm-shape" points="" fill="rgba(92,138,255,0.15)" stroke="#5c8aff" stroke-width="2.5"/>
+      </svg>
+
+      <div class="ctrl-row">
+        <span class="ctrl-label">p =</span>
+        <input type="range" id="pnorm-slider" min="0" max="1000" value="388" step="1"/>
+        <span class="ctrl-val" id="pnorm-val">2.00</span>
+      </div>
+
+      <div class="sum-stats">
+        <span>Formula: <strong id="pnorm-formula">|x|^2.00 + |y|^2.00 = 1</strong></span>
+      </div>
+      <div class="dp-sign" id="pnorm-label">p = 2 — the L2 (Euclidean) norm. The unit ball is a perfect circle — the everyday meaning of "distance."</div>
+
+      <div class="dp-presets">
+        <button class="dp-preset" data-p="0.5">p = 0.5 (Star)</button>
+        <button class="dp-preset" data-p="1">p = 1 (Diamond · L1)</button>
+        <button class="dp-preset" data-p="2">p = 2 (Circle · L2)</button>
+        <button class="dp-preset" data-p="40">p → ∞ (Square · L∞)</button>
+      </div>
+
+    </div><!-- .interactive-diagram -->
+  </section>
+
+  <!-- ══════════════════════════════════════════════════════════════════
+       Diagram 4: Matrix × Vector — Row-by-Row Multiplication (4-step click-through)
        viewBox 0 0 340 260
        A = [[1,2],[3,4]], v = (2,1), Av = (4,10)  — matches column 1 of the
        textbook's [[1,2],[3,4]]·[[2,0],[1,3]] worked example
@@ -555,7 +613,7 @@
   </section>
 
   <!-- ══════════════════════════════════════════════════════════════════
-       Diagram 4: Gaussian Elimination — Solving a 2×2 System (4-step click-through)
+       Diagram 5: Gaussian Elimination — Solving a 2×2 System (4-step click-through)
        viewBox 0 0 340 300
        System: x + y = 5, 2x + 3y = 13  →  x = 2, y = 3
        Augmented matrix: bracket 90–98 / 262–270, cols x=125,170(|195 divider),225, rows y=80,130
@@ -886,6 +944,71 @@
   document.querySelectorAll('.dp-preset').forEach(function (btn) {
     btn.addEventListener('click', function () {
       slider.value = btn.getAttribute('data-angle');
+      update();
+    });
+  });
+
+  update();
+}());
+</script>
+
+<!-- interactive p-norm diagram -->
+<script>
+(function () {
+  'use strict';
+  var svg = document.getElementById('pnorm-svg');
+  if (!svg) return;
+
+  var OX = 130, OY = 150, S = 100;
+  var PMIN = 0.3, PMAX = 40;
+  var LOG_RATIO = Math.log(PMAX / PMIN);
+  var N = 200;
+
+  var slider    = document.getElementById('pnorm-slider');
+  var valEl     = document.getElementById('pnorm-val');
+  var formulaEl = document.getElementById('pnorm-formula');
+  var labelEl   = document.getElementById('pnorm-label');
+  var shape     = document.getElementById('pnorm-shape');
+
+  // Slider position (0–1000) <-> p (0.3–40), mapped exponentially so the
+  // star/diamond/circle range (p < 3ish) isn't squeezed into a sliver of
+  // the slider while p 3-40 (all "roundish square") eats most of it.
+  function rawToP(raw) { return PMIN * Math.exp(LOG_RATIO * raw / 1000); }
+  function pToRaw(p)    { return Math.round(1000 * Math.log(p / PMIN) / LOG_RATIO); }
+
+  function describeP(p) {
+    if (p < 0.95)  return 'p < 1 — this isn’t a true norm (the triangle inequality fails). The unit "ball" is concave: a star.';
+    if (p <= 1.05) return 'p = 1 — the L1 (Manhattan / taxicab) norm. The unit ball is a diamond.';
+    if (p < 1.95)  return 'Between L1 and L2 — a rounded diamond.';
+    if (p <= 2.05) return 'p = 2 — the L2 (Euclidean) norm. The unit ball is a perfect circle — the everyday meaning of "distance."';
+    if (p < 9)     return 'Between L2 and L∞ — a rounded square.';
+    return 'Large p approaches the L∞ (max / Chebyshev) norm. The unit ball is a square.';
+  }
+
+  function update() {
+    var raw = parseFloat(slider.value);
+    var p   = rawToP(raw);
+
+    var pts = [];
+    for (var i = 0; i < N; i++) {
+      var theta = (i / N) * 2 * Math.PI;
+      var c = Math.cos(theta), s = Math.sin(theta);
+      var x = OX + S * Math.sign(c) * Math.pow(Math.abs(c), 2 / p);
+      var y = OY - S * Math.sign(s) * Math.pow(Math.abs(s), 2 / p);
+      pts.push(x.toFixed(1) + ',' + y.toFixed(1));
+    }
+    shape.setAttribute('points', pts.join(' '));
+
+    valEl.textContent     = raw >= 995 ? '≈ ∞' : p.toFixed(2);
+    formulaEl.textContent = '|x|^' + p.toFixed(2) + ' + |y|^' + p.toFixed(2) + ' = 1';
+    labelEl.textContent   = describeP(p);
+  }
+
+  slider.addEventListener('input', update);
+
+  document.querySelectorAll('#p-norm .dp-preset').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      slider.value = pToRaw(parseFloat(btn.getAttribute('data-p')));
       update();
     });
   });
