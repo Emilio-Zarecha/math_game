@@ -24,14 +24,21 @@
 
   var style = document.createElement('style');
   style.textContent = [
+    '.textbook-switcher-wrap {',
+    '  display: flex;',
+    '  align-items: stretch;',
+    '  width: 100%;',
+    '  background: var(--panel);',
+    '  border-bottom: 1px solid var(--border);',
+    '}',
     'nav.textbook-switcher {',
     '  display: flex;',
     '  flex-wrap: nowrap;',
     '  overflow-x: auto;',
     '  scrollbar-width: none;',
     '  gap: 0;',
-    '  background: var(--panel);',
-    '  border-bottom: 1px solid var(--border);',
+    '  flex: 1;',
+    '  min-width: 0;',
     '  padding: 0 1rem;',
     /* Hints that the bar scrolls, since the scrollbar itself is hidden above. */
     '  mask-image: linear-gradient(to right, transparent, black 20px, black calc(100% - 20px), transparent);',
@@ -61,6 +68,24 @@
     'nav.textbook-switcher a.extra {',
     '  border-right: 1px solid var(--border);',
     '}',
+    '.ts-scroll-btn {',
+    '  flex: 0 0 auto;',
+    '  display: flex;',
+    '  align-items: center;',
+    '  justify-content: center;',
+    '  width: 28px;',
+    '  background: var(--panel);',
+    '  border: none;',
+    '  color: var(--muted);',
+    '  cursor: pointer;',
+    '  font-size: 1rem;',
+    '  line-height: 1;',
+    '  padding: 0;',
+    '  transition: color .15s, opacity .15s;',
+    '}',
+    '.ts-scroll-btn:hover:not(:disabled) { color: var(--accent); }',
+    '.ts-scroll-btn:focus-visible { outline: 2px solid var(--accent); outline-offset: -2px; }',
+    '.ts-scroll-btn:disabled { opacity: 0; pointer-events: none; }',
   ].join('\n');
   document.head.appendChild(style);
 
@@ -85,10 +110,44 @@
       nav.appendChild(a);
     });
 
+    var wrap = document.createElement('div');
+    wrap.className = 'textbook-switcher-wrap';
+
+    var prevBtn = document.createElement('button');
+    prevBtn.type = 'button';
+    prevBtn.className = 'ts-scroll-btn';
+    prevBtn.setAttribute('aria-label', 'Scroll textbooks left');
+    prevBtn.textContent = '‹';
+
+    var nextBtn = document.createElement('button');
+    nextBtn.type = 'button';
+    nextBtn.className = 'ts-scroll-btn';
+    nextBtn.setAttribute('aria-label', 'Scroll textbooks right');
+    nextBtn.textContent = '›';
+
+    wrap.appendChild(prevBtn);
+    wrap.appendChild(nav);
+    wrap.appendChild(nextBtn);
+
     var header = document.querySelector('header');
     if (header) {
-      header.parentNode.insertBefore(nav, header.nextSibling);
+      header.parentNode.insertBefore(wrap, header.nextSibling);
     }
+
+    function updateButtons() {
+      prevBtn.disabled = nav.scrollLeft <= 0;
+      nextBtn.disabled = nav.scrollLeft + nav.clientWidth >= nav.scrollWidth - 1;
+    }
+
+    prevBtn.addEventListener('click', function () {
+      nav.scrollBy({ left: -160, behavior: 'smooth' });
+    });
+    nextBtn.addEventListener('click', function () {
+      nav.scrollBy({ left: 160, behavior: 'smooth' });
+    });
+    nav.addEventListener('scroll', updateButtons);
+    window.addEventListener('resize', updateButtons);
+    updateButtons();
   }
 
   if (document.readyState === 'loading') {
