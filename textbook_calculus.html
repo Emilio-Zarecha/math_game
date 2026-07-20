@@ -1005,16 +1005,51 @@
     </div>
 
 
+    <!-- ─── Linear approximation & differentials ────────────────── -->
+    <h4 style="color:var(--hint);margin:24px 0 8px;font-size:1rem;">Linear Approximation &amp; Differentials</h4>
+
     <p>
-      <span class="key">Critical points</span> occur where $f'(x) = 0$ or $f'$ is undefined.
-      A critical point is a <span class="key">local maximum</span> if $f''(x) &lt; 0$ and a
+      <strong>The idea.</strong> Near $x = a$, the tangent line is the best straight-line
+      approximation to $f$ — and because a line is trivial to evaluate, it lets you estimate
+      $f(x)$ for $x$ close to $a$ without recomputing $f$ itself. This
+      <span class="key">linear approximation</span> (or <em>linearization</em>) is written $L(x)$.
+    </p>
+
+    <p>
+      <strong>Differentials.</strong> Write $dx$ for a small change in $x$. The
+      <span class="key">differential</span> $dy = f'(x)\,dx$ approximates the actual change
+      $\Delta y = f(x + dx) - f(x)$ — the approximation improves as $dx \to 0$.
+    </p>
+
+    <div class="formula">
+      <div class="label">Linear approximation &amp; differential</div>
+      $$L(x) = f(a) + f'(a)(x - a) \qquad dy = f'(x)\,dx \approx \Delta y$$
+    </div>
+
+    <div class="example">
+      <div class="label">Worked example — approximate $\sqrt{4.1}$ by linearizing at $a = 4$</div>
+      <div class="example-step"><span>$f(x) = \sqrt{x}$, $f'(x) = \dfrac{1}{2\sqrt{x}}$; $f(4) = 2$, $f'(4) = \dfrac14$</span><span class="why">pick $a = 4$ since it's a nearby perfect square</span></div>
+      <div class="example-step"><span>$L(4.1) = 2 + \dfrac14(4.1 - 4) = 2 + 0.025 = 2.025$</span><span class="why">tangent-line approximation</span></div>
+      <div class="example-step"><span>Actual value: $\sqrt{4.1} \approx 2.0248$</span><span class="why">accurate to within $0.0002$ here</span></div>
+    </div>
+
+    <!-- ─── Maxima & minima ──────────────────────────────────────── -->
+    <h4 style="color:var(--hint);margin:32px 0 8px;font-size:1rem;">Maxima &amp; Minima</h4>
+
+    <p>
+      <span class="key">Critical points</span> occur where $f'(x) = 0$ or $f'$ is undefined —
+      the only places a local max or min can occur. A critical point is a
+      <span class="key">local maximum</span> if $f''(x) &lt; 0$ and a
       <span class="key">local minimum</span> if $f''(x) &gt; 0$ (second derivative test).
     </p>
 
     <p>
-      The <span class="key">Mean Value Theorem (MVT)</span> states that if $f$ is continuous
-      on $[a,b]$ and differentiable on $(a,b)$, there exists $c \in (a,b)$ such that
-      $f'(c) = \dfrac{f(b)-f(a)}{b-a}$.
+      <strong>Absolute extrema on a closed interval.</strong> The
+      <span class="key">Extreme Value Theorem</span> guarantees that a function continuous on a
+      closed interval $[a,b]$ attains an absolute maximum and an absolute minimum somewhere on
+      that interval. To find them, use the <span class="key">candidates test</span>: evaluate
+      $f$ at every critical point inside $(a,b)$ and at both endpoints — the largest value is
+      the absolute maximum, the smallest is the absolute minimum.
     </p>
 
     <div class="formula">
@@ -1029,9 +1064,107 @@
     </div>
 
     <div class="example">
+      <div class="label">Worked example — absolute extrema of $f(x) = x^3 - 3x$ on $[-2, 3]$</div>
+      <div class="example-step"><span>Critical points $x = \pm 1$ (found above); interval endpoints $x = -2, 3$</span><span class="why">candidates test needs both</span></div>
+      <div class="example-step"><span>$f(-2) = -2$, $f(-1) = 2$, $f(1) = -2$, $f(3) = 18$</span><span class="why">evaluate $f$ at every candidate</span></div>
+      <div class="example-step"><span>Absolute max $= 18$ at $x = 3$; absolute min $= -2$ (tied at $x=-2$ and $x=1$)</span><span class="why">largest / smallest of the candidate values</span></div>
+    </div>
+
+    <!-- ─── Mean Value Theorem ───────────────────────────────────── -->
+    <h4 style="color:var(--hint);margin:32px 0 8px;font-size:1rem;">The Mean Value Theorem</h4>
+
+    <p>
+      The <span class="key">Mean Value Theorem (MVT)</span> states that if $f$ is continuous
+      on $[a,b]$ and differentiable on $(a,b)$, there exists $c \in (a,b)$ such that
+      $f'(c) = \dfrac{f(b)-f(a)}{b-a}$ — somewhere on the interval, the instantaneous rate of
+      change equals the average rate of change. When $f(a) = f(b)$, this is
+      <span class="key">Rolle's Theorem</span>: there must be a point where $f'(c) = 0$.
+    </p>
+
+    <div class="example">
       <div class="label">Worked example — MVT for $f(x) = x^2$ on $[1,3]$</div>
       <div class="example-step"><span>$\dfrac{f(3)-f(1)}{3-1} = \dfrac{9-1}{2} = 4$</span><span class="why">average rate of change</span></div>
       <div class="example-step"><span>$f'(c) = 2c = 4 \Rightarrow c = 2$</span><span class="why">MVT guarantees $c = 2 \in (1,3)$</span></div>
+    </div>
+
+    <!-- ─── Curve sketching ──────────────────────────────────────── -->
+    <h4 style="color:var(--hint);margin:32px 0 8px;font-size:1rem;">Curve Sketching — Increasing/Decreasing &amp; Concavity</h4>
+
+    <p>
+      <strong>The first derivative test.</strong> Where $f'(x) > 0$, $f$ is increasing; where
+      $f'(x) < 0$, $f$ is decreasing. At a critical point, if $f'$ changes from positive to
+      negative, that point is a local maximum; if it changes negative to positive, it's a local
+      minimum. If $f'$ doesn't change sign, the point is neither — this makes the first
+      derivative test work even when the second derivative test is inconclusive
+      (e.g. $f''(c) = 0$).
+    </p>
+
+    <p>
+      <strong>Concavity and inflection points.</strong> Where $f''(x) > 0$, the graph is
+      <span class="key">concave up</span> (bends upward, like a cup); where $f''(x) < 0$, it's
+      <span class="key">concave down</span> (bends downward, like a dome). A point where
+      concavity switches — and $f''$ is zero or undefined there — is an
+      <span class="key">inflection point</span>.
+    </p>
+
+    <div class="formula">
+      <div class="label">Sketching a curve</div>
+      $$f'(x) > 0 \Rightarrow \text{increasing} \qquad f'(x) < 0 \Rightarrow \text{decreasing}$$
+      $$f''(x) > 0 \Rightarrow \text{concave up} \qquad f''(x) < 0 \Rightarrow \text{concave down}$$
+    </div>
+
+    <div class="example">
+      <div class="label">Worked example — sketch $f(x) = x^3 - 3x^2$</div>
+      <div class="example-step"><span>$f'(x) = 3x^2 - 6x = 3x(x-2)$; critical points at $x = 0, 2$</span><span class="why">set $f' = 0$</span></div>
+      <div class="example-step"><span>$f' > 0$ on $(-\infty,0)$; $f' < 0$ on $(0,2)$; $f' > 0$ on $(2,\infty)$</span><span class="why">sign chart from the factored form</span></div>
+      <div class="example-step"><span>$x=0$ is a local max ($f'$ goes $+\to-$); $x=2$ is a local min ($f'$ goes $-\to+$)</span><span class="why">first derivative test</span></div>
+      <div class="example-step"><span>$f''(x) = 6x - 6 = 0 \Rightarrow x = 1$; $f'' < 0$ for $x<1$, $f'' > 0$ for $x>1$</span><span class="why">concavity switches at $x=1$</span></div>
+      <div class="example-step"><span>$x = 1$ is an inflection point</span><span class="why">concavity changes sign there</span></div>
+    </div>
+
+    <!-- ─── Applied optimization ─────────────────────────────────── -->
+    <h4 style="color:var(--hint);margin:32px 0 8px;font-size:1rem;">Applied Optimization</h4>
+
+    <p>
+      <strong>Problem-solving strategy:</strong>
+    </p>
+    <ol style="margin:0 0 14px 20px;line-height:2;font-size:0.95rem;">
+      <li>Draw a diagram and label the variables.</li>
+      <li>Identify the quantity to optimize (the objective) and write a formula for it.</li>
+      <li>Find a constraint equation relating the variables, and use it to rewrite the objective as a function of a single variable.</li>
+      <li>Determine the domain from the problem's physical restrictions.</li>
+      <li>Find critical points of the objective function and apply the candidates test (or first/second derivative test) to identify the max or min.</li>
+    </ol>
+
+    <div class="example">
+      <div class="label">Worked example — maximize the area enclosed by 200 ft of fencing</div>
+      <div class="example-step"><span>Let $x, y$ be the rectangle's sides; constraint $2x + 2y = 200 \Rightarrow y = 100 - x$</span><span class="why">fencing forms the perimeter</span></div>
+      <div class="example-step"><span>$A(x) = x(100-x) = 100x - x^2$, for $0 < x < 100$</span><span class="why">objective in terms of one variable</span></div>
+      <div class="example-step"><span>$A'(x) = 100 - 2x = 0 \Rightarrow x = 50$; $A''(x) = -2 < 0$, so this is a max</span><span class="why">critical point + second derivative test</span></div>
+      <div class="example-step"><span>$y = 100 - 50 = 50$: a $50\times 50$ square, area $2500\;\text{ft}^2$</span><span class="why">solve for the other dimension</span></div>
+    </div>
+
+    <!-- ─── Newton's method ──────────────────────────────────────── -->
+    <h4 style="color:var(--hint);margin:32px 0 8px;font-size:1rem;">Newton's Method</h4>
+
+    <p>
+      <strong>The idea.</strong> To find a root of $f$, start with a guess $x_0$ and repeatedly
+      follow the tangent line down to the $x$-axis — each tangent line's $x$-intercept becomes
+      the next, better guess. <span class="key">Newton's Method</span> converges very fast
+      (roughly doubling the number of correct digits each step) whenever the initial guess is
+      reasonably close to the root and $f'$ isn't near zero there.
+    </p>
+
+    <div class="formula">
+      <div class="label">Newton's method — iteration formula</div>
+      $$x_{n+1} = x_n - \frac{f(x_n)}{f'(x_n)}$$
+    </div>
+
+    <div class="example">
+      <div class="label">Worked example — approximate $\sqrt{2}$ as a root of $f(x) = x^2 - 2$, starting at $x_0 = 1$</div>
+      <div class="example-step"><span>$f'(x) = 2x$; $x_1 = 1 - \dfrac{1^2 - 2}{2(1)} = 1 + \dfrac12 = 1.5$</span><span class="why">first iteration</span></div>
+      <div class="example-step"><span>$x_2 = 1.5 - \dfrac{1.5^2 - 2}{2(1.5)} = 1.5 - \dfrac{0.25}{3} \approx 1.41667$</span><span class="why">second iteration</span></div>
+      <div class="example-step"><span>$x_3 \approx 1.41667 - \dfrac{1.41667^2 - 2}{2(1.41667)} \approx 1.41421$</span><span class="why">third iteration — already matches $\sqrt2 = 1.41421\ldots$ to 5 digits</span></div>
     </div>
     <p class="toc-back"><a href="#toc">↑ Table of Contents</a></p>
   </section>
@@ -1565,6 +1698,15 @@ createAngleExplorer('angle-canvas', 'readout-');
 <script>
 var GLOSSARY = {
   'Critical points': 'Points where a function\'s derivative is zero or undefined — candidates for local maxima, minima, or inflection points.',
+  'linear approximation': 'Using the tangent line at a point to estimate nearby function values: L(x) = f(a) + f\'(a)(x−a).',
+  'differential': 'The quantity dy = f\'(x)dx, which approximates the actual change in y for a small change dx in x.',
+  'Extreme Value Theorem': 'A function continuous on a closed interval [a,b] is guaranteed to attain both an absolute maximum and an absolute minimum somewhere on that interval.',
+  'candidates test': 'A method for finding absolute extrema on a closed interval: evaluate the function at every critical point and at both endpoints, then compare.',
+  'concave up': 'A graph curving upward like a cup, where the second derivative is positive.',
+  'concave down': 'A graph curving downward like a dome, where the second derivative is negative.',
+  'inflection point': 'A point where a function\'s concavity switches from concave up to concave down, or vice versa.',
+  'Rolle\'s Theorem': 'A special case of the Mean Value Theorem: if f(a) = f(b), some point c in (a,b) must have f\'(c) = 0.',
+  'Newton\'s Method': 'An iterative technique for approximating roots of a function by repeatedly following tangent lines to the x-axis.',
   'Integration by parts:': 'A technique for integrating a product of functions: ∫u dv = uv − ∫v du, derived from the product rule.',
   'Mean Value Theorem (MVT)': 'If f is continuous on [a,b] and differentiable on (a,b), some point c exists where f\'(c) equals the average rate of change over [a,b].',
   'Related rates': 'Problems that use derivatives to relate how several changing quantities affect each other over time.',

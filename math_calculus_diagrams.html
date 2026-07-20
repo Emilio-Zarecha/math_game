@@ -247,7 +247,160 @@
   </section>
 
   <!-- ══════════════════════════════════════════════════════════════════
-       Diagram 2: Riemann Sum → Definite Integral (interactive slider)
+       Diagram 2: Linear Approximation (step-through, 4 steps)
+       viewBox 0 0 280 310 — sx(x)=40+x*35, sy(y)=170-y*50  (main plot, x∈[0,6])
+       Inset (steps 3-4): isx(x)=40+(x-4)*1333.3, isy(y)=296-(y-1.99)*654.5  (x∈[4.0,4.15])
+       ══════════════════════════════════════════════════════════════════ -->
+  <section class="diagram-set">
+    <h2>Linear Approximation — Estimating √4.1</h2>
+    <p class="subtitle">Chapter 7's first worked example, step by step: use the tangent line at a&nbsp;=&nbsp;4 to estimate √4.1 without a calculator</p>
+
+    <div class="step-viewer">
+      <div class="step-counter">Step <span class="cur">1</span> of <span class="tot">4</span></div>
+
+      <div class="steps">
+
+        <!-- Step 1: curve + point a -->
+        <div class="step active">
+          <svg viewBox="0 0 280 310" aria-label="Curve f of x equals square root of x with the point (4,2) marked">
+            <line x1="40" y1="8" x2="40" y2="177" stroke="#7070a0" stroke-width="1"/>
+            <line x1="35" y1="170" x2="258" y2="170" stroke="#7070a0" stroke-width="1"/>
+            <polygon points="40,8 36,16 44,16" fill="#7070a0"/>
+            <polygon points="258,170 250,166 250,174" fill="#7070a0"/>
+            <text x="261" y="174" fill="#7070a0" font-size="11">x</text>
+            <text x="44" y="10" fill="#7070a0" font-size="11">y</text>
+            <line x1="110" y1="167" x2="110" y2="173" stroke="#7070a0" stroke-width="1"/><text x="107" y="185" fill="#7070a0" font-size="10">2</text>
+            <line x1="180" y1="167" x2="180" y2="173" stroke="#7070a0" stroke-width="1"/><text x="177" y="185" fill="#7070a0" font-size="10">4</text>
+            <line x1="250" y1="167" x2="250" y2="173" stroke="#7070a0" stroke-width="1"/><text x="247" y="185" fill="#7070a0" font-size="10">6</text>
+            <line x1="37" y1="120" x2="43" y2="120" stroke="#7070a0" stroke-width="1"/><text x="24" y="124" fill="#7070a0" font-size="10">1</text>
+            <line x1="37" y1="70"  x2="43" y2="70"  stroke="#7070a0" stroke-width="1"/><text x="24" y="74"  fill="#7070a0" font-size="10">2</text>
+            <polyline points="40,170 75,120 110,99.3 145,83.4 180,70 215,58.2 250,47.55"
+                      fill="none" stroke="#5c8aff" stroke-width="2.5"/>
+            <text x="188" y="34" fill="#5c8aff" font-size="11">f(x) = √x</text>
+            <circle cx="180" cy="70" r="5" fill="#ffb830"/>
+            <text x="150" y="57" fill="#ffb830" font-size="11" font-weight="bold">a = 4, f(4) = 2</text>
+          </svg>
+          <p class="step-caption">We want to estimate <strong>√4.1</strong> by hand. Start with the curve f(x)&nbsp;=&nbsp;√x and the nearby point where the exact value is easy: <strong>a&nbsp;=&nbsp;4</strong>, f(4)&nbsp;=&nbsp;2.</p>
+        </div>
+
+        <!-- Step 2: tangent line at a=4 -->
+        <div class="step">
+          <svg viewBox="0 0 280 310" aria-label="Curve with tangent line at (4,2) of slope one quarter, plus the linearization formula">
+            <line x1="40" y1="8" x2="40" y2="177" stroke="#7070a0" stroke-width="1"/>
+            <line x1="35" y1="170" x2="258" y2="170" stroke="#7070a0" stroke-width="1"/>
+            <polygon points="40,8 36,16 44,16" fill="#7070a0"/>
+            <polygon points="258,170 250,166 250,174" fill="#7070a0"/>
+            <text x="261" y="174" fill="#7070a0" font-size="11">x</text>
+            <text x="44" y="10" fill="#7070a0" font-size="11">y</text>
+            <line x1="110" y1="167" x2="110" y2="173" stroke="#7070a0" stroke-width="1"/><text x="107" y="185" fill="#7070a0" font-size="10">2</text>
+            <line x1="180" y1="167" x2="180" y2="173" stroke="#7070a0" stroke-width="1"/><text x="177" y="185" fill="#7070a0" font-size="10">4</text>
+            <line x1="250" y1="167" x2="250" y2="173" stroke="#7070a0" stroke-width="1"/><text x="247" y="185" fill="#7070a0" font-size="10">6</text>
+            <line x1="37" y1="120" x2="43" y2="120" stroke="#7070a0" stroke-width="1"/><text x="24" y="124" fill="#7070a0" font-size="10">1</text>
+            <line x1="37" y1="70"  x2="43" y2="70"  stroke="#7070a0" stroke-width="1"/><text x="24" y="74"  fill="#7070a0" font-size="10">2</text>
+            <polyline points="40,170 75,120 110,99.3 145,83.4 180,70 215,58.2 250,47.55"
+                      fill="none" stroke="#5c8aff" stroke-width="2.5"/>
+            <text x="188" y="34" fill="#5c8aff" font-size="11">f(x) = √x</text>
+            <!-- tangent L(x)=2+0.25(x-4): x=2→(110,95); x=6→(250,45) -->
+            <line x1="110" y1="95" x2="250" y2="45" stroke="#ff6b6b" stroke-width="2"/>
+            <text x="188" y="47" fill="#ff6b6b" font-size="10">tangent: L(x)</text>
+            <circle cx="180" cy="70" r="5" fill="#ffb830"/>
+            <text x="150" y="57" fill="#ffb830" font-size="11" font-weight="bold">a = 4, f(4) = 2</text>
+            <rect x="42" y="195" width="215" height="37" rx="4" fill="var(--surface)" stroke="var(--border)" stroke-width="1"/>
+            <text x="50" y="210" fill="#ff6b6b" font-size="10" font-weight="600">f′(4) = 1/(2√4) = 1/4</text>
+            <text x="50" y="226" fill="#7070a0" font-size="10">L(x) = 2 + (1/4)(x − 4)</text>
+          </svg>
+          <p class="step-caption">The tangent line at (4,&nbsp;2) has slope f′(4)&nbsp;=&nbsp;1/(2√4)&nbsp;=&nbsp;<strong>1/4</strong>. That gives the linear approximation <strong>L(x)&nbsp;=&nbsp;2&nbsp;+&nbsp;(1/4)(x&nbsp;−&nbsp;4)</strong> — the best straight-line stand-in for f near x&nbsp;=&nbsp;4.</p>
+        </div>
+
+        <!-- Step 3: evaluate L at x=4.1, zoomed inset -->
+        <div class="step">
+          <svg viewBox="0 0 280 310" aria-label="Same curve and tangent line, now zoomed near x equals 4.1 to evaluate the linear approximation">
+            <line x1="40" y1="8" x2="40" y2="177" stroke="#7070a0" stroke-width="1"/>
+            <line x1="35" y1="170" x2="258" y2="170" stroke="#7070a0" stroke-width="1"/>
+            <polygon points="40,8 36,16 44,16" fill="#7070a0"/>
+            <polygon points="258,170 250,166 250,174" fill="#7070a0"/>
+            <text x="261" y="174" fill="#7070a0" font-size="11">x</text>
+            <text x="44" y="10" fill="#7070a0" font-size="11">y</text>
+            <line x1="110" y1="167" x2="110" y2="173" stroke="#7070a0" stroke-width="1"/><text x="107" y="185" fill="#7070a0" font-size="10">2</text>
+            <line x1="180" y1="167" x2="180" y2="173" stroke="#7070a0" stroke-width="1"/><text x="177" y="185" fill="#7070a0" font-size="10">4</text>
+            <line x1="250" y1="167" x2="250" y2="173" stroke="#7070a0" stroke-width="1"/><text x="247" y="185" fill="#7070a0" font-size="10">6</text>
+            <line x1="37" y1="120" x2="43" y2="120" stroke="#7070a0" stroke-width="1"/><text x="24" y="124" fill="#7070a0" font-size="10">1</text>
+            <line x1="37" y1="70"  x2="43" y2="70"  stroke="#7070a0" stroke-width="1"/><text x="24" y="74"  fill="#7070a0" font-size="10">2</text>
+            <polyline points="40,170 75,120 110,99.3 145,83.4 180,70 215,58.2 250,47.55"
+                      fill="none" stroke="#5c8aff" stroke-width="2.5"/>
+            <text x="188" y="34" fill="#5c8aff" font-size="11">f(x) = √x</text>
+            <line x1="110" y1="95" x2="250" y2="45" stroke="#ff6b6b" stroke-width="2"/>
+            <text x="188" y="47" fill="#ff6b6b" font-size="10">tangent: L(x)</text>
+            <circle cx="180" cy="70" r="5" fill="#ffb830"/>
+            <text x="150" y="57" fill="#ffb830" font-size="11" font-weight="bold">a = 4, f(4) = 2</text>
+            <rect x="42" y="195" width="215" height="37" rx="4" fill="var(--surface)" stroke="var(--border)" stroke-width="1"/>
+            <text x="50" y="210" fill="#7070a0" font-size="10">L(x) = 2 + (1/4)(x − 4)</text>
+            <text x="50" y="226" fill="#ff6b6b" font-size="10" font-weight="600">L(4.1) = 2 + (1/4)(0.1) = 2.025</text>
+            <!-- zoom inset -->
+            <text x="20" y="244" fill="#7070a0" font-size="9.5">Zoomed near x = 4.1</text>
+            <rect x="20" y="248" width="240" height="54" rx="4" fill="var(--panel)" stroke="var(--border)" stroke-width="1"/>
+            <line x1="40" y1="289.5" x2="240" y2="264.9" stroke="#ff6b6b" stroke-width="1.8"/>
+            <circle cx="40" cy="289.5" r="3.5" fill="#ffb830"/>
+            <text x="38" y="300" fill="#ffb830" font-size="8.5" text-anchor="middle">a=4</text>
+            <circle cx="173.3" cy="273.1" r="4" fill="#ff6b6b"/>
+            <text x="180" y="270" fill="#ff6b6b" font-size="9.5" font-weight="bold">L(4.1) = 2.025</text>
+          </svg>
+          <p class="step-caption">Evaluate the tangent line at x&nbsp;=&nbsp;4.1: <strong>L(4.1)&nbsp;=&nbsp;2&nbsp;+&nbsp;(1/4)(0.1)&nbsp;=&nbsp;2.025</strong>. That single multiplication is the entire estimate — no square root needed.</p>
+        </div>
+
+        <!-- Step 4: compare to true value, show error -->
+        <div class="step">
+          <svg viewBox="0 0 280 310" aria-label="Zoomed inset now also showing the true value of the square root of 4.1 just below the tangent line, with the small gap between them labeled as the error">
+            <line x1="40" y1="8" x2="40" y2="177" stroke="#7070a0" stroke-width="1"/>
+            <line x1="35" y1="170" x2="258" y2="170" stroke="#7070a0" stroke-width="1"/>
+            <polygon points="40,8 36,16 44,16" fill="#7070a0"/>
+            <polygon points="258,170 250,166 250,174" fill="#7070a0"/>
+            <text x="261" y="174" fill="#7070a0" font-size="11">x</text>
+            <text x="44" y="10" fill="#7070a0" font-size="11">y</text>
+            <line x1="110" y1="167" x2="110" y2="173" stroke="#7070a0" stroke-width="1"/><text x="107" y="185" fill="#7070a0" font-size="10">2</text>
+            <line x1="180" y1="167" x2="180" y2="173" stroke="#7070a0" stroke-width="1"/><text x="177" y="185" fill="#7070a0" font-size="10">4</text>
+            <line x1="250" y1="167" x2="250" y2="173" stroke="#7070a0" stroke-width="1"/><text x="247" y="185" fill="#7070a0" font-size="10">6</text>
+            <line x1="37" y1="120" x2="43" y2="120" stroke="#7070a0" stroke-width="1"/><text x="24" y="124" fill="#7070a0" font-size="10">1</text>
+            <line x1="37" y1="70"  x2="43" y2="70"  stroke="#7070a0" stroke-width="1"/><text x="24" y="74"  fill="#7070a0" font-size="10">2</text>
+            <polyline points="40,170 75,120 110,99.3 145,83.4 180,70 215,58.2 250,47.55"
+                      fill="none" stroke="#5c8aff" stroke-width="2.5"/>
+            <text x="188" y="34" fill="#5c8aff" font-size="11">f(x) = √x</text>
+            <line x1="110" y1="95" x2="250" y2="45" stroke="#ff6b6b" stroke-width="2"/>
+            <text x="188" y="47" fill="#ff6b6b" font-size="10">tangent: L(x)</text>
+            <circle cx="180" cy="70" r="5" fill="#ffb830"/>
+            <text x="150" y="57" fill="#ffb830" font-size="11" font-weight="bold">a = 4, f(4) = 2</text>
+            <rect x="42" y="195" width="215" height="37" rx="4" fill="var(--surface)" stroke="var(--border)" stroke-width="1"/>
+            <text x="50" y="210" fill="#ff6b6b" font-size="10" font-weight="600">L(4.1) = 2.025</text>
+            <text x="50" y="226" fill="#3ecf8e" font-size="10" font-weight="600">√4.1 ≈ 2.0248 — error ≈ 0.00015</text>
+            <!-- zoom inset -->
+            <text x="20" y="244" fill="#7070a0" font-size="9.5">Zoomed near x = 4.1 (gap enlarged for visibility)</text>
+            <rect x="20" y="248" width="240" height="54" rx="4" fill="var(--panel)" stroke="var(--border)" stroke-width="1"/>
+            <line x1="40" y1="289.5" x2="240" y2="264.9" stroke="#ff6b6b" stroke-width="1.8"/>
+            <circle cx="40" cy="289.5" r="3.5" fill="#ffb830"/>
+            <text x="38" y="300" fill="#ffb830" font-size="8.5" text-anchor="middle">a=4</text>
+            <circle cx="173.3" cy="273.1" r="4" fill="#ff6b6b"/>
+            <text x="180" y="270" fill="#ff6b6b" font-size="9.5" font-weight="bold">L(4.1) = 2.025</text>
+            <circle cx="173.3" cy="287.1" r="4" fill="#3ecf8e"/>
+            <text x="180" y="292" fill="#3ecf8e" font-size="9.5" font-weight="bold">√4.1 ≈ 2.0248</text>
+            <line x1="163" y1="273.1" x2="163" y2="287.1" stroke="#ffb830" stroke-width="1" stroke-dasharray="2,2"/>
+          </svg>
+          <p class="step-caption">The true value √4.1&nbsp;≈&nbsp;<strong>2.0248</strong> sits just a hair below the tangent line's estimate — since √x is concave down, the tangent slightly overestimates. The linear approximation is accurate to within <strong>0.00015</strong>, using nothing but a slope and a line.</p>
+        </div>
+
+      </div><!-- .steps -->
+
+      <div class="step-nav">
+        <button class="prev" disabled>← Prev</button>
+        <div class="step-dots">
+          <span class="active"></span><span></span><span></span><span></span>
+        </div>
+        <button class="next">Next →</button>
+      </div>
+    </div><!-- .step-viewer -->
+  </section>
+
+  <!-- ══════════════════════════════════════════════════════════════════
+       Diagram 3: Riemann Sum → Definite Integral (interactive slider)
        viewBox 0 0 300 240 — sx(x)=40+x*80, sy(y)=210-y*21  (x∈[0,3], y∈[0,9])
        ══════════════════════════════════════════════════════════════════ -->
   <section class="diagram-set">
